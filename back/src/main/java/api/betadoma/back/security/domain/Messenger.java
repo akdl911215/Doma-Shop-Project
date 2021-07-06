@@ -1,4 +1,4 @@
-package api.domashop.beta.security.domain;
+package api.betadoma.back.security.domain;
 
 import lombok.Builder;
 import lombok.Getter;

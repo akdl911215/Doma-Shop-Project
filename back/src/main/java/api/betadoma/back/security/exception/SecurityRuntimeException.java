@@ -1,4 +1,4 @@
-package api.domashop.beta.security.exception;
+package api.betadoma.back.security.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

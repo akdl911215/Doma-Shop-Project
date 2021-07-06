@@ -1,7 +1,7 @@
-package api.domashop.beta.security.service;
+package api.betadoma.back.security.service;
 
-import api.domashop.beta.user.domain.User;
-import api.domashop.beta.user.repository.UserRepository;
+import api.betadoma.back.user.domain.User;
+import api.betadoma.back.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.core.userdetails.UserDetails;

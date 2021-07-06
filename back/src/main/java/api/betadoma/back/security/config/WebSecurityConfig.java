@@ -1,6 +1,6 @@
 package api.betadoma.back.security.config;
 
-import api.domashop.beta.security.domain.SecurityProvider;
+import api.betadoma.back.security.domain.SecurityProvider;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,7 @@
 package api.betadoma.back.security.aop;
 
-import api.domashop.beta.security.domain.SecurityProvider;
-import api.domashop.beta.security.exception.SecurityRuntimeException;
+import api.betadoma.back.security.domain.SecurityProvider;
+import api.betadoma.back.security.exception.SecurityRuntimeException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,7 +1,8 @@
-package api.domashop.beta.security.domain;
+package api.betadoma.back.security.domain;
 
-import api.domashop.beta.security.service.UserDetailsServiceImpl;
-import api.domashop.beta.user.domain.Role.Role;
+import api.betadoma.back.security.service.UserDetailsServiceImpl;
+import api.betadoma.back.user.domain.role.Role;
+
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

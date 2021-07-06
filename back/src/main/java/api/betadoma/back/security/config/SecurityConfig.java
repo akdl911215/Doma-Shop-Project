@@ -1,7 +1,7 @@
 package api.betadoma.back.security.config;
 
 import api.betadoma.back.security.aop.SecurityFilter;
-import api.domashop.beta.security.domain.SecurityProvider;
+import api.betadoma.back.security.domain.SecurityProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

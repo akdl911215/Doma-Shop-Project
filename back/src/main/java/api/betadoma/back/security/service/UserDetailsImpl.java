@@ -1,6 +1,6 @@
-package api.domashop.beta.security.service;
+package api.betadoma.back.security.service;
 
-import api.domashop.beta.user.domain.User;
+import api.betadoma.back.user.domain.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

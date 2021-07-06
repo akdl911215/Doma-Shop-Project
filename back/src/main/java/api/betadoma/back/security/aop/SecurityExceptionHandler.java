@@ -1,9 +1,8 @@
 package api.betadoma.back.security.aop;
 
-import api.domashop.beta.security.domain.Messenger;
-import api.domashop.beta.security.exception.ErrorCode;
-import api.domashop.beta.security.exception.LoginRuntimeException;
-
+import api.betadoma.back.security.domain.Messenger;
+import api.betadoma.back.security.exception.ErrorCode;
+import api.betadoma.back.security.exception.LoginRuntimeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

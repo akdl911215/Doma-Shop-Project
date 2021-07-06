@@ -1,4 +1,4 @@
-package api.domashop.beta.security.exception;
+package api.betadoma.back.security.exception;
 
 public class LoginRuntimeException extends RuntimeException { // 실행 예외
     private static final long serialVersionUID = 1L;
