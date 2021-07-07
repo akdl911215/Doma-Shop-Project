@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import betazon from 'webapp/image/betazon.png';
+import 'webapp/user/style/UserSignin.css';
+import { signinPage } from 'webapp/user/reducer/user.reducer';
 
 const Signin = () => {
     const [signin, setSignin] = useState({
@@ -14,7 +17,7 @@ const Signin = () => {
     const goSignin = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        dispatch();
+        dispatch(signin);
         history.push('/');
     };
 
@@ -26,12 +29,6 @@ const Signin = () => {
         });
     };
 
-    const cancelButton = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        history.push('/');
-    };
-
     return (
         <>
             <div className="headerLoginFrom">
@@ -39,7 +36,7 @@ const Signin = () => {
             </div>
 
             <div className="imgcontainer">
-                <img src="https://i.pinimg.com/originals/32/99/86/329986c043a5829916d2eb0c3b7fed8c.png" alt="Avatar" className="avatar" />
+                <img src={betazon} alt="betazon_logo" className="betazonLogo" />
             </div>
             <div className="container">
                 <label htmlFor="username">
@@ -52,32 +49,22 @@ const Signin = () => {
                 </label>
                 <input type="password" style={{ color: 'black' }} placeholder="Enter Password" name="password" value={signin.password || ''} onChange={handleChange} />
 
-                <button type="submit" className="artistBtn" onClick={(e) => goSignin(e)}>
+                <button type="submit" className="userBtn" onClick={(e) => goSignin(e)}>
                     Login
                 </button>
             </div>
 
-            <div className="container ArtistSigninCancel">
-                <button type="button" className="cancelbtn" onClick={cancelButton}>
-                    Cancel
-                </button>
-                <span className="psw">
-                    Forgot <a href="#">password?</a>
-                </span>
+            <div>
+                <Link to="/">
+                    <button type="button" className="cancelbtn">
+                        Cancel
+                    </button>
+                </Link>
             </div>
 
-            <div className="container SupporterSignup">
-                <label>
-                    <Link to="/artist/artist-signup">
-                        <button className="buttonSelect1">서포터 회원가입</button>
-                    </Link>
-                </label>
-                <label>
-                    <Link to="/artist/artist-signup">
-                        <button className="buttonSelect2">아티스트 회원가입</button>
-                    </Link>
-                </label>
-            </div>
+            <span className="psw">
+                Forgot <a href="#">password?</a>
+            </span>
         </>
     );
 };

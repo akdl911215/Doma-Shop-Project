@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import reportWebVitals from 'reportWebVitals';
+import { UserService } from 'webapp/user/index';
 
 const getUserSignin = async (signin) => {
     const response = await UserService.signin(signin);
@@ -41,5 +42,5 @@ const usersSlice = createSlice({
     },
 });
 
-export const {} = usersSlice.actions;
+export const { SigninPage } = usersSlice.actions;
 export default usersSlice.reducer;

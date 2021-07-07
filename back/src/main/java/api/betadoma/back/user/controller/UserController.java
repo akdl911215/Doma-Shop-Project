@@ -26,8 +26,7 @@ public class UserController {
     public ResponseEntity<String> signup(@RequestBody UserDto userDto) throws IOException {
         log.info("Sign Up 작동");
         log.info("signup userDto ::: " + userDto);
-
-//        return null;
+        
         return new ResponseEntity<>(userService.signup(userDto), HttpStatus.OK);
     }
 
