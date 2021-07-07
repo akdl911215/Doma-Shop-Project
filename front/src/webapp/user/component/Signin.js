@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import betazon from 'webapp/image/betazon.png';
+import betazon from 'webapp/images/betazon.png';
 import 'webapp/user/style/UserSignin.css';
 import { signinPage } from 'webapp/user/reducer/user.reducer';
 

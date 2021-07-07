@@ -42,5 +42,6 @@ const usersSlice = createSlice({
     },
 });
 
+export const currentUser = (state) => state.users.usersState;
 export const { SigninPage } = usersSlice.actions;
 export default usersSlice.reducer;
