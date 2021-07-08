@@ -6,15 +6,22 @@ import dataNavbar from 'webapp/common/data/Navbar/main-navbar-data.json';
 import HeaderOne from 'webapp/common/Header/HeaderOne';
 import Signin from 'webapp/user/component/Signin';
 import { useDispatch, useSelector } from 'react-redux';
-import { currentUser } from 'webapp/user/reducer/user.reducer';
+import { currentUser, getLocalUser } from 'webapp/user/reducer/user.reducer';
 
-const HeaderOneMain = () => {
-    const userState = useSelector((state) => state.users.userState);
+const HeaderOneMain = ({}) => {
+    const userStateRedux = useSelector((state) => state.users.usersState);
+    console.log('======');
+    console.log(userStateRedux);
+
+    useEffect((e) => {
+        getLocalUser();
+        console.log('getLocalUser ::: ', getLocalUser);
+    });
 
     return (
         <>
             <div>
-                <HeaderOne data={userState?.username != undefined && userState?.username != '' ? dataNavLogin : dataNavbar} />
+                <HeaderOne data={userStateRedux?.username != undefined && userStateRedux?.username != '' ? dataNavLogin : dataNavbar} />
             </div>
         </>
     );

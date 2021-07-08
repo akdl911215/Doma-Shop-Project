@@ -34,7 +34,12 @@ const usersSlice = createSlice({
             phoneNumber: '',
         },
     },
-    reducers: {},
+    reducers: {
+        getLocalUser: (state, action) => {
+            const userReducer = state.users.usersState;
+            console.log('userReducer ::: ', userReducer);
+        },
+    },
     extraReducers: {
         [signinPage.fulfilled]: (state, { meta, payload }) => {
             state.usersState = payload;
@@ -43,5 +48,5 @@ const usersSlice = createSlice({
 });
 
 export const currentUser = (state) => state.users.usersState;
-export const { SigninPage } = usersSlice.actions;
+export const { SigninPage, getLocalUser } = usersSlice.actions;
 export default usersSlice.reducer;
