@@ -1,6 +1,6 @@
 package api.betadoma.back.user.controller;
 
-import api.betadoma.back.user.domain.dto.UserDto;
+import api.betadoma.back.user.domain.dto.UserDTO;
 import api.betadoma.back.user.service.UserServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -23,7 +23,7 @@ public class UserController {
 
     @PostMapping("/signup")
     @ApiOperation(value = "회원가입 등록", notes = "회원 정보를 등록 합니다.")
-    public ResponseEntity<String> signup(@RequestBody UserDto userDto) throws IOException {
+    public ResponseEntity<String> signup(@RequestBody UserDTO userDto) throws IOException {
         log.info("Sign Up 작동");
         log.info("signup userDto ::: " + userDto);
 
@@ -32,8 +32,8 @@ public class UserController {
 
     @PostMapping("/signin")
     @ApiOperation(value = "로그인", notes = "로그인을 시작 합니다")
-    public ResponseEntity<UserDto> signin
-            (@ApiParam("Signin User") @RequestBody UserDto userDto) throws IOException {
+    public ResponseEntity<UserDTO> signin
+            (@ApiParam("Signin User") @RequestBody UserDTO userDto) throws IOException {
         log.info("User Siginin 작동 :::: " + userDto);
 
         return ResponseEntity.ok(userService.signin(userDto));

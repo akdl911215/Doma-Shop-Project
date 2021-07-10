@@ -1,16 +1,22 @@
 package api.betadoma.back.user.service;
 
+import api.betadoma.back.common.domain.PageRequestDTO;
+import api.betadoma.back.common.domain.PageResultDTO;
 import api.betadoma.back.common.service.AbstractService;
 import api.betadoma.back.user.domain.User;
-import api.betadoma.back.user.domain.dto.UserDto;
+import api.betadoma.back.user.domain.dto.UserDTO;
 import api.betadoma.back.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 @Log4j2
@@ -23,9 +29,19 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 //    private final SecurityProvider securityProvider;
 //    private final AuthenticationManager authenticationManager;
 
+    @Override
+    public PageResultDTO<UserDTO, User> getList(PageRequestDTO requestDTO) {
+
+        Pageable pageable = requestDTO.getPageable(Sort.by("gno").descending());
+        Page<User> result = userRepository.findAll(pageable);
+        Function<User, UserDTO> fn = (entity -> entityToDto(entity));
+
+        return new PageResultDTO<>(result, fn);
+    }
+
     @Transactional
     @Override
-    public String signup(UserDto userDto) {
+    public String signup(UserDTO userDto) {
         log.info("Sign Up ServiceImpl 시작");
         log.info("userDto ::::: "  + userDto);
 
@@ -38,7 +54,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     }
 
     @Override
-    public UserDto signin(UserDto uSerDto) {
+    public UserDTO signin(UserDTO uSerDto) {
         log.info("Sign In ServiceImpl 시작");
 
         User entity = dtoToEntity(uSerDto);

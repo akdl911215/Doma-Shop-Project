@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Builder
 @Log4j2
-public class UserDto {
+public class UserDTO {
 
     private Long userId;
     private String username;

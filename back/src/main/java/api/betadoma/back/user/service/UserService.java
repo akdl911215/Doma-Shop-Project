@@ -1,14 +1,17 @@
 package api.betadoma.back.user.service;
 
+import api.betadoma.back.common.domain.PageRequestDTO;
+import api.betadoma.back.common.domain.PageResultDTO;
 import api.betadoma.back.user.domain.User;
-import api.betadoma.back.user.domain.dto.UserDto;
+import api.betadoma.back.user.domain.dto.UserDTO;
 
 public interface UserService {
 
-    String signup(UserDto userDto);
-    UserDto signin(UserDto uSerDto);
+    String signup(UserDTO userDto);
+    UserDTO signin(UserDTO uSerDto);
+    PageResultDTO<UserDTO, User> getList(PageRequestDTO requestDTO);
 
-    default User dtoToEntity(UserDto userDto){
+    default User dtoToEntity(UserDTO userDto){
         User entity = User.builder()
                 .userId(userDto.getUserId())
                 .username(userDto.getUsername())
@@ -25,8 +28,8 @@ public interface UserService {
         return entity;
     }
 
-    default UserDto entityToDto(User user){
-        UserDto entityDto = UserDto.builder()
+    default UserDTO entityToDto(User user){
+        UserDTO entityDto = UserDTO.builder()
                 .userId(user.getUserId())
                 .username(user.getUsername())
                 .password(user.getPassword())
