@@ -1,44 +1,47 @@
 [
   {
     "id": 1,
-    "title": "Philo-Arte",
+    "title": "베타존",
     "path": "/"
      
   },
   {
     "id": 2,
-    "title": "Art",
-    "path": "/art"
+    "title": "전체상품",
+    "path": "/itemBoard/itemBoard_list"
   },
   {
     "id": 3,
-    "title": "Resume",
-    "path": "/resume/home"
+    "title": "공지사항",
+    "path": "/notice/notice_list"
+    
   },
   {
     "id": 4,
-    "title": "Funding",
-    "path": "/funding/home"
+    "title": "마이샵",
+    "path": "/myShop/myShop_list"
   },
 
   {
     "id": 5,
-    "title": "Review",
-    "path": "/reviews/review_list"
+    "title": "사업자인증",
+    "path": "/businessLicense/businessLicense_list"
+    
   },
   {
     "id": 6,
-    "title": "Log Out",
-    "path": "/artist/artist_logout"
+    "title": "Log In",
+    "path": "/users/users_signin"
   },
   {
     "id": 7,
-    "title": "MyPage",
-    "path": "/artist/artist_mypage"
+    "title": "Sign Up",
+    "path": "/users/users_signup"
   },
   {
     "id": 8,
     "title": "User List",
-    "path": "/artist/artist_Page_list"
+    "path": "/users/users_list"
   }
+
 ]

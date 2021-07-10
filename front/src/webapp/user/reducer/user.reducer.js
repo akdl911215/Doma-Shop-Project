@@ -12,15 +12,6 @@ export const signinPage = createAsyncThunk('users/signin', getUserSignin);
 const usersSlice = createSlice({
     name: 'users',
     initialState: {
-        pageResult: {
-            dtoList: [],
-            page: 1,
-            pageList: [],
-            start: 1,
-            end: 1,
-            prev: false,
-            next: false,
-        },
         usersState: {
             userId: '',
             username: '',
@@ -32,6 +23,15 @@ const usersSlice = createSlice({
             email: '',
             number: '',
             phoneNumber: '',
+        },
+        pageResult: {
+            dtoList: [],
+            page: 1,
+            pageList: [],
+            start: 1,
+            end: 1,
+            prev: false,
+            next: false,
         },
     },
     reducers: {
@@ -48,5 +48,6 @@ const usersSlice = createSlice({
 });
 
 export const currentUser = (state) => state.users.usersState;
+console.log('Reducer currenUser : ', currentUser);
 export const { SigninPage, getLocalUser } = usersSlice.actions;
 export default usersSlice.reducer;
