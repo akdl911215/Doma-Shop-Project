@@ -25,4 +25,5 @@ public class UserDTO {
     private String email;
     private String number;
     private String phoneNumber;
+    private String token;
 }

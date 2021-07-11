@@ -1,5 +1,7 @@
 package api.betadoma.back.user.controller;
 
+import api.betadoma.back.common.domain.PageRequestDTO;
+import api.betadoma.back.common.domain.PageResultDTO;
 import api.betadoma.back.user.domain.dto.UserDTO;
 import api.betadoma.back.user.service.UserServiceImpl;
 import io.swagger.annotations.ApiOperation;
@@ -37,5 +39,13 @@ public class UserController {
         log.info("User Siginin 작동 :::: " + userDto);
 
         return ResponseEntity.ok(userService.signin(userDto));
+    }
+
+    @GetMapping("/list")
+    @ApiOperation(value = "회원리스트", notes = "리스트를 읽어 옵니다")
+    public ResponseEntity<PageResultDTO<UserDTO, Object[]>> list(PageRequestDTO page) {
+        log.info("page ::: " + page);
+
+        return new ResponseEntity(userService.getList(page), HttpStatus.OK);
     }
 }

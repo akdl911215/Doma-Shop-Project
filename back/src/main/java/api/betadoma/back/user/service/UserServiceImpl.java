@@ -4,6 +4,7 @@ import api.betadoma.back.common.domain.PageRequestDTO;
 import api.betadoma.back.common.domain.PageResultDTO;
 import api.betadoma.back.common.service.AbstractService;
 import api.betadoma.back.security.domain.SecurityProvider;
+import api.betadoma.back.security.exception.SecurityRuntimeException;
 import api.betadoma.back.user.domain.User;
 import api.betadoma.back.user.domain.dto.UserDTO;
 import api.betadoma.back.user.repository.UserRepository;
@@ -12,6 +13,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,9 +30,9 @@ import java.util.function.Function;
 public class UserServiceImpl extends AbstractService<User> implements UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder; // 스프링 시큐리티의 인터페이스 객체
     private final SecurityProvider securityProvider;
-    private final AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager; // 스프링 시큐리티에서 인증을 담당
 
     @Override
     public PageResultDTO<UserDTO, User> getList(PageRequestDTO requestDTO) {
@@ -48,21 +50,52 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         log.info("Sign Up ServiceImpl 시작");
         log.info("userDto ::::: "  + userDto);
 
-        User entity = dtoToEntity(userDto);
-        log.info("entity = " + entity);
-        userRepository.save(entity);
+        try {
+            String encodedPassword = passwordEncoder.encode(userDto.getPassword());
+            userDto.setPassword(encodedPassword);
+            log.info("encodedPassword = " + encodedPassword);
 
-        log.info("Sign up ServiceImpl 끝");
-        return "Signup Success";
+            User entity = dtoToEntity(userDto);
+            log.info("entity = " + entity);
+            userRepository.save(entity);
+
+            log.info("Sign up ServiceImpl 끝");
+            return "Signup Success";
+        } catch (Exception e) {
+            throw new SecurityRuntimeException("Sign-Up request faild", HttpStatus.UNPROCESSABLE_ENTITY);
+            // UNPROCESSABLE_ENTITY : 이 응답은 서버가 요청된 지시를 따를 수 없음을 나타냄
+        }
     }
 
     @Override
-    public UserDTO signin(UserDTO uSerDto) {
+    public UserDTO signin(UserDTO userDto) {
         log.info("Sign In ServiceImpl 시작");
 
-        User entity = dtoToEntity(uSerDto);
-        userRepository.signin(entity.getUsername(), entity.getPassword());
+        try {
+            if (userDto.getUsername() != null) {
+                log.info("signin-try-if 통과");
+                User entity = dtoToEntity(userDto);
+                userRepository.signin(entity.getUsername(), entity.getPassword());
+                String Token = securityProvider.createToken(entity.getUsername(), userRepository.findByUsername(entity.getUsername()).get().getRoles());
+                UserDTO entityDTO = entityToDto(entity);
+                entityDTO.setToken(Token);
+                log.info("entityDTO :::: " + entityDTO);
 
+                if (!passwordEncoder.matches(userDto.getPassword(), entity.getPassword())){
+                    return entityDTO;
+                } else {
+                    System.out.println("비밀번호를 확인하세요");
+                    return null;
+                }
+            }
+            else {
+                System.out.println("입력한 ID를 확인하세요");
+            }
+        } catch (Exception e){
+
+            throw new SecurityRuntimeException("Invalid User-Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
+            // UNPROCESSABLE_ENTITY : 이 응답은 서버가 요청된 지시를 따를 수 없음을 나타냄
+        }
         return null;
     }
 
