@@ -24,7 +24,7 @@ public class UserServiceTests {
                 .size(10)
                 .build();
 
-        PageResultDTO<UserDTO, User> resultDTO = sv.getList(pageRequestDTO);
+        PageResultDTO<UserDTO, User> resultDTO = userService.getList(pageRequestDTO);
 
         for (UserDTO userDTO : resultDTO.getDtoList()) {
             System.out.println(userDTO);

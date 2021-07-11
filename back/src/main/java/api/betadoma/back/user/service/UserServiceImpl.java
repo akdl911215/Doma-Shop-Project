@@ -3,6 +3,7 @@ package api.betadoma.back.user.service;
 import api.betadoma.back.common.domain.PageRequestDTO;
 import api.betadoma.back.common.domain.PageResultDTO;
 import api.betadoma.back.common.service.AbstractService;
+import api.betadoma.back.security.domain.SecurityProvider;
 import api.betadoma.back.user.domain.User;
 import api.betadoma.back.user.domain.dto.UserDTO;
 import api.betadoma.back.user.repository.UserRepository;
@@ -11,6 +12,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,14 +28,14 @@ import java.util.function.Function;
 public class UserServiceImpl extends AbstractService<User> implements UserService {
 
     private final UserRepository userRepository;
-//    private final PasswordEncoder passwordEncoder;
-//    private final SecurityProvider securityProvider;
-//    private final AuthenticationManager authenticationManager;
+    private final PasswordEncoder passwordEncoder;
+    private final SecurityProvider securityProvider;
+    private final AuthenticationManager authenticationManager;
 
     @Override
     public PageResultDTO<UserDTO, User> getList(PageRequestDTO requestDTO) {
 
-        Pageable pageable = requestDTO.getPageable(Sort.by("gno").descending());
+        Pageable pageable = requestDTO.getPageable(Sort.by("userId").descending());
         Page<User> result = userRepository.findAll(pageable);
         Function<User, UserDTO> fn = (entity -> entityToDto(entity));
 
