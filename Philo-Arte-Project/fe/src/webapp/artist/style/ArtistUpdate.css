@@ -1,0 +1,24 @@
+.artistUpdateButton {
+    background-color: #9deaf8;
+    color: white;
+    padding: 14px 50px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    border-color: red;
+}
+.artistUpdateButton2 {
+    background-color: #41ca86;
+    color: white;
+    padding: 14px 50px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    border-color: red;
+}
+
+.updateListAll {
+    color: red;
+}
