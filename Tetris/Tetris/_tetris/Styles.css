@@ -1,5 +1,5 @@
-/* css : *은 전체선택자로 모든 형태의 모든 요소를 선택함 */
 * {
+    /* css : *은 전체선택자로 모든 형태의 모든 요소를 선택함 */
     font-family: 'Press Start 2P', cursive;
     /* 선택된 요소에 우선 순위가 지정된 font family 이름과
         generic family 이름을 지정할 수 있게 해준다 */
