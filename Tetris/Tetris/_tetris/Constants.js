@@ -3,4 +3,3 @@
 const COLS = 10; // 열
 const ROWS = 20; // 행
 const BLOCK_SIZE = 30;
-
