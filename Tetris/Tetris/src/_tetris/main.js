@@ -1,3 +1,7 @@
+import COLS from './constants';
+import ROWS from './constants';
+import BLOCK_SIZE from './constants';
+
 // 게임 초기화와 종료 로직 코드
 const canvas = document.getElementById('board');
 const ctx = document.getElementById('2d');

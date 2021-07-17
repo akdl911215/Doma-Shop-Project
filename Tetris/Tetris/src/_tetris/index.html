@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- 5,6번째 라인은 Failed to load resource: the server responded with a status of 404 (Not Found)
+              에러를 해결하기위해 그냥 추가해둔것임 -->
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"></link>
         <link rel="stylesheet" href="./styles.css"></link>
     </head>
     <body>
+      
         <div class="grid">
-            <canvas id="board" class="game-board" height="500"></canvas>
+            <canvas id="board" class="game-board"></canvas>
             <div class="right-column">
-              <div>
+              <div> 
                 <h1>TETRIS</h1>
                 <p>Score: <span id="score">0</span></p>
                 <p>Lines: <span id="lines">0</span></p>
@@ -18,10 +23,10 @@
               <button onclick="play()" class="play-button">Play</button>
             </div>
           </div>
-          <script src="board.js"></script>
+          <script type="module" src="main.js"></script>
+          <!-- <script src="board.js"></script>
           <script src="constants.js"></script>
-          <script src="main.js"></script>
-          <script src="price.js"></script>
+          <script src="price.js"></script> -->
     </body>
 </html>
 
