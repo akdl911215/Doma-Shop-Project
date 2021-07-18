@@ -6,8 +6,13 @@ const getUserSignin = async (signin) => {
     const response = await UserService.signin(signin);
     return response.data;
 };
+const getUserList = async (page) =>{
+    const response = await UserService.list(page);
+    return response.data;
+}
 
 export const signinPage = createAsyncThunk('users/signin', getUserSignin);
+export const fetchPage = createAsyncThunk('users/list', getUserList);
 
 const usersSlice = createSlice({
     name: 'users',
@@ -33,6 +38,8 @@ const usersSlice = createSlice({
             prev: false,
             next: false,
         },
+        type: '',
+        keyword: '',
     },
     reducers: {
         getLocalUser: (state, action) => {
@@ -44,6 +51,9 @@ const usersSlice = createSlice({
         [signinPage.fulfilled]: (state, { meta, payload }) => {
             state.usersState = payload;
         },
+        [fetchPage.fulfilled]: (state, { meta, payload}) => {
+            state.pageResult = payload;
+        }
     },
 });
 
