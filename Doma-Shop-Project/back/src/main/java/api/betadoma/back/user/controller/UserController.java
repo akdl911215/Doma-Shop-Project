@@ -41,10 +41,17 @@ public class UserController {
         return ResponseEntity.ok(userService.signin(userDto));
     }
 
-    @GetMapping("/list")
-    @ApiOperation(value = "회원리스트", notes = "리스트를 읽어 옵니다")
-    public ResponseEntity<PageResultDTO<UserDTO, Object[]>> list(PageRequestDTO page) {
-        log.info("page ::: " + page);
+//    @GetMapping("/list")
+//    @ApiOperation(value = "회원리스트", notes = "리스트를 읽어 옵니다")
+//    public ResponseEntity<PageResultDTO<UserDTO, Object[]>> list(PageRequestDTO page) {
+//        log.info("page ::: " + page);
+//
+//        return new ResponseEntity(userService.getList(page), HttpStatus.OK);
+//    }
+
+    @GetMapping("/list/pages")
+    public ResponseEntity<PageResultDTO<UserDTO, Object[]>> list(PageRequestDTO page){
+        log.info("page : " + page);
 
         return new ResponseEntity(userService.getList(page), HttpStatus.OK);
     }

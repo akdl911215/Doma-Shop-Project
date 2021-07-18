@@ -14,4 +14,9 @@ const signin = (signin) => {
     });
 };
 
-export default { signin };
+const list = (page) => {
+    const str = 'page=' + (!page.page ? 1 : page.page) + '&type=' + (page.type ? page.type : '') + '&keyword=' + (page.keyword ? page.keyword : '');
+    return axios.get(`${SERVER}/users/list/pages?` + str);
+};
+
+export default { signin, list };

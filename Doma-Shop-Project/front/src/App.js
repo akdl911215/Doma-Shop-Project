@@ -7,6 +7,7 @@ import { Signup, Signin } from 'webapp/user/index';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import { Home } from 'webapp/home/index';
 import { HomeVideoBg } from 'webapp/common/index';
+import UserPageList from 'webapp/user/component/UserPageList';
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
                             <Route exact path={`/`} component={HomeVideoBg} />
                             <Route exact path="/users/users_signup" component={Signup} />
                             <Route exact path="/users/users_signin" component={Signin} />
+                            <Route exact path="/users/users_list" component={UserPageList} />
                         </Switch>
                     </ScrollToTop>
                 </ScrollIntoView>

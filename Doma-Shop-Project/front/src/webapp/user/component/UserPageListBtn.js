@@ -15,6 +15,24 @@ const UserPageListBtn = ({ pageList, page, start, end, prev, next, type = '', ke
         </button>;
     });
 
-    return <></>;
+    return (
+        <>
+            {perv ? (
+                <button className="pageListBtn" onClick={() => movePage(start - 1)}>
+                    prev
+                </button>
+            ) : (
+                <></>
+            )}
+            {list}
+            {next ? (
+                <button className="pageListBtn" onClick={() => movePage(end + 1)}>
+                    next
+                </button>
+            ) : (
+                <></>
+            )}
+        </>
+    );
 };
 export default UserPageListBtn;
