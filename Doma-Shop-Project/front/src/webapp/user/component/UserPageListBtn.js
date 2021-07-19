@@ -9,15 +9,15 @@ const UserPageListBtn = ({ pageList, page, start, end, prev, next, type = '', ke
         dispatch(fetchPage(param));
     };
 
-    const list = pageList.map((i) => {
+    const list = pageList.map((i) => (
         <button key={i} className="userPageListBtn" onClick={() => movePage(i)}>
             {i}
-        </button>;
-    });
+        </button>
+    ));
 
     return (
         <>
-            {perv ? (
+            {prev ? (
                 <button className="pageListBtn" onClick={() => movePage(start - 1)}>
                     prev
                 </button>

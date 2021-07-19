@@ -44,6 +44,27 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         return new PageResultDTO<>(result, fn);
     }
 
+    @Override
+    public UserDTO updateMypage(UserDTO userDTO) {
+        log.info("updateMYpage 진입");
+
+        User user = userRepository.getOne(userDTO.getUserId());
+        log.info("user : " + user);
+
+        user.changePassword(userDTO.getPassword());
+        user.changeCompanyName(userDTO.getCompanyName());
+        user.changeCompanyNumber(userDTO.getCompanyNumber());
+        user.changeAddress(userDTO.getAddress());
+        user.changeEmail(userDTO.getEmail());
+        user.changeNumber(userDTO.getNumber());
+        user.changePhoneNumber(userDTO.getPhoneNumber());
+
+        userRepository.save(user);
+        UserDTO dtoEntity = entityToDto(user);
+
+        return dtoEntity;
+    }
+
     @Transactional
     @Override
     public String signup(UserDTO userDto) {

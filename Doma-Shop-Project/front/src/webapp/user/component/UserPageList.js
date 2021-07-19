@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPage } from 'webapp/user/reducer/user.reducer';
+import UserBtnReset from './UserBtnReset';
 import UserPageListBtn from './UserPageListBtn';
 
 const UserPageList = () => {
@@ -57,6 +58,7 @@ const UserPageList = () => {
                     </table>
                     <UserPageListBtn {...pageResult} type={type} keyword={keyword} />
                 </table>
+                <UserBtnReset />
             </div>
         </>
     );

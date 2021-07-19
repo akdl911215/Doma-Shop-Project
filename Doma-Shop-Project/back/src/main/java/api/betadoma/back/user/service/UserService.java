@@ -10,6 +10,7 @@ public interface UserService {
     String signup(UserDTO userDto);
     UserDTO signin(UserDTO uSerDto);
     PageResultDTO<UserDTO, User> getList(PageRequestDTO requestDTO);
+    UserDTO updateMypage(UserDTO userDTO);
 
     default User dtoToEntity(UserDTO userDto){
         User entity = User.builder()

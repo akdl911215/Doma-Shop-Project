@@ -23,6 +23,15 @@ public class UserController {
 
     private final UserServiceImpl userService;
 
+    @PutMapping("/mypage")
+    @ApiOperation(value = "회원 정보 수정", notes = "선택한 회원 정보를 수정합니다.")
+    public ResponseEntity<String> updateMypage(@RequestBody UserDTO userDTO) {
+        log.info("회원 정보를 수정합니다");
+        userService.updateMypage(userDTO);
+
+        return ResponseEntity.ok("Success Mypage");
+    }
+
     @PostMapping("/signup")
     @ApiOperation(value = "회원가입 등록", notes = "회원 정보를 등록 합니다.")
     public ResponseEntity<String> signup(@RequestBody UserDTO userDto) throws IOException {
@@ -41,6 +50,13 @@ public class UserController {
         return ResponseEntity.ok(userService.signin(userDto));
     }
 
+    @GetMapping("/list/pages")
+    public ResponseEntity<PageResultDTO<UserDTO, Object[]>> list(PageRequestDTO page){
+        log.info("page : " + page);
+
+        return new ResponseEntity(userService.getList(page), HttpStatus.OK);
+    }
+
 //    @GetMapping("/list")
 //    @ApiOperation(value = "회원리스트", notes = "리스트를 읽어 옵니다")
 //    public ResponseEntity<PageResultDTO<UserDTO, Object[]>> list(PageRequestDTO page) {
@@ -49,10 +65,5 @@ public class UserController {
 //        return new ResponseEntity(userService.getList(page), HttpStatus.OK);
 //    }
 
-    @GetMapping("/list/pages")
-    public ResponseEntity<PageResultDTO<UserDTO, Object[]>> list(PageRequestDTO page){
-        log.info("page : " + page);
 
-        return new ResponseEntity(userService.getList(page), HttpStatus.OK);
-    }
 }
