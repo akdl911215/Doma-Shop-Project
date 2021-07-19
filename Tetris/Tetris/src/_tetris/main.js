@@ -21,9 +21,12 @@ let board = new Board();
 console.log('board : ', board);
 
 function play() {
+    alert('플레이 동작중..');
+    var e = document.getElementById('playButton');
     board.reset();
     // console.table을 사용하면 숫자 값으로 보드를 확인가능
     console.table(board.grid);
 }
+// document.getElementById('playButton').addEventListener('click', onClick);
 
 export { play };
