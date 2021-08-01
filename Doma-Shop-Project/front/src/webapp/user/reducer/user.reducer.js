@@ -6,13 +6,18 @@ const getUserSignin = async (signin) => {
     const response = await UserService.signin(signin);
     return response.data;
 };
-const getUserList = async (page) =>{
+const getUserList = async (page) => {
     const response = await UserService.list(page);
     return response.data;
-}
+};
+const getMypage = async (mypage) => {
+    const response = await UserService.mypage(mypage);
+    return response.data;
+};
 
 export const signinPage = createAsyncThunk('users/signin', getUserSignin);
 export const fetchPage = createAsyncThunk('users/list', getUserList);
+export const reviseMypage = createAsyncThunk('users/mypage', getMypage);
 
 const usersSlice = createSlice({
     name: 'users',
@@ -51,9 +56,12 @@ const usersSlice = createSlice({
         [signinPage.fulfilled]: (state, { meta, payload }) => {
             state.usersState = payload;
         },
-        [fetchPage.fulfilled]: (state, { meta, payload}) => {
+        [fetchPage.fulfilled]: (state, { meta, payload }) => {
             state.pageResult = payload;
-        }
+        },
+        [reviseMypage.fulfilled]: (state, { meta, payload }) => {
+            state.usersState = payload;
+        },
     },
 });
 
