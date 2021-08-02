@@ -4,7 +4,9 @@ import { UserService } from 'webapp/user/index';
 
 const getUserSignin = async (signin) => {
     const response = await UserService.signin(signin);
+    console.log('getUserSignin response : ', response);
     return response.data;
+    console.log('getUserSignin response.data : ', response.data);
 };
 const getUserList = async (page) => {
     const response = await UserService.list(page);
@@ -54,6 +56,9 @@ const usersSlice = createSlice({
     },
     extraReducers: {
         [signinPage.fulfilled]: (state, { meta, payload }) => {
+            console.log('signinPage state :: ', state);
+            console.log('signinPage state.usersState :: ', state.usersState);
+            console.log('signinPage payload :: ', payload);
             state.usersState = payload;
         },
         [fetchPage.fulfilled]: (state, { meta, payload }) => {
@@ -67,5 +72,5 @@ const usersSlice = createSlice({
 
 export const currentUser = (state) => state.users.usersState;
 console.log('Reducer currenUser : ', currentUser);
-export const { SigninPage, getLocalUser } = usersSlice.actions;
+export const { SigninPage, getLocalUser, ReviseMypage } = usersSlice.actions;
 export default usersSlice.reducer;

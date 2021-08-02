@@ -89,7 +89,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     }
 
     @Override
-    public UserDTO signin(UserDTO userDto) {
+    public UserDTO signin(UserDTO userDto) { // httpOnly cookie 으로 설정하기
         log.info("Sign In ServiceImpl 시작");
 
         try {
