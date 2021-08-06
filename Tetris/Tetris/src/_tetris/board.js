@@ -1,5 +1,5 @@
 // 보드 로직 파일
-import { COLS, ROWS } from '../_tetris/constants.js';
+import { COLS, ROWS } from './Constants.js';
 class Board {
     grid;
 

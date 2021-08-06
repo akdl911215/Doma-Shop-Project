@@ -21,14 +21,15 @@
                 <canvas id="next" class="next"></canvas>
               </div>
               <!-- <input type="button" id="playButton" onclick="play();" value="Play" /> -->
-              <button id="playButton" onclick="play()" class="play-button" value="Play">Play</button>
+              <button type="button" onclick="play()" id="playButton" class="play-button" value="playButton">Play</button>
              </div>
           </div>
           <!-- <script src="main.js"></script> -->
-          <script type="module">
+          <!-- <script type="module">
             import {play} from './main.js';
             document.getElementById('playButton').innerHTML = play();
-        </script>
+        </script> -->
+        <script type="module" src="../_tetris/main.js"></script>
         <script type="module" src="../_tetris/board.js"></script>
         <script type="module" src="../_tetris/price.js"></script>
     </body>

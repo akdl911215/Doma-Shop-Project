@@ -1,5 +1,5 @@
-import { COLS, ROWS, BLOCK_SIZE } from '../_tetris/constants.js';
-import { Board } from '../_tetris/board.js';
+import { COLS, ROWS, BLOCK_SIZE } from './Constants.js';
+import { Board } from './Board.js';
 
 // 게임 초기화와 종료 로직 코드
 const canvas = document.getElementById('board');
@@ -20,13 +20,16 @@ console.log('ctx.scale : ', ctx.scale);
 let board = new Board();
 console.log('board : ', board);
 
+document.getElementById('playButton').onclick = play;
 function play() {
-    alert('플레이 동작중..');
-
+    alert('플레이 눌렸네..??');
     board.reset();
+
     // console.table을 사용하면 숫자 값으로 보드를 확인가능
     console.table(board.grid);
-}
-// document.getElementById('playButton').addEventListener('click', onClick);
 
-export { play };
+    board = getEmptyBoard();
+    let price = new Price(ctx);
+}
+
+export { play, board };
