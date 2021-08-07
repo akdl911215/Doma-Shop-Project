@@ -3,4 +3,11 @@ const COLS = 10; // 열
 const ROWS = 20; // 행
 const BLOCK_SIZE = 30;
 
-export { COLS, ROWS, BLOCK_SIZE };
+const KEY = {
+    LEFT: 37,
+    RIGHT: 39,
+    DOWN: 40,
+};
+Object.freeze(KEY);
+
+export { COLS, ROWS, BLOCK_SIZE, KEY };
