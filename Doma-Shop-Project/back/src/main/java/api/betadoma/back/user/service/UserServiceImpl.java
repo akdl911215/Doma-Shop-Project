@@ -47,9 +47,11 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     @Override
     public UserDTO updateMypage(UserDTO userDTO) {
         log.info("updateMYpage 진입");
+        log.info("userDTO : " + userDTO);
 
         User user = userRepository.getOne(userDTO.getUserId());
         log.info("user : " + user);
+
 
         user.changePassword(userDTO.getPassword());
         user.changeCompanyName(userDTO.getCompanyName());
@@ -96,9 +98,14 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
             if (userDto.getUsername() != null) {
                 log.info("signin-try-if 통과");
                 User entity = dtoToEntity(userDto);
-                userRepository.signin(entity.getUsername(), entity.getPassword());
+                log.info("User entiy :: " + entity);
+                log.info("User entity.getUsername() :: " + entity.getUsername());
+                log.info("User entity.getPassword() :: " + entity.getPassword());
+                entity = userRepository.signin(entity.getUsername(), entity.getPassword());
+                log.info("userRepository 할당 entity : " + entity);
                 String Token = securityProvider.createToken(entity.getUsername(), userRepository.findByUsername(entity.getUsername()).get().getRoles());
                 UserDTO entityDTO = entityToDto(entity);
+                log.info("토큰셋팅전 entityDTO :: " + entityDTO);
                 entityDTO.setToken(Token);
                 log.info("entityDTO :::: " + entityDTO);
 

@@ -8,7 +8,7 @@ import api.betadoma.back.user.domain.dto.UserDTO;
 public interface UserService {
 
     String signup(UserDTO userDto);
-    UserDTO signin(UserDTO uSerDto);
+    UserDTO signin(UserDTO userDto);
     PageResultDTO<UserDTO, User> getList(PageRequestDTO requestDTO);
     UserDTO updateMypage(UserDTO userDTO);
 

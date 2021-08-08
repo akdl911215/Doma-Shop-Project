@@ -53,6 +53,14 @@ const usersSlice = createSlice({
             const userReducer = state.users.usersState;
             console.log('userReducer ::: ', userReducer);
         },
+        getLocalUserLogin: (state, action) => {
+            if (state.usersState.username !== '') {
+                return;
+            }
+
+            const user = JSON.parse(window.localStorage.getItem('user'));
+            state.usersState = user;
+        },
     },
     extraReducers: {
         [signinPage.fulfilled]: (state, { meta, payload }) => {
@@ -60,6 +68,9 @@ const usersSlice = createSlice({
             console.log('signinPage state.usersState :: ', state.usersState);
             console.log('signinPage payload :: ', payload);
             state.usersState = payload;
+
+            // JSON.stringify() : JavaScript 값이나 객체를 JSON 문자열로 변환
+            console.log("window.localStorage.setItem('user', JSON.stringify(payload)) : ", window.localStorage.setItem('user', JSON.stringify(payload)));
         },
         [fetchPage.fulfilled]: (state, { meta, payload }) => {
             state.pageResult = payload;
@@ -72,5 +83,5 @@ const usersSlice = createSlice({
 
 export const currentUser = (state) => state.users.usersState;
 console.log('Reducer currenUser : ', currentUser);
-export const { SigninPage, getLocalUser, ReviseMypage } = usersSlice.actions;
+export const { SigninPage, getLocalUser, ReviseMypage, getLocalUserLogin } = usersSlice.actions;
 export default usersSlice.reducer;

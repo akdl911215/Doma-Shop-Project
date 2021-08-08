@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import { reviseMypage } from 'webapp/user/reducer/user.reducer';
+import { reviseMypage, getLocalUserLogin } from 'webapp/user/reducer/user.reducer';
 
 const Mypage = () => {
     const history = useHistory();
@@ -9,7 +9,12 @@ const Mypage = () => {
     const userState = useSelector((state) => state.users.usersState);
     console.log('userState : ', userState);
 
+    useEffect(() => {
+        dispatch(getLocalUserLogin());
+    });
+
     const [mypage, setMypage] = useState({
+        userId: userState.userId,
         username: userState.username,
         password: '',
         name: userState.name,
@@ -25,6 +30,7 @@ const Mypage = () => {
         let mypageResult = window.confirm('정보를 수정하시겠습니까?');
 
         const obj = {
+            userId: userState.userId,
             username: userState.username,
             password: mypage.password,
             name: userState.name,
@@ -75,7 +81,8 @@ const Mypage = () => {
                     <label htmlFor="username">
                         <b>아이디</b>
                     </label>
-                    {userState.username}
+                    <br />
+                    <input type="username" name="username" value={userState.username} disabled />
                     <br />
                     <br />
 
@@ -87,7 +94,8 @@ const Mypage = () => {
                     <label htmlFor="name">
                         <b>이름</b>
                     </label>
-                    {userState.name}
+                    <br />
+                    <input type="username" name="username" value={userState.name} disabled />
                     <br />
                     <br />
 
