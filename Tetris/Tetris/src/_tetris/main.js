@@ -42,6 +42,11 @@ function play() {
     // addEventListener() : 지정한 이벤트가 대상에 전달될 때마다
     // 호출할 함수를 설정한다
     document.addEventListener('keydown', (event) => {
+        if (event.defaultPrevented) {
+            return;
+        }
+
+        console.log('moves.KeyboardEvent.code : ', moves.KeyboardEvent.code);
         if (moves.KeyboardEvent.code) {
             alert('들어오니?', event);
             // 이벤트 버블링을 막는다
