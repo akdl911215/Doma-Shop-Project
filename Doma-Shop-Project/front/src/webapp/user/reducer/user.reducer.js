@@ -16,10 +16,15 @@ const getMypage = async (mypage) => {
     const response = await UserService.mypage(mypage);
     return response.data;
 };
+const getWithdrawl = async (withdrawl) => {
+    const response = await UserService.withdrawl(withdrawl);
+    return response.data;
+};
 
 export const signinPage = createAsyncThunk('users/signin', getUserSignin);
 export const fetchPage = createAsyncThunk('users/list', getUserList);
 export const reviseMypage = createAsyncThunk('users/mypage', getMypage);
+export const userWithdrawalPage = createAsyncThunk('users/mypage', getWithdrawl);
 
 const usersSlice = createSlice({
     name: 'users',
@@ -78,10 +83,13 @@ const usersSlice = createSlice({
         [reviseMypage.fulfilled]: (state, { meta, payload }) => {
             state.usersState = payload;
         },
+        [userWithdrawalPage.fulfilled]: (state, { meta, payload }) => {
+            state.usersState = payload;
+        },
     },
 });
 
 export const currentUser = (state) => state.users.usersState;
 console.log('Reducer currenUser : ', currentUser);
-export const { SigninPage, getLocalUser, ReviseMypage, getLocalUserLogin } = usersSlice.actions;
+export const { SigninPage, getLocalUser, ReviseMypage, getLocalUserLogin, UserWithdrawalPage } = usersSlice.actions;
 export default usersSlice.reducer;

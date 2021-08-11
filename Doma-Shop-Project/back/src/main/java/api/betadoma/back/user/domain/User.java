@@ -63,9 +63,13 @@ public class User extends BaseEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     List<Role> roles;
 
+    public void changeUsername(String username) { this.username = username; }
+
     public void changePassword(String password){
         this.password = password;
     }
+
+    public void changeName(String name) { this.name = name; }
 
     public void changeCompanyName(String companyName){
         this.companyName = companyName;

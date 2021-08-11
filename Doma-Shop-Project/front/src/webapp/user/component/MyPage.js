@@ -2,12 +2,14 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { reviseMypage, getLocalUserLogin } from 'webapp/user/reducer/user.reducer';
+import UserWithdrawal from 'webapp/user/component/UserWithdrawal';
 
 const Mypage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const userState = useSelector((state) => state.users.usersState);
     console.log('userState : ', userState);
+    console.log('userState.userId : ', userState.userId);
 
     useEffect(() => {
         dispatch(getLocalUserLogin());
@@ -41,6 +43,8 @@ const Mypage = () => {
             number: mypage.number, //일반전화
             phoneNumber: mypage.phoneNumber,
         };
+
+        console.log('obj :::::: ', obj);
 
         if (mypageResult) {
             alert('수정을 완료하셨습니다.');
@@ -78,6 +82,13 @@ const Mypage = () => {
                     {/* 이야기 장면 전환, 구획 내 주제 변경 등, 문단 레벨 요소에서 주제의 분리를 나타냄 */}
                 </div>
                 <form>
+                    <label htmlFor="userId">
+                        <b>유저번호</b>
+                    </label>
+                    <br />
+                    <input type="userId" name="userId" value={userState.userId} disabled />
+                    <br />
+                    <br />
                     <label htmlFor="username">
                         <b>아이디</b>
                     </label>
@@ -139,6 +150,9 @@ const Mypage = () => {
                             홈으로
                         </button>
                     </Link>
+                </div>
+                <div>
+                    <UserWithdrawal />
                 </div>
             </form>
         </>

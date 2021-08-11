@@ -11,6 +11,7 @@ public interface UserService {
     UserDTO signin(UserDTO userDto);
     PageResultDTO<UserDTO, User> getList(PageRequestDTO requestDTO);
     UserDTO updateMypage(UserDTO userDTO);
+    UserDTO userWithdrawal(UserDTO userDTO);
 
     default User dtoToEntity(UserDTO userDto){
         User entity = User.builder()

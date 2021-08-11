@@ -23,6 +23,15 @@ public class UserController {
 
     private final UserServiceImpl userService;
 
+    @PutMapping("/withdrawal")
+    @ApiOperation(value = "회원 정보 탈퇴", notes = "선택한 회원 정보를 탈퇴합니다.")
+    public ResponseEntity<String> userWithdrawal(@RequestBody UserDTO userDTO) {
+        log.info("회원 정보를 탈퇴합니다");
+        userService.userWithdrawal(userDTO);
+
+        return ResponseEntity.ok("Success User-Withdrawal!!");
+    }
+
     @PutMapping("/mypage")
     @ApiOperation(value = "회원 정보 수정", notes = "선택한 회원 정보를 수정합니다.")
     public ResponseEntity<String> updateMypage(@RequestBody UserDTO userDTO) {
