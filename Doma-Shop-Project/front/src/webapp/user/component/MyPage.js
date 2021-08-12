@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { reviseMypage, getLocalUserLogin } from 'webapp/user/reducer/user.reducer';
-import UserWithdrawal from 'webapp/user/component/UserWithdrawal';
+import UserWithdrawal from './UserWithdrawal';
 
 const Mypage = () => {
     const history = useHistory();
@@ -135,9 +135,9 @@ const Mypage = () => {
                     </label>
                     <input type="text" placeholder="Enter number" name="number" value={mypage.number} onChange={(e) => handleChange(e)} />
 
-                    <labe htmlFor="phoneNumber">
+                    <label htmlFor="phoneNumber">
                         <b>핸드폰번호</b>
-                    </labe>
+                    </label>
                     <input type="text" placeholder="Enter phone number" name="phoneNumber" value={mypage.phoneNumber} onChange={(e) => handleChange(e)} />
 
                     <button type="submit" className="updateBtn" onClick={(e) => goMypage(e)}>
@@ -151,10 +151,10 @@ const Mypage = () => {
                         </button>
                     </Link>
                 </div>
-                <div>
-                    <UserWithdrawal />
-                </div>
             </form>
+            {/* <div>
+                <UserWithdrawal />
+            </div> */}
         </>
     );
 };

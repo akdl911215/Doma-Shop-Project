@@ -4,9 +4,7 @@ import { UserService } from 'webapp/user/index';
 
 const getUserSignin = async (signin) => {
     const response = await UserService.signin(signin);
-    console.log('getUserSignin response : ', response);
     return response.data;
-    console.log('getUserSignin response.data : ', response.data);
 };
 const getUserList = async (page) => {
     const response = await UserService.list(page);
@@ -16,15 +14,16 @@ const getMypage = async (mypage) => {
     const response = await UserService.mypage(mypage);
     return response.data;
 };
-const getWithdrawl = async (withdrawl) => {
-    const response = await UserService.withdrawl(withdrawl);
+const getWithdrawl = async (withdrawal) => {
+    alert('여긴2');
+    const response = await UserService.withdrawl(withdrawal);
     return response.data;
 };
 
 export const signinPage = createAsyncThunk('users/signin', getUserSignin);
 export const fetchPage = createAsyncThunk('users/list', getUserList);
 export const reviseMypage = createAsyncThunk('users/mypage', getMypage);
-export const userWithdrawalPage = createAsyncThunk('users/mypage', getWithdrawl);
+export const userWithdrawalPage = createAsyncThunk('users/withdrawal', getWithdrawl);
 
 const usersSlice = createSlice({
     name: 'users',
@@ -84,7 +83,9 @@ const usersSlice = createSlice({
             state.usersState = payload;
         },
         [userWithdrawalPage.fulfilled]: (state, { meta, payload }) => {
+            alert('여긴?1');
             state.usersState = payload;
+            console.log('userWithdrawalPage state.usersState ::::: ', state.usersState);
         },
     },
 });

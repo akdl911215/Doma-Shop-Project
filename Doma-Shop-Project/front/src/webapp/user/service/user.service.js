@@ -3,6 +3,7 @@ import axios from 'axios';
 const SERVER = 'http://localhost:8080';
 
 const withdrawl = (withdrawlObj) => {
+    alert('넘어오니?');
     return axios({
         url: `${SERVER}/users/withdrawal`,
         method: 'put',
