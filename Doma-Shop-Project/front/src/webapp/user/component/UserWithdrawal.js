@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import { getLocalUserLogin, UserWithdrawalPage } from 'webapp/user/reducer/user.reducer';
+import { userWithdrawalPage, getLocalUserLogin } from 'webapp/user/reducer/user.reducer';
 
 const UserWithdrawal = () => {
     const history = useHistory();
@@ -46,8 +46,7 @@ const UserWithdrawal = () => {
 
         if (UserWithdrawalResult) {
             alert('탈퇴를 완료하셨습니다.');
-            alert('떠나자 리듀서로');
-            dispatch(UserWithdrawalPage(obj));
+            dispatch(userWithdrawalPage(obj));
         }
     };
 
@@ -80,52 +79,42 @@ const UserWithdrawal = () => {
                     <input type="userId" name="userId" value={userState.userId} disabled />
                     <br />
                     <br />
-
                     <label htmlFor="username">
                         <b>아이디</b>
                     </label>
                     <input type="text" placeholder="Enter username" name="username" value={withdrawal.username} onChange={(e) => handleChange(e)} />
-
                     <label htmlFor="password">
                         <b>비밀번호</b>
                     </label>
                     <input type="password" placeholder="Enter password" name="password" value={withdrawal.password} onChange={(e) => handleChange(e)} />
-
                     <label htmlFor="name">
                         <b>이름</b>
                     </label>
                     <input type="text" name="name" value={withdrawal.name} onChange={(e) => handleChange(e)} />
-
                     <label htmlFor="companyName">
                         <b>회사 이름</b>
                     </label>
                     <input type="text" placeholder="Enter company name" name="companyName" value={withdrawal.companyName} onChange={(e) => handleChange(e)} />
-
                     <label htmlFor="companyNumber">
                         <b>사업자번호</b>
                     </label>
                     <input type="text" placeholder="Enter company number" name="companyNumber" value={withdrawal.companyNumber} onChange={(e) => handleChange(e)} />
-
                     <label htmlFor="address">
                         <b>주소</b>
                     </label>
                     <input type="text" placeholder="Enter address" name="address" value={withdrawal.address} onChange={(e) => handleChange(e)} />
-
                     <label htmlFor="email">
                         <b>이메일 주소</b>
                     </label>
                     <input type="text" placeholder="Enter email" name="email" value={withdrawal.email} onChange={(e) => handleChange(e)} />
-
                     <label htmlFor="number">
                         <b>일반전화</b>
                     </label>
                     <input type="text" placeholder="Enter number" name="number" value={withdrawal.number} onChange={(e) => handleChange(e)} />
-
                     <label htmlFor="phoneNumber">
                         <b>핸드폰번호</b>
                     </label>
                     <input type="text" placeholder="Enter phone number" name="phoneNumber" value={withdrawal.phoneNumber} onChange={(e) => handleChange(e)} />
-
                     <button type="submit" className="updateBtn" onClick={(e) => goWithdrawal(e)}>
                         회원탈퇴
                     </button>

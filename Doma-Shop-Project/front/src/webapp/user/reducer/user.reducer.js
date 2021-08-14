@@ -15,8 +15,8 @@ const getMypage = async (mypage) => {
     return response.data;
 };
 const getWithdrawal = async (withdrawal) => {
-    alert('여긴2');
     const response = await UserService.withdrawal(withdrawal);
+    console.log('response : ', response);
     return response.data;
 };
 
@@ -53,10 +53,10 @@ const usersSlice = createSlice({
         keyword: '',
     },
     reducers: {
-        getLocalUser: (state, action) => {
-            const userReducer = state.users.usersState;
-            console.log('userReducer ::: ', userReducer);
-        },
+        // getLocalUser: (state, action) => {
+        //     const userReducer = state.users.usersState;
+        //     console.log('userReducer ::: ', userReducer);
+        // },
         getLocalUserLogin: (state, action) => {
             if (state.usersState.username !== '') {
                 return;
@@ -68,9 +68,6 @@ const usersSlice = createSlice({
     },
     extraReducers: {
         [signinPage.fulfilled]: (state, { meta, payload }) => {
-            console.log('signinPage state :: ', state);
-            console.log('signinPage state.usersState :: ', state.usersState);
-            console.log('signinPage payload :: ', payload);
             state.usersState = payload;
 
             // JSON.stringify() : JavaScript 값이나 객체를 JSON 문자열로 변환
@@ -83,9 +80,7 @@ const usersSlice = createSlice({
             state.usersState = payload;
         },
         [userWithdrawalPage.fulfilled]: (state, { meta, payload }) => {
-            alert('여긴?1');
             state.usersState = payload;
-            console.log('userWithdrawalPage state.usersState ::::: ', state.usersState);
         },
     },
 });

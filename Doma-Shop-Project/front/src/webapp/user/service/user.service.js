@@ -3,21 +3,20 @@ import axios from 'axios';
 const SERVER = 'http://localhost:8080';
 
 const withdrawal = (withdrawalObj) => {
-    alert('넘어오니?');
     return axios({
         url: `${SERVER}/users/withdrawal`,
         method: 'put',
         data: {
             userId: withdrawalObj.userId,
-            username: withdrawalObj.username,
-            password: withdrawalObj.password,
-            name: withdrawalObj.name,
-            companyName: withdrawalObj.companyName,
-            companyNumber: withdrawalObj.companyNumber,
-            address: withdrawalObj.address,
-            email: withdrawalObj.email,
-            number: withdrawalObj.number, //일반전화
-            phoneNumber: withdrawalObj.phoneNumber,
+            username: (withdrawalObj.username = ''),
+            password: (withdrawalObj.password = ''),
+            name: (withdrawalObj.name = ''),
+            companyName: (withdrawalObj.companyName = ''),
+            companyNumber: (withdrawalObj.companyNumber = ''),
+            address: (withdrawalObj.address = ''),
+            email: (withdrawalObj.email = ''),
+            number: (withdrawalObj.number = ''), //일반전화
+            phoneNumber: (withdrawalObj.phoneNumber = ''),
         },
         headers: { Authorization: 'JWT fefeae...' },
     });
