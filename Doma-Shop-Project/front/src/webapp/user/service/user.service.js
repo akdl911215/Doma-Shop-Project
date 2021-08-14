@@ -2,22 +2,22 @@ import axios from 'axios';
 
 const SERVER = 'http://localhost:8080';
 
-const withdrawl = (withdrawlObj) => {
+const withdrawal = (withdrawalObj) => {
     alert('넘어오니?');
     return axios({
         url: `${SERVER}/users/withdrawal`,
         method: 'put',
         data: {
-            userId: withdrawlObj.userId,
-            username: withdrawlObj.username,
-            password: withdrawlObj.password,
-            name: withdrawlObj.name,
-            companyName: withdrawlObj.companyName,
-            companyNumber: withdrawlObj.companyNumber,
-            address: withdrawlObj.address,
-            email: withdrawlObj.email,
-            number: withdrawlObj.number, //일반전화
-            phoneNumber: withdrawlObj.phoneNumber,
+            userId: withdrawalObj.userId,
+            username: withdrawalObj.username,
+            password: withdrawalObj.password,
+            name: withdrawalObj.name,
+            companyName: withdrawalObj.companyName,
+            companyNumber: withdrawalObj.companyNumber,
+            address: withdrawalObj.address,
+            email: withdrawalObj.email,
+            number: withdrawalObj.number, //일반전화
+            phoneNumber: withdrawalObj.phoneNumber,
         },
         headers: { Authorization: 'JWT fefeae...' },
     });
@@ -60,4 +60,4 @@ const list = (page) => {
     return axios.get(`${SERVER}/users/list/pages?` + str);
 };
 
-export default { signin, list, mypage, withdrawl };
+export default { signin, list, mypage, withdrawal };

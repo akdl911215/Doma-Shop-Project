@@ -14,16 +14,16 @@ const getMypage = async (mypage) => {
     const response = await UserService.mypage(mypage);
     return response.data;
 };
-const getWithdrawl = async (withdrawal) => {
+const getWithdrawal = async (withdrawal) => {
     alert('여긴2');
-    const response = await UserService.withdrawl(withdrawal);
+    const response = await UserService.withdrawal(withdrawal);
     return response.data;
 };
 
 export const signinPage = createAsyncThunk('users/signin', getUserSignin);
 export const fetchPage = createAsyncThunk('users/list', getUserList);
 export const reviseMypage = createAsyncThunk('users/mypage', getMypage);
-export const userWithdrawalPage = createAsyncThunk('users/withdrawal', getWithdrawl);
+export const userWithdrawalPage = createAsyncThunk('users/withdrawal', getWithdrawal);
 
 const usersSlice = createSlice({
     name: 'users',

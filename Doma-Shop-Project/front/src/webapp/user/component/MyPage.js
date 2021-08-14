@@ -93,7 +93,7 @@ const Mypage = () => {
                         <b>아이디</b>
                     </label>
                     <br />
-                    <input type="username" name="username" value={userState.username} disabled />
+                    <input type="text" name="username" value={userState.username} disabled />
                     <br />
                     <br />
 
@@ -106,7 +106,7 @@ const Mypage = () => {
                         <b>이름</b>
                     </label>
                     <br />
-                    <input type="username" name="username" value={userState.name} disabled />
+                    <input type="text" name="name" value={userState.name} disabled />
                     <br />
                     <br />
 
