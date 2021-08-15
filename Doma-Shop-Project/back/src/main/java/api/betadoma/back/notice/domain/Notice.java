@@ -11,8 +11,9 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "notices")
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor // 클래스의 각 필드에 대해 1개의 매개변수가 있는 생성자를 생성한다
+// 클래스에 존재하는 모든 필드에 대한 생성자를 자동으로 생성
+@NoArgsConstructor // 매개변수가 없는 생성자를 생성한다.
 @Getter
 @Builder
 public class Notice extends BaseEntity {
