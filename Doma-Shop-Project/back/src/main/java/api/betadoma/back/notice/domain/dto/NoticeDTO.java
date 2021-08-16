@@ -1,5 +1,6 @@
 package api.betadoma.back.notice.domain.dto;
 
+import api.betadoma.back.user.domain.role.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,5 +30,6 @@ public class NoticeDTO {
 
     private Long NoticeFileId;
     private List<NoticeFileDTO> noticeFileDTO;
-    
+    private List<Role> roles;
+
 }
