@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
 const NoticeModify = () => {
-    return <></>
-}
-export default NoticeModify
+    return <></>;
+};
+export default NoticeModify;
