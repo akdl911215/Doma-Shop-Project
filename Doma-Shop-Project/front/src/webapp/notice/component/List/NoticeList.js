@@ -7,27 +7,46 @@ const NoticeList = () => {
 
     return (
         <>
-            <div className="list-template">폼 게시판</div>
-            <section className="title-column">
-                <tr>
-                    <td>
-                        <span>번호</span>
-                    </td>
-                    <td>
-                    <span className="title-column">제목</span>
-                    </td>
-                    <span>작성자</span>
-                    <span>작성일</span>
-                    <span>마감일</span>
-                </tr>
-            </section>
-            <section className="list-wrapper">
-                {listData.map(({ board_id, title, start_date, end_date }) => (
-                    <ListItem title={title} start_date={start_date} key={board_id}></ListItem>
-                ))}
-            </section>
+            <div>
+                <table boarder="1">
+                    <tr>
+                        <th align="center" width="80">
+                            No
+                        </th>
+                        <th align="center" width="320">
+                            Title
+                        </th>
+                        <th align="center" width="100">
+                            Writer
+                        </th>
+                        <th align="center" width="180">
+                            Registration Date
+                        </th>
+                    </tr>
+                    {/* <tr>
+                        (!boards || (Array.isArray(board) && boards.legnth === 0) ?( ) :(
+                        <td align="center"></td>
+                        <td align="letf"></td>
+                        <td align="right"></td>
+                        <td align="center"></td>)
+                    </tr> */}
+
+                    {!listData || (Array.isArray(listData) && listData.legnth === 0) ? (
+                        <tr>
+                            <td colspan="4">List is empty</td>
+                        </tr>
+                    ) : (
+                        <tr>
+                            <td align="center"></td>
+                            <td align="letf"></td>
+                            <td align="right"></td>
+                            <td align="center"></td>
+                        </tr>
+                    )}
+                </table>
+            </div>
         </>
     );
 };
 export default NoticeList;
-// https://antdev.tistory.com/78
+
