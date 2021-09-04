@@ -59,4 +59,5 @@ const list = (page) => {
     return axios.get(`${SERVER}/users/list/pages?` + str);
 };
 
+
 export default { signin, list, mypage, withdrawal };
