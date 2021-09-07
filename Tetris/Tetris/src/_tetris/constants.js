@@ -10,4 +10,5 @@ const KEY = {
 };
 Object.freeze(KEY);
 
+
 export { COLS, ROWS, BLOCK_SIZE, KEY };
