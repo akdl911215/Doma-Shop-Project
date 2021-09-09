@@ -1,7 +1,7 @@
 // 보드 로직 파일
 import { COLS, ROWS } from './Constants.js';
 class Board {
-    grid;
+    grid;// grid
 
     // 새 게임이 시작되면 보드를 초기화
     reset() {
