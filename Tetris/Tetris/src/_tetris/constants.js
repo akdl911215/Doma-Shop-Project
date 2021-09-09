@@ -10,5 +10,5 @@ const KEY = {
 };
 Object.freeze(KEY);
 
-
+// gogo
 export { COLS, ROWS, BLOCK_SIZE, KEY };
