@@ -1,6 +1,6 @@
-import { COLS, ROWS, BLOCK_SIZE } from './Constants.js';
-import { Board } from './Board.js';
-import { Piece } from './Piece.js';
+import { COLS, ROWS, BLOCK_SIZE } from './constants.js';
+import { Board } from './board.js';
+import { Piece } from './piece.js';
 import { KEY } from './Constants.js';
 
 // 게임 초기화와 종료 로직 코드
