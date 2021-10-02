@@ -25,7 +25,7 @@ console.log('board : ', board);
 document.getElementById('playButton').onclick = play;
 function play() {
     // alert('플레이 눌렸네..??');
-    board.reset();
+    console.log('board.reset() : ', board.reset());
 
     // console.table을 사용하면 숫자 값으로 보드를 확인가능
     console.table(board.grid);

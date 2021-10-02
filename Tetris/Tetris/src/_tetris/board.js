@@ -6,6 +6,7 @@ class Board {
     // 새 게임이 시작되면 보드를 초기화
     reset() {
         this.grid = this.getEmptyBoard();
+        console.log('this.grid : ', this.grid )
         // document.getElementById('getEmptyBoard').onclick = play;
     }
 
