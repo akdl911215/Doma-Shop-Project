@@ -68,13 +68,16 @@ function play() {
     });
 
     moves = {
+        alert('2')
         [KEY.LEFT]: (p) => ({ ...p, x: p.x - 1 }),
         [KEY.RIGHT]: (p) => ({ ...p, x: p.x + 1 }),
-        [KEY.UP]: (p) => ({ ...p, y: p.y + 1 }),
+        [KEY.DOWN]: (p) => ({ ...p, y: p.y + 1 }),
     };
-    console.log('moves : ', moves);
+    // console.log('moves : ', moves);
 
     const p = this.moves.KeyboardEvent.code(this.piece);
+    
+    // const p = this.moves[event.key](this.piece);
     console.log('this.moves.KeyboardEvent.code : ', this.moves.KeyboardEvent.code);
 }
 
