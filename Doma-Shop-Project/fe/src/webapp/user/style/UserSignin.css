@@ -1,6 +1,6 @@
 .betazonLogo {
-  height: 500px;
-  width: 500px;
+  height: 200px;
+  width: 200px;
 }
 
 .userBtn {
@@ -10,7 +10,7 @@
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 100px;
 }
 
 button:hover {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 import { Signup, Signin, Mypage, UserWithdrawal } from "webapp/user/index";
 import {
@@ -7,40 +7,28 @@ import {
   NoticeRead,
   NoticeRegister,
 } from "webapp/notice/index";
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+// import { StaticRouter } from "react-router-dom/server";
 import UserPageList from "webapp/user/component/UserPageList";
 import { Home } from "webapp/common/index";
 
 const App = () => {
   return (
     <>
-      {/* <Router basename="/"> */}
-      {/* <ScrollIntoView>
-          <ScrollToTop> */}
       <Routes>
-        <Route exact path={`/`} element={Home} />
-        <Route exact path="/users/users_signup" element={Signup} />
-        <Route exact path="/users/users_signin" element={Signin} />
-        <Route exact path="/users/users_list" element={UserPageList} />
-        <Route exact path="/users/users_mypage" element={Mypage} />
-        <Route
-          exact
-          path="/users/users_withdrawal"
-          component={UserWithdrawal}
-        />
+        {/* <Link to="/">Home</Link> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/users_signup" element={<Signup />} />
+        <Route path="/users_signin" element={<Signin />} />
+        <Route path="/users_list" element={<UserPageList />} />
+        <Route path="/users_mypage" element={<Mypage />} />
+        <Route path="/users_withdrawal" component={<UserWithdrawal />} />
 
-        <Route exact path="/notice/notice_list" element={NoticeList} />
-        <Route
-          exact
-          path="/notice/notice_register"
-          component={NoticeRegister}
-        />
-        <Route exact path="/notice/notice_read" element={NoticeRead} />
-        <Route exact path="/notice/notice_modify" element={NoticeModify} />
+        <Route path="/notice_list" element={<NoticeList />} />
+        <Route path="/notice_register" component={<NoticeRegister />} />
+        <Route path="/notice_read" element={<NoticeRead />} />
+        <Route path="/notice_modify" element={<NoticeModify />} />
       </Routes>
-      {/* </ScrollToTop>
-        </ScrollIntoView> */}
-      {/* </Router> */}
     </>
   );
 };
