@@ -22,10 +22,10 @@ const App = () => {
         <Route path="/users_signin" element={<Signin />} />
         <Route path="/users_list" element={<UserPageList />} />
         <Route path="/users_mypage" element={<Mypage />} />
-        <Route path="/users_withdrawal" component={<UserWithdrawal />} />
+        <Route path="/users_withdrawal" element={<UserWithdrawal />} />
 
         <Route path="/notice_list" element={<NoticeList />} />
-        <Route path="/notice_register" component={<NoticeRegister />} />
+        <Route path="/notice_register" element={<NoticeRegister />} />
         <Route path="/notice_read" element={<NoticeRead />} />
         <Route path="/notice_modify" element={<NoticeModify />} />
       </Routes>

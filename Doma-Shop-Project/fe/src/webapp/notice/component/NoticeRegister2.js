@@ -2,29 +2,17 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const NoticeRegister = () => {
+const NoticeRegister2 = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const clickFileChange = (event) => {
-    console.log("event : ", event);
-    console.log("event.target.files : ", event.target.files);
-    setSelectedFile(event.target.files);
-    console.log("setSelectedFile : ", setSelectedFile);
+    setSelectedFile(event.target.files[0]);
   };
   const handleFileUpload = () => {
     const formData = new FormData();
-    for (let i = 0; i < selectedFile.length; i++) {
-      formData.append("myfile", selectedFile[i], selectedFile[i].name);
-    }
-    console.log("formData : ", formData);
-
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
+    formData.append("userfile", selectedFile, selectedFile.name);
 
     axios
-      .post("api/uploadfile", formData, config)
+      .post("api/uploadfile", formData)
       .then((res) => {
         console.log(res);
       })
@@ -71,8 +59,9 @@ const NoticeRegister = () => {
               <input type="submit" value="확인"></input>
               <input type="reset" value="취소"></input>
               <div>
+                {/* 사진 단일 선택 */}
                 <input type="file" onChange={clickFileChange} />
-                <button onClick={{ handleFileUpload }}>업로드</button>
+                <button onClick={{ handleFileUpload }}>파일 추가</button>
               </div>
             </td>
           </tr>
@@ -81,4 +70,4 @@ const NoticeRegister = () => {
     </>
   );
 };
-export default NoticeRegister;
+export default NoticeRegister2;

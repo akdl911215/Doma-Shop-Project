@@ -1,7 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import  from '@mui/meterial/Stack';
+import {
+  Button,
+  Box,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+} from "@mui/material";
+import { flexbox } from "@mui/system";
 
 const NoticeList = () => {
+  const [searchType, setSearchType] = React.useState("");
+
+  const handleChange = (event) => {
+    setSearchType(event.target.value);
+  };
+
   return (
     <>
       <table
@@ -44,11 +60,34 @@ const NoticeList = () => {
       </table>
 
       <div>
-        <div>
-          <input style={{ width: "300px" }} />
-          <button>검색</button>
+        <div style={{ display: "flex" }}>
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">검색조건</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={searchType}
+                label="검색조건"
+                onChange={handleChange}
+                style={{ width: "100px", margin: 0 }}
+              >
+                <MenuItem value={1}>제목</MenuItem>
+                <MenuItem value={2}>내용</MenuItem>
+                <MenuItem value={3}>글쓴이</MenuItem>
+                <MenuItem value={4}>아이디</MenuItem>
+                <MenuItem value={5}>별명</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+          <input style={{ width: "300px", height: "53px" }} />
+          {/* <button>검색</button> */}
+          {/* <Button variant="contained">검색</Button> */}
+          <Button variant="outlined">검색</Button>
         </div>
-        <button>글작성</button>
+        <Link to="/notice_register">
+          <button>글작성</button>
+        </Link>
       </div>
     </>
   );
