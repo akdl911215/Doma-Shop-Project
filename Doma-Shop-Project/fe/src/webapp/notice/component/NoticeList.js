@@ -50,7 +50,7 @@ const NoticeList = () => {
           <tr>
             <td className="id">1</td>
             <td className="title">
-              <Link to="/">게시판 제목</Link>
+              <Link to="/notice_read">게시판 제목</Link>
             </td>
             <td className="name">글쓴이 이름</td>
             <td className="date">날짜</td>

@@ -1,0 +1,9 @@
+.OOTDWrite-input-file {
+  margin-top: 10px;
+  padding: 6px 15px;
+  background-color: var(--main-color-2);
+  border-radius: 20px;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 30px;
+}

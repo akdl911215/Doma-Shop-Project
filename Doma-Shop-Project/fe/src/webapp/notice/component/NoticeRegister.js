@@ -1,15 +1,29 @@
 import axios from "axios";
 import React, { useState } from "react";
+import "webapp/notice/style/NoticeRegister.css";
 import { Link } from "react-router-dom";
+import { Mypage } from "webapp/user";
 
 const NoticeRegister = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const clickFileChange = (event) => {
-    console.log("event : ", event);
-    console.log("event.target.files : ", event.target.files);
-    setSelectedFile(event.target.files);
-    console.log("setSelectedFile : ", setSelectedFile);
+  const [selectedFile, setSelectedFile] = useState([]);
+  // const [imgBase64, setImageBase64] = useState("");
+  // const clickFileChange = (event) => {
+  //   console.log("event : ", event);
+  //   console.log("event.target.files : ", event.target.files);
+  //   setSelectedFile(event.target.files);
+  //   console.log("setSelectedFile : ", setSelectedFile);
+  // };
+
+  const addImage = (event) => {
+    const nowSelectImageList = event.target.files;
+    const nowImageURLList = [...selectedFile];
+    for (let i = 0; i < nowSelectImageList.length; i++) {
+      const nowImageUrl = URL.createObjectURL(nowSelectImageList[i]);
+      nowImageURLList.push(nowImageUrl);
+    }
+    setSelectedFile(nowImageURLList);
   };
+
   const handleFileUpload = () => {
     const formData = new FormData();
     for (let i = 0; i < selectedFile.length; i++) {
@@ -70,10 +84,40 @@ const NoticeRegister = () => {
             <td>
               <input type="submit" value="확인"></input>
               <input type="reset" value="취소"></input>
+            </td>
+            <td>
               <div>
-                <input type="file" onChange={clickFileChange} />
-                <button onClick={{ handleFileUpload }}>업로드</button>
+                {/* {selectedFile && (
+                  <img
+                    alt="sample"
+                    src={selectedFile}
+                    style={{ margin: "auto", height: "100px", width: "100px" }}
+                  />
+                )} */}
+                {selectedFile.map((image) => (
+                  <img
+                    key={image}
+                    src={image}
+                    alt={image}
+                    style={{ margin: "auto", height: "100px", width: "100px" }}
+                  />
+                ))}
+                <div style={{ alignItems: "center", justifyContent: "center" }}>
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    id="input-file"
+                    accept="image/*"
+                    onChange={addImage}
+                  />
+                  <button onClick={() => handleFileUpload}>업로드</button>
+                </div>
               </div>
+            </td>
+            <td>
+              <Link to="/notice_list">
+                <button>뒤로가기</button>
+              </Link>
             </td>
           </tr>
         </table>
