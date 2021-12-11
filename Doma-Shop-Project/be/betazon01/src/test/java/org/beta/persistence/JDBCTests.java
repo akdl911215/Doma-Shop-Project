@@ -26,11 +26,15 @@ public class JDBCTests {
 	
 	@Test
 	public void testConnection() {
+
+		String url = "jdbc:mariadb://localhost:3306/my_db";
+		String user = "user";
+		String pw = "456123";
 		
 		try(Connection con = DriverManager.getConnection(
-					"jdbc:mariadb://localhost:3306/my_db", 
-					"user", 
-					"456123")) {
+					url, 
+					user, 
+					pw)) {
 			
 			log.info("------" + con);
 		} catch (Exception e) {
