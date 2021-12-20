@@ -1,18 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import "webapp/notice/style/NoticeRegister.css";
+// import "webapp/notice/style/NoticeRegister.css";
 import { Link } from "react-router-dom";
 import { Mypage } from "webapp/user";
+import { Form, TextArea, Button, Checkbox, Table } from "semantic-ui-react";
 
 const NoticeRegister = () => {
   const [selectedFile, setSelectedFile] = useState([]);
-  // const [imgBase64, setImageBase64] = useState("");
-  // const clickFileChange = (event) => {
-  //   console.log("event : ", event);
-  //   console.log("event.target.files : ", event.target.files);
-  //   setSelectedFile(event.target.files);
-  //   console.log("setSelectedFile : ", setSelectedFile);
-  // };
 
   const addImage = (event) => {
     const nowSelectImageList = event.target.files;
@@ -47,10 +41,76 @@ const NoticeRegister = () => {
       });
   };
 
+  const style = {
+    backgroundBoard: {
+      width: "100%",
+      maxWidth: "100rem",
+      margin: "auto",
+    },
+    button: {
+      float: "right",
+    },
+  };
+  
   return (
     <>
-      {/* <Link to="/">홈</Link> */}
+       <div style={style.backgroundBoard}>
+        <div>
+          {colors.map((color) => (
+            <Table color={color} key={color}>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>번호</Table.HeaderCell>
+                  <Table.HeaderCell>제목</Table.HeaderCell>
+                  <Table.HeaderCell>글쓴이</Table.HeaderCell>
+                  <Table.HeaderCell>날짜</Table.HeaderCell>
+                  <Table.HeaderCell>조회수</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>3</Table.Cell>
+                  <Link to="/notice_modify">
+                    <Table.Cell>공지사항3</Table.Cell>
+                  </Link>
+                  <Table.Cell>운영자3</Table.Cell>
+                  <Table.Cell>2021년12월20일</Table.Cell>
+                  <Table.Cell>1234</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>2</Table.Cell>
+                  <Link to="/notice_modify">
+                    <Table.Cell>공지사항2</Table.Cell>
+                  </Link>
+                  <Table.Cell>운영자2</Table.Cell>
+                  <Table.Cell>2021년12월20일</Table.Cell>
+                  <Table.Cell>1234</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>1</Table.Cell>
+                  <Link to="/notice_modify">
+                    <Table.Cell>공지사항1</Table.Cell>
+                  </Link>
+                  <Table.Cell>운영자1</Table.Cell>
+                  <Table.Cell>2021년12월20일</Table.Cell>
+                  <Table.Cell>1234</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+          ))}
+        </div>
+
       <form action="submit" method="post">
+        <Form.Field>
+          <label>제목</label>
+          <input placeholder="First Name" />
+        </Form.Field>
+        <Form.Field>
+          <label>작성자</label>
+          <input placeholder="Last Name" />
+        </Form.Field>
+
         <table>
           <tr>
             <td>제목</td>
@@ -71,7 +131,7 @@ const NoticeRegister = () => {
           <tr>
             <td>내용</td>
             <td>
-              <textarea rows="20" name="text" />
+              <TextArea placeholder="Tell us more" />
             </td>
           </tr>
           <tr>
@@ -80,6 +140,7 @@ const NoticeRegister = () => {
               <input type="password" name="pass" />
             </td>
           </tr>
+          <Button type="submit">Submit</Button>
           <tr>
             <td>
               <input type="submit" value="확인"></input>
@@ -87,13 +148,6 @@ const NoticeRegister = () => {
             </td>
             <td>
               <div>
-                {/* {selectedFile && (
-                  <img
-                    alt="sample"
-                    src={selectedFile}
-                    style={{ margin: "auto", height: "100px", width: "100px" }}
-                  />
-                )} */}
                 {selectedFile.map((image) => (
                   <img
                     key={image}
