@@ -68,6 +68,16 @@ const NoticeRegister = () => {
     noticeRegisterButtonStyle: {
       float: "right",
     },
+    noticeRegisterMainPhotoStyle: {
+      width: "5rem",
+      height: "5rem",
+    },
+    noticeRegisterMainPhotoRowStyle: {
+      height: "5.2rem",
+    },
+    noticeRegisterTableStyle: {
+      textAlign: "center",
+    },
   };
 
   const colors = ["teal"];
@@ -78,7 +88,11 @@ const NoticeRegister = () => {
         <div style={style.backgroundBoard}>
           <div>
             {colors.map((color) => (
-              <Table color={color} key={color}>
+              <Table
+                color={color}
+                key={color}
+                style={style.noticeRegisterTableStyle}
+              >
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>제목</Table.HeaderCell>
@@ -92,16 +106,15 @@ const NoticeRegister = () => {
                     <Table.HeaderCell>메인사진</Table.HeaderCell>
                     <Table.Cell>
                       <Reveal animated="small fade">
-                        <Reveal.Content visible>
+                        <Reveal.Content
+                          style={style.noticeRegisterMainPhotoRowStyle}
+                        >
                           {selectedFile.map((image) => (
                             <Image
                               key={image}
                               src={image}
                               alt={image}
-                              style={{
-                                height: "100px",
-                                width: "100px",
-                              }}
+                              style={style.noticeRegisterMainPhotoStyle}
                             />
                           ))}
                         </Reveal.Content>
