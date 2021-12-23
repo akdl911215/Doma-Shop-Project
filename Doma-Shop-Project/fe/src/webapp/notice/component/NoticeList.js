@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Icon, Label, Menu, Table, Button } from "semantic-ui-react";
+import { Icon, Label, Menu, Table, Button, Container } from "semantic-ui-react";
 const NoticeList = () => {
   const [searchType, setSearchType] = React.useState("");
 
@@ -21,7 +21,7 @@ const NoticeList = () => {
   };
 
   return (
-    <>
+    <Container>
       <div style={style.backgroundBoard}>
         <div>
           {colors.map((color) => (
@@ -76,7 +76,7 @@ const NoticeList = () => {
           </Link>
         </div>
       </div>
-    </>
+    </Container>
   );
 };
 export default NoticeList;

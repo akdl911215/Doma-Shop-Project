@@ -7,6 +7,12 @@ import {
   NoticeRead,
   NoticeRegister,
 } from "webapp/notice/index";
+import {
+  productInfomationRegister,
+  ProductInfomationList,
+  ProductInfomationRead,
+  ProductInfomationModify,
+} from "webapp/prodeuct-infomatin/index";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 // import { StaticRouter } from "react-router-dom/server";
 import UserPageList from "webapp/user/component/UserPageList";
@@ -28,6 +34,23 @@ const App = () => {
         <Route path="/notice_register" element={<NoticeRegister />} />
         <Route path="/notice_read" element={<NoticeRead />} />
         <Route path="/notice_modify" element={<NoticeModify />} />
+
+        <Route
+          path="/product_infomation_modify"
+          element={<ProductInfomationModify />}
+        />
+        <Route
+          path="/product_infomation_list"
+          element={<ProductInfomationList />}
+        />
+        <Route
+          path="/product_infomation_register"
+          element={<productInfomationRegister />}
+        />
+        <Route
+          path="/product_infomation_read"
+          element={<ProductInfomationRead />}
+        />
       </Routes>
     </>
   );

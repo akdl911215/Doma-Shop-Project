@@ -26,6 +26,9 @@ const TopMenuBar = () => {
             <li>
               <Link to="/notice_list">공지 사항</Link>
             </li>
+            <li>
+              <Link to="/product_infomation_list">제품 정보 리스트</Link>
+            </li>
           </ul>
         </nav>
       </div>
