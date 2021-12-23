@@ -12,6 +12,8 @@ import {
   Image,
   Reveal,
 } from "semantic-ui-react";
+import HomeButtonComponent from "webapp/common/component/HomeButtonComponent";
+import GoBackButtonComponent from "webapp/common/component/GoBackButtonComponent";
 
 const ProductInfomationRegister = () => {
   const [selectedFile, setSelectedFile] = useState([]);
@@ -174,37 +176,20 @@ const ProductInfomationRegister = () => {
               </div>
             </button>
           </div>
-          {/* <div>
-              {selectedFile.map((image) => (
-                <img
-                  key={image}
-                  src={image}
-                  alt={image}
-                  style={{ margin: "auto", height: "100px", width: "100px" }}
-                />
-              ))}
-              <div style={{ alignItems: "center", justifyContent: "center" }}>
-                <input
-                  type="file"
-                  multiple="multiple"
-                  id="input-file"
-                  accept="image/*"
-                  onChange={addImage}
-                />
-              </div>
-            </div> */}
-          <Link to="/notice_list">
-            <Button color="grey" style={style.noticeRegisterButtonStyle}>
-              뒤로가기
+
+          <div style={style.noticeRegisterButtonStyle}>
+            <Button onClick={handleFileUpload} color="teal">
+              업로드
             </Button>
-          </Link>
-          <Button
-            onClick={handleFileUpload}
-            color="teal"
-            style={style.noticeRegisterButtonStyle}
-          >
-            업로드
-          </Button>
+
+            <GoBackButtonComponent name="ProductInfomationRegister" />
+
+            {/* <Button color="grey" style={style.noticeRegisterButtonStyle}>
+              뒤로가기
+            </Button> */}
+
+            <HomeButtonComponent />
+          </div>
         </div>
       </Container>
     </>

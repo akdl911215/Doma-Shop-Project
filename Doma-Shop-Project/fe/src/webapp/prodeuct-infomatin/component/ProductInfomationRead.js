@@ -1,6 +1,156 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Form,
+  TextArea,
+  Button,
+  Checkbox,
+  Table,
+  Container,
+  Input,
+  Image,
+  Reveal,
+} from "semantic-ui-react";
+import HomeButtonComponent from "webapp/common/component/HomeButtonComponent";
+import GoBackButtonComponent from "webapp/common/component/GoBackButtonComponent";
+import { useNavigate } from "react-router";
 
 const ProductInfomationRead = () => {
-  return <></>;
+  const [selectedFile, setSelectedFile] = useState([]);
+  const navigate = useNavigate();
+
+  const style = {
+    backgroundBoard: {
+      width: "100%",
+      maxWidth: "100rem",
+      margin: "auto",
+    },
+    button: {
+      float: "right",
+    },
+    noticeHeader: {
+      width: "100%",
+    },
+    noticeBody: {
+      height: "35rem",
+    },
+    noticeRegisterButtonStyle: {
+      float: "right",
+    },
+    noticeRegisterMainPhotoStyle: {
+      width: "5rem",
+      height: "5rem",
+    },
+    noticeRegisterMainPhotoRowStyle: {
+      height: "5.2rem",
+    },
+    noticeRegisterTableStyle: {
+      textAlign: "center",
+    },
+  };
+
+  const colors = ["teal"];
+
+  const ProductInfomationModifyButton = () => {
+    navigate("/product_infomation_modify");
+  };
+
+  return (
+    <>
+      <Container>
+        <div style={style.backgroundBoard}>
+          <div>
+            {colors.map((color) => (
+              <Table
+                color={color}
+                key={color}
+                style={style.noticeRegisterTableStyle}
+              >
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>제목</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <Input style={style.noticeHeader} />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>메인사진</Table.HeaderCell>
+                    <Table.Cell>
+                      <Reveal animated="small fade">
+                        <Reveal.Content
+                          style={style.noticeRegisterMainPhotoRowStyle}
+                        ></Reveal.Content>
+                      </Reveal>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>작성자</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <Input style={style.noticeHeader} />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>작성일</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <Input style={style.noticeHeader} />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>조회수</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <Input style={style.noticeHeader} />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  <Table.Row>
+                    <Table.HeaderCell>본문</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <TextArea style={style.noticeBody} />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+            ))}
+          </div>
+
+          {/* <div class="ui small basic icon buttons">
+            <button class="ui button active">
+              <div style={{ alignItems: "center", justifyContent: "center" }}>
+                <i class="upload icon"></i>
+                <input
+                  type="file"
+                  multiple="multiple"
+                  id="input-file"
+                  accept="image/*"
+                />
+              </div>
+            </button>
+          </div> */}
+
+          <div style={style.noticeRegisterButtonStyle}>
+            <Button onClick={ProductInfomationModifyButton} color="teal">
+              수정하기
+            </Button>
+
+            <GoBackButtonComponent name="ProductInfomationModify" />
+            <HomeButtonComponent />
+          </div>
+        </div>
+      </Container>
+    </>
+  );
 };
 export default ProductInfomationRead;

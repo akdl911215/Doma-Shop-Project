@@ -8,7 +8,7 @@ import {
   NoticeRegister,
 } from "webapp/notice/index";
 import {
-  productInfomationRegister,
+  ProductInfomationRegister,
   ProductInfomationList,
   ProductInfomationRead,
   ProductInfomationModify,
@@ -45,7 +45,7 @@ const App = () => {
         />
         <Route
           path="/product_infomation_register"
-          element={<productInfomationRegister />}
+          element={<ProductInfomationRegister />}
         />
         <Route
           path="/product_infomation_read"

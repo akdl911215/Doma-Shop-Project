@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Icon, Label, Menu, Table, Button, Container } from "semantic-ui-react";
+
 const NoticeList = () => {
   const [searchType, setSearchType] = React.useState("");
 
