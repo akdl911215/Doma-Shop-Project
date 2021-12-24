@@ -12,6 +12,7 @@ import {
   ProductInfomationList,
   ProductInfomationRead,
   ProductInfomationModify,
+  ProductInfomationReview,
 } from "webapp/prodeuct-infomatin/index";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 // import { StaticRouter } from "react-router-dom/server";
@@ -50,6 +51,10 @@ const App = () => {
         <Route
           path="/product_infomation_read"
           element={<ProductInfomationRead />}
+        />
+        <Route
+          path="/product_infomation_review"
+          element={<ProductInfomationReview />}
         />
       </Routes>
     </>

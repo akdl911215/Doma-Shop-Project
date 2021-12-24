@@ -17,6 +17,10 @@ const GoBackButtonComponent = ({ name }) => {
         navigate("/product_infomation_read");
         break;
 
+      case "ProductInfomationRead":
+        navigate("/product_infomation_list");
+        break;
+
       default:
         navigate("/");
     }

@@ -13,9 +13,11 @@ import {
   Image,
   Reveal,
 } from "semantic-ui-react";
+import { useNavigate } from "react-router";
 
 const NoticeRegister = () => {
   const [selectedFile, setSelectedFile] = useState([]);
+  const navigate = useNavigate();
 
   const addImage = (event) => {
     const nowSelectImageList = event.target.files;
@@ -48,6 +50,9 @@ const NoticeRegister = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    // if (res) navigate("/product_infomation_list");
+    navigate("/notice_list");
   };
 
   const style = {

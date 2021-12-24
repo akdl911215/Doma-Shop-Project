@@ -11,12 +11,15 @@ import {
   Input,
   Image,
   Reveal,
+  Rating,
 } from "semantic-ui-react";
 import HomeButtonComponent from "webapp/common/component/HomeButtonComponent";
 import GoBackButtonComponent from "webapp/common/component/GoBackButtonComponent";
+import { useNavigate } from "react-router-dom";
 
 const ProductInfomationRegister = () => {
   const [selectedFile, setSelectedFile] = useState([]);
+  const navigate = useNavigate();
 
   const addImage = (event) => {
     const nowSelectImageList = event.target.files;
@@ -29,26 +32,29 @@ const ProductInfomationRegister = () => {
   };
 
   const handleFileUpload = () => {
-    const formData = new FormData();
-    for (let i = 0; i < selectedFile.length; i++) {
-      formData.append("myfile", selectedFile[i], selectedFile[i].name);
-    }
-    console.log("formData : ", formData);
+    // const formData = new FormData();
+    // for (let i = 0; i < selectedFile.length; i++) {
+    //   formData.append("myfile", selectedFile[i], selectedFile[i].name);
+    // }
+    // console.log("formData : ", formData);
 
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
+    // const config = {
+    //   headers: {
+    //     "content-type": "multipart/form-data",
+    //   },
+    // };
 
-    axios
-      .post("api/uploadfile", formData, config)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios
+    //   .post("api/uploadfile", formData, config)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    // if(res) navigate('product_infomation_list')
+    navigate("/product_infomation_list");
   };
 
   const style = {
@@ -96,14 +102,6 @@ const ProductInfomationRegister = () => {
               >
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>제목</Table.HeaderCell>
-                    <Table.Cell>
-                      <Form>
-                        <Input style={style.noticeHeader} />
-                      </Form>
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
                     <Table.HeaderCell>메인사진</Table.HeaderCell>
                     <Table.Cell>
                       <Reveal animated="small fade">
@@ -123,7 +121,31 @@ const ProductInfomationRegister = () => {
                     </Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.HeaderCell>작성자</Table.HeaderCell>
+                    <Table.HeaderCell>제목</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <Input style={style.noticeHeader} />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
+
+                  <Table.Row>
+                    <Table.HeaderCell>평점</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <Rating
+                          maxRating={5}
+                          defaultRating={0}
+                          icon="star"
+                          size="large"
+                        />
+                        <br />
+                        <br />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>정가</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
                         <Input style={style.noticeHeader} />
@@ -131,7 +153,7 @@ const ProductInfomationRegister = () => {
                     </Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.HeaderCell>작성일</Table.HeaderCell>
+                    <Table.HeaderCell>랭킹</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
                         <Input style={style.noticeHeader} />
@@ -139,7 +161,7 @@ const ProductInfomationRegister = () => {
                     </Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.HeaderCell>조회수</Table.HeaderCell>
+                    <Table.HeaderCell>수상</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
                         <Input style={style.noticeHeader} />
