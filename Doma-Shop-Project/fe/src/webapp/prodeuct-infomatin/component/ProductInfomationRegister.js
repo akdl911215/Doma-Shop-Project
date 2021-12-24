@@ -202,6 +202,8 @@ const ProductInfomationRegister = () => {
           <div style={style.noticeRegisterButtonStyle}>
             <Button onClick={handleFileUpload} color="teal">
               업로드
+              <br />
+              (admin전용)
             </Button>
 
             <GoBackButtonComponent name="ProductInfomationRegister" />

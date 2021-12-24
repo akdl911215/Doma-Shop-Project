@@ -71,6 +71,8 @@ const ProductInfomationList = () => {
             onClick={productInfomationRegisterComponent}
           >
             글작성
+            <br />
+            (admin전용)
           </Button>
         </div>
       </div>
