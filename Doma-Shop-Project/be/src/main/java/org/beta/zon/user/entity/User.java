@@ -14,11 +14,11 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue
-    @Column(name = "user_id", unique = true, nullable = false)
-    private Long userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "user_id") // , unique = true, nullable = false
+    private Long userno;
 
-    @Column(name = "username", unique = true, length = 200, nullable = false)
+    @Column(name = "username") // , unique = true, length = 200, nullable = false
     private String username;
 //    @Column(name = "password", nullable = false)
 //    private String password;
