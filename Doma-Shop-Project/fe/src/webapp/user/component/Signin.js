@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import betazon from "webapp/images/betazon.png";
+import { Betazon } from "webapp/images/index";
 import "webapp/user/style/UserSignin.css";
 import { signinPage } from "webapp/user/reducer/user.reducer";
 import { useNavigate } from "react-router";
@@ -58,7 +58,7 @@ const Signin = () => {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="blue" textAlign="center">
-            <img src={betazon} alt="betazon_logo" className="betazonLogo" />
+            <img src={Betazon} alt="betazon_logo" className="betazonLogo" />
           </Header>
           <Form size="large">
             <Segment stacked>
@@ -77,7 +77,6 @@ const Signin = () => {
                 type="password"
               />
               <div>
-                <SigninButtonComponent />
                 <SignupButtonComponent />
               </div>
             </Segment>

@@ -1,22 +1,35 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { Icon, Label, Menu, Table, Button, Container } from "semantic-ui-react";
+import {
+  Icon,
+  Label,
+  Menu,
+  Table,
+  Button,
+  Container,
+  Card,
+  Image,
+} from "semantic-ui-react";
 import SigninButtonComponent from "webapp/common/component/SigninButtonComponent";
 import SignupButtonComponent from "webapp/common/component/SignupButtonComponent";
+import {
+  AuaOasisToner,
+  SoptCamingGell,
+  superAdaptogenFaceToBodyEmulgeon,
+} from "webapp/images/index";
 
 const ProductInfomationList = () => {
   const navigate = useNavigate();
 
   const colors = ["teal"];
   const style = {
-    backgroundBoard: {
-      width: "100%",
-      maxWidth: "100rem",
-      margin: "auto",
-    },
     button: {
       float: "right",
+    },
+
+    imageCardTextStyle: {
+      textAlign: "center",
     },
   };
 
@@ -32,9 +45,107 @@ const ProductInfomationList = () => {
     navigate("/admin_main");
   };
 
+  // const src = "/images/wireframe/white-image.png";
+
   return (
-    <Container>
-      <div style={style.backgroundBoard}>
+    <>
+      <Container>
+        <Card.Group
+          itemsPerRow={3}
+          onClick={productInfomationReadComponent}
+          style={style.imageCardTextStyle}
+        >
+          <Card>
+            <Image src={AuaOasisToner} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>아쿠아 오아시스 토너</Card.Description>
+            </Card.Content>
+          </Card>
+
+          <Card>
+            <Image src={SoptCamingGell} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>
+                스팟 카밍 젤<br />
+                [트러블 케어]
+              </Card.Description>
+            </Card.Content>
+          </Card>
+
+          <Card>
+            <Image src={superAdaptogenFaceToBodyEmulgeon} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>
+                슈퍼 아답토젠 페이스 투<br />
+                바디 에멀젼
+              </Card.Description>
+            </Card.Content>
+          </Card>
+          <Card>
+            <Image src={AuaOasisToner} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>아쿠아 오아시스 토너</Card.Description>
+            </Card.Content>
+          </Card>
+
+          <Card>
+            <Image src={SoptCamingGell} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>
+                스팟 카밍 젤<br />
+                [트러블 케어]
+              </Card.Description>
+            </Card.Content>
+          </Card>
+
+          <Card>
+            <Image src={superAdaptogenFaceToBodyEmulgeon} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>
+                슈퍼 아답토젠 페이스 투<br />
+                바디 에멀젼
+              </Card.Description>
+            </Card.Content>
+          </Card>
+          <Card>
+            <Image src={AuaOasisToner} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>아쿠아 오아시스 토너</Card.Description>
+            </Card.Content>
+          </Card>
+
+          <Card>
+            <Image src={SoptCamingGell} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>
+                스팟 카밍 젤<br />
+                [트러블 케어]
+              </Card.Description>
+            </Card.Content>
+          </Card>
+
+          <Card>
+            <Image src={superAdaptogenFaceToBodyEmulgeon} wrapped ui={false} />
+            <Card.Content>
+              <Card.Description>
+                슈퍼 아답토젠 페이스 투<br />
+                바디 에멀젼
+              </Card.Description>
+            </Card.Content>
+          </Card>
+
+          {/* <Card color="yellow" image={superAdaptogenFaceToBodyEmulgeon} />
+        <Card color="red" image={AuaOasisToner} />
+        <Card color="orange" image={SoptCamingGell} />
+        <Card color="yellow" image={superAdaptogenFaceToBodyEmulgeon} />
+        <Card color="red" image={AuaOasisToner} />
+        <Card color="orange" image={SoptCamingGell} />
+        <Card color="yellow" image={superAdaptogenFaceToBodyEmulgeon} />
+        <Card color="red" image={AuaOasisToner} />
+        <Card color="orange" image={SoptCamingGell} />
+        <Card color="yellow" image={superAdaptogenFaceToBodyEmulgeon} /> */}
+        </Card.Group>
+        {/* <div style={style.backgroundBoard}>
         <div>
           {colors.map((color) => (
             <Table color={color} key={color}>
@@ -69,7 +180,8 @@ const ProductInfomationList = () => {
               </Table.Body>
             </Table>
           ))}
-        </div>
+        </div> */}
+
         <div style={style.button}>
           <Button positive onClick={productInfomationRegisterComponent}>
             글작성
@@ -84,8 +196,9 @@ const ProductInfomationList = () => {
           <SigninButtonComponent />
           <SignupButtonComponent />
         </div>
-      </div>
-    </Container>
+        {/* </div > */}
+      </Container>
+    </>
   );
 };
 export default ProductInfomationList;
