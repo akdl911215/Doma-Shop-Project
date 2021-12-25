@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { Icon, Label, Menu, Table, Button, Container } from "semantic-ui-react";
+import SigninButtonComponent from "webapp/common/component/SigninButtonComponent";
+import SignupButtonComponent from "webapp/common/component/SignupButtonComponent";
 
 const ProductInfomationList = () => {
   const navigate = useNavigate();
@@ -24,6 +26,10 @@ const ProductInfomationList = () => {
 
   const productInfomationRegisterComponent = () => {
     navigate("/product_infomation_register");
+  };
+
+  const adminMainComponentButton = () => {
+    navigate("/admin_main");
   };
 
   return (
@@ -64,16 +70,19 @@ const ProductInfomationList = () => {
             </Table>
           ))}
         </div>
-        <div>
-          <Button
-            positive
-            style={style.button}
-            onClick={productInfomationRegisterComponent}
-          >
+        <div style={style.button}>
+          <Button positive onClick={productInfomationRegisterComponent}>
             글작성
             <br />
             (admin전용)
           </Button>
+          <Button positive onClick={adminMainComponentButton}>
+            어드민 전용 페이지 이동
+            <br />
+            (admin전용)
+          </Button>
+          <SigninButtonComponent />
+          <SignupButtonComponent />
         </div>
       </div>
     </Container>

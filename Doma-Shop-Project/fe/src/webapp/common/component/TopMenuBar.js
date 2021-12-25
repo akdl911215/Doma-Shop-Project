@@ -15,7 +15,7 @@ const TopMenuBar = () => {
               <Link to="/users_signin">로그인</Link>
             </li>
             <li>
-              <Link to="/users_likt">유저 목록</Link>
+              <Link to="/users_list">유저 목록</Link>
             </li>
             <li>
               <Link to="/users_mypage">마이페이지</Link>

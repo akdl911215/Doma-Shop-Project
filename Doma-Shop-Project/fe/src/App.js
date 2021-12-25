@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import "./App.css";
 import { Signup, Signin, Mypage, UserWithdrawal } from "webapp/user/index";
+import { AdminMain } from "webapp/admin/index";
 import {
   NoticeList,
   NoticeModify,
@@ -25,6 +26,9 @@ const App = () => {
       <Routes>
         {/* <Link to="/">Home</Link> */}
         <Route path="/" element={<Home />} />
+
+        <Route path="/admin_main" element={<AdminMain />} />
+
         <Route path="/users_signup" element={<Signup />} />
         <Route path="/users_signin" element={<Signin />} />
         <Route path="/users_list" element={<UserPageList />} />
