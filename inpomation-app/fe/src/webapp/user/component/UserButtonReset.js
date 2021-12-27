@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { fetchPage } from "webapp/user/reducer/user.reducer";
+import { Button } from "semantic-ui-react";
 
 const UserButtonReset = () => {
   const dispatch = useDispatch();
@@ -10,9 +11,9 @@ const UserButtonReset = () => {
 
   return (
     <>
-      <button className="usersPageResetBtn" onClick={() => runReset()}>
-        Reset
-      </button>
+      <Button primary onClick={() => runReset()}>
+        1페이지로 초기화
+      </Button>
     </>
   );
 };

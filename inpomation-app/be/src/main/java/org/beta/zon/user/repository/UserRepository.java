@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     void deleteUserByUsernoLessThan(Long num);
 
-    @Query(value = "select * from user u where u.username = :username and u.password = :password")
+    @Query(value = "select * from artists where username=:username and password=:password", nativeQuery = true)
     User signin(@Param("username") String username, @Param("password") String password);
     // Update Review a set a.title = :title, a.content = :content where a.reviewId = :reviewId
     // @Query(value = "select * from artists where username=:username and password=:password", nativeQuery = true)

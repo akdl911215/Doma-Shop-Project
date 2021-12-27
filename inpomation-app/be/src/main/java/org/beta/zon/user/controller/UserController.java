@@ -18,6 +18,7 @@ import java.util.Map;
 @RestController // controller + @ResponseBody > 주용도는 JSON 형태로 객체 데이터 반환
 @RequiredArgsConstructor
 @Log4j2
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class UserController {
 

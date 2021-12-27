@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPage } from "webapp/user/reducer/user.reducer";
 import UserBtnReset from "./UserButtonReset";
 import UserPageListBtn from "./UserPageListButton";
+import { Table, Container, Checkbox, Pagination } from "semantic-ui-react";
+import UserDeleteButton from "./UserDeleteButton";
 
 const UserPageList = () => {
   const dispatch = useDispatch();
@@ -20,46 +22,97 @@ const UserPageList = () => {
     dispatch(fetchPage(param));
   }, []);
 
+  const style = {
+    UsePageListButtonStyle: {
+      float: "right",
+    },
+    PaginationStyle: {
+      paddingTop: "4rem",
+      // display: "flex",
+      justifyContent: "center",
+    },
+  };
+
+  const colors = ["blue"];
+
   return (
     <>
-      <div>
-        <table className="table table-striped table-borderd">
-          <table>
-            <thead style={{ textAlign: "center" }}>
-              <th>유저넘버</th>
-              <th>아이디</th>
-              <th>비밀번호</th>
-              <th>이름</th>
-              <th>회사명</th>
-              <th>사업자번호</th>
-              <th>주소</th>
-              <th>이메일</th>
-              <th>일반전화</th>
-              <th>핸드폰번호</th>
-            </thead>
-            <tbody style={{ textAlign: "center" }}>
-              {pageResult.dtoList.map((user, id) => {
-                return (
-                  <tr key={id}>
-                    <td>{user.userId}</td>
-                    <td>{user.username}</td>
-                    <td>{user.password}</td>
-                    <td>{user.name}</td>
-                    <td>{user.companyName}</td>
-                    <td>{user.companyNumber}</td>
-                    <td>{user.address}</td>
-                    <td>{user.email}</td>
-                    <td>{user.number}</td>
-                    <td>{user.phoneNumber}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <UserPageListBtn {...pageResult} type={type} keyword={keyword} />
-        </table>
-        <UserBtnReset />
-      </div>
+      <Container>
+        <div>
+          {colors.map((color) => (
+            <Table color={color} key={color}>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>체크박스</Table.HeaderCell>
+                  <Table.HeaderCell>유저넘버</Table.HeaderCell>
+                  <Table.HeaderCell>아이디</Table.HeaderCell>
+                  <Table.HeaderCell>비밀번호</Table.HeaderCell>
+                  <Table.HeaderCell>이름</Table.HeaderCell>
+                  <Table.HeaderCell>주소</Table.HeaderCell>
+                  <Table.HeaderCell>이메일</Table.HeaderCell>
+                  <Table.HeaderCell>핸드폰번호</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>
+                    <Checkbox />
+                  </Table.Cell>
+                  <Table.Cell>3</Table.Cell>
+                  <Table.Cell>akdl911215</Table.Cell>
+                  <Table.Cell>3333</Table.Cell>
+                  <Table.Cell>삼정현</Table.Cell>
+                  <Table.Cell>서울시 중랑구 상봉중앙로 3길</Table.Cell>
+                  <Table.Cell>akdl911215@naver.com</Table.Cell>
+                  <Table.Cell>010-5093-9903</Table.Cell>
+                </Table.Row>
+
+                <Table.Row>
+                  <Table.Cell>
+                    <Checkbox />
+                  </Table.Cell>
+                  <Table.Cell>2</Table.Cell>
+                  <Table.Cell>gksrnr2001</Table.Cell>
+                  <Table.Cell>2222</Table.Cell>
+                  <Table.Cell>이정현</Table.Cell>
+                  <Table.Cell>서울시 중랑구 상봉중앙로 2길</Table.Cell>
+                  <Table.Cell>akdl911215@naver.com</Table.Cell>
+                  <Table.Cell>010-5093-9902</Table.Cell>
+                </Table.Row>
+
+                <Table.Row>
+                  <Table.Cell>
+                    <Checkbox />
+                  </Table.Cell>
+                  <Table.Cell>1</Table.Cell>
+                  <Table.Cell>akdl20000</Table.Cell>
+                  <Table.Cell>1111</Table.Cell>
+                  <Table.Cell>일정현</Table.Cell>
+                  <Table.Cell>서울시 중랑구 상봉중앙로 1길</Table.Cell>
+                  <Table.Cell>akdl911215@naver.com</Table.Cell>
+                  <Table.Cell>010-5093-9901</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+          ))}
+        </div>
+        <div style={style.UsePageListButtonStyle}>
+          <UserBtnReset />
+          <UserDeleteButton />
+        </div>
+        <div style={style.PaginationStyle}>
+          <Pagination
+            boundaryRange={0}
+            defaultActivePage={1}
+            ellipsisItem={null}
+            firstItem={null}
+            lastItem={null}
+            siblingRange={1}
+            totalPages={10}
+          />
+        </div>
+      </Container>
     </>
   );
 };

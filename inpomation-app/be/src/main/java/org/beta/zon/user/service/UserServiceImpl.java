@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Transactional
@@ -49,6 +50,17 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     @Override
     public void deleteById(Long userno) {
         userRepository.deleteById(userno);
+    }
+
+    @Override
+    public void signup(UserDto userDto) {
+        log.info("Signup ServiceImple 시작");
+        log.info("userDto : " + userDto);
+
+        User entity = dtoEntity(userDto);
+        log.info("entity : " + entity);
+        userRepository.save(entity);
+        log.info("저장 후 entity : " + entity);
     }
 
     @Override

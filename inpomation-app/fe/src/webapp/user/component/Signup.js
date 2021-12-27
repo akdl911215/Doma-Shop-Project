@@ -7,25 +7,12 @@ const Signup = () => {
     username: "",
     password: "",
     name: "",
-    companyName: "",
-    companyNumber: "",
     address: "",
     email: "",
-    number: "", //일반전화
     phoneNumber: "",
   });
 
-  const {
-    username,
-    password,
-    name,
-    companyName,
-    companyNumber,
-    address,
-    email,
-    number,
-    phoneNumber,
-  } = signup;
+  const { username, password, name, address, email, phoneNumber } = signup;
 
   const cancelButton = () => {};
 
@@ -51,11 +38,8 @@ const Signup = () => {
         username: username,
         password: password,
         name: name,
-        companyName: companyName,
-        companyNumber: companyNumber,
         address: address,
         email: email,
-        number: number,
         phoneNumber: phoneNumber,
       })
       .then((res) => {
@@ -63,10 +47,9 @@ const Signup = () => {
       })
       .catch((err) => console.log(err));
   };
-  // username, password, name, companyName, companyNumber, address, email, number, phoneNumber
   return (
     <>
-      <form action="/action_page.php" className="artistSignupHead">
+      <form action="/users/signup" className="artistSignupHead">
         <div className="container">
           <h2>회원가입(Sign Up)</h2>
           <p>Please fill in this form to create an account.</p>
@@ -93,28 +76,6 @@ const Signup = () => {
             onChange={handleChange}
           />
 
-          <label htmlFor="companyName">
-            <b>회사이름</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter CompanyName"
-            name="companyName"
-            value={companyName}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="companyNumber">
-            <b>사업자번호</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter CompanyNumber"
-            name="companyNumber"
-            value={companyNumber}
-            onChange={handleChange}
-          />
-
           <label htmlFor="address">
             <b>주소</b>
           </label>
@@ -137,17 +98,6 @@ const Signup = () => {
             onChange={handleChange}
           />
 
-          <label htmlFor="number">
-            <b>일반전화</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Number"
-            name="number"
-            value={number}
-            onChange={handleChange}
-          />
-
           <label htmlFor="phoneNumber">
             <b>핸드폰 번호</b>
           </label>
@@ -159,29 +109,12 @@ const Signup = () => {
             onChange={handleChange}
           />
 
-          <p>
-            By creating an account you agree to our{"PHILO-ARTE"}
-            <a href="#" className="artistSignupTermsPrivacy">
-              Terms & Privacy
-            </a>
-          </p>
-
           <div class="clearfix">
-            <button
-              type="button"
-              className="cancelbtn"
-              onClick={(e) => cancelButton(e)}
-            >
-              Cancel
+            <button type="button" className="cancelbtn" onClick={cancelButton}>
+              취소
             </button>
-            <button
-              type="submit"
-              className="signupbtn"
-              onClick={(e) => {
-                handleSubmit(e);
-              }}
-            >
-              Sign Up
+            <button type="submit" className="signupbtn" onClick={handleSubmit}>
+              회원가입
             </button>
           </div>
         </div>
