@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPage } from "webapp/user/reducer/user.reducer";
 import UserBtnReset from "./UserButtonReset";
 import UserPageListBtn from "./UserPageListButton";
-import { Table, Container, Checkbox, Pagination } from "semantic-ui-react";
+import {
+  Table,
+  Container,
+  Checkbox,
+  Pagination,
+  Input,
+} from "semantic-ui-react";
 import UserDeleteButton from "./UserDeleteButton";
 
 const UserPageList = () => {
@@ -28,8 +34,7 @@ const UserPageList = () => {
     },
     PaginationStyle: {
       paddingTop: "4rem",
-      // display: "flex",
-      justifyContent: "center",
+      textAlign: "center",
     },
   };
 
@@ -97,6 +102,10 @@ const UserPageList = () => {
             </Table>
           ))}
         </div>
+        <Input
+          icon={{ name: "search", circular: true, link: true }}
+          placeholder="Search..."
+        />
         <div style={style.UsePageListButtonStyle}>
           <UserBtnReset />
           <UserDeleteButton />
