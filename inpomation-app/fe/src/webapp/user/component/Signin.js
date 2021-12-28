@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Betazon } from "webapp/images/index";
-import "webapp/user/style/UserSignin.css";
 import { signinPage } from "webapp/user/reducer/user.reducer";
 import { useNavigate } from "react-router";
 import {

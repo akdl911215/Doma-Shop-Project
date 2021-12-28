@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import axios from "axios";
-import "webapp/user/style/UserSignup.css";
+import { Button, Form, Input, Container } from "semantic-ui-react";
+import { GoBackButtonComponent } from "webapp/common/index";
 
 const Signup = () => {
   const [signup, setSignup] = useState({
@@ -11,6 +12,8 @@ const Signup = () => {
     email: "",
     phoneNumber: "",
   });
+
+  const colors = ["teal"];
 
   const { username, password, name, address, email, phoneNumber } = signup;
 
@@ -47,78 +50,77 @@ const Signup = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const [inputID, setInputID] = useState("");
+  const changeInputID = (e) => {
+    setInputID(e.target.value);
+  };
+
+  const style = {
+    buttonStyle: {
+      float: "right",
+    },
+    textareatStyle: {
+      width: "100%",
+    },
+  };
+
   return (
     <>
-      <form action="/users/signup" className="artistSignupHead">
-        <div className="container">
-          <h2>회원가입(Sign Up)</h2>
-          <p>Please fill in this form to create an account.</p>
-          <hr />
-          <label htmlFor="username">
-            <b>아이디</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="username"
-            value={username}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="password">
-            <b>비밀번호</b>
-          </label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="address">
-            <b>주소</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Address"
-            name="address"
-            value={address}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="email">
-            <b>E-Mail</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="phoneNumber">
-            <b>핸드폰 번호</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter PhoneNumber"
-            name="phoneNumber"
-            value={phoneNumber}
-            onChange={handleChange}
-          />
-
-          <div class="clearfix">
-            <button type="button" className="cancelbtn" onClick={cancelButton}>
-              취소
-            </button>
-            <button type="submit" className="signupbtn" onClick={handleSubmit}>
-              회원가입
-            </button>
+      <Container>
+        <Form>
+          <Form.Group widths="equal">
+            <Form.Field
+              control={Input}
+              label="아이디"
+              placeholder="ID"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Field
+              control={Input}
+              label="비밀번호"
+              placeholder="PASSWORD"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Field
+              control={Input}
+              label="주소"
+              placeholder="ADDRESS"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Field
+              control={Input}
+              label="이메일"
+              placeholder="E-MAIL"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Field
+              control={Input}
+              label="핸드폰번호"
+              placeholder="PHONENUMBER"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <div>
+            <div style={style.buttonStyle}>
+              <Form.Field secondary control={Button} onClick={handleSubmit}>
+                회원가입
+              </Form.Field>
+            </div>
+            <div style={style.buttonStyle}>
+              <GoBackButtonComponent />
+            </div>
           </div>
-        </div>
-      </form>
+        </Form>
+      </Container>
     </>
   );
 };

@@ -15,10 +15,11 @@ const AdminMain = () => {
       <Container>
         <div style={style.UserNumberOfVistsStyle}>
           <UserNumberOfVists />
+          <AdminChart />
         </div>
       </Container>
 
-      <Menu vertical style={style.menu}>
+      {/* <Menu vertical style={style.menu}>
         <Menu.Item name="home">
           <Label color="blue">1</Label>
           대시 보드
@@ -78,7 +79,7 @@ const AdminMain = () => {
             <Dropdown.Item>주차장 장비 관리</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-      </Menu>
+      </Menu> */}
     </>
   );
 };
