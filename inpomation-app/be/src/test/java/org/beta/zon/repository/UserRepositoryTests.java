@@ -177,8 +177,14 @@ public class UserRepositoryTests {
     @Test
     public void testInsertDummies() {
 
-        IntStream.rangeClosed(1, 100).forEach(i -> {
-            User user = User.builder().username("username" + i).build();
+        IntStream.rangeClosed(1, 10).forEach(i -> {
+            User user = User.builder().username("username" + i)
+                    .password("password" + i)
+                    .name("name" + i)
+                    .email("email" + i)
+                    .phoneNumber("phoneNumber" + i)
+                    .address("address" + i)
+                    .build();
             userRepository.save(user);
         });
     }

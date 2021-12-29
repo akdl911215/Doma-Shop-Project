@@ -12,7 +12,7 @@ public interface UserService {
     List<User> findAll();
     void deleteById(Long userno);
 
-    void signup(UserDto userDto);
+    Long signup(UserDto userDto);
 
     default User dtoEntity(UserDto userDto){
         User entity = User.builder()

@@ -10,16 +10,17 @@ import org.beta.zon.user.domain.dto.UserDto;
 import org.beta.zon.user.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Map;
 
+@RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RestController // controller + @ResponseBody > 주용도는 JSON 형태로 객체 데이터 반환
 @RequiredArgsConstructor
 @Log4j2
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class UserController {
 
     private final UserServiceImpl userServiceImpl;
@@ -29,9 +30,12 @@ public class UserController {
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 403, message = "Access Denied"),
             @ApiResponse(code = 422, message = "Artist - Username is alredy in use")}) // 응답에 대한 설명
-    public ResponseEntity<String> signup(UserDto userDto) throws IOException {
-        log.info("Controller 작동 시작");
+    public ResponseEntity<String> signup(@Validated UserDto userDto) throws IOException {
+//        log.info("Controller 작동 시작");
+        System.out.println("컨트롤러 userDto : "+ userDto);
 
+        userServiceImpl.signup(userDto);
+        log.info("userDto :  " + userDto);
 
         return new ResponseEntity(HttpStatus.OK);
     }

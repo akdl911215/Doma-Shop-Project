@@ -26,6 +26,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         return userRepository.save(user) == null ? "Save Success" : "Save Failed";
     }
 
+
     @Override
     public Optional<User> findById(Long userno) {
         return userRepository.findById(userno);
@@ -52,8 +53,9 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         userRepository.deleteById(userno);
     }
 
+    @Transactional
     @Override
-    public void signup(UserDto userDto) {
+    public Long signup(UserDto userDto) {
         log.info("Signup ServiceImple 시작");
         log.info("userDto : " + userDto);
 
@@ -61,6 +63,8 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         log.info("entity : " + entity);
         userRepository.save(entity);
         log.info("저장 후 entity : " + entity);
+
+        return entity.getUserno();
     }
 
     @Override

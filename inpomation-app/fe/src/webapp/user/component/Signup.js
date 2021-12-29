@@ -31,8 +31,8 @@ const Signup = () => {
   );
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    // e.preventDefault();
+    // e.stopPropagation();
 
     alert("회원가입 버튼 누름");
 
@@ -67,7 +67,98 @@ const Signup = () => {
 
   return (
     <>
-      <Container>
+      <form action="/action_page.php" className="artistSignupHead">
+        <div className="container">
+          <h2>회원가입(Sign Up)</h2>
+
+          <label htmlFor="username">
+            <b>아이디</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            value={username}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="password">
+            <b>비밀번호</b>
+          </label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="name">
+            <b>이름</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Name"
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="email">
+            <b>E-Mail</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="phoneNumber">
+            <b>핸드폰 번호</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter PhoneNumber"
+            name="phoneNumber"
+            value={phoneNumber}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="address">
+            <b>주소</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Address"
+            name="address"
+            value={address}
+            onChange={handleChange}
+          />
+
+          <div class="clearfix">
+            <button
+              type="button"
+              className="cancelbtn"
+              onClick={(e) => cancelButton(e)}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="signupbtn"
+              onClick={(e) => {
+                handleSubmit(e);
+              }}
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </form>
+
+      {/* <Container>
         <Form>
           <Form.Group widths="equal">
             <Form.Field
@@ -120,7 +211,7 @@ const Signup = () => {
             </div>
           </div>
         </Form>
-      </Container>
+      </Container> */}
     </>
   );
 };
