@@ -12,7 +12,7 @@ public interface UserService {
     List<User> findAll();
     void deleteById(Long userno);
 
-    Long signup(UserDto userDto);
+    String signup(UserDto userDto);
 
     default User dtoEntity(UserDto userDto){
         User entity = User.builder()
@@ -22,6 +22,7 @@ public interface UserService {
                 .name(userDto.getName())
                 .email(userDto.getEmail())
                 .address(userDto.getAddress())
+                .phoneNumber(userDto.getPhoneNumber())
                 .build();
 
         return entity;
@@ -35,6 +36,7 @@ public interface UserService {
                 .name(user.getName())
                 .email(user.getEmail())
                 .address(user.getAddress())
+                .phoneNumber(user.getPhoneNumber())
                 .build();
 
         return entityDto;

@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
@@ -30,14 +31,13 @@ public class UserController {
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 403, message = "Access Denied"),
             @ApiResponse(code = 422, message = "Artist - Username is alredy in use")}) // 응답에 대한 설명
-    public ResponseEntity<String> signup(@Validated UserDto userDto) throws IOException {
-//        log.info("Controller 작동 시작");
+    public Map<String, String> signup(@RequestBody UserDto userDto) throws IOException {
         System.out.println("컨트롤러 userDto : "+ userDto);
-
         userServiceImpl.signup(userDto);
-        log.info("userDto :  " + userDto);
 
-        return new ResponseEntity(HttpStatus.OK);
+        Map<String, String> resultMap = new HashMap<>();
+
+        return resultMap;
     }
 
     @PostMapping("/signin")
@@ -45,9 +45,10 @@ public class UserController {
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Somthing went wrong"),
             @ApiResponse(code = 422, message = "Invalid Artist-Username / Password supplied")})
     public ResponseEntity<UserDto> signin(@ApiParam("Signin User") @RequestBody UserDto userDto) throws IOException {
-        log.info("User Signin(로그인) 작동 시작 : ", userDto);
+        log.info("User Signin(로그인) 작동 시작 : " + userDto);
+        userServiceImpl.signin(userDto);
 
-        return ResponseEntity.ok(userServiceImpl.signin(userDto));
+        return ResponseEntity.ok(userDto);
     }
 
 }

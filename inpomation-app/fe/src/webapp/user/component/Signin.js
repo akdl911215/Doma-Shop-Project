@@ -18,26 +18,45 @@ import {
 } from "semantic-ui-react";
 import SigninButtonComponent from "webapp/common/component/SigninButtonComponent";
 import SignupButtonComponent from "webapp/common/component/SignupButtonComponent";
+import axios from "axios";
 
 const Signin = () => {
-  const [inputID, setInputID] = useState("");
-  const changeInputID = (e) => {
-    setInputID(e.target.value);
-  };
+  // const [inputID, setInputID] = useState("");
+  // const changeInputID = (e) => {
+  //   setInputID(e.target.value);
+  // };
 
   const [signin, setSignin] = useState({
     username: "",
     password: "",
   });
 
+  const { username, password } = signin;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const goSignin = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    dispatch(signinPage(signin));
-    // navigate.push('/');
+  // const goSignin = (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   dispatch(signinPage(signin));
+  //   // navigate.push('/');
+  // };
+
+  const signinButton = () => {
+    alert("로그인버튼누름");
+
+    axios
+      .post("http://localhost:8080/users/signin", {
+        username: username,
+        password: password,
+      })
+      .then((res) => {
+        console.log("signin res : ", res);
+      })
+      .catch((err) => console.log(err));
+
+    navigate("/");
   };
 
   const handleChange = (e) => {
@@ -66,7 +85,7 @@ const Signin = () => {
                 icon="user"
                 iconPosition="left"
                 placeholder="E-mail address"
-                onChange={changeInputID}
+                onChange={handleChange}
               />
               <Form.Input
                 fluid
@@ -74,14 +93,16 @@ const Signin = () => {
                 iconPosition="left"
                 placeholder="Password"
                 type="password"
+                onChange={handleChange}
               />
-              <div>
-                <SignupButtonComponent />
-              </div>
+              <Button secondary onClick={signinButton}>
+                로그인
+              </Button>
             </Segment>
           </Form>
+
           <Message>
-            회원가입이 안됬나요? <a href="#">회원가입</a>
+            회원가입이 안됬나요?ㅤ <SignupButtonComponent />
           </Message>
         </Grid.Column>
       </Grid>

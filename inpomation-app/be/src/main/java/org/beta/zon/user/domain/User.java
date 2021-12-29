@@ -28,7 +28,7 @@ public class User {
     private String email;
     @Column(name = "phone_number")  // , nullable = false
     private String phoneNumber;
-    @Column(name = "address", nullable = true)  // , nullable = false
+    @Column(name = "address")  // , nullable = false
     private String address;
 
     public void changeUsername(String username) {

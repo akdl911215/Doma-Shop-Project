@@ -6,11 +6,12 @@ import org.beta.zon.common.service.AbstractService;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
 import org.beta.zon.user.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Transactional
@@ -39,7 +40,16 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public UserDto signin(UserDto userDto) {
-        return null;
+        try {
+            User entity = dtoEntity(userDto);
+            log.info("entity 변환 값 = " + entity);
+            userRepository.signin(entity.getUsername(), entity.getPassword());
+
+            UserDto entityDto = entityDto(entity);
+            return entityDto;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 
@@ -53,18 +63,19 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         userRepository.deleteById(userno);
     }
 
-    @Transactional
     @Override
-    public Long signup(UserDto userDto) {
+    public String signup(UserDto userDto) {
         log.info("Signup ServiceImple 시작");
         log.info("userDto : " + userDto);
 
         User entity = dtoEntity(userDto);
-        log.info("entity : " + entity);
+        log.info("ServiceImple 위 entity : " + entity);
         userRepository.save(entity);
         log.info("저장 후 entity : " + entity);
 
-        return entity.getUserno();
+        UserDto entityDto = entityDto(entity);
+
+        return "Success";
     }
 
     @Override

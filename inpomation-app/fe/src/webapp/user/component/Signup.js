@@ -2,8 +2,10 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { Button, Form, Input, Container } from "semantic-ui-react";
 import { GoBackButtonComponent } from "webapp/common/index";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [signup, setSignup] = useState({
     username: "",
     password: "",
@@ -29,7 +31,7 @@ const Signup = () => {
     },
     [signup]
   );
-
+  let signupSucess = false;
   const handleSubmit = (e) => {
     // e.preventDefault();
     // e.stopPropagation();
@@ -49,6 +51,8 @@ const Signup = () => {
         console.log(res);
       })
       .catch((err) => console.log(err));
+
+    navigate.push("/users_signin");
   };
 
   const [inputID, setInputID] = useState("");
@@ -67,7 +71,7 @@ const Signup = () => {
 
   return (
     <>
-      <form action="/action_page.php" className="artistSignupHead">
+      <form className="artistSignupHead">
         <div className="container">
           <h2>회원가입(Sign Up)</h2>
 
