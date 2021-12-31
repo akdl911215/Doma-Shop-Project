@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -18,6 +19,16 @@ public class UserMemberTests {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Test
+    public void testRead() {
+
+        Optional<User> result = userRepository.findByUsername("username100", false);
+
+        User user = result.get();
+
+        System.out.println(user);
+    }
 
     @Test
     public void inserDummies() {

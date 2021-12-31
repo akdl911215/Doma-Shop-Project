@@ -28,6 +28,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "select * from user where username=:username and password=:password", nativeQuery = true)
     User signin(@Param("username") String username, @Param("password") String password);
 
+    // @EntityGraph = LAZY 패치타입으로 relation이 달려있는 entity를 n+1 문제 없이 한번에 가져오고 싶으때 사용
+    // 특정 시나리오에서는 한번에 패치하는게 필요하기때문에 사용.
+    // 해당 어노테이션만 달아주면 손쉽게 join해서 한번에 패치해 올 수 있다.
     @EntityGraph(attributePaths = {"roleSet"}, type = EntityGraph.EntityGraphType.LOAD)
     @Query("select u from User u where u.fromSocial = :social and u.username = :username")
     Optional<User> findByUsername(String username, boolean social);
