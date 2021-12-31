@@ -21,17 +21,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        super.configure(auth);
-
-        // 사용자 계정을 admin
-        auth.inMemoryAuthentication().withUser("admin")
-                // 비밀번호 1 인코딩 결과
-                .password("$2a$10$D5cmkjri0oRfiagbELOFoOpGsvCzuyktHQIesamccWbFtW.pCtssG")
-                .roles("USER");
-    }
-
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        super.configure(http);
 
@@ -46,5 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.logout(); // SecurityConfig에 logout() 적용하는 로그아웃 처리 기능
     }
 
-
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+////        super.configure(auth);
+//
+//        // 사용자 계정을 admin
+//        auth.inMemoryAuthentication().withUser("admin")
+//                // 비밀번호 1 인코딩 결과
+//                .password("$2a$10$D5cmkjri0oRfiagbELOFoOpGsvCzuyktHQIesamccWbFtW.pCtssG")
+//                .roles("USER");
+//    }
 }
