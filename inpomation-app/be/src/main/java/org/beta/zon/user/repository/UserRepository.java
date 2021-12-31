@@ -4,6 +4,7 @@ import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,4 +27,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     //@Query(value = "SELECT us FROM user us WHERE us.username=:username and us.password")
     @Query(value = "select * from user where username=:username and password=:password", nativeQuery = true)
     User signin(@Param("username") String username, @Param("password") String password);
+
+    @EntityGraph(attributePaths = {"roleSet"}, type = EntityGraph.EntityGraphType.LOAD)
+    @Query("select u from User u where u.fromSocial = :social and u.username = :username")
+    Optional<User> findByUsername(String username, boolean social);
 }

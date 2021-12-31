@@ -20,6 +20,7 @@ public class UserDto {
     private String email;
     private String phoneNumber;
     private String address;
+    private boolean fromSocial;
 
     public String getUsername(String username){
         return username;
@@ -44,4 +45,6 @@ public class UserDto {
     public String getAddress(String address) {
         return address;
     }
+
+    public boolean getFromSocial(boolean fromSocial) { return fromSocial; }
 }

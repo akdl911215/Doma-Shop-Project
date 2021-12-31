@@ -1,8 +1,11 @@
 package org.beta.zon.user.domain;
 
 import lombok.*;
+import org.beta.zon.common.domain.BaseEntity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -11,7 +14,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +33,8 @@ public class User {
     private String phoneNumber;
     @Column(name = "address")  // , nullable = false
     private String address;
+    @Column(name = "from_social")
+    private boolean fromSocial;
 
     public void changeUsername(String username) {
         this.username = username;
@@ -55,4 +60,14 @@ public class User {
         this.address = address;
     }
 
+    public void changeFromSocial(boolean fromSocial) { this.fromSocial = fromSocial; }
+
+    @ElementCollection(fetch = FetchType.LAZY) // Lazy 로딩 설정이 되어 있는 Entity는 프록시 객체로 가져온다
+                                                // 후에 실제 객체를 사용하는 시점에 초기화된다. DB에 쿼리 실행
+    @Builder.Default // 기본값 설정
+    private Set<UserRole> roleSet = new HashSet<>();
+
+    public void addMemberRole(UserRole userRole) {
+        roleSet.add(userRole);
+    }
 }
