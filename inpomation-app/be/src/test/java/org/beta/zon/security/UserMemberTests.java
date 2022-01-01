@@ -2,6 +2,7 @@ package org.beta.zon.security;
 
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.UserRole;
+import org.beta.zon.user.domain.role.Role;
 import org.beta.zon.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +50,11 @@ public class UserMemberTests {
                     .build();
 
             // default role
-            user.addMemberRole(UserRole.MEMBER);
+            user.addMemberRole(Role.MEMBER);
 
-            if (i > 80) user.addMemberRole(UserRole.MANAGER);
+            if (i > 80) user.addMemberRole(Role.MANAGER);
 
-            if (i > 90) user.addMemberRole(UserRole.ADMIN);
+            if (i > 90) user.addMemberRole(Role.ADMIN);
 
             userRepository.save(user);
         });

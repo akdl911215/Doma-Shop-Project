@@ -1,7 +1,7 @@
 package org.beta.zon.user.domain;
 
-public enum UserRole {
-
-    MEMBER, MANAGER, ADMIN
-
-}
+//public enum UserRole {
+//
+//    MEMBER, MANAGER, ADMIN
+//
+//}
