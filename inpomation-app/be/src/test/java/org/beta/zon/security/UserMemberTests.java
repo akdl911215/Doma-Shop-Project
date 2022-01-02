@@ -23,11 +23,11 @@ public class UserMemberTests {
     @Test
     public void testRead() {
 
-        Optional<User> result = userRepository.findByUsername("username100", false);
+//        Optional<User> result = userRepository.findByUsername("username100", false);
 
-        User user = result.get();
+//        User user = result.get();
 
-        System.out.println(user);
+//        System.out.println(user);
     }
 
     @Test
@@ -49,11 +49,11 @@ public class UserMemberTests {
                     .build();
 
             // default role
-            user.addMemberRole(Role.MEMBER);
-
-            if (i > 80) user.addMemberRole(Role.MANAGER);
-
-            if (i > 90) user.addMemberRole(Role.ADMIN);
+//            user.addMemberRole(Role.MEMBER);
+//
+//            if (i > 80) user.addMemberRole(Role.MANAGER);
+//
+//            if (i > 90) user.addMemberRole(Role.ADMIN);
 
             userRepository.save(user);
         });

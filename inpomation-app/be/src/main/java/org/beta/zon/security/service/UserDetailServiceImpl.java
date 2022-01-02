@@ -19,7 +19,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @ColumnTransformer
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
+    
         Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username))
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username : " + username));
 
