@@ -6,6 +6,7 @@ import org.beta.zon.user.domain.role.Role;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -65,10 +66,10 @@ public class User extends BaseEntity {
 
     @ElementCollection(fetch = FetchType.LAZY) // Lazy 로딩 설정이 되어 있는 Entity는 프록시 객체로 가져온다
                                                 // 후에 실제 객체를 사용하는 시점에 초기화된다. DB에 쿼리 실행
-    @Builder.Default // 기본값 설정
-    private Set<Role> roleSet = new HashSet<>();
+//    @Builder.Default // 기본값 설정
+    private List<Role> roles;
 
-    public void addMemberRole(Role role) {
-        roleSet.add(role);
+    public void ChangeRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

@@ -1,7 +1,6 @@
 package org.beta.zon.security;
 
 import org.beta.zon.user.domain.User;
-import org.beta.zon.user.domain.UserRole;
 import org.beta.zon.user.domain.role.Role;
 import org.beta.zon.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;

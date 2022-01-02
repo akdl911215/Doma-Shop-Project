@@ -2,9 +2,11 @@ package org.beta.zon.user.domain.dto;
 
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
+import org.beta.zon.user.domain.role.Role;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.List;
 
 //@Data
 @Component // Bean Configuration 파일에 Bean을 따로 등록하지 않아도 사용 가능
@@ -23,6 +25,8 @@ public class UserDto  {
     private String phoneNumber;
     private String address;
     private boolean fromSocial;
+    private List<Role> roles;
+    private String token;
 
 
     public String getUsername(String username){

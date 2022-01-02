@@ -12,7 +12,7 @@ public enum Role implements GrantedAuthority {
 
     ADMIN("ROLE_ADMIN","관리자권한"),
     MEMBER("ROLE_MEMBER","API권한"),
-    MANAGER("ROLE_MANAGER","매니저권한"),
+    MANAGER("ROLE_MANAGER","매니저권한");
 
     private final String code;
     private final String description;
@@ -22,6 +22,7 @@ public enum Role implements GrantedAuthority {
                 .filter(i -> i.getCode().equals(code))
                 .findAny().get();
     }
+
 
     @Override
     public String getAuthority() {
