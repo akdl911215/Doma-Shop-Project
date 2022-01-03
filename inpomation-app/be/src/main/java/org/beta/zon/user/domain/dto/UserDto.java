@@ -29,9 +29,9 @@ public class UserDto  {
     private String token;
 
 
-    public String getUsername(String username){
-        return username;
-    }
+//    public String getUsername(String username){
+//        return username;
+//    }
 
     public String getPassword(String password) {
         return password;

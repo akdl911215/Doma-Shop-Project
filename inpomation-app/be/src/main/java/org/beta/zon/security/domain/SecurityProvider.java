@@ -1,6 +1,7 @@
 package org.beta.zon.security.domain;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import org.beta.zon.security.service.UserDetailServiceImpl;
 import org.beta.zon.user.domain.role.Role;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +34,7 @@ public class SecurityProvider implements AuthenticationProvider {
     @Value("${security.jwt.token.expire-length:3600000}")
     private long validityInMilliseconds = 3600000; //1h
 
-    private final UserDetailServiceImpl userDetailService;
+    private final UserDetailServiceImpl service;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -64,7 +67,32 @@ public class SecurityProvider implements AuthenticationProvider {
                 .compact();
     }
 
+    public String getUsername(String token) {
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    }
+
     public Authentication getAuthentication(String token) {
-        UserDetails userDetails = userDetailService.loadUserByUsername(ge);
+        UserDetails userDetails = service.loadUserByUsername(getUsername(token));
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+    }
+
+    public String resolveToken(HttpServletRequest req) {
+        String bearerToken = req.getHeader("Authorization");
+
+        // startsWith() : 어떤 문자열이 특정 문자로 시작하는지 확인하여 boolean으로 반환
+        if (bearerToken != null && bearerToken.startsWith("Bearer")) {
+            return bearerToken.substring(7); // 예상 결과는 zation
+        }
+
+        return null;
+    }
+
+    public boolean validateToken(String token) throws Exception {
+        try {
+            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            throw new Exception();
+        }
     }
 }

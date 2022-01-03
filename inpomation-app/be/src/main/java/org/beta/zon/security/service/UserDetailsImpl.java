@@ -18,14 +18,14 @@ public class UserDetailsImpl implements UserDetails { // UserDetails 은 securit
 
     private final Long userno;
     private final String username;
-    @JsonIgnore
+    @JsonIgnore // 데이터를 주고 받을 때 해당 데이터는 'Ignore'처리.
     private final String password;
     private final String name;
     private final String email;
     private final String phoneNumber;
     private final String address;
-    private boolean fromSocial;
-        private final Collection<? extends GrantedAuthority> authorities;
+    private final boolean fromSocial;
+    private final Collection<? extends GrantedAuthority> authorities;
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
@@ -57,6 +57,6 @@ public class UserDetailsImpl implements UserDetails { // UserDetails 은 securit
                 .collect(Collectors.toList());
 
         return new UserDetailsImpl(user.getUserno(), user.getUsername(), user.getPassword(), user.getName(),
-                user.getEmail(), user.getPhoneNumber(), user.getAddress(), authorities);
+                user.getEmail(), user.getPhoneNumber(), user.getAddress(), user.isFromSocial(), authorities);
     }
 }
