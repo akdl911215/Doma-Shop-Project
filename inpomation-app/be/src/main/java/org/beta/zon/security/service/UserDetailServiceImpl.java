@@ -24,5 +24,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username : " + username));
 
         return UserDetailsImpl.build(user.get());
+
+        // webfirewood.tistory.com/115
+        // SpringSecurity는 UserDetails 객체를 통해 권한 정보를 관리하기 때문에 User 클래스에 UserDetails 를 구현하고 추가 정
     }
 }

@@ -52,18 +52,18 @@ public class SecurityProvider implements AuthenticationProvider {
     }
 
     public String createToken(String username, List<Role> roles) {
-        Claims claims = Jwts.claims().setSubject(username);
+        Claims claims = Jwts.claims().setSubject(username); // JWT payload에 저장되는 정보 단위
         claims.put("auth", roles.stream().map(se -> new SimpleGrantedAuthority(se.getAuthority()))
-                .filter(Objects::nonNull).collect(Collectors.toList()));
+                .filter(Objects::nonNull).collect(Collectors.toList())); // 정본느 key / value 쌍으로 저장
 
         Date now = new Date();
         Date validaty = new Date(now.getTime() + validityInMilliseconds);
 
         return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(validaty)
-                .signWith(SignatureAlgorithm.HS256, secretKey)
+                .setClaims(claims) // 정보 저장
+                .setIssuedAt(now) // 토큰 발행 시간 정보
+                .setExpiration(validaty) // set Expire Time
+                .signWith(SignatureAlgorithm.HS256, secretKey) // 사용할 암호화 알고리즘과 signature에 들어갈 secret값 세팅
                 .compact();
     }
 
@@ -71,11 +71,13 @@ public class SecurityProvider implements AuthenticationProvider {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
+    // JWT 토큰에서 인증 정보 조회
     public Authentication getAuthentication(String token) {
         UserDetails userDetails = service.loadUserByUsername(getUsername(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
+    // HttpServletRequest에서 token 값을 가져옴. "Authorization" : "TOKEN값"
     public String resolveToken(HttpServletRequest req) {
         String bearerToken = req.getHeader("Authorization");
 
@@ -87,6 +89,7 @@ public class SecurityProvider implements AuthenticationProvider {
         return null;
     }
 
+    // 토큰의 유효성 + 만료일자 확인
     public boolean validateToken(String token) throws Exception {
         try {
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
@@ -95,4 +98,12 @@ public class SecurityProvider implements AuthenticationProvider {
             throw new Exception();
         }
     }
+
+    // 토큰에서 회원 정보 추출
+    public String getUserPk(String token) {
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    }
+
+
+
 }
