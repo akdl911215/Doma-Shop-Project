@@ -55,5 +55,12 @@ public class UserDto  {
 
     public boolean getFromSocial(boolean fromSocial) { return fromSocial; }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }

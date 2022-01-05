@@ -55,11 +55,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .headers().disable()
                 .csrf().disable() // crsf 보안 토큰 disable 처리
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests() // 요청에 대한 사용권한 체크
-                .antMatchers("/users/**").hasRole("USER")
+//                .antMatchers("/users/**").hasRole("USER")
+                .antMatchers("/users/**").permitAll()
                 .antMatchers("/admins/**").hasRole("ADMIN")
                 .antMatchers("/managers/**").hasRole("MANAGER")
                 .anyRequest().permitAll() // 그 외 나머지 요청은 누구나 접근 가능
@@ -68,6 +70,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         UsernamePasswordAuthenticationFilter.class);
                 // SecurityFilter를 UsernamePAsswordAuthenticationFilter 전에 넣는다.
 
+//        http
+//                .headers().httpStrictTransportSecurity()
+//                .maxAgeInSeconds(0)
+//                .includeSubDomains(true)
+//                ;
 
 //        http.exceptionHandling().accessDeniedPage("/signin"); // 원래 login인데 signin으로 수정해봄
 //        http.apply(new SecurityConfig(provider));

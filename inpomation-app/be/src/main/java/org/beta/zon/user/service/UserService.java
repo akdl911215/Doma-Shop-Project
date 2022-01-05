@@ -11,6 +11,7 @@ public interface UserService {
     UserDto signin(UserDto userDto);
     List<User> findAll();
     void deleteById(Long userno);
+    boolean validationLogin(String username, String password);
 
     String signup(UserDto userDto);
 
