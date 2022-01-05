@@ -49,7 +49,8 @@ public class UserController {
             @ApiResponse(code = 422, message = "Invalid Artist-Username / Password supplied")})
     public String signin(@ApiParam("Signin User") @RequestBody UserDto userDto) throws IOException {
         log.info("User Signin(로그인) 작동 시작 : " + userDto);
-        userServiceImpl.signin(userDto);
+            userServiceImpl.signin(userDto);
+
 //        userDto.setToken(securityProvider.createToken(userDto.getUsername(), userDto.getRoles()));
 
         return securityProvider.createToken(userDto.getUsername(), userDto.getRoles());

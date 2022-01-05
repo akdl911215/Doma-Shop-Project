@@ -54,7 +54,7 @@ public class SecurityProvider implements AuthenticationProvider {
     public String createToken(String username, List<Role> roles) {
         Claims claims = Jwts.claims().setSubject(username); // JWT payload에 저장되는 정보 단위
         claims.put("auth", roles.stream().map(se -> new SimpleGrantedAuthority(se.getAuthority()))
-                .filter(Objects::nonNull).collect(Collectors.toList())); // 정본느 key / value 쌍으로 저장
+                .filter(Objects::nonNull).collect(Collectors.toList())); // 정보는 key / value 쌍으로 저장
 
         Date now = new Date();
         Date validaty = new Date(now.getTime() + validityInMilliseconds);

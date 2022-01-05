@@ -44,25 +44,33 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public UserDto signin(UserDto userDto) {
-        try {
-            validationLogin(userDto.getUsername(), userDto.getPassword());
 
-
+            log.info("로그인에 성공하였습니다.");
             User entity = dtoEntity(userDto);
             log.info("entity 변환 값 = " + entity);
+
+        boolean loginSN = validationLogin(entity.getUsername(), entity.getPassword());
+        log.info("loginSN : "+ loginSN);
+
+        if (loginSN == false){
+            log.info("로그인에 실패하였습니다.");
+            userDto.setLoginSuccessOrNot(false);
+            userDto.setToken(null);
+
+            return userDto;
+        }
+        else {
 
             userRepository.signin(entity.getUsername(), entity.getPassword());
 
             UserDto entityDto = entityDto(entity);
-//            entityDto.setToken(securityProvider.createToken(entityDto.getUsername(), entityDto.getRoles()));
-            log.info("entityDto 값 = " + entityDto);
+            entityDto.setToken(securityProvider.createToken(entityDto.getUsername(), entityDto.getRoles()));
+            entityDto.setLoginSuccessOrNot(true);
+            log.info("entityDto 값 = " + entityDto.getAddress());
 
             return entityDto;
-        } catch (Exception e) {
-            return null;
         }
     }
-
 
     @Override
     public List<User> findAll() {

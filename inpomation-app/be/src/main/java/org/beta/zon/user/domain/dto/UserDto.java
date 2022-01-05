@@ -27,11 +27,16 @@ public class UserDto  {
     private boolean fromSocial;
     private List<Role> roles;
     private String token;
+    private boolean loginSuccessOrNot;
 
 
 //    public String getUsername(String username){
 //        return username;
 //    }
+
+    public boolean getLoginSuccessOrNot(boolean loginSuccessOrNot) {
+        return loginSuccessOrNot;
+    }
 
     public String getPassword(String password) {
         return password;
@@ -61,6 +66,10 @@ public class UserDto  {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setLoginSuccessOrNot(boolean loginSuccessOrNot) {
+        this.loginSuccessOrNot = loginSuccessOrNot;
     }
 
 }
