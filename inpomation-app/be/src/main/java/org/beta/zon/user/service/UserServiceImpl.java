@@ -48,6 +48,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     public UserDto signin(UserDto userDto) {
         log.info("userDto.getUsername() : " + userDto.getUsername());
         log.info("userDto.getPassword() : " + userDto.getPassword());
+        log.info("userDto.getRoles() : " + userDto.getRoles());
 
 
         User entity = dtoEntity(userDto);
@@ -66,7 +67,10 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         }
         else {
             log.info("유효성 검사 성공하였습니다.");
-            userRepository.signin(entity.getUsername(), entity.getPassword());
+            User user = userRepository.signin(entity.getUsername(), entity.getPassword());
+
+            log.info("user.getRole!!!!!!1" + user.getRoles());
+
 
             entity.changeRole(entity.getRoles());
             log.info("entity ::: " + entity);

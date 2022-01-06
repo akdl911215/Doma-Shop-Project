@@ -44,7 +44,7 @@ public class User extends BaseEntity {
 //    @Builder.Default // 기본값 설정
     private List<Role> roles;
 
-    public void changeRole(List roles) { this.roles = roles; }
+    public void changeRole(List<Role> roles) { this.roles = roles; }
 
     public void changeUsername(String username) {
         this.username = username;
@@ -72,7 +72,7 @@ public class User extends BaseEntity {
 
     public void changeFromSocial(boolean fromSocial) { this.fromSocial = fromSocial; }
 
-    public void ChangeRoles(List<Role> roles) {
-        this.roles = roles;
-    }
+//    public void ChangeRoles(List<Role> roles) {
+//        this.roles = roles;
+//    }
 }
