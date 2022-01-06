@@ -21,7 +21,5 @@ public class AuthFailureHandler implements AuthenticationFailureHandler {
 
         // 응답으로 리다이렉트를 보낸다.
         response.sendRedirect("/users/signin");
-
-        // https://hooongs.tistory.com/235
     }
 }

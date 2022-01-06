@@ -17,8 +17,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RestController // controller + @ResponseBody > 주용도는 JSON 형태로 객체 데이터 반환
+@RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RequiredArgsConstructor
 @Log4j2
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -47,13 +47,13 @@ public class UserController {
     @ApiOperation(value = "로그인", notes = "로그인을 시작 합니다")
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Somthing went wrong"),
             @ApiResponse(code = 422, message = "Invalid Artist-Username / Password supplied")})
-    public String signin(@ApiParam("Signin User") @RequestBody UserDto userDto) throws IOException {
+    public ResponseEntity<UserDto> signin(@ApiParam("Signin User") @RequestBody UserDto userDto) throws IOException {
         log.info("User Signin(로그인) 작동 시작 : " + userDto);
             userServiceImpl.signin(userDto);
 
 //        userDto.setToken(securityProvider.createToken(userDto.getUsername(), userDto.getRoles()));
 
-        return securityProvider.createToken(userDto.getUsername(), userDto.getRoles());
+        return ResponseEntity.ok(userDto);
     }
 
 }

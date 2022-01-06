@@ -29,11 +29,6 @@ public class UserDto  {
     private String token;
     private boolean loginSuccessOrNot;
 
-
-//    public String getUsername(String username){
-//        return username;
-//    }
-
     public boolean getLoginSuccessOrNot(boolean loginSuccessOrNot) {
         return loginSuccessOrNot;
     }

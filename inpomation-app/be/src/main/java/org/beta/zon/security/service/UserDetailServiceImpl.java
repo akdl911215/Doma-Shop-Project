@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.repository.UserRepository;
 import org.hibernate.annotations.ColumnTransformer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,7 +17,7 @@ import java.util.Optional;
 public class UserDetailServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
-    @ColumnTransformer
+//    @ColumnTransformer
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -24,8 +25,5 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username : " + username));
 
         return UserDetailsImpl.build(user.get());
-
-        // webfirewood.tistory.com/115
-        // SpringSecurity는 UserDetails 객체를 통해 권한 정보를 관리하기 때문에 User 클래스에 UserDetails 를 구현하고 추가 정
     }
 }

@@ -24,8 +24,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUsername(String username);
 
-//    @Query(value = "SELECT us FROM user us WHERE us.username=:username and us.password")
-    @Query(value = "select * from user where username=:username and password=:password", nativeQuery = true)
+//    @Query(value = "select * from user where username=:username and password=:password", nativeQuery = true)
+    @EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
+    @Query(value = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
     User signin(@Param("username") String username, @Param("password") String password);
 
     // @EntityGraph = LAZY 패치타입으로 relation이 달려있는 entity를 n+1 문제 없이 한번에 가져오고 싶으때 사용

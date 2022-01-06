@@ -6,6 +6,7 @@ import org.beta.zon.common.service.AbstractService;
 import org.beta.zon.security.domain.SecurityProvider;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
+import org.beta.zon.user.domain.role.Role;
 import org.beta.zon.user.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,13 +14,14 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @Transactional
 @Log4j2
 @RequiredArgsConstructor
-@Service
 public class UserServiceImpl extends AbstractService<User> implements UserService{
 
     private final UserRepository userRepository;
@@ -44,29 +46,40 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public UserDto signin(UserDto userDto) {
+        log.info("userDto.getUsername() : " + userDto.getUsername());
+        log.info("userDto.getPassword() : " + userDto.getPassword());
 
-            log.info("로그인에 성공하였습니다.");
-            User entity = dtoEntity(userDto);
-            log.info("entity 변환 값 = " + entity);
+
+        User entity = dtoEntity(userDto);
+        log.info("entity 변환 값 = " + entity);
+        log.info("entity.getRoles() : " + entity.getRoles());
 
         boolean loginSN = validationLogin(entity.getUsername(), entity.getPassword());
         log.info("loginSN : "+ loginSN);
 
         if (loginSN == false){
-            log.info("로그인에 실패하였습니다.");
+            log.info("유효성 검사 실패하였습니다.");
             userDto.setLoginSuccessOrNot(false);
             userDto.setToken(null);
 
             return userDto;
         }
         else {
-
+            log.info("유효성 검사 성공하였습니다.");
             userRepository.signin(entity.getUsername(), entity.getPassword());
 
+            entity.changeRole(entity.getRoles());
+            log.info("entity ::: " + entity);
+            log.info("1");
+            String token = securityProvider.createToken(entity.getUsername(), entity.getRoles());
+            log.info("token : " + token);
+            log.info("2");
             UserDto entityDto = entityDto(entity);
-            entityDto.setToken(securityProvider.createToken(entityDto.getUsername(), entityDto.getRoles()));
+            entityDto.setToken(token);
+//            entityDto.setToken(securityProvider.createToken(entityDto.getUsername(), entityDto.getRoles()));
+            log.info("3");
             entityDto.setLoginSuccessOrNot(true);
-            log.info("entityDto 값 = " + entityDto.getAddress());
+            log.info("entityDto.getToken() = " + entityDto.getToken());
 
             return entityDto;
         }
@@ -91,7 +104,14 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         log.info("userDto.getPassword() : " + userDto.getPassword());
         userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
+        List<Role> list = new ArrayList<>();
+
+        list.add(Role.MEMBER);
+        if(false) list.add(Role.MANAGER);
+        if(false) list.add(Role.ADMIN);
+
         User entity = dtoEntity(userDto);
+        entity.changeRole(list);
         log.info("ServiceImple 위 entity : " + entity);
         userRepository.save(entity);
         log.info("저장 후 entity : " + entity);

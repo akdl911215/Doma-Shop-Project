@@ -20,7 +20,7 @@ public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "user_id") // , unique = true, nullable = false
+    @Column(name = "user_no") // , unique = true, nullable = false
     private Long userno;
 
     @Column(name = "username") // , unique = true, nullable = false
@@ -37,6 +37,14 @@ public class User extends BaseEntity {
     private String address;
     @Column(name = "from_social")
     private boolean fromSocial;
+
+    @Column(name = "roles")
+    @ElementCollection(fetch = FetchType.LAZY) // Lazy 로딩 설정이 되어 있는 Entity는 프록시 객체로 가져온다
+                                                // 후에 실제 객체를 사용하는 시점에 초기화된다. DB에 쿼리 실행
+//    @Builder.Default // 기본값 설정
+    private List<Role> roles;
+
+    public void changeRole(List roles) { this.roles = roles; }
 
     public void changeUsername(String username) {
         this.username = username;
@@ -63,11 +71,6 @@ public class User extends BaseEntity {
     }
 
     public void changeFromSocial(boolean fromSocial) { this.fromSocial = fromSocial; }
-
-    @ElementCollection(fetch = FetchType.LAZY) // Lazy 로딩 설정이 되어 있는 Entity는 프록시 객체로 가져온다
-                                                // 후에 실제 객체를 사용하는 시점에 초기화된다. DB에 쿼리 실행
-//    @Builder.Default // 기본값 설정
-    private List<Role> roles;
 
     public void ChangeRoles(List<Role> roles) {
         this.roles = roles;
