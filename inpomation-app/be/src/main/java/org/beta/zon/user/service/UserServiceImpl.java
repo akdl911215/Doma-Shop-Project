@@ -72,7 +72,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
             log.info("user.getRole!!!!!!1" + user.getRoles());
 
 
-            entity.changeRole(entity.getRoles());
+            entity.changeRoles(entity.getRoles());
             log.info("entity ::: " + entity);
             log.info("1");
             String token = securityProvider.createToken(entity.getUsername(), entity.getRoles());
@@ -85,7 +85,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
             entityDto.setLoginSuccessOrNot(true);
             log.info("entityDto.getToken() = " + entityDto.getToken());
 
-            return entityDto;
+            return userDto;
         }
     }
 
@@ -115,7 +115,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         if(false) list.add(Role.ADMIN);
 
         User entity = dtoEntity(userDto);
-        entity.changeRole(list);
+        entity.changeRoles(list);
         log.info("ServiceImple 위 entity : " + entity);
         userRepository.save(entity);
         log.info("저장 후 entity : " + entity);

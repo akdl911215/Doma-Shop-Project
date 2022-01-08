@@ -17,7 +17,7 @@ import java.util.Optional;
 public class UserDetailServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
-//    @ColumnTransformer
+    @ColumnTransformer
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

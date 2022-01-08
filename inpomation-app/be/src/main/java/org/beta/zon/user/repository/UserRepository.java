@@ -25,7 +25,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
 
 //    @Query(value = "select * from user where username=:username and password=:password", nativeQuery = true)
-    @EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
+    //@EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
+//    @Query(value = "SELECT users.username, users.password, user_roles.roles from" +
+//            " users JOIN user_roles using user_no", nativeQuery = true)
     @Query(value = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
     User signin(@Param("username") String username, @Param("password") String password);
 

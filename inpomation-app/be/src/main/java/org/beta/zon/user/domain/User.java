@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @ToString
 @Getter
 @Builder
@@ -38,13 +38,18 @@ public class User extends BaseEntity {
     @Column(name = "from_social")
     private boolean fromSocial;
 
-    @Column(name = "roles")
-    @ElementCollection(fetch = FetchType.LAZY) // Lazy 로딩 설정이 되어 있는 Entity는 프록시 객체로 가져온다
-                                                // 후에 실제 객체를 사용하는 시점에 초기화된다. DB에 쿼리 실행
+    // https://www.baeldung.com/jpa-persisting-enums-in-jpa
+
 //    @Builder.Default // 기본값 설정
+//    @ElementCollection(fetch = FetchType.LAZY) // Lazy 로딩 설정이 되어 있는 Entity는 프록시 객체로 가져온다
+//                                                // 후에 실제 객체를 사용하는 시점에 초기화된다. DB에 쿼리 실행
+
+    // enum 이름을 DB에 저장
+    @Enumerated(EnumType.STRING)
+//    @Column(name = "roles")
     private List<Role> roles;
 
-    public void changeRole(List<Role> roles) { this.roles = roles; }
+    public void changeRoles(List roles) { this.roles = roles; }
 
     public void changeUsername(String username) {
         this.username = username;
@@ -71,8 +76,4 @@ public class User extends BaseEntity {
     }
 
     public void changeFromSocial(boolean fromSocial) { this.fromSocial = fromSocial; }
-
-//    public void ChangeRoles(List<Role> roles) {
-//        this.roles = roles;
-//    }
 }

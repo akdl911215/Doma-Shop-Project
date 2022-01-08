@@ -29,7 +29,7 @@ public class UserDto  {
     private String token;
     private boolean loginSuccessOrNot;
 
-    public List<Role> getRoles(List roles) { return roles; }
+    public List<Role> getRoles(List<Role> roles) { return roles; }
 
     public boolean getLoginSuccessOrNot(boolean loginSuccessOrNot) {
         return loginSuccessOrNot;
