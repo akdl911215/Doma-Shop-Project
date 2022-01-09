@@ -28,6 +28,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     //@EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
 //    @Query(value = "SELECT users.username, users.password, user_roles.roles from" +
 //            " users JOIN user_roles using user_no", nativeQuery = true)
+    @EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
     @Query(value = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
     User signin(@Param("username") String username, @Param("password") String password);
 

@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -26,6 +27,7 @@ public class UserDetailsImpl implements UserDetails { // UserDetails 은 securit
     private final String address;
     private final boolean fromSocial;
     private final Collection<? extends GrantedAuthority> authorities;
+//    private final Set<GrantedAuthority> authorities;
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
