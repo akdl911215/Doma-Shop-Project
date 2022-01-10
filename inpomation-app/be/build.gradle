@@ -1,6 +1,13 @@
+buildscript {
+	ext {
+		queryDslVersion = "5.0.0"
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.6.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 	id 'java'
 	id 'war'
 }
@@ -14,14 +21,6 @@ repositories {
 }
 
 dependencies {
-//	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.12.RELEASE'
-//	implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.3.13.RELEASE'
-//	implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.3.13.RELEASE'
-//	//	implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.3.13.RELEASE'  ERROR 발생
-//	testImplementation group: 'org.springframework.security', name: 'spring-security-test', version: '5.3.13.RELEASE'
-//	implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.3.13.RELEASE'
-//	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.3.12.RELEASE'
-
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -44,12 +43,42 @@ dependencies {
 	tasks.withType(JavaCompile) {
 		options.encoding = 'UTF-8'
 	}
-//	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.3.12.RELEASE'
-
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-
+	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 }
 
 test {
 	useJUnitPlatform()
 }
+
+repositories {
+	mavenCentral()
+	maven {
+		url "https://plugins.gradle.org/m2/" // plugin 저장소
+	}
+}
+
+def querydslDir = "$buildDir/generated/querydsl" // QClass 생성 위치
+
+
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+	main.java.srcDir querydslDir
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl.extendsFrom compileClasspath
+}
+
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
+

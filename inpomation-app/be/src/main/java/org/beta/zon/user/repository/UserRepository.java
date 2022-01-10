@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredicateExecutor<User>   {
 
     List<User> findByUsernoBetweenOrderByUsernoDesc(Long from, Long to); // 사용법 test > testQueryMethods
 
@@ -28,8 +29,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     //@EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
 //    @Query(value = "SELECT users.username, users.password, user_roles.roles from" +
 //            " users JOIN user_roles using user_no", nativeQuery = true)
+
+//    @Query("SELECT u, r FROM User u LEFT JOIN u.user_no r where u.username = :username and u.password = :password")
     @EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query(value = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
+    @Query(value = "SELECT u FROM User WHERE u.username = :username AND u.password = :password")
     User signin(@Param("username") String username, @Param("password") String password);
 
     // @EntityGraph = LAZY 패치타입으로 relation이 달려있는 entity를 n+1 문제 없이 한번에 가져오고 싶으때 사용
