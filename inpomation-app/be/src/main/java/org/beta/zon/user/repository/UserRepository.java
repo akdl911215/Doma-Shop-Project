@@ -30,10 +30,11 @@ public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredi
 //    @Query(value = "SELECT users.username, users.password, user_roles.roles from" +
 //            " users JOIN user_roles using user_no", nativeQuery = true)
 
-//    @Query("SELECT u, r FROM User u LEFT JOIN u.user_no r where u.username = :username and u.password = :password")
-    @EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query(value = "SELECT u FROM User WHERE u.username = :username AND u.password = :password")
+//    @Query(value = "SELECT u FROM User WHERE u.username = :username AND u.password = :password")
+//    @EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
+    @Query("SELECT u, r FROM User u LEFT JOIN u.user_no r where u.username = :username and u.password = :password")
     User signin(@Param("username") String username, @Param("password") String password);
+//    @Query(value = "SELECT * FROM User u OUTER JOIN Role r ON u.user_no = r.user_no")
 
     // @EntityGraph = LAZY 패치타입으로 relation이 달려있는 entity를 n+1 문제 없이 한번에 가져오고 싶으때 사용
     // 특정 시나리오에서는 한번에 패치하는게 필요하기때문에 사용.

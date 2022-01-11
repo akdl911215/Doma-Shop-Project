@@ -5,13 +5,11 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.beta.zon.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.SpringSecurityCoreVersion;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.io.Serializable;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Getter
@@ -57,10 +55,28 @@ public class UserDetailsImpl implements UserDetails { // UserDetails 은 securit
         return true;
     }
 
+    private static class AuthorityComparator implements Comparator<GrantedAuthority>, Serializable {
+        private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
+
+        @Override
+        public int compare(GrantedAuthority o1, GrantedAuthority o2) {
+            if (o1.getAuthority() == null) {
+                return -1;
+            }
+
+            if (o2.getAuthority() == null) {
+                return 1;
+            }
+
+            return o1.getAuthority().compareTo(o2.getAuthority());
+        }
+    }
+
     public static UserDetailsImpl build(User user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
-                .collect(Collectors.toList());
+//        List<GrantedAuthority> authorities = user.getRoles().stream()
+//                .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
+//                .collect(Collectors.toList());
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>((Collection<? extends GrantedAuthority>) new AuthorityComparator());
 
         return new UserDetailsImpl(user.getUserno(), user.getUsername(), user.getPassword(), user.getName(),
                 user.getEmail(), user.getPhoneNumber(), user.getAddress(), user.isFromSocial(), authorities);
