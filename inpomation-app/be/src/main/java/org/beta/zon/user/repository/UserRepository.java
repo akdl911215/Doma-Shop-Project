@@ -2,6 +2,7 @@ package org.beta.zon.user.repository;
 
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
+import org.beta.zon.user.domain.role.Role;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -23,16 +24,19 @@ public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredi
 
     void deleteUserByUsernoLessThan(Long num);
 
+
+
     Optional<User> findByUsername(String username);
+    Role findByRoles(Role roles);
 
 //    @Query(value = "select * from user where username=:username and password=:password", nativeQuery = true)
     //@EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
 //    @Query(value = "SELECT users.username, users.password, user_roles.roles from" +
 //            " users JOIN user_roles using user_no", nativeQuery = true)
 
-//    @Query(value = "SELECT u FROM User WHERE u.username = :username AND u.password = :password")
+//    @Query("SELECT u, r FROM User u LEFT JOIN u.user_no r where u.username = :username and u.password = :password")
 //    @EntityGraph(attributePaths = {"roles"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("SELECT u, r FROM User u LEFT JOIN u.user_no r where u.username = :username and u.password = :password")
+    @Query(value = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
     User signin(@Param("username") String username, @Param("password") String password);
 //    @Query(value = "SELECT * FROM User u OUTER JOIN Role r ON u.user_no = r.user_no")
 

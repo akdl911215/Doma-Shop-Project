@@ -25,11 +25,11 @@ public class UserDto  {
     private String phoneNumber;
     private String address;
     private boolean fromSocial;
-    private List<Role> roles;
+    private Role roles;
     private String token;
     private boolean loginSuccessOrNot;
 
-    public List<Role> getRoles(List<Role> roles) { return roles; }
+    public Role getRoles(Role roles) { return roles; }
 
     public boolean getLoginSuccessOrNot(boolean loginSuccessOrNot) {
         return loginSuccessOrNot;

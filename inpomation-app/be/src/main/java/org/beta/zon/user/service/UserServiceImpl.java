@@ -55,25 +55,39 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         log.info("entity 변환 값 = " + entity);
         log.info("entity.getRoles() : " + entity.getRoles());
 
-        boolean loginSN = validationLogin(entity.getUsername(), entity.getPassword());
-        log.info("loginSN : "+ loginSN);
+        //boolean loginSN = validationLogin(entity.getUsername(), entity.getPassword());
+        //log.info("loginSN : "+ loginSN);
 
-        if (loginSN == false){
-            log.info("유효성 검사 실패하였습니다.");
-            userDto.setLoginSuccessOrNot(false);
-            userDto.setToken(null);
-
-            return userDto;
-        }
-        else {
+//        if (loginSN == false){
+//            log.info("유효성 검사 실패하였습니다.");
+//            userDto.setLoginSuccessOrNot(false);
+//            userDto.setToken(null);
+//
+//            return userDto;
+//        }
+  //      else {
             log.info("유효성 검사 성공하였습니다.");
-            User user = userRepository.signin(entity.getUsername(), entity.getPassword());
-
-            log.info("user.getRole!!!!!!1" + user.getRoles());
 
 
-            entity.changeRoles(entity.getRoles());
+            System.out.println("entity.getUsername(),    entity.getPassword()" + entity.getUsername() + " ,  "  + entity.getPassword());
+
+            //User userEntity = userRepository.signin(entity.getUsername(), entity.getPassword());
+
+            Optional<User> userEntity = userRepository.findByUsername(entity.getUsername());
+
+            log.info("userEntity=>"+ userEntity.orElseThrow(() -> {
+                return new RuntimeException("user를 찾을 수 없습니다!!");
+            }).getRoles());
+
+
+//            log.info("user.getRole!!!!!!1" + user.getRoles());
+
+
+//            entity.changeRoles(entity.getRoles());
             log.info("entity ::: " + entity);
+            log.info("entity.getRoles() ::: " + entity.getRoles());
+
+
             log.info("1");
             String token = securityProvider.createToken(entity.getUsername(), entity.getRoles());
             log.info("token : " + token);
@@ -86,7 +100,15 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
             log.info("entityDto.getToken() = " + entityDto.getToken());
 
             return userDto;
-        }
+  //      }
+    }
+
+    @Override
+    public Role validationRole(Role roles) {
+        log.info("validationRole 동작");
+        Role loginUserRole = userRepository.findByRoles(roles);
+
+        return loginUserRole;
     }
 
     @Override
@@ -99,52 +121,46 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         userRepository.deleteById(userno);
     }
 
-
-
     @Override
     public String signup(UserDto userDto) {
         log.info("Signup ServiceImple 시작");
         log.info("userDto : " + userDto);
-        log.info("userDto.getPassword() : " + userDto.getPassword());
         userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
-
-        List<Role> list = new ArrayList<>();
-
-        list.add(Role.MEMBER);
-        if(false) list.add(Role.MANAGER);
-        if(false) list.add(Role.ADMIN);
-
         User entity = dtoEntity(userDto);
-        entity.changeRoles(list);
-        log.info("ServiceImple 위 entity : " + entity);
-        userRepository.save(entity);
-        log.info("저장 후 entity : " + entity);
+        entity.changeRoles(Role.MEMBER);
 
-        UserDto entityDto = entityDto(entity);
+        User useEntity = userRepository.save(entity);
 
-        // String.matches() 은 특정 패턴의 문자열을 포함하는지 확인
-        boolean matchResult = passwordEncoder.matches(entity.getPassword(), userDto.getPassword());
+        log.info("userEntity=>" + useEntity);
+
+//        userRepository.save(entity);
+//        log.info("저장 후 entity : " + entity);
+//        UserDto entityDto = entityDto(entity);
+//        // String.matches() 은 특정 패턴의 문자열을 포함하는지 확인
+
+        boolean matchResult = passwordEncoder.matches("1", useEntity.getPassword());
         System.out.println("matchResult : " + matchResult);
+
+
+
 
         return "Success";
     }
 
+
+
     @Override
     public boolean validationLogin(String username, String password) {
         log.info("validataionLogin 동작");
-        
         Optional<User> loginUser = userRepository.findByUsername(username);
-
         if (loginUser == null){
             System.out.println("해당 아이다가 존재하지 않습니다.");
             return false;
         }
-
         if (!passwordEncoder.matches(password, loginUser.get().getPassword())) {
             System.out.println("비밀번호가 일치하지 않습니다.");
             return false;
         }
-
         return true;
     }
 

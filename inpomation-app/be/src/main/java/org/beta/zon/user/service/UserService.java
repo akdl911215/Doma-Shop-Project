@@ -2,6 +2,7 @@ package org.beta.zon.user.service;
 
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
+import org.beta.zon.user.domain.role.Role;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public interface UserService {
     List<User> findAll();
     void deleteById(Long userno);
     boolean validationLogin(String username, String password);
+    Role validationRole(Role roles);
 
     String signup(UserDto userDto);
 

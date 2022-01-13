@@ -89,3 +89,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/h2-console/**");
     }
 }
+
+// https://github.com/stella6767/security--back/tree/master/src/main/java/com/example/security
