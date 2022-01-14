@@ -3,6 +3,7 @@ package org.beta.zon.user.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.beta.zon.common.service.AbstractService;
+import org.beta.zon.security.config.Jwt.JwtLoginFilter;
 import org.beta.zon.security.domain.SecurityProvider;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
@@ -12,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     private final UserRepository userRepository;
     private final SecurityProvider securityProvider;
     private final PasswordEncoder passwordEncoder;
+    private final JwtLoginFilter jwtLoginFilter;
 
     @Override
     public String save(User user) {
@@ -46,69 +50,33 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public UserDto signin(UserDto userDto) {
-        log.info("userDto.getUsername() : " + userDto.getUsername());
-        log.info("userDto.getPassword() : " + userDto.getPassword());
-        log.info("userDto.getRoles() : " + userDto.getRoles());
-
-
+        jwtLoginFilter.attemptAuthentication(userDto.getUsername(), (HttpServletResponse) userDto);
         User entity = dtoEntity(userDto);
-        log.info("entity 변환 값 = " + entity);
-        log.info("entity.getRoles() : " + entity.getRoles());
-
-        //boolean loginSN = validationLogin(entity.getUsername(), entity.getPassword());
-        //log.info("loginSN : "+ loginSN);
-
+//        boolean loginSN = validationLogin(entity.getUsername());
+//        log.info("loginSN : "+ loginSN);
+//
 //        if (loginSN == false){
 //            log.info("유효성 검사 실패하였습니다.");
 //            userDto.setLoginSuccessOrNot(false);
 //            userDto.setToken(null);
-//
 //            return userDto;
 //        }
-  //      else {
+//
+//        else {
             log.info("유효성 검사 성공하였습니다.");
-
-
             System.out.println("entity.getUsername(),    entity.getPassword()" + entity.getUsername() + " ,  "  + entity.getPassword());
-
-            //User userEntity = userRepository.signin(entity.getUsername(), entity.getPassword());
-
             Optional<User> userEntity = userRepository.findByUsername(entity.getUsername());
-
-            log.info("userEntity=>"+ userEntity.orElseThrow(() -> {
+            String token = securityProvider.createToken(entity.getUsername(), userEntity.orElseThrow(() -> {
                 return new RuntimeException("user를 찾을 수 없습니다!!");
             }).getRoles());
-
-
-//            log.info("user.getRole!!!!!!1" + user.getRoles());
-
-
-//            entity.changeRoles(entity.getRoles());
-            log.info("entity ::: " + entity);
-            log.info("entity.getRoles() ::: " + entity.getRoles());
-
-
-            log.info("1");
-            String token = securityProvider.createToken(entity.getUsername(), entity.getRoles());
             log.info("token : " + token);
-            log.info("2");
             UserDto entityDto = entityDto(entity);
             entityDto.setToken(token);
-//            entityDto.setToken(securityProvider.createToken(entityDto.getUsername(), entityDto.getRoles()));
-            log.info("3");
             entityDto.setLoginSuccessOrNot(true);
             log.info("entityDto.getToken() = " + entityDto.getToken());
 
             return userDto;
-  //      }
-    }
-
-    @Override
-    public Role validationRole(Role roles) {
-        log.info("validationRole 동작");
-        Role loginUserRole = userRepository.findByRoles(roles);
-
-        return loginUserRole;
+//        }
     }
 
     @Override
@@ -127,40 +95,32 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         log.info("userDto : " + userDto);
         userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         User entity = dtoEntity(userDto);
+
+
         entity.changeRoles(Role.MEMBER);
+//        entity.changeRoles(Role.MANAGER);
+//        entity.changeRoles(Role.ADMIN);
 
-        User useEntity = userRepository.save(entity);
 
-        log.info("userEntity=>" + useEntity);
-
-//        userRepository.save(entity);
-//        log.info("저장 후 entity : " + entity);
-//        UserDto entityDto = entityDto(entity);
-//        // String.matches() 은 특정 패턴의 문자열을 포함하는지 확인
-
-        boolean matchResult = passwordEncoder.matches("1", useEntity.getPassword());
+        User userEntity = userRepository.save(entity);
+        log.info("userEntity=> " + userEntity);
+        // String.matches() 은 특정 패턴의 문자열을 포함하는지 확인
+        boolean matchResult = passwordEncoder.matches(userDto.getPassword(), userEntity.getPassword());
         System.out.println("matchResult : " + matchResult);
-
-
-
-
         return "Success";
     }
 
 
 
     @Override
-    public boolean validationLogin(String username, String password) {
+    public boolean validationLogin(String username) {
         log.info("validataionLogin 동작");
         Optional<User> loginUser = userRepository.findByUsername(username);
         if (loginUser == null){
             System.out.println("해당 아이다가 존재하지 않습니다.");
             return false;
         }
-        if (!passwordEncoder.matches(password, loginUser.get().getPassword())) {
-            System.out.println("비밀번호가 일치하지 않습니다.");
-            return false;
-        }
+
         return true;
     }
 

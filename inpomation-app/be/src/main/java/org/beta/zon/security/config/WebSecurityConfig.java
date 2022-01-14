@@ -2,7 +2,11 @@ package org.beta.zon.security.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.beta.zon.security.aop.SecurityFilter;
+import org.beta.zon.security.config.Jwt.JwtLoginFailureHandler;
+import org.beta.zon.security.config.Jwt.JwtLoginFilter;
+import org.beta.zon.security.config.Jwt.JwtLoginSuccessHandler;
 import org.beta.zon.security.config.SecurityConfig;
+import org.beta.zon.security.util.CookieUtill;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -25,6 +29,7 @@ import springfox.documentation.swagger2.mappers.ModelMapper;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecurityProvider provider;
+    private final CookieUtill cookieUtill;
 
     // 암호화에 필요한 PasswordEncoder를 Bean 등록한다.
     @Bean
@@ -88,6 +93,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/*/**") // 모든 곳에서 접속
                 .antMatchers("/", "/h2-console/**");
     }
+
+    @Bean
+    public JwtLoginFilter jwtLoginFilter() throws Exception {
+
+        final JwtLoginFilter jwtLoginFilter = new JwtLoginFilter(authenticationManager(), cookieUtill);
+        jwtLoginFilter.setFilterProcessesUrl("/signin");
+        jwtLoginFilter.setAuthenticationManager(authenticationManager());
+
+        jwtLoginFilter.setAuthenticationSuccessHandler(new JwtLoginSuccessHandler());
+        jwtLoginFilter.setAuthenticationFailureHandler(new JwtLoginFailureHandler());
+
+        return jwtLoginFilter;
+    }
 }
 
-// https://github.com/stella6767/security--back/tree/master/src/main/java/com/example/security

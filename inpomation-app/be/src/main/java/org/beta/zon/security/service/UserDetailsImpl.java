@@ -15,6 +15,8 @@ import java.util.*;
 @Getter
 public class UserDetailsImpl implements UserDetails { // UserDetails 은 security 내장형
 
+    private User user;
+
     private final Long userno;
     private final String username;
     @JsonIgnore // 데이터를 주고 받을 때 해당 데이터는 'Ignore'처리.
@@ -30,6 +32,16 @@ public class UserDetailsImpl implements UserDetails { // UserDetails 은 securit
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
+
+
+//    public UserDetailsImpl(User user) {
+//        this.user = user;
+//    }
+
+//    public UserDetailsImpl(User user, Map<String, Object> attributes) {
+//        this.user = user;
+//        this.attributes = attributes;
+//    }
 
     // 계정이 만료되지 않았을경우
     @Override

@@ -54,21 +54,13 @@ public class SecurityProvider implements AuthenticationProvider {
     }
 
     public String createToken(String username, Role roles) {
-        log.info("username : "+username);
-        log.info("roles : "+roles);
-
         Claims claims = Jwts.claims().setSubject(username); // JWT payload에 저장되는 정보 단위
-        log.info("claims : "+claims);
-
 //        claims.put("auth", roles.stream().map(se -> new SimpleGrantedAuthority(se.getAuthority()))
 //                .filter(Objects::nonNull).collect(Collectors.toList())); // 정보는 key / value 쌍으로 저장
         claims.put("auth", roles.getAuthority());
-        log.info("밑 claims : "+claims);
 
         Date now = new Date();
-        log.info("now : "+now);
         Date validaty = new Date(now.getTime() + validityInMilliseconds);
-        log.info("validaty : "+validaty);
 
         return Jwts.builder()
                 .setClaims(claims) // 정보 저장
