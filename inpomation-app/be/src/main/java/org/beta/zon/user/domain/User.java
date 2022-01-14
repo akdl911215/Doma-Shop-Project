@@ -20,7 +20,7 @@ public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_no") // , unique = true, nullable = false
+    @Column(name = "userno") // , unique = true, nullable = false
     private Long userno;
 
     @Column(name = "username") // , unique = true, nullable = false

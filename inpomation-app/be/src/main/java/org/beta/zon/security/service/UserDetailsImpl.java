@@ -27,6 +27,8 @@ public class UserDetailsImpl implements UserDetails { // UserDetails 은 securit
     private final String address;
     private final boolean fromSocial;
     private final Collection<? extends GrantedAuthority> authorities;
+
+
 //    private final Set<GrantedAuthority> authorities;
 
     public Collection<? extends GrantedAuthority> getAuthorities() {

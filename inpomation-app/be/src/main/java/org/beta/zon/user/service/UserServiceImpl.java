@@ -50,7 +50,6 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public UserDto signin(UserDto userDto) {
-        jwtLoginFilter.attemptAuthentication(userDto.getUsername(), (HttpServletResponse) userDto);
         User entity = dtoEntity(userDto);
 //        boolean loginSN = validationLogin(entity.getUsername());
 //        log.info("loginSN : "+ loginSN);

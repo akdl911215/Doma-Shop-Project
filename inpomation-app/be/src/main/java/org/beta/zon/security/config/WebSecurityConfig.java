@@ -1,4 +1,4 @@
-package org.beta.zon.security.domain;
+package org.beta.zon.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.beta.zon.security.aop.SecurityFilter;
@@ -6,6 +6,7 @@ import org.beta.zon.security.config.Jwt.JwtLoginFailureHandler;
 import org.beta.zon.security.config.Jwt.JwtLoginFilter;
 import org.beta.zon.security.config.Jwt.JwtLoginSuccessHandler;
 import org.beta.zon.security.config.SecurityConfig;
+import org.beta.zon.security.domain.SecurityProvider;
 import org.beta.zon.security.util.CookieUtill;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,15 +65,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // crsf 보안 토큰 disable 처리
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .addFilter(jwtLoginFilter())
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), userRepository, session))
+                .exceptionHandling()
+                .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+                .accessDeniedHandler(new JwtAceessDeniedHandler())
+                .and()
                 .authorizeRequests() // 요청에 대한 사용권한 체크
 //                .antMatchers("/users/**").hasRole("USER")
                 .antMatchers("/users/**").permitAll()
                 .antMatchers("/admins/**").hasRole("ADMIN")
                 .antMatchers("/managers/**").hasRole("MANAGER")
-                .anyRequest().permitAll() // 그 외 나머지 요청은 누구나 접근 가능
-                .and()
-                .addFilterBefore(new SecurityFilter(provider),
-                        UsernamePasswordAuthenticationFilter.class);
+                .anyRequest().permitAll(); // 그 외 나머지 요청은 누구나 접근 가능
+//                .and()
+//                .addFilterBefore(new SecurityFilter(provider), // 지정된 필터 앞에 커스텀 필터를 추가 (UsernamePasswordAuthenticationFilter 보다 먼저 실행
+//                        UsernamePasswordAuthenticationFilter.class)
+//                .addFilter(jwtLoginFilter());
                 // SecurityFilter를 UsernamePAsswordAuthenticationFilter 전에 넣는다.
 
 //        http
