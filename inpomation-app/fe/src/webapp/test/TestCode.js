@@ -1,36 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Checkbox,
   Grid,
   Header,
   Icon,
-  Image,
   Input,
   Menu,
+  Button,
   Segment,
   Sidebar,
 } from "semantic-ui-react";
-import TestCode2 from "./TestCode2";
-import { useNavigate } from "react-router";
 
-const TestCode = () => {
+const TestCode = ({ event, parentCallback, topMenuName }) => {
   const [visible, setVisible] = useState(false);
-  const [selectBar, setSelectBar] = useState(false);
+  useEffect(() => {
+    if (event === "click") {
+      setVisible(!visible);
+    }
+  }, []);
 
-  const TestCode2Click = () => {
-    setSelectBar(!selectBar);
-    console.log("selectBar : ", selectBar);
+  const topNameChange = () => {
+    alert("1");
+    parentCallback((topMenuName = "Home"));
   };
 
   return (
     <Grid columns={1}>
       <Grid.Column>
-        <Checkbox
-          checked={visible}
-          label={{ children: <code>사이드바 체크</code> }}
-          onChange={(e, data) => setVisible(data.checked)}
-        />
+        <Checkbox checked={visible} style={{ visibility: "hidden" }} />
       </Grid.Column>
 
       <Grid.Column>
@@ -46,7 +44,7 @@ const TestCode = () => {
             width="thin"
           >
             <Menu.Item as="a">
-              <Icon name="home" onClick={TestCode2Click} />
+              <Icon name="home" onClick={topNameChange} />
               Home
             </Menu.Item>
             <Menu.Item as="a">
@@ -67,8 +65,6 @@ const TestCode = () => {
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </Grid.Column>
-
-      {selectBar ? <TestCode2></TestCode2> : ""}
     </Grid>
   );
 };
