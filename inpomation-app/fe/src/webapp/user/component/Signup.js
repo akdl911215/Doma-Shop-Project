@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
-import axios from "axios";
 import { Button, Form, Input, Container } from "semantic-ui-react";
-import { GoBackButtonComponent } from "webapp/common/index";
+import { Client } from "webapp/api/Client";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -38,15 +37,14 @@ const Signup = () => {
 
     alert("회원가입 버튼 누름");
 
-    axios
-      .post("http://localhost:8080/users/signup", {
-        username: username,
-        password: password,
-        name: name,
-        address: address,
-        email: email,
-        phoneNumber: phoneNumber,
-      })
+    Client.post("http://localhost:8080/users/signup", {
+      username: username,
+      password: password,
+      name: name,
+      address: address,
+      email: email,
+      phoneNumber: phoneNumber,
+    })
       .then((res) => {
         console.log(res);
       })

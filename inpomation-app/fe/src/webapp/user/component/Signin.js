@@ -1,24 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Betazon } from "webapp/images/index";
-import { signinPage } from "webapp/user/reducer/user.reducer";
 import { useNavigate } from "react-router";
 import {
   Button,
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment,
-  Checkbox,
-  Input,
-  ButtonOr,
 } from "semantic-ui-react";
-import SigninButtonComponent from "webapp/common/component/SigninButtonComponent";
 import SignupButtonComponent from "webapp/common/component/SignupButtonComponent";
-import axios from "axios";
+import { Client } from "webapp/api/Client";
 
 const Signin = () => {
   // const [inputID, setInputID] = useState("");
@@ -46,11 +39,10 @@ const Signin = () => {
   const signinButton = () => {
     alert("로그인버튼누름");
 
-    axios
-      .post("http://localhost:8080/users/signin", {
-        username: username,
-        password: password,
-      })
+    Client.post("http://localhost:8080/users/signin", {
+      username: username,
+      password: password,
+    })
       .then((res) => {
         console.log("signin res : ", res);
       })
