@@ -1,17 +1,13 @@
 package org.beta.zon.security.config;
 
 import lombok.RequiredArgsConstructor;
-import org.beta.zon.security.aop.SecurityFilter;
-import org.beta.zon.security.config.Jwt.JwtLoginFailureHandler;
-import org.beta.zon.security.config.Jwt.JwtLoginFilter;
-import org.beta.zon.security.config.Jwt.JwtLoginSuccessHandler;
-import org.beta.zon.security.config.SecurityConfig;
+import org.beta.zon.security.config.Jwt.*;
 import org.beta.zon.security.domain.SecurityProvider;
 import org.beta.zon.security.util.CookieUtill;
+import org.beta.zon.user.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,10 +16,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import springfox.documentation.swagger2.mappers.ModelMapper;
+
+import javax.servlet.http.HttpSession;
 
 @Configuration
 @EnableWebSecurity
@@ -31,6 +27,8 @@ import springfox.documentation.swagger2.mappers.ModelMapper;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecurityProvider provider;
     private final CookieUtill cookieUtill;
+    private final UserRepository userRepository;
+    private final HttpSession httpSession;
 
     // 암호화에 필요한 PasswordEncoder를 Bean 등록한다.
     @Bean
@@ -66,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(jwtLoginFilter())
-                .addFilter(new JWTAuthorizationFilter(authenticationManager(), userRepository, session))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), userRepository, httpSession))
                 .exceptionHandling()
                 .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
                 .accessDeniedHandler(new JwtAceessDeniedHandler())

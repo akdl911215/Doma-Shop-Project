@@ -31,9 +31,9 @@ public class UserDetailsImpl implements UserDetails { // UserDetails 은 securit
 
 //    private final Set<GrantedAuthority> authorities;
 
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return authorities;
+//    }
 
 
 //    public UserDetailsImpl(User user) {

@@ -3,8 +3,10 @@ package org.beta.zon.user.domain;
 import lombok.*;
 import org.beta.zon.common.domain.BaseEntity;
 import org.beta.zon.user.domain.role.Role;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +40,8 @@ public class User extends BaseEntity {
     @Column(name = "from_social")
     private boolean fromSocial;
 
+    private List authorities;
+
     //    @Builder.Default // 기본값 설정
 //    @Column(name = "roles")
 //    @ElementCollection(fetch = FetchType.LAZY) // Lazy 로딩 설정이 되어 있는 Entity는 프록시 객체로 가져온다
@@ -46,6 +50,8 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "roles")
     private Role roles;
+
+
     // enum 이름을 DB에 저장
 //    private List<Role> roles;
 
