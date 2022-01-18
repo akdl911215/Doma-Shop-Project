@@ -61,6 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .headers().disable()
                 .csrf().disable() // crsf 보안 토큰 disable 처리
+                .headers().frameOptions().disable()
+                .and()
+                .formLogin().disable()
+                .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(jwtLoginFilter())
@@ -70,8 +74,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler(new JwtAceessDeniedHandler())
                 .and()
                 .authorizeRequests() // 요청에 대한 사용권한 체크
-//                .antMatchers("/users/**").hasRole("USER")
-                .antMatchers("/users/**").permitAll()
+                .antMatchers("/users/**").hasRole("MEMBER")
+//                .antMatchers("/users/**").permitAll()
                 .antMatchers("/admins/**").hasRole("ADMIN")
                 .antMatchers("/managers/**").hasRole("MANAGER")
                 .anyRequest().permitAll(); // 그 외 나머지 요청은 누구나 접근 가능
@@ -104,6 +108,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtLoginFilter jwtLoginFilter() throws Exception {
 
         final JwtLoginFilter jwtLoginFilter = new JwtLoginFilter(authenticationManager(), cookieUtill);
+        System.out.println("jwtLoginFilter : "+ jwtLoginFilter);
+
         jwtLoginFilter.setFilterProcessesUrl("/signin");
         jwtLoginFilter.setAuthenticationManager(authenticationManager());
 

@@ -40,27 +40,11 @@ public class User extends BaseEntity {
     @Column(name = "from_social")
     private boolean fromSocial;
 
-    private List authorities;
+//    private List authorities;
 
-    //    @Builder.Default // 기본값 설정
-//    @Column(name = "roles")
-//    @ElementCollection(fetch = FetchType.LAZY) // Lazy 로딩 설정이 되어 있는 Entity는 프록시 객체로 가져온다
-//                                                // 후에 실제 객체를 사용하는 시점에 초기화된다. DB에 쿼리 실행
-//    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_no"))
     @Enumerated(EnumType.STRING)
     @Column(name = "roles")
     private Role roles;
-
-
-    // enum 이름을 DB에 저장
-//    private List<Role> roles;
-
-//    private Role roles;
-//    @Column(name="roles")
-//    @Enumerated(EnumType.STRING)
-//    public Role getRole() {
-//        return roles;
-//    }
 
     public void changeRoles(Role roles) { this.roles = roles; }
 

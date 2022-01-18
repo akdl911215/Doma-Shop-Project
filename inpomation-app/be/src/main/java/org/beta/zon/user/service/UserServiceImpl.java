@@ -48,20 +48,21 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     }
 
+    // 스프링 고유의 기능으로 로그인 필터 나중에 추가 작업해야함.
     @Override
     public UserDto signin(UserDto userDto) {
         User entity = dtoEntity(userDto);
-//        boolean loginSN = validationLogin(entity.getUsername());
-//        log.info("loginSN : "+ loginSN);
-//
-//        if (loginSN == false){
-//            log.info("유효성 검사 실패하였습니다.");
-//            userDto.setLoginSuccessOrNot(false);
-//            userDto.setToken(null);
-//            return userDto;
-//        }
-//
-//        else {
+        boolean loginSN = validationLogin(entity.getUsername());
+        log.info("loginSN : "+ loginSN);
+
+        if (loginSN == false){
+            log.info("유효성 검사 실패하였습니다.");
+            userDto.setLoginSuccessOrNot(false);
+            userDto.setToken(null);
+            return userDto;
+        }
+
+        else {
             log.info("유효성 검사 성공하였습니다.");
             System.out.println("entity.getUsername(),    entity.getPassword()" + entity.getUsername() + " ,  "  + entity.getPassword());
             Optional<User> userEntity = userRepository.findByUsername(entity.getUsername());
@@ -75,7 +76,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
             log.info("entityDto.getToken() = " + entityDto.getToken());
 
             return userDto;
-//        }
+        }
     }
 
     @Override

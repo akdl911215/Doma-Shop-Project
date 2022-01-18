@@ -22,8 +22,8 @@ class UserRepositoryTest {
     void signin() {
 
 
-        User admin3 = userRepository.signin("admin3", "1");
-        System.out.println("admin3`" + admin3);
+//        User admin3 = userRepository.signin("admin3", "1");
+//        System.out.println("admin3`" + admin3);
 
 
         Optional<User> admin31 = userRepository.findByUsername("admin3");

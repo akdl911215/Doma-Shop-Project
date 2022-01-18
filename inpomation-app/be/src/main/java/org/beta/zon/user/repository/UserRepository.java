@@ -24,8 +24,8 @@ public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredi
     Optional<User> findByUsername(String username);
     Role findByRoles(Role roles);
 
-    @Query(value = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
-    User signin(@Param("username") String username, @Param("password") String password);
+    @Query(value = "SELECT u FROM User u WHERE u.username = :username ")
+    User signin(@Param("username") String username);
 
 
     // @EntityGraph = LAZY 패치타입으로 relation이 달려있는 entity를 n+1 문제 없이 한번에 가져오고 싶으때 사용

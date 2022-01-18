@@ -3,14 +3,11 @@ package org.beta.zon.security.config.Jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import lombok.extern.slf4j.Slf4j;
+import org.beta.zon.security.domain.SecurityProvider;
 import org.beta.zon.security.exception.UserNotFoundException;
-import org.beta.zon.security.service.UserDetailsImpl;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -30,14 +27,28 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         super(authenticationManager);
         this.userRepository = userRepository;
         this.session = session;
+
     }
 
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+        log.info("request => {}" + request);
+        log.info("response => {}" + response);
+        log.info("chain => {}" + chain);
 
-        log.info("권한이 필요한 요청이 들어옵니다");
-        String header = request.getHeader(JwtProperties.TOKEN_HEADER);
+        log.info("시큐리티 사용시 권한이 필요한 요청이 들어옵니다");
+        log.info("JwtProperties.TOKEN_HEADER => {}" , JwtProperties.TOKEN_HEADER);
+//        log.info("request.getHeader(JwtProperties.TOKEN_HEADER) => {}", request.getHeader(JwtProperties.TOKEN_HEADER));
+
+//        log.info("request.getHeaders(JwtProperties.TOKEN_HEADER) => {}", request.getHeaders(JwtProperties.TOKEN_HEADER));
+//        log.info("request.getHeader(JwtProperties.TOKEN_HEADER) => {}", request.getHeader(JwtProperties.TOKEN_HEADER));
+
+//        String headerName = securityProvider.resolveToken((HttpServletRequest) request);
+        String headerName = request.getHeader(JwtProperties.TOKEN_HEADER);
+//        String headerName = String.valueOf(request.getHeader(JwtProperties.TOKEN_HEADER));
+        log.info("headerName => {} ", headerName);
+        String header = headerName;
         log.info("token => {} ", header);
 
         if(header == null || !header.startsWith(JwtProperties.TOKEN_PRIFIX)){
@@ -63,16 +74,16 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
                 return new UserNotFoundException("유저 정보를 찾을 수 없습니다");
             });
 
-            UserDetailsImpl userDetails = new UserDetailsImpl(user.getUserno(), user.getUsername(),
-                    user.getPassword(), user.getName(), user.getAddress(), user.getPhoneNumber(), user.getEmail(),
-                    user.isFromSocial(), user.getAuthorities());
+//            UserDetailsImpl userDetails = new UserDetailsImpl(user.getUserno(), user.getUsername(),
+//                    user.getPassword(), user.getName(), user.getAddress(), user.getPhoneNumber(), user.getEmail(),
+//                    user.isFromSocial(), user.getAuthorities());
 
-            Authentication authentication = new UsernamePasswordAuthenticationToken(
-                    userDetails,
-                    userDetails.getPassword(),
-                    userDetails.getAuthorities()
-            );
-            SecurityContextHolder.getContext().setAuthentication(authentication); // 인증 완료
+//            Authentication authentication = new UsernamePasswordAuthenticationToken(
+//                    userDetails,
+//                    userDetails.getPassword(),
+//                    userDetails.getAuthorities()
+//            );
+//            SecurityContextHolder.getContext().setAuthentication(authentication); // 인증 완료
         }
 
         chain.doFilter(request, response);
