@@ -31,8 +31,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+        @Override
+        protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         log.info("request => {}" + request);
         log.info("response => {}" + response);
         log.info("chain => {}" + chain);
@@ -44,11 +44,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 //        log.info("request.getHeaders(JwtProperties.TOKEN_HEADER) => {}", request.getHeaders(JwtProperties.TOKEN_HEADER));
 //        log.info("request.getHeader(JwtProperties.TOKEN_HEADER) => {}", request.getHeader(JwtProperties.TOKEN_HEADER));
 
-//        String headerName = securityProvider.resolveToken((HttpServletRequest) request);
-        String headerName = request.getHeader(JwtProperties.TOKEN_HEADER);
-//        String headerName = String.valueOf(request.getHeader(JwtProperties.TOKEN_HEADER));
-        log.info("headerName => {} ", headerName);
-        String header = headerName;
+
+//        String header = request.getHeader(JwtProperties.TOKEN_HEADER);
+        String header = request.getHeader("Authorization");
         log.info("token => {} ", header);
 
         if(header == null || !header.startsWith(JwtProperties.TOKEN_PRIFIX)){
