@@ -1,10 +1,7 @@
 package org.beta.zon.security.config;
 
 import lombok.RequiredArgsConstructor;
-import org.beta.zon.security.config.Jwt.*;
 import org.beta.zon.security.domain.SecurityProvider;
-import org.beta.zon.security.util.CookieUtill;
-import org.beta.zon.user.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,9 +23,9 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecurityProvider provider;
-    private final CookieUtill cookieUtill;
-    private final UserRepository userRepository;
-    private final HttpSession httpSession;
+//    private final CookieUtill cookieUtill;
+//    private final UserRepository userRepository;
+//    private final HttpSession httpSession;
 
     // 암호화에 필요한 PasswordEncoder를 Bean 등록한다.
     @Bean
@@ -67,15 +64,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(jwtLoginFilter())
-                .addFilter(new JWTAuthorizationFilter(authenticationManager(), userRepository, httpSession))
-                .exceptionHandling()
-                .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
-                .accessDeniedHandler(new JwtAceessDeniedHandler())
-                .and()
+//                .addFilter(jwtLoginFilter())
+//                .addFilter(new JWTAuthorizationFilter(authenticationManager(), userRepository, httpSession))
+//                .exceptionHandling()
+//                .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+//                .accessDeniedHandler(new JwtAceessDeniedHandler())
+//                .and()
                 .authorizeRequests() // 요청에 대한 사용권한 체크
-                .antMatchers("/users/**").hasRole("MEMBER")
-//                .antMatchers("/users/**").permitAll()
+//                .antMatchers("/users/**").hasRole("MEMBER")
+                .antMatchers("/users/**").permitAll()
                 .antMatchers("/admins/**").hasRole("ADMIN")
                 .antMatchers("/managers/**").hasRole("MANAGER")
                 .anyRequest().permitAll(); // 그 외 나머지 요청은 누구나 접근 가능
@@ -104,19 +101,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/h2-console/**");
     }
 
-    @Bean
-    public JwtLoginFilter jwtLoginFilter() throws Exception {
-
-        final JwtLoginFilter jwtLoginFilter = new JwtLoginFilter(authenticationManager(), cookieUtill);
-        System.out.println("jwtLoginFilter : "+ jwtLoginFilter);
-
-        jwtLoginFilter.setFilterProcessesUrl("/signin");
-        jwtLoginFilter.setAuthenticationManager(authenticationManager());
-
-        jwtLoginFilter.setAuthenticationSuccessHandler(new JwtLoginSuccessHandler());
-        jwtLoginFilter.setAuthenticationFailureHandler(new JwtLoginFailureHandler());
-
-        return jwtLoginFilter;
-    }
+//    @Bean
+//    public JwtLoginFilter jwtLoginFilter() throws Exception {
+//
+//        final JwtLoginFilter jwtLoginFilter = new JwtLoginFilter(authenticationManager(), cookieUtill);
+//        System.out.println("jwtLoginFilter : "+ jwtLoginFilter);
+//
+//        jwtLoginFilter.setFilterProcessesUrl("/signin");
+//        jwtLoginFilter.setAuthenticationManager(authenticationManager());
+//
+//        jwtLoginFilter.setAuthenticationSuccessHandler(new JwtLoginSuccessHandler());
+//        jwtLoginFilter.setAuthenticationFailureHandler(new JwtLoginFailureHandler());
+//
+//        return jwtLoginFilter;
+//    }
 }
 

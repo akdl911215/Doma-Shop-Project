@@ -14,7 +14,7 @@ import SignupButtonComponent from "webapp/common/component/SignupButtonComponent
 import { Client } from "webapp/api/Client";
 
 const Signin = () => {
-  // const [inputID, setInputID] = useState("");
+  const [inputID, setInputID] = useState("");
   // const changeInputID = (e) => {
   //   setInputID(e.target.value);
   // };
@@ -48,7 +48,7 @@ const Signin = () => {
       })
       .catch((err) => console.log(err));
 
-    navigate("/");
+    // navigate("/");
   };
 
   const handleChange = (e) => {

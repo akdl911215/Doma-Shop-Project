@@ -3,7 +3,6 @@ package org.beta.zon.user.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.beta.zon.common.service.AbstractService;
-import org.beta.zon.security.config.Jwt.JwtLoginFilter;
 import org.beta.zon.security.domain.SecurityProvider;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
@@ -30,7 +29,6 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     private final UserRepository userRepository;
     private final SecurityProvider securityProvider;
     private final PasswordEncoder passwordEncoder;
-    private final JwtLoginFilter jwtLoginFilter;
 
     @Override
     public String save(User user) {
@@ -66,6 +64,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
             log.info("유효성 검사 성공하였습니다.");
             System.out.println("entity.getUsername(),    entity.getPassword()" + entity.getUsername() + " ,  "  + entity.getPassword());
             Optional<User> userEntity = userRepository.findByUsername(entity.getUsername());
+            log.info("userEntity => {} ", userEntity);
             String token = securityProvider.createToken(entity.getUsername(), userEntity.orElseThrow(() -> {
                 return new RuntimeException("user를 찾을 수 없습니다!!");
             }).getRoles());

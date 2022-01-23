@@ -69,7 +69,7 @@ const Signup = () => {
 
   return (
     <>
-      <form className="artistSignupHead">
+      {/* <form className="artistSignupHead">
         <div className="container">
           <h2>회원가입(Sign Up)</h2>
 
@@ -158,9 +158,9 @@ const Signup = () => {
             </button>
           </div>
         </div>
-      </form>
+      </form> */}
 
-      {/* <Container>
+      <Container>
         <Form>
           <Form.Group widths="equal">
             <Form.Field
@@ -208,12 +208,12 @@ const Signup = () => {
                 회원가입
               </Form.Field>
             </div>
-            <div style={style.buttonStyle}>
+            {/* <div style={style.buttonStyle}>
               <GoBackButtonComponent />
-            </div>
+            </div> */}
           </div>
         </Form>
-      </Container> */}
+      </Container>
     </>
   );
 };
