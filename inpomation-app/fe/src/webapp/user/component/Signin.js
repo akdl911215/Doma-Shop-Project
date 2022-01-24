@@ -14,11 +14,6 @@ import SignupButtonComponent from "webapp/common/component/SignupButtonComponent
 import { Client } from "webapp/api/Client";
 
 const Signin = () => {
-  const [inputID, setInputID] = useState("");
-  // const changeInputID = (e) => {
-  //   setInputID(e.target.value);
-  // };
-
   const [signin, setSignin] = useState({
     username: "",
     password: "",
@@ -27,14 +22,6 @@ const Signin = () => {
   const { username, password } = signin;
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  // const goSignin = (e) => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   dispatch(signinPage(signin));
-  //   // navigate.push('/');
-  // };
 
   const signinButton = () => {
     alert("로그인버튼누름");
@@ -46,9 +33,9 @@ const Signin = () => {
       .then((res) => {
         console.log("signin res : ", res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("signin err : ", err));
 
-    // navigate("/");
+    navigate("/");
   };
 
   const handleChange = (e) => {
@@ -75,6 +62,7 @@ const Signin = () => {
               <Form.Input
                 fluid
                 icon="user"
+                name="username"
                 iconPosition="left"
                 placeholder="E-mail address"
                 onChange={handleChange}
@@ -82,6 +70,7 @@ const Signin = () => {
               <Form.Input
                 fluid
                 icon="lock"
+                name="password"
                 iconPosition="left"
                 placeholder="Password"
                 type="password"
