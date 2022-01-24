@@ -1,5 +1,7 @@
 package org.beta.zon.user.service;
 
+import org.beta.zon.common.domain.dto.PageRequestDto;
+import org.beta.zon.common.domain.dto.PageResultDto;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
 import org.beta.zon.user.domain.role.Role;
@@ -13,8 +15,8 @@ public interface UserService {
     List<User> findAll();
     void deleteById(Long userno);
     boolean validationLogin(String username);
-
     String signup(UserDto userDto);
+    PageResultDto<UserDto, User> getList(PageRequestDto pageRequestDto);
 
     default User dtoEntity(UserDto userDto){
         User entity = User.builder()

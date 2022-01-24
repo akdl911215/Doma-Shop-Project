@@ -1,4 +1,4 @@
-package org.beta.zon.repository;
+package org.beta.zon.user.repository;
 
 
 import org.beta.zon.user.domain.User;

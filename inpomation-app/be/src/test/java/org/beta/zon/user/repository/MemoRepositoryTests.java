@@ -1,4 +1,4 @@
-package org.beta.zon.repository;
+package org.beta.zon.user.repository;
 
 import org.beta.zon.memo.entity.Memo;
 import org.beta.zon.memo.repository.MemoRepository;

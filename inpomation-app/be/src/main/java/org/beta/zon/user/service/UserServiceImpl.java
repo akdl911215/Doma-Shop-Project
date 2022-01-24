@@ -2,23 +2,24 @@ package org.beta.zon.user.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.beta.zon.common.domain.dto.PageRequestDto;
+import org.beta.zon.common.domain.dto.PageResultDto;
 import org.beta.zon.common.service.AbstractService;
 import org.beta.zon.security.domain.SecurityProvider;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
 import org.beta.zon.user.domain.role.Role;
 import org.beta.zon.user.repository.UserRepository;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 @Transactional
@@ -29,6 +30,22 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     private final UserRepository userRepository;
     private final SecurityProvider securityProvider;
     private final PasswordEncoder passwordEncoder;
+
+    @Override
+    public PageResultDto<UserDto, User> getList(PageRequestDto pageRequestDto) {
+        log.info("pageRequestDto : " + pageRequestDto);
+
+        Pageable pageable = pageRequestDto.getPageable(Sort.by("userno").descending());
+        log.info("pageable : " + pageable);
+
+        Page<User> result = userRepository.findAll(pageable);
+        log.info("result : " + result);
+
+        Function<User, UserDto> fn = (entity -> entityDto(entity));
+        log.info("fn : " + fn);
+
+        return new PageResultDto<>(result, fn);
+    }
 
     @Override
     public String save(User user) {
