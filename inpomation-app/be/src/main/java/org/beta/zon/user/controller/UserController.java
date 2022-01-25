@@ -6,11 +6,15 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.beta.zon.common.domain.dto.PageRequestDto;
+import org.beta.zon.common.domain.dto.PageResultDto;
 import org.beta.zon.security.domain.SecurityProvider;
 import org.beta.zon.user.domain.dto.UserDto;
 import org.beta.zon.user.service.UserServiceImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -19,7 +23,7 @@ import java.util.Map;
 
 @RestController // controller + @ResponseBody > 주용도는 JSON 형태로 객체 데이터 반환
 @RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
-@RequiredArgsConstructor
+@RequiredArgsConstructor // 자동 주입을 위한 Annotation
 @Log4j2
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
@@ -28,6 +32,13 @@ public class UserController {
     private final SecurityProvider securityProvider;
     private final PasswordEncoder passwordEncoder;
 
+
+    @GetMapping("list")
+    public ResponseEntity<PageResultDto<UserDto, Object[]>> list(PageRequestDto pageRequestDto) {
+        log.info("List ................ " + pageRequestDto);
+
+        return new ResponseEntity(userServiceImpl.getList(pageRequestDto), HttpStatus.OK);
+    }
 
     @PostMapping("/signup")
     @ApiOperation(value = "회원가입 등록", notes = "회원 정보를 등록 합니다") // 요청 URL 에 매핑된 API 에 대한 설명

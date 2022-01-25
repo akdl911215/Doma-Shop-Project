@@ -1,6 +1,7 @@
 import React from "react";
-import { TopMenuBar } from "webapp/common/index";
-import { AdminChart, UserNumberOfVists } from "webapp/admin/index";
+import TopMenuBar from "webapp/common/component/TopMenuBar";
+import AdminChart from "./AdminChart";
+import UserNumberOfVists from "./UserNumberOfVists";
 import { Container, Menu, Dropdown, Label } from "semantic-ui-react";
 
 const AdminMain = () => {

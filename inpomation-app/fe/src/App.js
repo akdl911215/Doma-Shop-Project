@@ -15,13 +15,12 @@ import ProductInfomationRegister from "webapp/prodeuct-infomatin/component/Produ
 import ProductInfomationReview from "webapp/prodeuct-infomatin/component/ProductInfomationReview";
 import ProductInfomationTab from "webapp/prodeuct-infomatin/component/ProductInfomationTab";
 import ProductInfomationRead from "webapp/prodeuct-infomatin/component/ProductInfomationRead";
-import TestCode from "webapp/test/TestCode";
-import TestCode2 from "webapp/test/TestCode2";
+// import TestCode from "webapp/test/TestCode";
+// import TestCode2 from "webapp/test/TestCode2";
 
 import { Route, Routes } from "react-router-dom";
 // import { StaticRouter } from "react-router-dom/server";
 import UserPageList from "webapp/user/component/UserPageList";
-import { Home } from "webapp/common/index";
 
 const App = () => {
   return (
@@ -67,9 +66,6 @@ const App = () => {
           path="/product_infomation_tab"
           element={<ProductInfomationTab />}
         />
-
-        <Route path="/testCode" element={<TestCode />} />
-        <Route path="/testCode2" element={<TestCode2 />} />
       </Routes>
     </>
   );
