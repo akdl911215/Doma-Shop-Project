@@ -21,8 +21,6 @@ public class PageRequestDto { // PageRequestDto 목적 : JPA쪽에서 사용하�
     }
 
     public Pageable getPageable(Sort sort) {
-        System.out.println("pagerequestdto sort : " + sort);
-
         return PageRequest.of(page -1, size, sort);
     }
 }

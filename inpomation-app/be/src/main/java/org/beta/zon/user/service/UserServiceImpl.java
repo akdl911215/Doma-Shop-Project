@@ -33,17 +33,9 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     @Override
     public PageResultDto<UserDto, User> getList(PageRequestDto pageRequestDto) {
-        log.info("pageRequestDto : " + pageRequestDto);
-
         Pageable pageable = pageRequestDto.getPageable(Sort.by("userno").descending());
-        log.info("pageable : " + pageable);
-
         Page<User> result = userRepository.findAll(pageable);
-        log.info("result : " + result);
-
         Function<User, UserDto> fn = (entity -> entityDto(entity));
-        log.info("fn : " + fn);
-
         return new PageResultDto<>(result, fn);
     }
 
