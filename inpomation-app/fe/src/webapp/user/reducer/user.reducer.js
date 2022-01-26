@@ -1,103 +1,72 @@
-// import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import reportWebVitals from "reportWebVitals";
-// import UserService from "webapp/user/service/user.service";
+import {
+  createRequestActionTypes,
+  Request,
+} from "webapp/lib/CreateRequestSaga";
+import { takeLatest } from "redux-saga/effects";
+import { UserPagenationListDataAPI } from "webapp/lib/CallApi";
 
-// const getUserSignin = async (signin) => {
-//   const response = await UserService.signin(signin);
-//   return response.data;
-// };
-// const getUserList = async (page) => {
-//   const response = await UserService.list(page);
-//   return response.data;
-// };
-// const getMypage = async (mypage) => {
-//   const response = await UserService.mypage(mypage);
-//   return response.data;
-// };
-// const getWithdrawal = async (withdrawal) => {
-//   const response = await UserService.withdrawal(withdrawal);
-//   console.log("response : ", response);
-//   return response.data;
-// };
+const [
+  USERPAGENATTIONBUTTON_REQUEST,
+  USERPAGENATTIONBUTTON_SUCCESS,
+  USERPAGENATTIONBUTTON_FAILURE,
+] = createRequestActionTypes("USERPAGENATIONBUTTON");
 
-// export const signinPage = createAsyncThunk("users/signin", getUserSignin);
-// export const fetchPage = createAsyncThunk("users/list", getUserList);
-// export const reviseMypage = createAsyncThunk("users/mypage", getMypage);
-// export const userWithdrawalPage = createAsyncThunk(
-//   "users/withdrawal",
-//   getWithdrawal
-// );
+// 액션 생성 함수
+export const UserCurrentPageLocation = (pageNumber) => {
+  console.log("pageNumber : ", pageNumber);
+  return {
+    type: USERPAGENATTIONBUTTON_REQUEST,
+    payload: pageNumber,
+  };
+};
 
-// const usersSlice = createSlice({
-//   name: "users",
-//   initialState: {
-//     usersState: {
-//       userId: "",
-//       username: "",
-//       password: "",
-//       name: "",
-//       companyName: "",
-//       companyNumber: "",
-//       address: "",
-//       email: "",
-//       number: "",
-//       phoneNumber: "",
-//     },
-//     pageResult: {
-//       dtoList: [],
-//       page: 1,
-//       pageList: [],
-//       start: 1,
-//       end: 1,
-//       prev: false,
-//       next: false,
-//     },
-//     type: "",
-//     keyword: "",
-//   },
-//   reducers: {
-//     // getLocalUser: (state, action) => {
-//     //     const userReducer = state.users.usersState;
-//     //     console.log('userReducer ::: ', userReducer);
-//     // },
-//     getLocalUserLogin: (state, action) => {
-//       if (state.usersState.username !== "") {
-//         return;
-//       }
+// 사가 생성
+const UserPageListSaga = Request(
+  USERPAGENATTIONBUTTON_REQUEST,
+  UserPagenationListDataAPI
+);
 
-//       const user = JSON.parse(window.localStorage.getItem("user"));
-//       state.usersState = user;
-//     },
-//   },
-//   extraReducers: {
-//     [signinPage.fulfilled]: (state, { meta, payload }) => {
-//       state.usersState = payload;
+// takeLatest(지속해서 감시)
+export function* UserPageListRequest() {
+  yield takeLatest(USERPAGENATTIONBUTTON_REQUEST, UserPageListSaga);
+}
 
-//       // JSON.stringify() : JavaScript 값이나 객체를 JSON 문자열로 변환
-//       console.log(
-//         "window.localStorage.setItem('user', JSON.stringify(payload)) : ",
-//         window.localStorage.setItem("user", JSON.stringify(payload))
-//       );
-//     },
-//     [fetchPage.fulfilled]: (state, { meta, payload }) => {
-//       state.pageResult = payload;
-//     },
-//     [reviseMypage.fulfilled]: (state, { meta, payload }) => {
-//       state.usersState = payload;
-//     },
-//     [userWithdrawalPage.fulfilled]: (state, { meta, payload }) => {
-//       state.usersState = payload;
-//     },
-//   },
-// });
+// 초기값 설정
+export const initialState = {
+  UserPageListInitialNumber: 1,
+  UserPageListInitialNumberRequst: false,
+  UserPageListInitialNumberError: null,
+};
 
-// export const currentUser = (state) => state.users.usersState;
-// console.log("Reducer currenUser : ", currentUser);
-// export const {
-//   SigninPage,
-//   getLocalUser,
-//   ReviseMypage,
-//   getLocalUserLogin,
-//   UserWithdrawalPage,
-// } = usersSlice.actions;
-// export default usersSlice.reducer;
+// 리듀서
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case USERPAGENATTIONBUTTON_REQUEST:
+      console.log("USERPAGENATTIONBUTTON_REQUEST : ", action);
+      return {
+        ...state,
+        UserPageListInitialNumber: null,
+        UserPageListInitialNumberRequst: false,
+        UserPageListInitialNumberError: null,
+      };
+
+    case USERPAGENATTIONBUTTON_SUCCESS:
+      console.log("USERPAGENATTIONBUTTON_SUCCESS : ", action);
+      return {
+        ...state,
+        UserPageListInitialNumber: action,
+        UserPageListInitialNumberRequst: true,
+      };
+
+    case USERPAGENATTIONBUTTON_FAILURE:
+      return {
+        ...state,
+        UserPageListInitialNumberRequst: false,
+        UserPageListInitialNumberError: action.error,
+      };
+
+    default:
+      return state;
+  }
+};
+export default reducer;

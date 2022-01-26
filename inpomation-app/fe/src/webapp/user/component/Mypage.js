@@ -1,57 +1,56 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  reviseMypage,
-  getLocalUserLogin,
-} from "webapp/user/reducer/user.reducer";
+import // reviseMypage,
+// getLocalUserLogin,
+"webapp/user/reducer/user.reducer";
 import UserWithdrawal from "./UserWithdrawal";
 
 const Mypage = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.users.usersState);
-  console.log("userState : ", userState);
-  console.log("userState.userId : ", userState.userId);
+  // const userState = useSelector((state) => state.users.usersState);
+  // console.log("userState : ", userState);
+  // console.log("userState.userId : ", userState.userId);
 
   useEffect(() => {
-    dispatch(getLocalUserLogin());
+    // dispatch(getLocalUserLogin());
   });
 
-  const [mypage, setMypage] = useState({
-    userId: userState.userId,
-    username: userState.username,
-    password: "",
-    name: userState.name,
-    companyName: "",
-    companyNumber: "",
-    address: "",
-    email: "",
-    number: "", //일반전화
-    phoneNumber: "",
-  });
+  // const [mypage, setMypage] = useState({
+  //   userId: userState.userId,
+  //   username: userState.username,
+  //   password: "",
+  //   name: userState.name,
+  //   companyName: "",
+  //   companyNumber: "",
+  //   address: "",
+  //   email: "",
+  //   number: "", //일반전화
+  //   phoneNumber: "",
+  // });
 
   const goMypage = async (e) => {
     let mypageResult = window.confirm("정보를 수정하시겠습니까?");
 
-    const obj = {
-      userId: userState.userId,
-      username: userState.username,
-      password: mypage.password,
-      name: userState.name,
-      companyName: mypage.companyName,
-      companyNumber: mypage.companyNumber,
-      address: mypage.address,
-      email: mypage.email,
-      number: mypage.number, //일반전화
-      phoneNumber: mypage.phoneNumber,
-    };
+    // const obj = {
+    //   userId: userState.userId,
+    //   username: userState.username,
+    //   password: mypage.password,
+    //   name: userState.name,
+    //   companyName: mypage.companyName,
+    //   companyNumber: mypage.companyNumber,
+    //   address: mypage.address,
+    //   email: mypage.email,
+    //   number: mypage.number, //일반전화
+    //   phoneNumber: mypage.phoneNumber,
+    // };
 
-    console.log("obj :::::: ", obj);
+    // console.log("obj :::::: ", obj);
 
     if (mypageResult) {
       alert("수정을 완료하셨습니다.");
-      dispatch(reviseMypage(obj));
+      // dispatch(reviseMypage(obj));
     }
   };
 
@@ -63,13 +62,13 @@ const Mypage = () => {
   // 오직 의존하는 상태값이 변경된 경우에만 갱신된다
   const handleChange = useCallback(
     (e) => {
-      const { name, value } = e.target;
-      setMypage({
-        ...mypage,
-        [name]: value,
-      });
+      // const { name, value } = e.target;
+      // setMypage({
+      //   ...mypage,
+      //   [name]: value,
+      // });
     },
-    [mypage] // [] 상태값이 변경된 경우에만 다시 생성
+    [] // [] 상태값이 변경된 경우에만 다시 생성
     // 빈배열을 넣으면 어떤 상태값에도 반응하지않으며,
     // 두번째 인자로 아무것도 넣지 않으면 모든 상태 변화에 반응
   );
@@ -92,7 +91,7 @@ const Mypage = () => {
           <input
             type="userId"
             name="userId"
-            value={userState.userId}
+            // value={userState.userId}
             disabled
           />
           <br />
@@ -104,7 +103,7 @@ const Mypage = () => {
           <input
             type="text"
             name="username"
-            value={userState.username}
+            // value={userState.username}
             disabled
           />
           <br />
@@ -117,7 +116,7 @@ const Mypage = () => {
             type="password"
             placeholder="Enter password"
             name="password"
-            value={mypage.password}
+            // value={mypage.password}
             onChange={(e) => handleChange(e)}
           />
 
@@ -125,7 +124,12 @@ const Mypage = () => {
             <b>이름</b>
           </label>
           <br />
-          <input type="text" name="name" value={userState.name} disabled />
+          <input
+            type="text"
+            name="name"
+            // value={userState.name}
+            disabled
+          />
           <br />
           <br />
 
@@ -136,7 +140,7 @@ const Mypage = () => {
             type="text"
             placeholder="Enter company name"
             name="companyName"
-            value={mypage.companyName}
+            // value={mypage.companyName}
             onChange={(e) => handleChange(e)}
           />
 
@@ -147,7 +151,7 @@ const Mypage = () => {
             type="text"
             placeholder="Enter company number"
             name="companyNumber"
-            value={mypage.companyNumber}
+            // value={mypage.companyNumber}
             onChange={(e) => handleChange(e)}
           />
 
@@ -158,7 +162,7 @@ const Mypage = () => {
             type="text"
             placeholder="Enter address"
             name="address"
-            value={mypage.address}
+            // value={mypage.address}
             onChange={(e) => handleChange(e)}
           />
 
@@ -169,7 +173,7 @@ const Mypage = () => {
             type="text"
             placeholder="Enter email"
             name="email"
-            value={mypage.email}
+            // value={mypage.email}
             onChange={(e) => handleChange(e)}
           />
 
@@ -180,7 +184,7 @@ const Mypage = () => {
             type="text"
             placeholder="Enter number"
             name="number"
-            value={mypage.number}
+            // value={mypage.number}
             onChange={(e) => handleChange(e)}
           />
 
@@ -191,7 +195,7 @@ const Mypage = () => {
             type="text"
             placeholder="Enter phone number"
             name="phoneNumber"
-            value={mypage.phoneNumber}
+            // value={mypage.phoneNumber}
             onChange={(e) => handleChange(e)}
           />
 

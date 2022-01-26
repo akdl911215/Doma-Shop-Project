@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./App.css";
 import Signup from "webapp/user/component/Signup";
 import Signin from "webapp/user/component/Signin";
@@ -15,18 +15,13 @@ import ProductInfomationRegister from "webapp/prodeuct-infomatin/component/Produ
 import ProductInfomationReview from "webapp/prodeuct-infomatin/component/ProductInfomationReview";
 import ProductInfomationTab from "webapp/prodeuct-infomatin/component/ProductInfomationTab";
 import ProductInfomationRead from "webapp/prodeuct-infomatin/component/ProductInfomationRead";
-// import TestCode from "webapp/test/TestCode";
-// import TestCode2 from "webapp/test/TestCode2";
-
 import { Route, Routes } from "react-router-dom";
-// import { StaticRouter } from "react-router-dom/server";
 import UserPageList from "webapp/user/component/UserPageList";
 
 const App = () => {
   return (
     <>
       <Routes>
-        {/* <Link to="/">Home</Link> */}
         <Route path="/" element={<ProductInfomationTab />} />
 
         <Route path="/admin_main" element={<AdminMain />} />

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import UserBtnReset from "./UserButtonReset";
-import UserPageListBtn from "./UserPageListButton";
 import {
   Table,
   Container,
@@ -10,13 +9,14 @@ import {
 } from "semantic-ui-react";
 import UserDeleteButton from "./UserDeleteButton";
 import { Client } from "webapp/api/Client";
+import ShowPageNation from "webapp/user/component/UserPagenationButton";
 
 const UserPageList = () => {
   useEffect(() => {
     userListTotalFetch();
   }, []);
 
-  const [userStateList, setUserStateList] = useState([]);
+  const [userStateList, setUserStateList] = useState("");
   const userListTotalFetch = () => {
     Client.get("http://localhost:8080/users/list")
       .then((res) => {
@@ -25,16 +25,16 @@ const UserPageList = () => {
       })
       .catch((error) => console.log("lest fetch error : ", error));
   };
-  const userTotalList = userStateList?.data?.dtoList;
+  const totalList = userStateList?.data?.dtoList;
   const end = userStateList?.data?.end;
   const next = userStateList?.data?.next;
   const page = userStateList?.data?.page;
   const pageList = userStateList?.data?.pageList;
+  console.log("UserPageList > pageList : ", pageList);
   const prev = userStateList?.data?.prev;
   const size = userStateList?.data?.size;
   const start = userStateList?.data?.start;
-  const totalpage = userStateList?.data?.totalPage;
-  // console.log("userTotalList : ", userTotalList);
+  const totalPage = userStateList?.data?.totalPage;
 
   const style = {
     UsePageListButtonStyle: {
@@ -48,16 +48,16 @@ const UserPageList = () => {
 
   const colors = ["blue"];
 
-  const [activePage, setActivePage] = useState(1);
-  console.log("activePage : ", activePage);
-  const [apiUrl, setApiUrl] = useState("http://localhost:3000/users_list/");
-  console.log("apiUrl : ", apiUrl);
-  const pageChangeButtonClick = (e, pageInfo) => {
-    setActivePage(pageInfo.activePage);
-    setApiUrl(
-      "http://localhost:3000/users_list/?page=" + activePage.toString()
-    );
-  };
+  // const [activePage, setActivePage] = useState(1);
+  // console.log("activePage : ", activePage);
+  // const [apiUrl, setApiUrl] = useState("http://localhost:3000/users_list/");
+  // console.log("apiUrl : ", apiUrl);
+  // const pageChangeButtonClick = (e, pageInfo) => {
+  //   setActivePage(pageInfo.activePage);
+  //   setApiUrl(
+  //     "http://localhost:3000/users_list/?page=" + activePage.toString()
+  //   );
+  // };
 
   return (
     <>
@@ -65,36 +65,38 @@ const UserPageList = () => {
         <div>
           {colors.map((color) => (
             <Table color={color} key={color}>
-              {userTotalList?.map((element) => {
+              {totalList?.map((element, index) => {
                 return (
                   <>
-                    <Table.Header>
-                      <Table.Row>
-                        <Table.HeaderCell>체크박스</Table.HeaderCell>
-                        <Table.HeaderCell>유저넘버</Table.HeaderCell>
-                        <Table.HeaderCell>아이디</Table.HeaderCell>
-                        <Table.HeaderCell>비밀번호</Table.HeaderCell>
-                        <Table.HeaderCell>이름</Table.HeaderCell>
-                        <Table.HeaderCell>주소</Table.HeaderCell>
-                        <Table.HeaderCell>이메일</Table.HeaderCell>
-                        <Table.HeaderCell>핸드폰번호</Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Header>
+                    <div key={index}>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCell>체크박스</Table.HeaderCell>
+                          <Table.HeaderCell>유저넘버</Table.HeaderCell>
+                          <Table.HeaderCell>아이디</Table.HeaderCell>
+                          <Table.HeaderCell>비밀번호</Table.HeaderCell>
+                          <Table.HeaderCell>이름</Table.HeaderCell>
+                          <Table.HeaderCell>주소</Table.HeaderCell>
+                          <Table.HeaderCell>이메일</Table.HeaderCell>
+                          <Table.HeaderCell>핸드폰번호</Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Header>
 
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>
-                          <Checkbox />
-                        </Table.Cell>
-                        <Table.Cell>{element.userno}</Table.Cell>
-                        <Table.Cell>{element.username}</Table.Cell>
-                        <Table.Cell>{element.password}</Table.Cell>
-                        <Table.Cell>{element.name}</Table.Cell>
-                        <Table.Cell>{element.address}</Table.Cell>
-                        <Table.Cell>{element.email}</Table.Cell>
-                        <Table.Cell>{element.phoneNumber}</Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>
+                            <Checkbox />
+                          </Table.Cell>
+                          <Table.Cell>{element.userno}</Table.Cell>
+                          <Table.Cell>{element.username}</Table.Cell>
+                          <Table.Cell>{element.password}</Table.Cell>
+                          <Table.Cell>{element.name}</Table.Cell>
+                          <Table.Cell>{element.address}</Table.Cell>
+                          <Table.Cell>{element.email}</Table.Cell>
+                          <Table.Cell>{element.phoneNumber}</Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </div>
                   </>
                 );
               })}
@@ -110,16 +112,27 @@ const UserPageList = () => {
           <UserDeleteButton />
         </div>
         <div style={style.PaginationStyle}>
-          <Pagination
+          {/* <Pagination
             boundaryRange={0}
             defaultActivePage={1}
             ellipsisItem={null}
             firstItem={null}
             lastItem={null}
-            siblingRange={totalpage}
-            totalPages={totalpage}
+            siblingRange={totalPage}
+            totalPages={totalPage}
             naxtItem={next}
             onPageChange={pageChangeButtonClick}
+          /> */}
+          <ShowPageNation
+            totalList={totalList}
+            end={end}
+            next={next}
+            page={page}
+            pageList={pageList}
+            prev={prev}
+            size={size}
+            start={start}
+            totalPage={totalPage}
           />
         </div>
       </Container>

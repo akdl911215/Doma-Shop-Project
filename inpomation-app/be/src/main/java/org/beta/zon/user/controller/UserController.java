@@ -33,7 +33,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
 
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public ResponseEntity<PageResultDto<UserDto, Object[]>> list(PageRequestDto pageRequestDto) {
         log.info("List ................ " + pageRequestDto);
 

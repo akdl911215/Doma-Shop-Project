@@ -1,23 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  userWithdrawalPage,
-  getLocalUserLogin,
-} from "webapp/user/reducer/user.reducer";
 
 const UserWithdrawal = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.users.usersState);
-  console.log("userState : ", userState);
+  // const userState = useSelector((state) => state.users.usersState);
+  // console.log("userState : ", userState);
 
   useEffect(() => {
-    dispatch(getLocalUserLogin());
+    // dispatch(getLocalUserLogin());
   });
 
   const [withdrawal, setWithdrawal] = useState({
-    userId: userState.userId,
+    // userId: userState.userId,
     username: "",
     password: "",
     name: "",
@@ -33,7 +29,7 @@ const UserWithdrawal = () => {
     const UserWithdrawalResult = window.confirm("회원을 탈퇴하시겠습니까?");
 
     const obj = {
-      userId: userState.userId,
+      // userId: userState.userId,
       username: withdrawal.username,
       password: withdrawal.password,
       name: withdrawal.name,
@@ -49,7 +45,7 @@ const UserWithdrawal = () => {
 
     if (UserWithdrawalResult) {
       alert("탈퇴를 완료하셨습니다.");
-      dispatch(userWithdrawalPage(obj));
+      // dispatch(userWithdrawalPage(obj));
     }
   };
 
@@ -82,7 +78,7 @@ const UserWithdrawal = () => {
           <input
             type="userId"
             name="userId"
-            value={userState.userId}
+            // value={userState.userId}
             disabled
           />
           <br />
