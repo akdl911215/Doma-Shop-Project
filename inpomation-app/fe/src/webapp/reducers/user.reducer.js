@@ -33,9 +33,19 @@ export function* UserPageListRequest() {
 
 // 초기값 설정
 export const initialState = {
-  UserPageListInitialNumber: 1,
-  UserPageListInitialNumberRequst: false,
-  UserPageListInitialNumberError: null,
+  UserPageListInitial: {
+    pageResult: {
+      dtoList: [],
+      page: 1,
+      pageList: [],
+      start: 1,
+      end: 1,
+      prev: false,
+      next: false,
+    },
+  },
+  UserPageListInitialRequst: false,
+  UserPageListInitialError: null,
 };
 
 // 리듀서
@@ -45,24 +55,45 @@ const reducer = (state = initialState, action) => {
       console.log("USERPAGENATTIONBUTTON_REQUEST : ", action);
       return {
         ...state,
-        UserPageListInitialNumber: null,
-        UserPageListInitialNumberRequst: false,
-        UserPageListInitialNumberError: null,
+        UserPageListInitial: {
+          pageResult: {
+            dtoList: [],
+            page: 1,
+            pageList: [],
+            start: 1,
+            end: 1,
+            prev: false,
+            next: false,
+          },
+        },
+        UserPageListInitialRequst: false,
+        UserPageListInitialError: null,
       };
 
     case USERPAGENATTIONBUTTON_SUCCESS:
       console.log("USERPAGENATTIONBUTTON_SUCCESS : ", action);
+      console.log("action?.payload?.page : ", action?.payload?.page);
       return {
         ...state,
-        UserPageListInitialNumber: action,
-        UserPageListInitialNumberRequst: true,
+        UserPageListInitial: {
+          pageResult: {
+            dtoList: [],
+            page: action?.payload?.page,
+            pageList: [],
+            start: 1,
+            end: 1,
+            prev: false,
+            next: false,
+          },
+        },
+        UserPageListInitialRequst: true,
       };
 
     case USERPAGENATTIONBUTTON_FAILURE:
       return {
         ...state,
-        UserPageListInitialNumberRequst: false,
-        UserPageListInitialNumberError: action.error,
+        UserPageListInitialRequst: false,
+        UserPageListInitialError: action.error,
       };
 
     default:

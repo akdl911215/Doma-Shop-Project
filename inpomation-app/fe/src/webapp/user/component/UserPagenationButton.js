@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { UserCurrentPageLocation } from "webapp/user/reducer/user.reducer";
+import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 
 const UserPagenationButton = ({
   pageList,

@@ -3,10 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import store from "webapp/_store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
+import configureStore from "webapp/_store/ConfigureStore";
+
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
