@@ -14,6 +14,29 @@ public class pageTestList {
     @Autowired
     UserServiceImpl userService;
 
+    @Test
+    public void testSearch() {
+        // i u n a e p
+        PageRequestDto pageRequestDto = PageRequestDto.builder()
+                .page(1)
+                .size(10)
+                .type("u")
+                .build();
+
+        PageResultDto<UserDto, User> resultDto = userService.getList(pageRequestDto);
+
+        System.out.println("PREV : " + resultDto.isPrev());
+        System.out.println("NEXT : " + resultDto.isNext());
+        System.out.println("TOTAL : " + resultDto.getTotalPage());
+
+        System.out.println("-----------------------------------------------");
+        for (UserDto userDto : resultDto.getDtoList()){
+            System.out.println(userDto);
+        }
+
+        System.out.println("================================================");
+        resultDto.getPageList().forEach(i -> System.out.println(i));
+    }
 
     @Test
     public void testList2() {

@@ -1,11 +1,14 @@
 package org.beta.zon.user.service;
 
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.beta.zon.common.domain.dto.PageRequestDto;
 import org.beta.zon.common.domain.dto.PageResultDto;
 import org.beta.zon.common.service.AbstractService;
 import org.beta.zon.security.domain.SecurityProvider;
+import org.beta.zon.user.domain.QUser;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
 import org.beta.zon.user.domain.role.Role;
@@ -34,7 +37,10 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     @Override
     public PageResultDto<UserDto, User> getList(PageRequestDto pageRequestDto) {
         Pageable pageable = pageRequestDto.getPageable(Sort.by("userno").descending());
-        Page<User> result = userRepository.findAll(pageable);
+
+        BooleanBuilder booleanBuilder = getSearch(pageRequestDto); // 검색 조건 처리
+
+        Page<User> result = userRepository.findAll(booleanBuilder, pageable);
         Function<User, UserDto> fn = (entity -> entityDto(entity));
         return new PageResultDto<>(result, fn);
     }
@@ -161,5 +167,46 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     @Override
     public void deleteAll() {
         userRepository.deleteAll();
+    }
+
+    private BooleanBuilder getSearch(PageRequestDto pageRequestDto) { // Querydsl 처리
+        String type = pageRequestDto.getType();
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+        QUser qUser = QUser.user;
+
+        String keyowrd = pageRequestDto.getKeyword();
+        BooleanExpression expression = qUser.userno.gt(0L); // userno > 0 조건만 생성
+        booleanBuilder.and(expression);
+
+        if (type == null || type.trim().length() == 0) { // 검색 조건이 없는 경우
+            return booleanBuilder;
+        }
+
+        // 검색 조건을 작성하기
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+
+        if (type.contains("i")) {
+            conditionBuilder.or(qUser.userno.stringValue().contains(keyowrd));
+        }
+        if (type.contains("u")) {
+            conditionBuilder.or(qUser.username.stringValue().contains(keyowrd));
+        }
+        if (type.contains("n")) {
+            conditionBuilder.or(qUser.name.stringValue().contains(keyowrd));
+        }
+        if (type.contains("a")) {
+            conditionBuilder.or(qUser.address.stringValue().contains(keyowrd));
+        }
+        if (type.contains("e")) {
+            conditionBuilder.or(qUser.email.stringValue().contains(keyowrd));
+        }
+        if (type.contains("p")) {
+            conditionBuilder.or(qUser.phoneNumber.stringValue().contains(keyowrd));
+        }
+
+        // 모든 조건 통합
+        booleanBuilder.and(conditionBuilder);
+
+        return booleanBuilder;
     }
 }

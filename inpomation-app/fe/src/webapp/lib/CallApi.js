@@ -7,11 +7,15 @@ export const UserPagenationListDataAPI = (page) => {
 
   const str =
     "page=" +
-    (!page.page ? 1 : page.page) +
+    (page.page ? page.page : 1) +
     "&type=" +
     (page.type ? page.type : "") +
     "&keyword=" +
     (page.keyword ? page.keyword : "");
 
+  console.log(
+    "`${backUrl}/users/list?` + str : ",
+    `${backUrl}/users/list?` + str
+  );
   return Client.get(`${backUrl}/users/list?` + str);
 };

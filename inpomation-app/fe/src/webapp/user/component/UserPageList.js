@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import UserBtnReset from "./UserButtonReset";
 import {
   Table,
@@ -6,35 +6,34 @@ import {
   Checkbox,
   Pagination,
   Input,
+  Button,
 } from "semantic-ui-react";
 import UserDeleteButton from "./UserDeleteButton";
-import { Client } from "webapp/api/Client";
+import { useDispatch, useSelector } from "react-redux";
+import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 import ShowPageNation from "webapp/user/component/UserPagenationButton";
+import { useNavigate } from "react-router-dom";
 
 const UserPageList = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    userListTotalFetch();
+    dispatch(UserCurrentPageLocation(1));
   }, []);
 
-  const [userStateList, setUserStateList] = useState("");
-  const userListTotalFetch = () => {
-    Client.get("http://localhost:8080/users/list")
-      .then((res) => {
-        console.log("list fetch res : ", res);
-        setUserStateList(res);
-      })
-      .catch((error) => console.log("lest fetch error : ", error));
-  };
-  const totalList = userStateList?.data?.dtoList;
-  const end = userStateList?.data?.end;
-  const next = userStateList?.data?.next;
-  const page = userStateList?.data?.page;
-  const pageList = userStateList?.data?.pageList;
-  console.log("UserPageList > pageList : ", pageList);
-  const prev = userStateList?.data?.prev;
-  const size = userStateList?.data?.size;
-  const start = userStateList?.data?.start;
-  const totalPage = userStateList?.data?.totalPage;
+  const { totalList, end, next, page, pageList, prev, size, start, totalPage } =
+    useSelector(({ UserReducer }) => ({
+      totalList: UserReducer?.UserPageListInitial?.pageResult?.dtoList,
+      end: UserReducer?.UserPageListInitial?.pageResult?.end,
+      next: UserReducer?.UserPageListInitial?.pageResult?.next,
+      page: UserReducer?.UserPageListInitial?.pageResult?.page,
+      pageList: UserReducer?.UserPageListInitial?.pageResult?.pageList,
+      prev: UserReducer?.UserPageListInitial?.pageResult?.prev,
+      size: UserReducer?.UserPageListInitial?.pageResult?.size,
+      start: UserReducer?.UserPageListInitial?.pageResult?.start,
+      totalPage: UserReducer?.UserPageListInitial?.pageResult?.totalPage,
+    }));
 
   const style = {
     UsePageListButtonStyle: {
@@ -47,17 +46,6 @@ const UserPageList = () => {
   };
 
   const colors = ["blue"];
-
-  // const [activePage, setActivePage] = useState(1);
-  // console.log("activePage : ", activePage);
-  // const [apiUrl, setApiUrl] = useState("http://localhost:3000/users_list/");
-  // console.log("apiUrl : ", apiUrl);
-  // const pageChangeButtonClick = (e, pageInfo) => {
-  //   setActivePage(pageInfo.activePage);
-  //   setApiUrl(
-  //     "http://localhost:3000/users_list/?page=" + activePage.toString()
-  //   );
-  // };
 
   return (
     <>
@@ -108,6 +96,9 @@ const UserPageList = () => {
           placeholder="Search..."
         />
         <div style={style.UsePageListButtonStyle}>
+          <Button primary onClick={() => navigate("/admin_main")}>
+            뒤로가기
+          </Button>
           <UserBtnReset />
           <UserDeleteButton />
         </div>
