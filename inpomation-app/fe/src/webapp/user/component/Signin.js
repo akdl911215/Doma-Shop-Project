@@ -9,18 +9,18 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
-import SignupButtonComponent from "webapp/common/component/SignupButtonComponent";
+import SignupButton from "webapp/common/component/SignupButton";
 import { Client } from "webapp/api/Client";
+import styles from "../style/UserSignin.module.css";
 
 const Signin = () => {
+  const navigate = useNavigate();
   const [signin, setSignin] = useState({
     username: "",
     password: "",
   });
 
   const { username, password } = signin;
-
-  const navigate = useNavigate();
 
   const signinButton = () => {
     alert("로그인버튼누름");
@@ -48,11 +48,11 @@ const Signin = () => {
   return (
     <>
       <Grid
+        className={styles.SigninGridStyle}
         textAlign="center"
-        style={{ height: "100vh" }}
         verticalAlign="middle"
       >
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column className={styles.SigninGridColumnStyle}>
           <Header as="h2" color="blue" textAlign="center">
             <img src={Betazon} alt="betazon_logo" className="betazonLogo" />
           </Header>
@@ -82,7 +82,7 @@ const Signin = () => {
           </Form>
 
           <Message>
-            회원가입이 안됬나요?ㅤ <SignupButtonComponent />
+            회원가입이 안됬나요?ㅤ <SignupButton />
           </Message>
         </Grid.Column>
       </Grid>

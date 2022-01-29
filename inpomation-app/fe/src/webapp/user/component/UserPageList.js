@@ -1,18 +1,12 @@
 import React, { useEffect } from "react";
 import UserBtnReset from "./UserButtonReset";
-import {
-  Table,
-  Container,
-  Checkbox,
-  Pagination,
-  Input,
-  Button,
-} from "semantic-ui-react";
+import { Table, Container, Checkbox, Input, Button } from "semantic-ui-react";
 import UserDeleteButton from "./UserDeleteButton";
 import { useDispatch, useSelector } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 import ShowPageNation from "webapp/user/component/UserPagenationButton";
 import { useNavigate } from "react-router-dom";
+import styles from "../style/UserPageList.module.css";
 
 const UserPageList = () => {
   const dispatch = useDispatch();
@@ -34,16 +28,6 @@ const UserPageList = () => {
       start: UserReducer?.UserPageListInitial?.pageResult?.start,
       totalPage: UserReducer?.UserPageListInitial?.pageResult?.totalPage,
     }));
-
-  const style = {
-    UsePageListButtonStyle: {
-      float: "right",
-    },
-    PaginationStyle: {
-      paddingTop: "4rem",
-      textAlign: "center",
-    },
-  };
 
   const colors = ["blue"];
 
@@ -95,25 +79,14 @@ const UserPageList = () => {
           icon={{ name: "search", circular: true, link: true }}
           placeholder="Search..."
         />
-        <div style={style.UsePageListButtonStyle}>
+        <div className={styles.UserPageListButtonStyle}>
           <Button primary onClick={() => navigate("/admin_main")}>
             뒤로가기
           </Button>
           <UserBtnReset />
           <UserDeleteButton />
         </div>
-        <div style={style.PaginationStyle}>
-          {/* <Pagination
-            boundaryRange={0}
-            defaultActivePage={1}
-            ellipsisItem={null}
-            firstItem={null}
-            lastItem={null}
-            siblingRange={totalPage}
-            totalPages={totalPage}
-            naxtItem={next}
-            onPageChange={pageChangeButtonClick}
-          /> */}
+        <div className={styles.PaginationStyle}>
           <ShowPageNation
             totalList={totalList}
             end={end}

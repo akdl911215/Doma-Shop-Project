@@ -1,18 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "semantic-ui-react";
+import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 
 const UserButtonReset = () => {
   const dispatch = useDispatch();
-  // const runReset = () => {
-  //   dispatch(fetchPage(1));
-  // };
 
   return (
     <>
-      {/* <Button primary onClick={() => runReset()}>
-       1페이지로 초기화
-      </Button> */}
+      <Button primary onClick={() => dispatch(UserCurrentPageLocation(1))}>
+        1페이지로 초기화
+      </Button>
     </>
   );
 };

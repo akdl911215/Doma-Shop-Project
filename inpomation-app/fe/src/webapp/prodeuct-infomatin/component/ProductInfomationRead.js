@@ -5,7 +5,6 @@ import {
   Form,
   TextArea,
   Button,
-  Checkbox,
   Table,
   Container,
   Input,
@@ -13,10 +12,8 @@ import {
   Rating,
   Comment,
   Header,
-  Icon,
 } from "semantic-ui-react";
-import HomeButtonComponent from "webapp/common/component/HomeButtonComponent";
-import GoBackButtonComponent from "webapp/common/component/GoBackButtonComponent";
+import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router";
 
 const ProductInfomationRead = () => {
@@ -281,8 +278,8 @@ const ProductInfomationRead = () => {
               (admin 전용)
             </Button>
 
-            <GoBackButtonComponent name="ProductInfomationRead" />
-            <HomeButtonComponent />
+            <Button secondary>뒤로가기</Button>
+            <GoHomeButton />
           </div>
         </div>
       </Container>

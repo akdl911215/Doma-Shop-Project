@@ -2,18 +2,15 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 import { useNavigate } from "react-router";
 
-const HomeButtonComponent = () => {
+const GoBackButton = () => {
   const navigate = useNavigate();
 
-  const goHomeButton = () => {
-    navigate("/");
-  };
   return (
     <>
-      <Button onClick={goHomeButton} color="black">
+      <Button onClick={() => navigate("/")} color="black">
         홈으로
       </Button>
     </>
   );
 };
-export default HomeButtonComponent;
+export default GoBackButton;

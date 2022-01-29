@@ -12,8 +12,7 @@ import {
   Image,
   Reveal,
 } from "semantic-ui-react";
-import HomeButtonComponent from "webapp/common/component/HomeButtonComponent";
-import GoBackButtonComponent from "webapp/common/component/GoBackButtonComponent";
+import GoHomeButton from "webapp/common/component/GoHomeButton";
 
 const ProductInfomationModify = () => {
   const [selectedFile, setSelectedFile] = useState([]);
@@ -182,8 +181,9 @@ const ProductInfomationModify = () => {
               수정하기
             </Button>
 
-            <GoBackButtonComponent name="ProductInfomationModify" />
-            <HomeButtonComponent />
+            <Button secondary>뒤로가기</Button>
+
+            <GoHomeButton />
           </div>
         </div>
       </Container>

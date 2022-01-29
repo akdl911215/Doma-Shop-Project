@@ -4,7 +4,7 @@ import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 
 const UserPagenationButton = ({
   pageList,
-  page,
+  page = 1,
   start,
   end,
   prev,
@@ -12,46 +12,23 @@ const UserPagenationButton = ({
   type = "",
   keyword = "",
 }) => {
-  console.log("pageList : ", pageList);
-  console.log("page : ", page);
-  console.log("start : ", start);
-  console.log("end : ", end);
-  console.log("prev : ", prev);
-  console.log("next : ", next);
-  console.log("type : ", type);
-  console.log("keyword : ", keyword);
-
   const dispatch = useDispatch();
   const movePage = (page) => {
     const param = { page: page, keyword: keyword, type: type };
-    console.log("param : ", param);
     dispatch(UserCurrentPageLocation(param));
   };
 
   const list = pageList?.map((i) => (
-    <button key={i} className="userPageListBtn" onClick={() => movePage(i)}>
+    <button key={i} onClick={() => movePage(i)}>
       {i}
     </button>
   ));
-  console.log("list : ", list);
 
   return (
     <>
-      {prev ? (
-        <button className="pageListBtn" onClick={() => movePage(start - 1)}>
-          prev
-        </button>
-      ) : (
-        <></>
-      )}
+      {prev ? <button onClick={() => movePage(start - 1)}>prev</button> : <></>}
       {list}
-      {next ? (
-        <button className="pageListBtn" onClick={() => movePage(end + 1)}>
-          next
-        </button>
-      ) : (
-        <></>
-      )}
+      {next ? <button onClick={() => movePage(end + 1)}>next</button> : <></>}
     </>
   );
 };

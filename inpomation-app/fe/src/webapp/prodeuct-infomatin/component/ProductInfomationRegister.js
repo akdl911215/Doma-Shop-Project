@@ -1,11 +1,8 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   Form,
   TextArea,
   Button,
-  Checkbox,
   Table,
   Container,
   Input,
@@ -13,8 +10,7 @@ import {
   Reveal,
   Rating,
 } from "semantic-ui-react";
-import HomeButtonComponent from "webapp/common/component/HomeButtonComponent";
-import GoBackButtonComponent from "webapp/common/component/GoBackButtonComponent";
+import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router-dom";
 
 const ProductInfomationRegister = () => {
@@ -206,13 +202,9 @@ const ProductInfomationRegister = () => {
               (admin전용)
             </Button>
 
-            <GoBackButtonComponent name="ProductInfomationRegister" />
+            <Button secondary>뒤로가기</Button>
 
-            {/* <Button color="grey" style={style.noticeRegisterButtonStyle}>
-              뒤로가기
-            </Button> */}
-
-            <HomeButtonComponent />
+            <GoHomeButton />
           </div>
         </div>
       </Container>

@@ -2,6 +2,8 @@ import React, { useCallback, useState } from "react";
 import { Button, Form, Input, Container } from "semantic-ui-react";
 import { Client } from "webapp/api/Client";
 import { useNavigate } from "react-router-dom";
+import GoHomeButton from "webapp/common/component/GoHomeButton";
+import styles from "../style/UserSignup.module.css";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -46,15 +48,6 @@ const Signup = () => {
       .catch((err) => console.log(err));
 
     navigate("/users_signin");
-  };
-
-  const style = {
-    buttonStyle: {
-      float: "right",
-    },
-    textareatStyle: {
-      width: "100%",
-    },
   };
 
   return (
@@ -116,14 +109,14 @@ const Signup = () => {
             />
           </Form.Group>
           <div>
-            <div style={style.buttonStyle}>
+            <div className={styles.ButtonStyle}>
               <Form.Field secondary control={Button} onClick={handleSubmit}>
                 회원가입
               </Form.Field>
             </div>
-            {/* <div style={style.buttonStyle}>
-              <GoBackButtonComponent />
-            </div> */}
+            <div className={styles.ButtonStyle}>
+              <GoHomeButton />
+            </div>
           </div>
         </Form>
       </Container>

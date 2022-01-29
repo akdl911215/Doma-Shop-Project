@@ -1,18 +1,8 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router";
-import {
-  Icon,
-  Label,
-  Menu,
-  Table,
-  Button,
-  Container,
-  Card,
-  Image,
-} from "semantic-ui-react";
-import SigninButtonComponent from "webapp/common/component/SigninButtonComponent";
-import SignupButtonComponent from "webapp/common/component/SignupButtonComponent";
+import { Button, Container, Card, Image } from "semantic-ui-react";
+import SigninButton from "webapp/common/component/SigninButton";
+import SignupButton from "webapp/common/component/SignupButton";
 import {
   AuaOasisToner,
   SoptCamingGell,
@@ -191,8 +181,8 @@ const ProductInfomationList = () => {
             <br />
             (admin전용)
           </Button>
-          <SigninButtonComponent />
-          <SignupButtonComponent />
+          <SigninButton />
+          <SignupButton />
         </div>
         {/* </div > */}
       </Container>
