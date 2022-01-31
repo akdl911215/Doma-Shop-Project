@@ -1,0 +1,39 @@
+.BackgroundBoardStyle {
+  width: 100%;
+  max-width: 100rem;
+  margin: auto;
+}
+
+.ButtonStyle {
+  float: right;
+}
+
+.ProductInfomationHeaderStyle {
+  text-align: center;
+  width: 100%;
+}
+
+.ProductInfomationBodyStyleProductInfomationBodyStyle {
+  height: 35rem;
+}
+
+.ProductInfomationReadButtonStyle {
+  float: right;
+}
+
+.ProductInfomationReadPhotoStyle {
+  width: 5rem;
+  height: 5rem;
+}
+
+.ProductInfomationReadMainPhotoRowStyle {
+  height: 5.2rem;
+}
+
+.ProductInfomationReadTableStyle {
+  text-align: center;
+}
+
+.ReviewButtonStyle {
+  float: right;
+}

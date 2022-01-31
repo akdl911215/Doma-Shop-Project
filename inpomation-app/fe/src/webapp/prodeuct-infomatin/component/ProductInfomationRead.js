@@ -1,6 +1,4 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   Form,
   TextArea,
@@ -15,65 +13,24 @@ import {
 } from "semantic-ui-react";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router";
+import styles from "webapp/prodeuct-infomatin/style/ProductInfomationRead.module.css";
 
 const ProductInfomationRead = () => {
   const [selectedFile, setSelectedFile] = useState([]);
   const navigate = useNavigate();
 
-  const style = {
-    backgroundBoard: {
-      width: "100%",
-      maxWidth: "100rem",
-      margin: "auto",
-    },
-    button: {
-      float: "right",
-    },
-    productInfomationHeader: {
-      textAlign: "center",
-      width: "100%",
-    },
-    productInfomationBody: {
-      height: "35rem",
-    },
-    productInfomationReadButtonStyle: {
-      float: "right",
-    },
-    productInfomationReadMainPhotoStyle: {
-      width: "5rem",
-      height: "5rem",
-    },
-    productInfomationReadMainPhotoRowStyle: {
-      height: "5.2rem",
-    },
-    productInfomationReadTableStyle: {
-      textAlign: "center",
-    },
-    ReviewButtonStyle: {
-      float: "right",
-    },
-  };
-
   const colors = ["teal"];
-
-  const ProductInfomationModifyButton = () => {
-    navigate("/product_infomation_modify");
-  };
-
-  const ReviewButton = () => {
-    navigate("/product_infomation_review");
-  };
 
   return (
     <>
       <Container>
-        <div style={style.backgroundBoard}>
+        <div className={styles.BackgroundBoardStyle}>
           <div>
             {colors.map((color) => (
               <Table
                 color={color}
                 key={color}
-                style={style.productInfomationReadTableStyle}
+                className={styles.ProductInfomationReadTableStyle}
               >
                 <Table.Header>
                   <Table.Row>
@@ -81,7 +38,7 @@ const ProductInfomationRead = () => {
                     <Table.Cell>
                       <Form>
                         <Input
-                          style={style.productInfomationHeader}
+                          className={styles.ProductInfomationHeaderStyle}
                           value="다이브인 저분자 히알루론산 토너"
                           readonly
                         />
@@ -93,7 +50,9 @@ const ProductInfomationRead = () => {
                     <Table.Cell>
                       <Reveal animated="small fade">
                         <Reveal.Content
-                          style={style.productInfomationReadMainPhotoRowStyle}
+                          className={
+                            styles.ProductInfomationReadMainPhotoRowStyle
+                          }
                         ></Reveal.Content>
                       </Reveal>
                     </Table.Cell>
@@ -118,7 +77,7 @@ const ProductInfomationRead = () => {
                     <Table.Cell>
                       <Form>
                         <Input
-                          style={style.productInfomationHeader}
+                          className={styles.ProductInfomationHeaderStyle}
                           value="300ml/21,000원"
                           readonly
                         />
@@ -130,7 +89,7 @@ const ProductInfomationRead = () => {
                     <Table.Cell>
                       <Form>
                         <Input
-                          style={style.productInfomationHeader}
+                          className={styles.ProductInfomationHeaderStyle}
                           value="스킨/토너 1위"
                           readonly
                         />
@@ -142,7 +101,7 @@ const ProductInfomationRead = () => {
                     <Table.Cell>
                       <Form>
                         <Input
-                          style={style.productInfomationHeader}
+                          className={styles.ProductInfomationHeaderStyle}
                           value="2021 베타존 뷰티 어워드 스킨/토너 1위"
                           readonly
                         />
@@ -156,7 +115,9 @@ const ProductInfomationRead = () => {
                     <Table.HeaderCell>본문</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <TextArea style={style.productInfomationBody} />
+                        <TextArea
+                          className={styles.ProductInfomationBodyStyle}
+                        />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -165,8 +126,8 @@ const ProductInfomationRead = () => {
                     <Table.HeaderCell>
                       본문
                       <Button
-                        onClick={ReviewButton}
-                        style={style.ReviewButtonStyle}
+                        onClick={() => navigate("/product_infomation_review")}
+                        className={styles.ReviewButtonStyle}
                         color="teal"
                       >
                         리뷰
@@ -257,22 +218,11 @@ const ProductInfomationRead = () => {
             ))}
           </div>
 
-          {/* <div class="ui small basic icon buttons">
-                <button class="ui button active">
-                <div style={{ alignItems: "center", justifyContent: "center" }}>
-                    <i class="upload icon"></i>
-                    <input
-                    type="file"
-                    multiple="multiple"
-                    id="input-file"
-                    accept="image/*"
-                    />
-                </div>
-                </button>
-            </div> */}
-
-          <div style={style.productInfomationReadButtonStyle}>
-            <Button onClick={ProductInfomationModifyButton} color="teal">
+          <div className={styles.ProductInfomationReadButtonStyle}>
+            <Button
+              onClick={() => navigate("/product_infomation_modify")}
+              color="teal"
+            >
               수정하기
               <br />
               (admin 전용)

@@ -8,40 +8,21 @@ import {
   SoptCamingGell,
   superAdaptogenFaceToBodyEmulgeon,
 } from "webapp/images/index";
+import LogoutButton from "webapp/user/component/LogoutButton";
+import styles from "webapp/prodeuct-infomatin/style/ProductInfomationList.module.css";
 
 const ProductInfomationList = () => {
   const navigate = useNavigate();
 
   const colors = ["teal"];
-  const style = {
-    button: {
-      float: "right",
-    },
-
-    imageCardTextStyle: {
-      textAlign: "center",
-    },
-  };
-
-  const productInfomationReadComponent = () => {
-    navigate("/product_infomation_read");
-  };
-
-  const productInfomationRegisterComponent = () => {
-    navigate("/product_infomation_register");
-  };
-
-  const adminMainComponentButton = () => {
-    navigate("/admin_main");
-  };
 
   return (
     <>
       <Container>
         <Card.Group
           itemsPerRow={3}
-          onClick={productInfomationReadComponent}
-          style={style.imageCardTextStyle}
+          onClick={() => navigate("/product_infomation_read")}
+          className={styles.ImageCardTextStyle}
         >
           <Card>
             <Image src={AuaOasisToner} wrapped ui={false} />
@@ -121,70 +102,26 @@ const ProductInfomationList = () => {
               </Card.Description>
             </Card.Content>
           </Card>
-
-          {/* <Card color="yellow" image={superAdaptogenFaceToBodyEmulgeon} />
-        <Card color="red" image={AuaOasisToner} />
-        <Card color="orange" image={SoptCamingGell} />
-        <Card color="yellow" image={superAdaptogenFaceToBodyEmulgeon} />
-        <Card color="red" image={AuaOasisToner} />
-        <Card color="orange" image={SoptCamingGell} />
-        <Card color="yellow" image={superAdaptogenFaceToBodyEmulgeon} />
-        <Card color="red" image={AuaOasisToner} />
-        <Card color="orange" image={SoptCamingGell} />
-        <Card color="yellow" image={superAdaptogenFaceToBodyEmulgeon} /> */}
         </Card.Group>
-        {/* <div style={style.backgroundBoard}>
-        <div>
-          {colors.map((color) => (
-            <Table color={color} key={color}>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>순위</Table.HeaderCell>
-                  <Table.HeaderCell>사진</Table.HeaderCell>
-                  <Table.HeaderCell>제품</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
 
-              <Table.Body onClick={productInfomationReadComponent}>
-                <Table.Row>
-                  <Table.Cell>3</Table.Cell>
-                  <Table.Cell>사진</Table.Cell>
-                  <Table.Cell>클린 말니 미셀라 딥 클랜징 워터</Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>2</Table.Cell>
-                  <Link to="/product_infomation_read">
-                    <Table.Cell>사진</Table.Cell>
-                  </Link>
-                  <Table.Cell>클린 말니 미셀라 딥 클랜징 워터</Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>1</Table.Cell>
-                  <Link to="/product_infomation_read">
-                    <Table.Cell>사진</Table.Cell>
-                  </Link>
-                  <Table.Cell>클린 말니 미셀라 딥 클랜징 워터</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
-          ))}
-        </div> */}
-
-        <div style={style.button}>
-          <Button positive onClick={productInfomationRegisterComponent}>
+        <div className={styles.ButtonStyle}>
+          <Button
+            positive
+            onClick={() => navigate("/product_infomation_register")}
+          >
             글작성
             <br />
             (admin전용)
           </Button>
-          <Button positive onClick={adminMainComponentButton}>
+          <Button positive onClick={() => navigate("/admin_main")}>
             어드민 전용 페이지 이동
             <br />
             (admin전용)
           </Button>
           <SigninButton />
           <SignupButton />
+          <LogoutButton />
         </div>
-        {/* </div > */}
       </Container>
     </>
   );

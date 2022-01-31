@@ -1,11 +1,8 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   Form,
   TextArea,
   Button,
-  Checkbox,
   Table,
   Container,
   Input,
@@ -13,6 +10,8 @@ import {
   Reveal,
 } from "semantic-ui-react";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
+import { Client } from "webapp/api/Client";
+import styles from "webapp/prodeuct-infomatin/style/ProductInfomationModify.module.css";
 
 const ProductInfomationModify = () => {
   const [selectedFile, setSelectedFile] = useState([]);
@@ -40,8 +39,7 @@ const ProductInfomationModify = () => {
       },
     };
 
-    axios
-      .post("api/uploadfile", formData, config)
+    Client.post("api/uploadfile", formData, config)
       .then((res) => {
         console.log(res);
       })
@@ -50,55 +48,25 @@ const ProductInfomationModify = () => {
       });
   };
 
-  const style = {
-    backgroundBoard: {
-      width: "100%",
-      maxWidth: "100rem",
-      margin: "auto",
-    },
-    button: {
-      float: "right",
-    },
-    noticeHeader: {
-      width: "100%",
-    },
-    noticeBody: {
-      height: "35rem",
-    },
-    noticeRegisterButtonStyle: {
-      float: "right",
-    },
-    noticeRegisterMainPhotoStyle: {
-      width: "5rem",
-      height: "5rem",
-    },
-    noticeRegisterMainPhotoRowStyle: {
-      height: "5.2rem",
-    },
-    noticeRegisterTableStyle: {
-      textAlign: "center",
-    },
-  };
-
   const colors = ["teal"];
 
   return (
     <>
       <Container>
-        <div style={style.backgroundBoard}>
+        <div className={styles.BackgroundBoardStyle}>
           <div>
             {colors.map((color) => (
               <Table
                 color={color}
                 key={color}
-                style={style.noticeRegisterTableStyle}
+                className={styles.NoticeRegisterTableStyle}
               >
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>제목</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input style={style.noticeHeader} />
+                        <Input className={styles.NoticeHeaderStyle} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -107,14 +75,14 @@ const ProductInfomationModify = () => {
                     <Table.Cell>
                       <Reveal animated="small fade">
                         <Reveal.Content
-                          style={style.noticeRegisterMainPhotoRowStyle}
+                          className={styles.NoticeRegisterMainPhotoRowStyle}
                         >
                           {selectedFile.map((image) => (
                             <Image
                               key={image}
                               src={image}
                               alt={image}
-                              style={style.noticeRegisterMainPhotoStyle}
+                              className={styles.NoticeRegisterMainPhotoStyle}
                             />
                           ))}
                         </Reveal.Content>
@@ -125,7 +93,7 @@ const ProductInfomationModify = () => {
                     <Table.HeaderCell>작성자</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input style={style.noticeHeader} />
+                        <Input className={styles.NoticeHeaderStyle} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -133,7 +101,7 @@ const ProductInfomationModify = () => {
                     <Table.HeaderCell>작성일</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input style={style.noticeHeader} />
+                        <Input className={styles.NoticeHeaderStyle} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -141,7 +109,7 @@ const ProductInfomationModify = () => {
                     <Table.HeaderCell>조회수</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input style={style.noticeHeader} />
+                        <Input className={styles.NoticeHeaderStyle} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -152,7 +120,7 @@ const ProductInfomationModify = () => {
                     <Table.HeaderCell>본문</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <TextArea style={style.noticeBody} />
+                        <TextArea className={styles.NoticeBodyStyle} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -163,7 +131,7 @@ const ProductInfomationModify = () => {
 
           <div class="ui small basic icon buttons">
             <button class="ui button active">
-              <div style={{ alignItems: "center", justifyContent: "center" }}>
+              <div className={styles.UploadButtonStyle}>
                 <i class="upload icon"></i>
                 <input
                   type="file"
@@ -176,7 +144,7 @@ const ProductInfomationModify = () => {
             </button>
           </div>
 
-          <div style={style.noticeRegisterButtonStyle}>
+          <div className={styles.NoticeRegisterButtonStyle}>
             <Button onClick={handleFileUpload} color="teal">
               수정하기
             </Button>

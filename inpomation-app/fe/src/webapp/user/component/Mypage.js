@@ -60,9 +60,8 @@ const Mypage = () => {
 
   return (
     <>
-      <h2>마이 페이지</h2>
-
       <Container>
+        <h2>마이 페이지</h2>
         <Form>
           <Form.Group widths="equal">
             <Form.Field
