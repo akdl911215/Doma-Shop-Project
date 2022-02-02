@@ -3,13 +3,7 @@ package org.beta.zon.user.domain;
 import lombok.*;
 import org.beta.zon.common.domain.BaseEntity;
 import org.beta.zon.user.domain.role.Role;
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -25,17 +19,17 @@ public class User extends BaseEntity {
     @Column(name = "userno") // , unique = true, nullable = false
     private Long userno;
 
-    @Column(name = "username") // , unique = true, nullable = false
+    @Column(name = "username", unique = true, nullable = false) // , unique = true, nullable = false
     private String username;
-    @Column(name = "password") // , nullable = false
+    @Column(name = "password", nullable = false) // , nullable = false
     private String password;
-    @Column(name = "name")  // , nullable = false
+    @Column(name = "name", nullable = false)  // , nullable = false
     private String name;
-    @Column(name = "email")  // , nullable = false
+    @Column(name = "email", nullable = false)  // , nullable = false
     private String email;
-    @Column(name = "phone_number")  // , nullable = false
+    @Column(name = "phone_number", nullable = false)  // , nullable = false
     private String phoneNumber;
-    @Column(name = "address")  // , nullable = false
+    @Column(name = "address", nullable = false)  // , nullable = false
     private String address;
     @Column(name = "from_social")
     private boolean fromSocial;
