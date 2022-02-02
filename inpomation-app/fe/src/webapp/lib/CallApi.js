@@ -13,9 +13,7 @@ export const UserPagenationListDataAPI = (page) => {
     "&keyword=" +
     (page.keyword ? page.keyword : "");
 
-  console.log(
-    "`${backUrl}/users/list?` + str : ",
-    `${backUrl}/users/list?` + str
-  );
-  return Client.get(`${backUrl}/users/list?` + str);
+  const userUrl = backUrl + "/users/list?" + str;
+  console.log("userUrl : ", userUrl);
+  return Client.get(userUrl);
 };

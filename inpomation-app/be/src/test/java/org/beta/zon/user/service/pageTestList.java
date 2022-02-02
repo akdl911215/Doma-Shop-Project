@@ -21,7 +21,9 @@ public class pageTestList {
                 .page(1)
                 .size(10)
                 .type("u")
+                .keyword("ad")
                 .build();
+        System.out.println("pageRequestDto : " + pageRequestDto);
 
         PageResultDto<UserDto, User> resultDto = userService.getList(pageRequestDto);
 

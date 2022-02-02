@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import UserBtnReset from "./UserButtonReset";
-import { Table, Container, Checkbox, Input, Button } from "semantic-ui-react";
+import { Table, Container, Checkbox, Button } from "semantic-ui-react";
 import UserDeleteButton from "./UserDeleteButton";
 import { useDispatch, useSelector } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 import ShowPageNation from "webapp/user/component/UserPagenationButton";
 import { useNavigate } from "react-router-dom";
 import styles from "../style/UserPageList.module.css";
+import UserPageSearch from "./UserPageSearch";
 
 const UserPageList = () => {
   const dispatch = useDispatch();
@@ -75,10 +76,7 @@ const UserPageList = () => {
             </Table>
           ))}
         </div>
-        <Input
-          icon={{ name: "search", circular: true, link: true }}
-          placeholder="Search..."
-        />
+        <UserPageSearch />
         <div className={styles.UserPageListButtonStyle}>
           <Button primary onClick={() => navigate("/admin_main")}>
             뒤로가기

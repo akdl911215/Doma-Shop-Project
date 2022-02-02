@@ -174,7 +174,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         QUser qUser = QUser.user;
 
-        String keyowrd = pageRequestDto.getKeyword();
+        String keyword = pageRequestDto.getKeyword();
         BooleanExpression expression = qUser.userno.gt(0L); // userno > 0 조건만 생성
         booleanBuilder.and(expression);
 
@@ -184,24 +184,21 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
         // 검색 조건을 작성하기
         BooleanBuilder conditionBuilder = new BooleanBuilder();
-
-        if (type.contains("i")) {
-            conditionBuilder.or(qUser.userno.stringValue().contains(keyowrd));
-        }
+        
         if (type.contains("u")) {
-            conditionBuilder.or(qUser.username.stringValue().contains(keyowrd));
+            conditionBuilder.or(qUser.username.contains(keyword));
         }
         if (type.contains("n")) {
-            conditionBuilder.or(qUser.name.stringValue().contains(keyowrd));
+            conditionBuilder.or(qUser.name.contains(keyword));
         }
         if (type.contains("a")) {
-            conditionBuilder.or(qUser.address.stringValue().contains(keyowrd));
+            conditionBuilder.or(qUser.address.contains(keyword));
         }
         if (type.contains("e")) {
-            conditionBuilder.or(qUser.email.stringValue().contains(keyowrd));
+            conditionBuilder.or(qUser.email.contains(keyword));
         }
         if (type.contains("p")) {
-            conditionBuilder.or(qUser.phoneNumber.stringValue().contains(keyowrd));
+            conditionBuilder.or(qUser.phoneNumber.contains(keyword));
         }
 
         // 모든 조건 통합
