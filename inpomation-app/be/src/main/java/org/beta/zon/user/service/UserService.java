@@ -4,7 +4,6 @@ import org.beta.zon.common.domain.dto.PageRequestDto;
 import org.beta.zon.common.domain.dto.PageResultDto;
 import org.beta.zon.user.domain.User;
 import org.beta.zon.user.domain.dto.UserDto;
-import org.beta.zon.user.domain.role.Role;
 
 import java.util.List;
 

@@ -45,7 +45,7 @@ const UserPageList = () => {
                       <Table.Header>
                         <Table.Row>
                           <Table.HeaderCell>체크박스</Table.HeaderCell>
-                          <Table.HeaderCell>유저넘버</Table.HeaderCell>
+                          <Table.HeaderCell>회원번호</Table.HeaderCell>
                           <Table.HeaderCell>아이디</Table.HeaderCell>
                           <Table.HeaderCell>비밀번호</Table.HeaderCell>
                           <Table.HeaderCell>이름</Table.HeaderCell>
