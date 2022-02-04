@@ -10,5 +10,5 @@ import javax.transaction.Transactional;
 @Transactional
 @Log4j2
 @RequiredArgsConstructor
-public class ProductInfomationServiceImpl implements ProductInfomationService {
+public class ProductInfomationServieImpl implements ProductInfomationService {
 }

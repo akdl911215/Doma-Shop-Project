@@ -14,7 +14,6 @@ import org.beta.zon.user.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -25,7 +24,7 @@ import java.util.Map;
 @RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RequiredArgsConstructor // 자동 주입을 위한 Annotation
 @Log4j2
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
     private final UserServiceImpl userServiceImpl;

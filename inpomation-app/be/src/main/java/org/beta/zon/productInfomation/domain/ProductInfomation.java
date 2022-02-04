@@ -27,16 +27,11 @@ public class ProductInfomation extends BaseEntity {
     @Column(name = "view_count")
     private String viewCount;
 
-//    public void changeTitle(String title) { this.title = title; }
-//    public void changeWriter(String writer) { this.writer = writer; }
-//    public void changeContent(String content) { this.content = content; }
-//    public void changeViewCount(String viewCount) { this.viewCount = viewCount; }
-
-//    @Builder
-//    public ProductInfomation(String title, String writer, String content, String viewCount) {
-//        this.title = title;
-//        this.writer = writer;
-//        this.content = content;
-//        this.viewCount = viewCount;
-//    }
+    @Builder
+    public ProductInfomation(String title, String writer, String content, String viewCount) {
+        this.title = title;
+        this.writer = writer;
+        this.content = content;
+        this.viewCount = viewCount;
+    }
 }
