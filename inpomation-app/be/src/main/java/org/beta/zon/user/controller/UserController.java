@@ -24,7 +24,6 @@ import java.util.Map;
 @RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RequiredArgsConstructor // 자동 주입을 위한 Annotation
 @Log4j2
-//@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
     private final UserServiceImpl userServiceImpl;

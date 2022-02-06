@@ -5,6 +5,8 @@ import org.beta.zon.productInfomation.domain.dto.ProductInfomationDto;
 
 public interface ProductInfomationService {
 
+    void register(ProductInfomationDto productInfomationDto);
+
     default ProductInfomation dtoEntity(ProductInfomationDto productInfomationDto) {
         ProductInfomation entity = ProductInfomation.builder()
                 .productInpomationId(productInfomationDto.getProductInpomationId())
