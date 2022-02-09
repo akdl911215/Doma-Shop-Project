@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
+import { Button } from "semantic-ui-react";
 
 const UserPagenationButton = ({
   pageList,
@@ -9,26 +10,23 @@ const UserPagenationButton = ({
   end,
   prev,
   next,
-  type = "",
-  keyword = "",
 }) => {
   const dispatch = useDispatch();
   const movePage = (page) => {
-    const param = { page: page, keyword: keyword, type: type };
-    dispatch(UserCurrentPageLocation(param));
+    dispatch(UserCurrentPageLocation(page));
   };
 
   const list = pageList?.map((i) => (
-    <button key={i} onClick={() => movePage(i)}>
+    <Button key={i} onClick={() => movePage(i)}>
       {i}
-    </button>
+    </Button>
   ));
 
   return (
     <>
-      {prev ? <button onClick={() => movePage(start - 1)}>prev</button> : <></>}
+      {prev ? <Button onClick={() => movePage(start - 1)}>prev</Button> : <></>}
       {list}
-      {next ? <button onClick={() => movePage(end + 1)}>next</button> : <></>}
+      {next ? <Button onClick={() => movePage(end + 1)}>next</Button> : <></>}
     </>
   );
 };

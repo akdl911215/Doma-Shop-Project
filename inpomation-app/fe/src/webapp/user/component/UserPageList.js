@@ -17,19 +17,17 @@ const UserPageList = () => {
     dispatch(UserCurrentPageLocation(1));
   }, []);
 
-  const { totalList, end, next, page, pageList, prev, size, start, totalPage } =
-    useSelector(({ UserReducer }) => ({
+  const { totalList, end, next, page, pageList, prev, start } = useSelector(
+    ({ UserReducer }) => ({
       totalList: UserReducer?.UserPageListInitial?.pageResult?.dtoList,
       end: UserReducer?.UserPageListInitial?.pageResult?.end,
       next: UserReducer?.UserPageListInitial?.pageResult?.next,
       page: UserReducer?.UserPageListInitial?.pageResult?.page,
       pageList: UserReducer?.UserPageListInitial?.pageResult?.pageList,
       prev: UserReducer?.UserPageListInitial?.pageResult?.prev,
-      size: UserReducer?.UserPageListInitial?.pageResult?.size,
       start: UserReducer?.UserPageListInitial?.pageResult?.start,
-      totalPage: UserReducer?.UserPageListInitial?.pageResult?.totalPage,
-    }));
-
+    })
+  );
   const colors = ["blue"];
 
   return (
@@ -86,15 +84,12 @@ const UserPageList = () => {
         </div>
         <div className={styles.PaginationStyle}>
           <ShowPageNation
-            totalList={totalList}
             end={end}
             next={next}
             page={page}
             pageList={pageList}
             prev={prev}
-            size={size}
             start={start}
-            totalPage={totalPage}
           />
         </div>
       </Container>

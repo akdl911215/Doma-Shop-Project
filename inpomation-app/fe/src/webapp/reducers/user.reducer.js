@@ -12,11 +12,11 @@ const [
 ] = createRequestActionTypes("USERPAGENATIONBUTTON");
 
 // 액션 생성 함수
-export const UserCurrentPageLocation = (pageNumber) => {
-  console.log("pageNumber : ", pageNumber);
+export const UserCurrentPageLocation = (pageSate) => {
+  console.log("pageSate : ", pageSate);
   return {
     type: USERPAGENATTIONBUTTON_REQUEST,
-    payload: pageNumber,
+    payload: pageSate,
   };
 };
 

@@ -12,6 +12,8 @@ import {
 } from "semantic-ui-react";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router-dom";
+import { client } from "webapp/api/Client";
+import styles from "webapp/prodeuct-infomatin/style/ProductInfomationRegister.module.css";
 
 const ProductInfomationRegister = () => {
   const [selectedFile, setSelectedFile] = useState([]);
@@ -27,19 +29,26 @@ const ProductInfomationRegister = () => {
     setSelectedFile(nowImageURLList);
   };
 
+  const [register, setRegister] = useState({
+    title: "",
+    writer: "",
+    content: "",
+    viewCount: "",
+  });
+
+  const { title, writer, content, viewCount } = register;
+
   const handleFileUpload = () => {
     // const formData = new FormData();
     // for (let i = 0; i < selectedFile.length; i++) {
     //   formData.append("myfile", selectedFile[i], selectedFile[i].name);
     // }
     // console.log("formData : ", formData);
-
     // const config = {
     //   headers: {
     //     "content-type": "multipart/form-data",
     //   },
     // };
-
     // axios
     //   .post("api/uploadfile", formData, config)
     //   .then((res) => {
@@ -48,39 +57,15 @@ const ProductInfomationRegister = () => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-
     // if(res) navigate('product_infomation_list')
-    navigate("/product_infomation_list");
-  };
+    // navigate("/product_infomation_list");
 
-  const style = {
-    backgroundBoard: {
-      width: "100%",
-      maxWidth: "100rem",
-      margin: "auto",
-    },
-    button: {
-      float: "right",
-    },
-    noticeHeader: {
-      width: "100%",
-    },
-    noticeBody: {
-      height: "35rem",
-    },
-    noticeRegisterButtonStyle: {
-      float: "right",
-    },
-    noticeRegisterMainPhotoStyle: {
-      width: "5rem",
-      height: "5rem",
-    },
-    noticeRegisterMainPhotoRowStyle: {
-      height: "5.2rem",
-    },
-    noticeRegisterTableStyle: {
-      textAlign: "center",
-    },
+    client.post("/product_infomation/register", {
+      title: title,
+      writer: writer,
+      content: content,
+      viewCount: viewCount,
+    });
   };
 
   const colors = ["teal"];
@@ -88,13 +73,13 @@ const ProductInfomationRegister = () => {
   return (
     <>
       <Container>
-        <div style={style.backgroundBoard}>
+        <div className={styles.BackgroundBoard}>
           <div>
             {colors.map((color) => (
               <Table
                 color={color}
                 key={color}
-                style={style.noticeRegisterTableStyle}
+                className={styles.NoticeRegisterTableStyle}
               >
                 <Table.Header>
                   <Table.Row>
@@ -102,14 +87,14 @@ const ProductInfomationRegister = () => {
                     <Table.Cell>
                       <Reveal animated="small fade">
                         <Reveal.Content
-                          style={style.noticeRegisterMainPhotoRowStyle}
+                          className={styles.NoticeRegisterMainPhotoRowStyle}
                         >
                           {selectedFile.map((image) => (
                             <Image
                               key={image}
                               src={image}
                               alt={image}
-                              style={style.noticeRegisterMainPhotoStyle}
+                              className={styles.NoticeRegisterMainPhotoStyle}
                             />
                           ))}
                         </Reveal.Content>
@@ -120,7 +105,7 @@ const ProductInfomationRegister = () => {
                     <Table.HeaderCell>제목</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input style={style.noticeHeader} />
+                        <Input className={styles.NoticeHeader} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -141,26 +126,18 @@ const ProductInfomationRegister = () => {
                     </Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.HeaderCell>정가</Table.HeaderCell>
+                    <Table.HeaderCell>작성자</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input style={style.noticeHeader} />
+                        <Input className={styles.NoticeHeader} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.HeaderCell>랭킹</Table.HeaderCell>
+                    <Table.HeaderCell>조회수</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input style={style.noticeHeader} />
-                      </Form>
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.HeaderCell>수상</Table.HeaderCell>
-                    <Table.Cell>
-                      <Form>
-                        <Input style={style.noticeHeader} />
+                        <Input className={styles.NoticeHeader} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -171,7 +148,7 @@ const ProductInfomationRegister = () => {
                     <Table.HeaderCell>본문</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <TextArea style={style.noticeBody} />
+                        <Input className={styles.NoticeBody} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -180,10 +157,10 @@ const ProductInfomationRegister = () => {
             ))}
           </div>
 
-          <div class="ui small basic icon buttons">
-            <button class="ui button active">
+          <div className="ui small basic icon buttons">
+            <button className="ui button active">
               <div style={{ alignItems: "center", justifyContent: "center" }}>
-                <i class="upload icon"></i>
+                <i className="upload icon"></i>
                 <input
                   type="file"
                   multiple="multiple"
@@ -195,7 +172,7 @@ const ProductInfomationRegister = () => {
             </button>
           </div>
 
-          <div style={style.noticeRegisterButtonStyle}>
+          <div className={styles.NoticeRegisterButtonStyle}>
             <Button onClick={handleFileUpload} color="teal">
               업로드
               <br />

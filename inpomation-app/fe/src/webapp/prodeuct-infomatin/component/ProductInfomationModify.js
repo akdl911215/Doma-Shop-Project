@@ -9,8 +9,8 @@ import {
   Image,
   Reveal,
 } from "semantic-ui-react";
+import { client } from "webapp/api/Client";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
-import { Client } from "webapp/api/Client";
 import styles from "webapp/prodeuct-infomatin/style/ProductInfomationModify.module.css";
 
 const ProductInfomationModify = () => {
@@ -39,7 +39,8 @@ const ProductInfomationModify = () => {
       },
     };
 
-    Client.post("api/uploadfile", formData, config)
+    client
+      .post("api/uploadfile", formData, config)
       .then((res) => {
         console.log(res);
       })

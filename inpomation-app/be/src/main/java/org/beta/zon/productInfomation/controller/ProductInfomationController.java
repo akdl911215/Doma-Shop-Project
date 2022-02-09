@@ -31,15 +31,18 @@ public class ProductInfomationController {
         return resultMap;
     }
 
-    @PutMapping("/put/{idx}")
-    public ResponseEntity<?> put(@PathVariable("idx") Long idx,
+    @PutMapping("/modify/{productInpomationId}")
+    public ResponseEntity<Map<String, String>> modify(@PathVariable("productInpomationId") Long productInpomationId,
                                  @RequestBody ProductInfomationDto productInfomationDto) {
 
-        return new ResponseEntity<>("{}", HttpStatus.OK);
+        Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("Result", "Sucess");
+
+        return new ResponseEntity(resultMap, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{idx}")
-    public ResponseEntity<?> delete(@PathVariable("idx") Long idx) {
+    @DeleteMapping("/delete/{productInpomationId}")
+    public ResponseEntity<?> delete(@PathVariable("productInpomationId") Long productInpomationId) {
 
         return new ResponseEntity<>("{}", HttpStatus.OK);
     }

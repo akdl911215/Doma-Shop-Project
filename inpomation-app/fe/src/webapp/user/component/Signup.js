@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from "react";
 import { Button, Form, Input, Container } from "semantic-ui-react";
-import { Client } from "webapp/api/Client";
+
 import { useNavigate } from "react-router-dom";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import styles from "../style/UserSignup.module.css";
+import { client } from "webapp/api/Client";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -34,14 +35,15 @@ const Signup = () => {
 
     alert("회원가입 버튼 누름");
 
-    Client.post("http://localhost:8080/users/signup", {
-      username: username,
-      password: password,
-      name: name,
-      address: address,
-      email: email,
-      phoneNumber: phoneNumber,
-    })
+    client
+      .post("http://localhost:8080/users/signup", {
+        username: username,
+        password: password,
+        name: name,
+        address: address,
+        email: email,
+        phoneNumber: phoneNumber,
+      })
       .then((res) => {
         console.log(res);
       })

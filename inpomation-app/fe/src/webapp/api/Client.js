@@ -1,3 +1,3 @@
 import Axios from "axios";
 
-export const Client = Axios.create();
+export const client = Axios.create();

@@ -1,0 +1,34 @@
+.BackgroundBoard {
+  width: 100%;
+  max-width: 100rem;
+  margin: auto;
+}
+
+.Button {
+  float: right;
+}
+
+.NoticeHeader {
+  width: 100%;
+}
+
+.NoticeBody {
+  height: 35rem;
+}
+
+.NoticeRegisterButtonStyle {
+  float: right;
+}
+
+.NoticeRegisterMainPhotoStyle {
+  width: 5rem;
+  height: 5rem;
+}
+
+.NoticeRegisterMainPhotoRowStyle {
+  height: 5.2rem;
+}
+
+.NoticeRegisterTableStyle {
+  textalign: center;
+}
