@@ -1,13 +1,11 @@
 import React, { useCallback, useState } from "react";
 import { Button, Form, Input, Container } from "semantic-ui-react";
-
-import { useNavigate } from "react-router-dom";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import styles from "../style/UserSignup.module.css";
-import { client } from "webapp/api/Client";
+import { client } from "webapp/api/client";
+import { UserSignupDataAPI } from "webapp/api/userApi";
 
 const Signup = () => {
-  const navigate = useNavigate();
   const [signup, setSignup] = useState({
     username: "",
     password: "",
@@ -34,22 +32,7 @@ const Signup = () => {
     // e.stopPropagation();
 
     alert("회원가입 버튼 누름");
-
-    client
-      .post("http://localhost:8080/users/signup", {
-        username: username,
-        password: password,
-        name: name,
-        address: address,
-        email: email,
-        phoneNumber: phoneNumber,
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-
-    navigate("/users_signin");
+    UserSignupDataAPI(signup);
   };
 
   return (

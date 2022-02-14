@@ -9,9 +9,9 @@ import {
   Image,
   Reveal,
 } from "semantic-ui-react";
-import { client } from "webapp/api/Client";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import styles from "webapp/prodeuct-infomatin/style/ProductInfomationModify.module.css";
+import { ProductInfomationModifyDataAPI } from "webapp/api/productInpomationApi";
 
 const ProductInfomationModify = () => {
   const [selectedFile, setSelectedFile] = useState([]);
@@ -39,14 +39,15 @@ const ProductInfomationModify = () => {
       },
     };
 
-    client
-      .post("api/uploadfile", formData, config)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    ProductInfomationModifyDataAPI(selectedFile, config);
+
+    // client
+    //   .then((res) => {
+    //     console.log(res);
+
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   const colors = ["teal"];

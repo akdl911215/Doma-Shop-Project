@@ -12,7 +12,7 @@ import {
 } from "semantic-ui-react";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router-dom";
-import { client } from "webapp/api/Client";
+import { client } from "webapp/api/client";
 import styles from "webapp/prodeuct-infomatin/style/ProductInfomationRegister.module.css";
 
 const ProductInfomationRegister = () => {
@@ -59,13 +59,6 @@ const ProductInfomationRegister = () => {
     //   });
     // if(res) navigate('product_infomation_list')
     // navigate("/product_infomation_list");
-
-    client.post("/product_infomation/register", {
-      title: title,
-      writer: writer,
-      content: content,
-      viewCount: viewCount,
-    });
   };
 
   const colors = ["teal"];

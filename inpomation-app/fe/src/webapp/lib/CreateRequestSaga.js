@@ -1,6 +1,7 @@
 import { call, delay, put } from "redux-saga/effects";
 
 export const createRequestActionTypes = (type) => {
+  console.log("type : ", type);
   const REQUEST = type + "_REQUEST";
   const SUCCESS = type + "_SUCCESS";
   const FAILURE = type + "_FAILURE";

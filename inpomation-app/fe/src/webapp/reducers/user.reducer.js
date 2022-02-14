@@ -3,7 +3,7 @@ import {
   Request,
 } from "webapp/lib/CreateRequestSaga";
 import { takeLatest } from "redux-saga/effects";
-import { UserPagenationListDataAPI } from "webapp/lib/CallApi";
+import { UserPagenationListDataAPI } from "webapp/api/userApi";
 
 const [
   USERPAGENATTIONBUTTON_REQUEST,

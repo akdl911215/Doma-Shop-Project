@@ -10,9 +10,9 @@ import {
   Segment,
 } from "semantic-ui-react";
 import SignupButton from "webapp/common/component/SignupButton";
+import { UserSigninDataAPI } from "webapp/api/userApi";
 
 import styles from "../style/UserSignin.module.css";
-import { client } from "webapp/api/Client";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -26,17 +26,7 @@ const Signin = () => {
   const signinButton = () => {
     alert("로그인버튼누름");
 
-    client
-      .post("http://localhost:8080/users/signin", {
-        username: username,
-        password: password,
-      })
-      .then((res) => {
-        console.log("signin res : ", res);
-      })
-      .catch((err) => console.log("signin err : ", err));
-
-    navigate("/");
+    UserSigninDataAPI(signin);
   };
 
   const handleChange = (e) => {
