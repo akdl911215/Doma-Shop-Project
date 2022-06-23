@@ -23,6 +23,20 @@ const Signin = () => {
 
   const { username, password } = signin;
 
+  if (username === "" || password === "") {
+    window.alert("아이디 또는 비밀번호를 입력해주세요.");
+    return;
+  } 
+  // if (!emailCheck(username)) {
+  //   window.alert("이메일 형식이 맞지 않습니다.");
+  // }
+
+  // https://velog.io/@mygomi/React-%EC%87%BC%ED%95%91%EB%AA%B0-%ED%81%B4%EB%A1%A0%EC%BD%94%EB%94%A9-4.-axios%EB%A1%9C-API-%ED%86%B5%EC%8B%A0%ED%95%98%EA%B8%B0-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EB%A9%94%EC%9D%B8-%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80
+
+  //https://joonganglib.tistory.com/m/13
+
+  // https://wiki.jjagu.com/?p=273
+
   const signinButton = () => {
     alert("로그인버튼누름");
 
