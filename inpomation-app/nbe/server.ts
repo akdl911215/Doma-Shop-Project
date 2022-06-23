@@ -1,7 +1,35 @@
 const express = require("express");
+const mysql = require("mysql2");
 const PORT = process.env.PORT || 8080;
-
+const bodyParser = require("body-parser");
 const app = express();
+const path = require("path");
+const session = require("express-session");
+const crypto = require("crypto");
+const FileStore = require("session-file-store")(session);
+const cookieParser = require("cookie-parser");
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// 위처럼 사용해도 되고, express 4.16버전 이상은 아래처럼 사용해도 됨
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(
+    session({
+        secret: "keyboard cat", // 데이터를 암호화 하기 위해 필요한 옵션
+        resave: false, // 요청이 왔을때 세션을 수정하지 않더라도 다시 저장소에 저장되도록
+        saveUninitialized: true,  // 세션이 필요하면 세션을 실행시칸다(서버에 부담을 줄이기 위해)
+        store : new FileStore() // 세션이 데이터를 저장하는 곳
+    })
+)
+
+app.use(express.static(path.join(__dirname, "/public")));
+
+const client = mysql.createConnection({
+    user: "",
+    password: "",
+    database: ""
+})
 
 // const http = require("http");
 // http.createServer(function (req, res) {
@@ -13,7 +41,20 @@ const app = express();
 
 app.listen(PORT, () => console.log(`Listening on 'http://localhost:${PORT}`));
 
-app.get("/", (req, res) => res.send('Welcome my home'));
+app.get("/", (req, res) => {
+    console.log("메인페이지 작동");
+    console.log(req.session);
+    if(req.session.is_login === true) {
+        res.render("index", {
+            is_logined : req.session.is_login,
+            name : req.session.name
+        });
+    } else {
+        res.render("index", {
+            is_logined : false
+        });
+    }
+});
 
 app.get("/users/list", (req, res) => res.send('유저 리스트'));
 app.get("/users/signup", (req, res) => res.send('회원가입'));
