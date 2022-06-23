@@ -3,7 +3,7 @@ import "./App.css";
 import Signup from "webapp/user/component/Signup";
 import Signin from "webapp/user/component/Signin";
 import Mypage from "webapp/user/component/Mypage";
-import UserWithdrawal from "webapp/user/component/UserWithdrawal";
+import UserWithdrawal from "./webapp/user/component/userWithdrawal";
 import AdminMain from "webapp/admin/component/AdminMain";
 import NoticeList from "webapp/notice/component/NoticeList";
 import NoticeModify from "webapp/notice/component/NoticeModify";

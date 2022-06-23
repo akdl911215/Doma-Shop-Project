@@ -1,5 +1,5 @@
-import { client } from "webapp/api/client";
-import { backUrl } from "webapp/config/config";
+import { client } from "../api/Client";
+import { backUrl } from "../config/Config";
 
 export const ProductInfomationModifyDataAPI = (states, formData, config) => {
   const url = backUrl + "api/uploadfile";

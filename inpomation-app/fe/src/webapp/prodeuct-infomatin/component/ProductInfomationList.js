@@ -1,15 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { Button, Container, Card, Image } from "semantic-ui-react";
-import SigninButton from "webapp/common/component/SigninButton";
-import SignupButton from "webapp/common/component/SignupButton";
+import SigninButton from "../../common/component/SigninButton";
+import SignupButton from "../../common/component/SignupButton";
 import {
   AuaOasisToner,
   SoptCamingGell,
   superAdaptogenFaceToBodyEmulgeon,
 } from "webapp/images/index";
-import LogoutButton from "webapp/user/component/LogoutButton";
-import styles from "webapp/prodeuct-infomatin/style/ProductInfomationList.module.css";
+import LogoutButton from "../../user/component/LogoutButton";
+import styles from "../style/ProductInfomationList.module.css";
+// import styles from "webapp/prodeuct-infomatin/style/ProductInfomationList.module.css";
 
 const ProductInfomationList = () => {
   const navigate = useNavigate();

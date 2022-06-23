@@ -9,10 +9,9 @@ import {
   Image,
   Reveal,
 } from "semantic-ui-react";
-import GoHomeButton from "webapp/common/component/GoHomeButton";
-import styles from "webapp/prodeuct-infomatin/style/ProductInfomationModify.module.css";
-import { ProductInfomationModifyDataAPI } from "webapp/api/productInpomationApi";
-
+import GoHomeButton from "../../common/component/GoHomeButton";
+import styles from "../../prodeuct-infomatin/style/ProductInfomationModify.module.css";
+import { ProductInfomationModifyDataAPI } from "../../api/ProductInpomationApi";
 const ProductInfomationModify = () => {
   const [selectedFile, setSelectedFile] = useState([]);
 

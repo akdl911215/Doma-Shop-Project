@@ -11,9 +11,9 @@ import {
   Comment,
   Header,
 } from "semantic-ui-react";
-import GoHomeButton from "webapp/common/component/GoHomeButton";
+import GoHomeButton from "../../common/component/GoHomeButton";
 import { useNavigate } from "react-router";
-import styles from "webapp/prodeuct-infomatin/style/ProductInfomationRead.module.css";
+import styles from "../../prodeuct-infomatin/style/ProductInfomationRead.module.css";
 
 const ProductInfomationRead = () => {
   const [selectedFile, setSelectedFile] = useState([]);

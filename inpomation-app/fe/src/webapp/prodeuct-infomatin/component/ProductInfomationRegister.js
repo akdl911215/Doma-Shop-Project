@@ -12,7 +12,7 @@ import {
 } from "semantic-ui-react";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router-dom";
-import { client } from "webapp/api/client";
+import { client } from "webapp/api/Client";
 import styles from "webapp/prodeuct-infomatin/style/ProductInfomationRegister.module.css";
 
 const ProductInfomationRegister = () => {
