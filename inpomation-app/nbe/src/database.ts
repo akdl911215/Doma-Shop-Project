@@ -1,7 +1,13 @@
 import Knex from "knex";
-import config from "./knexfile";
+const mysql = require("mysql2");
 
-const env = process.env.NODE_ENV || "development";
+const db = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "Wjdgus@580-",
+      database: "mall_sync",
+      port: 3306,
+})
 
-export const knex = Knex(config[env]);
-export const knew2 = Knex(config["sf"]);
+db.connect(); 
+module.exports = db;
