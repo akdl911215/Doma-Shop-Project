@@ -8,11 +8,33 @@ const session = require("express-session");
 const crypto = require("crypto");
 const FileStore = require("session-file-store")(session);
 const cookieParser = require("cookie-parser");
+const users = require("./api/routes/users");
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 // 위처럼 사용해도 되고, express 4.16버전 이상은 아래처럼 사용해도 됨
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
+app.get("/", (req, res) => {
+    console.log("메인페이지 작동");
+    console.log(req.session);
+
+    res.send("home22");
+    // if(req.session.is_login === true) {
+    //     res.render("index", {
+    //         is_logined : req.session.is_login,
+    //         name : req.session.name
+    //     });
+    // } else {
+    //     res.render("index", {
+    //         is_logined : false
+    //     });
+    // }
+});
+
+
+app.use("/users", users);
 
 app.use(
     session({
@@ -25,11 +47,11 @@ app.use(
 
 app.use(express.static(path.join(__dirname, "/public")));
 
-const client = mysql.createConnection({
-    user: "",
-    password: "",
-    database: ""
-})
+// const client = mysql.createConnection({
+//     user: "",
+//     password: "",
+//     database: ""
+// })
 
 // const http = require("http");
 // http.createServer(function (req, res) {
@@ -41,24 +63,8 @@ const client = mysql.createConnection({
 
 app.listen(PORT, () => console.log(`Listening on 'http://localhost:${PORT}`));
 
-app.get("/", (req, res) => {
-    console.log("메인페이지 작동");
-    console.log(req.session);
-    if(req.session.is_login === true) {
-        res.render("index", {
-            is_logined : req.session.is_login,
-            name : req.session.name
-        });
-    } else {
-        res.render("index", {
-            is_logined : false
-        });
-    }
-});
 
-app.get("/users/list", (req, res) => res.send('유저 리스트'));
-app.get("/users/signup", (req, res) => res.send('회원가입'));
-app.get("/users/signin", (req, res) => res.send('로그인'));
+
 
 app.get("/productInfomation/register", (req, res) => res.send('상품 등록'));
 app.get("/productInfomation/modify", (req, res) => res.send('상품 수정'));
