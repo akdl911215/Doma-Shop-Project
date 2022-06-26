@@ -8,33 +8,34 @@ const session = require("express-session");
 const crypto = require("crypto");
 const FileStore = require("session-file-store")(session);
 const cookieParser = require("cookie-parser");
-const users = require("./api/routes/users");
+// const user = require('../src/api/routes/users');
+// const user = require('./api/routes/users/index');
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 // 위처럼 사용해도 되고, express 4.16버전 이상은 아래처럼 사용해도 됨
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// app.use('/users', user);
+
+// app.get("/", (req, res) => {
+//     console.log("메인페이지 작동");
+//     console.log(req.session);
+
+//     res.send("home22");
+//     // if(req.session.is_login === true) {
+//     //     res.render("index", {
+//     //         is_logined : req.session.is_login,
+//     //         name : req.session.name
+//     //     });
+//     // } else {
+//     //     res.render("index", {
+//     //         is_logined : false
+//     //     });
+//     // }
+// });
 
 
-app.get("/", (req, res) => {
-    console.log("메인페이지 작동");
-    console.log(req.session);
 
-    res.send("home22");
-    // if(req.session.is_login === true) {
-    //     res.render("index", {
-    //         is_logined : req.session.is_login,
-    //         name : req.session.name
-    //     });
-    // } else {
-    //     res.render("index", {
-    //         is_logined : false
-    //     });
-    // }
-});
-
-
-app.use("/users", users);
 
 app.use(
     session({
