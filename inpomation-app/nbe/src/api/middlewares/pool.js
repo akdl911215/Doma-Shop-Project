@@ -3,5 +3,8 @@ const dbsecret = require("../../config/database");
 
 
 const pool = mysql.createPool(dbsecret);
-const promisePool = pool.promise();
-module.exports = promisePool;
+// console.log("pool : ", pool)
+// const promisePool = pool.promise();
+// console.log("promisePool : ", promisePool);
+module.exports = pool;
+// module.exports = promisePool;

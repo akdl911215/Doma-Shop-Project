@@ -15,6 +15,8 @@ const db = {
       database: process.env.DB_DATABASES,
       port: process.env.DB_PORT,
       connectionLimit: 50,
+      // aquireTimeout: 30000, // 30cecs
+      // minConnections: 1,
 }
 
 // db.connect(); 
