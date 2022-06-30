@@ -1,10 +1,9 @@
 const mysql = require("mysql2");
-const dbsecret = require("../../config/database");
+const dbConfig = require("../../config/database");
+const pool = mysql.createPool(dbConfig);
 
-
-const pool = mysql.createPool(dbsecret);
-// console.log("pool : ", pool)
-// const promisePool = pool.promise();
-// console.log("promisePool : ", promisePool);
-module.exports = pool;
-// module.exports = promisePool;
+exports.getConnectionPool = (callback) => {
+  pool.getConnection((err, conn) => {
+    if(!err) callback(conn)
+  })
+}

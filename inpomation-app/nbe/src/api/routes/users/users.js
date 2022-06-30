@@ -1,73 +1,33 @@
-const express = require('express');
-const router = express.Router();
-// 보안
-const crypto = require("crypto");
-// DB
-// const promisePool = require("../../middlewares/pool");
-// const pool = require("../../middlewares/pool");
-const bodyParser = require("body-parser");
-const { resourceLimits } = require('worker_threads');
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: false }));
+const db = require('../../middlewares/pool');
+const crypto = require('crypto')
 
-const mysql = require('mysql2');
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    database: 'mall_sync',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-  });
-const promisePool = pool.promise();
+exports.userRegister = (req, res) => {
+    const { username, password, name, email, phone_number, address, roles } = req.body;
+    const hashPW = hashPassword(password);
+    console.log(`username : ${username}, password : ${hashPW}, name : ${name}, email : ${email}, phone_number : ${phone_number}, address : ${address}, roles : ${roles}`)
+    
+    db.getConnectionPool((conn) => {
+        const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles) 
+                        VALUES ('${username}','${hashPW}','${name}','${email}','${phone_number}','${address}', '${roles}')`;
+        conn.query(sql, (err, doc) => {
+            if (err) console.log(`err : ${err}`);
+            res.send({
+                message: "success",
+                result: doc
+            });
 
-console.log("signup 시작")
-router.post("/signup", async (req, res, next) => {
-    console.log("???")
-    console.log("req.body", req.body) 
-    console.log("promisePool", promisePool) 
-    // console.log("pool", pool) 
-    // if (!req.body) throw new Error(`1 ${req.body}`)
-
-    router.post("signup", (req, res) => {
-        const sql = "INSERT INTO users(username, password, name, email, phone_number, address, roles) VALUES(?, ?, ?, ?, ?, ?)";
-        try {
-            console.log("진입1");
-            // pool.query(sql, function(err, row, fields) {
-            //     console.log("row : ", row)
-            // })
-            promisePool.query("SELECT 1")
-                .then(([rows, fields]) => {
-                    console.log("[rows, fields] : ", rows)
-                })
-                .catch("catch : ", console.log("dd"))
-                .then(() => {
-                    console.log("end")
-                    pool.end();
-                })
-        } catch (err) {
-            console.error(`connection_pool POST Error / ${err}`);
-            res.status(500).send("message : Internal Server Error");
-        }
-    })
-});
-// https://velog.io/@lightpurple/Node.js-%EB%9E%9C%EB%8D%A4%EC%B1%84%ED%8C%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%EA%B5%AC%ED%98%84
-// https://zinirun.github.io/2020/12/02/node-crypto-password/
-router.get("/signin", (req, res) => res.send('로그인'));
-router.get("/list", (req, res) => {
-    console.log("회원 리스트");
-    res.send("리스트")
-    const sql = "SELECT * FROM users";
-    try {
-        console.log("진입1");
-        pool.query(sql, function(err, row, fields) {
-            console.log("row : ", row)
-            console.log("fields : ", fields)
         })
-    } catch (err) {
-        console.error(`connection_pool POST Error / ${err}`);
-        res.status(500).send("message : Internal Server Error");
-    }
-});
+        conn.release();
+    })
+}
 
-module.exports = router;
+function hashPassword(password) {
+    const salt = crypto.randomBytes(32).toString('hex');
+    return crypto.pbkdf2Sync(password, salt, 1, 32, 'sha512').toString('hex');
+}
+// 내장 모듈인 crypto를 사용하기 위해 불러와준 후,
+// randomBytes를 통해 salt를 생성해 줍니다. randomBytes의 인자로 문자열의 size를 넣어주고, toString 메소드에 인코딩 방식을 인자로 넣어주면 됩니다.
+// 즉 const salt = crypto.randomBytes(32).toString('hex') 는 32의 문자열 길이를 가진 랜덤 문자열을 hex 형식으로 인코딩 한다는 뜻 입니다.
+// 그리고 pbkdf2Sync 를 통해 암호화를 진행해줍니다.
+// pbkdf2Sync 의 인자로는 ( 암호화 할 비밀번호, Salt, 반복 횟수, 문자열 길이, 암호화 알고리즘) 순서대로 들어가게 됩니다.
+// 그리고 아까 randomBytes와 같이 마지막에 toString을 통해 인코딩 방식을 정해줍니다.
