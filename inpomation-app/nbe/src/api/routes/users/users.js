@@ -1,14 +1,77 @@
 const db = require('../../middlewares/pool');
-const crypto = require('crypto')
+const crypto = require('crypto');
+
+exports.userLogout = (req, res) => {
+    console.log("로그아웃")
+
+    delete req.session.username;
+    delete req.session.password;
+    delete req.session.isLogined;
+    req.session.save(() => res.redirect('/'))
+}
+
+exports.userSignin = (req, res) => {
+    console.log("로그인")
+    
+    const { username, password } = req.body;
+    console.log(`username : ${username}, password : ${password}`)
+
+    db.getConnectionPool((connection) => {
+        console.log(`connection : ${connection}`);
+
+        const usernameSql = `SELECT * FROM users WHERE username = '${username}'`;
+        connection.query(usernameSql, (err, rows) => {
+            console.log(`rows : ${rows}`)
+            if(rows.length) {
+                if(rows[0].username === username) {
+                    const passwordSql = `SELECT * FROM users WHERE password = '${password}'`;
+                    connection.query(passwordSql, (err, rows) => {
+                        if (err) {
+                            console.error(`username error : ${err}`);
+                            throw err;
+                        }
+
+                        if (rows.length) {
+                            req.session.username = rows[0].username;
+                            req.session.password = rows[0].password;
+                            req.session.isLogined = true;
+                            req.session.save(() => {
+                                res.json({
+                                    result: "로그인 성공"
+                                })
+                            })
+                            console.log(`req.session : ${req.session}`)
+
+                            for (let key in req.session) {
+                                console.log(`attr: ${key}, value: ${req.session}`)
+                            }
+                        }
+                        else {
+                            res.json({
+                                result: "비밀번호 틀렸습니다."
+                            })
+                        }
+                    })
+                }
+            }
+            else {
+                // 아이디 틀렸을경우
+                res.json({
+                    result: "아이디가 틀렸습니다."
+                })
+            }
+        })
+    }) 
+    
+}
 
 exports.userRegister = (req, res) => {
     const { username, password, name, email, phone_number, address, roles } = req.body;
-    const hashPW = hashPassword(password);
-    console.log(`username : ${username}, password : ${hashPW}, name : ${name}, email : ${email}, phone_number : ${phone_number}, address : ${address}, roles : ${roles}`)
+    console.log(`username : ${username}, password : ${hashPassword(password)}, name : ${name}, email : ${email}, phone_number : ${phone_number}, address : ${address}, roles : ${roles}`)
     
     db.getConnectionPool((conn) => {
         const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles) 
-                        VALUES ('${username}','${hashPW}','${name}','${email}','${phone_number}','${address}', '${roles}')`;
+                        VALUES ('${username}','${hashPassword(password)}','${name}','${email}','${phone_number}','${address}', '${roles}')`;
         conn.query(sql, (err, doc) => {
             if (err) console.log(`err : ${err}`);
             res.send({
