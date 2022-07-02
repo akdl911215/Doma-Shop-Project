@@ -11,7 +11,7 @@ import {
 } from "semantic-ui-react";
 import GoHomeButton from "../../common/component/GoHomeButton";
 import styles from "../../prodeuct-infomatin/style/ProductInfomationModify.module.css";
-import { ProductInfomationModifyDataAPI } from "../../api/ProductInpomationApi";
+import { ProductInfomationModifyDataAPI } from "../../api/productInpomationApi";
 const ProductInfomationModify = () => {
   const [selectedFile, setSelectedFile] = useState([]);
 

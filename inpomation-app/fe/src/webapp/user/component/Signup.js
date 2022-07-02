@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { Button, Form, Input, Container } from "semantic-ui-react";
-import GoHomeButton from "webapp/common/component/GoHomeButton";
+import GoHomeButton from "../../common/component/GoHomeButton";
 import styles from "../style/UserSignup.module.css";
-import { client } from "webapp/api/Client";
-import { UserSignupDataAPI } from "webapp/api/UserApi";
+import { client } from "../../api/Client";
+import { UserSignupDataAPI } from "../../api/userApi";
 
 const Signup = () => {
   const [signup, setSignup] = useState({

@@ -1,9 +1,6 @@
-import {
-  createRequestActionTypes,
-  Request,
-} from "webapp/lib/CreateRequestSaga";
+import { createRequestActionTypes, Request } from "../lib/CreateRequestSaga";
 import { takeLatest } from "redux-saga/effects";
-import { UserPagenationListDataAPI } from "webapp/api/UserApi";
+import { UserPagenationListDataAPI } from "../api/userApi";
 
 const [
   USERPAGENATTIONBUTTON_REQUEST,

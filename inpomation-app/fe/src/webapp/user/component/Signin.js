@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Betazon } from "webapp/images/index";
+import { Betazon } from "../../images/index";
 import { useNavigate } from "react-router";
 import {
   Button,
@@ -9,8 +9,8 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
-import SignupButton from "webapp/common/component/SignupButton";
-import { UserSigninDataAPI } from "webapp/api/UserApi";
+import SignupButton from "../../common/component/SignupButton";
+import { UserSigninDataAPI } from "../../api/userApi";
 
 import styles from "../style/UserSignin.module.css";
 
@@ -26,7 +26,7 @@ const Signin = () => {
   if (username === "" || password === "") {
     window.alert("아이디 또는 비밀번호를 입력해주세요.");
     return;
-  } 
+  }
   // if (!emailCheck(username)) {
   //   window.alert("이메일 형식이 맞지 않습니다.");
   // }
