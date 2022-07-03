@@ -1,5 +1,4 @@
 const db = require("../../middlewares/pool");
-console.log("db : ", db);
 const crypto = require("crypto");
 
 exports.userLogout = (req, res) => {
@@ -71,9 +70,7 @@ exports.userRegister = (req, res) => {
       password
     )}, name : ${name}, email : ${email}, phone_number : ${phone_number}, address : ${address}, roles : ${roles}`
   );
-  console.log("진입1");
   db.getConnectionPool((conn) => {
-    console.log("진입2");
     const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles) 
                         VALUES ('${username}','${hashPassword(
       password

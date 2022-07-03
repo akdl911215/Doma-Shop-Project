@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
 const session = require("express-session");
+const cors = require("cors");
 // const crypto = require("crypto");
 const FileStore = require("session-file-store")(session);
 const cookieParser = require("cookie-parser");
@@ -15,6 +16,7 @@ require("dotenv").config();
 const hostname = "localhost";
 const port = 8080;
 
+app.use(cors());
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}`);
 });
@@ -33,7 +35,7 @@ app.use(
 app.use("/", mainRouter);
 // app.use("/users", userRouter);
 app.use("/productInfomation", productInfomationRouter);
-app.route("/users/register").post(userRouter.userRegister);
+app.route("/users/signup").post(userRouter.userRegister);
 app.route("/users/signin").post(userRouter.userSignin);
 app.route("/users/logout").get(userRouter.userLogout);
 app
