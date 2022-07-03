@@ -33,7 +33,7 @@ app.use(
 app.use("/", mainRouter);
 // app.use("/users", userRouter);
 app.use("/productInfomation", productInfomationRouter);
-app.route("/users/signup").post(userRouter.userRegister);
+app.route("/users/register").post(userRouter.userRegister);
 app.route("/users/signin").post(userRouter.userSignin);
 app.route("/users/logout").get(userRouter.userLogout);
 app
