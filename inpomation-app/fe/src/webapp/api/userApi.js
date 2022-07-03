@@ -20,6 +20,7 @@ export const UserPagenationListDataAPI = (page) => {
 
 export const UserSignupDataAPI = (states) => {
   const url = backUrl + "/users/signup";
+  console.log("url :: ", url);
   return client.post(url, states);
 };
 

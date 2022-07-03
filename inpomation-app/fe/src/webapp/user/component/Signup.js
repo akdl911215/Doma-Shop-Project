@@ -2,8 +2,8 @@ import React, { useCallback, useState } from "react";
 import { Button, Form, Input, Container } from "semantic-ui-react";
 import GoHomeButton from "../../common/component/GoHomeButton";
 import styles from "../style/UserSignup.module.css";
-import { client } from "../../api/Client";
 import { UserSignupDataAPI } from "../../api/userApi";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [signup, setSignup] = useState({
@@ -14,6 +14,7 @@ const Signup = () => {
     email: "",
     phoneNumber: "",
   });
+  const navigate = useNavigate();
 
   const { username, password, name, address, email, phoneNumber } = signup;
 
@@ -28,11 +29,16 @@ const Signup = () => {
     [signup]
   );
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    // e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
 
     alert("회원가입 버튼 누름");
+
+    signup.roles = "USER";
+    console.log("signup : ", signup);
+
     UserSignupDataAPI(signup);
+    navigate("/users_signin");
   };
 
   return (
@@ -88,7 +94,7 @@ const Signup = () => {
             <Form.Field
               control={Input}
               label="핸드폰번호"
-              name="phoneNumber"
+              name="phone_number"
               placeholder="PHONENUMBER"
               onChange={handleChange}
             />
