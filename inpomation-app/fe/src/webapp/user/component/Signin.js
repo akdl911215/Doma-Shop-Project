@@ -23,10 +23,6 @@ const Signin = () => {
 
   const { username, password } = signin;
 
-  if (username === "" || password === "") {
-    window.alert("아이디 또는 비밀번호를 입력해주세요.");
-    return;
-  }
   // if (!emailCheck(username)) {
   //   window.alert("이메일 형식이 맞지 않습니다.");
   // }
@@ -40,7 +36,23 @@ const Signin = () => {
   const signinButton = () => {
     alert("로그인버튼누름");
 
-    UserSigninDataAPI(signin);
+    if (username === "" || password === "") {
+      window.alert("아이디 또는 비밀번호를 입력해주세요.");
+      return;
+    }
+
+    UserSigninDataAPI(signin).then((res) => {
+      console.log("res : ", res);
+
+      if (res.data.result === "로그인 성공") {
+        navigate("/");
+      } else {
+        if (res.data.result === "비밀번호 틀렸습니다.")
+          window.alert("비밀번호가 틀렸습니다");
+        if (res.data.result === "아이디가 틀렸습니다.")
+          window.alert("아이디가 틀렸습니다.");
+      }
+    });
   };
 
   const handleChange = (e) => {
@@ -92,7 +104,6 @@ const Signin = () => {
           </Message>
         </Grid.Column>
       </Grid>
-      );
     </>
   );
 };
