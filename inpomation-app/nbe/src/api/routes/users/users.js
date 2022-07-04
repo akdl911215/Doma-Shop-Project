@@ -1,5 +1,7 @@
 const db = require("../../middlewares/pool");
 const crypto = require("crypto");
+const { rejects } = require("assert");
+const { resolve } = require("path");
 
 exports.userLogout = (req, res) => {
   console.log("로그아웃");
@@ -64,18 +66,19 @@ exports.userSignin = (req, res) => {
 };
 
 exports.userRegister = (req, res) => {
-  const { username, password, name, email, phone_number, address, roles } =
-    req.body;
+  // const { username, password, name, email, phone_number, address, roles } =
+  //   req.body;
+  const { password, salt } = createHashedPassword(req.body.password);
+  console.log("password : ", password);
+  console.log("salt : ", salt);
+
   console.log(
-    `username : ${username}, password : ${hashPassword(
-      password
-    )}, name : ${name}, email : ${email}, phone_number : ${phone_number}, address : ${address}, roles : ${roles}`
+    `username : ${req.body.username}, password : ${password}, name : ${req.body.name}, email : ${req.body.email}, phone_number : ${req.body.phone_number}, address : ${req.body.address}, roles : ${req.body.roles}, salt : ${salt}`
   );
+
   db.getConnectionPool((conn) => {
-    const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles) 
-                        VALUES ('${username}','${hashPassword(
-      password
-    )}','${name}','${email}','${phone_number}','${address}', '${roles}')`;
+    const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles, salt) 
+                        VALUES ('${username}','${password}','${name}','${email}','${phone_number}','${address}', '${roles}', '${salt})`;
     conn.query(sql, (err, doc) => {
       if (err) console.log(`err : ${err}`);
       res.send({
@@ -87,13 +90,22 @@ exports.userRegister = (req, res) => {
   });
 };
 
-function hashPassword(password) {
-  const salt = crypto.randomBytes(32).toString("hex");
-  return crypto.pbkdf2Sync(password, salt, 1, 32, "sha512").toString("hex");
+function createSalt() {
+  new Promise((resolve, reject) => {
+    crypto.randomBytes(64, (err, buf) => {
+      if (err) reject(err);
+      resolve(buf.toString("base64"));
+    });
+  }).catch((err) => console.error(`createSalt error : ${err}`));
 }
-// 내장 모듈인 crypto를 사용하기 위해 불러와준 후,
-// randomBytes를 통해 salt를 생성해 줍니다. randomBytes의 인자로 문자열의 size를 넣어주고, toString 메소드에 인코딩 방식을 인자로 넣어주면 됩니다.
-// 즉 const salt = crypto.randomBytes(32).toString('hex') 는 32의 문자열 길이를 가진 랜덤 문자열을 hex 형식으로 인코딩 한다는 뜻 입니다.
-// 그리고 pbkdf2Sync 를 통해 암호화를 진행해줍니다.
-// pbkdf2Sync 의 인자로는 ( 암호화 할 비밀번호, Salt, 반복 횟수, 문자열 길이, 암호화 알고리즘) 순서대로 들어가게 됩니다.
-// 그리고 아까 randomBytes와 같이 마지막에 toString을 통해 인코딩 방식을 정해줍니다.
+
+function createHashedPassword(plainPassword) {
+  new Promise(async (resolve, reject) => {
+    const salt = createSalt();
+    crypto.pbkdf2(plainPassword, salt, 999, 64, "sha512", (err, key) => {
+      if (err) reject(err);
+      resolve({ password: key.toString("base64"), salt });
+    });
+  }).catch((err) => console.error(`createHashedPassword error : ${err}`));
+}
+// https://zinirun.github.io/2020/12/02/node-crypto-password/
