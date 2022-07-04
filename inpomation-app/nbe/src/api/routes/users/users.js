@@ -14,7 +14,8 @@ exports.userSignin = (req, res) => {
   console.log("로그인");
 
   const { username, password } = req.body;
-  console.log(`username : ${username}, password : ${password}`);
+  const hashPW = hashPassword(password);
+  console.log(`username : ${username}, password : ${hashPW}`);
 
   db.getConnectionPool((connection) => {
     console.log(`connection : ${connection}`);
@@ -24,7 +25,7 @@ exports.userSignin = (req, res) => {
       console.log(`rows : ${rows}`);
       if (rows.length) {
         if (rows[0].username === username) {
-          const passwordSql = `SELECT * FROM users WHERE password = '${password}'`;
+          const passwordSql = `SELECT * FROM users WHERE password = '${hashPW}'`;
           connection.query(passwordSql, (err, rows) => {
             if (err) {
               console.error(`username error : ${err}`);
