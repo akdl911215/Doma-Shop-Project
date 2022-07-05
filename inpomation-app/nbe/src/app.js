@@ -6,7 +6,7 @@ const path = require("path");
 const session = require("express-session");
 const cors = require("cors");
 // const crypto = require("crypto");
-const FileStore = require("session-file-store")(session);
+const MySQLStore = require("express-mysql-session")(session);
 const cookieParser = require("cookie-parser");
 const mainRouter = require("./api/routes/main/main");
 const userRouter = require("./api/routes/users/users");
@@ -23,12 +23,30 @@ app.listen(port, hostname, () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "/public")));
+
+console.log(
+  "process.env.SESSION_SECRET_KEY : ",
+  process.env.SESSION_SECRET_KEY,
+  ": type : ",
+  typeof process.env.SESSION_SECRET_KEY
+);
+
+const sessionOptions = {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASES,
+  port: process.env.DB_PORT,
+};
+const sessionStore = new MySQLStore(sessionOptions);
+
 app.use(
   session({
-    secret: "keyboard cat", // 데이터를 암호화 하기 위해 필요한 옵션
-    resave: true, // 요청이 왔을때 세션을 수정하지 않더라도 다시 저장소에 저장되도록
+    secret: process.env.SESSION_SECRET_KEY, // 데이터를 암호화 하기 위해 필요한 옵션
+    resave: false, // 요청이 왔을때 세션을 수정하지 않더라도 다시 저장소에 저장되도록
     saveUninitialized: true, // 세션이 필요하면 세션을 실행시칸다(서버에 부담을 줄이기 위해)
-    store: new FileStore(), // 세션이 데이터를 저장하는 곳
+    store: sessionStore, // 세션이 데이터를 저장하는 곳
+    // cookie: { secure: false },
   })
 );
 

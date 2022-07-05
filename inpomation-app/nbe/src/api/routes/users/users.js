@@ -39,16 +39,20 @@ exports.userSignin = (req, res) => {
                       console.error(`username error : ${err}`);
                       throw err;
                     }
+                    const hour = 3600000;
                     if (rows.length) {
                       req.session.username = rows[0].username;
-                      req.session.password = rows[0].password;
+                      // req.session.password = rows[0].password;
                       req.session.isLogined = true;
+                      req.session.cookie.expires = new Date(Date.now() + hour);
+                      req.session.cookie.maxAge = hour;
                       req.session.save(() => {
                         res.json({
                           result: "로그인 성공",
                         });
+                        // res.redirect("/");
                       });
-                      console.log(`req.session : ${req.session}`);
+                      console.log("req.session : ", req.session);
 
                       for (let key in req.session) {
                         console.log("attr : ", key, ", value : ", req.session);
