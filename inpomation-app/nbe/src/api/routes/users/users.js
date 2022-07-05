@@ -1,7 +1,7 @@
 const db = require("../../middlewares/pool");
 const crypto = require("crypto");
-const { rejects } = require("assert");
-const { resolve } = require("path");
+const pbkdf2 = require("pbkdf2");
+const util = require("util");
 
 exports.userLogout = (req, res) => {
   console.log("로그아웃");
@@ -16,7 +16,7 @@ exports.userSignin = (req, res) => {
   console.log("로그인");
 
   const { username, password } = req.body;
-  const hashPW = hashPassword(password);
+  const hashPW = createHashedPassword(password);
   console.log(`username : ${username}, password : ${hashPW}`);
 
   db.getConnectionPool((connection) => {
@@ -66,19 +66,23 @@ exports.userSignin = (req, res) => {
 };
 
 exports.userRegister = (req, res) => {
-  // const { username, password, name, email, phone_number, address, roles } =
-  //   req.body;
-  const { password, salt } = createHashedPassword(req.body.password);
-  console.log("password : ", password);
-  console.log("salt : ", salt);
+  const { username, password, name, email, phone_number, address, roles } =
+    req.body;
+  const hashPW = createHashedPassword(password);
+  console.log("hashPW : ", hashPW);
+  if (hashPW === undefined || hashPW === "") {
+    console.error(`비밀번호가 제대로 입력되지 않았습니다.`);
+    throw err;
+  }
+  console.log("hashPW : ", hashPW);
 
   console.log(
-    `username : ${req.body.username}, password : ${password}, name : ${req.body.name}, email : ${req.body.email}, phone_number : ${req.body.phone_number}, address : ${req.body.address}, roles : ${req.body.roles}, salt : ${salt}`
+    `username : ${req.body.username}, password : ${hashPW}, password2 : ${password}, name : ${req.body.name}, email : ${req.body.email}, phone_number : ${req.body.phone_number}, address : ${req.body.address}, roles : ${req.body.roles}`
   );
 
   db.getConnectionPool((conn) => {
-    const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles, salt) 
-                        VALUES ('${username}','${password}','${name}','${email}','${phone_number}','${address}', '${roles}', '${salt})`;
+    const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles) 
+                        VALUES ('${username}','${hashPW}','${name}','${email}','${phone_number}','${address}', '${roles}')`;
     conn.query(sql, (err, doc) => {
       if (err) console.log(`err : ${err}`);
       res.send({
@@ -89,23 +93,31 @@ exports.userRegister = (req, res) => {
     conn.release();
   });
 };
-
-function createSalt() {
-  new Promise((resolve, reject) => {
-    crypto.randomBytes(64, (err, buf) => {
-      if (err) reject(err);
-      resolve(buf.toString("base64"));
-    });
-  }).catch((err) => console.error(`createSalt error : ${err}`));
-}
-
+let returnPW = "";
 function createHashedPassword(plainPassword) {
-  new Promise(async (resolve, reject) => {
-    const salt = createSalt();
-    crypto.pbkdf2(plainPassword, salt, 999, 64, "sha512", (err, key) => {
-      if (err) reject(err);
-      resolve({ password: key.toString("base64"), salt });
-    });
-  }).catch((err) => console.error(`createHashedPassword error : ${err}`));
+  return crypto.randomBytes(64, (err, buf) => {
+    // if (err) {
+    //   console.error(`crypto randomBytes error ${err}`);
+    //   throw err;
+    // }
+    crypto.pbkdf2(
+      plainPassword,
+      buf.toString("base64"),
+      100000,
+      64,
+      "sha512",
+      (err, key) => {
+        // if (err) {
+        //   console.error(`cryto salt error ${err}`);
+        //   throw err;
+        // }
+        returnPW = key.toString("base64");
+        console.log("returnPW pbkdf2 : ", returnPW);
+      }
+    );
+    console.log("randomBytes returnPW : ", returnPW);
+  });
+  // return returnPW;
 }
-// https://zinirun.github.io/2020/12/02/node-crypto-password/
+// https://www.zerocho.com/category/NodeJS/post/593a487c2ed1da0018cff95d
+// https://velog.io/@kaitlin_k/%EC%95%94%ED%98%B8%ED%99%94-%EB%B0%A9%EC%8B%9D
