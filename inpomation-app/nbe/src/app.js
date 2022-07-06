@@ -10,7 +10,8 @@ const MySQLStore = require("express-mysql-session")(session);
 const cookieParser = require("cookie-parser");
 const mainRouter = require("./api/routes/main/main");
 const userRouter = require("./api/routes/users/users");
-const publicRouter = require("./api/apiData/smokingAreaInGwangjinGu/smokingAreaInGwangjinGu");
+const publicSmokingRouter = require("./api/apiData/smokingAreaInGwangjinGu/smokingAreaInGwangjinGu");
+const publicImportAndExportRouter = require("./api/apiData/importAndExportPerfomence/cityAndProvince");
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 require("dotenv").config();
 const hostname = "localhost";
@@ -58,7 +59,10 @@ app.route("/users/signin").post(userRouter.userSignin);
 app.route("/users/logout").get(userRouter.userLogout);
 app
   .route("/publicData/smokingAreaInGwangjinGu")
-  .get(publicRouter.smokingAreaInGwangjinGu);
+  .get(publicSmokingRouter.smokingAreaInGwangjinGu);
+app
+  .route("/publicData/cityAndProvice")
+  .get(publicImportAndExportRouter.cityAndProvince);
 
 app.get("/process/example", (req, res) => {
   if (req.session.user) {
