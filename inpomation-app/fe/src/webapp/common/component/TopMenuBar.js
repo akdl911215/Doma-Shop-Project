@@ -30,7 +30,7 @@ const TopMenuBar = () => {
               <Link to="/product_infomation_list">제품 정보 리스트</Link>
             </li>
             <li>
-              <Link to="/dataAPI">API</Link>
+              <Link to="/data_list">API</Link>
             </li>
           </ul>
         </nav>

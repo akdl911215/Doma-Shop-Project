@@ -19,6 +19,7 @@ import { Route, Routes } from "react-router-dom";
 import UserPageList from "./webapp/user/component/UserPageList";
 import SmokingAreaInGwangjinGu from "webapp/public-data/component/SmokingAreaInGwangjinGu";
 import PublicDataList from "webapp/public-data/component/PublicDataList";
+import CityAndProvince from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvince";
 
 const App = () => {
   return (
@@ -68,6 +69,10 @@ const App = () => {
         <Route
           path="/data_api_smoking_gwangjingu"
           element={<SmokingAreaInGwangjinGu />}
+        />
+        <Route
+          path="/data_list/data_city_and_province"
+          element={<CityAndProvince />}
         />
       </Routes>
     </>
