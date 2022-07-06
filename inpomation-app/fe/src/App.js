@@ -17,6 +17,8 @@ import ProductInfomationTab from "./webapp/prodeuct-infomatin/component/ProductI
 import ProductInfomationRead from "./webapp/prodeuct-infomatin/component/ProductInfomationRead";
 import { Route, Routes } from "react-router-dom";
 import UserPageList from "./webapp/user/component/UserPageList";
+import SmokingAreaInGwangjinGu from "webapp/public-data/component/SmokingAreaInGwangjinGu";
+import PublicDataList from "webapp/public-data/component/PublicDataList";
 
 const App = () => {
   return (
@@ -60,6 +62,12 @@ const App = () => {
         <Route
           path="/product_infomation_tab"
           element={<ProductInfomationTab />}
+        />
+
+        <Route path="/data_list" element={<PublicDataList />} />
+        <Route
+          path="/data_api_smoking_gwangjingu"
+          element={<SmokingAreaInGwangjinGu />}
         />
       </Routes>
     </>

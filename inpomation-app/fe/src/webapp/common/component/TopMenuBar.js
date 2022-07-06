@@ -29,6 +29,9 @@ const TopMenuBar = () => {
             <li>
               <Link to="/product_infomation_list">제품 정보 리스트</Link>
             </li>
+            <li>
+              <Link to="/dataAPI">API</Link>
+            </li>
           </ul>
         </nav>
       </div>
