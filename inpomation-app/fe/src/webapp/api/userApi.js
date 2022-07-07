@@ -1,5 +1,5 @@
-import { client } from "../api/Client";
-import { backUrl } from "../config/Config";
+import { client } from "./Client";
+import { backUrl } from "webapp/config/Config";
 
 export const UserPagenationListDataAPI = (page) => {
   console.log("page : ", page);

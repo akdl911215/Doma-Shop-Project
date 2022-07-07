@@ -19,6 +19,7 @@ const CityAndProvince = () => {
   });
 
   const clickButton = () => {
+    // leng 손보기
     console.log(
       "optionsState.startMonthArr.length ; ",
       optionsState.startMonthArr.length
