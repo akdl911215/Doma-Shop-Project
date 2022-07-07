@@ -17,6 +17,7 @@ exports.cityAndProvince = (req, res) => {
   const endYymm = req.query.endYymm;
 
   const url = `http://apis.data.go.kr/1220000/sidotrade/getSidotradeList?serviceKey=${ENCODE_SERVICE_KEY}&strtYymm=${strtYymm}&endYymm=${endYymm}&sidoCd=${sidoCd}`;
+  console.log("url : ", url);
 
   request(url, (err, response, body) => {
     if (err) {
