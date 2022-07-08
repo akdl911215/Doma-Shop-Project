@@ -44,15 +44,13 @@ const CityAndProvince = () => {
     }
 
     console.log("state: ", state);
-    // CityAndProvinceAPI(state);
+    CityAndProvinceAPI(state);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log("name : ", name, "/ value : ", value);
 
-    // if (optionsState.startYearArr > optionsState.endYearArr)
-    //   alert("끝나는 일자가 시작 일자보다 빠를 수 없습니다");
     setOptionState({
       ...optionsState,
       [name]: value,
@@ -61,7 +59,7 @@ const CityAndProvince = () => {
 
   let startYearArr = [];
   let endYearArr = [];
-  for (let i = 1950; i < 2099; ++i) {
+  for (let i = 2000; i <= 2022; ++i) {
     startYearArr.push(i);
     endYearArr.push(i);
   }
