@@ -62,7 +62,7 @@ app
   .get(publicSmokingRouter.smokingAreaInGwangjinGu);
 app
   .route("/publicData/cityAndProvice")
-  .get(publicImportAndExportRouter.cityAndProvince);
+  .post(publicImportAndExportRouter.cityAndProvince);
 
 app.get("/process/example", (req, res) => {
   if (req.session.user) {

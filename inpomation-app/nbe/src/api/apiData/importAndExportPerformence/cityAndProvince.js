@@ -12,24 +12,35 @@ exports.cityAndProvince = (req, res) => {
   //            29 광주광역시, 30 대전광역시, 31 울산광역시, 36 세종특별자치시
   //            41 경기도, 42 강원도, 43 충청북도, 44 충청남도, 45 전라북도
   //            46 전라남도, 47 경상북도, 48 경상남도, 50 제주특별자치도
-  const sidoCd = req.query.sidoCd;
-  const strtYymm = req.query.strtYymm;
-  const endYymm = req.query.endYymm;
+  // const sidoCd = req.query.sidoCd;
+  // const strtYymm = req.query.strtYymm;
+  // const endYymm = req.query.endYymm;
+  console.log("req.body : ", req.body);
+  const { sidoCode: sidoCd, startDate: strtYymm, endDate: endYymm } = req.body;
 
   const url = `http://apis.data.go.kr/1220000/sidotrade/getSidotradeList?serviceKey=${ENCODE_SERVICE_KEY}&strtYymm=${strtYymm}&endYymm=${endYymm}&sidoCd=${sidoCd}`;
-  console.log("url : ", url);
 
-  request(url, (err, response, body) => {
+  request({ uri: url, method: "GET" }, (err, response, body) => {
+    console.log("request 진입: ", body);
     if (err) {
       console.log(`시도별 수출입실적 조회 ERROR : ${err}`);
       throw err;
     }
 
     parseString(body, (err, result) => {
+      console.log("parseString body : ", body);
+      console.log("parseString result : ", result);
+
       if (err) {
         console.error(`시도별 수출입실적 조회 parseSring error : ${err}`);
-        throw err;
+        res.json({
+          result: {
+            errorMsg: result,
+          },
+        });
+        return;
       }
+
       res.json({
         result: {
           resultMsg: result.response.header[0].resultMsg[0],
