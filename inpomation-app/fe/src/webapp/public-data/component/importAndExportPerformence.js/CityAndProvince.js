@@ -19,18 +19,17 @@ const CityAndProvince = () => {
   });
 
   const clickButton = () => {
-    // leng 손보기
-    console.log(
-      "optionsState.startMonthArr.length ; ",
-      optionsState.startMonthArr.length
-    );
+    let startMonth = optionsState.startMonthArr;
     if (optionsState.startMonthArr.length === 1)
-      "0".concat(optionsState.startMonthArr);
-    const startDate = optionsState.startYearArr + optionsState.startMonthArr;
+      startMonth = "0".concat(optionsState.startMonthArr);
+    const startDate = optionsState.startYearArr + startMonth;
+    console.log("startDate : ", startDate);
 
+    let endMonth = optionsState.endMonthArr;
     if (optionsState.endMonthArr.length === 1)
-      "0".concat(optionsState.endMonthArr);
-    const endDate = optionsState.endYearArr + optionsState.endMonthArr;
+      endMonth = "0".concat(optionsState.endMonthArr);
+    const endDate = optionsState.endYearArr + endMonth;
+    console.log("endDate : ", endDate);
 
     const state = {
       startDate: startDate,
@@ -38,13 +37,24 @@ const CityAndProvince = () => {
       sidoCode: optionsState.sidoCode,
     };
 
+    console.log("state.startDate > endDate : ", state.startDate > endDate);
+    if (state.startDate > endDate) {
+      alert("끝나는 일자가 시작 일자보다 빠를 수 없습니다");
+      return;
+    }
+
     console.log("state: ", state);
-    CityAndProvinceAPI(state);
+    // CityAndProvinceAPI(state);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("name : ", name, "/ value : ", value);
+
+    // if (optionsState.startYearArr > optionsState.endYearArr)
+    //   alert("끝나는 일자가 시작 일자보다 빠를 수 없습니다");
     setOptionState({
+      ...optionsState,
       [name]: value,
     });
   };
@@ -100,48 +110,56 @@ const CityAndProvince = () => {
                 </select>
               </Table.Cell>
               <Table.Cell>
-                <select name="startYear" id="startYear" onChange={handleChange}>
+                <select
+                  name="startYearArr"
+                  id="startYearArr"
+                  onChange={handleChange}
+                >
                   {startYearArr?.map((element, key) => {
                     return (
                       <>
-                        <option value={element[key]}>
-                          {startYearArr[key]}
-                        </option>
+                        <option value={element}>{element}</option>
                       </>
                     );
                   })}
                 </select>
                 <select
-                  name="startMonth"
-                  id="startMonth"
+                  name="startMonthArr"
+                  id="startMonthArr"
                   onChange={handleChange}
                 >
                   {startMonthArr?.map((element, key) => {
                     return (
                       <>
-                        <option value={element[key]}>
-                          {startMonthArr[key]}
-                        </option>
+                        <option value={element}>{element}</option>
                       </>
                     );
                   })}
                 </select>
               </Table.Cell>
               <Table.Cell>
-                <select name="endYear" id="endYear" onChange={handleChange}>
+                <select
+                  name="endYearArr"
+                  id="endYearArr"
+                  onChange={handleChange}
+                >
                   {endYearArr?.map((element, key) => {
                     return (
                       <>
-                        <option value={element[key]}>{endYearArr[key]}</option>
+                        <option value={element}>{element}</option>
                       </>
                     );
                   })}
                 </select>
-                <select name="endMonth" id="endMonth" onChange={handleChange}>
+                <select
+                  name="endMonthArr"
+                  id="endMonthArr"
+                  onChange={handleChange}
+                >
                   {endMonthArr?.map((element, key) => {
                     return (
                       <>
-                        <option value={element[key]}>{endMonthArr[key]}</option>
+                        <option value={element}>{element}</option>
                       </>
                     );
                   })}
