@@ -71,6 +71,7 @@ const CityAndProvince = () => {
           alert(
             `시작과 종료의 조회기간은 1년이내 기간만 가능합니다. 선택기간 : ${optionsState.startYearArr}-${startMonth}~${optionsState.endYearArr}-${endMonth}`
           );
+          // window.location.reload();
         })
         .finally((fi) => console.log("실행완료"))
     );
