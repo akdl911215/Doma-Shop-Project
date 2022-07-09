@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Table, Container, Checkbox, Button } from "semantic-ui-react";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
 import { CityAndProvinceAPI } from "../../../api/publicDataApi";
-// import { ko } from "date-fns/esm/locale";
 
 const CityAndProvince = () => {
   // 시도코드 : 11 서울특별시, 26 부산광역시, 27 대구광역시, 28 인천광역시
@@ -12,24 +9,24 @@ const CityAndProvince = () => {
   //            46 전라남도, 47 경상북도, 48 경상남도, 50 제주특별자치도
   const [optionsState, setOptionState] = useState({
     sidoCode: "11",
-    startYearArr: "1950",
+    startYearArr: "2000",
     startMonthArr: "01",
-    endYearArr: "1950",
+    endYearArr: "2000",
     endMonthArr: "01",
   });
+  const [dataResult, setDataResult] = useState([]);
 
+  // let arr = [];
   const clickButton = () => {
     let startMonth = optionsState.startMonthArr;
     if (optionsState.startMonthArr.length === 1)
       startMonth = "0".concat(optionsState.startMonthArr);
     const startDate = optionsState.startYearArr + startMonth;
-    console.log("startDate : ", startDate);
 
     let endMonth = optionsState.endMonthArr;
     if (optionsState.endMonthArr.length === 1)
       endMonth = "0".concat(optionsState.endMonthArr);
     const endDate = optionsState.endYearArr + endMonth;
-    console.log("endDate : ", endDate);
 
     const state = {
       startDate: startDate,
@@ -37,15 +34,49 @@ const CityAndProvince = () => {
       sidoCode: optionsState.sidoCode,
     };
 
-    console.log("state.startDate > endDate : ", state.startDate > endDate);
     if (state.startDate > endDate) {
       alert("끝나는 일자가 시작 일자보다 빠를 수 없습니다");
       return;
     }
 
-    console.log("state: ", state);
-    CityAndProvinceAPI(state);
+    const CityAndProvinceData = CityAndProvinceAPI(state);
+    console.log(
+      "CityAndProvinceData : ",
+      CityAndProvinceData.then((res) => {
+        console.log("res : ", res.data.result);
+        const cmtrBlncAmt = res.data.result.cmtrBlncAmt.trim(); // 무역지수
+        const expCnt = res.data.result.expCnt.trim(); // 수출건수
+        const expUsdAmt = res.data.result.expUsdAmt.trim(); // 수출금액
+        const impCnt = res.data.result.impCnt.trim(); // 수입건수
+        const impUsdAmt = res.data.result.impUsdAmt.trim(); // 수입금액
+        const priodTitle = res.data.result.priodTitle.trim(); // 총계
+        const priodTitle2 = res.data.result.priodTitle2; // 연도
+        const resultMSG = res.data.result.resultMsg; // 정상서비스 유무
+        const SidoNumber = res.data.result.sidoNm2; // 도시코드
+
+        const arr = [];
+        arr[0] = cmtrBlncAmt;
+        arr[1] = expCnt;
+        arr[2] = expUsdAmt;
+        arr[3] = impCnt;
+        arr[4] = impUsdAmt;
+        arr[5] = priodTitle;
+        arr[6] = priodTitle2;
+        arr[7] = resultMSG;
+        arr[8] = SidoNumber;
+        setDataResult(arr);
+      })
+        .catch((err) => {
+          console.error("데이터 오류 : ", err);
+          alert(
+            `시작과 종료의 조회기간은 1년이내 기간만 가능합니다. 선택기간 : ${optionsState.startYearArr}-${startMonth}~${optionsState.endYearArr}-${endMonth}`
+          );
+        })
+        .finally((fi) => console.log("실행완료"))
+    );
   };
+
+  console.log("dataResult:", dataResult);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -168,6 +199,31 @@ const CityAndProvince = () => {
                   조회
                 </Button>
               </Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+
+        <Table>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell collapsing>총계</Table.Cell>
+              <Table.Cell>{dataResult[5]}</Table.Cell>
+              <Table.Cell collapsing>연도</Table.Cell>
+              <Table.Cell>{dataResult[6]}</Table.Cell>
+              <Table.Cell collapsing>광역시</Table.Cell>
+              <Table.Cell>{dataResult[8]}</Table.Cell>
+              <Table.Cell collapsing>무역지수</Table.Cell>
+              <Table.Cell>{dataResult[0]}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell collapsing>수입건수</Table.Cell>
+              <Table.Cell>{dataResult[3]}</Table.Cell>
+              <Table.Cell collapsing>수입금액</Table.Cell>
+              <Table.Cell>{dataResult[4]}</Table.Cell>
+              <Table.Cell collapsing>수출건수</Table.Cell>
+              <Table.Cell>{dataResult[1]}</Table.Cell>
+              <Table.Cell collapsing>수출금액</Table.Cell>
+              <Table.Cell>{dataResult[2]}</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>
