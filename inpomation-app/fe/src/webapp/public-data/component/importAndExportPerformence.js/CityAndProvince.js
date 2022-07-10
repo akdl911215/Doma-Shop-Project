@@ -93,14 +93,106 @@ const CityAndProvince = () => {
   let endYearArr = [];
   for (let i = 2000; i <= 2022; ++i) {
     startYearArr.push(i);
-    endYearArr.push(i);
   }
+
+  let startYear = optionsState.startYearArr * 1;
+  for (let i = startYear; i <= startYear + 1; ++i) {
+    endYearArr.push(i);
+    // endYaer 를 변경가능하도록 적용하기
+    // if (startYear === Number(optionsState.endYearArr)) {
+    // optionsState.endYearArr = startYear;
+    // }
+  }
+  let endYear = optionsState.endYearArr * 1;
 
   let startMonthArr = [];
   let endMonthArr = [];
+
   for (let i = 1; i <= 12; ++i) {
     startMonthArr.push(i);
-    endMonthArr.push(i);
+  }
+  const startMonth = optionsState.startMonthArr * 1;
+  const startYearPlusOne = startYear + 1;
+
+  console.log(
+    "startYear : ",
+    startYear,
+    "/ typeof startYear : ",
+    typeof startYear
+  );
+  console.log("endYear : ", endYear, "/ typeof endYear : ", typeof endYear);
+  console.log(
+    "startMonth  : ",
+    startMonth,
+    "/ typeof startMonth  : ",
+    typeof startMonth
+  );
+
+  console.log(
+    "startYear === endYear && startMonth === 1 ",
+    startYear === endYear && startMonth === 1
+  );
+  console.log(
+    "startYear === endYear && startMonth === 3 ",
+    startYear === endYear && startMonth === 3
+  );
+
+  console.log(
+    "startYearPlusOne : ",
+    startYearPlusOne,
+    "/ typeof startYearPlusOne : ",
+    typeof startYearPlusOne
+  );
+  console.log("startYearPlusOne === endYear : ", startYearPlusOne === endYear);
+  if (startYear === endYear && startMonth === 1) {
+    console.log("진입 1");
+    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 1) {
+    endMonthArr = [];
+  } else if (startYear === endYear && startMonth === 2) {
+    endMonthArr = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 2) {
+    endMonthArr = [1];
+  } else if (startYear === endYear && startMonth === 3) {
+    endMonthArr = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 3) {
+    endMonthArr = [1, 2];
+  } else if (startYear === endYear && startMonth === 4) {
+    endMonthArr = [4, 5, 6, 7, 8, 9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 4) {
+    endMonthArr = [1, 2, 3];
+  } else if (startYear === endYear && startMonth === 5) {
+    endMonthArr = [5, 6, 7, 8, 9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 5) {
+    endMonthArr = [1, 2, 3, 4];
+  } else if (startYear === endYear && startMonth === 6) {
+    endMonthArr = [6, 7, 8, 9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 6) {
+    endMonthArr = [1, 2, 3, 4, 5];
+  } else if (startYear === endYear && startMonth === 7) {
+    endMonthArr = [7, 8, 9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 7) {
+    endMonthArr = [1, 2, 3, 4, 5, 6];
+  } else if (startYear === endYear && startMonth === 8) {
+    endMonthArr = [8, 9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 8) {
+    endMonthArr = [1, 2, 3, 4, 5, 6, 7];
+  } else if (startYear === endYear && startMonth === 9) {
+    endMonthArr = [9, 10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 9) {
+    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8];
+  } else if (startYear === endYear && startMonth === 10) {
+    endMonthArr = [10, 11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 10) {
+    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  } else if (startYear === endYear && startMonth === 11) {
+    endMonthArr = [11, 12];
+  } else if (startYear + 1 === endYear && startMonth === 11) {
+    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  } else if (startYear === endYear && startMonth === 12) {
+    endMonthArr = [12];
+  } else if (startYear + 1 === endYear && startMonth === 12) {
+    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   }
 
   return (
