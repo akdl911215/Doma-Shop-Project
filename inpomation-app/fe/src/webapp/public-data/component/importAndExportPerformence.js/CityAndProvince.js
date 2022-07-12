@@ -77,40 +77,23 @@ const CityAndProvince = () => {
     );
   };
 
-  // console.log("dataResult:", dataResult);
-
   let startYearArr = [];
   let endYearArr = [];
+  const [eyArr, setEyArr] = useState([]);
   let endYear = Number(optionsState.endYearArr);
-  //   let endYear =
-  //   optionsState.startYearArr === optionsState.endYearArr
-  //     ? Number(optionsState.startYearArr)
-  //     : Number(optionsState.startYearArr) + 1;
-  // console.log(" endYear ::::::: ", endYear);
   let startMonthArr = [];
   let endMonthArr = [];
-
+  let startYear = optionsState.startYearArr * 1;
+  const startMonth = optionsState.startMonthArr * 1;
   for (let i = 2000; i <= 2022; ++i) {
     startYearArr.push(i);
   }
-
-  let startYear = optionsState.startYearArr * 1;
   for (let i = startYear; i <= startYear + 1; ++i) {
     endYearArr.push(i);
   }
-
-  // endYearArr = endYearFunc(startYear);
-  console.log("endYearArr : ", endYearArr);
-  // endYaer 를 변경가능하도록 적용하기
-  // if (startYear === Number(optionsState.endYearArr)) {
-  // optionsState.endYearArr = startYear;
-  // }
-
   for (let i = 1; i <= 12; ++i) {
     startMonthArr.push(i);
   }
-  const startMonth = optionsState.startMonthArr * 1;
-  const startYearPlusOne = startYear + 1;
 
   console.log(
     "startYear : ",
@@ -125,20 +108,19 @@ const CityAndProvince = () => {
     console.log("name : ", name, "/ value : ", value);
 
     if (name === "startYearArr") {
-      optionsState.endYearArr = value;
-
-      const year = Number(value);
-      let arr = [];
-      for (let i = year; i <= year + 1; ++i) {
-        arr.push(i);
+      console.log("optionsState.startYearArr : ", optionsState.startYearArr);
+      console.log("startYearArr : ", startYearArr);
+      console.log("endYearArr : ", endYearArr);
+      console.log("endYear ::::::::: ", endYear);
+      const choiceNum = Number(value);
+      if (Number(endYear) + 1 === choiceNum) {
+        console.log("연도 1 많음");
+        optionsState.endYearArr = choiceNum + 1;
+      } else {
+        console.log("연도 같음");
+        optionsState.endYearArr = choiceNum;
       }
-      // const returnEndYear = endYearFunc(value);
-      console.log("arr : ", arr);
-      endYearArr = arr;
-      // setEnd(arr);
-
-      console.log("111 :: ", year === Number(optionsState.startYearArr));
-      console.log("year : ", year, "/ typeof year : ", typeof year);
+      // setEyArr(endYearArr);
     }
     setOptionState({
       ...optionsState,
@@ -152,21 +134,6 @@ const CityAndProvince = () => {
     "/ typeof Number(optionsState.startYearArr) : ",
     typeof Number(optionsState.startYearArr)
   );
-  // console.log(
-  //   "Number(optionsState.startYearArr) + 1 : ",
-  //   Number(optionsState.startYearArr) + 1
-  // );
-  if (Number(optionsState.endYearArr) === Number(optionsState.startYearArr)) {
-    console.log("분기1");
-    endYearArr[0] = optionsState.endYearArr;
-  } else if (
-    Number(optionsState.endYearArr) ===
-    Number(optionsState.startYearArr) + 1
-  ) {
-    console.log("분기2");
-    optionsState.endYearArr = endYearArr[1];
-    // endYear = endYearArr[1];
-  }
 
   if (startYear === endYear && startMonth === 1) {
     console.log("진입 1");
