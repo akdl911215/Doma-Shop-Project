@@ -15,7 +15,7 @@ const CityAndProvince = () => {
     endMonthArr: "01",
   });
   const [dataResult, setDataResult] = useState([]);
-
+  // const [end, setEnd] = useState([]);
   // let arr = [];
   const clickButton = () => {
     let startMonth = optionsState.startMonthArr;
@@ -77,20 +77,19 @@ const CityAndProvince = () => {
     );
   };
 
-  console.log("dataResult:", dataResult);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log("name : ", name, "/ value : ", value);
-
-    setOptionState({
-      ...optionsState,
-      [name]: value,
-    });
-  };
+  // console.log("dataResult:", dataResult);
 
   let startYearArr = [];
   let endYearArr = [];
+  let endYear = Number(optionsState.endYearArr);
+  //   let endYear =
+  //   optionsState.startYearArr === optionsState.endYearArr
+  //     ? Number(optionsState.startYearArr)
+  //     : Number(optionsState.startYearArr) + 1;
+  // console.log(" endYear ::::::: ", endYear);
+  let startMonthArr = [];
+  let endMonthArr = [];
+
   for (let i = 2000; i <= 2022; ++i) {
     startYearArr.push(i);
   }
@@ -98,15 +97,14 @@ const CityAndProvince = () => {
   let startYear = optionsState.startYearArr * 1;
   for (let i = startYear; i <= startYear + 1; ++i) {
     endYearArr.push(i);
-    // endYaer 를 변경가능하도록 적용하기
-    // if (startYear === Number(optionsState.endYearArr)) {
-    // optionsState.endYearArr = startYear;
-    // }
   }
-  let endYear = optionsState.endYearArr * 1;
 
-  let startMonthArr = [];
-  let endMonthArr = [];
+  // endYearArr = endYearFunc(startYear);
+  console.log("endYearArr : ", endYearArr);
+  // endYaer 를 변경가능하도록 적용하기
+  // if (startYear === Number(optionsState.endYearArr)) {
+  // optionsState.endYearArr = startYear;
+  // }
 
   for (let i = 1; i <= 12; ++i) {
     startMonthArr.push(i);
@@ -121,29 +119,55 @@ const CityAndProvince = () => {
     typeof startYear
   );
   console.log("endYear : ", endYear, "/ typeof endYear : ", typeof endYear);
-  console.log(
-    "startMonth  : ",
-    startMonth,
-    "/ typeof startMonth  : ",
-    typeof startMonth
-  );
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log("name : ", name, "/ value : ", value);
+
+    if (name === "startYearArr") {
+      optionsState.endYearArr = value;
+
+      const year = Number(value);
+      let arr = [];
+      for (let i = year; i <= year + 1; ++i) {
+        arr.push(i);
+      }
+      // const returnEndYear = endYearFunc(value);
+      console.log("arr : ", arr);
+      endYearArr = arr;
+      // setEnd(arr);
+
+      console.log("111 :: ", year === Number(optionsState.startYearArr));
+      console.log("year : ", year, "/ typeof year : ", typeof year);
+    }
+    setOptionState({
+      ...optionsState,
+      [name]: value,
+    });
+  };
 
   console.log(
-    "startYear === endYear && startMonth === 1 ",
-    startYear === endYear && startMonth === 1
+    "Number(optionsState.startYearArr) : ",
+    Number(optionsState.startYearArr),
+    "/ typeof Number(optionsState.startYearArr) : ",
+    typeof Number(optionsState.startYearArr)
   );
-  console.log(
-    "startYear === endYear && startMonth === 3 ",
-    startYear === endYear && startMonth === 3
-  );
+  // console.log(
+  //   "Number(optionsState.startYearArr) + 1 : ",
+  //   Number(optionsState.startYearArr) + 1
+  // );
+  if (Number(optionsState.endYearArr) === Number(optionsState.startYearArr)) {
+    console.log("분기1");
+    endYearArr[0] = optionsState.endYearArr;
+  } else if (
+    Number(optionsState.endYearArr) ===
+    Number(optionsState.startYearArr) + 1
+  ) {
+    console.log("분기2");
+    optionsState.endYearArr = endYearArr[1];
+    // endYear = endYearArr[1];
+  }
 
-  console.log(
-    "startYearPlusOne : ",
-    startYearPlusOne,
-    "/ typeof startYearPlusOne : ",
-    typeof startYearPlusOne
-  );
-  console.log("startYearPlusOne === endYear : ", startYearPlusOne === endYear);
   if (startYear === endYear && startMonth === 1) {
     console.log("진입 1");
     endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
