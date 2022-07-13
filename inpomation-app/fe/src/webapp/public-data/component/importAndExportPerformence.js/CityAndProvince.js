@@ -9,182 +9,66 @@ const CityAndProvince = () => {
   //            46 전라남도, 47 경상북도, 48 경상남도, 50 제주특별자치도
   const [optionsState, setOptionState] = useState({
     sidoCode: "11",
-    startYearArr: "2000",
-    startMonthArr: "01",
-    endYearArr: "2000",
-    endMonthArr: "01",
+    year: "2000",
+    month: "01",
   });
   const [dataResult, setDataResult] = useState([]);
-  // const [end, setEnd] = useState([]);
-  // let arr = [];
+
   const clickButton = () => {
-    let startMonth = optionsState.startMonthArr;
-    if (optionsState.startMonthArr.length === 1)
-      startMonth = "0".concat(optionsState.startMonthArr);
-    const startDate = optionsState.startYearArr + startMonth;
+    let choiceMonth = optionsState.month;
+    if (optionsState.month.length === 1)
+      choiceMonth = "0".concat(optionsState.month);
+    const choiceDate = optionsState.year + choiceMonth;
 
-    let endMonth = optionsState.endMonthArr;
-    if (optionsState.endMonthArr.length === 1)
-      endMonth = "0".concat(optionsState.endMonthArr);
-    const endDate = optionsState.endYearArr + endMonth;
-
-    const state = {
-      startDate: startDate,
-      endDate: endDate,
+    const CityAndProvinceData = CityAndProvinceAPI({
+      startDate: choiceDate,
+      endDate: choiceDate,
       sidoCode: optionsState.sidoCode,
-    };
+    });
 
-    if (state.startDate > endDate) {
-      alert("끝나는 일자가 시작 일자보다 빠를 수 없습니다");
-      return;
-    }
+    CityAndProvinceData.then((res) => {
+      const cmtrBlncAmt = res.data.result.cmtrBlncAmt.trim(); // 무역지수
+      const expCnt = res.data.result.expCnt.trim(); // 수출건수
+      const expUsdAmt = res.data.result.expUsdAmt.trim(); // 수출금액
+      const impCnt = res.data.result.impCnt.trim(); // 수입건수
+      const impUsdAmt = res.data.result.impUsdAmt.trim(); // 수입금액
+      const priodTitle = res.data.result.priodTitle.trim(); // 총계
+      const priodTitle2 = res.data.result.priodTitle2; // 연도
+      const resultMSG = res.data.result.resultMsg; // 정상서비스 유무
+      const SidoNumber = res.data.result.sidoNm2; // 도시코드
 
-    const CityAndProvinceData = CityAndProvinceAPI(state);
-    console.log(
-      "CityAndProvinceData : ",
-      CityAndProvinceData.then((res) => {
-        console.log("res : ", res.data.result);
-        const cmtrBlncAmt = res.data.result.cmtrBlncAmt.trim(); // 무역지수
-        const expCnt = res.data.result.expCnt.trim(); // 수출건수
-        const expUsdAmt = res.data.result.expUsdAmt.trim(); // 수출금액
-        const impCnt = res.data.result.impCnt.trim(); // 수입건수
-        const impUsdAmt = res.data.result.impUsdAmt.trim(); // 수입금액
-        const priodTitle = res.data.result.priodTitle.trim(); // 총계
-        const priodTitle2 = res.data.result.priodTitle2; // 연도
-        const resultMSG = res.data.result.resultMsg; // 정상서비스 유무
-        const SidoNumber = res.data.result.sidoNm2; // 도시코드
-
-        const arr = [];
-        arr[0] = cmtrBlncAmt;
-        arr[1] = expCnt;
-        arr[2] = expUsdAmt;
-        arr[3] = impCnt;
-        arr[4] = impUsdAmt;
-        arr[5] = priodTitle;
-        arr[6] = priodTitle2;
-        arr[7] = resultMSG;
-        arr[8] = SidoNumber;
-        setDataResult(arr);
+      const arr = [];
+      arr[0] = cmtrBlncAmt;
+      arr[1] = expCnt;
+      arr[2] = expUsdAmt;
+      arr[3] = impCnt;
+      arr[4] = impUsdAmt;
+      arr[5] = priodTitle;
+      arr[6] = priodTitle2;
+      arr[7] = resultMSG;
+      arr[8] = SidoNumber;
+      setDataResult(arr);
+    })
+      .catch((err) => {
+        console.error("데이터 오류 : ", err);
       })
-        .catch((err) => {
-          console.error("데이터 오류 : ", err);
-          alert(
-            `시작과 종료의 조회기간은 1년이내 기간만 가능합니다. 선택기간 : ${optionsState.startYearArr}-${startMonth}~${optionsState.endYearArr}-${endMonth}`
-          );
-          // window.location.reload();
-        })
-        .finally((fi) => console.log("실행완료"))
-    );
+      .finally((fi) => console.log("실행완료"));
   };
 
-  let startYearArr = [];
-  let endYearArr = [];
-  const [eyArr, setEyArr] = useState([]);
-  let endYear = Number(optionsState.endYearArr);
-  let startMonthArr = [];
-  let endMonthArr = [];
-  let startYear = optionsState.startYearArr * 1;
-  const startMonth = optionsState.startMonthArr * 1;
-  for (let i = 2000; i <= 2022; ++i) {
-    startYearArr.push(i);
-  }
-  for (let i = startYear; i <= startYear + 1; ++i) {
-    endYearArr.push(i);
-  }
-  for (let i = 1; i <= 12; ++i) {
-    startMonthArr.push(i);
-  }
-
-  console.log(
-    "startYear : ",
-    startYear,
-    "/ typeof startYear : ",
-    typeof startYear
-  );
-  console.log("endYear : ", endYear, "/ typeof endYear : ", typeof endYear);
+  let choiceYearArr = [];
+  let choiceMonthArr = [];
+  for (let i = 2000; i <= 2022; ++i) choiceYearArr.push(i);
+  for (let i = 1; i <= 12; ++i) choiceMonthArr.push(i);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log("name : ", name, "/ value : ", value);
 
-    if (name === "startYearArr") {
-      console.log("optionsState.startYearArr : ", optionsState.startYearArr);
-      console.log("startYearArr : ", startYearArr);
-      console.log("endYearArr : ", endYearArr);
-      console.log("endYear ::::::::: ", endYear);
-      const choiceNum = Number(value);
-      if (Number(endYear) + 1 === choiceNum) {
-        console.log("연도 1 많음");
-        optionsState.endYearArr = choiceNum + 1;
-      } else {
-        console.log("연도 같음");
-        optionsState.endYearArr = choiceNum;
-      }
-      // setEyArr(endYearArr);
-    }
     setOptionState({
       ...optionsState,
       [name]: value,
     });
   };
-
-  console.log(
-    "Number(optionsState.startYearArr) : ",
-    Number(optionsState.startYearArr),
-    "/ typeof Number(optionsState.startYearArr) : ",
-    typeof Number(optionsState.startYearArr)
-  );
-
-  if (startYear === endYear && startMonth === 1) {
-    console.log("진입 1");
-    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 1) {
-    endMonthArr = [];
-  } else if (startYear === endYear && startMonth === 2) {
-    endMonthArr = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 2) {
-    endMonthArr = [1];
-  } else if (startYear === endYear && startMonth === 3) {
-    endMonthArr = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 3) {
-    endMonthArr = [1, 2];
-  } else if (startYear === endYear && startMonth === 4) {
-    endMonthArr = [4, 5, 6, 7, 8, 9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 4) {
-    endMonthArr = [1, 2, 3];
-  } else if (startYear === endYear && startMonth === 5) {
-    endMonthArr = [5, 6, 7, 8, 9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 5) {
-    endMonthArr = [1, 2, 3, 4];
-  } else if (startYear === endYear && startMonth === 6) {
-    endMonthArr = [6, 7, 8, 9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 6) {
-    endMonthArr = [1, 2, 3, 4, 5];
-  } else if (startYear === endYear && startMonth === 7) {
-    endMonthArr = [7, 8, 9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 7) {
-    endMonthArr = [1, 2, 3, 4, 5, 6];
-  } else if (startYear === endYear && startMonth === 8) {
-    endMonthArr = [8, 9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 8) {
-    endMonthArr = [1, 2, 3, 4, 5, 6, 7];
-  } else if (startYear === endYear && startMonth === 9) {
-    endMonthArr = [9, 10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 9) {
-    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8];
-  } else if (startYear === endYear && startMonth === 10) {
-    endMonthArr = [10, 11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 10) {
-    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  } else if (startYear === endYear && startMonth === 11) {
-    endMonthArr = [11, 12];
-  } else if (startYear + 1 === endYear && startMonth === 11) {
-    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  } else if (startYear === endYear && startMonth === 12) {
-    endMonthArr = [12];
-  } else if (startYear + 1 === endYear && startMonth === 12) {
-    endMonthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-  }
 
   return (
     <>
@@ -193,8 +77,7 @@ const CityAndProvince = () => {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>시/도 선택</Table.HeaderCell>
-              <Table.HeaderCell>시작 날짜</Table.HeaderCell>
-              <Table.HeaderCell>끝나는 날짜</Table.HeaderCell>
+              <Table.HeaderCell>연/월 선택</Table.HeaderCell>
               <Table.HeaderCell></Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -223,12 +106,8 @@ const CityAndProvince = () => {
                 </select>
               </Table.Cell>
               <Table.Cell>
-                <select
-                  name="startYearArr"
-                  id="startYearArr"
-                  onChange={handleChange}
-                >
-                  {startYearArr?.map((element, key) => {
+                <select name="year" id="choiceYearArr" onChange={handleChange}>
+                  {choiceYearArr?.map((element, key) => {
                     return (
                       <>
                         <option value={element}>{element}</option>
@@ -237,39 +116,11 @@ const CityAndProvince = () => {
                   })}
                 </select>
                 <select
-                  name="startMonthArr"
-                  id="startMonthArr"
+                  name="month"
+                  id="choiceMonthArr"
                   onChange={handleChange}
                 >
-                  {startMonthArr?.map((element, key) => {
-                    return (
-                      <>
-                        <option value={element}>{element}</option>
-                      </>
-                    );
-                  })}
-                </select>
-              </Table.Cell>
-              <Table.Cell>
-                <select
-                  name="endYearArr"
-                  id="endYearArr"
-                  onChange={handleChange}
-                >
-                  {endYearArr?.map((element, key) => {
-                    return (
-                      <>
-                        <option value={element}>{element}</option>
-                      </>
-                    );
-                  })}
-                </select>
-                <select
-                  name="endMonthArr"
-                  id="endMonthArr"
-                  onChange={handleChange}
-                >
-                  {endMonthArr?.map((element, key) => {
+                  {choiceMonthArr?.map((element, key) => {
                     return (
                       <>
                         <option value={element}>{element}</option>
@@ -278,6 +129,7 @@ const CityAndProvince = () => {
                   })}
                 </select>
               </Table.Cell>
+
               <Table.Cell>
                 <Button color="black" onClick={(e) => clickButton(e)}>
                   조회
