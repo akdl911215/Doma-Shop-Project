@@ -11,21 +11,11 @@ export const UserPagenationListDataAPI = (page) => {
     (page.type ? page.type : "") +
     "&keyword=" +
     (page.keyword ? page.keyword : "");
-
-  const url = backUrl + "/users/list?" + str;
-
-  console.log("url : ", url);
-  return client.get(url);
+  return client.get(backUrl + "/users/list?" + str);
 };
 
-export const UserSignupDataAPI = (states) => {
-  const url = backUrl + "/users/signup";
-  console.log("url :: ", url);
-  return client.post(url, states);
-};
+export const UserSignupDataAPI = (states) =>
+  client.post(backUrl + "/users/signup", states);
 
-export const UserSigninDataAPI = (states) => {
-  const url = backUrl + "/users/signin";
-
-  return client.post(url, states);
-};
+export const UserSigninDataAPI = (states) =>
+  client.post(backUrl + "/users/signin", states);
