@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Table, Container, Checkbox, Button } from "semantic-ui-react";
 import { CityAndProvinceAPI } from "../../../api/publicDataApi";
+import GoBackButton from "webapp/common/component/GoHomeButton";
+import { useNavigate } from "react-router-dom";
 
 const CityAndProvince = () => {
+  const navigate = useNavigate();
   // 시도코드 : 11 서울특별시, 26 부산광역시, 27 대구광역시, 28 인천광역시
   //            29 광주광역시, 30 대전광역시, 31 울산광역시, 36 세종특별자치시
   //            41 경기도, 42 강원도, 43 충청북도, 44 충청남도, 45 전라북도
@@ -27,27 +30,17 @@ const CityAndProvince = () => {
     });
 
     CityAndProvinceData.then((res) => {
-      const cmtrBlncAmt = res.data.result.cmtrBlncAmt.trim(); // 무역지수
-      const expCnt = res.data.result.expCnt.trim(); // 수출건수
-      const expUsdAmt = res.data.result.expUsdAmt.trim(); // 수출금액
-      const impCnt = res.data.result.impCnt.trim(); // 수입건수
-      const impUsdAmt = res.data.result.impUsdAmt.trim(); // 수입금액
-      const priodTitle = res.data.result.priodTitle.trim(); // 총계
-      const priodTitle2 = res.data.result.priodTitle2; // 연도
-      const resultMSG = res.data.result.resultMsg; // 정상서비스 유무
-      const SidoNumber = res.data.result.sidoNm2; // 도시코드
-
-      const arr = [];
-      arr[0] = cmtrBlncAmt;
-      arr[1] = expCnt;
-      arr[2] = expUsdAmt;
-      arr[3] = impCnt;
-      arr[4] = impUsdAmt;
-      arr[5] = priodTitle;
-      arr[6] = priodTitle2;
-      arr[7] = resultMSG;
-      arr[8] = SidoNumber;
-      setDataResult(arr);
+      setDataResult([
+        res.data.result.cmtrBlncAmt.trim(), // 무역지수
+        res.data.result.expCnt.trim(), // 수출건수
+        res.data.result.expUsdAmt.trim(), // 수출금액
+        res.data.result.impCnt.trim(), // 수입건수
+        res.data.result.impUsdAmt.trim(), // 수입금액
+        res.data.result.priodTitle.trim(), // 총계
+        res.data.result.priodTitle2, // 연도
+        res.data.result.resultMsg, // 정상서비스 유무
+        res.data.result.sidoNm2, // 도시코드
+      ]);
     })
       .catch((err) => {
         console.error("데이터 오류 : ", err);
@@ -61,12 +54,9 @@ const CityAndProvince = () => {
   for (let i = 1; i <= 12; ++i) choiceMonthArr.push(i);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log("name : ", name, "/ value : ", value);
-
     setOptionState({
       ...optionsState,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -107,7 +97,7 @@ const CityAndProvince = () => {
               </Table.Cell>
               <Table.Cell>
                 <select name="year" id="choiceYearArr" onChange={handleChange}>
-                  {choiceYearArr?.map((element, key) => {
+                  {choiceYearArr?.map((element) => {
                     return (
                       <>
                         <option value={element}>{element}</option>
@@ -120,7 +110,7 @@ const CityAndProvince = () => {
                   id="choiceMonthArr"
                   onChange={handleChange}
                 >
-                  {choiceMonthArr?.map((element, key) => {
+                  {choiceMonthArr?.map((element) => {
                     return (
                       <>
                         <option value={element}>{element}</option>
@@ -143,7 +133,7 @@ const CityAndProvince = () => {
           <Table.Body>
             <Table.Row>
               <Table.Cell collapsing>총계</Table.Cell>
-              <Table.Cell>{dataResult[5]}</Table.Cell>
+              <Table.Cell>{}</Table.Cell>
               <Table.Cell collapsing>연도</Table.Cell>
               <Table.Cell>{dataResult[6]}</Table.Cell>
               <Table.Cell collapsing>광역시</Table.Cell>
@@ -163,6 +153,10 @@ const CityAndProvince = () => {
             </Table.Row>
           </Table.Body>
         </Table>
+        <GoBackButton />
+        <Button color="black" onClick={() => navigate("/data_list")}>
+          뒤로가기
+        </Button>
       </Container>
     </>
   );
