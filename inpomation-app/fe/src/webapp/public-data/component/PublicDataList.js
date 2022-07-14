@@ -32,9 +32,14 @@ const PublicDataList = () => {
             </Table.Row>
             <Table.Row>
               <Table.Cell>2</Table.Cell>
-              <Table.Cell>광진구 흡연구역 데이터</Table.Cell>
+              <Table.Cell>시도별 품목별 수출입실적</Table.Cell>
               <Table.Cell>
-                <Button color="black">들어가기</Button>
+                <Button
+                  color="black"
+                  onClick={() => navigate("data_city_and_province_by_item")}
+                >
+                  들어가기
+                </Button>
               </Table.Cell>
             </Table.Row>
           </Table.Body>

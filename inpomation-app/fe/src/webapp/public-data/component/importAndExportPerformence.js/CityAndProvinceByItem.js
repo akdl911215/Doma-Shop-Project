@@ -1,33 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Table, Container, Checkbox, Button } from "semantic-ui-react";
 import { CityAndProvinceAPI } from "../../../api/publicDataApi";
 import GoBackButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router-dom";
-import { SidoSelect } from "./common/SidoSelect";
-import { useDispatch, useSelector } from "react-redux";
-import { CityAndProvineceYearMonthChoice } from "webapp/reducers/sidoAndProvince.reduce";
 
-const CityAndProvince = () => {
+const CityAndProvinceByItem = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   // 시도코드 : 11 서울특별시, 26 부산광역시, 27 대구광역시, 28 인천광역시
   //            29 광주광역시, 30 대전광역시, 31 울산광역시, 36 세종특별자치시
   //            41 경기도, 42 강원도, 43 충청북도, 44 충청남도, 45 전라북도
   //            46 전라남도, 47 경상북도, 48 경상남도, 50 제주특별자치도
-  const [dataResult, setDataResult] = useState([]);
-  useEffect(() => {
-    dispatch(CityAndProvineceYearMonthChoice());
-  }, []);
-
-  const { selectSidoCode } = useSelector(({ YearMonthReducer }) => ({
-    selectSidoCode: YearMonthReducer?.YearMonthCoiceInital?.sidocode,
-  }));
-  console.log("reducer selectSidoCode : ", selectSidoCode);
   const [optionsState, setOptionState] = useState({
+    sidoCode: "11",
     year: "2000",
     month: "01",
+    meterialCode: "",
   });
-  console.log("optionsState :", optionsState);
+  const [dataResult, setDataResult] = useState([]);
 
   const clickButton = () => {
     let choiceMonth = optionsState.month;
@@ -35,11 +24,10 @@ const CityAndProvince = () => {
       choiceMonth = "0".concat(optionsState.month);
     const choiceDate = optionsState.year + choiceMonth;
 
-    optionsState.sidoCode = selectSidoCode;
     const CityAndProvinceData = CityAndProvinceAPI({
       startDate: choiceDate,
       endDate: choiceDate,
-      sidoCode: selectSidoCode,
+      sidoCode: optionsState.sidoCode,
     });
 
     CityAndProvinceData.then((res) => {
@@ -81,6 +69,7 @@ const CityAndProvince = () => {
             <Table.Row>
               <Table.HeaderCell>시/도 선택</Table.HeaderCell>
               <Table.HeaderCell>연/월 선택</Table.HeaderCell>
+              <Table.HeaderCell>품목 선택</Table.HeaderCell>
               <Table.HeaderCell></Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -88,9 +77,26 @@ const CityAndProvince = () => {
           <Table.Body>
             <Table.Row>
               <Table.Cell>
-                <SidoSelect />
+                <select name="sidoCode" id="sidoCode" onChange={handleChange}>
+                  <option value="11">서울특별시</option>
+                  <option value="26">부산광역시</option>
+                  <option value="27">대구광역시</option>
+                  <option value="28">인천광역시</option>
+                  <option value="29">광주광역시</option>
+                  <option value="30">대전광역시</option>
+                  <option value="31">울산광역시</option>
+                  <option value="36">세종특별자치시</option>
+                  <option value="41">경기도</option>
+                  <option value="42">강원도</option>
+                  <option value="43">충청북도</option>
+                  <option value="44">충청남도</option>
+                  <option value="45">전라북도</option>
+                  <option value="46">전라남도</option>
+                  <option value="47">경상북도</option>
+                  <option value="48">경상남도</option>
+                  <option value="50">제주특별자치도</option>
+                </select>
               </Table.Cell>
-
               <Table.Cell>
                 <select name="year" id="choiceYearArr" onChange={handleChange}>
                   {choiceYearArr?.map((element) => {
@@ -113,6 +119,28 @@ const CityAndProvince = () => {
                       </>
                     );
                   })}
+                </select>
+              </Table.Cell>
+
+              <Table.Cell>
+                <select name="sidoCode" id="sidoCode" onChange={handleChange}>
+                  <option value="11">서울특별시</option>
+                  <option value="26">부산광역시</option>
+                  <option value="27">대구광역시</option>
+                  <option value="28">인천광역시</option>
+                  <option value="29">광주광역시</option>
+                  <option value="30">대전광역시</option>
+                  <option value="31">울산광역시</option>
+                  <option value="36">세종특별자치시</option>
+                  <option value="41">경기도</option>
+                  <option value="42">강원도</option>
+                  <option value="43">충청북도</option>
+                  <option value="44">충청남도</option>
+                  <option value="45">전라북도</option>
+                  <option value="46">전라남도</option>
+                  <option value="47">경상북도</option>
+                  <option value="48">경상남도</option>
+                  <option value="50">제주특별자치도</option>
                 </select>
               </Table.Cell>
 
@@ -157,4 +185,4 @@ const CityAndProvince = () => {
     </>
   );
 };
-export default CityAndProvince;
+export default CityAndProvinceByItem;

@@ -20,6 +20,7 @@ import UserPageList from "./webapp/user/component/UserPageList";
 import SmokingAreaInGwangjinGu from "webapp/public-data/component/SmokingAreaInGwangjinGu";
 import PublicDataList from "webapp/public-data/component/PublicDataList";
 import CityAndProvince from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvince";
+import CityAndProvinceByItem from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvinceByItem";
 
 const App = () => {
   return (
@@ -73,6 +74,10 @@ const App = () => {
         <Route
           path="/data_list/data_city_and_province"
           element={<CityAndProvince />}
+        />
+        <Route
+          path="/data_list/data_city_and_province_by_item"
+          element={<CityAndProvinceByItem />}
         />
       </Routes>
     </>
