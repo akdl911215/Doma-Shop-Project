@@ -1,47 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { Table, Container, Checkbox, Button } from "semantic-ui-react";
+import { Table, Container, Button } from "semantic-ui-react";
 import { CityAndProvinceAPI } from "../../../api/publicDataApi";
 import GoBackButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router-dom";
 import { SidoSelect } from "./common/SidoSelect";
+import YearMonthSelect from "./common/YearMonthSelect";
 import { useDispatch, useSelector } from "react-redux";
-import { CityAndProvineceYearMonthChoice } from "webapp/reducers/sidoAndProvince.reduce";
+import {
+  CityAndProvineceSidoCodeChoice,
+  CityAndProvineceYearMonthChoice,
+} from "webapp/reducers/sidoAndProvince.reduce";
 
 const CityAndProvince = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // 시도코드 : 11 서울특별시, 26 부산광역시, 27 대구광역시, 28 인천광역시
-  //            29 광주광역시, 30 대전광역시, 31 울산광역시, 36 세종특별자치시
-  //            41 경기도, 42 강원도, 43 충청북도, 44 충청남도, 45 전라북도
-  //            46 전라남도, 47 경상북도, 48 경상남도, 50 제주특별자치도
+
   const [dataResult, setDataResult] = useState([]);
   useEffect(() => {
-    dispatch(CityAndProvineceYearMonthChoice());
+    dispatch(
+      CityAndProvineceSidoCodeChoice("11"),
+      CityAndProvineceYearMonthChoice({ year: "2000", month: "01" })
+    );
   }, []);
 
-  const { selectSidoCode } = useSelector(({ YearMonthReducer }) => ({
-    selectSidoCode: YearMonthReducer?.YearMonthCoiceInital?.sidocode,
-  }));
-  console.log("reducer selectSidoCode : ", selectSidoCode);
-  const [optionsState, setOptionState] = useState({
-    year: "2000",
-    month: "01",
-  });
-  console.log("optionsState :", optionsState);
+  const { selectSidoCode, selectYear, selectMonth } = useSelector(
+    ({ ImportAndExportReducer }) => ({
+      selectSidoCode: ImportAndExportReducer?.SidoCodeCoiceInital?.sidocode,
+      selectYear: ImportAndExportReducer?.YearMonthCoiceInital?.year,
+      selectMonth: ImportAndExportReducer?.YearMonthCoiceInital?.month,
+    })
+  );
 
   const clickButton = () => {
-    let choiceMonth = optionsState.month;
-    if (optionsState.month.length === 1)
-      choiceMonth = "0".concat(optionsState.month);
-    const choiceDate = optionsState.year + choiceMonth;
-
-    optionsState.sidoCode = selectSidoCode;
+    let choiceMonth = selectMonth;
+    if (selectMonth.length === 1) choiceMonth = "0".concat(selectMonth);
+    const choiceDate = selectYear + choiceMonth;
     const CityAndProvinceData = CityAndProvinceAPI({
       startDate: choiceDate,
       endDate: choiceDate,
       sidoCode: selectSidoCode,
     });
-
     CityAndProvinceData.then((res) => {
       setDataResult([
         res.data.result.cmtrBlncAmt.trim(), // 무역지수
@@ -59,18 +57,6 @@ const CityAndProvince = () => {
         console.error("데이터 오류 : ", err);
       })
       .finally((fi) => console.log("실행완료"));
-  };
-
-  let choiceYearArr = [];
-  let choiceMonthArr = [];
-  for (let i = 2000; i <= 2022; ++i) choiceYearArr.push(i);
-  for (let i = 1; i <= 12; ++i) choiceMonthArr.push(i);
-
-  const handleChange = (e) => {
-    setOptionState({
-      ...optionsState,
-      [e.target.name]: e.target.value,
-    });
   };
 
   return (
@@ -92,28 +78,7 @@ const CityAndProvince = () => {
               </Table.Cell>
 
               <Table.Cell>
-                <select name="year" id="choiceYearArr" onChange={handleChange}>
-                  {choiceYearArr?.map((element) => {
-                    return (
-                      <>
-                        <option value={element}>{element}</option>
-                      </>
-                    );
-                  })}
-                </select>
-                <select
-                  name="month"
-                  id="choiceMonthArr"
-                  onChange={handleChange}
-                >
-                  {choiceMonthArr?.map((element) => {
-                    return (
-                      <>
-                        <option value={element}>{element}</option>
-                      </>
-                    );
-                  })}
-                </select>
+                <YearMonthSelect />
               </Table.Cell>
 
               <Table.Cell>
