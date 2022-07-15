@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Table, Container, Checkbox, Button } from "semantic-ui-react";
+import { Table, Container, Button } from "semantic-ui-react";
 import { CityAndProvinceByItemAPI } from "../../../api/publicDataApi";
-import GoBackButton from "webapp/common/component/GoHomeButton";
-import { useNavigate } from "react-router-dom";
+import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { SidoSelect } from "./common/SidoSelect";
 import YearMonthSelect from "./common/YearMonthSelect";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,11 +11,12 @@ import {
   CityAndProvineceITtemCodeChoice,
 } from "webapp/reducers/sidoAndProvince.reduce";
 import ItemSelect from "./common/ItemSelect";
+import BackButton from "webapp/common/component/BackButton";
 
 const CityAndProvinceByItem = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [dataStaticResult, setDataStaticResult] = useState({});
   const [dataResult, setDataResult] = useState([]);
   useEffect(() => {
     dispatch(
@@ -34,7 +34,6 @@ const CityAndProvinceByItem = () => {
       selectItem: ImportAndExportReducer?.ItemCoiceInital?.item,
     })
   );
-  console.log("selectItem : ", selectItem);
 
   const clickButton = () => {
     let choiceMonth = selectMonth;
@@ -47,26 +46,17 @@ const CityAndProvinceByItem = () => {
       item: selectItem,
     });
     CityAndProvinceData.then((res) => {
-      // setDataResult([
-      //   res.data.result.cmtrBlncAmt.trim(), // 무역지수
-      //   res.data.result.expCnt.trim(), // 수출건수
-      //   res.data.result.expUsdAmt.trim(), // 수출금액
-      //   res.data.result.impCnt.trim(), // 수입건수
-      //   res.data.result.impUsdAmt.trim(), // 수입금액
-      //   res.data.result.priodTitle.trim(), // 총계
-      //   res.data.result.priodTitle2, // 연도
-      //   res.data.result.resultMsg, // 정상서비스 유무
-      //   res.data.result.sidoNm2, // 도시코드
-      // ]);
-      // console.log("res :: ", res);
       setDataResult(res?.data?.result.result[0].item);
+      setDataStaticResult(res?.data?.result.result[0].item[0]);
     })
       .catch((err) => {
         console.error("데이터 오류 : ", err);
       })
       .finally((fi) => console.log("실행완료"));
   };
-  console.log("dataResult : ", dataResult);
+  const viewResult = dataResult?.map((el) => el);
+  viewResult?.splice(0, 1);
+
   return (
     <>
       <Container>
@@ -101,36 +91,67 @@ const CityAndProvinceByItem = () => {
           </Table.Body>
         </Table>
 
-        {/* {(dataResult === undefined) "" ?:} */}
+        <Table>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>기간</Table.Cell>
+              <Table.Cell>{dataStaticResult?.priodTitle}</Table.Cell>
+              <Table.Cell>수출품목건수</Table.Cell>
+              <Table.Cell>{dataStaticResult?.expLnCnt}</Table.Cell>
+              <Table.Cell>수출금액</Table.Cell>
+              <Table.Cell>{dataStaticResult?.expUsdAmt}</Table.Cell>
+              <Table.Cell>{}</Table.Cell>
+              <Table.Cell>{}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>무역지수</Table.Cell>
+              <Table.Cell>{dataStaticResult?.cmtrBlncAmt}</Table.Cell>
+              <Table.Cell>수입품목건수</Table.Cell>
+              <Table.Cell>{dataStaticResult?.impLnCnt}</Table.Cell>
+              <Table.Cell>수입금액</Table.Cell>
+              <Table.Cell>{dataStaticResult?.impUsdAmt}</Table.Cell>
+              <Table.Cell>{}</Table.Cell>
+              <Table.Cell>{}</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
 
-        {dataResult?.map((element) => {
+        {viewResult?.map((element, key) => {
           return (
             <>
               <Table>
-                <Table.Body>
+                <Table.Body key={key}>
                   <Table.Row>
                     <Table.Cell>
                       {element.korePrlstNm === "" ? "" : "품목명"}
                     </Table.Cell>
                     <Table.Cell>{element.korePrlstNm}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
                     <Table.Cell>
-                      {element.cmtrBlncAmt === "" ? "" : "무역지수"}
+                      {element.priodTitle === "" ? "" : "기간"}
                     </Table.Cell>
-                    <Table.Cell>{element.cmtrBlncAmt}</Table.Cell>
+                    <Table.Cell>{element.priodTitle}</Table.Cell>
+
                     <Table.Cell>
-                      {element.cmtrBlncAmt === "" ? "" : "수출품목건수"}
+                      {element.expLnCnt === "" ? "" : "수출품목건수"}
                     </Table.Cell>
-                    <Table.Cell>{element.cmtrBlncAmt}</Table.Cell>
+                    <Table.Cell>{element.expLnCnt}</Table.Cell>
                     <Table.Cell>
                       {element.expUsdAmt === "" ? "" : "수출금액"}
                     </Table.Cell>
                     <Table.Cell>{element.expUsdAmt}</Table.Cell>
+                    <Table.Cell>
+                      {element.hsSgn === "" ? "" : "품목코드"}
+                    </Table.Cell>
+                    <Table.Cell>{element.hsSgn}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
-                      {element.cmtrBlncAmt === "" ? "" : "품목코드"}
+                      {element.cmtrBlncAmt === "" ? "" : "무역지수"}
                     </Table.Cell>
                     <Table.Cell>{element.cmtrBlncAmt}</Table.Cell>
+
                     <Table.Cell>
                       {element.impLnCnt === "" ? "" : "수입품목건수"}
                     </Table.Cell>
@@ -139,22 +160,16 @@ const CityAndProvinceByItem = () => {
                       {element.impUsdAmt === "" ? "" : "수입금액"}
                     </Table.Cell>
                     <Table.Cell>{element.impUsdAmt}</Table.Cell>
-                    <Table.Cell>
-                      {element.priodTitle === "" ? "" : "기간"}
-                    </Table.Cell>
-                    <Table.Cell>{element.priodTitle}</Table.Cell>
+                    <Table.Cell>{}</Table.Cell>
+                    <Table.Cell>{}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>
             </>
           );
         })}
-        {/*  <priodTitle>2016</priodTitle>       기간 */}
-
-        <GoBackButton />
-        <Button color="black" onClick={() => navigate("/data_list")}>
-          뒤로가기
-        </Button>
+        <GoHomeButton />
+        <BackButton link="/data_list" />
       </Container>
     </>
   );
