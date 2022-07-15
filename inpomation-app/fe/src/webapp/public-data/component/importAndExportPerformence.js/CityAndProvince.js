@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Container, Button } from "semantic-ui-react";
 import { CityAndProvinceAPI } from "../../../api/publicDataApi";
-import GoBackButton from "webapp/common/component/GoHomeButton";
-import { useNavigate } from "react-router-dom";
+import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { SidoSelect } from "./common/SidoSelect";
 import YearMonthSelect from "./common/YearMonthSelect";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,9 +9,9 @@ import {
   CityAndProvineceSidoCodeChoice,
   CityAndProvineceYearMonthChoice,
 } from "webapp/reducers/sidoAndProvince.reduce";
+import BackButton from "webapp/common/component/BackButton";
 
 const CityAndProvince = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [dataResult, setDataResult] = useState([]);
@@ -114,10 +113,8 @@ const CityAndProvince = () => {
             </Table.Row>
           </Table.Body>
         </Table>
-        <GoBackButton />
-        <Button color="black" onClick={() => navigate("/data_list")}>
-          뒤로가기
-        </Button>
+        <GoHomeButton />
+        <BackButton link="/data_list" />
       </Container>
     </>
   );
