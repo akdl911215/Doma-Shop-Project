@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { CityAndProvineceSidoCodeChoice } from "webapp/reducers/sidoAndProvince.reduce";
+import { CityAndProvineceITtemCodeChoice } from "webapp/reducers/sidoAndProvince.reduce";
 
 const ItemSelect = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const ItemSelect = () => {
     setItemCode({
       [e.target.name]: e.target.value,
     });
-    dispatch(CityAndProvineceSidoCodeChoice(e.target.value));
+    dispatch(CityAndProvineceITtemCodeChoice(e.target.value));
   };
 
   const style = {
@@ -27,6 +27,7 @@ const ItemSelect = () => {
         onChange={handleChange}
         style={style.selectBox}
       >
+        <option value="">선택하세요</option>
         <option value="01">산동물(01)</option>
         <option value="0101">말ㆍ당나귀ㆍ노새와 버새 (0101)</option>
         <option value="010110">번식용의 것(010110)</option>

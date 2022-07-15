@@ -2,6 +2,7 @@ import { createRequestActionTypes } from "webapp/lib/CreateRequestSaga";
 
 const [SIDOCODECHOICE_REQUEST] = createRequestActionTypes("SIDOCODECHOICE");
 const [YEARMONTHCHOICE_REQUEST] = createRequestActionTypes("YEARMONTHCHOICE");
+const [ITEMCHOICE_REQUEST] = createRequestActionTypes("ITEMCHOICE");
 
 export const CityAndProvineceSidoCodeChoice = (sido) => {
   return {
@@ -18,6 +19,14 @@ export const CityAndProvineceYearMonthChoice = (yearMonth) => {
   };
 };
 
+export const CityAndProvineceITtemCodeChoice = (item) => {
+  console.log("CityAndProvineceITtemCodeChoice item : ", item);
+  return {
+    type: ITEMCHOICE_REQUEST,
+    payload: item,
+  };
+};
+
 export const initialState = {
   SidoCodeCoiceInital: { sidocode: "11" },
   SidoCodeCoiceInitalRequset: false,
@@ -25,6 +34,9 @@ export const initialState = {
   YearMonthCoiceInital: { year: "2000", month: "01" },
   YearMonthCoiceInitalRequset: false,
   YearMonthCoiceInitalError: null,
+  ItemCoiceInital: { item: "" },
+  ItemCoiceInitalRequset: false,
+  ItemCoiceInitalError: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,6 +55,14 @@ const reducer = (state = initialState, action) => {
         YearMonthCoiceInital: {
           year: action?.payload?.year,
           month: action?.payload?.month,
+        },
+      };
+    case ITEMCHOICE_REQUEST:
+      console.log("ITEMCHOICE_REQUEST : ", action);
+      return {
+        ...state,
+        ItemCoiceInital: {
+          item: action?.payload,
         },
       };
 
