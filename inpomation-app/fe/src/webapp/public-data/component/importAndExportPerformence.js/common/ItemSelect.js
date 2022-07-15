@@ -4,7 +4,7 @@ import { CityAndProvineceITtemCodeChoice } from "webapp/reducers/sidoAndProvince
 
 const ItemSelect = () => {
   const dispatch = useDispatch();
-  const [itemCode, setItemCode] = useState("11");
+  const [itemCode, setItemCode] = useState("");
 
   const handleChange = (e) => {
     setItemCode({
@@ -15,7 +15,7 @@ const ItemSelect = () => {
 
   const style = {
     selectBox: {
-      width: "5rem",
+      width: "10rem",
     },
   };
 

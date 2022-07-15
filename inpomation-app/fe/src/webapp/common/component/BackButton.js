@@ -2,15 +2,14 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 import { useNavigate } from "react-router";
 
-const GoHomeButton = () => {
+const BackButton = (props) => {
   const navigate = useNavigate();
-
   return (
     <>
-      <Button onClick={() => navigate("/")} color="black">
-        홈으로
+      <Button onClick={() => navigate(props.link)} color="black">
+        뒤로가기
       </Button>
     </>
   );
 };
-export default GoHomeButton;
+export default BackButton;
