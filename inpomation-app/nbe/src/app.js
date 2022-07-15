@@ -12,6 +12,7 @@ const mainRouter = require("./api/routes/main/main");
 const userRouter = require("./api/routes/users/users");
 const publicSmokingRouter = require("./api/apiData/smokingAreaInGwangjinGu/smokingAreaInGwangjinGu");
 const publicImportAndExportRouter = require("./api/apiData/importAndExportPerformence/cityAndProvince");
+const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByItem");
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 require("dotenv").config();
 const hostname = "localhost";
@@ -63,6 +64,9 @@ app
 app
   .route("/publicData/cityAndProvice")
   .post(publicImportAndExportRouter.cityAndProvince);
+app
+  .route("/publicData/cityAndProviceByItem")
+  .post(cityAndProvinceByItemRouter.cityAndProvinceByItem);
 
 app.get("/process/example", (req, res) => {
   if (req.session.user) {
