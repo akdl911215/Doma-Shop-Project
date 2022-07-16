@@ -39,6 +39,7 @@ const CityAndProvineceByNature = () => {
 
   // imexTpcd (수출입코드) : 1 수출 / 2 수입
   const [importAndExport, setImportAcvndExport] = useState("1");
+  const importAndExportBool = importAndExport === "1" ? "수출" : "수입";
 
   const clickButton = () => {
     let choiceMonth = selectMonth;
@@ -61,7 +62,7 @@ const CityAndProvineceByNature = () => {
   };
   const viewResult = dataResult?.map((el) => el);
 
-  console.log("importAndExport : ", importAndExport);
+  console.log("viewResult : ", viewResult);
 
   return (
     <>
@@ -70,11 +71,23 @@ const CityAndProvineceByNature = () => {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>수출입 코드 선택</Table.HeaderCell>
-              <Table.HeaderCell>수출입 성질 분류 코드 선택</Table.HeaderCell>
+              <Table.HeaderCell>
+                수출입 성질 분류 코드 선택
+                <br />
+                *[선택하시오]은 전체 선택*
+              </Table.HeaderCell>
               <Table.HeaderCell>시/도 선택</Table.HeaderCell>
               <Table.HeaderCell>연/월 선택</Table.HeaderCell>
               <Table.HeaderCell></Table.HeaderCell>
             </Table.Row>
+            {/* <Table.Rpw>
+              <div>
+                <p>
+                  수출입 성질 분류 코드를 [선택하시오]로 설정하면 전체 내용이
+                  출력됩니다.
+                </p>
+              </div>
+            </Table.Rpw> */}
           </Table.Header>
 
           <Table.Body>
@@ -110,24 +123,17 @@ const CityAndProvineceByNature = () => {
         <Table>
           <Table.Body>
             <Table.Row>
-              <Table.Cell>기간</Table.Cell>
-              <Table.Cell>{dataStaticResult?.priodTitle}</Table.Cell>
-              <Table.Cell>수출품목건수</Table.Cell>
-              <Table.Cell>{dataStaticResult?.expLnCnt}</Table.Cell>
-              <Table.Cell>수출금액</Table.Cell>
-              <Table.Cell>{dataStaticResult?.expUsdAmt}</Table.Cell>
-              <Table.Cell>{}</Table.Cell>
-              <Table.Cell>{}</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>무역지수</Table.Cell>
-              <Table.Cell>{dataStaticResult?.cmtrBlncAmt}</Table.Cell>
-              <Table.Cell>수입품목건수</Table.Cell>
-              <Table.Cell>{dataStaticResult?.impLnCnt}</Table.Cell>
-              <Table.Cell>수입금액</Table.Cell>
-              <Table.Cell>{dataStaticResult?.impUsdAmt}</Table.Cell>
-              <Table.Cell>{}</Table.Cell>
-              <Table.Cell>{}</Table.Cell>
+              <Table.Cell>총계</Table.Cell>
+              <Table.Cell>
+                {dataStaticResult?.priodTitle ? "전체내역" : ""}
+              </Table.Cell>
+
+              <Table.Cell>{importAndExportBool}금액</Table.Cell>
+              <Table.Cell>{dataStaticResult?.imexUsdAmt}</Table.Cell>
+              <Table.Cell>{importAndExportBool}품목건수</Table.Cell>
+              <Table.Cell>{dataStaticResult?.imexLnCnt}</Table.Cell>
+              <Table.Cell>수출입구분코드</Table.Cell>
+              <Table.Cell>{dataStaticResult?.tmprTpcd}</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>
@@ -139,9 +145,11 @@ const CityAndProvineceByNature = () => {
                 <Table.Body key={key}>
                   <Table.Row>
                     <Table.Cell>
-                      {element.korePrlstNm === "" ? "" : "품목명"}
+                      {element.cdValtValNm === ""
+                        ? ""
+                        : `${importAndExportBool}수입성질코드명`}
                     </Table.Cell>
-                    <Table.Cell>{element.korePrlstNm}</Table.Cell>
+                    <Table.Cell>{element.cdValtValNm}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
@@ -150,34 +158,23 @@ const CityAndProvineceByNature = () => {
                     <Table.Cell>{element.priodTitle}</Table.Cell>
 
                     <Table.Cell>
-                      {element.expLnCnt === "" ? "" : "수출품목건수"}
+                      {element.imexUsdAmt === ""
+                        ? ""
+                        : `${importAndExportBool}금액`}
                     </Table.Cell>
-                    <Table.Cell>{element.expLnCnt}</Table.Cell>
+                    <Table.Cell>{element.imexUsdAmt}</Table.Cell>
                     <Table.Cell>
-                      {element.expUsdAmt === "" ? "" : "수출금액"}
+                      {element.imexLnCnt === ""
+                        ? ""
+                        : `${importAndExportBool}품목코드`}
                     </Table.Cell>
-                    <Table.Cell>{element.expUsdAmt}</Table.Cell>
+                    <Table.Cell>{element.imexLnCnt}</Table.Cell>
                     <Table.Cell>
-                      {element.hsSgn === "" ? "" : "품목코드"}
+                      {element.tmprTpcd === ""
+                        ? ""
+                        : `${importAndExportBool}성질코드`}
                     </Table.Cell>
-                    <Table.Cell>{element.hsSgn}</Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell>
-                      {element.cmtrBlncAmt === "" ? "" : "무역지수"}
-                    </Table.Cell>
-                    <Table.Cell>{element.cmtrBlncAmt}</Table.Cell>
-
-                    <Table.Cell>
-                      {element.impLnCnt === "" ? "" : "수입품목건수"}
-                    </Table.Cell>
-                    <Table.Cell>{element.impLnCnt}</Table.Cell>
-                    <Table.Cell>
-                      {element.impUsdAmt === "" ? "" : "수입금액"}
-                    </Table.Cell>
-                    <Table.Cell>{element.impUsdAmt}</Table.Cell>
-                    <Table.Cell>{}</Table.Cell>
-                    <Table.Cell>{}</Table.Cell>
+                    <Table.Cell>{element.tmprTpcd}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>
