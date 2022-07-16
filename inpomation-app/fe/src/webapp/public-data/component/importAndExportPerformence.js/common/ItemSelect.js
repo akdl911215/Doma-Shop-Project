@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { CityAndProvineceITtemCodeChoice } from "webapp/reducers/sidoAndProvince.reduce";
 
 const ItemSelect = () => {
   const dispatch = useDispatch();
-
-  const handleChange = (e) => {
-    dispatch(CityAndProvineceITtemCodeChoice(e.target.value));
-  };
-
   const style = {
     selectBox: {
       width: "10rem",
@@ -20,7 +15,9 @@ const ItemSelect = () => {
       <select
         name="itemCode"
         id="itemCode"
-        onChange={handleChange}
+        onChange={(e) =>
+          dispatch(CityAndProvineceITtemCodeChoice(e.target.value))
+        }
         style={style.selectBox}
       >
         <option value="">선택하세요</option>
