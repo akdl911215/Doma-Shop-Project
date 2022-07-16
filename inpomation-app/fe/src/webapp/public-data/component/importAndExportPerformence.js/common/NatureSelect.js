@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { CityAndProvineceITtemCodeChoice } from "webapp/reducers/sidoAndProvince.reduce";
 
-const ItemSelect = () => {
+const NatureSelect = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -29372,4 +29372,4 @@ const ItemSelect = () => {
   );
 };
 
-export default ItemSelect;
+export default NatureSelect;

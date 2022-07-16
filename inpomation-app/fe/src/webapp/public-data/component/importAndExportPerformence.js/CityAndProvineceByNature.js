@@ -8,13 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   CityAndProvineceSidoCodeChoice,
   CityAndProvineceYearMonthChoice,
-  CityAndProvineceITtemCodeChoice,
 } from "webapp/reducers/sidoAndProvince.reduce";
 import ItemSelect from "./common/ItemSelect";
 import BackButton from "webapp/common/component/BackButton";
 
-// 시도별 품목별 수출입실적
-const CityAndProvinceByItem = () => {
+// 시도별 성질별 수출입실적
+const CityAndProvineceByNature = () => {
   const dispatch = useDispatch();
 
   const [dataStaticResult, setDataStaticResult] = useState({});
@@ -22,8 +21,7 @@ const CityAndProvinceByItem = () => {
   useEffect(() => {
     dispatch(
       CityAndProvineceSidoCodeChoice("11"),
-      CityAndProvineceYearMonthChoice({ year: "2000", month: "01" }),
-      CityAndProvineceITtemCodeChoice("")
+      CityAndProvineceYearMonthChoice({ year: "2000", month: "01" })
     );
   }, []);
 
@@ -32,7 +30,6 @@ const CityAndProvinceByItem = () => {
       selectSidoCode: ImportAndExportReducer?.SidoCodeCoiceInital?.sidocode,
       selectYear: ImportAndExportReducer?.YearMonthCoiceInital?.year,
       selectMonth: ImportAndExportReducer?.YearMonthCoiceInital?.month,
-      selectItem: ImportAndExportReducer?.ItemCoiceInital?.item,
     })
   );
 
@@ -175,4 +172,4 @@ const CityAndProvinceByItem = () => {
     </>
   );
 };
-export default CityAndProvinceByItem;
+export default CityAndProvineceByNature;
