@@ -21,6 +21,7 @@ import SmokingAreaInGwangjinGu from "webapp/public-data/component/SmokingAreaInG
 import PublicDataList from "webapp/public-data/component/PublicDataList";
 import CityAndProvince from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvince";
 import CityAndProvinceByItem from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvinceByItem";
+import CityAndProvineceByNature from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvineceByNature";
 
 const App = () => {
   return (
@@ -78,6 +79,10 @@ const App = () => {
         <Route
           path="/data_list/data_city_and_province_by_item"
           element={<CityAndProvinceByItem />}
+        />
+        <Route
+          path="/data_list/data_city_and_province_by_nature"
+          element={<CityAndProvineceByNature />}
         />
       </Routes>
     </>

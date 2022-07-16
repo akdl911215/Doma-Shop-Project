@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table, Container, Button } from "semantic-ui-react";
-import { CityAndProvinceByItemAPI } from "../../../api/publicDataApi";
+import { CityAndProvinceByNatureAPI } from "../../../api/publicDataApi";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { SidoSelect } from "./common/SidoSelect";
 import YearMonthSelect from "./common/YearMonthSelect";
@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   CityAndProvineceSidoCodeChoice,
   CityAndProvineceYearMonthChoice,
+  CityAndProvineceImportExportCodeChoice,
 } from "webapp/reducers/sidoAndProvince.reduce";
-import ItemSelect from "./common/ItemSelect";
 import BackButton from "webapp/common/component/BackButton";
+import NatureSelect from "./common/NatureSelect";
 
 // 시도별 성질별 수출입실적
 const CityAndProvineceByNature = () => {
@@ -21,27 +22,33 @@ const CityAndProvineceByNature = () => {
   useEffect(() => {
     dispatch(
       CityAndProvineceSidoCodeChoice("11"),
-      CityAndProvineceYearMonthChoice({ year: "2000", month: "01" })
+      CityAndProvineceYearMonthChoice({ year: "2000", month: "01" }),
+      CityAndProvineceImportExportCodeChoice("")
     );
   }, []);
 
-  const { selectSidoCode, selectYear, selectMonth, selectItem } = useSelector(
-    ({ ImportAndExportReducer }) => ({
+  const { selectSidoCode, selectYear, selectMonth, selectImportExport } =
+    useSelector(({ ImportAndExportReducer }) => ({
       selectSidoCode: ImportAndExportReducer?.SidoCodeCoiceInital?.sidocode,
       selectYear: ImportAndExportReducer?.YearMonthCoiceInital?.year,
       selectMonth: ImportAndExportReducer?.YearMonthCoiceInital?.month,
-    })
-  );
+      selectImportExport:
+        ImportAndExportReducer?.ImportExportChoiceInital?.importExport,
+    }));
+  console.log("selectImportExport :: ", selectImportExport);
+
+  // imexTpcd (수출입코드) : 1 수출 / 2 수입
+  const [importAndExport, setImportAcvndExport] = useState("1");
 
   const clickButton = () => {
     let choiceMonth = selectMonth;
     if (selectMonth.length === 1) choiceMonth = "0".concat(selectMonth);
     const choiceDate = selectYear + choiceMonth;
-    const CityAndProvinceData = CityAndProvinceByItemAPI({
+    const CityAndProvinceData = CityAndProvinceByNatureAPI({
       startDate: choiceDate,
       endDate: choiceDate,
       sidoCode: selectSidoCode,
-      item: selectItem,
+      importExport: selectImportExport,
     });
     CityAndProvinceData.then((res) => {
       setDataResult(res?.data?.result.result[0].item);
@@ -53,7 +60,8 @@ const CityAndProvineceByNature = () => {
       .finally((fi) => console.log("실행완료"));
   };
   const viewResult = dataResult?.map((el) => el);
-  viewResult?.splice(0, 1);
+
+  console.log("importAndExport : ", importAndExport);
 
   return (
     <>
@@ -61,7 +69,8 @@ const CityAndProvineceByNature = () => {
         <Table>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>품목 선택</Table.HeaderCell>
+              <Table.HeaderCell>수출입 코드 선택</Table.HeaderCell>
+              <Table.HeaderCell>수출입 성질 분류 코드 선택</Table.HeaderCell>
               <Table.HeaderCell>시/도 선택</Table.HeaderCell>
               <Table.HeaderCell>연/월 선택</Table.HeaderCell>
               <Table.HeaderCell></Table.HeaderCell>
@@ -71,7 +80,16 @@ const CityAndProvineceByNature = () => {
           <Table.Body>
             <Table.Row>
               <Table.Cell>
-                <ItemSelect />
+                <select
+                  name="importAndExport"
+                  onChange={(e) => setImportAcvndExport(e.target.value)}
+                >
+                  <option value="1">수출</option>
+                  <option value="2">수입</option>
+                </select>
+              </Table.Cell>
+              <Table.Cell>
+                <NatureSelect importExport={importAndExport} />
               </Table.Cell>
               <Table.Cell>
                 <SidoSelect />

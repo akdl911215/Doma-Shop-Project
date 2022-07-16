@@ -42,6 +42,18 @@ const PublicDataList = () => {
                 </Button>
               </Table.Cell>
             </Table.Row>
+            <Table.Row>
+              <Table.Cell>3</Table.Cell>
+              <Table.Cell>시도별 성질별 수출입실적</Table.Cell>
+              <Table.Cell>
+                <Button
+                  color="black"
+                  onClick={() => navigate("data_city_and_province_by_nature")}
+                >
+                  들어가기
+                </Button>
+              </Table.Cell>
+            </Table.Row>
           </Table.Body>
         </Table>
         <GoBackButton />

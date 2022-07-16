@@ -6,3 +6,6 @@ export const CityAndProvinceAPI = (param) =>
 
 export const CityAndProvinceByItemAPI = (param) =>
   client.post(backUrl + "/publicData/cityAndProviceByItem", param);
+
+export const CityAndProvinceByNatureAPI = (param) =>
+  client.post(backUrl + "/publicData/cityAndProviceByNature", param);

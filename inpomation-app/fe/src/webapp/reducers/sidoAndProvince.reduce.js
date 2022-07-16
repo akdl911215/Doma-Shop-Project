@@ -3,6 +3,7 @@ import { createRequestActionTypes } from "webapp/lib/CreateRequestSaga";
 const [SIDOCODECHOICE_REQUEST] = createRequestActionTypes("SIDOCODECHOICE");
 const [YEARMONTHCHOICE_REQUEST] = createRequestActionTypes("YEARMONTHCHOICE");
 const [ITEMCHOICE_REQUEST] = createRequestActionTypes("ITEMCHOICE");
+const [IMPORTEXPORT_REQUEST] = createRequestActionTypes("IMPORTEXPORT");
 
 export const CityAndProvineceSidoCodeChoice = (sido) => {
   return {
@@ -27,6 +28,14 @@ export const CityAndProvineceITtemCodeChoice = (item) => {
   };
 };
 
+export const CityAndProvineceImportExportCodeChoice = (ImportExport) => {
+  console.log("CityAndProvineceITtemCodeChoice ImportExport : ", ImportExport);
+  return {
+    type: IMPORTEXPORT_REQUEST,
+    payload: ImportExport,
+  };
+};
+
 export const initialState = {
   SidoCodeCoiceInital: { sidocode: "11" },
   SidoCodeCoiceInitalRequset: false,
@@ -37,6 +46,9 @@ export const initialState = {
   ItemCoiceInital: { item: "" },
   ItemCoiceInitalRequset: false,
   ItemCoiceInitalError: null,
+  ImportExportChoiceInital: { importExport: "" },
+  ImportExportInitalRequset: false,
+  ImportExportInitalError: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -63,6 +75,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         ItemCoiceInital: {
           item: action?.payload,
+        },
+      };
+    case IMPORTEXPORT_REQUEST:
+      console.log("IMPORTEXPORT_REQUEST : ", action);
+      return {
+        ...state,
+        ImportExportChoiceInital: {
+          importExport: action?.payload,
         },
       };
 
