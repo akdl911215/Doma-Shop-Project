@@ -14,6 +14,7 @@ const publicSmokingRouter = require("./api/apiData/smokingAreaInGwangjinGu/smoki
 const publicImportAndExportRouter = require("./api/apiData/importAndExportPerformence/cityAndProvince");
 const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByItem");
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
+const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
 require("dotenv").config();
 const hostname = "localhost";
 const port = 8080;
@@ -67,6 +68,9 @@ app
 app
   .route("/publicData/cityAndProviceByItem")
   .post(cityAndProvinceByItemRouter.cityAndProvinceByItem);
+app
+  .route("/publicData/cityAndProviceByNature")
+  .post(cityAndProvinceByNatureRouter.cityAndProvinceByNature);
 
 app.get("/process/example", (req, res) => {
   if (req.session.user) {
