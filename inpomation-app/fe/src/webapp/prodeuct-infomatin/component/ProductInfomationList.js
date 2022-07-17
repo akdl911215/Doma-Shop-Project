@@ -21,7 +21,7 @@ const ProductInfomationList = () => {
     <>
       <Container>
         <Card.Group
-          itemsPerRow={3}
+          itemsPerRow={5}
           onClick={() => navigate("/product_infomation_read")}
           className={styles.ImageCardTextStyle}
         >
