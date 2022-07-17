@@ -64,7 +64,10 @@ const CityAndProvinceByItem = () => {
         <Table>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>품목 선택</Table.HeaderCell>
+              <Table.HeaderCell>
+                품목 선택 <br />
+                *[선택하시오]은 전체 선택*
+              </Table.HeaderCell>
               <Table.HeaderCell>시/도 선택</Table.HeaderCell>
               <Table.HeaderCell>연/월 선택</Table.HeaderCell>
               <Table.HeaderCell></Table.HeaderCell>
