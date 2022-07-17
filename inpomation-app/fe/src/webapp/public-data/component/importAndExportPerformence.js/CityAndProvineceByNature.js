@@ -50,6 +50,7 @@ const CityAndProvineceByNature = () => {
       endDate: choiceDate,
       sidoCode: selectSidoCode,
       importExport: selectImportExport,
+      importExportCode: importAndExport,
     });
     CityAndProvinceData.then((res) => {
       setDataResult(res?.data?.result.result[0].item);
@@ -80,14 +81,6 @@ const CityAndProvineceByNature = () => {
               <Table.HeaderCell>연/월 선택</Table.HeaderCell>
               <Table.HeaderCell></Table.HeaderCell>
             </Table.Row>
-            {/* <Table.Rpw>
-              <div>
-                <p>
-                  수출입 성질 분류 코드를 [선택하시오]로 설정하면 전체 내용이
-                  출력됩니다.
-                </p>
-              </div>
-            </Table.Rpw> */}
           </Table.Header>
 
           <Table.Body>
