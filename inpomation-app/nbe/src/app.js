@@ -15,6 +15,9 @@ const publicImportAndExportRouter = require("./api/apiData/importAndExportPerfor
 const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByItem");
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
+const authUtil = require("./api/routes/users/auth").checkToken;
+console.log("authUtil ::: ", authUtil);
+
 require("dotenv").config();
 const hostname = "localhost";
 const port = 8080;
@@ -54,23 +57,27 @@ app.use(
 );
 
 app.use("/", mainRouter);
-// app.use("/users", userRouter);
 app.use("/productInfomation", productInfomationRouter);
-app.route("/users/signup").post(userRouter.userRegister);
-app.route("/users/signin").post(userRouter.userSignin);
-app.route("/users/logout").get(userRouter.userLogout);
-app
-  .route("/publicData/smokingAreaInGwangjinGu")
-  .get(publicSmokingRouter.smokingAreaInGwangjinGu);
-app
-  .route("/publicData/cityAndProvice")
-  .post(publicImportAndExportRouter.cityAndProvince);
-app
-  .route("/publicData/cityAndProviceByItem")
-  .post(cityAndProvinceByItemRouter.cityAndProvinceByItem);
-app
-  .route("/publicData/cityAndProviceByNature")
-  .post(cityAndProvinceByNatureRouter.cityAndProvinceByNature);
+app.post("/users/signup", userRouter.userRegister);
+app.post("/users/signin", authUtil, userRouter.userSignin);
+app.get("/users/logout", userRouter.userLogout);
+app.get(
+  "/publicData/smokingAreaInGwangjinGu",
+  publicSmokingRouter.smokingAreaInGwangjinGu
+);
+
+app.post(
+  "/publicData/cityAndProvice",
+  publicImportAndExportRouter.cityAndProvince
+);
+app.post(
+  "/publicData/cityAndProviceByItem",
+  cityAndProvinceByItemRouter.cityAndProvinceByItem
+);
+app.post(
+  "/publicData/cityAndProviceByNature",
+  cityAndProvinceByNatureRouter.cityAndProvinceByNature
+);
 
 app.get("/process/example", (req, res) => {
   if (req.session.user) {
