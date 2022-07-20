@@ -57,9 +57,10 @@ app.use(
 );
 
 app.use("/", mainRouter);
+// app.use("/verify", authUtil);
 app.use("/productInfomation", productInfomationRouter);
 app.post("/users/signup", userRouter.userRegister);
-app.post("/users/signin", authUtil, userRouter.userSignin);
+app.post("/users/signin", userRouter.userSignin);
 app.get("/users/logout", userRouter.userLogout);
 app.get(
   "/publicData/smokingAreaInGwangjinGu",

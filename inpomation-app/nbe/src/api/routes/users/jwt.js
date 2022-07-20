@@ -5,20 +5,24 @@ module.exports = {
   sign: async (user) => {
     console.log("simg  user : ", user);
     const payload = {
-      id: user.username,
+      username: user,
       // email: user.email,
     };
+    const encodedPayload = new Buffer(JSON.stringify(payload))
+      .toString("base64")
+      .replace("=", "");
     const options = {
       algorithm: "HS256", // 해싱 알고리즘
       expiresIn: "30m", // 토큰 유효 기간
       issuer: "issuer", // 발행자
     };
     return {
-      token: jwt.sign(payload, process.env.JWT_SECRET, options),
+      token: jwt.sign(encodedPayload, process.env.JWT_SECRET, options),
     };
   },
   verify: async (token) => {
     try {
+      console.log("verify : ", verify);
       return jwt.verify(token, process.env.JWT_SECRET);
     } catch (err) {
       if (err.name === "TokenExpiredError") {
