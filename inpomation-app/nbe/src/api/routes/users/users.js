@@ -44,6 +44,10 @@ exports.userSignin = async (req, res) => {
                     if (rows.length) {
                       const jwtToken = await jwt.sign(username);
                       console.log("jwtToken : ", jwtToken);
+                      // res.cookie("jwtToken", jwtToken, {
+                      //   httpOnly: truue,
+                      //   secure: ture,
+                      // });
                       res.status(200).json({
                         code: 200,
                         message: "토큰이 발급되었습니다.",

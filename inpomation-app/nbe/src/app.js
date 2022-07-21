@@ -17,6 +17,8 @@ const productInfomationRouter = require("./api/routes/productInfomation/productI
 const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
 const authUtil = require("./api/routes/users/auth").checkToken;
 console.log("authUtil ::: ", authUtil);
+const { verify } = require("./api/routes/users/jwt");
+console.log("verify", verify);
 
 require("dotenv").config();
 const hostname = "localhost";
@@ -60,7 +62,7 @@ app.use("/", mainRouter);
 // app.use("/verify", authUtil);
 app.use("/productInfomation", productInfomationRouter);
 app.post("/users/signup", userRouter.userRegister);
-app.post("/users/signin", userRouter.userSignin);
+app.post("/users/signin", verify, userRouter.userSignin);
 app.get("/users/logout", userRouter.userLogout);
 app.get(
   "/publicData/smokingAreaInGwangjinGu",
