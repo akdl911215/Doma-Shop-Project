@@ -1,24 +1,32 @@
 const express = require("express");
+const app = express();
 const router = express.Router();
+const jwt = require("jsonwebtoken");
+const jwtToken = require("../users/jwt");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 router.get("/", (req, res, next) => {
-    res.send("home 임")
-    console.log("메인페이지 작동");
-    console.log(req.session);
-});
+  res.send("home 임");
+  console.log("메인페이지 작동");
+  //   console.log(req.session);
 
-// app.get("/", (req, res) => {
-//     res.send("home22");
-//     // if(req.session.is_login === true) {
-//     //     res.render("index", {
-//     //         is_logined : req.session.is_login,
-//     //         name : req.session.name
-//     //     });
-//     // } else {
-//     //     res.render("index", {
-//     //         is_logined : false
-//     //     });
-//     // }
-// });
+  // res.cookie("key", "value", {
+  //   maxAge: 10000,
+  // });
+  // console.log("res ::::: ", res);
+
+  // const cookie = req.headers.cookie;
+  // console.log("coolie : ", cookie);
+  // const token = cookie.substring(4);
+  // console.log("token : ", token);
+  // jwt.verify(token, process.env.SESSION_SECRET_KEY, (error, decoded) => {
+  //   if (error) {
+  //     console.error(`verify error : ${error}`);
+  //   }
+  //   console.log(`decoded : ${decoded}`);
+  //   res.send(decoded);
+  // });
+});
 
 module.exports = router;

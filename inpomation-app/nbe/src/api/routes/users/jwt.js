@@ -1,36 +1,46 @@
 const jwt = require("jsonwebtoken");
-const { Base64 } = require("js-base64");
+const { Base64, atobPolyfill } = require("js-base64");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 console.log("JWT_SECRET : ", process.env.JWT_SECRET);
 
 module.exports = {
   sign: async (user) => {
-    console.log("simg  user : ", user);
-    const header = {
-      alg: "HS256",
-      typ: "JWT",
-    };
-    const payload = {
-      expiresIn: "30m", // 토큰 유효 기간
-      issuer: "issuer", // 발행자
-      username: user,
-    };
+    // console.log("simg  user : ", user);
 
     return {
       token: jwt.sign(
-        header,
-        payload,
-        HMACSHA256(
-          Base64.encode(header) + "." + Base64.encode(payload),
-          process.env.JWT_SECRET
-        )
+        {
+          alg: "HS256",
+          typ: "JWT",
+        },
+        process.env.JWT_SECRET,
+        {
+          // exp: "1m", // 토큰 유효 기간
+          // iss: "investing", // 발행자
+          // sub: "invest token", // 토큰 제목
+          expiresIn: "15m", // 만료시간 15분
+          issuer: "5m",
+        }
       ),
     };
   },
   verify: async (req, res, next) => {
     try {
+      // 쿠키를 넣어주면 될듯
       console.log("verify req : ", req);
-      console.log("verify req.body.username: ", req.body.username);
-      req.decoded = await jwt.verify(req.body.username, process.env.JWT_SECRET);
+      console.log("verify req.headers: ", req.headers);
+      const cookie = req.headers.cookie;
+      console.log("coolie : ", cookie);
+      const token = cookie.substring(4);
+      console.log("token : ", token);
+      jwt.verify(token, process.env.SESSION_SECRET_KEY, (error, decoded) => {
+        if (error) {
+          console.error(`verify error : ${error}`);
+        }
+        console.log(`decoded : ${decoded}`);
+        res.send(decoded);
+      });
       return next();
     } catch (err) {
       if (err.name === "TokenExpiredError") {
