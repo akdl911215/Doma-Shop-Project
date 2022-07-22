@@ -19,3 +19,9 @@ export const UserSignupDataAPI = (states) =>
 
 export const UserSigninDataAPI = (states) =>
   client.post(backUrl + "/users/signin", states);
+
+export const UserPayloadDataAPI = (payload) => {
+  console.log("!!!! ", payload);
+
+  client.post(backUrl + `/users/payload`, payload);
+};

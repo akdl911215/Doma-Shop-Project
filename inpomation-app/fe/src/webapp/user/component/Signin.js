@@ -10,7 +10,7 @@ import {
   Segment,
 } from "semantic-ui-react";
 import SignupButton from "../../common/component/SignupButton";
-import { UserSigninDataAPI } from "../../api/userApi";
+import { UserSigninDataAPI, UserPayloadDataAPI } from "../../api/userApi";
 
 import styles from "../style/UserSignin.module.css";
 
@@ -45,7 +45,8 @@ const Signin = () => {
       console.log("res : ", res);
 
       if (res.data.result === "로그인 성공") {
-        navigate("/");
+        UserPayloadDataAPI(res?.data?.token);
+        // navigate("/");
       } else {
         if (res.data.result === "비밀번호 틀렸습니다.")
           window.alert("비밀번호가 틀렸습니다");
