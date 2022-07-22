@@ -1,7 +1,10 @@
 const db = require("../../middlewares/pool");
 const crypto = require("crypto");
 const jwt = require("./jwt");
-const cookie = require("cookie");
+// const cookieParser = require("cookie-parser");
+// const express = require("express");
+// const app = express();
+// app.use(cookieParser());
 
 exports.userLogout = (req, res) => {
   console.log("로그아웃");
@@ -45,7 +48,7 @@ exports.userSignin = async (req, res) => {
                     if (rows.length) {
                       const jwtToken = await jwt.sign(username);
                       console.log("jwtToken : ", jwtToken);
-                      res.cookie("jwt", jwtToken);
+                      // console.log("token ::: ", res.cookie("jwt", jwtToken));
 
                       res.status(200).json({
                         code: 200,

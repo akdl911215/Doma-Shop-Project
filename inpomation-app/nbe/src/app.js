@@ -63,7 +63,20 @@ app.use("/", mainRouter);
 // app.use("/verify", authUtil);
 app.use("/productInfomation", productInfomationRouter);
 app.post("/users/signup", userRouter.userRegister);
-app.post("/users/signin", verify, userRouter.userSignin);
+app.post("/users/signin", userRouter.userSignin);
+
+app.post("/users/payload", verify, (req, res) => {
+  console.log("req :: ", req);
+  const username = req.decoded.username;
+  const password = req.decoded.password;
+  return res.status(200).json({
+    code: 200,
+    message: "토큰이 정상입니다.",
+    result: {
+      username: username,
+    },
+  });
+});
 app.get("/users/logout", userRouter.userLogout);
 app.get(
   "/publicData/smokingAreaInGwangjinGu",

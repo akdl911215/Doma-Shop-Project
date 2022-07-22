@@ -28,19 +28,27 @@ module.exports = {
   verify: async (req, res, next) => {
     try {
       // 쿠키를 넣어주면 될듯
-      console.log("verify req : ", req);
+      // console.log("verify req : ", req);
       console.log("verify req.headers: ", req.headers);
-      const cookie = req.headers.cookie;
-      console.log("coolie : ", cookie);
-      const token = cookie.substring(4);
-      console.log("token : ", token);
-      jwt.verify(token, process.env.SESSION_SECRET_KEY, (error, decoded) => {
-        if (error) {
-          console.error(`verify error : ${error}`);
+      console.log("verify req.body: ", req.body);
+      const tmp = JSON.stringify(req.body);
+      console.log("tmp", Object.getOwnPropertyNames(tmp));
+      console.log(
+        "verify req.headers.authorization: ",
+        req.headers.authorization
+      );
+
+      jwt.verify(
+        req.headers.authorization,
+        process.env.SESSION_SECRET_KEY,
+        (error, decoded) => {
+          if (error) {
+            console.error(`verify error : ${error}`);
+          }
+          console.log(`decoded : ${decoded}`);
+          res.send(decoded);
         }
-        console.log(`decoded : ${decoded}`);
-        res.send(decoded);
-      });
+      );
       return next();
     } catch (err) {
       if (err.name === "TokenExpiredError") {
