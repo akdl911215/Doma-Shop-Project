@@ -45,6 +45,10 @@ const Signin = () => {
       console.log("res : ", res);
 
       if (res.data.result === "로그인 성공") {
+        console.log(
+          "encodeURI(res?.data?.token ) :: ",
+          encodeURI(res?.data?.token)
+        );
         UserPayloadDataAPI({ token: res?.data?.token });
         // navigate("/");
       } else {

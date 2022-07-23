@@ -50,6 +50,10 @@ exports.userSignin = async (req, res) => {
                       console.log("jwtToken : ", jwtToken);
                       // console.log("token ::: ", res.cookie("jwt", jwtToken));
 
+                      res.set({
+                        "content-type": "application/json; charset=utf-8",
+                      });
+
                       res.status(200).json({
                         code: 200,
                         message: "토큰이 발급되었습니다.",
