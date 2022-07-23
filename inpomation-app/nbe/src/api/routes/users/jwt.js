@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { Base64, atobPolyfill } = require("js-base64");
+const { encode, decode } = require("js-base64");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 console.log("JWT_SECRET : ", process.env.JWT_SECRET);
@@ -29,18 +29,25 @@ module.exports = {
     try {
       // 쿠키를 넣어주면 될듯
       // console.log("verify req : ", req);
-      console.log("verify req.headers: ", req.headers);
-      console.log("verify req.body: ", req.body);
-      const tmp = JSON.stringify(req.body);
-      console.log("tmp", Object.getOwnPropertyNames(tmp));
+      // console.log("verify req.headers: ", req.headers);
+      // console.log("verify req.body: ", req.body);
+
+      // req.headers.authorization.split(' ')[1];
+      // const token = JSON.stringify(req?.body?.token)?.split(".")[1];
+      const token = req?.body?.token;
+      console.log("token :: ", token);
       console.log(
-        "verify req.headers.authorization: ",
-        req.headers.authorization
+        "encode(process.env.SESSION_SECRET_KEY) :: ",
+        encode(process.env.SESSION_SECRET_KEY)
+      );
+      console.log(
+        "process.env.SESSION_SECRET_KEY :: ",
+        process.env.SESSION_SECRET_KEY
       );
 
       jwt.verify(
-        req.headers.authorization,
-        process.env.SESSION_SECRET_KEY,
+        token,
+        encode(process.env.SESSION_SECRET_KEY),
         (error, decoded) => {
           if (error) {
             console.error(`verify error : ${error}`);
