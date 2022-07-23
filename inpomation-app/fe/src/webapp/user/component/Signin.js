@@ -45,7 +45,7 @@ const Signin = () => {
       console.log("res : ", res);
 
       if (res.data.result === "로그인 성공") {
-        UserPayloadDataAPI(res?.data?.token);
+        UserPayloadDataAPI({ token: res?.data?.token });
         // navigate("/");
       } else {
         if (res.data.result === "비밀번호 틀렸습니다.")
