@@ -7,9 +7,6 @@ console.log("JWT_SECRET : ", process.env.JWT_SECRET);
 
 module.exports = {
   sign: async (user) => {
-    // console.log("simg  user : ", user);
-
-    // encode(process.env.JWT_SECRET)
     const encodeSecret = encodeURI(process.env.JWT_SECRE);
     return {
       token: jwt.sign(
@@ -46,7 +43,7 @@ module.exports = {
       );
       console.log("KEY : ", KEY);
 
-      jwt.verify(token, KET, (error, decoded) => {
+      jwt.verify(token, KEY, (error, decoded) => {
         if (error) {
           console.error(`verify error : ${error}`);
         }

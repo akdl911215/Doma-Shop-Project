@@ -48,7 +48,6 @@ exports.userSignin = async (req, res) => {
                     if (rows.length) {
                       const jwtToken = await jwt.sign(username);
                       console.log("jwtToken : ", jwtToken);
-                      // console.log("token ::: ", res.cookie("jwt", jwtToken));
 
                       res.set({
                         "content-type": "application/json; charset=utf-8",
