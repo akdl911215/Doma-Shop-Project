@@ -23,5 +23,13 @@ export const UserSigninDataAPI = (states) =>
 export const UserPayloadDataAPI = (payload) => {
   console.log("!!!! ", payload);
 
-  client.post(backUrl + `/users/payload`, payload);
+  client.post(
+    backUrl + `/users/payload`,
+    payload
+    // , {
+    // headers: {
+    //   Authorization: "Bearer" + localStorage.getItem("jwtToken"),
+    // },
+    // }
+  );
 };
