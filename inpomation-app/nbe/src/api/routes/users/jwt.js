@@ -7,33 +7,31 @@ console.log("JWT_SECRET : ", process.env.JWT_SECRET);
 
 module.exports = {
   sign: async (user) => {
+    const payload = {
+      username: user,
+      // alg: "HS256",
+      typ: "JWT",
+    };
+
     const encodeSecret = encodeURI(process.env.JWT_SECRE);
+    console.log("encodeSecret :: ", encodeSecret);
+    const option = {
+      scretKey: process.env.JWT_SECRE,
+      options: {
+        exp: "1m", // 토큰 유효 기간
+        iss: "investing", // 발행자
+        sub: "invest token", // 토큰 제목
+        algorithm: "HS256",
+        expiresIn: "1m", // 만료시간
+        issuer: "issuer",
+      },
+    };
     return {
-      token: jwt.sign(
-        {
-          alg: "HS256",
-          typ: "JWT",
-        },
-        encodeSecret,
-        {
-          // exp: "1m", // 토큰 유효 기간
-          // iss: "investing", // 발행자
-          // sub: "invest token", // 토큰 제목
-          expiresIn: "15m", // 만료시간 15분
-          issuer: "5m",
-        }
-      ),
+      token: jwt.sign(payload, hmacSha256(encodeSecret), option),
     };
   },
   verify: async (req, res, next) => {
     try {
-      // 쿠키를 넣어주면 될듯
-      // console.log("verify req : ", req);
-      // console.log("verify req.headers: ", req.headers);
-      // console.log("verify req.body: ", req.body);
-
-      // req.headers.authorization.split(' ')[1];
-      // const token = JSON.stringify(req?.body?.token)?.split(".")[1];
       const token = req?.body?.token;
       console.log("token :: ", token);
 
@@ -43,13 +41,18 @@ module.exports = {
       );
       console.log("KEY : ", KEY);
 
-      jwt.verify(token, KEY, (error, decoded) => {
+      const check = jwt.verify(token, KEY, (error, decoded) => {
         if (error) {
           console.error(`verify error : ${error}`);
         }
-        console.log(`decoded : ${decoded}`);
-        res.send(decoded);
+        console.log(`decoded.typ : ${decoded?.typ}`);
+        // res.send(decoded);
       });
+
+      if (check) {
+        console.log("check ::::: ", check);
+      }
+
       return next();
     } catch (err) {
       if (err.name === "TokenExpiredError") {

@@ -1,12 +1,8 @@
 const express = require("express");
-// const sqlDb = require('./config/database.js');
-// const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
 const session = require("express-session");
 const cors = require("cors");
-// const crypto = require("crypto");
-// const MySQLStore = require("express-mysql-session")(session);
 const cookieParser = require("cookie-parser");
 const mainRouter = require("./api/routes/main/main");
 const userRouter = require("./api/routes/users/users");
@@ -15,9 +11,7 @@ const publicImportAndExportRouter = require("./api/apiData/importAndExportPerfor
 const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByItem");
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
-// const authUtil = require("./api/routes/users/auth").checkToken;
-// console.log("authUtil ::: ", authUtil);
-const { verify } = require("./api/routes/users/jwt");
+const verify = require("./api/routes/users/jwt").verify;
 console.log("verify", verify);
 
 require("dotenv").config();
@@ -39,13 +33,7 @@ app.use("/productInfomation", productInfomationRouter);
 app.post("/users/signup", userRouter.userRegister);
 app.post("/users/signin", userRouter.userSignin);
 
-app.post("/users/payload", verify, (req, res) => {
-  console.log("req :: ", req);
-
-  return res.json({
-    message: "토큰이 정상입니다.",
-  });
-});
+app.use("/users/payload", verify);
 app.get("/users/logout", userRouter.userLogout);
 app.get(
   "/publicData/smokingAreaInGwangjinGu",
