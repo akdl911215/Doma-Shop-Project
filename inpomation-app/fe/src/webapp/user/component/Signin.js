@@ -50,7 +50,7 @@ const Signin = () => {
           "encodeURI(res?.data?.token ) :: ",
           encodeURI(res?.data?.token)
         );
-        UserPayloadDataAPI({ token: res?.data?.token });
+        UserPayloadDataAPI(res?.data?.token);
         // navigate("/");
       } else {
         if (res.data.result === "비밀번호 틀렸습니다.")
