@@ -33,7 +33,8 @@ app.use("/productInfomation", productInfomationRouter);
 app.post("/users/signup", userRouter.userRegister);
 app.post("/users/signin", userRouter.userSignin);
 
-app.use("/users/payload", verify);
+// app.use("/users/payload", verify);
+app.post("/users/payload", verify);
 app.get("/users/logout", userRouter.userLogout);
 app.get(
   "/publicData/smokingAreaInGwangjinGu",

@@ -13,10 +13,10 @@ module.exports = {
       typ: "JWT",
     };
 
-    const encodeSecret = encodeURI(process.env.JWT_SECRE);
-    console.log("encodeSecret :: ", encodeSecret);
+    const encodeSecret = encodeURI(process.env.JWT_SECRET);
+    console.log("encodeSecret ::;: ", encodeSecret);
     const option = {
-      scretKey: process.env.JWT_SECRE,
+      scretKey: process.env.JWT_SECRET,
       options: {
         exp: "1m", // 토큰 유효 기간
         iss: "investing", // 발행자
@@ -27,33 +27,30 @@ module.exports = {
       },
     };
     return {
-      token: jwt.sign(payload, hmacSha256(encodeSecret), option),
+      token: jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1m" }),
     };
   },
   verify: async (req, res, next) => {
+    // const token = req?.body?.token;
+    const token = req?.header("x-auth-token");
+    console.log('req?.header("x-auth-token") :: ', req?.header("x-auth-token"));
+    if (!token) {
+      return res.status(401).json({ msg: "No token, authorization denied" });
+    }
+    console.log("token :: ", token);
     try {
-      const token = req?.body?.token;
-      console.log("token :: ", token);
-
-      const KEY = iconv.decode(
-        Buffer.from(process.env.SESSION_SECRET_KEY),
-        "EUC-KR"
-      );
+      const KEY = iconv.decode(Buffer.from(process.env.JWT_SECRET), "EUC-KR");
       console.log("KEY : ", KEY);
 
-      const check = jwt.verify(token, KEY, (error, decoded) => {
-        if (error) {
-          console.error(`verify error : ${error}`);
-        }
-        console.log(`decoded.typ : ${decoded?.typ}`);
-        // res.send(decoded);
+      req.user = jwt.verify(token, KEY);
+      console.log("req : ", req);
+      console.log("req.user : ", req.user);
+
+      res.setHeader("authorization", token);
+
+      return res.json({
+        user: req.user,
       });
-
-      if (check) {
-        console.log("check ::::: ", check);
-      }
-
-      return next();
     } catch (err) {
       if (err.name === "TokenExpiredError") {
         // 유효기간 초과
