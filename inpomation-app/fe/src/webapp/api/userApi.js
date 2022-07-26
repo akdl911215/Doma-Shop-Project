@@ -1,6 +1,5 @@
 import { client } from "./Client";
 import { backUrl } from "webapp/config/Config";
-import { Axios } from "axios";
 
 export const UserPagenationListDataAPI = (page) => {
   console.log("page : ", page);
@@ -24,7 +23,7 @@ export const UserSigninDataAPI = (states) =>
 export const UserPayloadDataAPI = (payload) => {
   console.log("!!!! ", payload);
 
-  Axios.defaults.headers.common["Authorization"] = `Bearer ${payload}`;
+  client.defaults.headers.common["Authorization"] = "Bearer " + payload;
   client.post(
     backUrl + `/users/payload`,
     payload
