@@ -33,16 +33,8 @@ module.exports = {
   },
   verify: async (req, res, next) => {
     console.log("verift start !!");
-    const token = req?.header("Authorization");
-    const token2 = req?.header("x-auth-token");
+    const token = req?.header("Authorization").split(" ")[1];
     console.log("token ", token);
-    console.log("token2 ", token2);
-    // console.log(
-    //   util.inspect(token, { showHidden: false, depth: null, colors: true })
-    // );
-    console.log("JSON.stringify(token) ", JSON.stringify(token));
-    console.log("typeof token ", typeof token);
-    // console.log('req?.header("x-auth-token") :: ', req?.header("x-auth-token"));
     if (!token) {
       return res.status(401).json({ msg: "No token, authorization denied" });
     }
@@ -51,8 +43,7 @@ module.exports = {
       const KEY = iconv.decode(Buffer.from(process.env.JWT_SECRET), "EUC-KR");
       console.log("KEY : ", KEY);
 
-      req.user = jwt.verify(token2, KEY);
-      // console.log("req : ", req);
+      req.user = jwt.verify(token, KEY);
       console.log("req.user : ", req.user);
 
       // res.setHeader("authorization", token2);
