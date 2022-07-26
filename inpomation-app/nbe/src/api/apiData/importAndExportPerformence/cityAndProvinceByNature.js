@@ -58,7 +58,7 @@ exports.cityAndProvinceByNature = (req, res) => {
         },
       });
       console.error("request pasing error : ", err);
-      throw new Error("request pasing error : ", err);
+      // throw new Error("request pasing error : ", err);
     }
   });
 };
