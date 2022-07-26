@@ -32,8 +32,10 @@ module.exports = {
   },
   verify: async (req, res, next) => {
     // const token = req?.body?.token;
-    const token = req?.header("x-auth-token");
-    console.log('req?.header("x-auth-token") :: ', req?.header("x-auth-token"));
+    // const token = req?.header("x-auth-token");
+    const token = req?.header("Authorization").split(" ")[1];
+    console.log("token ", token);
+    // console.log('req?.header("x-auth-token") :: ', req?.header("x-auth-token"));
     if (!token) {
       return res.status(401).json({ msg: "No token, authorization denied" });
     }
@@ -43,7 +45,7 @@ module.exports = {
       console.log("KEY : ", KEY);
 
       req.user = jwt.verify(token, KEY);
-      console.log("req : ", req);
+      // console.log("req : ", req);
       console.log("req.user : ", req.user);
 
       res.setHeader("authorization", token);
