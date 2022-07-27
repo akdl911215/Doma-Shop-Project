@@ -82,60 +82,18 @@ exports.userSignin = async (req, res) => {
 };
 
 exports.userRegister = (req, res) => {
-  let registerReturn = {};
-  crypto.randomBytes(64, (err, buf) => {
-    if (err) {
-      console.error(`crypto randomBytes error ${err}`);
-      throw err;
-    }
-
-    console.log("userRegister req : ", req);
-    const { username, password, name, email, phone_number, address, roles } =
-      req;
-
-    const salt = buf.toString("base64");
-
-    crypto.pbkdf2(password, salt, 100000, 64, "sha512", async (err, key) => {
-      if (err) {
-        console.error(`cryto salt error ${err}`);
-        throw err;
-      }
-      const hashedPassword = key.toString("base64");
-      console.log("hashedPassword pbkdf2 : ", hashedPassword);
-
-      if (hashedPassword === undefined || hashedPassword === "") {
-        console.error(`비밀번호가 제대로 입력되지 않았습니다.`);
-        throw err;
-      }
-      console.log("hashedPassword : ", hashedPassword);
-
-      console.log(
-        `username : ${username}, password : ${hashedPassword}, password2 : ${password}, name : ${name}, email : ${email}, phone_number : ${phone_number}, address : ${address}, roles : ${roles}`
-      );
-
-      db.getConnectionPool((conn) => {
-        const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles, salt) 
-                              VALUES ('${username}','${hashedPassword}','${name}','${email}','${phone_number}','${address}', '${roles}', '${salt}')`;
-        conn.query(sql, (err, doc) => {
-          if (err) console.log(`conn.query err : ${err}`);
-          // res.send({
-          //   message: "success",
-          //   result: doc,
-          // });
-          registerReturn = {
-            message: "success",
-            result: doc,
-          };
-          // return {
-          //   message: "succsess",
-          //   result: doc,
-          // };
-        });
-        conn.release();
+  try {
+    db.getConnectionPool((conn) => {
+      const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles, salt)
+                          VALUES ('${req?.username}','${req?.password}','${req?.name}','${req?.email}','${req?.phone_number}','${req?.address}', '${req?.roles}', '${req?.salt}')`;
+      conn.query(sql, (err, doc) => {
+        if (err) console.log(`conn.query err : ${err}`);
       });
+      conn.release();
     });
-  });
 
-  console.log("register :  ", registerReturn);
-  return registerReturn;
+    return req;
+  } catch (err) {
+    console.error(`db connectionPool error : ${err}`);
+  }
 };
