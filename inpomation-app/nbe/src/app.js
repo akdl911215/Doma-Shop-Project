@@ -1,18 +1,17 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const session = require("express-session");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mainRouter = require("./api/routes/main/main");
-const userRouter = require("./api/routes/users/users");
+// const userRouter = require("./user/userRepository");
+const userRouter = require("./user/userController");
 const publicSmokingRouter = require("./api/apiData/smokingAreaInGwangjinGu/smokingAreaInGwangjinGu");
 const publicImportAndExportRouter = require("./api/apiData/importAndExportPerformence/cityAndProvince");
 const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByItem");
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
-const verify = require("./api/routes/users/jwt").verify;
-console.log("verify", verify);
+const verify = require("./security/jwt").verify;
 
 require("dotenv").config();
 const hostname = "localhost";
@@ -28,14 +27,13 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(cookieParser());
 
 app.use("/", mainRouter);
-// app.use("/verify", authUtil);
+app.use("/users", userRouter);
 app.use("/productInfomation", productInfomationRouter);
-app.post("/users/signup", userRouter.userRegister);
-app.post("/users/signin", userRouter.userSignin);
+// app.post("/users/signup", userRouter.userRegister);
+// app.post("/users/signin", userRouter.userSignin);
 
-// app.use("/users/payload", verify);
-app.post("/users/payload", verify);
-app.get("/users/logout", userRouter.userLogout);
+// app.post("/users/payload", verify);
+// app.get("/users/logout", userRouter.userLogout);
 app.get(
   "/publicData/smokingAreaInGwangjinGu",
   publicSmokingRouter.smokingAreaInGwangjinGu

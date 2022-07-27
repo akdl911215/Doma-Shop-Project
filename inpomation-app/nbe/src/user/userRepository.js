@@ -1,10 +1,6 @@
-const db = require("../../middlewares/pool");
+const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
-const jwt = require("./jwt");
-// const cookieParser = require("cookie-parser");
-// const express = require("express");
-// const app = express();
-// app.use(cookieParser());
+const jwt = require("../security/jwt");
 
 exports.userLogout = (req, res) => {
   console.log("로그아웃");
@@ -79,7 +75,6 @@ exports.userSignin = async (req, res) => {
           );
         } catch (error) {
           console.error(`rows error : ${error}`);
-          // throw Error(`rows error : ${error}`);
         }
       });
     });
@@ -87,14 +82,16 @@ exports.userSignin = async (req, res) => {
 };
 
 exports.userRegister = (req, res) => {
+  let registerReturn = {};
   crypto.randomBytes(64, (err, buf) => {
     if (err) {
       console.error(`crypto randomBytes error ${err}`);
       throw err;
     }
 
+    console.log("userRegister req : ", req);
     const { username, password, name, email, phone_number, address, roles } =
-      req.body;
+      req;
 
     const salt = buf.toString("base64");
 
@@ -113,21 +110,32 @@ exports.userRegister = (req, res) => {
       console.log("hashedPassword : ", hashedPassword);
 
       console.log(
-        `username : ${req.body.username}, password : ${hashedPassword}, password2 : ${password}, name : ${req.body.name}, email : ${req.body.email}, phone_number : ${req.body.phone_number}, address : ${req.body.address}, roles : ${req.body.roles}`
+        `username : ${username}, password : ${hashedPassword}, password2 : ${password}, name : ${name}, email : ${email}, phone_number : ${phone_number}, address : ${address}, roles : ${roles}`
       );
 
       db.getConnectionPool((conn) => {
         const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles, salt) 
                               VALUES ('${username}','${hashedPassword}','${name}','${email}','${phone_number}','${address}', '${roles}', '${salt}')`;
         conn.query(sql, (err, doc) => {
-          if (err) console.log(`err : ${err}`);
-          res.send({
+          if (err) console.log(`conn.query err : ${err}`);
+          // res.send({
+          //   message: "success",
+          //   result: doc,
+          // });
+          registerReturn = {
             message: "success",
             result: doc,
-          });
+          };
+          // return {
+          //   message: "succsess",
+          //   result: doc,
+          // };
         });
         conn.release();
       });
     });
   });
+
+  console.log("register :  ", registerReturn);
+  return registerReturn;
 };
