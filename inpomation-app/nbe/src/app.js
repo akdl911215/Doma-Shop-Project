@@ -4,7 +4,6 @@ const path = require("path");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mainRouter = require("./api/routes/main/main");
-// const userRouter = require("./user/userRepository");
 const userRouter = require("./user/userController");
 const publicSmokingRouter = require("./api/apiData/smokingAreaInGwangjinGu/smokingAreaInGwangjinGu");
 const publicImportAndExportRouter = require("./api/apiData/importAndExportPerformence/cityAndProvince");

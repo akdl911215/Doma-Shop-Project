@@ -9,11 +9,10 @@ exports.cryptoSalt = (req, res, next) => {
 };
 
 exports.cryptoPbkdf2 = async (req, res, next) => {
-  console.log("cryptoPbkdf2 req :: ", req);
   return new Promise((resolve, reject) => {
     crypto.pbkdf2(req.password, req.salt, 100000, 64, "sha512", (err, key) => {
       if (err) {
-        console.error(`cryto salt error ${err}`);
+        console.error(`cryto pbkdf2 error ${err}`);
         throw err;
       }
       const hashedPassword = key.toString("base64");
@@ -25,5 +24,7 @@ exports.cryptoPbkdf2 = async (req, res, next) => {
 
       resolve(hashedPassword);
     });
-  }).catch((reject) => console.error(`reject error : ${reject}`));
+  })
+    .catch((reject) => console.error(`pbkdf2 reject error : ${reject}`))
+    .finally((final) => console.log("cryptoPbkdf2 fianl 실행"));
 };
