@@ -27,5 +27,3 @@ class userService {
 }
 
 module.exports = new userService();
-
-// https://node-js.tistory.com/22

@@ -12,62 +12,66 @@ exports.userLogout = (req, res) => {
 
 exports.userSignin = async (req, res) => {
   return new Promise((resolve, reject) => {
-    crypto.randomBytes(64, (err, buf) => {
-      console.log("로그인 시작 : ");
+    try {
+      crypto.randomBytes(64, (err, buf) => {
+        console.log("로그인 시작 : ");
 
-      const { username, password } = req;
+        const { username, password } = req;
 
-      const usernameSql = `SELECT * FROM users WHERE username = '${username}'`;
-      db.getConnectionPool((connection) => {
-        connection.query(usernameSql, (err, rows) => {
-          console.log(`connection : ${connection}`);
-          try {
-            crypto.pbkdf2(
-              password,
-              rows[0]?.salt,
-              100000,
-              64,
-              "sha512",
-              async (err, key) => {
-                const hashedPassword = key.toString("base64");
-                if (rows.length) {
-                  if (rows[0].username === username) {
-                    if (rows[0].password === hashedPassword) {
-                      const passwordSql = `SELECT * FROM users WHERE password = '${hashedPassword}'`;
-                      connection.query(passwordSql, async (err, rows) => {
-                        if (err) {
-                          console.error(`username error : ${err}`);
-                          throw err;
-                        }
+        const usernameSql = `SELECT * FROM users WHERE username = '${username}'`;
+        db.getConnectionPool((connection) => {
+          connection.query(usernameSql, (err, rows) => {
+            console.log(`connection : ${connection}`);
+            try {
+              crypto.pbkdf2(
+                password,
+                rows[0]?.salt,
+                100000,
+                64,
+                "sha512",
+                async (err, key) => {
+                  const hashedPassword = key.toString("base64");
+                  if (rows.length) {
+                    if (rows[0].username === username) {
+                      if (rows[0].password === hashedPassword) {
+                        const passwordSql = `SELECT * FROM users WHERE password = '${hashedPassword}'`;
+                        connection.query(passwordSql, async (err, rows) => {
+                          if (err) {
+                            console.error(`username error : ${err}`);
+                            throw err;
+                          }
 
-                        resolve({
-                          message: "로그인 성공",
-                          username,
-                          password: hashedPassword,
-                          roles: rows[0]?.roles,
+                          resolve({
+                            message: "로그인 성공",
+                            username,
+                            password: hashedPassword,
+                            roles: rows[0]?.roles,
+                          });
                         });
-                      });
-                    } else {
-                      resolve({
-                        message: "비밀번호 틀렸습니다.",
-                      });
+                      } else {
+                        resolve({
+                          message: "비밀번호 틀렸습니다.",
+                        });
+                      }
                     }
-                  }
-                } else {
-                  // 아이디 틀렸을경우
+                  } else {
+                    // 아이디 틀렸을경우
 
-                  resolve({
-                    message: "아이디가 틀렸습니다.",
-                  });
+                    resolve({
+                      message: "아이디가 틀렸습니다.",
+                    });
+                  }
                 }
-              }
-            );
-          } catch (error) {
-            console.error(`rows error : ${error}`);
-          }
+              );
+            } catch (error) {
+              console.error(`rows error : ${error}`);
+            }
+          });
         });
       });
-    });
+    } catch (err) {
+      console.error(`signin error : ${err}`);
+    }
   }).catch((reject) => console.error(`userSignin reject error : ${reject}`));
 };
 
