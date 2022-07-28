@@ -26,5 +26,5 @@ exports.cryptoPbkdf2 = async (req, res, next) => {
     });
   })
     .catch((reject) => console.error(`pbkdf2 reject error : ${reject}`))
-    .finally((final) => console.log("cryptoPbkdf2 fianl 실행"));
+    .finally((final) => console.log(`cryptoPbkdf2 fianl 실행 : ${fianl}`));
 };

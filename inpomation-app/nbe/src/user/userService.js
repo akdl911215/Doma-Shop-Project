@@ -18,12 +18,9 @@ class userService {
     console.log("userService singnin start!!");
     const signUser = await userRepository.userSignin(user);
     const jwtToken = await jwt.sign(signUser?.username);
-    console.log("jwtToken : ", jwtToken);
-    // res.set({
-    //   "content-type": "application/json; charset=utf-8",
-    // });
+    console.log("jwtToken :::: ", jwtToken);
 
-    return { username: signUser?.username, token: jwtToken };
+    return { username: signUser?.username, token: jwtToken.token };
   }
 }
 

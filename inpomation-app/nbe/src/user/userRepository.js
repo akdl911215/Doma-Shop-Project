@@ -1,6 +1,5 @@
 const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
-const jwt = require("../security/jwt");
 
 exports.userLogout = (req, res) => {
   console.log("로그아웃");
@@ -57,7 +56,7 @@ exports.userSignin = async (req, res) => {
                   // 아이디 틀렸을경우
 
                   resolve({
-                    result: "아이디가 틀렸습니다.",
+                    message: "아이디가 틀렸습니다.",
                   });
                 }
               }
@@ -68,7 +67,7 @@ exports.userSignin = async (req, res) => {
         });
       });
     });
-  });
+  }).catch((reject) => console.error(`userSignin reject error : ${reject}`));
 };
 
 exports.userRegister = (req, res) => {
