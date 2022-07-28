@@ -44,6 +44,7 @@ exports.userSignin = async (req, res) => {
                           message: "로그인 성공",
                           username,
                           password: hashedPassword,
+                          roles: rows[0]?.roles,
                         });
                       });
                     } else {

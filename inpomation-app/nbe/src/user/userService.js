@@ -16,11 +16,13 @@ class userService {
 
   async signin(user) {
     console.log("userService singnin start!!");
-    const signUser = await userRepository.userSignin(user);
-    const jwtToken = await jwt.sign(signUser?.username);
-    console.log("jwtToken :::: ", jwtToken);
+    const { username, roles } = await userRepository.userSignin(user);
+    const { token } = await jwt.sign(username);
+    console.log(
+      `signin username: ${username}, roles: ${roles}, token: ${token}`
+    );
 
-    return { username: signUser?.username, token: jwtToken.token };
+    return { username: username, token: token, roles: roles };
   }
 }
 

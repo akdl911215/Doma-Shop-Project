@@ -22,7 +22,7 @@ router.post("/signup", async (req, res, next) => {
 router.post("/signin", async (req, res, next) => {
   console.log("userSignin start!!");
   const userDTO = req.body;
-  const { username, token } = await userService.signin(userDTO);
+  const { username, token, roles } = await userService.signin(userDTO);
   console.log(`username : ${username}, token : ${token}`);
 
   res.set({
@@ -34,12 +34,14 @@ router.post("/signin", async (req, res, next) => {
       result: "토큰 발급 완료",
       id: username,
       token: token,
+      roles: roles,
     });
   } else {
     res.json({
       message: "로그인 실패",
       id: username,
       token: token,
+      roles: roles,
     });
   }
 });
