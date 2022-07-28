@@ -33,6 +33,11 @@ const Signin = () => {
 
   // https://wiki.jjagu.com/?p=273
 
+  const signoutButton = () => {
+    alert("로그아웃을 진행합니다. ");
+    console.log("remove : ", localStorage.removeItem("jwtToken"));
+  };
+
   const signinButton = () => {
     alert("로그인버튼누름");
 
@@ -44,18 +49,21 @@ const Signin = () => {
     UserSigninDataAPI(signin).then((res) => {
       console.log("res : ", res);
 
-      if (res.data.result === "로그인 성공") {
+      console.log("res.data.result : ", res.data.result);
+      if (res.data.message === "로그인 성공") {
+        console.log("성공");
         localStorage.setItem("jwtToken", res?.data?.token);
         console.log(
           "encodeURI(res?.data?.token ) :: ",
           encodeURI(res?.data?.token)
         );
+        console.log("시작?");
         UserPayloadDataAPI(res?.data?.token);
         // navigate("/");
       } else {
-        if (res.data.result === "비밀번호 틀렸습니다.")
+        if (res.data.message === "비밀번호 틀렸습니다.")
           window.alert("비밀번호가 틀렸습니다");
-        if (res.data.result === "아이디가 틀렸습니다.")
+        if (res.data.message === "아이디가 틀렸습니다.")
           window.alert("아이디가 틀렸습니다.");
       }
     });
@@ -101,6 +109,9 @@ const Signin = () => {
               />
               <Button secondary onClick={signinButton}>
                 로그인
+              </Button>
+              <Button secondary onClick={signoutButton}>
+                로그아웃
               </Button>
             </Segment>
           </Form>

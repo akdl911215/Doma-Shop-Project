@@ -20,17 +20,9 @@ export const UserSignupDataAPI = (states) =>
 export const UserSigninDataAPI = (states) =>
   client.post(backUrl + "/users/signin", states);
 
-export const UserPayloadDataAPI = (payload) => {
-  console.log("!!!! ", payload);
+export const UserPayloadDataAPI = (auth) => {
+  console.log("!!!! ", auth);
 
-  client.defaults.headers.common["Authorization"] = "Bearer " + payload;
-  client.post(
-    backUrl + `/users/payload`,
-    payload
-    // , {
-    // headers: {
-    //   Authorization: "Bearer" + localStorage.getItem("jwtToken"),
-    // },
-    // }
-  );
+  client.defaults.headers.common["Authorization"] = "Bearer " + auth;
+  client.post(backUrl + `/users/auth`, auth);
 };
