@@ -11,6 +11,7 @@ import {
 } from "semantic-ui-react";
 import SignupButton from "../../common/component/SignupButton";
 import { UserSigninDataAPI, UserPayloadDataAPI } from "../../api/userApi";
+import SignOutButton from "webapp/common/component/SignOutButton";
 
 import styles from "../style/UserSignin.module.css";
 
@@ -20,13 +21,7 @@ const Signin = () => {
     username: "",
     password: "",
   });
-
   const { username, password } = signin;
-
-  const signoutButton = () => {
-    alert("로그아웃을 진행합니다. ");
-    console.log("remove : ", localStorage.removeItem("jwtToken"));
-  };
 
   const signinButton = () => {
     alert("로그인버튼누름");
@@ -42,10 +37,13 @@ const Signin = () => {
       console.log("res.data.result : ", res.data.result);
       if (res.data.message === "로그인 성공") {
         console.log("성공");
-        localStorage.setItem("jwtToken", res?.data?.token);
         console.log(
-          "encodeURI(res?.data?.token ) :: ",
-          encodeURI(res?.data?.token)
+          "localstorage jwtToken : ",
+          localStorage.setItem("jwtToken", res?.data?.token)
+        );
+        console.log(
+          "localstorage roles : ",
+          localStorage.setItem("roles", res?.data?.roles)
         );
         console.log("시작?");
         UserPayloadDataAPI(res?.data?.token);
@@ -103,9 +101,7 @@ const Signin = () => {
               <Button secondary onClick={signinButton}>
                 로그인
               </Button>
-              <Button secondary onClick={signoutButton}>
-                로그아웃
-              </Button>
+              <SignOutButton />
             </Segment>
           </Form>
 

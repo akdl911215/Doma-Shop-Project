@@ -7,7 +7,7 @@ const SignupButton = () => {
 
   return (
     <>
-      <Button positive onClick={() => navigate("/users_signup")}>
+      <Button secondary onClick={() => navigate("/users_signup")}>
         회원가입
       </Button>
     </>

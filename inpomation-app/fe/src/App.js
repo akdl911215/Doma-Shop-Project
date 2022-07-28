@@ -9,7 +9,7 @@ import NoticeList from "./webapp/notice/component/NoticeList";
 import NoticeModify from "./webapp/notice/component/NoticeModify";
 import NoticeRead from "./webapp/notice/component/NoticeRead";
 import NoticeRegister from "./webapp/notice/component/NoticeRegister";
-import ProductInfomationList from "./webapp/prodeuct-infomatin/component/ProductInfomationList";
+import InvestingInfomationList from "./webapp/prodeuct-infomatin/component/InvestingInfomationList";
 import ProductInfomationModify from "./webapp/prodeuct-infomatin/component/ProductInfomationModify";
 import ProductInfomationRegister from "./webapp/prodeuct-infomatin/component/ProductInfomationRegister";
 import ProductInfomationReview from "./webapp/prodeuct-infomatin/component/ProductInfomationReview";
@@ -47,8 +47,8 @@ const App = () => {
           element={<ProductInfomationModify />}
         />
         <Route
-          path="/product_infomation_list"
-          element={<ProductInfomationList />}
+          path="/ivesting_infomation_list"
+          element={<InvestingInfomationList />}
         />
         <Route
           path="/product_infomation_register"

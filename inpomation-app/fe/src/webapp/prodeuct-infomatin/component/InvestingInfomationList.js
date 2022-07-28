@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Button, Container, Card, Image } from "semantic-ui-react";
 import SigninButton from "../../common/component/SigninButton";
@@ -8,14 +8,18 @@ import {
   SoptCamingGell,
   superAdaptogenFaceToBodyEmulgeon,
 } from "webapp/images/index";
-import LogoutButton from "../../user/component/LogoutButton";
+import SignOutButton from "webapp/common/component/SignOutButton";
 import styles from "../style/ProductInfomationList.module.css";
 // import styles from "webapp/prodeuct-infomatin/style/ProductInfomationList.module.css";
 
-const ProductInfomationList = () => {
+const InvestingInfomationList = () => {
   const navigate = useNavigate();
 
   const colors = ["teal"];
+  const [rolesCheck, SetRolesCheck] = useState(null);
+  useEffect(() => {
+    SetRolesCheck(localStorage.getItem("roles"));
+  }, []);
 
   return (
     <>
@@ -106,25 +110,31 @@ const ProductInfomationList = () => {
         </Card.Group>
 
         <div className={styles.ButtonStyle}>
-          <Button
-            positive
-            onClick={() => navigate("/product_infomation_register")}
-          >
-            글작성
-            <br />
-            (admin전용)
-          </Button>
-          <Button positive onClick={() => navigate("/admin_main")}>
-            어드민 전용 페이지 이동
-            <br />
-            (admin전용)
-          </Button>
-          <SigninButton />
+          {rolesCheck === "MASTER" ? (
+            <>
+              <Button
+                secondary
+                onClick={() => navigate("/product_infomation_register")}
+              >
+                글작성
+                <br />
+                (admin전용)
+              </Button>
+              <Button secondary onClick={() => navigate("/admin_main")}>
+                어드민 전용 페이지 이동
+                <br />
+                (admin전용)
+              </Button>
+            </>
+          ) : (
+            ""
+          )}
+
+          {rolesCheck === null ? <SigninButton /> : <SignOutButton />}
           <SignupButton />
-          <LogoutButton />
         </div>
       </Container>
     </>
   );
 };
-export default ProductInfomationList;
+export default InvestingInfomationList;

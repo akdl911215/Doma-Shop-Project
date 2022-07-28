@@ -1,9 +1,13 @@
-import React from "react";
-import ProductInfomationList from "webapp/prodeuct-infomatin/component/ProductInfomationList";
+import React, { useEffect, useState } from "react";
+import ProductInfomationList from "webapp/prodeuct-infomatin/component/InvestingInfomationList";
 import { Tab } from "semantic-ui-react";
 import Mypage from "webapp/user/component/Mypage";
 import Portfolio from "webapp/user/component/Portfolio";
 const ProductInfomationTab = () => {
+  const [rolesCheck, setRolesCheck] = useState(null);
+  useEffect(() => {
+    setRolesCheck(localStorage.getItem("roles"));
+  }, []);
   const panes = [
     {
       menuItem: "홈",
@@ -33,7 +37,10 @@ const ProductInfomationTab = () => {
 
   return (
     <>
-      <Tab menu={{ attached: "bottom" }} panes={panes} />
+      <Tab
+        menu={{ attached: "bottom" }}
+        panes={rolesCheck === null ? panes.filter((el, key) => key < 1) : panes}
+      />
     </>
   );
 };
