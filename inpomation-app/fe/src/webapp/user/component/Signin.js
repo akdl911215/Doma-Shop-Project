@@ -23,16 +23,6 @@ const Signin = () => {
 
   const { username, password } = signin;
 
-  // if (!emailCheck(username)) {
-  //   window.alert("이메일 형식이 맞지 않습니다.");
-  // }
-
-  // https://velog.io/@mygomi/React-%EC%87%BC%ED%95%91%EB%AA%B0-%ED%81%B4%EB%A1%A0%EC%BD%94%EB%94%A9-4.-axios%EB%A1%9C-API-%ED%86%B5%EC%8B%A0%ED%95%98%EA%B8%B0-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EB%A9%94%EC%9D%B8-%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80
-
-  //https://joonganglib.tistory.com/m/13
-
-  // https://wiki.jjagu.com/?p=273
-
   const signoutButton = () => {
     alert("로그아웃을 진행합니다. ");
     console.log("remove : ", localStorage.removeItem("jwtToken"));
@@ -59,7 +49,10 @@ const Signin = () => {
         );
         console.log("시작?");
         UserPayloadDataAPI(res?.data?.token);
-        // navigate("/");
+        // redux로 권한 가지고 있기? 로컬스토리지?
+        // 뭐로할지 알아보기
+        // nodejs role-based
+        navigate("/");
       } else {
         if (res.data.message === "비밀번호 틀렸습니다.")
           window.alert("비밀번호가 틀렸습니다");
