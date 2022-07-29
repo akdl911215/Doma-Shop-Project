@@ -13,7 +13,7 @@ import {
 } from "semantic-ui-react";
 import GoHomeButton from "../../common/component/GoHomeButton";
 import { useNavigate } from "react-router";
-import styles from "../../prodeuct-infomatin/style/ProductInfomationRead.module.css";
+import styles from "../style/ProductInfomationRead.module.css";
 
 const ProductInfomationRead = () => {
   const [selectedFile, setSelectedFile] = useState([]);

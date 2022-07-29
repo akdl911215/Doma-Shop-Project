@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductInfomationList from "webapp/prodeuct-infomatin/component/InvestingInfomationList";
+import ProductInfomationList from "webapp/investing-infomation/component/InvestingInfomationList";
 import { Tab } from "semantic-ui-react";
 import Mypage from "webapp/user/component/Mypage";
 import Portfolio from "webapp/user/component/Portfolio";

@@ -13,7 +13,7 @@ import {
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router-dom";
 import { client } from "webapp/api/Client";
-import styles from "webapp/prodeuct-infomatin/style/ProductInfomationRegister.module.css";
+import styles from "../style/ProductInfomationRegister.module.css";
 
 const ProductInfomationRegister = () => {
   const [selectedFile, setSelectedFile] = useState([]);

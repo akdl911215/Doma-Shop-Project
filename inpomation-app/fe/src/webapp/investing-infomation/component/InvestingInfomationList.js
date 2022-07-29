@@ -9,8 +9,7 @@ import {
   superAdaptogenFaceToBodyEmulgeon,
 } from "webapp/images/index";
 import SignOutButton from "webapp/common/component/SignOutButton";
-import styles from "../style/ProductInfomationList.module.css";
-// import styles from "webapp/prodeuct-infomatin/style/ProductInfomationList.module.css";
+import styles from "../style/ivestingInfomationList.module.css";
 
 const InvestingInfomationList = () => {
   const navigate = useNavigate();
