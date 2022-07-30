@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const userService = require("./userService");
-const jwt = require("../security/jwt");
 
 router.post("/signup", async (req, res, next) => {
   const userDTO = req.body;
@@ -46,7 +45,13 @@ router.post("/signin", async (req, res, next) => {
   }
 });
 
-router.post("/auth", jwt.verify);
-// router.get("/logout", userRouter.userLogout);
+router.post("/auth", async (req, res, next) => {
+  console.log("jwt start !!");
+  const token = req?.header("Authorization").split(" ")[1];
+  console.log("token : ", token);
+  const { code, message, roles } = await userService.jwtToken(token);
+  console.log(`2. code : ${code}, message : ${message}, roles : ${roles}`);
+  return res.json({ code: code, message: message, roles: roles });
+});
 
 module.exports = router;

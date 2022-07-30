@@ -6,7 +6,7 @@ import Portfolio from "webapp/user/component/Portfolio";
 const ProductInfomationTab = () => {
   const [rolesCheck, setRolesCheck] = useState(null);
   useEffect(() => {
-    setRolesCheck(localStorage.getItem("roles"));
+    setRolesCheck(sessionStorage.getItem("roles"));
   }, []);
   const panes = [
     {

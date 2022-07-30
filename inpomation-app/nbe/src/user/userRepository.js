@@ -1,15 +1,6 @@
 const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
 
-exports.userLogout = (req, res) => {
-  console.log("로그아웃");
-
-  delete req.session.username;
-  delete req.session.password;
-  delete req.session.isLogined;
-  req.session.save(() => res.redirect("/"));
-};
-
 exports.userSignin = async (req, res) => {
   return new Promise((resolve, reject) => {
     try {
@@ -56,7 +47,6 @@ exports.userSignin = async (req, res) => {
                     }
                   } else {
                     // 아이디 틀렸을경우
-
                     resolve({
                       message: "아이디가 틀렸습니다.",
                     });

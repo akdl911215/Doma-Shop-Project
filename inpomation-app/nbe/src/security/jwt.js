@@ -23,32 +23,41 @@ module.exports = {
     };
   },
   verify: async (req, res, next) => {
-    console.log("verift start !!");
-    const token = req?.header("Authorization").split(" ")[1];
+    const token = req;
+    console.log("token ::: ", token);
     if (!token) {
-      return res.status(401).json({ msg: "No token, authorization denied" });
+      return {
+        code: 401,
+        message: "No token, authorization denied",
+      };
     }
     try {
       req.user = jwt.verify(
         token,
         iconv.decode(Buffer.from(process.env.JWT_SECRET), "EUC-KR")
       );
-      return res.json({
+
+      console.log("req.user ; ", req.user);
+      return {
         user: req.user,
-      });
+      };
     } catch (err) {
+      console.log("err : ", err);
       if (err.name === "TokenExpiredError") {
+        console.log(">>??");
         // 유효기간 초과
-        return res.status(419).json({
+        return {
           code: 419,
           message: "토큰이 만료되었습니다",
-        });
+          roles: "",
+        };
       }
 
-      return res.status(401).json({
+      return {
         code: 401,
         message: "유효하지 않은 토큰입니다.",
-      });
+        roles: "",
+      };
     }
   },
 };
