@@ -20,7 +20,7 @@ export const UserSignupDataAPI = (states) =>
 export const UserSigninDataAPI = (states) =>
   client.post(backUrl + "/users/signin", states);
 
-export const UserPayloadDataAPI = (auth) => {
+export const UserAuthDataAPI = (auth) => {
   console.log("!!!! ", auth);
 
   client.defaults.headers.common["Authorization"] = "Bearer " + auth;

@@ -10,14 +10,20 @@ import {
 } from "webapp/images/index";
 import SignOutButton from "webapp/common/component/SignOutButton";
 import styles from "../style/ivestingInfomationList.module.css";
+import { UserAuthDataAPI } from "webapp/api/userApi";
 
 const InvestingInfomationList = () => {
   const navigate = useNavigate();
 
   const colors = ["teal"];
   const [rolesCheck, SetRolesCheck] = useState(null);
+
   useEffect(() => {
-    SetRolesCheck(localStorage.getItem("roles"));
+    SetRolesCheck(sessionStorage.getItem("roles"));
+    UserAuthDataAPI(sessionStorage.getItem("jwtToken"));
+    //   .then((res) => {
+    //   console.log(res);
+    // });
   }, []);
 
   return (

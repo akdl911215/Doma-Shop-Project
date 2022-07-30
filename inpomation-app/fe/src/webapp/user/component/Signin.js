@@ -10,7 +10,7 @@ import {
   Segment,
 } from "semantic-ui-react";
 import SignupButton from "../../common/component/SignupButton";
-import { UserSigninDataAPI, UserPayloadDataAPI } from "../../api/userApi";
+import { UserSigninDataAPI, UserAuthDataAPI } from "../../api/userApi";
 import SignOutButton from "webapp/common/component/SignOutButton";
 
 import styles from "../style/UserSignin.module.css";
@@ -38,15 +38,15 @@ const Signin = () => {
       if (res.data.message === "로그인 성공") {
         console.log("성공");
         console.log(
-          "localstorage jwtToken : ",
-          localStorage.setItem("jwtToken", res?.data?.token)
+          "sessionStorage jwtToken : ",
+          sessionStorage.setItem("jwtToken", res?.data?.token)
         );
         console.log(
-          "localstorage roles : ",
-          localStorage.setItem("roles", res?.data?.roles)
+          "sessionStorage roles : ",
+          sessionStorage.setItem("roles", res?.data?.roles)
         );
         console.log("시작?");
-        UserPayloadDataAPI(res?.data?.token);
+        UserAuthDataAPI(res?.data?.token);
         // redux로 권한 가지고 있기? 로컬스토리지?
         // 뭐로할지 알아보기
         // nodejs role-based
