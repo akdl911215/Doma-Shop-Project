@@ -23,12 +23,12 @@ module.exports = {
     };
   },
   verify: async (req, res, next) => {
-    const token = req.token;
-    console.log("token ::: ", token);
+    const token = req?.token;
     if (!token) {
       return {
         code: 401,
         message: "No token, authorization denied",
+        roles: null,
       };
     }
     try {
@@ -36,12 +36,10 @@ module.exports = {
         token,
         iconv.decode(Buffer.from(process.env.JWT_SECRET), "EUC-KR")
       );
-
-      console.log("res ; ", res);
       return {
         message: "토큰이 정상입니다.",
         code: 200,
-        roles: state.roles,
+        roles: req?.roles,
       };
     } catch (err) {
       console.log("err : ", err);
