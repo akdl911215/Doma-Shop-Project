@@ -22,10 +22,9 @@ const InvestingInfomationList = () => {
     UserAuthDataAPI(
       sessionStorage.getItem("jwtToken"),
       sessionStorage.getItem("roles")
-    ).then((res) => {
-      console.log("res?.data?.roles :: ", res?.data?.roles);
-      SetRolesCheck(res?.data?.roles);
-    });
+    )
+      .then((res) => SetRolesCheck(res?.data?.roles))
+      .catch((err) => console.error(`token, roles check error : ${err}`));
   }, []);
 
   return (
@@ -116,7 +115,7 @@ const InvestingInfomationList = () => {
           </Card>
         </Card.Group>
 
-        <div className={styles.ButtonStyle}>
+        {/* <div className={styles.ButtonStyle}>
           {rolesCheck === "MASTER" ? (
             <>
               <Button
@@ -139,7 +138,7 @@ const InvestingInfomationList = () => {
 
           {rolesCheck === null ? <SigninButton /> : <SignOutButton />}
           <SignupButton />
-        </div>
+        </div> */}
       </Container>
     </>
   );

@@ -22,12 +22,13 @@ import PublicDataList from "webapp/public-data/component/PublicDataList";
 import CityAndProvince from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvince";
 import CityAndProvinceByItem from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvinceByItem";
 import CityAndProvineceByNature from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvineceByNature";
+import Home from "webapp/layout/component/Home";
 
 const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<ProductInfomationTab />} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/admin_main" element={<AdminMain />} />
 

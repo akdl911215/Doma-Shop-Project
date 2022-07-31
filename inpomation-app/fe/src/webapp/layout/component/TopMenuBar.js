@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "webapp/common/style/TopMenuBar.css";
+import "webapp/layout/style/TopMenuBar.css";
 
 const TopMenuBar = () => {
   return (
