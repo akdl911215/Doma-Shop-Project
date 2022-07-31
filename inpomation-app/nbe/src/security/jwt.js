@@ -23,7 +23,7 @@ module.exports = {
     };
   },
   verify: async (req, res, next) => {
-    const token = req;
+    const token = req.token;
     console.log("token ::: ", token);
     if (!token) {
       return {
@@ -32,31 +32,32 @@ module.exports = {
       };
     }
     try {
-      req.user = jwt.verify(
+      res = jwt.verify(
         token,
         iconv.decode(Buffer.from(process.env.JWT_SECRET), "EUC-KR")
       );
 
-      console.log("req.user ; ", req.user);
+      console.log("res ; ", res);
       return {
-        user: req.user,
+        message: "토큰이 정상입니다.",
+        code: 200,
+        roles: state.roles,
       };
     } catch (err) {
       console.log("err : ", err);
       if (err.name === "TokenExpiredError") {
-        console.log(">>??");
         // 유효기간 초과
         return {
           code: 419,
           message: "토큰이 만료되었습니다",
-          roles: "",
+          roles: null,
         };
       }
 
       return {
         code: 401,
         message: "유효하지 않은 토큰입니다.",
-        roles: "",
+        roles: null,
       };
     }
   },

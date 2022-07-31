@@ -1,6 +1,7 @@
 const userRepository = require("./userRepository");
 const userModel = require("./userModel");
 const jwt = require("../security/jwt");
+const { password } = require("../config/database");
 
 class userService {
   async signup(user) {
@@ -13,14 +14,17 @@ class userService {
   }
 
   async signin(user) {
+    console.log("signin user : ", user);
     const { username, roles } = await userRepository.userSignin(user);
+    console.log(`username: ${username}, roles: ${roles}`);
     const { token } = await jwt.sign(username);
+    console.log("signin token : ", token);
 
     return { username, token, roles };
   }
 
-  async jwtToken(jwtToken) {
-    const { code, message, roles } = await jwt.verify(jwtToken);
+  async jwtToken(state) {
+    const { code, message, roles } = await jwt.verify(state);
     console.log(`code : ${code}, message : ${message}, roles : ${roles}`);
 
     return { code, message, roles };
