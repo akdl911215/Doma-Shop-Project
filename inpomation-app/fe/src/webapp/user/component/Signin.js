@@ -47,7 +47,7 @@ const Signin = () => {
         );
         console.log("시작?");
         UserAuthDataAPI(res?.data?.token, res?.data?.roles);
-        // navigate("/");
+        navigate("/");
       } else {
         if (res.data.message === "비밀번호 틀렸습니다.")
           window.alert("비밀번호가 틀렸습니다");

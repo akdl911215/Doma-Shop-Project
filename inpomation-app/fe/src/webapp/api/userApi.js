@@ -19,9 +19,8 @@ export const UserSigninDataAPI = (states) =>
   client.post(backUrl + "/users/signin", states);
 
 export const UserAuthDataAPI = (token, roles) => {
-  console.log("!!!! ", token, roles);
+  console.log("!!!! ", token, "/ ", roles);
 
   client.defaults.headers.common["Authorization"] = "Bearer " + token;
-  client.defaults.headers.common["Roles"] = roles;
-  return client.post(backUrl + `/users/auth`);
+  return client.post(backUrl + `/users/auth`, { roles: roles });
 };

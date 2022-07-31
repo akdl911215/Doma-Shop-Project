@@ -19,9 +19,10 @@ const InvestingInfomationList = () => {
   const [rolesCheck, SetRolesCheck] = useState(null);
 
   useEffect(() => {
-    // SetRolesCheck(sessionStorage.getItem("roles"));
-    UserAuthDataAPI(sessionStorage.getItem("jwtToken")).then((res) => {
-      console.log("res :: ", res);
+    UserAuthDataAPI(
+      sessionStorage.getItem("jwtToken"),
+      sessionStorage.getItem("roles")
+    ).then((res) => {
       console.log("res?.data?.roles :: ", res?.data?.roles);
       SetRolesCheck(res?.data?.roles);
     });
