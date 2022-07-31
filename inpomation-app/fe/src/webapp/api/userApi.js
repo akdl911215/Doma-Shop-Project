@@ -2,8 +2,6 @@ import { client } from "./Client";
 import { backUrl } from "webapp/config/Config";
 
 export const UserPagenationListDataAPI = (page) => {
-  console.log("page : ", page);
-
   const str =
     "page=" +
     (page ? page : 1) +
@@ -20,9 +18,10 @@ export const UserSignupDataAPI = (states) =>
 export const UserSigninDataAPI = (states) =>
   client.post(backUrl + "/users/signin", states);
 
-export const UserAuthDataAPI = (auth) => {
-  console.log("!!!! ", auth);
+export const UserAuthDataAPI = (token, roles) => {
+  console.log("!!!! ", token, roles);
 
-  client.defaults.headers.common["Authorization"] = "Bearer " + auth;
-  client.post(backUrl + `/users/auth`, auth);
+  client.defaults.headers.common["Authorization"] = "Bearer " + token;
+  client.defaults.headers.common["Roles"] = roles;
+  return client.post(backUrl + `/users/auth`);
 };

@@ -46,11 +46,8 @@ const Signin = () => {
           sessionStorage.setItem("roles", res?.data?.roles)
         );
         console.log("시작?");
-        UserAuthDataAPI(res?.data?.token);
-        // redux로 권한 가지고 있기? 로컬스토리지?
-        // 뭐로할지 알아보기
-        // nodejs role-based
-        navigate("/");
+        UserAuthDataAPI(res?.data?.token, res?.data?.roles);
+        // navigate("/");
       } else {
         if (res.data.message === "비밀번호 틀렸습니다.")
           window.alert("비밀번호가 틀렸습니다");
