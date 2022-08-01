@@ -9,8 +9,9 @@ import {
   superAdaptogenFaceToBodyEmulgeon,
 } from "webapp/images/index";
 import SignOutButton from "webapp/common/component/SignOutButton";
-import styles from "../style/ivestingInfomationList.module.css";
+import styles from "../style/IvestingInfomationList.module.css";
 import { UserAuthDataAPI } from "webapp/api/userApi";
+import { padding } from "@mui/system";
 
 const InvestingInfomationList = () => {
   const navigate = useNavigate();
@@ -29,9 +30,9 @@ const InvestingInfomationList = () => {
 
   return (
     <>
-      <Container>
+      <Container className={styles.ContainerStyle}>
         <Card.Group
-          itemsPerRow={5}
+          itemsPerRow={3}
           onClick={() => navigate("/product_infomation_read")}
           className={styles.ImageCardTextStyle}
         >
