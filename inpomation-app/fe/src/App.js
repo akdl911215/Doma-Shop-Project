@@ -23,6 +23,7 @@ import CityAndProvince from "webapp/public-data/component/importAndExportPerform
 import CityAndProvinceByItem from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvinceByItem";
 import CityAndProvineceByNature from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvineceByNature";
 import Home from "webapp/layout/component/Home";
+import MypageTab from "webapp/user/component/MypageTab";
 
 const App = () => {
   return (
@@ -35,7 +36,7 @@ const App = () => {
         <Route path="/users_signup" element={<Signup />} />
         <Route path="/users_signin" element={<Signin />} />
         <Route path="/users_list" element={<UserPageList />} />
-        <Route path="/users_mypage" element={<Mypage />} />
+        <Route path="/users_mypage" element={<MypageTab />} />
         <Route path="/users_withdrawal" element={<UserWithdrawal />} />
 
         <Route path="/notice_list" element={<NoticeList />} />

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { Button, Form, Input, Container } from "semantic-ui-react";
 import styles from "../style/MyPage.module.css";
+import MypageTab from "./MypageTab";
 
 const Mypage = () => {
   const history = useNavigate();
@@ -60,8 +61,9 @@ const Mypage = () => {
 
   return (
     <>
+      {/* <MypageTab /> */}
       <Container>
-        <h2>마이 페이지</h2>
+        <h2>회원 정보 수정</h2>
         <Form>
           <Form.Group widths="equal">
             <Form.Field

@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <YoutubeRegister />
+      {/* <YoutubeRegister /> */}
       <InvestingInfomationList />
       <Footer />
     </>
