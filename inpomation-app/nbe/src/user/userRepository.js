@@ -3,13 +3,34 @@ const crypto = require("crypto");
 
 exports.userModify = async (req, res, next) => {
   const username = req;
+  // console.log("userModify username : ", username);
+  // const sql = `SELECT * FROM users WHERE username = '${username}'`;
+  // db.getConnectionPool((connection) => {
+  //   connection.query(sql, (err, rows) => {
+  //     console.log("modify connection : ", connection);
+  //     console.log("rows :: ", rows);
+  //   });
+  // });
+};
+
+exports.userInquiry = async (req, res, next) => {
+  const username = req;
   console.log("userModify username : ", username);
   const sql = `SELECT * FROM users WHERE username = '${username}'`;
-  db.getConnectionPool((connection) => {
-    connection.query(sql, (err, rows) => {
-      console.log("modify connection : ", connection);
-      console.log("rows :: ", rows);
-    });
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          console.log("modify connection : ", connection);
+          console.log("rows :: ", rows);
+
+          resolve(rows[0]);
+        });
+      });
+    } catch (err) {
+      console.error("userInquiry promise error : ", err);
+    }
   });
 };
 
@@ -21,8 +42,10 @@ exports.userSignin = async (req, res) => {
 
         const { username, password } = req;
 
+        // node getConnectionPool 오래걸리는 이유 찾아보기
         const usernameSql = `SELECT * FROM users WHERE username = '${username}'`;
         db.getConnectionPool((connection) => {
+          console.log("로그인 connection");
           connection.query(usernameSql, (err, rows) => {
             console.log(`connection : ${connection}`);
             try {

@@ -2,10 +2,23 @@ const express = require("express");
 const router = express.Router();
 const userService = require("./userService");
 
-router.post("/update", async (req, res, next) => {
+router.post("/modify", async (req, res, next) => {
   const username = req?.body?.username;
   console.log("username :: ", username);
   const test = await userService.modify(username);
+});
+
+router.post("/inquiry", async (req, res, next) => {
+  const username = req?.body?.username;
+  console.log("username :: ", username);
+  const user = await userService.inquiry(username);
+  if (user) {
+    res.json(user);
+  } else {
+    res.json({
+      message: "회원정보를 확인해보세요.",
+    });
+  }
 });
 
 router.post("/signup", async (req, res, next) => {

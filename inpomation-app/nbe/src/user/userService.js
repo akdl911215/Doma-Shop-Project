@@ -34,6 +34,10 @@ class userService {
     console.log("service modify : ", username);
     const test = await userRepository.userModify(username);
   }
+
+  async inquiry(username) {
+    return await userRepository.userInquiry(username);
+  }
 }
 
 module.exports = new userService();
