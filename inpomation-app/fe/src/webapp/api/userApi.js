@@ -18,10 +18,10 @@ export const UserSignupDataAPI = (states) =>
 export const UserSigninDataAPI = (states) =>
   client.post(backUrl + "/users/signin", states);
 
-export const UserUpdateDataAPI = (user) => {
-  console.log("update 실행!!");
+export const UserModifyDataAPI = (user) => {
+  console.log("modify 실행!!");
 
-  return client.post(backUrl + "/users/update", { username: user });
+  return client.post(backUrl + "/users/modify", { username: user });
 };
 
 export const UserInquiryDataAPI = (user) => {
