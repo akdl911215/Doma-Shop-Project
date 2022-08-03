@@ -1,6 +1,18 @@
 const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
 
+exports.userModify = async (req, res, next) => {
+  const username = req;
+  console.log("userModify username : ", username);
+  const sql = `SELECT * FROM users WHERE username = '${username}'`;
+  db.getConnectionPool((connection) => {
+    connection.query(sql, (err, rows) => {
+      console.log("modify connection : ", connection);
+      console.log("rows :: ", rows);
+    });
+  });
+};
+
 exports.userSignin = async (req, res) => {
   return new Promise((resolve, reject) => {
     try {

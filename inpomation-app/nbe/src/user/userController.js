@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const userService = require("./userService");
 
+router.post("/update", async (req, res, next) => {
+  const username = req?.body?.username;
+  console.log("username :: ", username);
+  const test = await userService.modify(username);
+});
+
 router.post("/signup", async (req, res, next) => {
   const userDTO = req.body;
   const { username, password } = await userService.signup(userDTO);
@@ -46,18 +52,11 @@ router.post("/signin", async (req, res, next) => {
 });
 
 router.post("/auth", async (req, res, next) => {
-  console.log("jwt start !! req : ");
-  console.log('req?.header("Authorization") : ', req?.header("Authorization"));
-  console.log("req?.body?.roles : ", req?.body?.roles);
-
-  // https://12bme.tistory.com/325
-  // Roles과 token을 같이 받을방법 구상해보기
-  const state = {
+  console.log("auth con req : ", req);
+  const { code, message, roles } = await userService.jwtToken({
     token: req?.header("Authorization").split(" ")[1],
     roles: req?.body?.roles,
-  };
-  console.log("state :", state);
-  const { code, message, roles } = await userService.jwtToken(state);
+  });
   console.log(`2. code : ${code}, message : ${message}, roles : ${roles}`);
   return res.json({ code: code, message: message, roles: roles });
 });
