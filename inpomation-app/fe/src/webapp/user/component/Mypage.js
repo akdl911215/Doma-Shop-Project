@@ -4,26 +4,26 @@ import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { Button, Form, Input, Container } from "semantic-ui-react";
 import styles from "../style/MyPage.module.css";
 import MypageTab from "./MypageTab";
+import {
+  UserAuthDataAPI,
+  UserUpdateDataAPI,
+  UserInquiryDataAPI,
+} from "webapp/api/userApi";
 
 const Mypage = () => {
   const history = useNavigate();
-
+  const [mypage, setMypage] = useState({});
   useEffect(() => {
-    // dispatch(getLocalUserLogin());
+    UserAuthDataAPI(
+      sessionStorage.getItem("jwtToken"),
+      sessionStorage.getItem("roles")
+    ).then((res) => {
+      UserInquiryDataAPI(sessionStorage.getItem("username")).then((res) => {
+        console.log("update res : ", res);
+        setMypage(res);
+      });
+    });
   });
-
-  // const [mypage, setMypage] = useState({
-  //   userId: userState.userId,
-  //   username: userState.username,
-  //   password: "",
-  //   name: userState.name,
-  //   companyName: "",
-  //   companyNumber: "",
-  //   address: "",
-  //   email: "",
-  //   number: "", //일반전화
-  //   phoneNumber: "",
-  // });
 
   const goMypage = async (e) => {
     let mypageResult = window.confirm("정보를 수정하시겠습니까?");

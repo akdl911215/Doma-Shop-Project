@@ -25,6 +25,7 @@ const Signin = () => {
 
   const signinButton = () => {
     alert("로그인버튼누름");
+    sessionStorage.setItem("username", username);
 
     if (username === "" || password === "") {
       window.alert("아이디 또는 비밀번호를 입력해주세요.");
@@ -32,23 +33,15 @@ const Signin = () => {
     }
 
     UserSigninDataAPI(signin).then((res) => {
-      console.log("res : ", res);
-
-      console.log("res.data.result : ", res.data.result);
       if (res.data.message === "로그인 성공") {
-        console.log("성공");
-        console.log(
-          "sessionStorage jwtToken : ",
-          sessionStorage.setItem("jwtToken", res?.data?.token)
-        );
-        console.log(
-          "sessionStorage roles : ",
-          sessionStorage.setItem("roles", res?.data?.roles)
-        );
-        console.log("시작?");
-        UserAuthDataAPI(res?.data?.token, res?.data?.roles);
-        navigate("/");
+        sessionStorage.setItem("jwtToken", res?.data?.token);
+        sessionStorage.setItem("roles", res?.data?.roles);
+
+        UserAuthDataAPI(res?.data?.token, res?.data?.roles)
+          .then((res) => navigate("/"))
+          .catch((err) => console.error(`signin error : ${err}`));
       } else {
+        sessionStorage.removeItem("username");
         if (res.data.message === "비밀번호 틀렸습니다.")
           window.alert("비밀번호가 틀렸습니다");
         if (res.data.message === "아이디가 틀렸습니다.")

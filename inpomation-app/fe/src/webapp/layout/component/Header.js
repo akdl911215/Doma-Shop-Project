@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Route, Routes, NavLink } from "react-router-dom";
 import "../style/Header.css";
-import Signup from "webapp/user/component/Signup";
 
 const Header = () => {
   const [rolesCheck, setRolesCheck] = useState(null);
@@ -9,31 +8,6 @@ const Header = () => {
     setRolesCheck(sessionStorage.getItem("roles"));
   });
 
-  //  {
-  //    rolesCheck === "MASTER" ? (
-  //      <>
-  //        <Button
-  //          secondary
-  //          onClick={() => navigate("/product_infomation_register")}
-  //        >
-  //          글작성
-  //          <br />
-  //          (admin전용)
-  //        </Button>
-  //        <Button secondary onClick={() => navigate("/admin_main")}>
-  //          어드민 전용 페이지 이동
-  //          <br />
-  //          (admin전용)
-  //        </Button>
-  //      </>
-  //    ) : (
-  //      ""
-  //    );
-  //  }
-
-  //  {
-  //    rolesCheck === null ? <SigninButton /> : <SignOutButton />;
-  //  }
   return (
     <>
       <>
@@ -41,13 +15,13 @@ const Header = () => {
           <nav id="top-menu">
             <ul>
               <li>
-                {/* <NavLink to="/users_signup">회원가입</NavLink>
-                <Routes>
-                  <Route path="/users_signup" element={<Signup />}>
-                    회원가입
-                  </Route>
-                </Routes> */}
-                <Link to="/users_signup">회원가입</Link>
+                {rolesCheck === null ? (
+                  <>
+                    <Link to="/users_signup">회원가입</Link>
+                  </>
+                ) : (
+                  <>{}</>
+                )}
               </li>
               <li>
                 {sessionStorage.getItem("roles") === null ? (

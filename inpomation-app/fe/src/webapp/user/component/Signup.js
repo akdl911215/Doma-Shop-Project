@@ -32,13 +32,16 @@ const Signup = () => {
     e.preventDefault();
     e.stopPropagation();
 
-    alert("회원가입 버튼 누름");
+    const result = window.confirm("정보를 수정하시겠습니까?");
 
-    signup.roles = "USER";
-    console.log("signup : ", signup);
+    if (result) {
+      alert("회원가입 완료");
+      signup.roles = "USER";
+      console.log("signup : ", signup);
 
-    UserSignupDataAPI(signup);
-    navigate("/users_signin");
+      UserSignupDataAPI(signup);
+      navigate("/users_signin");
+    }
   };
 
   return (
