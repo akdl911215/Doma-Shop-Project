@@ -2,31 +2,40 @@ const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
 
 exports.userModify = async (req, res, next) => {
-  const username = req;
-  // console.log("userModify username : ", username);
-  // const sql = `SELECT * FROM users WHERE username = '${username}'`;
-  // db.getConnectionPool((connection) => {
-  //   connection.query(sql, (err, rows) => {
-  //     console.log("modify connection : ", connection);
-  //     console.log("rows :: ", rows);
-  //   });
-  // });
+  const { id, name, email, phone_number, address } = req;
+
+  const sql = `UPDATE users SET name = '${name}', email = '${email}', phone_number = '${phone_number}', address = '${address}' WHERE id = ${id};`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          resolve({
+            message: "회원 정보 수정이 완료되었습니다.",
+          });
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("update 쿼리 error : ", err);
+      resolve({
+        message: "회원 정보 수정이 실패되었습니다.",
+      });
+    }
+  });
 };
 
 exports.userInquiry = async (req, res, next) => {
   const username = req;
-  console.log("userModify username : ", username);
   const sql = `SELECT * FROM users WHERE username = '${username}'`;
 
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
         connection.query(sql, (err, rows) => {
-          console.log("modify connection : ", connection);
-          console.log("rows :: ", rows);
-
           resolve(rows[0]);
         });
+        connection.release();
       });
     } catch (err) {
       console.error("userInquiry promise error : ", err);
@@ -38,14 +47,9 @@ exports.userSignin = async (req, res) => {
   return new Promise((resolve, reject) => {
     try {
       crypto.randomBytes(64, (err, buf) => {
-        console.log("로그인 시작 : ");
-
         const { username, password } = req;
-
-        // node getConnectionPool 오래걸리는 이유 찾아보기
         const usernameSql = `SELECT * FROM users WHERE username = '${username}'`;
         db.getConnectionPool((connection) => {
-          console.log("로그인 connection");
           connection.query(usernameSql, (err, rows) => {
             console.log(`connection : ${connection}`);
             try {
@@ -92,6 +96,7 @@ exports.userSignin = async (req, res) => {
               console.error(`rows error : ${error}`);
             }
           });
+          connection.release();
         });
       });
     } catch (err) {

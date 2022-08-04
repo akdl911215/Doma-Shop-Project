@@ -3,15 +3,14 @@ const router = express.Router();
 const userService = require("./userService");
 
 router.post("/modify", async (req, res, next) => {
-  const username = req?.body?.username;
-  console.log("username :: ", username);
-  const test = await userService.modify(username);
+  const { message } = await userService.modify(req?.body);
+  res.json({
+    message,
+  });
 });
 
 router.post("/inquiry", async (req, res, next) => {
-  const username = req?.body?.username;
-  console.log("username :: ", username);
-  const user = await userService.inquiry(username);
+  const user = await userService.inquiry(req?.body?.username);
   if (user) {
     res.json(user);
   } else {
@@ -22,9 +21,7 @@ router.post("/inquiry", async (req, res, next) => {
 });
 
 router.post("/signup", async (req, res, next) => {
-  const userDTO = req.body;
-  const { username, password } = await userService.signup(userDTO);
-  console.log(`username: ${username}, password: ${password}`);
+  const { username, password } = await userService.signup(req?.body);
 
   if (username !== undefined && password !== undefined) {
     res.json({
@@ -38,10 +35,7 @@ router.post("/signup", async (req, res, next) => {
 });
 
 router.post("/signin", async (req, res, next) => {
-  console.log("userSignin start!!");
-  const userDTO = req.body;
-  const { username, token, roles } = await userService.signin(userDTO);
-  console.log(`username : ${username}, token : ${token}`);
+  const { username, token, roles } = await userService.signin(req?.body);
 
   res.set({
     "content-type": "application/json; charset=utf-8",
@@ -65,12 +59,10 @@ router.post("/signin", async (req, res, next) => {
 });
 
 router.post("/auth", async (req, res, next) => {
-  console.log("auth con req : ", req);
   const { code, message, roles } = await userService.jwtToken({
     token: req?.header("Authorization").split(" ")[1],
     roles: req?.body?.roles,
   });
-  console.log(`2. code : ${code}, message : ${message}, roles : ${roles}`);
   return res.json({ code: code, message: message, roles: roles });
 });
 
