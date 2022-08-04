@@ -1,0 +1,33 @@
+.box {
+  width: 50rem;
+}
+
+.cashAssetBox {
+  width: 30rem;
+  height: 5rem;
+}
+
+.floatBox {
+  float: left;
+}
+
+.inputBox {
+  width: 15rem;
+  float: left;
+}
+
+/* .displayMainBox {
+  width: 50rem;
+} */
+
+.displayBox {
+  float: left;
+}
+
+.displayInputBoxName {
+  width: 5rem;
+}
+
+.displayInputBoxValue {
+  width: 10rem;
+}
