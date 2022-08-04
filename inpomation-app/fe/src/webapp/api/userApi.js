@@ -21,7 +21,7 @@ export const UserSigninDataAPI = (states) =>
 export const UserModifyDataAPI = (user) => {
   console.log("modify 실행!!");
 
-  return client.post(backUrl + "/users/modify", { username: user });
+  return client.post(backUrl + "/users/modify", user);
 };
 
 export const UserInquiryDataAPI = (user) => {

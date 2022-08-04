@@ -3,17 +3,24 @@ import { useNavigate } from "react-router-dom";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { Button, Form, Input, Container } from "semantic-ui-react";
 import styles from "../style/MyPage.module.css";
-import MypageTab from "./MypageTab";
 import {
   UserAuthDataAPI,
-  UserUpdateDataAPI,
+  UserModifyDataAPI,
   UserInquiryDataAPI,
 } from "webapp/api/userApi";
-import userEvent from "@testing-library/user-event";
 
 const Mypage = () => {
-  const history = useNavigate();
-  const [mypage, setMypage] = useState({});
+  const [mypage, setMypage] = useState({
+    address: "",
+    email: "",
+    id: 0,
+    name: "",
+    password: "",
+    phone_number: "",
+    roles: "",
+    salt: "",
+    username: "",
+  });
   useEffect(() => {
     UserAuthDataAPI(
       sessionStorage.getItem("jwtToken"),
@@ -21,35 +28,21 @@ const Mypage = () => {
     )
       .then((res) => {
         UserInquiryDataAPI(sessionStorage.getItem("username"))
-          .then((res) => {
-            console.log("update res : ", res);
-            setMypage(res?.data);
-          })
-          .catch((err) => console.error(`mypage inquiry error : {err}`));
+          .then((res) => setMypage(res?.data))
+          .catch((err) => console.error(`mypage inquiry error : ${err}`));
       })
       .catch((err) => console.error(`mypage auth error : ${err}`));
   }, []);
 
-  console.log("mypage :::: ", mypage);
-
   const userModify = (e) => {
     let mypageResult = window.confirm("정보를 수정하시겠습니까?");
 
-    const obj = {
-      id: mypage.id,
-      username: mypage.username,
-      password: mypage.password,
-      name: mypage.name,
-      address: mypage.address,
-      email: mypage.email,
-      phone_number: mypage.phone_number,
-    };
-
-    console.log("obj :::::: ", obj);
-
     if (mypageResult) {
-      alert("수정을 완료하셨습니다.");
-      // dispatch(reviseMypage(obj));
+      UserModifyDataAPI(mypage).then((res) => {
+        if (res?.data?.message === "회원 정보 수정이 완료되었습니다.")
+          window.location.reload();
+        else alert("회원 정보 수정이 실패되었습니다.");
+      });
     }
   };
 
@@ -59,13 +52,10 @@ const Mypage = () => {
       ...mypage,
       [name]: value,
     });
-  }, []);
-
-  const handleSubmit = () => {};
+  });
 
   return (
     <>
-      {/* <MypageTab /> */}
       <Container>
         <h2>회원 정보 수정</h2>
         <Form>
