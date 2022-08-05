@@ -5,12 +5,12 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mainRouter = require("./api/routes/main/main");
 const userRouter = require("./user/userController");
+const portfolioRouter = require("./portfolio/portfolioController");
 const publicSmokingRouter = require("./api/apiData/smokingAreaInGwangjinGu/smokingAreaInGwangjinGu");
 const publicImportAndExportRouter = require("./api/apiData/importAndExportPerformence/cityAndProvince");
 const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByItem");
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
-const verify = require("./security/jwt").verify;
 
 require("dotenv").config();
 const hostname = "localhost";
@@ -27,6 +27,7 @@ app.use(cookieParser());
 
 app.use("/", mainRouter);
 app.use("/users", userRouter);
+app.use("/portfolio", portfolioRouter);
 app.use("/productInfomation", productInfomationRouter);
 // app.post("/users/signup", userRouter.userRegister);
 // app.post("/users/signin", userRouter.userSignin);
