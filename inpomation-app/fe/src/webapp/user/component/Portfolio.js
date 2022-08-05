@@ -1,10 +1,10 @@
 import React from "react";
-import ProtfolioCashAsset from "../user-portfolio-component/ProtfolioCashAsset";
+import PortfolioCashAsset from "../../portfolio/component/PortfolioCashAsset";
 
 const Portfolio = () => {
   return (
     <>
-      <ProtfolioCashAsset />
+      <PortfolioCashAsset />
     </>
   );
 };

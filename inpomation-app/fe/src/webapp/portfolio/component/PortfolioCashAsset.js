@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { RadialChart } from "react-vis";
 import { Form, Button } from "semantic-ui-react";
-import styles from "../user-portfolio-style/ProtfolioCashAsset.module.css";
+import styles from "../style/PortfolioCashAsset.module.css";
 
-const ProtfolioCashAsset = () => {
+const PortfolioCashAsset = () => {
   // 포트폴리오 비율 현금 vs 자산
   const [cashAsset, setCashAsset] = useState({
     cash: 0,
@@ -14,12 +14,12 @@ const ProtfolioCashAsset = () => {
     {
       angle: Number(cashAsset.cash),
       label: cashAsset.cash === 0 ? "" : "현금",
-      subLabel: cashAsset.cash === 0 ? "" : cashAsset.cash,
+      subLabel: cashAsset.cash === 0 ? "" : String(cashAsset.cash),
     },
     {
       angle: Number(cashAsset.asset),
       label: cashAsset.asset === 0 ? "" : "자산",
-      subLabel: cashAsset.asset === 0 ? "" : cashAsset.asset,
+      subLabel: cashAsset.asset === 0 ? "" : String(cashAsset.asset),
     },
   ];
   const handleChange = (e) => {
@@ -113,4 +113,4 @@ const ProtfolioCashAsset = () => {
     </>
   );
 };
-export default ProtfolioCashAsset;
+export default PortfolioCashAsset;

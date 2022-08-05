@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProtfolioAssetRate = () => {
+const PortfolioAssetRate = () => {
   // 자산금액 비율
 
   return (
@@ -10,4 +10,4 @@ const ProtfolioAssetRate = () => {
   );
 };
 
-export default ProtfolioAssetRate;
+export default PortfolioAssetRate;
