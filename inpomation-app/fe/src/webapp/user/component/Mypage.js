@@ -10,6 +10,7 @@ import {
 } from "webapp/api/userApi";
 
 const Mypage = () => {
+  const navigate = useNavigate();
   const [mypage, setMypage] = useState({
     address: "",
     email: "",
@@ -27,9 +28,14 @@ const Mypage = () => {
       sessionStorage.getItem("roles")
     )
       .then((res) => {
-        UserInquiryDataAPI(sessionStorage.getItem("username"))
-          .then((res) => setMypage(res?.data))
-          .catch((err) => console.error(`mypage inquiry error : ${err}`));
+        if (res?.data?.message === "토큰이 정상입니다.") {
+          UserInquiryDataAPI(sessionStorage.getItem("username"))
+            .then((res) => setMypage(res?.data))
+            .catch((err) => console.error(`mypage inquiry error : ${err}`));
+        } else {
+          alert("다시 로그인을 시도하세요.");
+          navigate("/users_signin");
+        }
       })
       .catch((err) => console.error(`mypage auth error : ${err}`));
   }, []);
