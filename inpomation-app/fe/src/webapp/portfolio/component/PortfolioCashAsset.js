@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { RadialChart } from "react-vis";
 import { Form, Button } from "semantic-ui-react";
 import styles from "../style/PortfolioCashAsset.module.css";
+import { CashAssetDataAPI } from "webapp/api/portfolioApi";
+import { UserAuthDataAPI } from "webapp/api/userApi";
+import { useNavigate } from "react-router-dom";
 
 const PortfolioCashAsset = () => {
+  const navigate = useNavigate();
   // 포트폴리오 비율 현금 vs 자산
   const [cashAsset, setCashAsset] = useState({
     cash: 0,
@@ -28,6 +32,25 @@ const PortfolioCashAsset = () => {
       ...cashAsset,
       [options]: value,
     });
+  };
+
+  const cashAssetSubmit = () => {
+    UserAuthDataAPI(
+      sessionStorage.getItem("jwtToken"),
+      sessionStorage.getItem("roles")
+    )
+      .then((res) => {
+        if (res?.data?.message === "토큰이 정상입니다.") {
+          console.log("토큰 정상");
+          CashAssetDataAPI(cashAsset)
+            .then((res) => console.log("cashAssetData res : ", res))
+            .catch((err) => console.error("cashAssetData error : ", err));
+        } else {
+          alert("다시 로그인을 시도하세요.");
+          navigate("/users_signin");
+        }
+      })
+      .catch((err) => console.error("portfolio cash vs asset error : ", err));
   };
 
   return (
@@ -106,7 +129,9 @@ const PortfolioCashAsset = () => {
             </Form>
           </div>
           <div className={styles.floatBox}>
-            <Button type="submit">Submit</Button>
+            <Button type="submit" onClick={cashAssetSubmit}>
+              Submit
+            </Button>
           </div>
         </div>
       </div>
