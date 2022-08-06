@@ -11,6 +11,12 @@ class portfolioService {
       id: userDTO.id,
     });
   }
+
+  async portfolioInquiry(username) {
+    const userDTO = await userRepository.userInquiry(username);
+    console.log("userDTO : ", userDTO);
+    return await repository.portfolioInquiry(userDTO.id);
+  }
 }
 
 module.exports = new portfolioService();

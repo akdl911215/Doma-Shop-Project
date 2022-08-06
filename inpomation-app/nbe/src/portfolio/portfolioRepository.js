@@ -1,9 +1,38 @@
 const db = require("../api/middlewares/pool");
 
-exports.portfolioCashAsset = async (req, res, next) => {
-  const user = req;
-  console.log("cash Asset repository user : ", user);
+exports.portfolioInquiry = async (req, res, next) => {
+  const userID = req;
+  console.log("userID :: ", userID);
 
+  return new Promise((resolve, reject) => {
+    try {
+      const sql = `SELECT * FROM portfolio WHERE user_id = ${userID}`;
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection query portfolioInquiry error : ", err);
+            resolve({
+              message: "포트폴리오 조회에 실패하였습니다.",
+              ...err,
+            });
+          }
+
+          if (doc) {
+            console.log("connection query portfolioInquiry : ", doc);
+            resolve({
+              message: "포트폴리오 조회에 성공하였습니다.",
+              ...doc,
+            });
+          }
+        });
+      });
+    } catch (err) {
+      console.error("portfolioInquiry db coonection catch error: ", err);
+    }
+  });
+};
+
+exports.portfolioCashAsset = async (req, res, next) => {
   return new Promise((resolve, reject) => {
     try {
       const sql = `INSERT INTO portfolio(user_id, cash, total_asset) VALUES ('${req?.id}', '${req?.cash}', '${req?.asset}')
@@ -24,8 +53,8 @@ exports.portfolioCashAsset = async (req, res, next) => {
               message: "현금 대 자산 비율 업데이트 완료하였습니다.",
               portfolioId: doc?.insertId,
               userId: req?.id,
-              cash: `현금보유량 : ${req?.cash}`,
-              asset: `자산보유량 : ${req?.asset}`,
+              cash: req?.cash,
+              asset: req?.asset,
             });
           }
         });
