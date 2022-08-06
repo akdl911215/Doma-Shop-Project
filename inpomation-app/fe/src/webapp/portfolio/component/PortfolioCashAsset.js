@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RadialChart } from "react-vis";
 import { Form, Button } from "semantic-ui-react";
 import styles from "../style/PortfolioCashAsset.module.css";
-import { CashAssetDataAPI } from "webapp/api/portfolioApi";
+import {
+  CashAssetDataAPI,
+  FortfolioInquiryDataAPI,
+} from "webapp/api/portfolioApi";
 import { UserAuthDataAPI } from "webapp/api/userApi";
 import { useNavigate } from "react-router-dom";
 
@@ -34,6 +37,35 @@ const PortfolioCashAsset = () => {
     });
   };
 
+  useEffect(() => {
+    UserAuthDataAPI(
+      sessionStorage.getItem("jwtToken"),
+      sessionStorage.getItem("roles")
+    )
+      .then((res) => {
+        if (res?.data?.message === "토큰이 정상입니다.") {
+          console.log("토큰 정상");
+
+          FortfolioInquiryDataAPI({
+            username: sessionStorage.getItem("username"),
+          })
+            .then((res) => {
+              console.log("cashAssetData res : ", res);
+              setCashAsset.cash = res?.data?.result?.cash;
+              setCashAsset.asset = res?.data?.result?.asset;
+            })
+            .catch((err) => console.error("cashAssetData error : ", err));
+        } else {
+          alert("다시 로그인을 시도하세요.");
+          sessionStorage.removeItem("jwtToken");
+          sessionStorage.removeItem("username");
+          sessionStorage.removeItem("roles");
+          navigate("/users_signin");
+        }
+      })
+      .catch((err) => console.error("portfolio cash vs asset error : ", err));
+  }, []);
+
   const cashAssetSubmit = () => {
     UserAuthDataAPI(
       sessionStorage.getItem("jwtToken"),
@@ -42,11 +74,28 @@ const PortfolioCashAsset = () => {
       .then((res) => {
         if (res?.data?.message === "토큰이 정상입니다.") {
           console.log("토큰 정상");
-          CashAssetDataAPI(cashAsset)
-            .then((res) => console.log("cashAssetData res : ", res))
+
+          CashAssetDataAPI({
+            cash: cashAsset.cash,
+            asset: cashAsset.asset,
+            username: sessionStorage.getItem("username"),
+          })
+            .then((res) => {
+              console.log("cashAssetData res : ", res);
+              setCashAsset.cash = res?.data?.result?.cash;
+              setCashAsset.asset = res?.data?.result?.asset;
+              // asset: "자산보유량 : 234"
+              // cash: "현금보유량 : 12"
+              // message: "현금 대 자산 비율 업데이트 완료하였습니다."
+              // portfolioId: 1
+              // userId: 1
+            })
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
+          sessionStorage.removeItem("jwtToken");
+          sessionStorage.removeItem("username");
+          sessionStorage.removeItem("roles");
           navigate("/users_signin");
         }
       })
