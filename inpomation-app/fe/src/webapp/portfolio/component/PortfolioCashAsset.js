@@ -15,6 +15,8 @@ const PortfolioCashAsset = () => {
   const [cashAsset, setCashAsset] = useState({
     cash: 0,
     asset: 0,
+    cashRatio: 0,
+    assetRatio: 0,
   });
   const [options, setOptions] = useState("cash");
   const cashVsAssetRatio = [
@@ -44,23 +46,14 @@ const PortfolioCashAsset = () => {
     )
       .then((res) => {
         if (res?.data?.message === "토큰이 정상입니다.") {
-          console.log("토큰 정상");
-
           FortfolioInquiryDataAPI({
             username: sessionStorage.getItem("username"),
           })
-            .then((res) => {
-              console.log("cashAssetData res : ", res);
-              setCashAsset.cash = res?.data?.result?.cash;
-              setCashAsset.asset = res?.data?.result?.asset;
-            })
+            .then((res) => setCashAsset(res?.data))
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
-          sessionStorage.removeItem("jwtToken");
-          sessionStorage.removeItem("username");
-          sessionStorage.removeItem("roles");
-          navigate("/users_signin");
+          sessionRemove();
         }
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
@@ -80,26 +73,21 @@ const PortfolioCashAsset = () => {
             asset: cashAsset.asset,
             username: sessionStorage.getItem("username"),
           })
-            .then((res) => {
-              console.log("cashAssetData res : ", res);
-              setCashAsset.cash = res?.data?.result?.cash;
-              setCashAsset.asset = res?.data?.result?.asset;
-              // asset: "자산보유량 : 234"
-              // cash: "현금보유량 : 12"
-              // message: "현금 대 자산 비율 업데이트 완료하였습니다."
-              // portfolioId: 1
-              // userId: 1
-            })
+            .then((res) => setCashAsset(res?.data))
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
-          sessionStorage.removeItem("jwtToken");
-          sessionStorage.removeItem("username");
-          sessionStorage.removeItem("roles");
-          navigate("/users_signin");
+          sessionRemove();
         }
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
+  };
+
+  const sessionRemove = () => {
+    sessionStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("roles");
+    navigate("/users_signin");
   };
 
   return (
@@ -109,8 +97,8 @@ const PortfolioCashAsset = () => {
         <RadialChart
           data={cashVsAssetRatio}
           showLabels={true}
-          width={500}
-          height={500}
+          width={400}
+          height={400}
           radius={130}
         />
 
@@ -136,7 +124,19 @@ const PortfolioCashAsset = () => {
               />
             </Form>
           </div>
+          <div className={styles.displayBox}>
+            <Form size="small">
+              <Form.Input
+                fluid
+                value={`자산 비중 ${cashAsset.cashRatio}%`}
+                className={styles.displayInputBoxRatio}
+                readOnly
+              />
+            </Form>
+          </div>
         </div>
+
+        <div></div>
 
         <div>
           <div className={styles.displayBox}>
@@ -155,6 +155,16 @@ const PortfolioCashAsset = () => {
                 fluid
                 value={cashAsset.asset}
                 className={styles.displayInputBoxValue}
+                readOnly
+              />
+            </Form>
+          </div>
+          <div className={styles.displayBox}>
+            <Form size="small">
+              <Form.Input
+                fluid
+                value={`자산 비중 ${cashAsset.assetRatio}%`}
+                className={styles.displayInputBoxRatio}
                 readOnly
               />
             </Form>

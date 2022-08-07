@@ -34,6 +34,9 @@ const Mypage = () => {
             .catch((err) => console.error(`mypage inquiry error : ${err}`));
         } else {
           alert("다시 로그인을 시도하세요.");
+          sessionStorage.removeItem("jwtToken");
+          sessionStorage.removeItem("username");
+          sessionStorage.removeItem("roles");
           navigate("/users_signin");
         }
       })

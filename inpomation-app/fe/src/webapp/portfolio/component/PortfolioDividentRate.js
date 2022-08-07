@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProtfolioAssetRate = () => {
+const PortfolioDividentRate = () => {
   // 배당 및 월세 1년 비율
 
   return (
@@ -10,4 +10,4 @@ const ProtfolioAssetRate = () => {
   );
 };
 
-export default ProtfolioAssetRate;
+export default PortfolioDividentRate;
