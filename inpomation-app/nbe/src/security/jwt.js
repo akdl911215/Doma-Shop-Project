@@ -24,15 +24,15 @@ module.exports = {
   },
   verify: async (req, res, next) => {
     console.log("req ;: ", req);
-    const token = req?.token;
-    if (!token) {
-      return {
-        code: 401,
-        message: "No token, authorization denied",
-        roles: null,
-      };
-    }
     try {
+      const token = req?.token;
+      if (!token) {
+        return {
+          code: 401,
+          message: "No token, authorization denied",
+          roles: null,
+        };
+      }
       res = jwt.verify(
         token,
         iconv.decode(Buffer.from(process.env.JWT_SECRET), "EUC-KR")
