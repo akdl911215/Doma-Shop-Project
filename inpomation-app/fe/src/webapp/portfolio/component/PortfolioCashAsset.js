@@ -128,7 +128,7 @@ const PortfolioCashAsset = () => {
             <Form size="small">
               <Form.Input
                 fluid
-                value={`자산 비중 ${cashAsset.cashRatio}%`}
+                value={`현금 비중 ${cashAsset.cashRatio}%`}
                 className={styles.displayInputBoxRatio}
                 readOnly
               />
