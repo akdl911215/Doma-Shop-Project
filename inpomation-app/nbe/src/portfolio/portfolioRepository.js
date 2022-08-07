@@ -19,6 +19,7 @@ exports.portfolioInquiry = async (req, res, next) => {
 
           if (doc) {
             console.log("connection query portfolioInquiry : ", doc);
+
             resolve({
               message: "포트폴리오 조회에 성공하였습니다.",
               ...doc,
