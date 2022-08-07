@@ -11,3 +11,8 @@ export const AssetDataAPI = (asset) => {
   console.log("asset : ", asset);
   return client.post(backUrl + "/portfolio/asset", asset);
 };
+
+export const AssetInquiryDataAPI = (asset) => {
+  console.log("AssetInquiryDataAPI asset : ", asset);
+  return client.post(backUrl + "portfolio/assetInquiry", asset);
+};

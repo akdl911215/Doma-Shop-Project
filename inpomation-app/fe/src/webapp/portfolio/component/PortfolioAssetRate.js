@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { RadialChart } from "react-vis";
 import { Form, Button } from "semantic-ui-react";
 import styles from "../style/PortfolioAssetRate.module.css";
-import { AssetDataAPI, FortfolioInquiryDataAPI } from "webapp/api/portfolioApi";
+import { AssetDataAPI, AssetInquiryDataAPI } from "webapp/api/portfolioApi";
 import { UserAuthDataAPI } from "webapp/api/userApi";
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +33,7 @@ const PortfolioAssetRate = () => {
     )
       .then((res) => {
         if (res?.data?.message === "토큰이 정상입니다.") {
-          AssetDataAPI({
+          AssetInquiryDataAPI({
             stock: asset.stock,
             buyPrice: asset.buyPrice,
             dividend: asset.dividend,
