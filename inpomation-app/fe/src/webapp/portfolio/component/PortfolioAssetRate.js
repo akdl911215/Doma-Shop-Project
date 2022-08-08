@@ -26,20 +26,53 @@ const PortfolioAssetRate = () => {
       [name]: value,
     });
   };
-
+  let assetArr = [];
   useEffect(() => {
     UserAuthDataAPI()
       .then((res) => {
         console.log("asset rate auth res : ", res);
         if (res?.data?.message === "토큰이 정상입니다.") {
           AssetInquiryDataAPI({
-            stock: asset.stock,
-            stockHoldings: asset.stockHoldings,
-            buyPrice: asset.buyPrice,
-            dividend: asset.dividend,
             username: sessionStorage.getItem("username"),
           })
-            .then((res) => console.log(res?.data))
+            .then((res) => {
+              console.log("asset inquiry : ", res?.data?.result?.result);
+              setAssetRate(res?.data?.result?.result);
+
+              // {
+              //   angle: Number(cashAsset.cash),
+              //   label: cashAsset.cash === 0 ? "" : "현금",
+              //   subLabel: cashAsset.cash === 0 ? "" : String(cashAsset.cash),
+              // },
+              // {
+              //   angle: Number(cashAsset.asset),
+              //   label: cashAsset.asset === 0 ? "" : "자산",
+              //   subLabel: cashAsset.asset === 0 ? "" : String(cashAsset.asset),
+              // },
+              // assetRate
+              console.log(
+                "res?.data?.result.result.length : ",
+                res?.data?.result.result.length
+              );
+              for (let i = 0; i < res?.data?.result?.result.length; ++i) {
+                assetArr.push({
+                  anlge:
+                    res?.data?.result?.result[i].buyPrice *
+                    res?.data?.result?.result[i].stockHoldings,
+                  label: res?.data?.result?.result[i].stock,
+                });
+              }
+              console.log("res in assetArr : ", assetArr);
+              // assetArr = assetRate.map((el, index) => {
+              //   const state = {
+              //     anlge:
+              //       assetRate[index].buyPrice * assetRate[index].stockHoldings,
+              //     label: assetRate[index].stock,
+              //   };
+              //   console.log("state : ", state);
+              //   return state;
+              // });
+            })
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
@@ -48,6 +81,8 @@ const PortfolioAssetRate = () => {
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
   }, []);
+  console.log("asset inquiry !! : ", assetRate);
+  console.log("assetArr !! : ", assetArr);
 
   const assetSubmit = () => {
     UserAuthDataAPI()
