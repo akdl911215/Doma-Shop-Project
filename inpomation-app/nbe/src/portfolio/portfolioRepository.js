@@ -50,7 +50,7 @@ exports.portfolioAssetInquiry = async (req, res, next) => {
             );
             resolve({
               message: "자산 조회에 실패하였습니다.",
-              ...err,
+              result: err,
             });
           }
 
@@ -59,7 +59,7 @@ exports.portfolioAssetInquiry = async (req, res, next) => {
 
             resolve({
               message: "자산 조회에 성공하였습니다.",
-              ...doc,
+              result: doc,
             });
           }
         });

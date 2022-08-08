@@ -3,10 +3,14 @@ const router = express.Router();
 const service = require("./portfolioService");
 
 router.post("/assetInquiry", async (req, res, next) => {
+  console.log("asset inquiry start!! ", req?.body);
   const username = req?.body?.username;
-  console.log("username : ", username);
+  console.log("assetInquiry username : ", username);
   const result = await service.assetInquiry(username);
   console.log("assetInquiry result : ", result);
+  res.json({
+    result,
+  });
 });
 
 router.post("/asset", async (req, res, next) => {
