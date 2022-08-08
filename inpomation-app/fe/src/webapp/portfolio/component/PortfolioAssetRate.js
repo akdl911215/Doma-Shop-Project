@@ -11,6 +11,7 @@ const PortfolioAssetRate = () => {
   const navigate = useNavigate();
   const [asset, setAsset] = useState({
     stock: "",
+    stockHoldings: 0,
     buyPrice: 0,
     dividend: 0,
   });
@@ -27,14 +28,13 @@ const PortfolioAssetRate = () => {
   };
 
   useEffect(() => {
-    UserAuthDataAPI(
-      sessionStorage.getItem("jwtToken"),
-      sessionStorage.getItem("roles")
-    )
+    UserAuthDataAPI()
       .then((res) => {
+        console.log("asset rate auth res : ", res);
         if (res?.data?.message === "토큰이 정상입니다.") {
           AssetInquiryDataAPI({
             stock: asset.stock,
+            stockHoldings: asset.stockHoldings,
             buyPrice: asset.buyPrice,
             dividend: asset.dividend,
             username: sessionStorage.getItem("username"),
@@ -50,16 +50,14 @@ const PortfolioAssetRate = () => {
   }, []);
 
   const assetSubmit = () => {
-    UserAuthDataAPI(
-      sessionStorage.getItem("jwtToken"),
-      sessionStorage.getItem("roles")
-    )
+    UserAuthDataAPI()
       .then((res) => {
         if (res?.data?.message === "토큰이 정상입니다.") {
           console.log("토큰 정상");
 
           AssetDataAPI({
             stock: asset.stock,
+            stockHoldings: asset.stockHoldings,
             buyPrice: asset.buyPrice,
             dividend: asset.dividend,
             username: sessionStorage.getItem("username"),
@@ -113,6 +111,30 @@ const PortfolioAssetRate = () => {
                 fluid
                 name="stock"
                 value={asset.stock}
+                className={styles.displayInputBoxValue}
+                onChange={handleChange}
+              />
+            </Form>
+          </div>
+        </div>
+
+        <div>
+          <div className={styles.displayBox}>
+            <Form size="small">
+              <Form.Input
+                fluid
+                value="보유 수량"
+                className={styles.displayInputBoxName}
+                readOnly
+              />
+            </Form>
+          </div>
+          <div className={styles.displayBox}>
+            <Form size="small">
+              <Form.Input
+                fluid
+                name="stockHoldings"
+                value={asset.stockHoldings}
                 className={styles.displayInputBoxValue}
                 onChange={handleChange}
               />

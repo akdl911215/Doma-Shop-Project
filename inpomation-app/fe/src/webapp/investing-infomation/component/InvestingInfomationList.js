@@ -20,10 +20,7 @@ const InvestingInfomationList = () => {
   const [rolesCheck, SetRolesCheck] = useState(null);
 
   useEffect(() => {
-    UserAuthDataAPI(
-      sessionStorage.getItem("jwtToken"),
-      sessionStorage.getItem("roles")
-    )
+    UserAuthDataAPI()
       .then((res) => SetRolesCheck(res?.data?.roles))
       .catch((err) => console.error(`token, roles check error : ${err}`));
   }, []);

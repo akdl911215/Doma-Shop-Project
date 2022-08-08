@@ -40,10 +40,7 @@ const PortfolioCashAsset = () => {
   };
 
   useEffect(() => {
-    UserAuthDataAPI(
-      sessionStorage.getItem("jwtToken"),
-      sessionStorage.getItem("roles")
-    )
+    UserAuthDataAPI()
       .then((res) => {
         if (res?.data?.message === "토큰이 정상입니다.") {
           FortfolioInquiryDataAPI({
@@ -60,10 +57,7 @@ const PortfolioCashAsset = () => {
   }, []);
 
   const cashAssetSubmit = () => {
-    UserAuthDataAPI(
-      sessionStorage.getItem("jwtToken"),
-      sessionStorage.getItem("roles")
-    )
+    UserAuthDataAPI()
       .then((res) => {
         if (res?.data?.message === "토큰이 정상입니다.") {
           console.log("토큰 정상");

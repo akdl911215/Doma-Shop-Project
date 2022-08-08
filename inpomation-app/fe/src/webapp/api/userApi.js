@@ -24,9 +24,10 @@ export const UserModifyDataAPI = (user) =>
 export const UserInquiryDataAPI = (user) =>
   client.post(backUrl + "/users/inquiry", { username: user });
 
-export const UserAuthDataAPI = (token, roles) => {
-  client.defaults.headers.common["Authorization"] = "Bearer " + token;
+export const UserAuthDataAPI = () => {
+  client.defaults.headers.common["Authorization"] =
+    "Bearer " + sessionStorage.getItem("jwtToken");
   return client.post(backUrl + `/users/auth`, {
-    roles: roles,
+    roles: sessionStorage.getItem("roles"),
   });
 };
