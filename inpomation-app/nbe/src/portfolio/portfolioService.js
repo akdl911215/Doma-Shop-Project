@@ -3,14 +3,22 @@ const userRepository = require("../user/userRepository");
 
 class portfolioService {
   async asset(asset) {
+    console.log("asset : ", asset);
     const userDTO = await userRepository.userInquiry(asset?.username);
     console.log("asset userDTO : ", userDTO);
-    const result = await repository.portfolioAsset(userDTO);
+    const result = await repository.portfolioAsset({
+      userId: userDTO?.id,
+      stock: asset?.stock,
+      stockHoldings: asset?.stockHoldings,
+      buyPrice: asset?.buyPrice,
+      dividend: asset?.dividend,
+    });
     console.log("asset result: ", result);
   }
 
-  async assetImquiry(username) {
+  async assetInquiry(username) {
     const userDTO = await userRepository.userInquiry(username);
+    return await repository.portfolioAssetInquiry(userDTO.id);
   }
 
   async cashAsset(cashAndAsset) {
@@ -25,7 +33,6 @@ class portfolioService {
 
   async portfolioInquiry(username) {
     const userDTO = await userRepository.userInquiry(username);
-    console.log("userDTO : ", userDTO);
     return await repository.portfolioInquiry(userDTO.id);
   }
 }

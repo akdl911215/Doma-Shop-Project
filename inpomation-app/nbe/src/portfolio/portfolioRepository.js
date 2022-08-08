@@ -2,18 +2,18 @@ const db = require("../api/middlewares/pool");
 
 exports.portfolioAsset = async (req, res, next) => {
   const user = req;
-  console.log("user : ", user);
+  console.log("portfolioAsset user : ", user);
 
   return new Promise((resolve, reject) => {
     try {
-      const sql = `INSERT INTO personal_stock(user_id, stock, buy_price, dividend) VALUES ('${req?.id}', '${req?.stock}', '${req?.buyPrice}', '${req?.dividend}')
-                    ON DUPLICATE KEY UPDATE stock = '${req?.stock}', buy_price = '${req?.buyPrice}', dividend = '${req?.dividend}'`;
+      const sql = `INSERT INTO personal_stock(user_id, stock, stock_holdings, buy_price, dividend) VALUES (${req?.userId}, '${req?.stock}', ${req?.stockHoldings}, ${req?.buyPrice}, ${req?.dividend})
+                    ON DUPLICATE KEY UPDATE stock = '${req?.stock}', stock_holdings = ${req?.stockHoldings}, buy_price = ${req?.buyPrice}, dividend = ${req?.dividend}`;
       db.getConnectionPool((connection) => {
         connection.query(sql, (err, doc) => {
           if (err) {
             console.error("connection query portfolioAsset error : ", err);
             resolve({
-              message: "자산 조회에 실패하였습니다.",
+              message: "자산 추가 실패하였습니다.",
               ...err,
             });
           }
@@ -21,7 +21,8 @@ exports.portfolioAsset = async (req, res, next) => {
           if (doc) {
             console.log("connection query portfolioAsset : ", doc);
             resolve({
-              message: "자산 조회에 성공하였습니다.",
+              message: "자산 추가 성공하였습니다.",
+              code: 200,
               ...doc,
             });
           }
@@ -33,9 +34,45 @@ exports.portfolioAsset = async (req, res, next) => {
   });
 };
 
+exports.portfolioAssetInquiry = async (req, res, next) => {
+  const userID = req;
+  console.log("portfolioAssetInquiry userID :: ", userID);
+
+  return new Promise((resolve, reject) => {
+    try {
+      const sql = `SELECT * FROM personal_stock WHERE user_id = ${userID}`;
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error(
+              "connection query portfolioAssetInquiry error : ",
+              err
+            );
+            resolve({
+              message: "자산 조회에 실패하였습니다.",
+              ...err,
+            });
+          }
+
+          if (doc) {
+            console.log("connection query portfolioAssetInquiry : ", doc);
+
+            resolve({
+              message: "자산 조회에 성공하였습니다.",
+              ...doc,
+            });
+          }
+        });
+      });
+    } catch (err) {
+      console.error("portfolioAssetInquiry db coonection catch error: ", err);
+    }
+  });
+};
+
 exports.portfolioInquiry = async (req, res, next) => {
   const userID = req;
-  console.log("userID :: ", userID);
+  console.log("portfolioInquiry userID :: ", userID);
 
   return new Promise((resolve, reject) => {
     try {

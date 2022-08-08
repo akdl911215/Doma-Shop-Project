@@ -5,14 +5,18 @@ const service = require("./portfolioService");
 router.post("/assetInquiry", async (req, res, next) => {
   const username = req?.body?.username;
   console.log("username : ", username);
-  const result = await console.log("result : ", result);
+  const result = await service.assetInquiry(username);
+  console.log("assetInquiry result : ", result);
 });
 
 router.post("/asset", async (req, res, next) => {
   const asset = req?.body;
   console.log("asset : ", asset);
-  const result = await service.asset(asset);
-  console.log("result : ", result);
+  const { message, code } = await service.asset(asset);
+  res.json({
+    message: message,
+    code: code,
+  });
 });
 
 router.post("/cashAsset", async (req, res, next) => {
@@ -42,8 +46,8 @@ router.post("/inquiry", async (req, res, next) => {
     (result[0]?.total_asset / (result[0]?.cash + result[0]?.total_asset)) * 100
   );
   res.json({
-    cash: result[0].cash,
-    asset: result[0].total_asset,
+    cash: result[0]?.cash,
+    asset: result[0]?.total_asset,
     cashRatio: cashRatio,
     assetRatio: assetRatio,
   });
