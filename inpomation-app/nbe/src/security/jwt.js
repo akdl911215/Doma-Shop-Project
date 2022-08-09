@@ -16,7 +16,7 @@ module.exports = {
           // options
           subject: "invest token", // 토큰 제목
           algorithm: "HS256",
-          expiresIn: "1m", // 토큰 유효 기간
+          expiresIn: "5m", // 토큰 유효 기간
           issuer: "issuer", // 발행자
         }
       ),

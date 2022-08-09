@@ -18,8 +18,8 @@ router.post("/asset", async (req, res, next) => {
   console.log("asset : ", asset);
   const { message, code } = await service.asset(asset);
   res.json({
-    message: message,
-    code: code,
+    message,
+    code,
   });
 });
 

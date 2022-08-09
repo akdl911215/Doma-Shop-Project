@@ -27,6 +27,7 @@ exports.portfolioAsset = async (req, res, next) => {
             });
           }
         });
+        connection.release();
       });
     } catch (err) {
       console.error("portfolioAsset db coonection catch error: ", err);
@@ -63,6 +64,7 @@ exports.portfolioAssetInquiry = async (req, res, next) => {
             });
           }
         });
+        connection.release();
       });
     } catch (err) {
       console.error("portfolioAssetInquiry db coonection catch error: ", err);
@@ -96,6 +98,7 @@ exports.portfolioInquiry = async (req, res, next) => {
             });
           }
         });
+        connection.release();
       });
     } catch (err) {
       console.error("portfolioInquiry db coonection catch error: ", err);

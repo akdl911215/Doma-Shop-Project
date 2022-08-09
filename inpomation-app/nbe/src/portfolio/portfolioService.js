@@ -6,14 +6,13 @@ class portfolioService {
     console.log("asset : ", asset);
     const userDTO = await userRepository.userInquiry(asset?.username);
     console.log("asset userDTO : ", userDTO);
-    const result = await repository.portfolioAsset({
+    return await repository.portfolioAsset({
       userId: userDTO?.id,
       stock: asset?.stock,
       stockHoldings: asset?.stockHoldings,
       buyPrice: asset?.buyPrice,
       dividend: asset?.dividend,
     });
-    console.log("asset result: ", result);
   }
 
   async assetInquiry(username) {
