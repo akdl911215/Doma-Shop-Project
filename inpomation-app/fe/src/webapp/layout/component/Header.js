@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, Route, Routes, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../style/Header.css";
 
 const Header = () => {
   const [rolesCheck, setRolesCheck] = useState(null);
   useEffect(() => {
     setRolesCheck(sessionStorage.getItem("roles"));
+    sessionStorage.removeItem("option");
   });
 
   return (
@@ -42,7 +43,14 @@ const Header = () => {
               </li>
               {rolesCheck !== null ? (
                 <>
-                  <Link to="/users_mypage ">마이페이지</Link>
+                  <Link
+                    to="/users_mypage"
+                    onClick={() =>
+                      sessionStorage.setItem("option", "cashAsset")
+                    }
+                  >
+                    마이페이지
+                  </Link>
                 </>
               ) : (
                 <>{}</>
