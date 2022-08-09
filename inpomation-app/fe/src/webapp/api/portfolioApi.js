@@ -7,12 +7,8 @@ export const CashAssetDataAPI = (cashAsset) =>
 export const FortfolioInquiryDataAPI = (user) =>
   client.post(backUrl + "/portfolio/inquiry", user);
 
-export const AssetDataAPI = (asset) => {
-  console.log("asset : ", asset);
-  return client.post(backUrl + "/portfolio/asset", asset);
-};
+export const AssetDataAPI = (asset) =>
+  client.post(backUrl + "/portfolio/asset", asset);
 
-export const AssetInquiryDataAPI = (asset) => {
-  console.log("AssetInquiryDataAPI asset : ", asset);
-  return client.post(backUrl + "/portfolio/assetInquiry", asset);
-};
+export const AssetInquiryDataAPI = (asset) =>
+  client.post(backUrl + "/portfolio/assetInquiry", asset);

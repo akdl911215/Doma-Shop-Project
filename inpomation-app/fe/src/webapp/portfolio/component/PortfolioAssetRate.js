@@ -16,6 +16,7 @@ const PortfolioAssetRate = () => {
     dividend: 0,
   });
   const [assetRate, setAssetRate] = useState([]);
+  const [assetArr, setAsetArr] = useState([]);
   const [options, setOptions] = useState("cash");
 
   const handleChange = (e) => {
@@ -26,7 +27,7 @@ const PortfolioAssetRate = () => {
       [name]: value,
     });
   };
-  let assetArr = [];
+
   useEffect(() => {
     UserAuthDataAPI()
       .then((res) => {
@@ -39,39 +40,21 @@ const PortfolioAssetRate = () => {
               console.log("asset inquiry : ", res?.data?.result?.result);
               setAssetRate(res?.data?.result?.result);
 
-              // {
-              //   angle: Number(cashAsset.cash),
-              //   label: cashAsset.cash === 0 ? "" : "현금",
-              //   subLabel: cashAsset.cash === 0 ? "" : String(cashAsset.cash),
-              // },
-              // {
-              //   angle: Number(cashAsset.asset),
-              //   label: cashAsset.asset === 0 ? "" : "자산",
-              //   subLabel: cashAsset.asset === 0 ? "" : String(cashAsset.asset),
-              // },
-              // assetRate
-              console.log(
-                "res?.data?.result.result.length : ",
-                res?.data?.result.result.length
-              );
+              let arr = [];
               for (let i = 0; i < res?.data?.result?.result.length; ++i) {
-                assetArr.push({
-                  anlge:
-                    res?.data?.result?.result[i].buyPrice *
-                    res?.data?.result?.result[i].stockHoldings,
+                const totalPrice =
+                  res?.data?.result?.result[i].buy_price *
+                  res?.data?.result?.result[i].stock_holdings;
+                arr.push({
+                  angle: totalPrice,
                   label: res?.data?.result?.result[i].stock,
+                  subLabel:
+                    totalPrice === 0 ? "" : `보유 금액 ${String(totalPrice)}원`,
                 });
               }
+              setAsetArr(arr);
+
               console.log("res in assetArr : ", assetArr);
-              // assetArr = assetRate.map((el, index) => {
-              //   const state = {
-              //     anlge:
-              //       assetRate[index].buyPrice * assetRate[index].stockHoldings,
-              //     label: assetRate[index].stock,
-              //   };
-              //   console.log("state : ", state);
-              //   return state;
-              // });
             })
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
@@ -97,7 +80,13 @@ const PortfolioAssetRate = () => {
             dividend: asset.dividend,
             username: sessionStorage.getItem("username"),
           })
-            .then((res) => console.log(res?.data))
+            .then((res) => {
+              console.log("asset res :: ", res?.data);
+              console.log("res?.data?.code : ", res?.data?.code);
+              if (res?.data?.code === 200) {
+                window.location.reload();
+              }
+            })
             .catch((err) => console.error("asset error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
@@ -121,7 +110,7 @@ const PortfolioAssetRate = () => {
       <div className={styles.box}>
         {/* 차트 */}
         <RadialChart
-          data={assetRate}
+          data={assetArr}
           showLabels={true}
           width={400}
           height={400}
