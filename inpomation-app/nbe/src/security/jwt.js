@@ -23,7 +23,6 @@ module.exports = {
     };
   },
   verify: async (req, res, next) => {
-    console.log("req ;: ", req);
     try {
       const token = req?.token;
       if (!token) {

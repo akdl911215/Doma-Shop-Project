@@ -3,7 +3,7 @@ const userRepository = require("../user/userRepository");
 
 class portfolioService {
   async assetRemove(stockId) {
-    const result = await repository.portfolioAssetRemove(stockId);
+    return await repository.portfolioAssetRemove(stockId);
   }
 
   async asset(asset) {

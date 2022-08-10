@@ -1,13 +1,35 @@
 const db = require("../api/middlewares/pool");
 
 exports.portfolioAssetRemove = async (req, res, next) => {
-  console.log("portfolioAssetRemove req : ", req);
   return new Promise((resolve, reject) => {
     try {
       const sql = `DELETE FROM personal_stock WHERE id = ${req}`;
-      // 삭제로직 추가
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error(
+              "connection query portfolioAssetRemove error : ",
+              err
+            );
+            resolve({
+              message: "자산 삭제 실패하였습니다.",
+              ...err,
+            });
+          }
+
+          if (doc) {
+            console.log("connection query portfolioAssetRemove : ", doc);
+            resolve({
+              message: "자산 삭제 성공하였습니다.",
+              code: 200,
+              ...doc,
+            });
+          }
+        });
+        connection.release();
+      });
     } catch (err) {
-      //
+      console.error("portfolioAssetRemove db coonection catch error: ", err);
     }
   });
 };

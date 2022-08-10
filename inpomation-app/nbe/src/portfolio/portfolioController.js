@@ -3,9 +3,11 @@ const router = express.Router();
 const service = require("./portfolioService");
 
 router.post("/assetRemove", async (req, res, next) => {
-  console.log("asset remove start : ", req?.body?.stockId);
-  const result = await service.assetRemove(req?.body?.stockId);
-  console.log("result : ", result);
+  const { message, code } = await service.assetRemove(req?.body?.stockId);
+  res.json({
+    code,
+    message,
+  });
 });
 
 router.post("/assetInquiry", async (req, res, next) => {
@@ -15,8 +17,7 @@ router.post("/assetInquiry", async (req, res, next) => {
 });
 
 router.post("/asset", async (req, res, next) => {
-  const asset = req?.body;
-  const { message, code } = await service.asset(asset);
+  const { message, code } = await service.asset(req?.body);
   res.json({
     message,
     code,
@@ -24,8 +25,7 @@ router.post("/asset", async (req, res, next) => {
 });
 
 router.post("/cashAsset", async (req, res, next) => {
-  const cashASset = req?.body;
-  const result = await service.cashAsset(cashASset);
+  const result = await service.cashAsset(req?.body);
   const cashRatio = Math.round(
     (result?.cash / (result?.cash + result?.total_asset)) * 100
   );

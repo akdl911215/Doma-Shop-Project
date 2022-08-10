@@ -64,7 +64,7 @@ router.post("/auth", async (req, res, next) => {
     token: req?.header("Authorization").split(" ")[1],
     roles: req?.body?.roles,
   });
-  return res.json({ code: code, message: message, roles: roles });
+  return res.json({ code, message, roles });
 });
 
 module.exports = router;
