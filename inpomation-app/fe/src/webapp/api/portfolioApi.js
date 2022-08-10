@@ -12,3 +12,6 @@ export const AssetDataAPI = (asset) =>
 
 export const AssetInquiryDataAPI = (asset) =>
   client.post(backUrl + "/portfolio/assetInquiry", asset);
+
+export const AssetRemoveDataAPI = (asset) =>
+  client.post(backUrl + "/portfolio/assetRemove", asset);

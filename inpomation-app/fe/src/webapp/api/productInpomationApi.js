@@ -1,14 +1,8 @@
 import { client } from "./Client";
 import { backUrl } from "../config/Config";
 
-export const ProductInfomationModifyDataAPI = (states, formData, config) => {
-  const url = backUrl + "api/uploadfile";
+export const ProductInfomationModifyDataAPI = (states, formData, config) =>
+  client.post(backUrl + "api/uploadfile", formData, config);
 
-  return client.post(url, formData, config);
-};
-
-export const ProductInfomationRegisterDataAPI = (states) => {
-  const url = backUrl + "/product_infomation/register";
-
-  return client.post(url, states);
-};
+export const ProductInfomationRegisterDataAPI = (states) =>
+  client.post(backUrl + "/product_infomation/register", states);
