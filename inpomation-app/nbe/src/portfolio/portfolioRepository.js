@@ -1,9 +1,18 @@
 const db = require("../api/middlewares/pool");
 
-exports.portfolioAsset = async (req, res, next) => {
-  const user = req;
-  console.log("portfolioAsset user : ", user);
+exports.portfolioAssetRemove = async (req, res, next) => {
+  console.log("portfolioAssetRemove req : ", req);
+  return new Promise((resolve, reject) => {
+    try {
+      const sql = `DELETE FROM personal_stock WHERE id = ${req}`;
+      // 삭제로직 추가
+    } catch (err) {
+      //
+    }
+  });
+};
 
+exports.portfolioAsset = async (req, res, next) => {
   return new Promise((resolve, reject) => {
     try {
       const sql = `INSERT INTO personal_stock(user_id, stock, stock_holdings, buy_price, dividend) VALUES (${req?.userId}, '${req?.stock}', ${req?.stockHoldings}, ${req?.buyPrice}, ${req?.dividend})

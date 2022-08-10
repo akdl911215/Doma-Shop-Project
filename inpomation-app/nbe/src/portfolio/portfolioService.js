@@ -2,10 +2,12 @@ const repository = require("./portfolioRepository");
 const userRepository = require("../user/userRepository");
 
 class portfolioService {
+  async assetRemove(stockId) {
+    const result = await repository.portfolioAssetRemove(stockId);
+  }
+
   async asset(asset) {
-    console.log("asset : ", asset);
     const userDTO = await userRepository.userInquiry(asset?.username);
-    console.log("asset userDTO : ", userDTO);
     return await repository.portfolioAsset({
       userId: userDTO?.id,
       stock: asset?.stock,

@@ -2,20 +2,20 @@ const express = require("express");
 const router = express.Router();
 const service = require("./portfolioService");
 
+router.post("/assetRemove", async (req, res, next) => {
+  console.log("asset remove start : ", req?.body?.stockId);
+  const result = await service.assetRemove(req?.body?.stockId);
+  console.log("result : ", result);
+});
+
 router.post("/assetInquiry", async (req, res, next) => {
-  console.log("asset inquiry start!! ", req?.body);
-  const username = req?.body?.username;
-  console.log("assetInquiry username : ", username);
-  const result = await service.assetInquiry(username);
-  console.log("assetInquiry result : ", result);
   res.json({
-    result,
+    result: await service.assetInquiry(req?.body?.username),
   });
 });
 
 router.post("/asset", async (req, res, next) => {
   const asset = req?.body;
-  console.log("asset : ", asset);
   const { message, code } = await service.asset(asset);
   res.json({
     message,
@@ -41,8 +41,7 @@ router.post("/cashAsset", async (req, res, next) => {
 });
 
 router.post("/inquiry", async (req, res, next) => {
-  const username = req?.body?.username;
-  const result = await service.portfolioInquiry(username);
+  const result = await service.portfolioInquiry(req?.body?.username);
   const cashRatio = Math.round(
     (result[0]?.cash / (result[0]?.cash + result[0]?.total_asset)) * 100
   );
