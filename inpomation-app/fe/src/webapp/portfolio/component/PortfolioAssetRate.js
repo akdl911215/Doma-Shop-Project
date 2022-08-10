@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RadialChart } from "react-vis";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Table } from "semantic-ui-react";
 import styles from "../style/PortfolioAssetRate.module.css";
 import { AssetDataAPI, AssetInquiryDataAPI } from "webapp/api/portfolioApi";
 import { UserAuthDataAPI } from "webapp/api/userApi";
@@ -105,6 +105,25 @@ const PortfolioAssetRate = () => {
 
   // id user_id 종목명 종목번호 매수가격 현재가격 배당금액
 
+  const assetArrBody = assetArr.map((el) => {
+    return (
+      <>
+        <Table.Row>
+          <Table.Cell>1</Table.Cell>
+          <Table.Cell>시도별 수출입실적</Table.Cell>
+          <Table.Cell>
+            <Button
+              color="black"
+              onClick={() => navigate("data_city_and_province")}
+            >
+              들어가기
+            </Button>
+          </Table.Cell>
+        </Table.Row>
+      </>
+    );
+  });
+
   return (
     <>
       <div className={styles.box}>
@@ -116,6 +135,42 @@ const PortfolioAssetRate = () => {
           height={400}
           radius={130}
         />
+
+        {/* 보유 종목 */}
+        {assetArr.length === 0 ? (
+          ""
+        ) : (
+          <>
+            <Table>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>종목명</Table.HeaderCell>
+                  <Table.HeaderCell>보유 수량</Table.HeaderCell>
+                  <Table.HeaderCell>매수 가격</Table.HeaderCell>
+                  <Table.HeaderCell>총 매수금액</Table.HeaderCell>
+                  <Table.HeaderCell>비중</Table.HeaderCell>
+                </Table.Row>
+                {assetRate.map((el) => {
+                  return (
+                    <>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>{el.stock}</Table.Cell>
+                          <Table.Cell>{el.stock_holdings}</Table.Cell>
+                          <Table.Cell>{el.buy_price}</Table.Cell>
+                          <Table.Cell>
+                            {el.buy_price * el.stock_holdings}
+                          </Table.Cell>
+                          <Table.Cell>{el.stock}</Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </>
+                  );
+                })}
+              </Table.Header>
+            </Table>
+          </>
+        )}
 
         {/* 디스플레이 인풋 */}
         <div>
