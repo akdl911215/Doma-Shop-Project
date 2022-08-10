@@ -24,6 +24,7 @@ import CityAndProvinceByItem from "webapp/public-data/component/importAndExportP
 import CityAndProvineceByNature from "webapp/public-data/component/importAndExportPerformence.js/CityAndProvineceByNature";
 import Home from "webapp/layout/component/Home";
 import MypageTab from "webapp/user/component/MypageTab";
+import Portfolio from "webapp/user/component/Portfolio";
 
 const App = () => {
   return (
@@ -86,6 +87,8 @@ const App = () => {
           path="/data_list/data_city_and_province_by_nature"
           element={<CityAndProvineceByNature />}
         />
+
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
     </>
   );

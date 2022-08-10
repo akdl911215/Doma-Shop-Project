@@ -16,13 +16,19 @@ const Header = () => {
           <nav id="top-menu">
             <ul>
               <li>
+                <Link
+                  to="/portfolio"
+                  onClick={() => sessionStorage.setItem("option", "cashAsset")}
+                >
+                  포트폴리오
+                </Link>
+              </li>
+              <li>
                 {rolesCheck === null ? (
                   <>
                     <Link to="/users_signup">회원가입</Link>
                   </>
-                ) : (
-                  <>{}</>
-                )}
+                ) : null}
               </li>
               <li>
                 {sessionStorage.getItem("roles") === null ? (
@@ -41,6 +47,7 @@ const Header = () => {
                   </Link>
                 )}
               </li>
+
               {rolesCheck !== null ? (
                 <>
                   <Link
@@ -53,7 +60,7 @@ const Header = () => {
                   </Link>
                 </>
               ) : (
-                <>{}</>
+                <></>
               )}
               <li>
                 <Link to="/notice_list">공지 사항</Link>

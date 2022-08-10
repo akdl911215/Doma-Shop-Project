@@ -40,41 +40,48 @@ const PortfolioCashAsset = () => {
   };
 
   useEffect(() => {
-    UserAuthDataAPI()
-      .then((res) => {
-        if (res?.data?.message === "토큰이 정상입니다.") {
-          FortfolioInquiryDataAPI({
-            username: sessionStorage.getItem("username"),
-          })
-            .then((res) => setCashAsset(res?.data))
-            .catch((err) => console.error("cashAssetData error : ", err));
-        } else {
-          alert("다시 로그인을 시도하세요.");
-          sessionRemove();
-        }
-      })
-      .catch((err) => console.error("portfolio cash vs asset error : ", err));
+    if (sessionStorage.getItem("username") !== null) {
+      UserAuthDataAPI()
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            FortfolioInquiryDataAPI({
+              username: sessionStorage.getItem("username"),
+            })
+              .then((res) => setCashAsset(res?.data))
+              .catch((err) => console.error("cashAssetData error : ", err));
+          } else {
+            alert("다시 로그인을 시도하세요.");
+            sessionRemove();
+          }
+        })
+        .catch((err) => console.error("portfolio cash vs asset error : ", err));
+    }
   }, []);
 
   const cashAssetSubmit = () => {
-    UserAuthDataAPI()
-      .then((res) => {
-        if (res?.data?.message === "토큰이 정상입니다.") {
-          console.log("토큰 정상");
+    // 서브밋하면 글자가 이상함 수정하기
+    if (sessionStorage.getItem("username") === null) {
+      alert("해당기능은 로그인을 하여야 사용이 가능합니다.");
+    } else {
+      UserAuthDataAPI()
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            console.log("토큰 정상");
 
-          CashAssetDataAPI({
-            cash: cashAsset.cash,
-            asset: cashAsset.asset,
-            username: sessionStorage.getItem("username"),
-          })
-            .then((res) => setCashAsset(res?.data))
-            .catch((err) => console.error("cashAssetData error : ", err));
-        } else {
-          alert("다시 로그인을 시도하세요.");
-          sessionRemove();
-        }
-      })
-      .catch((err) => console.error("portfolio cash vs asset error : ", err));
+            CashAssetDataAPI({
+              cash: cashAsset.cash,
+              asset: cashAsset.asset,
+              username: sessionStorage.getItem("username"),
+            })
+              .then((res) => setCashAsset(res?.data))
+              .catch((err) => console.error("cashAssetData error : ", err));
+          } else {
+            alert("다시 로그인을 시도하세요.");
+            sessionRemove();
+          }
+        })
+        .catch((err) => console.error("portfolio cash vs asset error : ", err));
+    }
   };
 
   const sessionRemove = () => {
@@ -122,7 +129,7 @@ const PortfolioCashAsset = () => {
             <Form size="small">
               <Form.Input
                 fluid
-                value={`현금 비중 ${cashAsset.cashRatio}%`}
+                value={`비중 ${cashAsset.cashRatio}%`}
                 className={styles.displayInputBoxRatio}
                 readOnly
               />
@@ -157,7 +164,7 @@ const PortfolioCashAsset = () => {
             <Form size="small">
               <Form.Input
                 fluid
-                value={`자산 비중 ${cashAsset.assetRatio}%`}
+                value={`비중 ${cashAsset.assetRatio}%`}
                 className={styles.displayInputBoxRatio}
                 readOnly
               />

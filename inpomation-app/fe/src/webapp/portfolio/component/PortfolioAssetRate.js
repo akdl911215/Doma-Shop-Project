@@ -33,75 +33,73 @@ const PortfolioAssetRate = () => {
   };
 
   useEffect(() => {
-    UserAuthDataAPI()
-      .then((res) => {
-        console.log("asset rate auth res : ", res);
-        if (res?.data?.message === "토큰이 정상입니다.") {
-          AssetInquiryDataAPI({
-            username: sessionStorage.getItem("username"),
-          })
-            .then((res) => {
-              console.log("asset inquiry : ", res?.data?.result?.result);
-              setAssetRate(res?.data?.result?.result);
-
-              let arr = [];
-              let num = 0;
-              for (let i = 0; i < res?.data?.result?.result.length; ++i) {
-                const totalPrice =
-                  res?.data?.result?.result[i].buy_price *
-                  res?.data?.result?.result[i].stock_holdings;
-                num += totalPrice;
-
-                arr.push({
-                  angle: totalPrice,
-                  label: res?.data?.result?.result[i].stock,
-                  subLabel:
-                    totalPrice === 0 ? "" : `보유 금액 ${String(totalPrice)}원`,
-                });
-              }
-              setAsetArr(arr);
-              setTotalAssetRate(num);
-
-              console.log("res in assetArr : ", assetArr);
+    if (sessionStorage.getItem("username") !== null) {
+      UserAuthDataAPI()
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            AssetInquiryDataAPI({
+              username: sessionStorage.getItem("username"),
             })
-            .catch((err) => console.error("cashAssetData error : ", err));
-        } else {
-          alert("다시 로그인을 시도하세요.");
-          sessionRemove();
-        }
-      })
-      .catch((err) => console.error("portfolio cash vs asset error : ", err));
+              .then((res) => {
+                setAssetRate(res?.data?.result?.result);
+
+                let arr = [];
+                let num = 0;
+                for (let i = 0; i < res?.data?.result?.result.length; ++i) {
+                  const totalPrice =
+                    res?.data?.result?.result[i].buy_price *
+                    res?.data?.result?.result[i].stock_holdings;
+                  num += totalPrice;
+
+                  arr.push({
+                    angle: totalPrice,
+                    label: res?.data?.result?.result[i].stock,
+                    subLabel:
+                      totalPrice === 0
+                        ? ""
+                        : `보유 금액 ${String(totalPrice)}원`,
+                  });
+                }
+                setAsetArr(arr);
+                setTotalAssetRate(num);
+              })
+              .catch((err) => console.error("cashAssetData error : ", err));
+          } else {
+            alert("다시 로그인을 시도하세요.");
+            sessionRemove();
+          }
+        })
+        .catch((err) => console.error("portfolio cash vs asset error : ", err));
+    }
   }, []);
-  console.log("asset inquiry !! : ", assetRate);
-  console.log("assetArr !! : ", assetArr);
 
   const assetSubmit = () => {
-    UserAuthDataAPI()
-      .then((res) => {
-        if (res?.data?.message === "토큰이 정상입니다.") {
-          console.log("토큰 정상");
+    if (sessionStorage.getItem("username") === null) {
+      alert("해당기능은 로그인을 하여야 사용이 가능합니다.");
+    } else {
+      UserAuthDataAPI()
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            console.log("토큰 정상");
 
-          AssetDataAPI({
-            stock: asset.stock,
-            stockHoldings: asset.stockHoldings,
-            buyPrice: asset.buyPrice,
-            dividend: asset.dividend,
-            username: sessionStorage.getItem("username"),
-          })
-            .then((res) => {
-              console.log("asset res :: ", res?.data);
-              console.log("res?.data?.code : ", res?.data?.code);
-              if (res?.data?.code === 200) {
-                window.location.reload();
-              }
+            AssetDataAPI({
+              stock: asset.stock,
+              stockHoldings: asset.stockHoldings,
+              buyPrice: asset.buyPrice,
+              dividend: asset.dividend,
+              username: sessionStorage.getItem("username"),
             })
-            .catch((err) => console.error("asset error : ", err));
-        } else {
-          alert("다시 로그인을 시도하세요.");
-          sessionRemove();
-        }
-      })
-      .catch((err) => console.error("portfolio asset error : ", err));
+              .then((res) => {
+                if (res?.data?.code === 200) window.location.reload();
+              })
+              .catch((err) => console.error("asset error : ", err));
+          } else {
+            alert("다시 로그인을 시도하세요.");
+            sessionRemove();
+          }
+        })
+        .catch((err) => console.error("portfolio asset error : ", err));
+    }
   };
 
   const sessionRemove = () => {
@@ -113,28 +111,32 @@ const PortfolioAssetRate = () => {
 
   // id user_id 종목명 종목번호 매수가격 현재가격 배당금액
 
-  const stockRemove = (id) => {
-    console.log("id : ", id);
-    UserAuthDataAPI()
-      .then((res) => {
-        if (res?.data?.message === "토큰이 정상입니다.") {
-          console.log("토큰 정상");
+  const stockRemove = (id, stock) => {
+    const stockRemoveButton = window.confirm(
+      `[${stock}] 을(를) 포트폴리오에서 제거하시겠습니까??`
+    );
+    if (stockRemoveButton) {
+      UserAuthDataAPI()
+        .then((res) => {
+          if (res?.data?.message === "토큰이 정상입니다.") {
+            console.log("토큰 정상");
 
-          AssetRemoveDataAPI({ stockId: id })
-            .then((res) => {
-              console.log("remove res :: ", res?.data);
-              console.log("res?.data?.code : ", res?.data?.code);
-              if (res?.data?.code === 200) {
-                window.location.reload();
-              }
-            })
-            .catch((err) => console.error("asset error : ", err));
-        } else {
-          alert("다시 로그인을 시도하세요.");
-          sessionRemove();
-        }
-      })
-      .catch((err) => console.error("portfolio asset error : ", err));
+            AssetRemoveDataAPI({ stockId: id })
+              .then((res) => {
+                console.log("remove res :: ", res?.data);
+                console.log("res?.data?.code : ", res?.data?.code);
+                if (res?.data?.code === 200) {
+                  window.location.reload();
+                }
+              })
+              .catch((err) => console.error("asset remove error : ", err));
+          } else {
+            alert("다시 로그인을 시도하세요.");
+            sessionRemove();
+          }
+        })
+        .catch((err) => console.error("portfolio asset remove error : ", err));
+    }
   };
 
   return (
@@ -186,7 +188,7 @@ const PortfolioAssetRate = () => {
                         </Table.Cell>
                         <Table.Cell>
                           <Button
-                            onClick={() => stockRemove(el.id)}
+                            onClick={() => stockRemove(el.id, el.stock)}
                             color="black"
                           >
                             제거
@@ -242,7 +244,7 @@ const PortfolioAssetRate = () => {
               <Form.Input
                 fluid
                 name="stockHoldings"
-                value={asset.stockHoldings}
+                value={asset.stockHoldings === 0 ? "" : asset.stockHoldings}
                 className={styles.displayInputBoxValue}
                 onChange={handleChange}
               />
@@ -266,7 +268,7 @@ const PortfolioAssetRate = () => {
               <Form.Input
                 fluid
                 name="buyPrice"
-                value={asset.buyPrice}
+                value={asset.buyPrice === 0 ? "" : asset.buyPrice}
                 className={styles.displayInputBoxValue}
                 onChange={handleChange}
               />
@@ -290,7 +292,7 @@ const PortfolioAssetRate = () => {
               <Form.Input
                 fluid
                 name="dividend"
-                value={asset.dividend}
+                value={asset.dividend === 0 ? "" : asset.dividend}
                 className={styles.displayInputBoxValue}
                 onChange={handleChange}
               />
