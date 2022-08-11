@@ -62,8 +62,6 @@ const PortfolioCashAsset = () => {
     UserAuthDataAPI()
       .then((res) => {
         if (res?.data?.code === 200) {
-          console.log("토큰 정상");
-
           CashAssetDataAPI({
             cash: cashAsset.cash,
             asset: Number(cashAsset.asset),
@@ -71,7 +69,6 @@ const PortfolioCashAsset = () => {
           })
             .then((res) => {
               setCashAsset(res?.data);
-              console.log("cash asset data res : ", res);
               if (res?.status) window.location.reload();
             })
             .catch((err) => console.error("cashAssetData error : ", err));
