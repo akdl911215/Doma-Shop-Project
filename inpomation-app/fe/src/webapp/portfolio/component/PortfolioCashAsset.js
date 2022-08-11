@@ -69,7 +69,7 @@ const PortfolioCashAsset = () => {
           })
             .then((res) => {
               setCashAsset(res?.data);
-              if (res?.status) window.location.reload();
+              if (res?.status === 200) window.location.reload();
             })
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
@@ -102,7 +102,7 @@ const PortfolioCashAsset = () => {
           />
 
           {/* 디스플레이 인풋 */}
-          <div>
+          <div className={styles.InputTotalBox}>
             <div className={styles.FloatClear}>
               <div>
                 <div className={styles.displayBox}>
@@ -110,7 +110,7 @@ const PortfolioCashAsset = () => {
                     <Form.Input
                       fluid
                       value="현금"
-                      className={styles.displayInputBoxName}
+                      className={styles.DisplayInputBoxName}
                       readOnly
                     />
                   </Form>
@@ -121,7 +121,7 @@ const PortfolioCashAsset = () => {
                       fluid
                       name="cash"
                       value={cashAsset.cash}
-                      className={styles.displayInputBoxValue}
+                      className={styles.DisplayInputBoxValue}
                       onChange={handleChange}
                     />
                   </Form>
@@ -131,7 +131,7 @@ const PortfolioCashAsset = () => {
                     <Form.Input
                       fluid
                       value={`비중 ${cashAsset.cashRatio}%`}
-                      className={styles.displayInputBoxRatio}
+                      className={styles.DisplayInputBoxRatio}
                       readOnly
                     />
                   </Form>
@@ -145,7 +145,7 @@ const PortfolioCashAsset = () => {
                   <Form.Input
                     fluid
                     value="자산"
-                    className={styles.displayInputBoxName}
+                    className={styles.DisplayInputBoxName}
                     readOnly
                   />
                 </Form>
@@ -156,7 +156,7 @@ const PortfolioCashAsset = () => {
                     fluid
                     name="asset"
                     value={cashAsset.asset}
-                    className={styles.displayInputBoxValue}
+                    className={styles.DisplayInputBoxValue}
                     onChange={handleChange}
                   />
                 </Form>
@@ -166,7 +166,7 @@ const PortfolioCashAsset = () => {
                   <Form.Input
                     fluid
                     value={`비중 ${cashAsset.assetRatio}%`}
-                    className={styles.displayInputBoxRatio}
+                    className={styles.DisplayInputBoxRatio}
                     readOnly
                   />
                 </Form>
@@ -179,8 +179,8 @@ const PortfolioCashAsset = () => {
             </div>
           </div>
           {/* 셀렉트 인풋 서브밋 */}
-          {/* <div className={styles.cashAssetBox}>
-          <div className={styles.floatBox}>
+          {/* <div className={styles.CashAssetBox}>
+          <div className={styles.FloatBox}>
             <select
               name="cashAsset"
               onChange={(e) => setOptions(e.target.value)}
@@ -189,12 +189,12 @@ const PortfolioCashAsset = () => {
               <option value="asset">자산</option>
             </select>
           </div>
-          <div className={styles.inputBox}>
+          <div className={styles.InputBox}>
             <Form size="small">
               <Form.Input fluid name="cash" onChange={handleChange} />
             </Form>
           </div>
-          <div className={styles.floatBox}>
+          <div className={styles.FloatBox}>
             <Button type="submit" onClick={cashAssetSubmit}>
               Submit
             </Button>

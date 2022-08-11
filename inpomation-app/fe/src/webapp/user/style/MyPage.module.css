@@ -9,5 +9,6 @@
 
 .FormStyle {
   width: 50%;
+  min-height: 35rem;
   margin: 0 auto;
 }

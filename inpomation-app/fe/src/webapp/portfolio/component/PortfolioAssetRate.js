@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RadialChart } from "react-vis";
-import { Form, Button, Table } from "semantic-ui-react";
+import { Form, Button, Table, Container } from "semantic-ui-react";
 import styles from "../style/PortfolioAssetRate.module.css";
 import {
   AssetDataAPI,
@@ -133,174 +133,180 @@ const PortfolioAssetRate = () => {
 
   return (
     <>
-      <div className={styles.box}>
-        {/* 차트 */}
-        <RadialChart
-          data={assetArr}
-          showLabels={true}
-          width={400}
-          height={400}
-          radius={130}
-        />
+      <Container>
+        <div className={styles.Box}>
+          {/* 차트 */}
+          <RadialChart
+            data={assetArr}
+            showLabels={true}
+            width={400}
+            height={400}
+            radius={130}
+            className={styles.ChartBox}
+          />
 
-        {/* 보유 종목 */}
-        {assetArr.length === 0 ? (
-          ""
-        ) : (
-          <>
-            <Table>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>종목명</Table.HeaderCell>
-                  <Table.HeaderCell>보유 수량</Table.HeaderCell>
-                  <Table.HeaderCell>매수 가격</Table.HeaderCell>
-                  <Table.HeaderCell>총 매수금액</Table.HeaderCell>
-                  <Table.HeaderCell>비중</Table.HeaderCell>
-                  <Table.HeaderCell></Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
+          {/* 보유 종목 */}
+          {assetArr.length === 0 ? (
+            ""
+          ) : (
+            <>
+              <Table>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>종목명</Table.HeaderCell>
+                    <Table.HeaderCell>보유 수량</Table.HeaderCell>
+                    <Table.HeaderCell>매수 가격</Table.HeaderCell>
+                    <Table.HeaderCell>총 매수금액</Table.HeaderCell>
+                    <Table.HeaderCell>비중</Table.HeaderCell>
+                    <Table.HeaderCell></Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
 
-              {assetRate.map((el) => {
-                return (
-                  <>
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>{el.stock}</Table.Cell>
-                        <Table.Cell>{el.stock_holdings}</Table.Cell>
-                        <Table.Cell>{el.buy_price}</Table.Cell>
-                        <Table.Cell>
-                          {el.buy_price * el.stock_holdings}
-                        </Table.Cell>
-                        <Table.Cell>
-                          {`${Math.round(
-                            ((el.buy_price * el.stock_holdings) /
-                              totalAssetRate) *
-                              100
-                          )}%`}
-                        </Table.Cell>
-                        <Table.Cell>
-                          <Button
-                            onClick={() => stockRemove(el.id, el.stock)}
-                            color="black"
-                          >
-                            제거
-                          </Button>
-                        </Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                  </>
-                );
-              })}
-            </Table>
-          </>
-        )}
+                {assetRate.map((el) => {
+                  return (
+                    <>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>{el.stock}</Table.Cell>
+                          <Table.Cell>{el.stock_holdings}</Table.Cell>
+                          <Table.Cell>{el.buy_price}</Table.Cell>
+                          <Table.Cell>
+                            {el.buy_price * el.stock_holdings}
+                          </Table.Cell>
+                          <Table.Cell>
+                            {`${Math.round(
+                              ((el.buy_price * el.stock_holdings) /
+                                totalAssetRate) *
+                                100
+                            )}%`}
+                          </Table.Cell>
+                          <Table.Cell>
+                            <Button
+                              onClick={() => stockRemove(el.id, el.stock)}
+                              color="black"
+                            >
+                              제거
+                            </Button>
+                          </Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </>
+                  );
+                })}
+              </Table>
+            </>
+          )}
 
-        {/* 디스플레이 인풋 */}
-        <div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value="종목명"
-                className={styles.displayInputBoxName}
-                readOnly
-              />
-            </Form>
-          </div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                name="stock"
-                value={asset.stock}
-                className={styles.displayInputBoxValue}
-                onChange={handleChange}
-              />
-            </Form>
+          {/* 디스플레이 인풋 */}
+
+          <div className={styles.InputTotalBox}>
+            <div>
+              <div className={styles.DisplayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    value="종목명"
+                    className={styles.DisplayInputBoxName}
+                    readOnly
+                  />
+                </Form>
+              </div>
+              <div className={styles.DisplayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    name="stock"
+                    value={asset.stock}
+                    className={styles.DisplayInputBoxValue}
+                    onChange={handleChange}
+                  />
+                </Form>
+              </div>
+            </div>
+
+            <div>
+              <div className={styles.DisplayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    value="보유 수량"
+                    className={styles.DisplayInputBoxName}
+                    readOnly
+                  />
+                </Form>
+              </div>
+              <div className={styles.DisplayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    name="stockHoldings"
+                    value={asset.stockHoldings === 0 ? "" : asset.stockHoldings}
+                    className={styles.DisplayInputBoxValue}
+                    onChange={handleChange}
+                  />
+                </Form>
+              </div>
+            </div>
+
+            <div>
+              <div className={styles.DisplayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    value="매수가격"
+                    className={styles.DisplayInputBoxName}
+                    readOnly
+                  />
+                </Form>
+              </div>
+              <div className={styles.DisplayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    name="buyPrice"
+                    value={asset.buyPrice === 0 ? "" : asset.buyPrice}
+                    className={styles.DisplayInputBoxValue}
+                    onChange={handleChange}
+                  />
+                </Form>
+              </div>
+            </div>
+
+            <div>
+              <div className={styles.DisplayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    value="배당금액"
+                    className={styles.DisplayInputBoxName}
+                    readOnly
+                  />
+                </Form>
+              </div>
+              <div className={styles.DisplayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    name="dividend"
+                    value={asset.dividend === 0 ? "" : asset.dividend}
+                    className={styles.DisplayInputBoxValue}
+                    onChange={handleChange}
+                  />
+                </Form>
+              </div>
+            </div>
+
+            {/* 셀렉트 인풋 서브밋 */}
+            <div className={styles.cashAssetBox}>
+              <div className={styles.floatBox}>
+                <Button type="submit" onClick={assetSubmit}>
+                  Submit
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value="보유 수량"
-                className={styles.displayInputBoxName}
-                readOnly
-              />
-            </Form>
-          </div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                name="stockHoldings"
-                value={asset.stockHoldings === 0 ? "" : asset.stockHoldings}
-                className={styles.displayInputBoxValue}
-                onChange={handleChange}
-              />
-            </Form>
-          </div>
-        </div>
-
-        <div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value="매수가격"
-                className={styles.displayInputBoxName}
-                readOnly
-              />
-            </Form>
-          </div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                name="buyPrice"
-                value={asset.buyPrice === 0 ? "" : asset.buyPrice}
-                className={styles.displayInputBoxValue}
-                onChange={handleChange}
-              />
-            </Form>
-          </div>
-        </div>
-
-        <div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value="배당금액"
-                className={styles.displayInputBoxName}
-                readOnly
-              />
-            </Form>
-          </div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                name="dividend"
-                value={asset.dividend === 0 ? "" : asset.dividend}
-                className={styles.displayInputBoxValue}
-                onChange={handleChange}
-              />
-            </Form>
-          </div>
-        </div>
-
-        {/* 셀렉트 인풋 서브밋 */}
-        <div className={styles.cashAssetBox}>
-          <div className={styles.floatBox}>
-            <Button type="submit" onClick={assetSubmit}>
-              Submit
-            </Button>
-          </div>
-        </div>
-      </div>
+      </Container>
     </>
   );
 };

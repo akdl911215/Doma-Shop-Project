@@ -118,9 +118,9 @@ const Mypage = () => {
                 정보 수정
               </Form.Field>
             </div>
-            <div className={styles.ButtonStyle}>
+            {/* <div className={styles.ButtonStyle}>
               <GoHomeButton />
-            </div>
+            </div> */}
           </div>
         </Form>
       </Container>

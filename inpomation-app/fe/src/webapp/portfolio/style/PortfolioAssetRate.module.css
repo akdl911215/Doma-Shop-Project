@@ -1,7 +1,11 @@
-.box {
-  width: 50rem;
+.Box {
+  /* margin: auto; */
+  min-height: 55rem;
 }
 
+.ChartBox {
+  margin: 0 auto;
+}
 .cashAssetBox {
   width: 30rem;
   height: 5rem;
@@ -20,18 +24,23 @@
   width: 50rem;
 } */
 
-.displayBox {
+.DisplayBox {
   float: left;
 }
 
-.displayInputBoxName {
+.DisplayInputBoxName {
   width: 7rem;
 }
 
-.displayInputBoxValue {
+.DisplayInputBoxValue {
   width: 8rem;
 }
 
-.displayInputBoxRatio {
+.DisplayInputBoxRatio {
   width: 8.5rem;
+}
+
+.InputTotalBox {
+  width: 30rem;
+  margin: auto;
 }
