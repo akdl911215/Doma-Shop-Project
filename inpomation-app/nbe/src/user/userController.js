@@ -35,7 +35,6 @@ router.post("/signup", async (req, res, next) => {
 });
 
 router.post("/signin", async (req, res, next) => {
-  console.log("signin : ", req);
   const { username, token, roles } = await userService.signin(req?.body);
 
   res.set({

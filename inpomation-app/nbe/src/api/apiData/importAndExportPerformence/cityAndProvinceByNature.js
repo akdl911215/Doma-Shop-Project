@@ -20,12 +20,9 @@ exports.cityAndProvinceByNature = (req, res) => {
     importExport: imexTmprClsfCd,
     importExportCode: imexTpcd,
   } = req.body;
-  console.log("req.body :: ", req.body);
 
   const url = `http://apis.data.go.kr/1220000/sidotempertrade/getSidotempertradeList?serviceKey=${ENCODE_SERVICE_KEY}&strtYymm=${strtYymm}&endYymm=${endYymm}&dtlTmprYn=Y&sidoCd=${sidoCd}&imexTpcd=${imexTpcd}&imexTmprClsfCd=${imexTmprClsfCd}`;
-  console.log("url ::: ", url);
   request({ uri: url, method: "GET" }, (err, response, body) => {
-    console.log("request 진입: ", body);
     if (err) {
       console.log(`시도별 성질별 수출입실적 조회 ERROR : ${err}`);
       throw err;
