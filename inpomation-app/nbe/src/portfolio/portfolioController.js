@@ -27,11 +27,12 @@ router.post("/asset", async (req, res, next) => {
 router.post("/cashAsset", async (req, res, next) => {
   const result = await service.cashAsset(req?.body);
   const cashRatio = Math.round(
-    (result?.cash / (result?.cash + result?.total_asset)) * 100
+    (result?.cash / (result?.cash + result?.asset)) * 100
   );
   const assetRatio = Math.round(
-    (result?.total_asset / (result?.cash + result?.total_asset)) * 100
+    (result?.asset / (result?.cash + result?.asset)) * 100
   );
+  console.log(`cashRatio : ${cashRatio}, assetRatio : ${assetRatio}`);
   res.json({
     cash: result?.cash,
     asset: result?.asset,

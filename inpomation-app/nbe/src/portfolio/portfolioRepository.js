@@ -91,6 +91,7 @@ exports.portfolioAssetInquiry = async (req, res, next) => {
 
             resolve({
               message: "자산 조회에 성공하였습니다.",
+              code: 200,
               result: doc,
             });
           }
@@ -105,7 +106,6 @@ exports.portfolioAssetInquiry = async (req, res, next) => {
 
 exports.portfolioInquiry = async (req, res, next) => {
   const userID = req;
-  console.log("portfolioInquiry userID :: ", userID);
 
   return new Promise((resolve, reject) => {
     try {
@@ -121,10 +121,9 @@ exports.portfolioInquiry = async (req, res, next) => {
           }
 
           if (doc) {
-            console.log("connection query portfolioInquiry : ", doc);
-
             resolve({
               message: "포트폴리오 조회에 성공하였습니다.",
+              code: 200,
               ...doc,
             });
           }
@@ -153,12 +152,12 @@ exports.portfolioCashAsset = async (req, res, next) => {
           }
 
           if (doc) {
-            console.log("connection doc : ", doc);
             resolve({
               message: "현금 대 자산 비율 업데이트 완료하였습니다.",
+              code: 200,
               portfolioId: doc?.insertId,
               userId: req?.id,
-              cash: req?.cash,
+              cash: Number(req?.cash),
               asset: req?.asset,
             });
           }
