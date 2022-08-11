@@ -1,5 +1,9 @@
-.box {
-  width: 50rem;
+.Box {
+  margin: 0 auto;
+}
+
+.ChartBox {
+  margin: 0 auto;
 }
 
 .cashAssetBox {
@@ -12,7 +16,6 @@
 }
 
 .inputBox {
-  width: 15rem;
   float: left;
 }
 
@@ -25,13 +28,22 @@
 }
 
 .displayInputBoxName {
-  width: 4rem;
+  width: 10rem;
 }
 
 .displayInputBoxValue {
-  width: 8rem;
+  width: 26.25rem;
 }
 
 .displayInputBoxRatio {
-  width: 8.5rem;
+  width: 10rem;
+}
+
+.FloatClear {
+  margin: auto;
+}
+
+.SubmitButton {
+  clear: both;
+  width: 100%;
 }

@@ -72,6 +72,7 @@ const PortfolioCashAsset = () => {
             .then((res) => {
               setCashAsset(res?.data);
               console.log("cash asset data res : ", res);
+              if (res?.status) window.location.reload();
             })
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
@@ -92,7 +93,7 @@ const PortfolioCashAsset = () => {
   return (
     <>
       <Container>
-        <div className={styles.box}>
+        <div className={styles.Box}>
           {/* 차트 */}
           <RadialChart
             data={cashVsAssetRatio}
@@ -100,80 +101,85 @@ const PortfolioCashAsset = () => {
             width={400}
             height={400}
             radius={130}
+            className={styles.ChartBox}
           />
 
           {/* 디스플레이 인풋 */}
           <div>
-            <div className={styles.displayBox}>
-              <Form size="small">
-                <Form.Input
-                  fluid
-                  value="현금"
-                  className={styles.displayInputBoxName}
-                  readOnly
-                />
-              </Form>
+            <div className={styles.FloatClear}>
+              <div>
+                <div className={styles.displayBox}>
+                  <Form size="small">
+                    <Form.Input
+                      fluid
+                      value="현금"
+                      className={styles.displayInputBoxName}
+                      readOnly
+                    />
+                  </Form>
+                </div>
+                <div className={styles.displayBox}>
+                  <Form size="small">
+                    <Form.Input
+                      fluid
+                      name="cash"
+                      value={cashAsset.cash}
+                      className={styles.displayInputBoxValue}
+                      onChange={handleChange}
+                    />
+                  </Form>
+                </div>
+                <div className={styles.displayBox}>
+                  <Form size="small">
+                    <Form.Input
+                      fluid
+                      value={`비중 ${cashAsset.cashRatio}%`}
+                      className={styles.displayInputBoxRatio}
+                      readOnly
+                    />
+                  </Form>
+                </div>
+              </div>
             </div>
-            <div className={styles.displayBox}>
-              <Form size="small">
-                <Form.Input
-                  fluid
-                  name="cash"
-                  value={cashAsset.cash}
-                  className={styles.displayInputBoxValue}
-                  onChange={handleChange}
-                />
-              </Form>
-            </div>
-            <div className={styles.displayBox}>
-              <Form size="small">
-                <Form.Input
-                  fluid
-                  value={`비중 ${cashAsset.cashRatio}%`}
-                  className={styles.displayInputBoxRatio}
-                  readOnly
-                />
-              </Form>
-            </div>
-          </div>
 
-          <div>
-            <div className={styles.displayBox}>
-              <Form size="small">
-                <Form.Input
-                  fluid
-                  value="자산"
-                  className={styles.displayInputBoxName}
-                  readOnly
-                />
-              </Form>
+            <div className={styles.FloatClear}>
+              <div className={styles.displayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    value="자산"
+                    className={styles.displayInputBoxName}
+                    readOnly
+                  />
+                </Form>
+              </div>
+              <div className={styles.displayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    name="asset"
+                    value={cashAsset.asset}
+                    className={styles.displayInputBoxValue}
+                    onChange={handleChange}
+                  />
+                </Form>
+              </div>
+              <div className={styles.displayBox}>
+                <Form size="small">
+                  <Form.Input
+                    fluid
+                    value={`비중 ${cashAsset.assetRatio}%`}
+                    className={styles.displayInputBoxRatio}
+                    readOnly
+                  />
+                </Form>
+              </div>
             </div>
-            <div className={styles.displayBox}>
-              <Form size="small">
-                <Form.Input
-                  fluid
-                  name="asset"
-                  value={cashAsset.asset}
-                  className={styles.displayInputBoxValue}
-                  onChange={handleChange}
-                />
-              </Form>
+            <div className={styles.SubmitButton}>
+              <Button type="submit" onClick={cashAssetSubmit}>
+                Submit
+              </Button>
             </div>
-            <div className={styles.displayBox}>
-              <Form size="small">
-                <Form.Input
-                  fluid
-                  value={`비중 ${cashAsset.assetRatio}%`}
-                  className={styles.displayInputBoxRatio}
-                  readOnly
-                />
-              </Form>
-            </div>
-          </div>
-          <div className={styles.floatBox}>
-            <Button type="submit" onClick={cashAssetSubmit}>
-              Submit
-            </Button>
           </div>
           {/* 셀렉트 인풋 서브밋 */}
           {/* <div className={styles.cashAssetBox}>
