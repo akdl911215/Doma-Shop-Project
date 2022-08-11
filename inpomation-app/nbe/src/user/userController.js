@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 const userService = require("./userService");
 
+router.post("/list", async (req, res, next) => {
+  // https://potato-hyun.tistory.com/31
+  // 노드 페이징 처리 작업하기
+});
+
 router.post("/modify", async (req, res, next) => {
   const { message } = await userService.modify(req?.body);
   res.json({
