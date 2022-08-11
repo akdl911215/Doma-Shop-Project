@@ -33,73 +33,65 @@ const PortfolioAssetRate = () => {
   };
 
   useEffect(() => {
-    if (sessionStorage.getItem("username") !== null) {
-      UserAuthDataAPI()
-        .then((res) => {
-          if (res?.data?.code === 200) {
-            AssetInquiryDataAPI({
-              username: sessionStorage.getItem("username"),
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          AssetInquiryDataAPI({
+            username: sessionStorage.getItem("username"),
+          })
+            .then((res) => {
+              setAssetRate(res?.data?.result?.result);
+
+              let arr = [];
+              let num = 0;
+              for (let i = 0; i < res?.data?.result?.result.length; ++i) {
+                const totalPrice =
+                  res?.data?.result?.result[i].buy_price *
+                  res?.data?.result?.result[i].stock_holdings;
+                num += totalPrice;
+
+                arr.push({
+                  angle: totalPrice,
+                  label: res?.data?.result?.result[i].stock,
+                  subLabel:
+                    totalPrice === 0 ? "" : `보유 금액 ${String(totalPrice)}원`,
+                });
+              }
+              setAsetArr(arr);
+              setTotalAssetRate(num);
             })
-              .then((res) => {
-                setAssetRate(res?.data?.result?.result);
-
-                let arr = [];
-                let num = 0;
-                for (let i = 0; i < res?.data?.result?.result.length; ++i) {
-                  const totalPrice =
-                    res?.data?.result?.result[i].buy_price *
-                    res?.data?.result?.result[i].stock_holdings;
-                  num += totalPrice;
-
-                  arr.push({
-                    angle: totalPrice,
-                    label: res?.data?.result?.result[i].stock,
-                    subLabel:
-                      totalPrice === 0
-                        ? ""
-                        : `보유 금액 ${String(totalPrice)}원`,
-                  });
-                }
-                setAsetArr(arr);
-                setTotalAssetRate(num);
-              })
-              .catch((err) => console.error("cashAssetData error : ", err));
-          } else {
-            alert("다시 로그인을 시도하세요.");
-            sessionRemove();
-          }
-        })
-        .catch((err) => console.error("portfolio cash vs asset error : ", err));
-    }
+            .catch((err) => console.error("cashAssetData error : ", err));
+        } else {
+          alert("다시 로그인을 시도하세요.");
+          sessionRemove();
+        }
+      })
+      .catch((err) => console.error("portfolio cash vs asset error : ", err));
   }, []);
 
   const assetSubmit = () => {
-    if (sessionStorage.getItem("username") === null) {
-      alert("해당기능은 로그인을 하여야 사용이 가능합니다.");
-    } else {
-      UserAuthDataAPI()
-        .then((res) => {
-          if (res?.data?.code === 200) {
-            console.log("토큰 정상");
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          console.log("토큰 정상");
 
-            AssetDataAPI({
-              stock: asset.stock,
-              stockHoldings: asset.stockHoldings,
-              buyPrice: asset.buyPrice,
-              dividend: asset.dividend,
-              username: sessionStorage.getItem("username"),
+          AssetDataAPI({
+            stock: asset.stock,
+            stockHoldings: asset.stockHoldings,
+            buyPrice: asset.buyPrice,
+            dividend: asset.dividend,
+            username: sessionStorage.getItem("username"),
+          })
+            .then((res) => {
+              if (res?.data?.code === 200) window.location.reload();
             })
-              .then((res) => {
-                if (res?.data?.code === 200) window.location.reload();
-              })
-              .catch((err) => console.error("asset error : ", err));
-          } else {
-            alert("다시 로그인을 시도하세요.");
-            sessionRemove();
-          }
-        })
-        .catch((err) => console.error("portfolio asset error : ", err));
-    }
+            .catch((err) => console.error("asset error : ", err));
+        } else {
+          alert("다시 로그인을 시도하세요.");
+          sessionRemove();
+        }
+      })
+      .catch((err) => console.error("portfolio asset error : ", err));
   };
 
   const sessionRemove = () => {

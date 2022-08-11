@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RadialChart } from "react-vis";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Container } from "semantic-ui-react";
 import styles from "../style/PortfolioCashAsset.module.css";
 import {
   CashAssetDataAPI,
@@ -32,56 +32,54 @@ const PortfolioCashAsset = () => {
     },
   ];
   const handleChange = (e) => {
-    const { value } = e.target;
+    const { name, value } = e.target;
+
     setCashAsset({
       ...cashAsset,
-      [options]: value,
+      [name]: value,
     });
   };
 
   useEffect(() => {
-    if (sessionStorage.getItem("username") !== null) {
-      UserAuthDataAPI()
-        .then((res) => {
-          if (res?.data?.code === 200) {
-            FortfolioInquiryDataAPI({
-              username: sessionStorage.getItem("username"),
-            })
-              .then((res) => setCashAsset(res?.data))
-              .catch((err) => console.error("cashAssetData error : ", err));
-          } else {
-            alert("다시 로그인을 시도하세요.");
-            sessionRemove();
-          }
-        })
-        .catch((err) => console.error("portfolio cash vs asset error : ", err));
-    }
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          FortfolioInquiryDataAPI({
+            username: sessionStorage.getItem("username"),
+          })
+            .then((res) => setCashAsset(res?.data))
+            .catch((err) => console.error("cashAssetData error : ", err));
+        } else {
+          alert("다시 로그인을 시도하세요.");
+          sessionRemove();
+        }
+      })
+      .catch((err) => console.error("portfolio cash vs asset error : ", err));
   }, []);
 
   const cashAssetSubmit = () => {
     // 서브밋하면 글자가 이상함 수정하기
-    if (sessionStorage.getItem("username") === null) {
-      alert("해당기능은 로그인을 하여야 사용이 가능합니다.");
-    } else {
-      UserAuthDataAPI()
-        .then((res) => {
-          if (res?.data?.code === 200) {
-            console.log("토큰 정상");
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          console.log("토큰 정상");
 
-            CashAssetDataAPI({
-              cash: cashAsset.cash,
-              asset: cashAsset.asset,
-              username: sessionStorage.getItem("username"),
+          CashAssetDataAPI({
+            cash: cashAsset.cash,
+            asset: Number(cashAsset.asset),
+            username: sessionStorage.getItem("username"),
+          })
+            .then((res) => {
+              setCashAsset(res?.data);
+              console.log("cash asset data res : ", res);
             })
-              .then((res) => setCashAsset(res?.data))
-              .catch((err) => console.error("cashAssetData error : ", err));
-          } else {
-            alert("다시 로그인을 시도하세요.");
-            sessionRemove();
-          }
-        })
-        .catch((err) => console.error("portfolio cash vs asset error : ", err));
-    }
+            .catch((err) => console.error("cashAssetData error : ", err));
+        } else {
+          alert("다시 로그인을 시도하세요.");
+          sessionRemove();
+        }
+      })
+      .catch((err) => console.error("portfolio cash vs asset error : ", err));
   };
 
   const sessionRemove = () => {
@@ -93,87 +91,92 @@ const PortfolioCashAsset = () => {
 
   return (
     <>
-      <div className={styles.box}>
-        {/* 차트 */}
-        <RadialChart
-          data={cashVsAssetRatio}
-          showLabels={true}
-          width={400}
-          height={400}
-          radius={130}
-        />
+      <Container>
+        <div className={styles.box}>
+          {/* 차트 */}
+          <RadialChart
+            data={cashVsAssetRatio}
+            showLabels={true}
+            width={400}
+            height={400}
+            radius={130}
+          />
 
-        {/* 디스플레이 인풋 */}
-        <div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value="현금"
-                className={styles.displayInputBoxName}
-                readOnly
-              />
-            </Form>
+          {/* 디스플레이 인풋 */}
+          <div>
+            <div className={styles.displayBox}>
+              <Form size="small">
+                <Form.Input
+                  fluid
+                  value="현금"
+                  className={styles.displayInputBoxName}
+                  readOnly
+                />
+              </Form>
+            </div>
+            <div className={styles.displayBox}>
+              <Form size="small">
+                <Form.Input
+                  fluid
+                  name="cash"
+                  value={cashAsset.cash}
+                  className={styles.displayInputBoxValue}
+                  onChange={handleChange}
+                />
+              </Form>
+            </div>
+            <div className={styles.displayBox}>
+              <Form size="small">
+                <Form.Input
+                  fluid
+                  value={`비중 ${cashAsset.cashRatio}%`}
+                  className={styles.displayInputBoxRatio}
+                  readOnly
+                />
+              </Form>
+            </div>
           </div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value={cashAsset.cash}
-                className={styles.displayInputBoxValue}
-                readOnly
-              />
-            </Form>
-          </div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value={`비중 ${cashAsset.cashRatio}%`}
-                className={styles.displayInputBoxRatio}
-                readOnly
-              />
-            </Form>
-          </div>
-        </div>
 
-        <div></div>
-
-        <div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value="자산"
-                className={styles.displayInputBoxName}
-                readOnly
-              />
-            </Form>
+          <div>
+            <div className={styles.displayBox}>
+              <Form size="small">
+                <Form.Input
+                  fluid
+                  value="자산"
+                  className={styles.displayInputBoxName}
+                  readOnly
+                />
+              </Form>
+            </div>
+            <div className={styles.displayBox}>
+              <Form size="small">
+                <Form.Input
+                  fluid
+                  name="asset"
+                  value={cashAsset.asset}
+                  className={styles.displayInputBoxValue}
+                  onChange={handleChange}
+                />
+              </Form>
+            </div>
+            <div className={styles.displayBox}>
+              <Form size="small">
+                <Form.Input
+                  fluid
+                  value={`비중 ${cashAsset.assetRatio}%`}
+                  className={styles.displayInputBoxRatio}
+                  readOnly
+                />
+              </Form>
+            </div>
           </div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value={cashAsset.asset}
-                className={styles.displayInputBoxValue}
-                readOnly
-              />
-            </Form>
+          <div className={styles.floatBox}>
+            <Button type="submit" onClick={cashAssetSubmit}>
+              Submit
+            </Button>
           </div>
-          <div className={styles.displayBox}>
-            <Form size="small">
-              <Form.Input
-                fluid
-                value={`비중 ${cashAsset.assetRatio}%`}
-                className={styles.displayInputBoxRatio}
-                readOnly
-              />
-            </Form>
-          </div>
-        </div>
-
-        {/* 셀렉트 인풋 서브밋 */}
-        <div className={styles.cashAssetBox}>
+          {/* 셀렉트 인풋 서브밋 */}
+          {/* <div className={styles.cashAssetBox}>
           <div className={styles.floatBox}>
             <select
               name="cashAsset"
@@ -193,8 +196,9 @@ const PortfolioCashAsset = () => {
               Submit
             </Button>
           </div>
+        </div> */}
         </div>
-      </div>
+      </Container>
     </>
   );
 };

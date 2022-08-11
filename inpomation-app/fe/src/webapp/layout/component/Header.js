@@ -7,7 +7,7 @@ const Header = () => {
   useEffect(() => {
     setRolesCheck(sessionStorage.getItem("roles"));
     sessionStorage.removeItem("option");
-  });
+  }, []);
 
   return (
     <>
@@ -16,12 +16,18 @@ const Header = () => {
           <nav id="top-menu">
             <ul>
               <li>
-                <Link
-                  to="/portfolio"
-                  onClick={() => sessionStorage.setItem("option", "cashAsset")}
-                >
-                  포트폴리오
-                </Link>
+                {rolesCheck !== null ? (
+                  <>
+                    <Link
+                      to="/portfolio"
+                      onClick={() =>
+                        sessionStorage.setItem("option", "cashAsset")
+                      }
+                    >
+                      포트폴리오
+                    </Link>
+                  </>
+                ) : null}
               </li>
               <li>
                 {rolesCheck === null ? (
