@@ -1,7 +1,13 @@
 .ButtonStyle {
   float: right;
+  padding-top: 2rem;
 }
 
 .TextareaStyle {
   width: 100%;
+}
+
+.FormStyle {
+  width: 50%;
+  margin: 0 auto;
 }

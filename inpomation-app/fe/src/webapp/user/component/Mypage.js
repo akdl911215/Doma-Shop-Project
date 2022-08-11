@@ -63,8 +63,8 @@ const Mypage = () => {
   return (
     <>
       <Container>
-        <h2>회원 정보 수정</h2>
-        <Form>
+        <Form className={styles.FormStyle}>
+          <h2>회원 정보 수정</h2>
           <Form.Group widths="equal">
             <Form.Field
               control={Input}
