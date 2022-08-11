@@ -35,7 +35,6 @@ const CityAndProvineceByNature = () => {
       selectImportExport:
         ImportAndExportReducer?.ImportExportChoiceInital?.importExport,
     }));
-  console.log("selectImportExport :: ", selectImportExport);
 
   // imexTpcd (수출입코드) : 1 수출 / 2 수입
   const [importAndExport, setImportAcvndExport] = useState("1");
@@ -62,8 +61,6 @@ const CityAndProvineceByNature = () => {
       .finally((fi) => console.log("실행완료"));
   };
   const viewResult = dataResult?.map((el) => el);
-
-  console.log("viewResult : ", viewResult);
 
   return (
     <>

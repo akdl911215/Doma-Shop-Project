@@ -32,7 +32,6 @@ router.post("/cashAsset", async (req, res, next) => {
   const assetRatio = Math.round(
     (result?.asset / (result?.cash + result?.asset)) * 100
   );
-  console.log(`cashRatio : ${cashRatio}, assetRatio : ${assetRatio}`);
   res.json({
     cash: result?.cash,
     asset: result?.asset,
