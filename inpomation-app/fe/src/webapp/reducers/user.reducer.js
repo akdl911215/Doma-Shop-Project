@@ -31,15 +31,7 @@ export function* UserPageListRequest() {
 // 초기값 설정
 export const initialState = {
   UserPageListInitial: {
-    pageResult: {
-      dtoList: [],
-      page: 1,
-      pageList: [],
-      start: 1,
-      end: 1,
-      prev: false,
-      next: false,
-    },
+    pageResult: {},
   },
   UserPageListInitialRequst: false,
   UserPageListInitialError: null,
@@ -53,15 +45,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         UserPageListInitial: {
-          pageResult: {
-            dtoList: [],
-            page: 1,
-            pageList: [],
-            start: 1,
-            end: 1,
-            prev: false,
-            next: false,
-          },
+          pageResult: action?.payload,
         },
         UserPageListInitialRequst: false,
         UserPageListInitialError: null,
@@ -69,19 +53,10 @@ const reducer = (state = initialState, action) => {
 
     case USERPAGENATTIONBUTTON_SUCCESS:
       console.log("USERPAGENATTIONBUTTON_SUCCESS : ", action);
-      console.log("action?.payload?.page : ", action?.payload?.page);
       return {
         ...state,
         UserPageListInitial: {
-          pageResult: {
-            dtoList: action?.payload?.dtoList,
-            page: action?.payload?.page,
-            pageList: action?.payload?.pageList,
-            start: action?.payload?.start,
-            end: action?.payload?.end,
-            prev: action?.payload?.prev,
-            next: action?.payload?.next,
-          },
+          pageResult: action?.payload,
         },
         UserPageListInitialRequst: true,
       };

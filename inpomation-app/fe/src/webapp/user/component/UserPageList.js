@@ -19,15 +19,20 @@ const UserPageList = () => {
 
   const { totalList, end, next, page, pageList, prev, start } = useSelector(
     ({ UserReducer }) => ({
-      totalList: UserReducer?.UserPageListInitial?.pageResult?.dtoList,
-      end: UserReducer?.UserPageListInitial?.pageResult?.end,
-      next: UserReducer?.UserPageListInitial?.pageResult?.next,
-      page: UserReducer?.UserPageListInitial?.pageResult?.page,
-      pageList: UserReducer?.UserPageListInitial?.pageResult?.pageList,
-      prev: UserReducer?.UserPageListInitial?.pageResult?.prev,
-      start: UserReducer?.UserPageListInitial?.pageResult?.start,
+      page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
+      totalList: UserReducer?.UserPageListInitial?.pageResult?.result?.result,
+      //
+      // end: UserReducer?.UserPageListInitial?.pageResult?.end,
+      // next: UserReducer?.UserPageListInitial?.pageResult?.next,
+      // pageList: UserReducer?.UserPageListInitial?.pageResult?.pageList,
+      // prev: UserReducer?.UserPageListInitial?.pageResult?.prev,
+      // start: UserReducer?.UserPageListInitial?.pageResult?.start,
     })
   );
+
+  console.log("page :: ", page);
+  console.log("totalList :: ", totalList);
+
   const colors = ["blue"];
 
   return (
@@ -42,29 +47,26 @@ const UserPageList = () => {
                     <div key={index}>
                       <Table.Header>
                         <Table.Row>
-                          <Table.HeaderCell>체크박스</Table.HeaderCell>
                           <Table.HeaderCell>회원번호</Table.HeaderCell>
                           <Table.HeaderCell>아이디</Table.HeaderCell>
-                          <Table.HeaderCell>비밀번호</Table.HeaderCell>
+
                           <Table.HeaderCell>이름</Table.HeaderCell>
                           <Table.HeaderCell>주소</Table.HeaderCell>
                           <Table.HeaderCell>이메일</Table.HeaderCell>
                           <Table.HeaderCell>핸드폰번호</Table.HeaderCell>
+                          <Table.HeaderCell>권한</Table.HeaderCell>
                         </Table.Row>
                       </Table.Header>
 
                       <Table.Body>
                         <Table.Row>
-                          <Table.Cell>
-                            <Checkbox />
-                          </Table.Cell>
-                          <Table.Cell>{element.userno}</Table.Cell>
+                          <Table.Cell>{element.id}</Table.Cell>
                           <Table.Cell>{element.username}</Table.Cell>
-                          <Table.Cell>{element.password}</Table.Cell>
                           <Table.Cell>{element.name}</Table.Cell>
                           <Table.Cell>{element.address}</Table.Cell>
                           <Table.Cell>{element.email}</Table.Cell>
-                          <Table.Cell>{element.phoneNumber}</Table.Cell>
+                          <Table.Cell>{element.phone_number}</Table.Cell>
+                          <Table.Cell>{element.roles}</Table.Cell>
                         </Table.Row>
                       </Table.Body>
                     </div>
@@ -83,14 +85,14 @@ const UserPageList = () => {
           <UserDeleteButton />
         </div>
         <div className={styles.PaginationStyle}>
-          <ShowPageNation
+          {/* <ShowPageNation
             end={end}
             next={next}
             page={page}
             pageList={pageList}
             prev={prev}
             start={start}
-          />
+          /> */}
         </div>
       </Container>
     </>

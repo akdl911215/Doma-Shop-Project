@@ -3,7 +3,7 @@ import { backUrl } from "webapp/config/Config";
 
 export const UserPagenationListDataAPI = (page) => {
   console.log("UserPagenationListDataAPI page : ", page);
-  return client.post(backUrl + "/users/list" + { page, pageSize: 5 });
+  return client.post(backUrl + "/users/list", { page, pageSize: 5 });
 };
 
 export const UserSignupDataAPI = (states) =>
