@@ -26,6 +26,10 @@ router.post("/list", async (req, res, next) => {
     console.error("user list error : ", err);
     throw err;
   }
+
+  res.json({
+    result,
+  });
 });
 
 router.post("/modify", async (req, res, next) => {

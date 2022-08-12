@@ -1,11 +1,60 @@
 const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
 
+exports.userCount = async (req, res, next) => {
+  const sql = `SELECT COUNT(*) FROM users`;
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          resolve(rows[0]);
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("userCount catch error : ", err);
+      throw err;
+    }
+  });
+};
+
+exports.userList = async (req, res, next) => {
+  const paging = req;
+  console.log("user list paging : ", paging);
+  const sql = `SELECT * FROM users LIMIT ${req?.page}, ${req?.pageSize}`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            resolve({
+              message: "페이지 조회가 완료되었습니다.",
+              code: 200,
+              result: rows[0],
+            });
+          }
+
+          if (err) {
+            resolve({
+              message: "페이지 조회가 실패하였습니다.",
+              result: err,
+            });
+          }
+        });
+      });
+      connection.release();
+    } catch (err) {
+      console.error("userList db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
+
 exports.userModify = async (req, res, next) => {
   const { id, name, email, phone_number, address } = req;
 
   const sql = `UPDATE users SET name = '${name}', email = '${email}', phone_number = '${phone_number}', address = '${address}' WHERE id = ${id};`;
-
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
