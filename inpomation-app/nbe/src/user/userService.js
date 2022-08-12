@@ -10,15 +10,20 @@ class userService {
       ? (page.page = 1)
       : (start = (page.page - 1) * page.pageSize);
 
-    if (
-      page.page > Math.ceil((await userRepository.userCount()) / page.pageSize)
-    )
-      return null;
+    const pageListCount = Math.ceil(
+      (await userRepository.userCount()) / page.pageSize
+    );
+    if (page.page > pageListCount) return null;
 
-    return await userRepository.userList({
+    const result = await userRepository.userList({
       start,
       pageSize: page.pageSize,
     });
+
+    return {
+      result,
+      pageListCount,
+    };
   }
 
   async signup(user) {
