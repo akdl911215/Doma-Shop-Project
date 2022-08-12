@@ -7,7 +7,7 @@ exports.userCount = async (req, res, next) => {
     try {
       db.getConnectionPool((connection) => {
         connection.query(sql, (err, rows) => {
-          resolve(rows[0]);
+          resolve(rows[0]["COUNT(*)"]);
         });
         connection.release();
       });
@@ -19,10 +19,7 @@ exports.userCount = async (req, res, next) => {
 };
 
 exports.userList = async (req, res, next) => {
-  const paging = req;
-  console.log("user list paging : ", paging);
-  const sql = `SELECT * FROM users LIMIT ${req?.page}, ${req?.pageSize}`;
-
+  const sql = `SELECT id, username, name, email, phone_number, address, roles FROM users ORDER BY id DESC LIMIT ${req?.start}, ${req?.pageSize}`;
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
@@ -31,7 +28,7 @@ exports.userList = async (req, res, next) => {
             resolve({
               message: "페이지 조회가 완료되었습니다.",
               code: 200,
-              result: rows[0],
+              result: rows,
             });
           }
 
@@ -42,8 +39,8 @@ exports.userList = async (req, res, next) => {
             });
           }
         });
+        connection.release();
       });
-      connection.release();
     } catch (err) {
       console.error("userList db connection catch error : ", err);
       throw err;

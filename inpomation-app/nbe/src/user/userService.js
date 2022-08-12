@@ -4,21 +4,21 @@ const jwt = require("../security/jwt");
 
 class userService {
   async list(page) {
-    const start = 0;
-    if (page.page <= 0) {
-      page.page = 1;
-    } else {
-      start = (page.page - 1) * page.pageSize;
-    }
-    const usersCount = await userRepository.userCount();
-    console.log("usersCount : ", usersCount);
-    if (page.page > Math.round(usersCount / page.pageSize)) {
-      return null;
-    }
+    console.log("user list page : ", page);
+    let start = 0;
+    page.page <= 0
+      ? (page.page = 1)
+      : (start = (page.page - 1) * page.pageSize);
 
-    const userList = userRepository.userList(page);
-    console.log("service userList : ", userList);
-    return userList;
+    if (
+      page.page > Math.ceil((await userRepository.userCount()) / page.pageSize)
+    )
+      return null;
+
+    return await userRepository.userList({
+      start,
+      pageSize: page.pageSize,
+    });
   }
 
   async signup(user) {
