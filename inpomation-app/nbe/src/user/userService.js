@@ -3,6 +3,12 @@ const userModel = require("./userModel");
 const jwt = require("../security/jwt");
 
 class userService {
+  async list(page) {
+    const userList = userRepository.userList(page);
+    console.log("service userList : ", userList);
+    return userList;
+  }
+
   async signup(user) {
     const cryptoSalt = await userModel.cryptoSalt();
     user.salt = cryptoSalt;
