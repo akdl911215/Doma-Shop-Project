@@ -49,12 +49,29 @@ exports.userList = async (req, res, next) => {
 };
 
 exports.userRemove = async (req, res, next) => {
-  const sql = `DELETE FROM users WHERE id = '${req}'`;
-  console.log("remove sql : ", sql);
+  const sql = `UPDATE users SET username = '""', password = '""', name = '""', email = '""', phone_number = '""', address = '""' WHERE id = ${req};`;
 
   return new Promise((resolve, reject) => {
     try {
-      //
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            resolve({
+              message: "회원 삭제가 완료되었습니다.",
+              code: 200,
+              remove: rows,
+            });
+          }
+
+          if (err) {
+            resolve({
+              message: "회원 삭제가 실패되었습니다.",
+              remove: err,
+            });
+          }
+        });
+        connection.release();
+      });
     } catch (err) {
       console.error("remove query 실패하였습니다. ", err);
       throw err;
@@ -108,10 +125,12 @@ exports.userSignin = async (req, res) => {
     try {
       crypto.randomBytes(64, (err, buf) => {
         const { username, password } = req;
+        console.log(`signin username : ${username}, password : ${password}`);
         const usernameSql = `SELECT * FROM users WHERE username = '${username}'`;
         db.getConnectionPool((connection) => {
           connection.query(usernameSql, (err, rows) => {
-            console.log(`connection : ${connection}`);
+            console.log("signin connection : ", connection);
+            console.log("rows : ", rows);
             try {
               crypto.pbkdf2(
                 password,

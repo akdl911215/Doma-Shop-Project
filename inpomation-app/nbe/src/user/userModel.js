@@ -24,7 +24,5 @@ exports.cryptoPbkdf2 = async (req, res, next) => {
 
       resolve(hashedPassword);
     });
-  })
-    .catch((reject) => console.error(`pbkdf2 reject error : ${reject}`))
-    .finally((final) => console.log(`cryptoPbkdf2 fianl 실행 : ${fianl}`));
+  }).catch((reject) => console.error("pbkdf2 reject error : ", reject));
 };

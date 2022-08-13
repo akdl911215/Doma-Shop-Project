@@ -3,25 +3,21 @@ const router = express.Router();
 const userService = require("./userService");
 
 router.post("/list", async (req, res, next) => {
-  console.log("list req : ", req);
-  try {
-    if (!req?.body) {
-      alert("페이지 정보를 확인하세요.");
-      return;
-    }
-
-    res.json({
-      paging: req?.body,
-      result: await userService.list(req?.body),
-    });
-  } catch (err) {
-    console.error("user list error : ", err);
-    throw err;
+  if (!req?.body) {
+    alert("페이지 정보를 확인하세요.");
+    return;
   }
+
+  res.json({
+    paging: req?.body,
+    result: await userService.list(req?.body),
+  });
 });
 
 router.post("/remove", async (req, res, next) => {
-  const result = await userService.remove(req?.body);
+  res.json({
+    result: await userService.remove(req?.body?.userId),
+  });
 });
 
 router.post("/modify", async (req, res, next) => {
