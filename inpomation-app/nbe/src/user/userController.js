@@ -20,6 +20,10 @@ router.post("/list", async (req, res, next) => {
   }
 });
 
+router.post("/remove", async (req, res, next) => {
+  const result = await userService.remove(req?.body);
+});
+
 router.post("/modify", async (req, res, next) => {
   const { message } = await userService.modify(req?.body);
   res.json({

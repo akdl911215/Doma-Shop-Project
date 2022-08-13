@@ -50,6 +50,10 @@ class userService {
     return await userRepository.userModify(user);
   }
 
+  async remove(userId) {
+    return await userRepository.userRemove(userId);
+  }
+
   async inquiry(username) {
     return await userRepository.userInquiry(username);
   }

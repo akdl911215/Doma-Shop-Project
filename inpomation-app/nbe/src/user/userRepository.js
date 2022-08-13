@@ -28,14 +28,14 @@ exports.userList = async (req, res, next) => {
             resolve({
               message: "페이지 조회가 완료되었습니다.",
               code: 200,
-              result: rows,
+              usersList: rows,
             });
           }
 
           if (err) {
             resolve({
               message: "페이지 조회가 실패하였습니다.",
-              result: err,
+              usersList: err,
             });
           }
         });
@@ -43,6 +43,20 @@ exports.userList = async (req, res, next) => {
       });
     } catch (err) {
       console.error("userList db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
+
+exports.userRemove = async (req, res, next) => {
+  const sql = `DELETE FROM users WHERE id = '${req}'`;
+  console.log("remove sql : ", sql);
+
+  return new Promise((resolve, reject) => {
+    try {
+      //
+    } catch (err) {
+      console.error("remove query 실패하였습니다. ", err);
       throw err;
     }
   });
