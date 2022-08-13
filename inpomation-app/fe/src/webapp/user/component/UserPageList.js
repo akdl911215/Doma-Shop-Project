@@ -8,6 +8,7 @@ import ShowPageNation from "webapp/user/component/UserPagenationButton";
 import { useNavigate } from "react-router-dom";
 import styles from "../style/UserPageList.module.css";
 import UserPageSearch from "./UserPageSearch";
+import { UserAuthDataAPI, UserRemoveDataAPI } from "webapp/api/userApi";
 
 const UserPageList = () => {
   const dispatch = useDispatch();
@@ -17,64 +18,98 @@ const UserPageList = () => {
     dispatch(UserCurrentPageLocation(1));
   }, []);
 
-  const { totalList, end, next, page, pageList, prev, start } = useSelector(
-    ({ UserReducer }) => ({
+  const { totalList, end, next, page, pageList, prev, start, total } =
+    useSelector(({ UserReducer }) => ({
+      total: UserReducer?.UserPageListInitial?.pageResult,
       page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
-      totalList: UserReducer?.UserPageListInitial?.pageResult?.result?.result,
+      totalList:
+        UserReducer?.UserPageListInitial?.pageResult?.result?.result?.usersList,
+      pageList:
+        UserReducer?.UserPageListInitial?.pageResult?.result?.pageListCount,
       //
       // end: UserReducer?.UserPageListInitial?.pageResult?.end,
       // next: UserReducer?.UserPageListInitial?.pageResult?.next,
-      // pageList: UserReducer?.UserPageListInitial?.pageResult?.pageList,
       // prev: UserReducer?.UserPageListInitial?.pageResult?.prev,
       // start: UserReducer?.UserPageListInitial?.pageResult?.start,
-    })
-  );
+    }));
 
+  console.log("total :: ", total);
   console.log("page :: ", page);
   console.log("totalList :: ", totalList);
+  console.log("pageList :: ", pageList);
+
+  const userRemove = (id) => {
+    const remove = window.confirm(`id${id}번 회원 탈퇴시킵니까?`);
+    if (remove) {
+      UserAuthDataAPI().then((res) => {
+        if (res?.data?.code === 200) {
+          console.log("토큰 정상");
+
+          UserRemoveDataAPI({ userId: id });
+        }
+      });
+    }
+  };
 
   const colors = ["blue"];
 
   return (
     <>
       <Container>
-        <div>
-          {colors.map((color) => (
-            <Table color={color} key={color}>
+        {colors.map((color) => (
+          <Table color={color} key={color}>
+            <div>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>회원번호</Table.HeaderCell>
+                  <Table.HeaderCell>아이디</Table.HeaderCell>
+
+                  <Table.HeaderCell>이름</Table.HeaderCell>
+                  <Table.HeaderCell>주소</Table.HeaderCell>
+                  <Table.HeaderCell>이메일</Table.HeaderCell>
+                  <Table.HeaderCell>핸드폰번호</Table.HeaderCell>
+                  <Table.HeaderCell>권한</Table.HeaderCell>
+                  <Table.HeaderCell></Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
               {totalList?.map((element, index) => {
                 return (
                   <>
-                    <div key={index}>
-                      <Table.Header>
-                        <Table.Row>
-                          <Table.HeaderCell>회원번호</Table.HeaderCell>
-                          <Table.HeaderCell>아이디</Table.HeaderCell>
-
-                          <Table.HeaderCell>이름</Table.HeaderCell>
-                          <Table.HeaderCell>주소</Table.HeaderCell>
-                          <Table.HeaderCell>이메일</Table.HeaderCell>
-                          <Table.HeaderCell>핸드폰번호</Table.HeaderCell>
-                          <Table.HeaderCell>권한</Table.HeaderCell>
-                        </Table.Row>
-                      </Table.Header>
-
-                      <Table.Body>
-                        <Table.Row>
-                          <Table.Cell>{element.id}</Table.Cell>
-                          <Table.Cell>{element.username}</Table.Cell>
-                          <Table.Cell>{element.name}</Table.Cell>
-                          <Table.Cell>{element.address}</Table.Cell>
-                          <Table.Cell>{element.email}</Table.Cell>
-                          <Table.Cell>{element.phone_number}</Table.Cell>
-                          <Table.Cell>{element.roles}</Table.Cell>
-                        </Table.Row>
-                      </Table.Body>
-                    </div>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>{element.id}</Table.Cell>
+                        <Table.Cell>{element.username}</Table.Cell>
+                        <Table.Cell>{element.name}</Table.Cell>
+                        <Table.Cell>{element.address}</Table.Cell>
+                        <Table.Cell>{element.email}</Table.Cell>
+                        <Table.Cell>{element.phone_number}</Table.Cell>
+                        <Table.Cell>{element.roles}</Table.Cell>
+                        <Table.Cell>
+                          <Button
+                            onClick={() => userRemove(element.id)}
+                            color="black"
+                          >
+                            삭제
+                          </Button>
+                        </Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
                   </>
                 );
               })}
-            </Table>
-          ))}
+            </div>
+          </Table>
+        ))}
+
+        <div className={styles.PaginationStyle}>
+          <ShowPageNation
+            // end={end}
+            // next={next}
+            page={page}
+            pageList={pageList}
+            // prev={prev}
+            // start={start}
+          />
         </div>
         <UserPageSearch />
         <div className={styles.UserPageListButtonStyle}>
@@ -83,16 +118,6 @@ const UserPageList = () => {
           </Button>
           <UserBtnReset />
           <UserDeleteButton />
-        </div>
-        <div className={styles.PaginationStyle}>
-          {/* <ShowPageNation
-            end={end}
-            next={next}
-            page={page}
-            pageList={pageList}
-            prev={prev}
-            start={start}
-          /> */}
         </div>
       </Container>
     </>

@@ -6,6 +6,9 @@ export const UserPagenationListDataAPI = (page) => {
   return client.post(backUrl + "/users/list", { page, pageSize: 5 });
 };
 
+export const UserRemoveDataAPI = (userId) =>
+  client.post(backUrl + "/users/remove", userId);
+
 export const UserSignupDataAPI = (states) =>
   client.post(backUrl + "/users/signup", states);
 

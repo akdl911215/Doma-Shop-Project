@@ -110,7 +110,7 @@ const PortfolioAssetRate = () => {
     if (stockRemoveButton) {
       UserAuthDataAPI()
         .then((res) => {
-          if (res?.data?.message === "토큰이 정상입니다.") {
+          if (res?.data?.code === 200) {
             console.log("토큰 정상");
 
             AssetRemoveDataAPI({ stockId: id })
