@@ -38,14 +38,28 @@ const UserPageList = () => {
   console.log("totalList :: ", totalList);
   console.log("pageList :: ", pageList);
 
+  const sessionRemove = () => {
+    sessionStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("roles");
+    navigate("/users_signin");
+  };
+
   const userRemove = (id) => {
-    const remove = window.confirm(`id${id}번 회원 탈퇴시킵니까?`);
+    const remove = window.confirm(`회원번호 [ ${id} ] 번 회원 탈퇴시킵니까?`);
     if (remove) {
       UserAuthDataAPI().then((res) => {
         if (res?.data?.code === 200) {
-          console.log("토큰 정상");
-
-          UserRemoveDataAPI({ userId: id });
+          UserRemoveDataAPI({ userId: id })
+            .then((res) => {
+              if (res?.data?.result?.code === 200) {
+                window.location.reload();
+              }
+            })
+            .catch((err) => console.error("user remove error : ", err));
+        } else {
+          alert("다시 로그인을 시도하세요.");
+          sessionRemove();
         }
       });
     }
@@ -87,9 +101,9 @@ const UserPageList = () => {
                         <Table.Cell>
                           <Button
                             onClick={() => userRemove(element.id)}
-                            color="black"
+                            negative
                           >
-                            삭제
+                            회원 강제 탈퇴 버튼
                           </Button>
                         </Table.Cell>
                       </Table.Row>
@@ -101,6 +115,14 @@ const UserPageList = () => {
           </Table>
         ))}
 
+        <UserPageSearch />
+        <div className={styles.UserPageListButtonStyle}>
+          <Button primary onClick={() => navigate("/admin_main")}>
+            뒤로가기
+          </Button>
+          <UserBtnReset />
+          {/* <UserDeleteButton /> */}
+        </div>
         <div className={styles.PaginationStyle}>
           <ShowPageNation
             // end={end}
@@ -110,14 +132,6 @@ const UserPageList = () => {
             // prev={prev}
             // start={start}
           />
-        </div>
-        <UserPageSearch />
-        <div className={styles.UserPageListButtonStyle}>
-          <Button primary onClick={() => navigate("/admin_main")}>
-            뒤로가기
-          </Button>
-          <UserBtnReset />
-          <UserDeleteButton />
         </div>
       </Container>
     </>

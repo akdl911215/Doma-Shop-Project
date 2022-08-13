@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 import { Button } from "semantic-ui-react";
@@ -16,17 +16,16 @@ const UserPagenationButton = ({
     dispatch(UserCurrentPageLocation(page));
   };
 
-  const arr = new Array(pageList);
-  let arr2 = [];
+  const [viewArr, setViewArr] = useState([]);
+  useEffect(() => {
+    let arr = [];
+    for (let i = 1; i <= pageList; ++i) {
+      arr.push(i);
+    }
+    setViewArr(arr);
+  }, []);
 
-  console.log("pageList : ", pageList);
-  console.log("page : ", page);
-  // arr.length = pageList;
-  console.log("arr.length : ", arr.length);
-  console.log("arr : ", arr);
-  console.log("arr2 : ", arr2);
-
-  const list = arr?.map((el, key) => (
+  const list = viewArr?.map((el, key) => (
     <Button key={key + 1} onClick={() => movePage(key + 1)}>
       {key + 1}
     </Button>

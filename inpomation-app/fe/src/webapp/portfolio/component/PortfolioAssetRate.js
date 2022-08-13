@@ -111,12 +111,8 @@ const PortfolioAssetRate = () => {
       UserAuthDataAPI()
         .then((res) => {
           if (res?.data?.code === 200) {
-            console.log("토큰 정상");
-
             AssetRemoveDataAPI({ stockId: id })
               .then((res) => {
-                console.log("remove res :: ", res?.data);
-                console.log("res?.data?.code : ", res?.data?.code);
                 if (res?.data?.code === 200) {
                   window.location.reload();
                 }
