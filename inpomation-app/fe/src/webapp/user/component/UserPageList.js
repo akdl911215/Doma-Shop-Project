@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import UserBtnReset from "./UserButtonReset";
-import { Table, Container, Checkbox, Button } from "semantic-ui-react";
+import {
+  Table,
+  Container,
+  Checkbox,
+  Button,
+  Pagination,
+} from "semantic-ui-react";
 import UserDeleteButton from "./UserDeleteButton";
 import { useDispatch, useSelector } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
@@ -18,10 +24,11 @@ const UserPageList = () => {
     dispatch(UserCurrentPageLocation(1));
   }, []);
 
-  const { totalList, end, next, page, pageList, prev, start, total } =
+  const { totalList, end, next, page, pageList, prev, start, total, pageSize } =
     useSelector(({ UserReducer }) => ({
       total: UserReducer?.UserPageListInitial?.pageResult,
       page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
+      pageSize: UserReducer?.UserPageListInitial?.pageResult?.paging?.pageSize,
       totalList:
         UserReducer?.UserPageListInitial?.pageResult?.result?.result?.usersList,
       pageList:
@@ -124,14 +131,17 @@ const UserPageList = () => {
           {/* <UserDeleteButton /> */}
         </div>
         <div className={styles.PaginationStyle}>
-          <ShowPageNation
-            // end={end}
-            // next={next}
-            page={page}
-            pageList={pageList}
-            // prev={prev}
-            // start={start}
-          />
+          <ShowPageNation totalPages={pageSize} />
+          {/* <Pagination
+            boundaryRange={0}
+            defaultActivePage={1}
+            ellipsisItem={null}
+            firstItem={null}
+            lastItem={null}
+            siblingRange={1}
+            totalPages={pageSize}
+            onPageChange={(e) => handleChange(e)}
+          /> */}
         </div>
       </Container>
     </>
