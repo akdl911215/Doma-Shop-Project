@@ -10,7 +10,6 @@ const [
 
 // 액션 생성 함수
 export const UserCurrentPageLocation = (pageSate) => {
-  console.log("pageSate : ", pageSate);
   return {
     type: USERPAGENATTIONBUTTON_REQUEST,
     payload: pageSate,
@@ -41,7 +40,6 @@ export const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case USERPAGENATTIONBUTTON_REQUEST:
-      console.log("USERPAGENATTIONBUTTON_REQUEST : ", action);
       return {
         ...state,
         UserPageListInitial: {
@@ -52,7 +50,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case USERPAGENATTIONBUTTON_SUCCESS:
-      console.log("USERPAGENATTIONBUTTON_SUCCESS : ", action);
       return {
         ...state,
         UserPageListInitial: {

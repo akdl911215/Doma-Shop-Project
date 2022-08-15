@@ -13,7 +13,6 @@ export const CityAndProvineceSidoCodeChoice = (sido) => {
 };
 
 export const CityAndProvineceYearMonthChoice = (yearMonth) => {
-  console.log("CityAndProvineceYearMonthChoice YearMonth : ", yearMonth);
   return {
     type: YEARMONTHCHOICE_REQUEST,
     payload: yearMonth,
@@ -21,7 +20,6 @@ export const CityAndProvineceYearMonthChoice = (yearMonth) => {
 };
 
 export const CityAndProvineceITtemCodeChoice = (item) => {
-  console.log("CityAndProvineceITtemCodeChoice item : ", item);
   return {
     type: ITEMCHOICE_REQUEST,
     payload: item,
@@ -29,7 +27,6 @@ export const CityAndProvineceITtemCodeChoice = (item) => {
 };
 
 export const CityAndProvineceImportExportCodeChoice = (ImportExport) => {
-  console.log("CityAndProvineceITtemCodeChoice ImportExport : ", ImportExport);
   return {
     type: IMPORTEXPORT_REQUEST,
     payload: ImportExport,
@@ -52,16 +49,13 @@ export const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log("reducer action.type : ", action.type);
   switch (action.type) {
     case SIDOCODECHOICE_REQUEST:
-      console.log("SIDOCODECHOICE_REQUEST : ", action);
       return {
         ...state,
         SidoCodeCoiceInital: { sidocode: action?.payload },
       };
     case YEARMONTHCHOICE_REQUEST:
-      console.log("YEARMONTHCHOICE_REQUEST : ", action);
       return {
         ...state,
         YearMonthCoiceInital: {
@@ -70,7 +64,6 @@ const reducer = (state = initialState, action) => {
         },
       };
     case ITEMCHOICE_REQUEST:
-      console.log("ITEMCHOICE_REQUEST : ", action);
       return {
         ...state,
         ItemCoiceInital: {
@@ -78,7 +71,6 @@ const reducer = (state = initialState, action) => {
         },
       };
     case IMPORTEXPORT_REQUEST:
-      console.log("IMPORTEXPORT_REQUEST : ", action);
       return {
         ...state,
         ImportExportChoiceInital: {

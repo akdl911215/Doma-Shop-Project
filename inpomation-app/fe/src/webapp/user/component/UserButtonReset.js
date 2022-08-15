@@ -11,8 +11,8 @@ const UserButtonReset = () => {
       <Button
         primary
         onClick={(e) => {
+          window.location.reload();
           dispatch(UserCurrentPageLocation(1));
-          sessionStorage.setItem("pageNumber", 1);
         }}
       >
         1페이지로 초기화

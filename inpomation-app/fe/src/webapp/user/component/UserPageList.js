@@ -40,11 +40,6 @@ const UserPageList = () => {
       // start: UserReducer?.UserPageListInitial?.pageResult?.start,
     }));
 
-  console.log("total :: ", total);
-  console.log("page :: ", page);
-  console.log("totalList :: ", totalList);
-  console.log("pageList :: ", pageList);
-
   const sessionRemove = () => {
     sessionStorage.removeItem("jwtToken");
     sessionStorage.removeItem("username");
@@ -73,6 +68,7 @@ const UserPageList = () => {
   };
 
   const colors = ["blue"];
+  console.log("totalList :: ", totalList);
 
   return (
     <>
