@@ -1,10 +1,30 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 import { Pagination } from "semantic-ui-react";
 
-const UserPagenationButton = ({ totalPages }) => {
+const UserPagenationButton = ({ totalPages, deaultPage }) => {
   const dispatch = useDispatch();
+  console.log(`totalPages: ${totalPages}`);
+
+  const [page, setPage] = useState([]);
+  // const { pageNumber } = useSelector(({ UserReducer }) => ({
+  //   pageNumber: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
+  // }));
+  // console.log("pageNumber :::: ", pageNumber);
+
+  const handleChange = (e) => {
+    dispatch(UserCurrentPageLocation(e.target.text));
+
+    // alert(sessionStorage.getItem("pageNumber"));
+    console.log(
+      "pageNumber ::::::: ",
+      typeof sessionStorage.getItem("pageNumber")
+    );
+    if (sessionStorage.getItem("pageNumber") === "1") {
+      alert(sessionStorage.getItem("pageNumber"));
+    }
+  };
 
   return (
     <>
@@ -16,7 +36,7 @@ const UserPagenationButton = ({ totalPages }) => {
         lastItem={null}
         siblingRange={1}
         totalPages={totalPages}
-        onPageChange={(e) => dispatch(UserCurrentPageLocation(e.target.text))}
+        onClick={(e) => handleChange(e)}
       />
     </>
   );

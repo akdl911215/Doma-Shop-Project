@@ -8,7 +8,13 @@ const UserButtonReset = () => {
 
   return (
     <>
-      <Button primary onClick={() => dispatch(UserCurrentPageLocation(1))}>
+      <Button
+        primary
+        onClick={(e) => {
+          dispatch(UserCurrentPageLocation(1));
+          sessionStorage.setItem("pageNumber", 1);
+        }}
+      >
         1페이지로 초기화
       </Button>
     </>

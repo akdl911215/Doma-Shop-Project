@@ -79,46 +79,41 @@ const UserPageList = () => {
       <Container>
         {colors.map((color) => (
           <Table color={color} key={color}>
-            <div>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>회원번호</Table.HeaderCell>
-                  <Table.HeaderCell>아이디</Table.HeaderCell>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>회원번호</Table.HeaderCell>
+                <Table.HeaderCell>아이디</Table.HeaderCell>
 
-                  <Table.HeaderCell>이름</Table.HeaderCell>
-                  <Table.HeaderCell>주소</Table.HeaderCell>
-                  <Table.HeaderCell>이메일</Table.HeaderCell>
-                  <Table.HeaderCell>핸드폰번호</Table.HeaderCell>
-                  <Table.HeaderCell>권한</Table.HeaderCell>
-                  <Table.HeaderCell></Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              {totalList?.map((element, index) => {
-                return (
-                  <>
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>{element.id}</Table.Cell>
-                        <Table.Cell>{element.username}</Table.Cell>
-                        <Table.Cell>{element.name}</Table.Cell>
-                        <Table.Cell>{element.address}</Table.Cell>
-                        <Table.Cell>{element.email}</Table.Cell>
-                        <Table.Cell>{element.phone_number}</Table.Cell>
-                        <Table.Cell>{element.roles}</Table.Cell>
-                        <Table.Cell>
-                          <Button
-                            onClick={() => userRemove(element.id)}
-                            negative
-                          >
-                            회원 강제 탈퇴 버튼
-                          </Button>
-                        </Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                  </>
-                );
-              })}
-            </div>
+                <Table.HeaderCell>이름</Table.HeaderCell>
+                <Table.HeaderCell>주소</Table.HeaderCell>
+                <Table.HeaderCell>이메일</Table.HeaderCell>
+                <Table.HeaderCell>핸드폰번호</Table.HeaderCell>
+                <Table.HeaderCell>권한</Table.HeaderCell>
+                <Table.HeaderCell></Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            {totalList?.map((element, index) => {
+              return (
+                <>
+                  <Table.Body>
+                    <Table.Row>
+                      <Table.Cell>{element.id}</Table.Cell>
+                      <Table.Cell>{element.username}</Table.Cell>
+                      <Table.Cell>{element.name}</Table.Cell>
+                      <Table.Cell>{element.address}</Table.Cell>
+                      <Table.Cell>{element.email}</Table.Cell>
+                      <Table.Cell>{element.phone_number}</Table.Cell>
+                      <Table.Cell>{element.roles}</Table.Cell>
+                      <Table.Cell>
+                        <Button onClick={() => userRemove(element.id)} negative>
+                          회원 강제 탈퇴 버튼
+                        </Button>
+                      </Table.Cell>
+                    </Table.Row>
+                  </Table.Body>
+                </>
+              );
+            })}
           </Table>
         ))}
 
