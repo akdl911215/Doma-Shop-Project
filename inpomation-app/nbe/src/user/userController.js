@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const userService = require("./userService");
 
+router.post("/search", async (req, res, next) => {
+  const result = await userService.search(req?.body);
+});
+
 router.post("/list", async (req, res, next) => {
   if (!req?.body) {
     alert("페이지 정보를 확인하세요.");

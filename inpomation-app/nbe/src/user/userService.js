@@ -3,8 +3,13 @@ const userModel = require("./userModel");
 const jwt = require("../security/jwt");
 
 class userService {
+  async search(search) {
+    console.log("user sarch : ", search);
+
+    const result = await userRepository.usersSearch(search);
+  }
+
   async list(page) {
-    console.log("user list page : ", page);
     let start = 0;
     page.page <= 0
       ? (page.page = 1)
