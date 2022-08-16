@@ -1,13 +1,6 @@
 import React, { useEffect } from "react";
 import UserBtnReset from "./UserButtonReset";
-import {
-  Table,
-  Container,
-  Checkbox,
-  Button,
-  Pagination,
-} from "semantic-ui-react";
-import UserDeleteButton from "./UserDeleteButton";
+import { Table, Container, Button } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 import ShowPageNation from "webapp/user/component/UserPagenationButton";
@@ -15,53 +8,50 @@ import { useNavigate } from "react-router-dom";
 import styles from "../style/UserPageList.module.css";
 import UserPageSearch from "./UserPageSearch";
 import { UserAuthDataAPI, UserRemoveDataAPI } from "webapp/api/userApi";
+import { SessionRemove } from "webapp/common/component/SessionRemove";
 
 const UserPageList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(UserCurrentPageLocation(1));
+    UserAuthDataAPI().then((res) => {
+      if (res?.data?.code === 200) {
+        dispatch(UserCurrentPageLocation(1));
+      }
+    });
   }, []);
 
-  const { totalList, end, next, page, pageList, prev, start, total, pageSize } =
-    useSelector(({ UserReducer }) => ({
-      total: UserReducer?.UserPageListInitial?.pageResult,
-      page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
-      pageSize: UserReducer?.UserPageListInitial?.pageResult?.paging?.pageSize,
-      totalList:
-        UserReducer?.UserPageListInitial?.pageResult?.result?.result?.usersList,
-      pageList:
-        UserReducer?.UserPageListInitial?.pageResult?.result?.pageListCount,
-      //
-      // end: UserReducer?.UserPageListInitial?.pageResult?.end,
-      // next: UserReducer?.UserPageListInitial?.pageResult?.next,
-      // prev: UserReducer?.UserPageListInitial?.pageResult?.prev,
-      // start: UserReducer?.UserPageListInitial?.pageResult?.start,
-    }));
-
-  const sessionRemove = () => {
-    sessionStorage.removeItem("jwtToken");
-    sessionStorage.removeItem("username");
-    sessionStorage.removeItem("roles");
-    navigate("/users_signin");
-  };
+  const { totalList, page, pageSize } = useSelector(({ UserReducer }) => ({
+    page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
+    pageSize: UserReducer?.UserPageListInitial?.pageResult?.paging?.pageSize,
+    totalList:
+      UserReducer?.UserPageListInitial?.pageResult?.result?.result?.usersList,
+    pageList:
+      UserReducer?.UserPageListInitial?.pageResult?.result?.pageListCount,
+  }));
+  sessionStorage.setItem("userList", page);
 
   const userRemove = (id) => {
     const remove = window.confirm(`회원번호 [ ${id} ] 번 회원 탈퇴시킵니까?`);
     if (remove) {
       UserAuthDataAPI().then((res) => {
         if (res?.data?.code === 200) {
-          UserRemoveDataAPI({ userId: id })
-            .then((res) => {
-              if (res?.data?.result?.code === 200) {
-                window.location.reload();
-              }
-            })
-            .catch((err) => console.error("user remove error : ", err));
+          if (sessionStorage.getItem("roles") === "master") {
+            UserRemoveDataAPI({ userId: id })
+              .then((res) => {
+                if (res?.data?.result?.code === 200) {
+                  window.location.reload();
+                }
+              })
+              .catch((err) => console.error("user remove error : ", err));
+          } else {
+            alert("마스터만 회원을 탈퇴시킬 수 있습니다.");
+          }
         } else {
           alert("다시 로그인을 시도하세요.");
-          sessionRemove();
+          SessionRemove();
+          navigate("/users_signin");
         }
       });
     }
@@ -119,20 +109,9 @@ const UserPageList = () => {
             뒤로가기
           </Button>
           <UserBtnReset />
-          {/* <UserDeleteButton /> */}
         </div>
         <div className={styles.PaginationStyle}>
           <ShowPageNation totalPages={pageSize} />
-          {/* <Pagination
-            boundaryRange={0}
-            defaultActivePage={1}
-            ellipsisItem={null}
-            firstItem={null}
-            lastItem={null}
-            siblingRange={1}
-            totalPages={pageSize}
-            onPageChange={(e) => handleChange(e)}
-          /> */}
         </div>
       </Container>
     </>
