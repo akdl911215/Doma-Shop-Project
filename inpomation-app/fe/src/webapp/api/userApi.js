@@ -1,10 +1,11 @@
 import { client } from "./Client";
 import { backUrl } from "webapp/config/Config";
 
-export const UserPagenationListDataAPI = (page) => {
-  console.log("UserPagenationListDataAPI page : ", page);
-  return client.post(backUrl + "/users/list", { page, pageSize: 5 });
-};
+export const UserListSearchDataAPI = (search) =>
+  client.post(backUrl + "/users/search", search);
+
+export const UserPagenationListDataAPI = (page) =>
+  client.post(backUrl + "/users/list", { page, pageSize: 5 });
 
 export const UserRemoveDataAPI = (userId) =>
   client.post(backUrl + "/users/remove", userId);

@@ -18,18 +18,24 @@ const UserPageList = () => {
     UserAuthDataAPI().then((res) => {
       if (res?.data?.code === 200) {
         dispatch(UserCurrentPageLocation(1));
+      } else {
+        alert("다시 로그인을 시도하세요.");
+        SessionRemove();
+        navigate("/users_signin");
       }
     });
   }, []);
 
-  const { totalList, page, pageSize } = useSelector(({ UserReducer }) => ({
-    page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
-    pageSize: UserReducer?.UserPageListInitial?.pageResult?.paging?.pageSize,
-    totalList:
-      UserReducer?.UserPageListInitial?.pageResult?.result?.result?.usersList,
-    pageList:
-      UserReducer?.UserPageListInitial?.pageResult?.result?.pageListCount,
-  }));
+  const { totalList, page, pageSize, pageList } = useSelector(
+    ({ UserReducer }) => ({
+      page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
+      pageSize: UserReducer?.UserPageListInitial?.pageResult?.paging?.pageSize,
+      totalList:
+        UserReducer?.UserPageListInitial?.pageResult?.result?.result?.usersList,
+      pageList:
+        UserReducer?.UserPageListInitial?.pageResult?.result?.pageListCount,
+    })
+  );
   sessionStorage.setItem("userList", page);
 
   const userRemove = (id) => {
@@ -111,7 +117,7 @@ const UserPageList = () => {
           <UserBtnReset />
         </div>
         <div className={styles.PaginationStyle}>
-          <ShowPageNation totalPages={pageSize} />
+          <ShowPageNation totalPages={pageList} />
         </div>
       </Container>
     </>
