@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../style/Header.css";
+import { SessionRemove } from "webapp/common/component/SessionRemove";
 
 const Header = () => {
   const [rolesCheck, setRolesCheck] = useState(null);
@@ -44,8 +45,7 @@ const Header = () => {
                     to="/"
                     onClick={(e) => {
                       alert("로그아웃을 진행합니다");
-                      sessionStorage.removeItem("jwtToken");
-                      sessionStorage.removeItem("roles");
+                      SessionRemove();
                       window.location.reload();
                     }}
                   >
@@ -74,7 +74,7 @@ const Header = () => {
               <li>
                 <Link to="/data_list">수출 및 수입 정보 확인</Link>
               </li>
-              {rolesCheck === "MASTER" ? (
+              {rolesCheck === "MASTER" || rolesCheck === "MANAGER" ? (
                 <>
                   <Link to="/admin_main">어드민 페이지 이동</Link>
                 </>
