@@ -4,16 +4,14 @@ const jwt = require("../security/jwt");
 
 class userService {
   async search(search) {
-    console.log("user sarch : ", search);
-
-    const result = await userRepository.usersSearch(search);
+    return await userRepository.usersSearch(search);
   }
 
   async list(page) {
     let start = 0;
-    page.page <= 0
-      ? (page.page = 1)
-      : (start = (page.page - 1) * page.pageSize);
+    if (page.pageSize === undefined) page.pageSize = 5;
+
+    page.page > 0 ? (start = (page.page - 1) * page.pageSize) : (page.page = 1);
 
     const pageListCount = Math.ceil(
       (await userRepository.userCount()) / page.pageSize

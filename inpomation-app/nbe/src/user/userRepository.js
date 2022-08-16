@@ -2,19 +2,32 @@ const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
 
 exports.usersSearch = async (req, res, next) => {
-  let a = "";
-  if (req?.type === "unaep") a = "";
-  if (req?.type === "u") a = "username";
-  if (req?.type === "e") a = "email";
-  if (req?.type === "n") a = "name";
-  if (req?.type === "p") a = "phone_number";
-  //   <option value="unaep">통합검색</option>
-  // <option value="u">아이디</option>
-  // <option value="n">이름</option>
-  // <option value="e">이메일</option>
-  // <option value="p">핸드폰번호</option>
+  let whereSql = "CONCAT(username, email, NAME, phone_number, address)";
+  if (req?.type === "u") whereSql = "username";
+  if (req?.type === "e") whereSql = "email";
+  if (req?.type === "n") whereSql = "name";
+  if (req?.type === "p") whereSql = "phone_number";
+  const sql = `SELECT username, name, email, phone_number, address, roles FROM users WHERE ${whereSql} REGEXP '${req?.keyword}'`;
+  console.log("sql : ", sql);
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            resolve(rows);
+          }
 
-  const sql = ``;
+          if (err) {
+            resolve(err);
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("usersSearch catch error : ", err);
+      throw err;
+    }
+  });
 };
 
 exports.userCount = async (req, res, next) => {
