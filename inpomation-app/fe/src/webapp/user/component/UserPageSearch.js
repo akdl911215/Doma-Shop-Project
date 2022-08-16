@@ -14,7 +14,7 @@ const UserPageSearch = () => {
     UserListSearchDataAPI({
       type: options,
       keyword: search,
-    });
+    }).then((res) => console.log(res?.data?.searchUsersList));
     console.log(`${[options]}:${search}`);
   };
 
