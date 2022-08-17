@@ -1,20 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import UserBtnReset from "./UserButtonReset";
 import { Table, Container, Button } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
-import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
+import {
+  UserCurrentPageLocation,
+  UserSearchList,
+} from "webapp/reducers/user.reducer";
 import ShowPageNation from "webapp/user/component/UserPagenationButton";
 import { useNavigate } from "react-router-dom";
 import styles from "../style/UserPageList.module.css";
 import UserPageSearch from "./UserPageSearch";
 import { UserAuthDataAPI, UserRemoveDataAPI } from "webapp/api/userApi";
 import { SessionRemove } from "webapp/common/component/SessionRemove";
-import useUpdateEffect from "webapp/hooks/useUpdateEffect";
 
 const UserPageList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [viewList, setViewList] = useState([]);
+  const colors = ["blue"];
+  const { totalList, page, pageSize, pageList, pagingList } = useSelector(
+    ({ UserReducer }) => ({
+      page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
+      pageSize: UserReducer?.UserPageListInitial?.pageResult?.paging?.pageSize,
+      totalList:
+        UserReducer?.UserPageListInitial?.pageResult?.result?.result?.usersList,
+      pageList:
+        UserReducer?.UserPageListInitial?.pageResult?.result?.pageListCount,
+      pagingList: UserReducer?.UserSearchListInitial,
+    })
+  );
+  sessionStorage.setItem("userList", page);
+  const boolPage = pagingList.length === 0;
+
   useEffect(() => {
     UserAuthDataAPI().then((res) => {
       if (res?.data?.code === 200) {
@@ -26,25 +42,6 @@ const UserPageList = () => {
       }
     });
   }, []);
-
-  useUpdateEffect(() => {
-    setViewList(totalList);
-  }, []);
-  // useEffect(() => {
-  //   setViewList(setViewList);
-  // }, [pagingList]);
-
-  const { totalList, page, pageSize, pageList, pagingList } = useSelector(
-    ({ UserReducer }) => ({
-      page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
-      pageSize: UserReducer?.UserPageListInitial?.pageResult?.paging?.pageSize,
-      totalList:
-        UserReducer?.UserPageListInitial?.pageResult?.result?.result?.usersList,
-      pageList:
-        UserReducer?.UserPageListInitial?.pageResult?.result?.pageListCount,
-    })
-  );
-  sessionStorage.setItem("userList", page);
 
   const userRemove = (id) => {
     const remove = window.confirm(`회원번호 [ ${id} ] 번 회원 탈퇴시킵니까?`);
@@ -71,10 +68,6 @@ const UserPageList = () => {
     }
   };
 
-  const colors = ["blue"];
-  console.log("totalList :: ", totalList);
-  console.log(" viewList :: ", viewList);
-
   return (
     <>
       <Container>
@@ -93,28 +86,57 @@ const UserPageList = () => {
                 <Table.HeaderCell></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            {totalList?.map((element, index) => {
-              return (
-                <>
-                  <Table.Body>
-                    <Table.Row>
-                      <Table.Cell>{element.id}</Table.Cell>
-                      <Table.Cell>{element.username}</Table.Cell>
-                      <Table.Cell>{element.name}</Table.Cell>
-                      <Table.Cell>{element.address}</Table.Cell>
-                      <Table.Cell>{element.email}</Table.Cell>
-                      <Table.Cell>{element.phone_number}</Table.Cell>
-                      <Table.Cell>{element.roles}</Table.Cell>
-                      <Table.Cell>
-                        <Button onClick={() => userRemove(element.id)} negative>
-                          회원 강제 탈퇴 버튼
-                        </Button>
-                      </Table.Cell>
-                    </Table.Row>
-                  </Table.Body>
-                </>
-              );
-            })}
+            {boolPage
+              ? totalList?.map((element, index) => {
+                  return (
+                    <>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>{element.id}</Table.Cell>
+                          <Table.Cell>{element.username}</Table.Cell>
+                          <Table.Cell>{element.name}</Table.Cell>
+                          <Table.Cell>{element.address}</Table.Cell>
+                          <Table.Cell>{element.email}</Table.Cell>
+                          <Table.Cell>{element.phone_number}</Table.Cell>
+                          <Table.Cell>{element.roles}</Table.Cell>
+                          <Table.Cell>
+                            <Button
+                              onClick={() => userRemove(element.id)}
+                              negative
+                            >
+                              회원 강제 탈퇴 버튼
+                            </Button>
+                          </Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </>
+                  );
+                })
+              : pagingList?.map((element, index) => {
+                  return (
+                    <>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>{element.id}</Table.Cell>
+                          <Table.Cell>{element.username}</Table.Cell>
+                          <Table.Cell>{element.name}</Table.Cell>
+                          <Table.Cell>{element.address}</Table.Cell>
+                          <Table.Cell>{element.email}</Table.Cell>
+                          <Table.Cell>{element.phone_number}</Table.Cell>
+                          <Table.Cell>{element.roles}</Table.Cell>
+                          <Table.Cell>
+                            <Button
+                              onClick={() => userRemove(element.id)}
+                              negative
+                            >
+                              회원 강제 탈퇴 버튼
+                            </Button>
+                          </Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
+                    </>
+                  );
+                })}
           </Table>
         ))}
 
@@ -123,11 +145,19 @@ const UserPageList = () => {
           <Button primary onClick={() => navigate("/admin_main")}>
             뒤로가기
           </Button>
-          <UserBtnReset />
+          {boolPage ? (
+            <UserBtnReset />
+          ) : (
+            <Button primary onClick={() => dispatch(UserSearchList([]))}>
+              검색 초기화
+            </Button>
+          )}
         </div>
-        <div className={styles.PaginationStyle}>
-          <ShowPageNation totalPages={pageList} />
-        </div>
+        {boolPage ? (
+          <div className={styles.PaginationStyle}>
+            <ShowPageNation totalPages={pageList} />
+          </div>
+        ) : null}
       </Container>
     </>
   );

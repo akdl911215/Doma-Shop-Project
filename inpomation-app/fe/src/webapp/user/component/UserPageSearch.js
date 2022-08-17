@@ -31,6 +31,7 @@ const UserPageSearch = () => {
         <option value="n">이름</option>
         <option value="e">이메일</option>
         <option value="p">핸드폰번호</option>
+        <option value="r">권한</option>
       </select>
       <input
         type="text"
