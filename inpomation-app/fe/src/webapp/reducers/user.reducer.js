@@ -8,7 +8,16 @@ const [
   USERPAGENATTIONBUTTON_FAILURE,
 ] = createRequestActionTypes("USERPAGENATIONBUTTON");
 
+const [USERSEARCHLIST_REQUEST] = createRequestActionTypes("USERSSEARCHLIST");
+
 // 액션 생성 함수
+export const UserSearchList = (userList) => {
+  return {
+    type: USERSEARCHLIST_REQUEST,
+    payload: userList,
+  };
+};
+
 export const UserCurrentPageLocation = (pageSate) => {
   return {
     type: USERPAGENATTIONBUTTON_REQUEST,
@@ -34,11 +43,19 @@ export const initialState = {
   },
   UserPageListInitialRequst: false,
   UserPageListInitialError: null,
+  UserSearchListInitial: [],
+  UserSearchListInitialRequest: false,
+  UserSearchListInitialError: null,
 };
 
 // 리듀서
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case USERSEARCHLIST_REQUEST:
+      return {
+        ...state,
+        UserSearchListInitial: action?.payload,
+      };
     case USERPAGENATTIONBUTTON_REQUEST:
       return {
         ...state,

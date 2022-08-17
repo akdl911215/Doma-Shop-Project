@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Button } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
+import { UserSearchList } from "webapp/reducers/user.reducer";
 import styles from "webapp/user/style/UserPageSearch.module.css";
 import { UserListSearchDataAPI } from "webapp/api/userApi";
 
@@ -14,7 +15,7 @@ const UserPageSearch = () => {
     UserListSearchDataAPI({
       type: options,
       keyword: search,
-    }).then((res) => console.log(res?.data?.searchUsersList));
+    }).then((res) => dispatch(UserSearchList(res?.data?.searchUsersList)));
     console.log(`${[options]}:${search}`);
   };
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import UserBtnReset from "./UserButtonReset";
 import { Table, Container, Button } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,11 +9,12 @@ import styles from "../style/UserPageList.module.css";
 import UserPageSearch from "./UserPageSearch";
 import { UserAuthDataAPI, UserRemoveDataAPI } from "webapp/api/userApi";
 import { SessionRemove } from "webapp/common/component/SessionRemove";
+import useUpdateEffect from "webapp/hooks/useUpdateEffect";
 
 const UserPageList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [viewList, setViewList] = useState([]);
   useEffect(() => {
     UserAuthDataAPI().then((res) => {
       if (res?.data?.code === 200) {
@@ -26,7 +27,14 @@ const UserPageList = () => {
     });
   }, []);
 
-  const { totalList, page, pageSize, pageList } = useSelector(
+  useUpdateEffect(() => {
+    setViewList(totalList);
+  }, []);
+  // useEffect(() => {
+  //   setViewList(setViewList);
+  // }, [pagingList]);
+
+  const { totalList, page, pageSize, pageList, pagingList } = useSelector(
     ({ UserReducer }) => ({
       page: UserReducer?.UserPageListInitial?.pageResult?.paging?.page,
       pageSize: UserReducer?.UserPageListInitial?.pageResult?.paging?.pageSize,
@@ -65,6 +73,7 @@ const UserPageList = () => {
 
   const colors = ["blue"];
   console.log("totalList :: ", totalList);
+  console.log(" viewList :: ", viewList);
 
   return (
     <>
