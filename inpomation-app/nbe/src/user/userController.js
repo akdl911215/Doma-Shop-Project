@@ -4,8 +4,9 @@ const userService = require("./userService");
 
 router.post("/search", async (req, res, next) => {
   const usersList = await userService.search(req?.body);
+  console.log("usersList : ", usersList);
   res.json({
-    searchUsersList: await userService.list(usersList),
+    searchUsersList: usersList,
   });
 });
 
