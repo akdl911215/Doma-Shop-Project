@@ -18,12 +18,6 @@ const TopMenuBar = () => {
               <Link to="/users_list">유저 목록</Link>
             </li>
             <li>
-              <Link to="/users_mypage">마이페이지</Link>
-            </li>
-            <li>
-              <Link to="/users_withdrawal">탈퇴하기</Link>
-            </li>
-            <li>
               <Link to="/notice_list">공지 사항</Link>
             </li>
             <li>

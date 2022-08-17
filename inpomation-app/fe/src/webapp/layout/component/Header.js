@@ -16,7 +16,7 @@ const Header = () => {
         <div className="menubar">
           <nav id="top-menu">
             <ul>
-              <li>
+              {/* <li>
                 {rolesCheck !== null ? (
                   <>
                     <Link
@@ -29,7 +29,7 @@ const Header = () => {
                     </Link>
                   </>
                 ) : null}
-              </li>
+              </li> */}
               <li>
                 {rolesCheck === null ? (
                   <>
