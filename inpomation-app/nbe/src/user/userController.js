@@ -3,10 +3,8 @@ const router = express.Router();
 const userService = require("./userService");
 
 router.post("/search", async (req, res, next) => {
-  const usersList = await userService.search(req?.body);
-  console.log("usersList : ", usersList);
   res.json({
-    searchUsersList: usersList,
+    searchUsersList: await userService.search(req?.body),
   });
 });
 
