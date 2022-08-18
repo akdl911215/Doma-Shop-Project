@@ -40,7 +40,7 @@ const ProductInfomationRead = () => {
                         <Input
                           className={styles.ProductInfomationHeaderStyle}
                           value="다이브인 저분자 히알루론산 토너"
-                          readonly
+                          readOnly
                         />
                       </Form>
                     </Table.Cell>
@@ -79,7 +79,7 @@ const ProductInfomationRead = () => {
                         <Input
                           className={styles.ProductInfomationHeaderStyle}
                           value="300ml/21,000원"
-                          readonly
+                          readOnly
                         />
                       </Form>
                     </Table.Cell>
@@ -91,7 +91,7 @@ const ProductInfomationRead = () => {
                         <Input
                           className={styles.ProductInfomationHeaderStyle}
                           value="스킨/토너 1위"
-                          readonly
+                          readOnly
                         />
                       </Form>
                     </Table.Cell>
@@ -103,7 +103,7 @@ const ProductInfomationRead = () => {
                         <Input
                           className={styles.ProductInfomationHeaderStyle}
                           value="2021 베타존 뷰티 어워드 스킨/토너 1위"
-                          readonly
+                          readOnly
                         />
                       </Form>
                     </Table.Cell>
