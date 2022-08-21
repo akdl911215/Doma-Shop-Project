@@ -35,5 +35,5 @@ overflow : visible, hidden, scoll, auto
 }
 .contents {
   flex: 1;
-  margin-left: 240px;
+  /* margin-left: 240px; */
 }

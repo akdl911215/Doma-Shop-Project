@@ -1,4 +1,4 @@
-import styles from "../explore/ExploreCard";
+import styles from "../../style/ExploreCard.moduel.css";
 import moment from "moment";
 import "moment/locale/ko";
 import { ProcessViewCount } from "../../util";
