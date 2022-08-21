@@ -13,8 +13,6 @@ const Portfolio = () => {
     setOptions(sessionStorage.getItem("option"));
   };
 
-  // 업데이트 렌더링 방식에 대해서 찾기
-  // 세션 함수 따로 빼기
   return (
     <>
       <div className={styles.DivStyle}>

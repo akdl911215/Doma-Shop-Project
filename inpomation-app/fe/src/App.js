@@ -24,6 +24,7 @@ import CityAndProvineceByNature from "webapp/public-data/component/importAndExpo
 import Home from "webapp/layout/component/Home";
 import MypageTab from "webapp/user/component/MypageTab";
 import Portfolio from "webapp/user/component/Portfolio";
+import Explore from "webapp/youtube-upload/component/Explore";
 
 const App = () => {
   return (
@@ -87,6 +88,8 @@ const App = () => {
         />
 
         <Route path="/portfolio" element={<Portfolio />} />
+
+        <Route path="/youtube_explore" element={<Explore />} />
       </Routes>
     </>
   );

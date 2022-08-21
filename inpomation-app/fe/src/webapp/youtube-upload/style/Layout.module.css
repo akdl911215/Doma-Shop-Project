@@ -1,0 +1,39 @@
+/* 
+display : flex; : 위치 조절
+
+width : 100%
+height : 56px;
+
+align-items : stretch, center, start, end
+그리드 레이아웃에서는 그리드 영역 내에서 블록 축의 항목 정렬 제어
+
+justify-content : space-between;
+브라우저가 플렉스 컨테이너의 기본 축과 그리드 컨테이너의 인라인 축을
+justify-content 따라 콘텐츠 항목 사이와 주위에 공간을 분배하는 방법을 정의
+
+flex : 0 1 728px; 
+하나의 플렉스 아이템이 자신의 컨테이너가 차지하느 공간에 맞추기 위해
+크기를 키우거나 줄이는 방법으로 설정하는 속성
+
+overflow : visible, hidden, scoll, auto
+요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을때 사용
+*/
+.container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: overlay;
+  flex-direction: column;
+}
+.layout {
+  display: flex;
+  margin-top: 56px;
+  flex: 1;
+}
+.contents {
+  flex: 1;
+  margin-left: 240px;
+}
