@@ -62,9 +62,7 @@ exports.cityAndProvince = (req, res) => {
         },
       });
       console.error("request pasing error : ", err);
-      // throw new Error("request pasing error : ", err);
+      throw err;
     }
   });
 };
-
-// 2000~2022년 테이블 생성 후
