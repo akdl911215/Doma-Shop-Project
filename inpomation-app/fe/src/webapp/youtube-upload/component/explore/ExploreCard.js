@@ -1,9 +1,11 @@
-import styles from "../../style/ExploreCard.moduel.css";
+import styles from "../../style/ExploreCard.module.css";
 import moment from "moment";
 import "moment/locale/ko";
 import { ProcessViewCount } from "../../util";
 
 const ExploreCard = ({ data }) => {
+  console.log("ExploreCard styles : ", styles);
+
   return (
     <a href={`https://www.youtube.com/watch?v=${data.id}`}>
       <div className={styles.card}>

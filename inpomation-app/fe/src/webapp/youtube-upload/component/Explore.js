@@ -7,13 +7,13 @@ const Explore = () => {
   console.log("Explore ContentsLayout : ", ContentsLayout);
   console.log("Explore youtubeData : ", youtubeData);
   return (
-    <Layout activeMenu="explore">
-      <ContentsLayout>
-        {youtubeData["data"].map((data, index) => {
-          return <ExploreCard key={`explore-card-${index}`} data={data} />;
-        })}
-      </ContentsLayout>
-    </Layout>
+    // <Layout activeMenu="explore">
+    <ContentsLayout>
+      {youtubeData["data"].map((data, index) => {
+        return <ExploreCard key={`explore-card-${index}`} data={data} />;
+      })}
+    </ContentsLayout>
+    // </Layout>
   );
 };
 export default Explore;
