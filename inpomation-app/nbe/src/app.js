@@ -11,6 +11,7 @@ const publicImportAndExportRouter = require("./api/apiData/importAndExportPerfor
 const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByItem");
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
+const youtubeRouter = require("./youtube/youtubeController");
 
 require("dotenv").config();
 const hostname = "localhost";
@@ -29,6 +30,7 @@ app.use("/", mainRouter);
 app.use("/users", userRouter);
 app.use("/portfolio", portfolioRouter);
 app.use("/productInfomation", productInfomationRouter);
+app.use("/youtube", youtubeRouter);
 // app.post("/users/signup", userRouter.userRegister);
 // app.post("/users/signin", userRouter.userSignin);
 
