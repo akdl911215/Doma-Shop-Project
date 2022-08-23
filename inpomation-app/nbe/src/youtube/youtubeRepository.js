@@ -1,5 +1,5 @@
 const request = require("request");
-const parseString = require("xml2js").parseString;
+// const parseString = require("xml2js").parseString;
 require("dotenv").config();
 
 exports.searchList = (req, res) => {
@@ -26,34 +26,20 @@ exports.searchList = (req, res) => {
   );
 
   const url = `https://www.googleapis.com/youtube/v3/search?part=${PART}&maxResults=${LISTCOUNT}&order=${ORDER}&q=${searchWord}&key=${YOUTUBE_API_KEY}`;
-  request({ uri: url, method: "GET" }, (err, response, body) => {
-    console.log("youtube search list 진입 : ", body);
-    if (err) {
-      console.error("유튜브 검색 리스트 error : ", err);
-      throw err;
-    }
 
+  return new Promise((resolve, reject) => {
     try {
-      // res.json({
-      //   result: body,
-      // });
-      parseString(body, (err, result) => {
+      request({ uri: url, method: "GET" }, (err, response, body) => {
+        console.log("youtube search list 진입 : ", body);
         if (err) {
-          console.error(`youtube search list parseSTring error : `, err);
-          res.json({
-            result: err,
-          });
-          return;
+          console.error("유튜브 검색 리스트 error : ", err);
+          throw err;
         }
 
-        console.log("body : ", body);
-
-        res.json({
-          result: result,
-        });
+        resolve(body);
       });
     } catch (err) {
-      console.error("request pasing error : ", err);
+      console.error("request error : ", err);
       throw err;
     }
   });
