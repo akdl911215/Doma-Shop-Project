@@ -3,12 +3,8 @@ const request = require("request");
 require("dotenv").config();
 
 exports.searchList = (req, res) => {
-  console.log("유튜브 리스트 검색 : ", req);
-
-  const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
-  console.log("YOUTUBE_API_KEY : ", YOUTUBE_API_KEY);
-
   // https://developers.google.com/youtube/v3/docs/search/list
+  const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
   const { q } = req; // q : 검색
   const searchWord = encodeURI(q);
   const PART = "snippet"; // id or snippet
@@ -21,31 +17,20 @@ exports.searchList = (req, res) => {
   // title – 제목에 따라 문자순으로 리소스를 정렬합니다.
   // videoCount – 업로드한 동영상 수에 따라 채널을 내림차순으로 정렬합니다.
   // viewCount – 리소스를 조회수가 높은 항목부터 정렬합니다.
-  console.log(
-    `searchWord : ${searchWord}, PART: ${PART}, LISTCOUNT: ${LISTCOUNT}, ORDER: ${ORDER}`
-  );
 
   const url = `https://www.googleapis.com/youtube/v3/search?part=${PART}&maxResults=${LISTCOUNT}&order=${ORDER}&q=${searchWord}&key=${YOUTUBE_API_KEY}`;
-
-  // return new Promise((resolve, reject) => {
-  try {
-    request({ uri: url, method: "GET" }, (err, response, body) => {
-      console.log("youtube search list 진입 : ", body);
-      console.log("typof body ", typeof body);
-      if (err) {
-        console.error("유튜브 검색 리스트 error : ", err);
-        throw err;
-      }
-
-      // console.log("body.items : ", body.items);
-      // resolve(body.items);
-      res.json({
-        result: body,
+  return new Promise((resolve, reject) => {
+    try {
+      request({ uri: url, method: "GET" }, (err, response, body) => {
+        if (err) {
+          console.error("유튜브 검색 리스트 error : ", err);
+          throw err;
+        }
+        resolve(JSON.parse(body));
       });
-    });
-  } catch (err) {
-    console.error("request error : ", err);
-    throw err;
-  }
-  // });
+    } catch (err) {
+      console.error("request error : ", err);
+      throw err;
+    }
+  });
 };
