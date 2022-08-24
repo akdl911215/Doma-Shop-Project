@@ -27,20 +27,25 @@ exports.searchList = (req, res) => {
 
   const url = `https://www.googleapis.com/youtube/v3/search?part=${PART}&maxResults=${LISTCOUNT}&order=${ORDER}&q=${searchWord}&key=${YOUTUBE_API_KEY}`;
 
-  return new Promise((resolve, reject) => {
-    try {
-      request({ uri: url, method: "GET" }, (err, response, body) => {
-        console.log("youtube search list 진입 : ", body);
-        if (err) {
-          console.error("유튜브 검색 리스트 error : ", err);
-          throw err;
-        }
+  // return new Promise((resolve, reject) => {
+  try {
+    request({ uri: url, method: "GET" }, (err, response, body) => {
+      console.log("youtube search list 진입 : ", body);
+      console.log("typof body ", typeof body);
+      if (err) {
+        console.error("유튜브 검색 리스트 error : ", err);
+        throw err;
+      }
 
-        resolve(body);
+      // console.log("body.items : ", body.items);
+      // resolve(body.items);
+      res.json({
+        result: body,
       });
-    } catch (err) {
-      console.error("request error : ", err);
-      throw err;
-    }
-  });
+    });
+  } catch (err) {
+    console.error("request error : ", err);
+    throw err;
+  }
+  // });
 };
