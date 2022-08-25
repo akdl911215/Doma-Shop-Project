@@ -13,10 +13,12 @@ nav ul {
 
 nav li {
 }
-/* nav a {
-  line-height: 50px;
-  height: 50px;
-} */
+nav a {
+  /* line-height: 50px;
+  height: 50px; */
+  text-decoration: none;
+  color: red;
+}
 nav li a {
   box-sizing: border-box;
   -moz-box-sizing: border-box;

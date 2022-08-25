@@ -2,18 +2,23 @@ import Layout from "../component/Layout";
 import ContentsLayout from "../component/ContentsLayout";
 import youtubeData from "../data/youtubeData.json";
 import ExploreCard from "../component/explore/ExploreCard";
+import { Button } from "semantic-ui-react";
+import { useNavigate } from "react-router-dom";
+import GoHomeButton from "webapp/common/component/GoHomeButton";
 
 const Explore = () => {
-  console.log("Explore ContentsLayout : ", ContentsLayout);
-  console.log("Explore youtubeData : ", youtubeData);
+  const navigate = useNavigate();
+
   return (
-    // <Layout activeMenu="explore">
-    <ContentsLayout>
-      {youtubeData["data"].map((data, index) => {
-        return <ExploreCard key={`explore-card-${index}`} data={data} />;
-      })}
-    </ContentsLayout>
-    // </Layout>
+    <>
+      <GoHomeButton />
+      <Button onClick={() => navigate("/youtube_register")}>글 쓰기</Button>
+      <ContentsLayout>
+        {youtubeData["data"].map((data, index) => {
+          return <ExploreCard key={`explore-card-${index}`} data={data} />;
+        })}
+      </ContentsLayout>
+    </>
   );
 };
 export default Explore;

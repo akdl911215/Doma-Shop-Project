@@ -25,6 +25,7 @@ import Home from "webapp/layout/component/Home";
 import MypageTab from "webapp/user/component/MypageTab";
 import Portfolio from "webapp/user/component/Portfolio";
 import Explore from "webapp/youtube-upload/component/Explore";
+import YoutubeRegister from "webapp/youtube-upload/component/YoutubeRegister";
 
 const App = () => {
   return (
@@ -90,6 +91,7 @@ const App = () => {
         <Route path="/portfolio" element={<Portfolio />} />
 
         <Route path="/youtube_explore" element={<Explore />} />
+        <Route path="/youtube_register" element={<YoutubeRegister />} />
       </Routes>
     </>
   );
