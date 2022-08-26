@@ -25,7 +25,7 @@ import Home from "webapp/layout/component/Home";
 import MypageTab from "webapp/user/component/MypageTab";
 import Portfolio from "webapp/user/component/Portfolio";
 import Explore from "webapp/youtube-upload/component/Explore";
-import YoutubeRegister from "webapp/youtube-upload/component/YoutubeRegister";
+import YoutubeRegister from "webapp/youtube-upload/component/Register";
 
 const App = () => {
   return (
