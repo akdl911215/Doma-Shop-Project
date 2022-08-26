@@ -14,29 +14,34 @@ const Register = () => {
   const [data, setData] = useState([]);
 
   const searchList = () => {
-    YoutubeSearchListDataAPI({ q: search }).then((res) => {
-      console.log("res : ", res);
+    YoutubeSearchListDataAPI({ q: search })
+      .then((res) => {
+        console.log("res : ", res);
 
-      const arr = [];
-      for (let i = 0; i < res?.data?.list.length; ++i) {
-        const state = {
-          id: res?.data?.list[i]?.id?.videoId,
-          channelId: res?.data?.list[i]?.snippet?.channelId,
-          title: res?.data?.list[i]?.snippet?.title,
-          thumbnail: res?.data?.list[i]?.snippet?.thumbnails?.default,
-          description: res?.data?.list[i]?.snippet?.description,
-          channelTitle: res?.data?.list[i]?.snippet?.channelTitle,
-          viewCount: "",
-          likeCount: "",
-          channelUrl: "",
-          channelThumbnail: "",
-          date: "",
-        };
-        arr.push(state);
-      }
-      console.log("arr : ", arr);
-      setData(arr);
-    });
+        const arr = [];
+        for (let i = 0; i < res?.data?.list.length; ++i) {
+          const state = {
+            id: res?.data?.list[i]?.id?.videoId,
+            channelId: res?.data?.list[i]?.snippet?.channelId,
+            title: res?.data?.list[i]?.snippet?.title,
+            thumbnail: res?.data?.list[i]?.snippet?.thumbnails?.high?.url,
+            description: res?.data?.list[i]?.snippet?.description,
+            channelTitle: res?.data?.list[i]?.snippet?.channelTitle,
+            viewCount: "",
+            likeCount: "",
+            channelUrl: "",
+            channelThumbnail:
+              res?.data?.list[i]?.snippet?.thumbnails?.high?.url,
+            date: "",
+          };
+          arr.push(state);
+        }
+        console.log("arr : ", arr);
+        setData(arr);
+      })
+      .catch((err) =>
+        console.error("YoutubeSearchListDataAPI catch error : ", err)
+      );
     console.log("data :: ", data);
   };
   return (
