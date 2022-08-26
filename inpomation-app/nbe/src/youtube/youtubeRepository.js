@@ -1,10 +1,10 @@
 const request = require("request");
 // const parseString = require("xml2js").parseString;
 require("dotenv").config();
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 
 exports.searchList = (req, res) => {
   // https://developers.google.com/youtube/v3/docs/search/list
-  const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
   const { q } = req; // q : 검색
   const searchWord = encodeURI(q);
   const PART = "snippet"; // id or snippet
@@ -19,6 +19,7 @@ exports.searchList = (req, res) => {
   // viewCount – 리소스를 조회수가 높은 항목부터 정렬합니다.
 
   const url = `https://www.googleapis.com/youtube/v3/search?part=${PART}&maxResults=${LISTCOUNT}&order=${ORDER}&q=${searchWord}&key=${YOUTUBE_API_KEY}`;
+
   return new Promise((resolve, reject) => {
     try {
       request({ uri: url, method: "GET" }, (err, response, body) => {
@@ -34,3 +35,48 @@ exports.searchList = (req, res) => {
     }
   });
 };
+
+exports.searchVideos = (req, res) => {
+  console.log("searchVideos req : ", req);
+
+  return new Promise((resolve, reject) => {
+    try {
+      const url = `https://www.googleapis.com/youtube/v3/videos?id=${req?.id}&key=${YOUTUBE_API_KEY}&part=snippet,contentDetails,statistics,status`;
+      request({ uri: url, method: "GET" }, (err, response, body) => {
+        if (err) {
+          console.error("유튜브 검색 리스트 url error : ", err);
+          throw err;
+        }
+        console.log("body : ", body);
+        resolve(body);
+      });
+    } catch (err) {
+      console.error("search videos catch error : ", err);
+    }
+  });
+};
+// exports.searchVideos = (req, res) => {
+//   console.log("req : ", req);
+//   console.log("req?.items.length : ", req?.items.length);
+//   return new Promise((resolve, reject) => {
+//     try {
+//       let arr = [];
+//       for (let i = 0; i < req?.items.length; ++i) {
+//         console.log("for 시작");
+//         console.log("req?.items?.id.videoId : ", req?.items[i]?.id.videoId);
+//         const url = `https://www.googleapis.com/youtube/v3/videos?id=${req?.items[i]?.id?.videoId}&key=${YOUTUBE_API_KEY}&part=snippet,contentDetails,statistics,status`;
+//         request({ uri: url, method: "GET" }, (err, response, body) => {
+//           if (err) {
+//             console.error("유튜브 검색 리스트 url error : ", err);
+//             throw err;
+//           }
+//           console.log("body : ", body);
+//           arr.push(body);
+//         });
+//       }
+//       resolve(arr);
+//     } catch (err) {
+//       console.error("search videos catch error : ", err);
+//     }
+//   });
+// };
