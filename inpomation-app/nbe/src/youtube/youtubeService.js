@@ -3,8 +3,10 @@ const repository = require("./youtubeRepository");
 class youtubeService {
   async searchList(search) {
     const list = await repository.searchList(search);
+    console.log("service list : ", list);
 
     let arr = [];
+    console.log("Service list.items.length : ", list.items.length);
     for (let i = 0; i < list.items.length; ++i) {
       const result = await repository.searchVideos({
         id: list?.items[i]?.id?.videoId,
@@ -29,6 +31,7 @@ class youtubeService {
       };
       returnValue.push(state);
     }
+    console.log("returnValue : ", returnValue);
     return returnValue;
   }
 }

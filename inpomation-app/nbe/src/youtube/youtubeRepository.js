@@ -28,14 +28,17 @@ exports.searchList = (req, res) => {
           throw err;
         }
 
+        console.log("JSON.parse(body) : ", JSON.parse(body));
         const result = JSON.parse(body);
-        console.log("result : ", result);
-        const returnValue = result.filter(
-          (el, key) => el?.items[key]?.id?.videoId !== undefined
-        );
 
-        console.log("returnValue : ", returnValue);
-        resolve(returnValue);
+        resolve({
+          kind: result.kind,
+          etag: result.etag,
+          nextPageToken: result.nextPageToken,
+          regionCode: result.regionCode,
+          pageInfo: result.pageInfo,
+          items: result?.items?.filter((el) => el?.id?.videoId !== undefined),
+        });
       });
     } catch (err) {
       console.error("request error : ", err);
