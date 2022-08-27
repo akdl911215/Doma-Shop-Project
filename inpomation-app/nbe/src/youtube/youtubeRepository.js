@@ -27,7 +27,15 @@ exports.searchList = (req, res) => {
           console.error("유튜브 검색 리스트 error : ", err);
           throw err;
         }
-        resolve(JSON.parse(body));
+
+        const result = JSON.parse(body);
+        console.log("result : ", result);
+        const returnValue = result.filter(
+          (el, key) => el?.items[key]?.id?.videoId !== undefined
+        );
+
+        console.log("returnValue : ", returnValue);
+        resolve(returnValue);
       });
     } catch (err) {
       console.error("request error : ", err);
@@ -47,7 +55,7 @@ exports.searchVideos = (req, res) => {
           console.error("유튜브 검색 리스트 url error : ", err);
           throw err;
         }
-        console.log("body : ", body);
+        // console.log("body : ", body);
         resolve(body);
       });
     } catch (err) {
@@ -56,7 +64,7 @@ exports.searchVideos = (req, res) => {
   });
 };
 // exports.searchVideos = (req, res) => {
-//   console.log("req : ", req);
+//   // console.log("req : ", req);
 //   console.log("req?.items.length : ", req?.items.length);
 //   return new Promise((resolve, reject) => {
 //     try {
@@ -66,12 +74,17 @@ exports.searchVideos = (req, res) => {
 //         console.log("req?.items?.id.videoId : ", req?.items[i]?.id.videoId);
 //         const url = `https://www.googleapis.com/youtube/v3/videos?id=${req?.items[i]?.id?.videoId}&key=${YOUTUBE_API_KEY}&part=snippet,contentDetails,statistics,status`;
 //         request({ uri: url, method: "GET" }, (err, response, body) => {
-//           if (err) {
-//             console.error("유튜브 검색 리스트 url error : ", err);
-//             throw err;
+//           try {
+//             console.log("request !! ");
+//             if (err) {
+//               console.error("유튜브 검색 리스트 url error : ", err);
+//               throw err;
+//             }
+//             console.log("body : ", body);
+//             arr.push(body);
+//           } catch (err) {
+//             console.error("request error : ", err);
 //           }
-//           console.log("body : ", body);
-//           arr.push(body);
 //         });
 //       }
 //       resolve(arr);

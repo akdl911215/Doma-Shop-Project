@@ -3,23 +3,33 @@ const repository = require("./youtubeRepository");
 class youtubeService {
   async searchList(search) {
     const list = await repository.searchList(search);
-    console.log("list.items.length :: ", list.items.length);
 
     let arr = [];
-    list.items.forEach((element, key) => {
-      const result = repository.searchVideos({
-        id: element?.id?.videoId,
+    for (let i = 0; i < list.items.length; ++i) {
+      const result = await repository.searchVideos({
+        id: list?.items[i]?.id?.videoId,
       });
+
       console.log("result : ", result);
 
       arr.push(result);
-    });
-    console.log("arr ::: ", arr);
+    }
 
-    return await arr;
-    // const result = await repository.searchVideos(list);
-    // console.log("youyube list reuslt : ", result);
-    // return;
+    let returnValue = [];
+    for (let i = 0; list.items.length; ++i) {
+      const state = {
+        pageInfo: list?.pageInfo,
+        id: list?.items[i]?.id,
+        snippet: arr[i]?.snippet,
+        channelTitle: arr[i]?.snippet?.channelTitle,
+        categoryId: arr[i]?.snippet?.categoryId,
+        contentDetails: arr[i]?.contentDetails,
+        status: arr[i]?.status,
+        statistics: arr[i]?.statistics,
+      };
+      returnValue.push(state);
+    }
+    return returnValue;
   }
 }
 
