@@ -1,5 +1,4 @@
 const request = require("request");
-// const parseString = require("xml2js").parseString;
 require("dotenv").config();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 
@@ -28,7 +27,6 @@ exports.searchList = (req, res) => {
           throw err;
         }
 
-        console.log("JSON.parse(body) : ", JSON.parse(body));
         const result = JSON.parse(body);
 
         resolve({
@@ -48,17 +46,18 @@ exports.searchList = (req, res) => {
 };
 
 exports.searchVideos = (req, res) => {
-  console.log("searchVideos req : ", req);
-
   return new Promise((resolve, reject) => {
     try {
-      const url = `https://www.googleapis.com/youtube/v3/videos?id=${req?.id}&key=${YOUTUBE_API_KEY}&part=snippet,contentDetails,statistics,status`;
+      // const PART = "snippet,contentDetails,statistics,status";
+      const PART =
+        "snippet, contentDetails, fileDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, topicDetails";
+
+      const url = `https://www.googleapis.com/youtube/v3/videos?id=${req?.id}&key=${YOUTUBE_API_KEY}&part=${PART}`;
       request({ uri: url, method: "GET" }, (err, response, body) => {
         if (err) {
           console.error("유튜브 검색 리스트 url error : ", err);
           throw err;
         }
-        // console.log("body : ", body);
         resolve(body);
       });
     } catch (err) {
@@ -66,33 +65,3 @@ exports.searchVideos = (req, res) => {
     }
   });
 };
-// exports.searchVideos = (req, res) => {
-//   // console.log("req : ", req);
-//   console.log("req?.items.length : ", req?.items.length);
-//   return new Promise((resolve, reject) => {
-//     try {
-//       let arr = [];
-//       for (let i = 0; i < req?.items.length; ++i) {
-//         console.log("for 시작");
-//         console.log("req?.items?.id.videoId : ", req?.items[i]?.id.videoId);
-//         const url = `https://www.googleapis.com/youtube/v3/videos?id=${req?.items[i]?.id?.videoId}&key=${YOUTUBE_API_KEY}&part=snippet,contentDetails,statistics,status`;
-//         request({ uri: url, method: "GET" }, (err, response, body) => {
-//           try {
-//             console.log("request !! ");
-//             if (err) {
-//               console.error("유튜브 검색 리스트 url error : ", err);
-//               throw err;
-//             }
-//             console.log("body : ", body);
-//             arr.push(body);
-//           } catch (err) {
-//             console.error("request error : ", err);
-//           }
-//         });
-//       }
-//       resolve(arr);
-//     } catch (err) {
-//       console.error("search videos catch error : ", err);
-//     }
-//   });
-// };
