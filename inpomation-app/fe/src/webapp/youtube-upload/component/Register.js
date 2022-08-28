@@ -22,13 +22,19 @@ const Register = () => {
         for (let i = 0; i < res?.data?.list.length; ++i) {
           const state = {
             id: res?.data?.list[i]?.id?.videoId,
-            channelId: res?.data?.list[i]?.snippet?.channelId,
-            title: res?.data?.list[i]?.snippet?.title,
-            thumbnail: res?.data?.list[i]?.snippet?.thumbnails?.high?.url,
-            description: res?.data?.list[i]?.snippet?.description,
-            channelTitle: res?.data?.list[i]?.snippet?.channelTitle,
-            viewCount: "",
-            likeCount: "",
+            channelId: res?.data?.list[i]?.items?.items[0]?.snippet?.channelId,
+            title: res?.data?.list[i]?.items?.items[0]?.snippet?.title,
+            thumbnail:
+              res?.data?.list[i]?.items?.items[0]?.snippet?.thumbnails?.high
+                ?.url,
+            description:
+              res?.data?.list[i]?.items?.items[0]?.snippet?.description,
+            channelTitle:
+              res?.data?.list[i]?.items?.items[0]?.snippet?.channelTitle,
+            viewCount:
+              res?.data?.list[i]?.items?.items[0]?.statistics?.viewCount,
+            likeCount:
+              res?.data?.list[i]?.items?.items[0]?.statistics?.likeCount,
             channelUrl: "",
             channelThumbnail:
               res?.data?.list[i]?.snippet?.thumbnails?.high?.url,
