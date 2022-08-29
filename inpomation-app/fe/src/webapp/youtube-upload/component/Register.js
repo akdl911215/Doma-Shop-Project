@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import ContentsLayout from "./ContentsLayout";
 import ExploreCard from "./explore/ExploreCard";
+import RegisterCard from "./explore/SearchListCard";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const Register = () => {
             channelUrl: "",
             channelThumbnail:
               res?.data?.list[i]?.snippet?.thumbnails?.high?.url,
-            date: "",
+            date: res?.data?.list[i]?.snippet?.publishedAt,
           };
           arr.push(state);
         }
@@ -95,7 +96,7 @@ const Register = () => {
       </Container>
       <ContentsLayout>
         {data.map((data, index) => {
-          return <ExploreCard key={`explore-card-${index}`} data={data} />;
+          return <RegisterCard key={`explore-card-${index}`} data={data} />;
         })}
       </ContentsLayout>
     </>
