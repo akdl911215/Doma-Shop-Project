@@ -48,9 +48,9 @@ exports.searchList = (req, res) => {
 exports.searchVideos = (req, res) => {
   return new Promise((resolve, reject) => {
     try {
-      // const PART = "snippet,contentDetails,statistics,status";
-      const PART =
-        "snippet, contentDetails, fileDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, topicDetails";
+      const PART = "snippet,contentDetails,statistics,status";
+      // const PART =
+      //   "snippet, contentDetails, fileDetails, player, processingDetails, recordingDetails, statistics, status, suggestions, topicDetails";
 
       const url = `https://www.googleapis.com/youtube/v3/videos?id=${req?.id}&key=${YOUTUBE_API_KEY}&part=${PART}`;
       request({ uri: url, method: "GET" }, (err, response, body) => {
