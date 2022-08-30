@@ -1,6 +1,45 @@
 const request = require("request");
 require("dotenv").config();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+const db = require("../api/middlewares/pool");
+
+exports.upload = (req, res) => {
+  const { userId, username, url, title } = req;
+  console.log(
+    `userId: ${userId}, username: ${username}, url: ${url}, title: ${title}`
+  );
+  //   userId: user?.id,
+  // username: video?.username,
+  // url: video?.url,
+  // title: video?.title,
+
+  const sql = `INSERT INTO youtube(url, username, user_id) VALUES ('${url}', '${username}', ${userId})`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection error : ", err);
+            resolve({
+              message: "유튜브 업로드 실패",
+            });
+          }
+
+          if (doc) {
+            resolve({
+              code: 200,
+              message: "유튜브 업로드 성공",
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("youtube upload db error : ", err);
+    }
+  });
+};
 
 exports.searchList = (req, res) => {
   // https://developers.google.com/youtube/v3/docs/search/list

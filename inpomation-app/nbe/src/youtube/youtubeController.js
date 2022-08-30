@@ -8,4 +8,8 @@ router.post("/searchList", async (req, res, next) => {
   });
 });
 
+router.post("/upload", async (req, res, next) => {
+  const result = await service.upload(req?.body);
+});
+
 module.exports = router;
