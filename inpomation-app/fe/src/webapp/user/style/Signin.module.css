@@ -1,0 +1,153 @@
+.signinBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+  /* 행과 열 사이의 간격을 설정
+  파라미터 1개의 경우 row설정되고 같은 값으로 column도 설정됨 */
+
+  position: absolute;
+  width: 350px;
+  height: 375px;
+  left: calc(50% - 350px / 2);
+  top: calc(50% - 375px / 2 + 0.5px);
+
+  background: #ffffff;
+  box-shadow: 0px 10px 25px rgba(29, 52, 54, 0.08);
+  border-radius: 10px;
+}
+.title {
+  display: flex;
+  flex-direction: row; /* 플렉스 컨테이너 내의 아이템을 배치할 때 사용할 주축 및 방향을 지정 */
+  justify-content: center;
+  /* 브라우저가 플렉스 컨테이너의 기본 축과 그리드 컨테이너의 인라인 축을 
+  justift-content따라 콘첸츠 항목 사이와 주위에 공간을 분배하는 방법 */
+  align-items: center;
+  /* 모든 직계 자식의 값 align-self을 그룹으로 설정
+  Flexbox에서는 Cross Axis 항목의 정렬을 제어
+  그리드 레이아웃에서는 그리드 영역 내에서 블록 축의 항목 정렬을 제어 */
+  padding: 0px;
+  gap: 10px;
+
+  width: 310px;
+  height: 25px;
+
+  flex: none;
+  order: 0;
+  /* 플렉스 또는 그리드 컨테이너 안에서 현재 요소의 배치 순서를 지정
+  컨테이너 아이템의 정렬 순서는 오름차순 order 값이고, 같은 값일 경우
+  소스 코드의 순서대로 정렬된다 */
+  align-self: stretch;
+  flex-grow: 0;
+}
+.titleText {
+  width: 47px;
+  height: 25px;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 1000;
+  font-size: 18px;
+  line-height: 25px;
+
+  letter-spacing: 0.02em;
+  /* 글자 사이 간격 조절 */
+  color: #29a19c;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 20px;
+
+  width: 310px;
+  height: 290px;
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.usernameBox {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  gap: 10px;
+
+  width: 310px;
+  height: 39px;
+
+  border: 1px solid rgba(40, 40, 70, 0.01);
+  border-radius: 8px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.passwordBox {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  gap: 10px;
+
+  width: 310px;
+  height: 39px;
+  border: 1px solid rgba(40, 40, 70, 0.1);
+  border-radius: 8px;
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.signinButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 92px;
+  height: 42px;
+
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+.signinBtnText {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25px;
+  gap: 10px;
+
+  width: 92px;
+  height: 42px;
+
+  background: #cecece;
+  border-radius: 8px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.signupText {
+}
+.divide {
+}
+.snsBox {
+}

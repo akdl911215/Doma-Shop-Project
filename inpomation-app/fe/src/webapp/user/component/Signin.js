@@ -13,7 +13,7 @@ import SignupButton from "../../common/component/SignupButton";
 import { UserSigninDataAPI, UserAuthDataAPI } from "../../api/userApi";
 import SignOutButton from "webapp/common/component/SignOutButton";
 
-import styles from "../style/UserSignin.module.css";
+import styles from "../style/Signin.module.css";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -60,46 +60,26 @@ const Signin = () => {
 
   return (
     <>
-      <Grid
-        className={styles.SigninGridStyle}
-        textAlign="center"
-        verticalAlign="middle"
-      >
-        <Grid.Column className={styles.SigninGridColumnStyle}>
-          <Header as="h2" color="blue" textAlign="center">
-            <img src={Betazon} alt="betazon_logo" className="betazonLogo" />
-          </Header>
-          <Form size="large">
-            <Segment stacked>
-              <Form.Input
-                fluid
-                icon="user"
-                name="username"
-                iconPosition="left"
-                placeholder="E-mail address"
-                onChange={handleChange}
-              />
-              <Form.Input
-                fluid
-                icon="lock"
-                name="password"
-                iconPosition="left"
-                placeholder="Password"
-                type="password"
-                onChange={handleChange}
-              />
-              <Button secondary onClick={signinButton}>
-                로그인
-              </Button>
-              <SignOutButton />
-            </Segment>
-          </Form>
-
-          <Message>
-            회원가입이 안됬나요?ㅤ <SignupButton />
-          </Message>
-        </Grid.Column>
-      </Grid>
+      <div className={styles.signinBox}>
+        <div className={styles.title}>
+          <spna className={styles.titleText}>Login</spna>
+        </div>
+        <div className={styles.body}>
+          <input
+            className={styles.usernameBox}
+            type="text"
+            placeholder="아이디를 입력하세요."
+          />
+          <input
+            className={styles.passwordBox}
+            type="password"
+            placeholder="비밀번호를 입력하세요."
+          />
+          <button className={styles.signinButton}>
+            <span className={styles.signinBtnText}>Login</span>
+          </button>
+        </div>
+      </div>
     </>
   );
 };
