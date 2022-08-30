@@ -16,15 +16,11 @@ const SearchListCard = ({ data }) => {
     }
 
     const upload = window.confirm(
-      `[${video.title}] 영상을 홈페이지에 업로드 하시겠습니까?`
+      `[ ${video.title} ] 영상을 홈페이지에 업로드 하시겠습니까?`
     );
 
     if (upload) {
-      const state = {
-        url: video.url,
-        title: video.title,
-        username: sessionStorage.getItem("username"),
-      };
+      console.log("upload video : ", video);
 
       // 백으로 레지스터 하기
     }
@@ -63,6 +59,7 @@ const SearchListCard = ({ data }) => {
             videoRegister({
               url: videoUrl,
               title: data.title,
+              username: sessionStorage.getItem("username"),
             })
           }
         >
