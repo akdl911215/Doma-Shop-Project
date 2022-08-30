@@ -14,9 +14,7 @@ import { UserSigninDataAPI, UserAuthDataAPI } from "../../api/userApi";
 import SignOutButton from "webapp/common/component/SignOutButton";
 import styles from "../style/Signin.module.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import Button from "@mui/material/Button";
-// import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
-
+import TwitterIcon from "@mui/icons-material/Twitter";
 const Signin = () => {
   const navigate = useNavigate();
   const [signin, setSignin] = useState({
@@ -54,6 +52,8 @@ const Signin = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    console.log(`name : ${name}, value : ${value}`);
     setSignin({
       ...signin,
       [name]: value,
@@ -72,14 +72,18 @@ const Signin = () => {
             className={styles.usernameBox}
             type="text"
             placeholder="아이디를 입력하세요."
+            name="username"
+            onChange={handleChange}
           />
           <input
             className={styles.passwordBox}
             type="password"
+            name="password"
             placeholder="비밀번호를 입력하세요."
+            onChange={handleChange}
           />
           <div className={styles.signinBtnBox}>
-            <button className={styles.signinButton}>
+            <button className={styles.signinButton} onClick={signinButton}>
               <span className={styles.signinBtnText}>Login</span>
             </button>
           </div>
@@ -94,10 +98,11 @@ const Signin = () => {
           </div>
           <div className={styles.snsBox}>
             <div className={styles.facebook}>
-              {/* <FacebookIcon /> */}
-              <Button>heloo</Button>
+              <FacebookIcon />
             </div>
-            <div className={styles.twiter}></div>
+            <div className={styles.twiter}>
+              <TwitterIcon />
+            </div>
           </div>
         </div>
       </div>

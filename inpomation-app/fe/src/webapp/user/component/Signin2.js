@@ -15,7 +15,7 @@ import SignOutButton from "webapp/common/component/SignOutButton";
 
 import styles from "../style/UserSignin.module.css";
 
-const Signin = () => {
+const Signin2 = () => {
   const navigate = useNavigate();
   const [signin, setSignin] = useState({
     username: "",
@@ -103,4 +103,4 @@ const Signin = () => {
     </>
   );
 };
-export default Signin;
+export default Signin2;

@@ -2,6 +2,7 @@ import styles from "../../style/SearchListCard.module.css";
 import moment from "moment";
 import "moment/locale/ko";
 import { ProcessViewCount } from "../../util";
+import { YoutubeUploadDataAPI } from "webapp/api/youubeApi";
 
 const SearchListCard = ({ data }) => {
   console.log("SearchListCard data : ", data);
@@ -22,7 +23,7 @@ const SearchListCard = ({ data }) => {
     if (upload) {
       console.log("upload video : ", video);
 
-      // 백으로 레지스터 하기
+      YoutubeUploadDataAPI(video);
     }
   };
 

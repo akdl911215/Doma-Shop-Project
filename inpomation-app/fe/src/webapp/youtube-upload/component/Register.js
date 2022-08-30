@@ -51,6 +51,9 @@ const Register = () => {
       );
     console.log("data :: ", data);
   };
+
+  // https://intrepidgeeks.com/tutorial/react-easily-import-youtube-videos-react-player
+
   return (
     <>
       <div>
