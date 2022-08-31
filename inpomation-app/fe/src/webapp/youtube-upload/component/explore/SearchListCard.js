@@ -3,8 +3,11 @@ import moment from "moment";
 import "moment/locale/ko";
 import { ProcessViewCount } from "../../util";
 import { YoutubeUploadDataAPI } from "webapp/api/youubeApi";
+import { UserAuthDataAPI } from "webapp/api/userApi";
+import { useNavigate } from "react-router-dom";
 
 const SearchListCard = ({ data }) => {
+  const navigate = useNavigate();
   console.log("SearchListCard data : ", data);
   const videoUrl = `https://www.youtube.com/watch?v=${data.id}`;
 
@@ -23,7 +26,17 @@ const SearchListCard = ({ data }) => {
     if (upload) {
       console.log("upload video : ", video);
 
-      YoutubeUploadDataAPI(video);
+      UserAuthDataAPI().then((res) => {
+        if (res?.data?.code === 200) {
+          YoutubeUploadDataAPI(video);
+        } else {
+          const login = window.confirm(
+            "로그인 후 이용이 가능합니다. 로그인 하시겠습니까?"
+          );
+
+          if (login) navigate("/users_signin");
+        }
+      });
     }
   };
 
@@ -58,8 +71,8 @@ const SearchListCard = ({ data }) => {
         <button
           onClick={() =>
             videoRegister({
+              ...data,
               url: videoUrl,
-              title: data.title,
               username: sessionStorage.getItem("username"),
             })
           }
