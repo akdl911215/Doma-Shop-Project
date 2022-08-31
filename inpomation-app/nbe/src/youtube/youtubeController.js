@@ -9,7 +9,13 @@ router.post("/searchList", async (req, res, next) => {
 });
 
 router.post("/upload", async (req, res, next) => {
-  const result = await service.upload(req?.body);
+  res.json({
+    result: await service.upload(req?.body),
+  });
+});
+
+router.post("/list", async (req, res, next) => {
+  const a = "";
 });
 
 module.exports = router;

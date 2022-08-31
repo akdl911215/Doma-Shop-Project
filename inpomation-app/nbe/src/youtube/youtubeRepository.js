@@ -13,7 +13,6 @@ exports.upload = (req, res) => {
     id,
     channelId,
     thumbnail,
-    description,
     channelTitle,
   } = req;
 
@@ -31,8 +30,27 @@ exports.upload = (req, res) => {
   // likeCount: '2025',
   // channelUrl: '',
 
-  const sql = `INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, replace(description, '\n', ' '), channel_title, channel_id) 
-                  VALUES ('${url}', '${username}', ${userId}, '${id}', '${thumbnail}', '${title}', '${description}', '${channelTitle}', '${channelId}')`;
+  // const sql = `INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, channel_title, channel_id)
+  //                 VALUES ('${url}', '${username}', ${userId}, '${id}', '${thumbnail}',  '${title}', '${channelTitle}', '${channelId}')`;
+  const sql =
+    "INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, channel_title, channel_id) VALUES ('" +
+    url +
+    "', '" +
+    username +
+    "', '" +
+    userId +
+    "', '" +
+    id +
+    "', '" +
+    thumbnail +
+    "', '" +
+    title +
+    "', '" +
+    channelTitle +
+    "', '" +
+    channelId +
+    "')";
+  // VALUES (``${url}', '${username}', ${userId}, '${id}', '${thumbnail}',  '${title}', '${channelTitle}', '${channelId}');
   console.log("sql :: ", sql);
 
   return new Promise((resolve, reject) => {
