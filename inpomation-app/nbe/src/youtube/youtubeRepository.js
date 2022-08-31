@@ -31,7 +31,7 @@ exports.upload = (req, res) => {
   // likeCount: '2025',
   // channelUrl: '',
 
-  const sql = `INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, REPLACE('description', ''', ''''), channel_title, channel_id) 
+  const sql = `INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, replace(description, '\n', ' '), channel_title, channel_id) 
                   VALUES ('${url}', '${username}', ${userId}, '${id}', '${thumbnail}', '${title}', '${description}', '${channelTitle}', '${channelId}')`;
   console.log("sql :: ", sql);
 
