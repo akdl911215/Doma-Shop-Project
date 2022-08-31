@@ -8,8 +8,7 @@ class youtubeService {
     const result = await repository.upload({
       userId: user?.id,
       username: video?.username,
-      url: video?.url,
-      title: video?.title,
+      ...video,
     });
 
     console.log("service result : ", result);

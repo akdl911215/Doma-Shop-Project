@@ -4,16 +4,36 @@ const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
 exports.upload = (req, res) => {
-  const { userId, username, url, title } = req;
-  console.log(
-    `userId: ${userId}, username: ${username}, url: ${url}, title: ${title}`
-  );
+  // console.log("upload req : ", req);
+  const {
+    userId,
+    username,
+    url,
+    title,
+    id,
+    channelId,
+    thumbnail,
+    description,
+    channelTitle,
+  } = req;
+
   //   userId: user?.id,
   // username: video?.username,
   // url: video?.url,
-  // title: video?.title,
+  //
+  // id: 'ghg0fYxbefU',
+  // channelId: 'UCWlV3Lz_55UaX4JsMj-z__Q',
+  // title: '국힘 "결국은 투표로 단일화"…인명진 "安 완주는 정권연장"',
+  // thumbnail: 'https://i.ytimg.com/vi/ghg0fYxbefU/hqdefault.jpg',
+  // description:
+  // channelTitle: '뉴스TVCHOSUN',
+  // viewCount: '68328',
+  // likeCount: '2025',
+  // channelUrl: '',
 
-  const sql = `INSERT INTO youtube(url, username, user_id) VALUES ('${url}', '${username}', ${userId})`;
+  const sql = `INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, REPLACE('description', ''', ''''), channel_title, channel_id) 
+                  VALUES ('${url}', '${username}', ${userId}, '${id}', '${thumbnail}', '${title}', '${description}', '${channelTitle}', '${channelId}')`;
+  console.log("sql :: ", sql);
 
   return new Promise((resolve, reject) => {
     try {
