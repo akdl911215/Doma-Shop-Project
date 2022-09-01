@@ -6,3 +6,6 @@ export const YoutubeSearchListDataAPI = (search) =>
 
 export const YoutubeUploadDataAPI = (video) =>
   client.post(backUrl + "/youtube/upload", video);
+
+export const YoutubeListDataAPI = (page) =>
+  client.post(backUrl + "/youtube/list", { viewPage: page });
