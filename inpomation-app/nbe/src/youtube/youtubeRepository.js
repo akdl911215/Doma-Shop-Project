@@ -4,7 +4,6 @@ const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
 exports.upload = (req, res) => {
-  // console.log("upload req : ", req);
   const {
     userId,
     username,
@@ -14,56 +13,24 @@ exports.upload = (req, res) => {
     channelId,
     thumbnail,
     channelTitle,
+    description,
   } = req;
 
-  //   userId: user?.id,
-  // username: video?.username,
-  // url: video?.url,
-  //
-  // id: 'ghg0fYxbefU',
-  // channelId: 'UCWlV3Lz_55UaX4JsMj-z__Q',
-  // title: '국힘 "결국은 투표로 단일화"…인명진 "安 완주는 정권연장"',
-  // thumbnail: 'https://i.ytimg.com/vi/ghg0fYxbefU/hqdefault.jpg',
-  // description:
-  // channelTitle: '뉴스TVCHOSUN',
-  // viewCount: '68328',
-  // likeCount: '2025',
-  // channelUrl: '',
+  const titleArr = [...title];
+  const replaceTitle = titleArr.map((el) => el.replace("'", `''`)).join("");
 
-  const arr = [...title];
-  console.log("arr : ", arr);
+  const thumbnailArr = [...thumbnail];
+  const replaceThumbnail = thumbnailArr
+    .map((el) => el.replace("'", `''`))
+    .join("");
 
-  const arr2 = [];
-  for (let i = 0; i < arr.length; ++i) {
-    const text2 = arr[i];
-    arr2.push(text2.replace("'", `''`));
-  }
-  console.log("arr2 : ", arr2);
+  const descriptionArr = [...description];
+  const replaceDesciption = descriptionArr
+    .map((el) => el.replace("'", `''`))
+    .join("");
 
-  const replaceTitle = arr2.join("");
-  console.log("replaceTitle : ", replaceTitle);
-
-  const sql = `INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, channel_title, channel_id) 
-                VALUES ('${url}', '${username}', ${userId}, '${id}', '${thumbnail}', '${replaceTitle}', '${channelTitle}', '${channelId}')`;
-  // const sql =
-  //   "INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, channel_title, channel_id) VALUES ('" +
-  //   url +
-  //   "', '" +
-  //   username +
-  //   "', '" +
-  //   userId +
-  //   "', '" +
-  //   id +
-  //   "', '" +
-  //   thumbnail +
-  //   "', '" +
-  //   title +
-  //   "', '" +
-  //   channelTitle +
-  //   "', '" +
-  //   channelId +
-  //   "')";
-  console.log("sql :: ", sql);
+  const sql = `INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, channel_title, channel_id, description) 
+                VALUES ('${url}', '${username}', ${userId}, '${id}', '${replaceThumbnail}', '${replaceTitle}', '${channelTitle}', '${channelId}', '${replaceDesciption}')`;
 
   return new Promise((resolve, reject) => {
     try {
@@ -73,6 +40,7 @@ exports.upload = (req, res) => {
             console.error("connection error : ", err);
             resolve({
               message: "유튜브 업로드 실패",
+              error: err,
             });
           }
 

@@ -28,7 +28,15 @@ const SearchListCard = ({ data }) => {
 
       UserAuthDataAPI().then((res) => {
         if (res?.data?.code === 200) {
-          YoutubeUploadDataAPI(video);
+          YoutubeUploadDataAPI(video)
+            .then((res) => {
+              if (res?.data?.result?.error?.code === "ER_DUP_ENTRY")
+                alert("업로드 되어있는 영상입니다.");
+              else alert(res?.data?.result?.message);
+            })
+            .catch((err) =>
+              console.error("youtube upload catch error : ", err)
+            );
         } else {
           const login = window.confirm(
             "로그인 후 이용이 가능합니다. 로그인 하시겠습니까?"
