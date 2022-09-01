@@ -3,13 +3,50 @@ require("dotenv").config();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
+exports.list = (req, res) => {
+  console.log("req?.viewPage : ", req?.viewPage);
+
+  let sql = "";
+  req?.viewPage === "main"
+    ? (sql = `SELECT * FROM youtube ORDER BY id DESC LIMIT 0, 3`)
+    : (sql = `SELECT * FROM youtube ORDER BY id desc`);
+
+  console.log("sql : ", sql);
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection error : ", err);
+            resolve({
+              message: "전체 리스트 출력 에러",
+              error: err,
+            });
+          }
+
+          if (doc) {
+            resolve({
+              code: 200,
+              message: "전체 리스트 출력 성공",
+              list: doc,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("list db connection catch error : ", err);
+    }
+  });
+};
+
 exports.upload = (req, res) => {
   const {
     userId,
     username,
     url,
     title,
-    id,
+    id: videoId,
     channelId,
     thumbnail,
     channelTitle,
@@ -30,7 +67,7 @@ exports.upload = (req, res) => {
     .join("");
 
   const sql = `INSERT INTO youtube(url, username, user_id, video_id, thumbnail, title, channel_title, channel_id, description) 
-                VALUES ('${url}', '${username}', ${userId}, '${id}', '${replaceThumbnail}', '${replaceTitle}', '${channelTitle}', '${channelId}', '${replaceDesciption}')`;
+                VALUES ('${url}', '${username}', ${userId}, '${videoId}', '${replaceThumbnail}', '${replaceTitle}', '${channelTitle}', '${channelId}', '${replaceDesciption}')`;
 
   return new Promise((resolve, reject) => {
     try {

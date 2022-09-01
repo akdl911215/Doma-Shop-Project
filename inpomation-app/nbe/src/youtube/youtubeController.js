@@ -14,8 +14,8 @@ router.post("/upload", async (req, res, next) => {
   });
 });
 
-router.post("/list", async (req, res, next) => {
-  const a = "";
-});
+router.post("/list", async (req, res, next) =>
+  res.json(await service.list(req?.body))
+);
 
 module.exports = router;
