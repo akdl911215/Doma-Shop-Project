@@ -11,14 +11,11 @@ import RegisterCard from "./explore/SearchListCard";
 const Register = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  console.log("search : ", search);
   const [data, setData] = useState([]);
 
   const searchList = () => {
     YoutubeSearchListDataAPI({ q: search })
       .then((res) => {
-        console.log("res : ", res);
-
         const arr = [];
         for (let i = 0; i < res?.data?.list.length; ++i) {
           const state = {
@@ -49,7 +46,6 @@ const Register = () => {
       .catch((err) =>
         console.error("YoutubeSearchListDataAPI catch error : ", err)
       );
-    console.log("data :: ", data);
   };
 
   // https://intrepidgeeks.com/tutorial/react-easily-import-youtube-videos-react-player
