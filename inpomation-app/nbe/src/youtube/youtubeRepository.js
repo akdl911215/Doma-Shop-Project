@@ -4,14 +4,11 @@ const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
 exports.list = (req, res) => {
-  console.log("req?.viewPage : ", req?.viewPage);
-
   let sql = "";
   req?.viewPage === "main"
     ? (sql = `SELECT * FROM youtube ORDER BY id DESC LIMIT 0, 3`)
     : (sql = `SELECT * FROM youtube ORDER BY id desc`);
 
-  console.log("sql : ", sql);
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
