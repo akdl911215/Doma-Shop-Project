@@ -2,6 +2,10 @@ const repository = require("./youtubeRepository");
 const userRepository = require("../user/userRepository");
 
 class youtubeService {
+  async uploadList(search) {
+    return await repository.uploadList(search);
+  }
+
   list = async (page) => await repository.list(page);
 
   async upload(video) {

@@ -3,6 +3,45 @@ require("dotenv").config();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
+exports.uploadList = (req, res) => {
+  const title = req?.q;
+  console.log("title : ", title);
+
+  const titleArr = [...title];
+  const replaceTitle = titleArr.map((el) => el.replace("'", `''`)).join("%");
+  console.log("replaceTitle : ", replaceTitle);
+  const sql = `SELECT * FROM youtube WHERE title LIKE '%${replaceTitle}%'`;
+  console.log("sql : ", sql);
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection error : ", err);
+            resolve({
+              message: "업로드 리스트 출력 에러",
+              error: err,
+            });
+
+            console.log("doc : ", doc);
+            if (doc) {
+              resolve({
+                code: 200,
+                message: "업로드 리시트 출력 성공",
+                uploadList: doc,
+              });
+            }
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("uploadList db connection catch error : ", err);
+    }
+  });
+};
+
 exports.list = (req, res) => {
   let sql = "";
   req?.viewPage === "main"
