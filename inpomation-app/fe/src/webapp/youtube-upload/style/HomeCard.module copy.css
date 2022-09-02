@@ -10,19 +10,17 @@
   display: flex;
   margin-top: 12px;
 }
-/* .channelImg {
+.channelImg {
   width: 36px;
   height: 36px;
   border-radius: 18px;
   margin-right: 12px;
-} */
+}
 
 .title {
   color: #030303;
-  width: 100%;
 }
 .uploader {
-  width: 50%;
   font-size: 14px;
   margin-top: 8px;
 }
@@ -33,10 +31,10 @@
 .view {
   font-size: 14px;
 }
-/* .view::after {
+.view::after {
   content: "•";
   margin: 0 4px;
-} */
-/* .date {
+}
+.date {
   font-size: 14px;
-} */
+}

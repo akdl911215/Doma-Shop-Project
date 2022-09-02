@@ -17,10 +17,14 @@ const Home = () => {
 
   return (
     <div className={styles.rootDiv}>
-      <Button onClick={() => navigate("/youtube_explore")}>
+      <Button
+        className={styles.allListBtn}
+        onClick={() => navigate("/youtube_explore")}
+      >
         전체 영상 보러가기
       </Button>
       <div className={styles.container}>
+        <input value="최근 올라온 영상 TOP3" readOnly />
         <div className={styles.grid}>{video?.map(HomeCard)}</div>
       </div>
     </div>

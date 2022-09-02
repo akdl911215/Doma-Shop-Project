@@ -1,7 +1,7 @@
 import styles from "../../style/HomeCard.module.css";
-import "moment/locale/ko";
-import moment from "moment";
-import { ProcessViewCount } from "../../util";
+// import "moment/locale/ko";
+// import moment from "moment";
+// import { ProcessViewCount } from "../../util";
 
 const HomeCard = (data, index) => {
   return (
@@ -16,22 +16,22 @@ const HomeCard = (data, index) => {
         alt={`${data.title}의 썸네일`}
       />
       <div className={styles.info}>
-        <a href={`https://www.youtub.com/channel/${data.channelId}`}>
+        {/* <a href={`https://www.youtub.com/channel/${data.channelId}`}>
           <img
             className={styles.channelImg}
             src={data.channelThumbnail}
             alt={`${data.channelTitle} 프로필 사진`}
           />
-        </a>
+        </a> */}
         <div>
           <div className={styles.title}>{data.title}</div>
           <div className={styles.uploader}>{data.channelTitle}</div>
-          <div className={styles.flex}>
+          {/* <div className={styles.flex}>
             <div className={styles.view}>
               {ProcessViewCount(data.viewCount)}
             </div>
             <div className={styles.view}>{moment(data.date).fromNow()}</div>
-          </div>
+          </div> */}
         </div>
       </div>
     </a>
