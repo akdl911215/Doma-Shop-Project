@@ -1,4 +1,4 @@
-import styles from "../../style/HomeFilter.module.css";
+import styles from "../../style/home/HomeFilter.module.css";
 
 const HomeFilter = ({ filter, text, onClickFilter }) => {
   return (

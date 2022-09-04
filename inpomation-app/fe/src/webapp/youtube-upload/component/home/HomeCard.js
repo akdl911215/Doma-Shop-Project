@@ -1,4 +1,4 @@
-import styles from "../../style/HomeCard.module.css";
+import styles from "../../style/home/HomeCard.module.css";
 // import "moment/locale/ko";
 // import moment from "moment";
 // import { ProcessViewCount } from "../../util";
