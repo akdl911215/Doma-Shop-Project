@@ -67,9 +67,9 @@ const SearchListCard = ({ data }) => {
                 >
                   {data.channelTitle}
                 </a>
-                <div className={styles.view}>
+                {/* <div className={styles.view}>
                   {ProcessViewCount(data.viewCount)}
-                </div>
+                </div> */}
                 {/* <div className={styles.time}>{moment(data.date).fromNow()}</div> */}
               </div>
               <div className={styles.desc}>{data.description}</div>

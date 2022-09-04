@@ -8,11 +8,8 @@ import {
   YoutubeListDataAPI,
 } from "webapp/api/youubeApi";
 
-const [
-  YOUTUBESEARCHLIST_REQUEST,
-  YOUTUBESEARCHLIST_SUCCESS,
-  YOUTUBESEARCHLIST_FAILRUE,
-] = createRequestActionTypes("YOUTUBESEARCHLIST");
+const [YOUTUBESEARCHLIST_REQUEST] =
+  createRequestActionTypes("YOUTUBESEARCHLIST");
 
 export const YoutubeSearchList = (list) => {
   return {
@@ -21,13 +18,23 @@ export const YoutubeSearchList = (list) => {
   };
 };
 
-const YoutubeSearchListSaga = Request(
-  YOUTUBESEARCHLIST_REQUEST,
-  YoutubeSearchListDataAPI
-);
+export const initialState = {
+  YoutubeSearchListInitial: [],
+  YoutubeSearchListInitialRequest: false,
+  YoutubeSearchListInitialError: null,
+};
 
-export function* YoutubeSearchListRequest() {
-  yield takeLatest(YOUTUBESEARCHLIST_REQUEST, YoutubeSearchListSaga);
-}
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case YOUTUBESEARCHLIST_REQUEST:
+      return {
+        ...state,
+        YoutubeSearchListInitial: action?.payload,
+      };
 
-export const initialState = {};
+    default:
+      return state;
+  }
+};
+
+export default reducer;

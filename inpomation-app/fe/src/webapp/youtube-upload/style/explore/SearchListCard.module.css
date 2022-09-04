@@ -29,10 +29,10 @@ a {
 .uploader:hover {
   color: #030303;
 }
-.uploader::after {
+/* .uploader::after {
   content: "•";
   margin: 0 4px;
-}
+} */
 .desc {
   font-size: 12px;
 }
