@@ -15,7 +15,7 @@ const Register = () => {
   const [video, setVideo] = useState([]);
   useEffect(() => {
     sessionStorage.setItem("currentPage", "Register");
-
+    dispatch(YoutubeSearchList([]));
     YoutubeSearchListDataAPI({ q: "경제" })
       .then((res) => {
         dispatch(
@@ -46,6 +46,8 @@ const Register = () => {
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
+  console.log("searchList : ", searchList);
+  console.log("searchList.length : ", searchList.length);
 
   // https://intrepidgeeks.com/tutorial/react-easily-import-youtube-videos-react-player
 
@@ -67,7 +69,11 @@ const Register = () => {
               })}
             </ContentsLayout>
           ) : (
-            <div className={styles.videoLengZero}></div>
+            <div className={styles.videoLengZero}>
+              {video?.map((data) => {
+                return <></>;
+              })}
+            </div>
           )}
         </div>
       </div>

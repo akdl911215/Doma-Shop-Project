@@ -4,8 +4,6 @@ import "moment/locale/ko";
 import { ProcessViewCount } from "../../util";
 
 const ExploreCard = ({ data }) => {
-  console.log("ExploreCard data : ", data);
-
   return (
     <>
       <a href={`https://www.youtube.com/watch?v=${data.id}`}>

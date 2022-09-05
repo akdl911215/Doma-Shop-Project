@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 const SearchListCard = ({ data }) => {
   const navigate = useNavigate();
-  console.log("SearchListCard data : ", data);
   const videoUrl = `https://www.youtube.com/watch?v=${data.id}`;
 
   const videoRegister = (video = {}) => {
