@@ -7,7 +7,7 @@ import RegisterCard from "./explore/SearchListCard";
 import SearchBar from "./searchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import { YoutubeSearchList } from "webapp/reducers/youtube.reducer";
-
+import Menu from "./Menu";
 const Register = () => {
   const navigate = useNavigate();
   const [video, setVideo] = useState([]);
@@ -50,7 +50,9 @@ const Register = () => {
         <div>
           <SearchBar />
         </div>
+
         <div className={styles.contentsDiv}>
+          {/* <Menu /> */}
           {video?.length !== 0 ? (
             <ContentsLayout>
               {viewArr.map((data, index) => {

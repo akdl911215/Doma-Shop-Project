@@ -11,6 +11,7 @@ import {
   YoutubeUploadListDataAPI,
 } from "webapp/api/youubeApi";
 import styles from "../style/Explore.module.css";
+import SearchBar from "./searchBar/SearchBar";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -56,22 +57,25 @@ const Explore = () => {
   return (
     <>
       <div>
-        <input
+        {/* <input
           placeholder="유튜브 제목을 검색하세요"
           className={styles.youtubeSearch}
           onChange={(e) => setSearch(e.target.value)}
         />
         <button onClick={searchList} className={styles.searchButton}>
           검색
-        </button>
+        </button> */}
+        <SearchBar />
       </div>
       <GoHomeButton />
       <Button onClick={() => navigate("/youtube_register")}>글 쓰기</Button>
-      <ContentsLayout>
-        {video?.map((data, index) => {
-          return <ExploreCard key={`explore-card-${index}`} data={data} />;
-        })}
-      </ContentsLayout>
+      <div className={styles.contentsDiv}>
+        <ContentsLayout>
+          {video?.map((data, index) => {
+            return <ExploreCard key={`explore-card-${index}`} data={data} />;
+          })}
+        </ContentsLayout>
+      </div>
     </>
   );
 };

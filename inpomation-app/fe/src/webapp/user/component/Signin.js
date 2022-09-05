@@ -1,17 +1,8 @@
 import React, { useState } from "react";
-import { Betazon } from "../../images/index";
 import { useNavigate } from "react-router";
-// import {
-//   Button,
-//   Form,
-//   Grid,
-//   Header,
-//   Message,
-//   Segment,
-// } from "semantic-ui-react";
-import SignupButton from "../../common/component/SignupButton";
+
 import { UserSigninDataAPI, UserAuthDataAPI } from "../../api/userApi";
-import SignOutButton from "webapp/common/component/SignOutButton";
+
 import styles from "../style/Signin.module.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -38,7 +29,14 @@ const Signin = () => {
         sessionStorage.setItem("roles", res?.data?.roles);
 
         UserAuthDataAPI(res?.data?.token, res?.data?.roles)
-          .then((res) => navigate("/"))
+          .then((res) => {
+            if (sessionStorage.getItem("signinPage") === null) {
+              navigate("/");
+            } else {
+              navigate(sessionStorage.getItem("signinPage"));
+              sessionStorage.removeItem("signinPage");
+            }
+          })
           .catch((err) => console.error(`signin error : ${err}`));
       } else {
         sessionStorage.removeItem("username");
