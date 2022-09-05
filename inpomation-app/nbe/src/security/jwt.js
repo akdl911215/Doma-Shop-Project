@@ -42,7 +42,6 @@ module.exports = {
         roles: req?.roles,
       };
     } catch (err) {
-      console.log("err : ", err);
       if (err.name === "TokenExpiredError") {
         // 유효기간 초과
         return {
