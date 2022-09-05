@@ -5,8 +5,6 @@ import { FaRegCompass } from "react-icons/fa";
 import { MdSubscriptions } from "react-icons/md";
 
 const Menu = ({ activeMenu }) => {
-  console.log("현재 활성화된 메뉴 : ", activeMenu);
-
   return (
     <div className={styles.Menu}>
       <div>
@@ -19,24 +17,22 @@ const Menu = ({ activeMenu }) => {
         </Link>
       </div>
       <div>
-        <Link
+        <a
           to="/youtube_explore"
           className={activeMenu === "explore" ? styles.focused : styles.link}
         >
           <FaRegCompass className={styles.icon} />
           <div className={styles.text}>탐색</div>
-        </Link>
+        </a>
       </div>
       <div>
-        <Link
-          to="/subscription"
-          className={
-            activeMenu === "subscription" ? styles.focused : styles.link
-          }
+        <a
+          to="/youtube_register"
+          className={activeMenu === "register" ? styles.focused : styles.link}
         >
           <MdSubscriptions className={styles.icon} />
-          <div className={styles.text}>구독</div>
-        </Link>
+          <div className={styles.text}>업로드</div>
+        </a>
       </div>
     </div>
   );

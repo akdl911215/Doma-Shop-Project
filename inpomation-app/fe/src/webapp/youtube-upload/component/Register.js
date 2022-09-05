@@ -12,6 +12,8 @@ const Register = () => {
   const navigate = useNavigate();
   const [video, setVideo] = useState([]);
   useEffect(() => {
+    sessionStorage.setItem("currentPage", "Register");
+
     YoutubeSearchListDataAPI({ q: "경제" })
       .then((res) => {
         setVideo(
@@ -52,7 +54,7 @@ const Register = () => {
         </div>
 
         <div className={styles.contentsDiv}>
-          {/* <Menu /> */}
+          <Menu />
           {video?.length !== 0 ? (
             <ContentsLayout>
               {viewArr.map((data, index) => {

@@ -24,8 +24,6 @@ const SearchListCard = ({ data }) => {
     );
 
     if (upload) {
-      console.log("upload video : ", video);
-
       UserAuthDataAPI().then((res) => {
         if (res?.data?.code === 200) {
           YoutubeUploadDataAPI(video)

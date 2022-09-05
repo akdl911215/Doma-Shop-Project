@@ -8,7 +8,7 @@
 }
 .container {
   flex: 1;
-  max-width: 1284px;
+  max-width: 1500px;
 }
 
 @media screen and (max-width: 529px) {
@@ -16,7 +16,12 @@
     flex: 0 1 214px;
   }
 }
-@media screen and (min-width: 530px) and (max-width: 743px) {
+@media screen and (min-width: 529px) {
+  .container {
+    flex: 0 1 1284px;
+  }
+}
+/* @media screen and (min-width: 530px) and (max-width: 743px) {
   .container {
     flex: 0 1 428px;
   }
@@ -40,4 +45,4 @@
   .container {
     flex: 0 1 1284px;
   }
-}
+} */
