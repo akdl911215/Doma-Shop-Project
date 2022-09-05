@@ -87,7 +87,9 @@ const Signin = () => {
           </div>
           <span className={styles.guidePharse}>
             Don't have an account?
-            <span className={styles.guidePharseSignup}>Sign up</span>
+            <span className={styles.guidePharseSignup}>
+              <a href="/users_signup">Sign up</a>
+            </span>
           </span>
           <div className={styles.divide}>
             <hr className={styles.divideLine1} />
