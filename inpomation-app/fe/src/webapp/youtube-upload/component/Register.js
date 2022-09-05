@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../style/Register.module.css";
 import { YoutubeSearchListDataAPI } from "webapp/api/youubeApi";
-import { useNavigate } from "react-router-dom";
 import ContentsLayout from "./ContentsLayout";
 import RegisterCard from "./explore/SearchListCard";
 import SearchBar from "./searchBar/SearchBar";
@@ -11,8 +10,6 @@ import Menu from "./Menu";
 
 const Register = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [video, setVideo] = useState([]);
   useEffect(() => {
     sessionStorage.setItem("currentPage", "Register");
     dispatch(YoutubeSearchList([]));
@@ -46,8 +43,6 @@ const Register = () => {
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
-  console.log("searchList : ", searchList);
-  console.log("searchList.length : ", searchList.length);
 
   // https://intrepidgeeks.com/tutorial/react-easily-import-youtube-videos-react-player
 
@@ -69,11 +64,7 @@ const Register = () => {
               })}
             </ContentsLayout>
           ) : (
-            <div className={styles.videoLengZero}>
-              {video?.map((data) => {
-                return <></>;
-              })}
-            </div>
+            <div className={styles.videoLengZero}></div>
           )}
         </div>
       </div>
