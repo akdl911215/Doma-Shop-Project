@@ -8,7 +8,9 @@ import SearchBar from "./searchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import { YoutubeSearchList } from "webapp/reducers/youtube.reducer";
 import Menu from "./Menu";
+
 const Register = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [video, setVideo] = useState([]);
   useEffect(() => {
@@ -16,22 +18,24 @@ const Register = () => {
 
     YoutubeSearchListDataAPI({ q: "경제" })
       .then((res) => {
-        setVideo(
-          res?.data?.map((el) => {
-            return {
-              id: el?.id?.videoId,
-              channelId: el?.items?.items[0]?.snippet?.channelId,
-              title: el?.items?.items[0]?.snippet?.title,
-              thumbnail: el?.items?.items[0]?.snippet?.thumbnails?.high?.url,
-              description: el?.items?.items[0]?.snippet?.description,
-              channelTitle: el?.items?.items[0]?.snippet?.channelTitle,
-              viewCount: el?.items?.items[0]?.statistics?.viewCount,
-              likeCount: el?.items?.items[0]?.statistics?.likeCount,
-              channelUrl: "",
-              channelThumbnail: el?.snippet?.thumbnails?.high?.url,
-              date: el?.snippet?.publishedAt,
-            };
-          })
+        dispatch(
+          YoutubeSearchList(
+            res?.data?.map((el) => {
+              return {
+                id: el?.id?.videoId,
+                channelId: el?.items?.items[0]?.snippet?.channelId,
+                title: el?.items?.items[0]?.snippet?.title,
+                thumbnail: el?.items?.items[0]?.snippet?.thumbnails?.high?.url,
+                description: el?.items?.items[0]?.snippet?.description,
+                channelTitle: el?.items?.items[0]?.snippet?.channelTitle,
+                viewCount: el?.items?.items[0]?.statistics?.viewCount,
+                likeCount: el?.items?.items[0]?.statistics?.likeCount,
+                channelUrl: "",
+                channelThumbnail: el?.snippet?.thumbnails?.high?.url,
+                date: el?.snippet?.publishedAt,
+              };
+            })
+          )
         );
       })
       .catch((err) =>
@@ -42,7 +46,6 @@ const Register = () => {
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
-  const viewArr = searchList?.length > 0 ? searchList : video;
 
   // https://intrepidgeeks.com/tutorial/react-easily-import-youtube-videos-react-player
 
@@ -55,9 +58,9 @@ const Register = () => {
 
         <div className={styles.contentsDiv}>
           <Menu />
-          {video?.length !== 0 ? (
+          {searchList?.length > 0 ? (
             <ContentsLayout>
-              {viewArr.map((data, index) => {
+              {searchList.map((data, index) => {
                 return (
                   <RegisterCard key={`explore-card-${index}`} data={data} />
                 );

@@ -10,11 +10,21 @@
   padding-left: 24px;
   background-color: white;
 }
-.rootDiv {
-  padding-top: 4rem;
-  width: 67%;
-  margin: auto;
+@media screen and (max-width: 483px) {
+  .rootDiv {
+    padding-top: 7.3rem;
+    width: 67%;
+    margin: auto;
+  }
 }
+@media screen and (min-width: 483px) {
+  .rootDiv {
+    padding-top: 4rem;
+    width: 67%;
+    margin: auto;
+  }
+}
+
 .container {
   /* margin-top: 56px; */
   padding-top: 5600px;

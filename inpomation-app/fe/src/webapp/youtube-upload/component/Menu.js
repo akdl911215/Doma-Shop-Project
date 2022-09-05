@@ -17,22 +17,22 @@ const Menu = ({ activeMenu }) => {
         </Link>
       </div>
       <div>
-        <a
+        <Link
           to="/youtube_explore"
           className={activeMenu === "explore" ? styles.focused : styles.link}
         >
           <FaRegCompass className={styles.icon} />
           <div className={styles.text}>탐색</div>
-        </a>
+        </Link>
       </div>
       <div>
-        <a
+        <Link
           to="/youtube_register"
           className={activeMenu === "register" ? styles.focused : styles.link}
         >
           <MdSubscriptions className={styles.icon} />
           <div className={styles.text}>업로드</div>
-        </a>
+        </Link>
       </div>
     </div>
   );

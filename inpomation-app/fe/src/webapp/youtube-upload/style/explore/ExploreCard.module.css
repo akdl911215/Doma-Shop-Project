@@ -19,7 +19,7 @@ a {
 }
 .info {
   flex: 1;
-  width: 200px;
+  max-width: 862px;
 }
 .meta {
   display: flex;
