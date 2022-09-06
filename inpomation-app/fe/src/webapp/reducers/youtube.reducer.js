@@ -10,6 +10,7 @@ import {
 
 const [YOUTUBESEARCHLIST_REQUEST] =
   createRequestActionTypes("YOUTUBESEARCHLIST");
+const [YOUTUBEBOARD_REQUEST] = createRequestActionTypes("YOUTUBEBOARD");
 
 export const YoutubeSearchList = (list) => {
   return {
@@ -18,10 +19,20 @@ export const YoutubeSearchList = (list) => {
   };
 };
 
+export const YoutubeBoard = (board) => {
+  return {
+    type: YOUTUBEBOARD_REQUEST,
+    payload: board,
+  };
+};
+
 export const initialState = {
   YoutubeSearchListInitial: [],
   YoutubeSearchListInitialRequest: false,
   YoutubeSearchListInitialError: null,
+  YoutubeBoardInitial: {},
+  YoutubeBoardInitialRequest: false,
+  YoutubeBoardInitialError: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +41,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         YoutubeSearchListInitial: action?.payload,
+      };
+
+    case YOUTUBEBOARD_REQUEST:
+      return {
+        ...state,
+        YoutubeBoardInitial: action?.payload,
       };
 
     default:

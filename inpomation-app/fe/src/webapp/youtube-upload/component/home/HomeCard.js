@@ -1,18 +1,30 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../../style/home/HomeCard.module.css";
 // import "moment/locale/ko";
 // import moment from "moment";
 // import { ProcessViewCount } from "../../util";
+import { YoutubeBoard } from "webapp/reducers/youtube.reducer";
 
 const HomeCard = (data, index) => {
-  const videoId = data?.video_id;
+  const dispath = useDispatch();
+
   return (
-    <div data={data} index={index}>
-      <a
+    <div>
+      <Link
         // href={`https://www.youtube.com/watch?v=${videoId}`}
-        to={`/youtube_board`}
+        to="/youtube_board"
         key={`home-card-${index}`}
         className={styles.card}
+        onClick={() =>
+          dispath(
+            YoutubeBoard({
+              data: data,
+              index: index,
+            })
+          )
+        }
       >
         <img
           className={styles.thumbnail}
@@ -38,7 +50,7 @@ const HomeCard = (data, index) => {
           </div> */}
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
