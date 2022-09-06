@@ -4,9 +4,10 @@ import "moment/locale/ko";
 import { ProcessViewCount } from "../../util";
 
 const ExploreCard = ({ data }) => {
+  const videoId = data?.video_id;
   return (
     <>
-      <a href={`https://www.youtube.com/watch?v=${data.id}`}>
+      <a href={`https://www.youtube.com/watch?v=${videoId}`}>
         <div className={styles.card}>
           <img
             className={styles.thumbnail}

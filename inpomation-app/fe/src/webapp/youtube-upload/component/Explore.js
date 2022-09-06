@@ -28,6 +28,7 @@ const Explore = () => {
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
+  console.log("searchList : ", searchList);
 
   return (
     <>
