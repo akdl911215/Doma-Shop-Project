@@ -4,7 +4,7 @@ import HomeCard from "../component/home/HomeCard";
 import { Button } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { YoutubeListDataAPI } from "webapp/api/youubeApi";
+import { YoutubeListDataAPI } from "webapp/api/youtubeApi";
 const Home = () => {
   const navigate = useNavigate();
 
