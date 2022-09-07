@@ -3,6 +3,11 @@ require("dotenv").config();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
+exports.myList = (req, res) => {
+  const userId = req?.userId;
+  const sql = `SELECT url, video_id, thumbnail, title, channel_title, channel_id, description FROM users RIGHT JOIN youtube ON users.id = youtube.user_id;`;
+};
+
 exports.uploadList = (req, res) => {
   const titleArr = [...req?.q];
   const replaceTitle = titleArr.map((el) => el.replace("'", `''`)).join("%");

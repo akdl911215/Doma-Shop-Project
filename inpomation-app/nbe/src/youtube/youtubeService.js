@@ -2,6 +2,11 @@ const repository = require("./youtubeRepository");
 const userRepository = require("../user/userRepository");
 
 class youtubeService {
+  async myList(list) {
+    const userId = userRepository.userInquiry(list?.username);
+    return await repository.myList(userId);
+  }
+
   async uploadList(search) {
     return await repository.uploadList(search);
   }
