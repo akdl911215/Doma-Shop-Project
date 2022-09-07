@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../style/Register.module.css";
-import { YoutubeSearchListDataAPI } from "webapp/api/youubeApi";
+import { YoutubeSearchListDataAPI } from "webapp/api/youtubeApi";
 import ContentsLayout from "./ContentsLayout";
 import RegisterCard from "./explore/SearchListCard";
 import SearchBar from "./searchBar/SearchBar";

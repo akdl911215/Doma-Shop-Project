@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   YoutubeSearchListDataAPI,
   YoutubeUploadListDataAPI,
-} from "webapp/api/youubeApi";
+} from "webapp/api/youtubeApi";
 import styles from "webapp/youtube-upload/style/searchBar/SearchBar.module.css";
 import { YoutubeSearchList } from "webapp/reducers/youtube.reducer";
 import { useDispatch } from "react-redux";

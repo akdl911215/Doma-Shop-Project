@@ -1,14 +1,8 @@
-import Layout from "../component/Layout";
+// import Layout from "../component/Layout";
 import ContentsLayout from "../component/ContentsLayout";
 import ExploreCard from "../component/explore/ExploreCard";
-import { Button } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
-import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useEffect, useState } from "react";
-import {
-  YoutubeListDataAPI,
-  YoutubeUploadListDataAPI,
-} from "webapp/api/youubeApi";
+import { YoutubeListDataAPI } from "webapp/api/youtubeApi";
 import styles from "../style/Explore.module.css";
 import SearchBar from "./searchBar/SearchBar";
 import Menu from "./Menu";
@@ -20,6 +14,7 @@ const Explore = () => {
   useEffect(() => {
     sessionStorage.setItem("currentPage", "Explore");
 
+    dispatch(YoutubeSearchList([]));
     YoutubeListDataAPI()
       .then((res) => dispatch(YoutubeSearchList(res?.data?.list)))
       .catch((err) => console.error("full list api error : ", err));
@@ -29,6 +24,7 @@ const Explore = () => {
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
   console.log("searchList : ", searchList);
+  console.log("searchList.length : ", searchList.length);
 
   return (
     <>
@@ -39,9 +35,13 @@ const Explore = () => {
       <div className={styles.contentsDiv}>
         <Menu />
         <ContentsLayout>
-          {searchList?.map((data, index) => {
-            return <ExploreCard key={`explore-card-${index}`} data={data} />;
-          })}
+          {searchList.length === 0
+            ? null
+            : searchList?.map((data, index) => {
+                return (
+                  <ExploreCard key={`explore-card-${index}`} data={data} />
+                );
+              })}
         </ContentsLayout>
       </div>
     </>

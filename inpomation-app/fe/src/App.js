@@ -27,6 +27,7 @@ import Portfolio from "webapp/user/component/Portfolio";
 import Explore from "webapp/youtube-upload/component/Explore";
 import YoutubeRegister from "webapp/youtube-upload/component/Register";
 import YoutubeBoard from "webapp/youtube-upload/component/board/Board";
+import YoutubeMyList from "webapp/youtube-upload/component/MyList";
 
 const App = () => {
   return (
@@ -94,6 +95,7 @@ const App = () => {
         <Route path="/youtube_explore" element={<Explore />} />
         <Route path="/youtube_register" element={<YoutubeRegister />} />
         <Route path="/youtube_board" element={<YoutubeBoard />} />
+        <Route path="/youtube_myList" element={<YoutubeMyList />} />
       </Routes>
     </>
   );

@@ -2,7 +2,7 @@ import styles from "../../style/explore/SearchListCard.module.css";
 import moment from "moment";
 import "moment/locale/ko";
 import { ProcessViewCount } from "../../util";
-import { YoutubeUploadDataAPI } from "webapp/api/youubeApi";
+import { YoutubeUploadDataAPI } from "webapp/api/youtubeApi";
 import { UserAuthDataAPI } from "webapp/api/userApi";
 import { useNavigate } from "react-router-dom";
 

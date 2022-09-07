@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../style/Menu.module.css";
 import { TiHome } from "react-icons/ti";
 import { FaRegCompass } from "react-icons/fa";
 import { MdSubscriptions } from "react-icons/md";
+import { useState } from "react";
 
 const Menu = ({ activeMenu }) => {
   return (
@@ -32,6 +33,15 @@ const Menu = ({ activeMenu }) => {
         >
           <MdSubscriptions className={styles.icon} />
           <div className={styles.text}>업로드</div>
+        </Link>
+      </div>
+      <div>
+        <Link
+          to="/youtube_mylist"
+          className={activeMenu === "list" ? styles.focused : styles.link}
+        >
+          <MdSubscriptions className={styles.icon} />
+          <div className={styles.text}>내 동영상</div>
         </Link>
       </div>
     </div>

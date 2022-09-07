@@ -9,8 +9,6 @@ const Board = () => {
   const { data } = useSelector(({ YoutubeReducer }) => ({
     data: YoutubeReducer?.YoutubeBoardInitial,
   }));
-  console.log("String(data) : ", String(data), ", ", typeof String(data));
-  localStorage.setItem("dataUrl", String(data?.data?.url));
 
   // useEffect(() => {
   //   if (sessionStorage.getItem('dataUrl'))
@@ -28,12 +26,7 @@ const Board = () => {
       <div className={styles.container}>
         <ReactPlayer
           className="player"
-          url={
-            localStorage.getItem("dataUrl") === null ||
-            localStorage.getItem("dataUrl") === undefined
-              ? data?.data?.url
-              : localStorage.getItem("dataUrl")
-          }
+          url={data?.data?.url}
           width="100%"
           heigth="100%"
           playing={true}

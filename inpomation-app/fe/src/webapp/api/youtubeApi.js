@@ -12,3 +12,8 @@ export const YoutubeListDataAPI = (page) =>
 
 export const YoutubeUploadListDataAPI = (uploadSearch) =>
   client.post(backUrl + "/youtube/uploadList", uploadSearch);
+
+export const YoutubeMyListDataAPI = () =>
+  client.post(backUrl + "/youtube/myList", {
+    username: sessionStorage.getItem("username"),
+  });
