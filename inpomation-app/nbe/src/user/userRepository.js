@@ -79,9 +79,7 @@ exports.userList = async (req, res, next) => {
 };
 
 exports.userRemove = async (req, res, next) => {
-  console.log("userRemove req : ", req);
   const sql = `${process.env.SQL_USERS_REMOVE} username = '""', password = '""', name = '""', email = '""', phone_number = '""', address = '""' ${process.env.SQL_USERS_REMOVE_TWO} = ${req};`;
-  console.log("sql : ", sql);
 
   return new Promise((resolve, reject) => {
     try {
