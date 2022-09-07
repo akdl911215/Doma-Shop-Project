@@ -9,7 +9,7 @@ exports.usersSearch = async (req, res, next) => {
   if (req?.type === "n") whereSql = "name";
   if (req?.type === "p") whereSql = "phone_number";
   if (req?.type === "r") whereSql = "roles";
-  const sql = `SELECT id, username, name, email, phone_number, address, roles FROM users WHERE ${whereSql} REGEXP '${req?.keyword}'`;
+  const sql = `${process.env.SQL_USERS_SEARCH} ${whereSql} REGEXP '${req?.keyword}'`;
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
@@ -32,7 +32,7 @@ exports.usersSearch = async (req, res, next) => {
 };
 
 exports.userCount = async (req, res, next) => {
-  const sql = `SELECT COUNT(*) FROM users`;
+  const sql = `${process.env.SQL_USERS_COUNT}`;
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
@@ -49,7 +49,7 @@ exports.userCount = async (req, res, next) => {
 };
 
 exports.userList = async (req, res, next) => {
-  const sql = `SELECT id, username, name, email, phone_number, address, roles FROM users ORDER BY id DESC LIMIT ${req?.start}, ${req?.pageSize}`;
+  const sql = `${process.env.SQL_USERS_LIST} ${req?.start}, ${req?.pageSize}`;
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
@@ -79,12 +79,15 @@ exports.userList = async (req, res, next) => {
 };
 
 exports.userRemove = async (req, res, next) => {
-  const sql = `UPDATE users SET username = '""', password = '""', name = '""', email = '""', phone_number = '""', address = '""' WHERE id = ${req};`;
+  console.log("userRemove req : ", req);
+  const sql = `${process.env.SQL_USERS_REMOVE} username = '""', password = '""', name = '""', email = '""', phone_number = '""', address = '""' ${process.env.SQL_USERS_REMOVE_TWO} = ${req};`;
+  console.log("sql : ", sql);
 
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
         connection.query(sql, (err, rows) => {
+          console.log("rows : ", rows);
           if (rows) {
             resolve({
               message: "회원 삭제가 완료되었습니다.",
@@ -93,6 +96,7 @@ exports.userRemove = async (req, res, next) => {
             });
           }
 
+          console.log("err : ", err);
           if (err) {
             resolve({
               message: "회원 삭제가 실패되었습니다.",
@@ -112,7 +116,7 @@ exports.userRemove = async (req, res, next) => {
 exports.userModify = async (req, res, next) => {
   const { id, name, email, phone_number, address } = req;
 
-  const sql = `UPDATE users SET name = '${name}', email = '${email}', phone_number = '${phone_number}', address = '${address}' WHERE id = ${id};`;
+  const sql = `${process.env.SQL_USERS_MODIFY} name = '${name}', email = '${email}', phone_number = '${phone_number}', address = '${address}' WHERE id = ${id};`;
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
@@ -134,7 +138,7 @@ exports.userModify = async (req, res, next) => {
 
 exports.userInquiry = async (req, res, next) => {
   const username = req;
-  const sql = `SELECT * FROM users WHERE username = '${username}'`;
+  const sql = `${process.env.SQL_USERS_INQUIRY} = '${username}'`;
 
   return new Promise((resolve, reject) => {
     try {
@@ -156,7 +160,6 @@ exports.userSignin = async (req, res) => {
       crypto.randomBytes(64, (err, buf) => {
         const { username, password } = req;
         const usernameSql = `${process.env.SQL_SIGNIN_USERNAME} = '${username}'`;
-        console.log("usernameSql : ", usernameSql);
         db.getConnectionPool((connection) => {
           connection.query(usernameSql, (err, rows) => {
             try {
@@ -168,13 +171,11 @@ exports.userSignin = async (req, res) => {
                 "sha512",
                 async (err, key) => {
                   const hashedPassword = key.toString("base64");
-                  console.log("hashedPassword : ", hashedPassword);
 
                   if (rows.length) {
                     if (rows[0].username === username) {
                       if (rows[0].password === hashedPassword) {
-                        const passwordSql = `SQL_SIGNIN_PASSWORD = '${hashedPassword}'`;
-                        console.log("passwordSql : ", passwordSql);
+                        const passwordSql = `${process.env.SQL_SIGNIN_PASSWORD} = '${hashedPassword}'`;
 
                         connection.query(passwordSql, async (err, rows) => {
                           if (err) {
