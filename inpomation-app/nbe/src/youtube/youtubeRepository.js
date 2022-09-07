@@ -4,8 +4,36 @@ const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
 exports.myList = (req, res) => {
-  const userId = req?.userId;
-  const sql = `SELECT url, video_id, thumbnail, title, channel_title, channel_id, description FROM users RIGHT JOIN youtube ON users.id = youtube.user_id;`;
+  const userId = req;
+  const sql = `SELECT * FROM youtube WHERE user_id = ${userId} ORDER BY id DESC`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection error : ", err);
+            resolve({
+              message: "내 동영상 리스트 출력 에러",
+              error: err,
+            });
+          }
+
+          if (doc) {
+            resolve({
+              code: 200,
+              message: "내 동영상 리스트 출력 성공",
+              myList: doc,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("myList db connection catch error : ", err);
+      throw err;
+    }
+  });
 };
 
 exports.uploadList = (req, res) => {

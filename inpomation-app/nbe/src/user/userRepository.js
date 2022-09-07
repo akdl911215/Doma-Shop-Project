@@ -1,5 +1,6 @@
 const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
+require("dotenv").config();
 
 exports.usersSearch = async (req, res, next) => {
   let whereSql = "CONCAT(username, email, NAME, phone_number, address)";
@@ -154,12 +155,10 @@ exports.userSignin = async (req, res) => {
     try {
       crypto.randomBytes(64, (err, buf) => {
         const { username, password } = req;
-        console.log(`signin username : ${username}, password : ${password}`);
-        const usernameSql = `SELECT * FROM users WHERE username = '${username}'`;
+        const usernameSql = `${process.env.SQL_SIGNIN_USERNAME} = '${username}'`;
+        console.log("usernameSql : ", usernameSql);
         db.getConnectionPool((connection) => {
           connection.query(usernameSql, (err, rows) => {
-            console.log("signin connection : ", connection);
-            console.log("rows : ", rows);
             try {
               crypto.pbkdf2(
                 password,
@@ -169,10 +168,14 @@ exports.userSignin = async (req, res) => {
                 "sha512",
                 async (err, key) => {
                   const hashedPassword = key.toString("base64");
+                  console.log("hashedPassword : ", hashedPassword);
+
                   if (rows.length) {
                     if (rows[0].username === username) {
                       if (rows[0].password === hashedPassword) {
-                        const passwordSql = `SELECT * FROM users WHERE password = '${hashedPassword}'`;
+                        const passwordSql = `SQL_SIGNIN_PASSWORD = '${hashedPassword}'`;
+                        console.log("passwordSql : ", passwordSql);
+
                         connection.query(passwordSql, async (err, rows) => {
                           if (err) {
                             console.error(`username error : ${err}`);
@@ -216,8 +219,8 @@ exports.userSignin = async (req, res) => {
 exports.userRegister = (req, res) => {
   try {
     db.getConnectionPool((conn) => {
-      const sql = `INSERT INTO users(username, password, name, email, phone_number, address, roles, salt)
-                          VALUES ('${req?.username}','${req?.password}','${req?.name}','${req?.email}','${req?.phone_number}','${req?.address}', '${req?.roles}', '${req?.salt}')`;
+      const sql = `${process.env.SQL_SIGNUP} ('${req?.username}','${req?.password}','${req?.name}','${req?.email}','${req?.phone_number}','${req?.address}', '${req?.roles}', '${req?.salt}')`;
+
       conn.query(sql, (err, doc) => {
         if (err) console.log(`conn.query err : ${err}`);
       });

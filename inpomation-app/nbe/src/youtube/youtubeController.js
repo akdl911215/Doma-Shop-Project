@@ -20,8 +20,8 @@ router.post("/list", async (req, res, next) =>
   res.json(await service.list(req?.body))
 );
 
-router.post("/myList", async (req, res, next) =>
-  res.json(await service.myList(req?.body))
-);
+router.post("/myList", async (req, res, next) => {
+  res.json(await service.myList(req?.body?.username));
+});
 
 module.exports = router;
