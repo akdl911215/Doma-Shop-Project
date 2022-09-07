@@ -51,7 +51,6 @@ const Signin = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    console.log(`name : ${name}, value : ${value}`);
     setSignin({
       ...signin,
       [name]: value,

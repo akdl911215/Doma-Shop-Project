@@ -7,7 +7,8 @@ import SearchBar from "./searchBar/SearchBar";
 import styles from "../style/MyList.module.css";
 import Menu from "./Menu";
 import ContentsLayout from "./ContentsLayout";
-import ExploreCard from "./explore/ExploreCard";
+// import ExploreCard from "./explore/ExploreCard";
+import MyListCard from "./explore/MyListCard";
 
 const MyList = () => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const MyList = () => {
               ? null
               : searchList?.myList?.map((data, index) => {
                   return (
-                    <ExploreCard key={`explore-card-${index}`} data={data} />
+                    <MyListCard key={`explore-card-${index}`} data={data} />
                   );
                 })}
           </ContentsLayout>

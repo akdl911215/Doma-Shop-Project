@@ -48,7 +48,7 @@ const UserPageList = () => {
     if (remove) {
       UserAuthDataAPI().then((res) => {
         if (res?.data?.code === 200) {
-          if (sessionStorage.getItem("roles") === "master") {
+          if (sessionStorage.getItem("roles") === "MASTER") {
             UserRemoveDataAPI({ userId: id })
               .then((res) => {
                 if (res?.data?.result?.code === 200) {

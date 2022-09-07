@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from "../style/Register.module.css";
 import { YoutubeSearchListDataAPI } from "webapp/api/youtubeApi";
 import ContentsLayout from "./ContentsLayout";
-import RegisterCard from "./explore/SearchListCard";
+import SearchListCard from "./explore/SearchListCard";
 import SearchBar from "./searchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import { YoutubeSearchList } from "webapp/reducers/youtube.reducer";
 import Menu from "./Menu";
+import { Loader } from "semantic-ui-react";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -59,12 +60,16 @@ const Register = () => {
             <ContentsLayout>
               {searchList.map((data, index) => {
                 return (
-                  <RegisterCard key={`explore-card-${index}`} data={data} />
+                  <SearchListCard key={`explore-card-${index}`} data={data} />
                 );
               })}
             </ContentsLayout>
           ) : (
-            <div className={styles.videoLengZero}></div>
+            <div className={styles.videoLengZero}>
+              <div className={styles.loder}>
+                <Loader active inline="centered" />
+              </div>
+            </div>
           )}
         </div>
       </div>
