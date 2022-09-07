@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { YoutubeMyListDataAPI } from "webapp/api/youtubeApi";
 import { YoutubeSearchList } from "webapp/reducers/youtube.reducer";
+import SearchBar from "./searchBar/SearchBar";
+import styles from "../style/MyList.module.css";
+import Menu from "./Menu";
+import ContentsLayout from "./ContentsLayout";
+import ExploreCard from "./explore/ExploreCard";
 
 const MyList = () => {
   const dispatch = useDispatch();
@@ -25,11 +30,31 @@ const MyList = () => {
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
-  console.log("MyList searchList : ", searchList);
+  console.log("MyList searchList?.myList : ", searchList?.myList);
+  console.log("MyList searchList?.code : ", searchList?.code);
+  console.log("MyList searchList?.error : ", searchList?.error);
+  console.log("MyList searchList?.message : ", searchList?.message);
 
   return (
     <>
-      <div>반갑구</div>
+      <div>
+        <div>
+          <SearchBar />
+        </div>
+
+        <div className={styles.contentsDiv}>
+          <Menu />
+          <ContentsLayout>
+            {searchList?.myList?.length === 0
+              ? null
+              : searchList?.myList?.map((data, index) => {
+                  return (
+                    <ExploreCard key={`explore-card-${index}`} data={data} />
+                  );
+                })}
+          </ContentsLayout>
+        </div>
+      </div>
     </>
   );
 };

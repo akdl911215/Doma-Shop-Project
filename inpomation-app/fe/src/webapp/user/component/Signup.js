@@ -32,7 +32,7 @@ const Signup = () => {
     e.preventDefault();
     e.stopPropagation();
 
-    const result = window.confirm("정보를 수정하시겠습니까?");
+    const result = window.confirm("회원가입을 진행하시겠습니까?");
 
     if (result) {
       alert("회원가입 완료");
