@@ -1,6 +1,6 @@
 .Box {
   /* margin: auto; */
-  min-height: 55rem;
+  min-height: 100vh;
 }
 
 .ChartBox {

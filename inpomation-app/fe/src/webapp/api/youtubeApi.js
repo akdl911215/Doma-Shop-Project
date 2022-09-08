@@ -17,3 +17,6 @@ export const YoutubeMyListDataAPI = () =>
   client.post(backUrl + "/youtube/myList", {
     username: sessionStorage.getItem("username"),
   });
+
+export const YoutubeDeleteDataAPI = (id) =>
+  client.post(backUrl + "/youtube/delete", id);

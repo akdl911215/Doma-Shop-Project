@@ -74,8 +74,6 @@ const PortfolioAssetRate = () => {
     UserAuthDataAPI()
       .then((res) => {
         if (res?.data?.code === 200) {
-          console.log("토큰 정상");
-
           AssetDataAPI({
             stock: asset.stock,
             stockHoldings: asset.stockHoldings,
@@ -94,8 +92,6 @@ const PortfolioAssetRate = () => {
       })
       .catch((err) => console.error("portfolio asset error : ", err));
   };
-
-  // id user_id 종목명 종목번호 매수가격 현재가격 배당금액
 
   const stockRemove = (id, stock) => {
     const stockRemoveButton = window.confirm(

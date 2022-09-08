@@ -7,8 +7,8 @@ import SearchBar from "./searchBar/SearchBar";
 import styles from "../style/MyList.module.css";
 import Menu from "./Menu";
 import ContentsLayout from "./ContentsLayout";
-import ExploreCard from "./explore/ExploreCard";
-// import MyListCard from "./explore/MyListCard";
+// import ExploreCard from "./explore/ExploreCard";
+import MyListCard from "./explore/MyListCard";
 import { UserAuthDataAPI } from "webapp/api/userApi";
 import { SessionRemove } from "webapp/common/component/SessionRemove";
 
@@ -30,6 +30,7 @@ const MyList = () => {
           if (signin) {
             SessionRemove();
             navigate("/users_signin");
+            sessionStorage.setItem("signinPage", "/youtube_mylist");
           } else navigate("/youtube_explore");
         }
       })
@@ -59,9 +60,7 @@ const MyList = () => {
               </div>
             ) : (
               searchList?.map((data, index) => {
-                return (
-                  <ExploreCard key={`explore-card-${index}`} data={data} />
-                );
+                return <MyListCard key={`explore-card-${index}`} data={data} />;
               })
             )}
           </ContentsLayout>

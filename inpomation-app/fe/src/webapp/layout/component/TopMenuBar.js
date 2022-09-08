@@ -18,6 +18,9 @@ const TopMenuBar = () => {
               <Link to="/users_list">유저 목록</Link>
             </li>
             <li>
+              <Link to="/youtube_management_list">유튜브 목록</Link>
+            </li>
+            <li>
               <Link to="/notice_list">공지 사항</Link>
             </li>
             <li>
