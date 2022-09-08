@@ -3,6 +3,98 @@ require("dotenv").config();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
+exports.pagenationList = async (req, res, next) => {
+  const sql = `SELECT id, title, video_id, username, channel_title FROM youtube ORDER BY id DESC LIMIT ${req?.start}, ${req?.pageSize}`;
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (doc) {
+            resolve({
+              message: "페이지 조회가 완료되었습니다.",
+              code: 200,
+              pagenationList: doc,
+            });
+          }
+
+          if (err) {
+            resolve({
+              message: "페이지 조회가 실패하였습니다.",
+              error: err,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error(
+        "youtube pagenation list db connection catch error : ",
+        err
+      );
+      throw err;
+    }
+  });
+};
+
+exports.youtubeListCount = async (req, res, next) => {
+  const sql = `SELECT COUNT(*) FROM youtube`;
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          resolve(rows[0]["COUNT(*)"]);
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("youtube count catch error : ", err);
+      throw err;
+    }
+  });
+};
+
+exports.adminSearch = async (req, res, next) => {
+  let whereSql = "CONCAT(id, title, video_id, username, channel_title)";
+  if (req?.type === "id") whereSql = "id";
+  if (req?.type === "title") whereSql = "title";
+  if (req?.type === "videoId") whereSql = "video_id";
+  if (req?.type === "username") whereSql = "username";
+  if (req?.type === "channelTitle") whereSql = "channel_title";
+
+  const sql = `SELECT id, title, video_id, username, channel_title FROM youtube WHERE ${whereSql} REGEXP '${req?.keyword}'`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection error : ", err);
+            resolve({
+              message: "유튜브 어드민 페이지 검색 실패",
+              error: err,
+            });
+          }
+
+          if (doc) {
+            resolve({
+              code: 200,
+              message: "유튜브 어드민 페이지 검색 성공",
+              search: doc,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error(
+        "youtube admin search video db connection catch error : ",
+        err
+      );
+      throw err;
+    }
+  });
+};
+
 exports.delete = (req, res) => {
   const videoId = req;
   const sql = `DELETE FROM youtube WHERE id = ${videoId}`;

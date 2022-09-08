@@ -85,7 +85,6 @@ exports.userRemove = async (req, res, next) => {
     try {
       db.getConnectionPool((connection) => {
         connection.query(sql, (err, rows) => {
-          console.log("rows : ", rows);
           if (rows) {
             resolve({
               message: "회원 삭제가 완료되었습니다.",
@@ -94,7 +93,6 @@ exports.userRemove = async (req, res, next) => {
             });
           }
 
-          console.log("err : ", err);
           if (err) {
             resolve({
               message: "회원 삭제가 실패되었습니다.",

@@ -2,6 +2,23 @@ const express = require("express");
 const router = express.Router();
 const service = require("./youtubeService");
 
+router.post("/pagenationList", async (req, res, next) => {
+  console.log("pagenationList req : ", req);
+  if (!req?.body) {
+    alert("페이지 정보를 확인하세요.");
+    return;
+  }
+
+  res.json({
+    paging: rqe?.body,
+    pagenationList: await service.pagenationList(req?.body),
+  });
+});
+
+router.post("/adminSearch", async (req, res, next) =>
+  res.json(await service.adminSearch(req?.body))
+);
+
 router.post("/uploadList", async (req, res, next) => {
   res.json(await service.uploadList(req?.body));
 });
