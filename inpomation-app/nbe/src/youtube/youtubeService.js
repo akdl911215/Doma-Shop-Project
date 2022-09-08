@@ -2,6 +2,8 @@ const repository = require("./youtubeRepository");
 const userRepository = require("../user/userRepository");
 
 class youtubeService {
+  delete = async (id) => await repository.delete(id);
+
   async myList(usename) {
     const inquiryUser = await userRepository.userInquiry(usename);
     return await repository.myList(inquiryUser?.id);

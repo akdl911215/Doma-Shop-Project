@@ -24,4 +24,8 @@ router.post("/myList", async (req, res, next) => {
   res.json(await service.myList(req?.body?.username));
 });
 
+router.post("/delete", async (req, res, next) =>
+  res.json(await service.delete(req?.body?.id))
+);
+
 module.exports = router;

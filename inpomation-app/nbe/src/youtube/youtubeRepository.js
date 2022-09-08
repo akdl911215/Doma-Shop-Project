@@ -3,6 +3,39 @@ require("dotenv").config();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
 
+exports.delete = (req, res) => {
+  const videoId = req;
+  const sql = `DELETE FROM youtube WHERE id = ${videoId}`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection error : ", err);
+            resolve({
+              message: "유튜브 동영상 삭제 실패",
+              error: err,
+            });
+          }
+
+          if (doc) {
+            resolve({
+              code: 200,
+              message: "유튜브 동영상 삭제 성공",
+              remove: doc,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("youtube delete video db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
+
 exports.myList = (req, res) => {
   const userId = req;
   const sql = `SELECT * FROM youtube WHERE user_id = ${userId} ORDER BY id DESC`;
