@@ -1,6 +1,5 @@
 import styles from "../style/Home.module.css";
-import youtubeData from "../data/TopSixYoutubeData.json";
-import HomeCard from "../component/home/HomeCard";
+import HomeCard from "./home/HomeCard";
 import { Button } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";

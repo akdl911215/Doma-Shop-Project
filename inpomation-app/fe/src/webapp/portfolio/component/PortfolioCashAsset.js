@@ -8,6 +8,7 @@ import {
 } from "webapp/api/portfolioApi";
 import { UserAuthDataAPI } from "webapp/api/userApi";
 import { useNavigate } from "react-router-dom";
+import { SessionRemove } from "webapp/common/component/SessionRemove";
 
 const PortfolioCashAsset = () => {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ const PortfolioCashAsset = () => {
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
-          sessionRemove();
+          SessionRemove();
         }
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
@@ -74,17 +75,10 @@ const PortfolioCashAsset = () => {
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
-          sessionRemove();
+          SessionRemove();
         }
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
-  };
-
-  const sessionRemove = () => {
-    sessionStorage.removeItem("jwtToken");
-    sessionStorage.removeItem("username");
-    sessionStorage.removeItem("roles");
-    navigate("/users_signin");
   };
 
   return (

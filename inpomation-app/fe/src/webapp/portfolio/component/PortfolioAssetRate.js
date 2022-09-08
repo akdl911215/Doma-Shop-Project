@@ -9,6 +9,7 @@ import {
 } from "webapp/api/portfolioApi";
 import { UserAuthDataAPI } from "webapp/api/userApi";
 import { useNavigate } from "react-router-dom";
+import { SessionRemove } from "webapp/common/component/SessionRemove";
 
 const PortfolioAssetRate = () => {
   // 자산금액 비율
@@ -63,7 +64,7 @@ const PortfolioAssetRate = () => {
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
-          sessionRemove();
+          SessionRemove();
         }
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
@@ -88,17 +89,10 @@ const PortfolioAssetRate = () => {
             .catch((err) => console.error("asset error : ", err));
         } else {
           alert("다시 로그인을 시도하세요.");
-          sessionRemove();
+          SessionRemove();
         }
       })
       .catch((err) => console.error("portfolio asset error : ", err));
-  };
-
-  const sessionRemove = () => {
-    sessionStorage.removeItem("jwtToken");
-    sessionStorage.removeItem("username");
-    sessionStorage.removeItem("roles");
-    navigate("/users_signin");
   };
 
   // id user_id 종목명 종목번호 매수가격 현재가격 배당금액
@@ -120,7 +114,7 @@ const PortfolioAssetRate = () => {
               .catch((err) => console.error("asset remove error : ", err));
           } else {
             alert("다시 로그인을 시도하세요.");
-            sessionRemove();
+            SessionRemove();
           }
         })
         .catch((err) => console.error("portfolio asset remove error : ", err));

@@ -3,7 +3,7 @@ import "webapp/layout/style/Home.css";
 import InvestingInfomationList from "../../investing-infomation/component/InvestingInfomationList";
 import Header from "./Header";
 import Footer from "./Footer";
-import YoutubeHome from "../../youtube-upload/pages/Home";
+import YoutubeHome from "../../youtube-upload/component/Home";
 
 const Home = () => {
   return (

@@ -10,6 +10,7 @@ import ContentsLayout from "./ContentsLayout";
 import ExploreCard from "./explore/ExploreCard";
 // import MyListCard from "./explore/MyListCard";
 import { UserAuthDataAPI } from "webapp/api/userApi";
+import { SessionRemove } from "webapp/common/component/SessionRemove";
 
 const MyList = () => {
   const dispatch = useDispatch();
@@ -27,9 +28,7 @@ const MyList = () => {
           );
 
           if (signin) {
-            sessionStorage.removeItem("jwtToken");
-            sessionStorage.removeItem("username");
-            sessionStorage.removeItem("roles");
+            SessionRemove();
             navigate("/users_signin");
           } else navigate("/youtube_explore");
         }
