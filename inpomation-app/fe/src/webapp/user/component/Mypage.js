@@ -25,7 +25,7 @@ const Mypage = () => {
   useEffect(() => {
     UserAuthDataAPI()
       .then((res) => {
-        if (res?.data?.message === "토큰이 정상입니다.") {
+        if (res?.data?.code === 200) {
           UserInquiryDataAPI(sessionStorage.getItem("username"))
             .then((res) => setMypage(res?.data))
             .catch((err) => console.error(`mypage inquiry error : ${err}`));

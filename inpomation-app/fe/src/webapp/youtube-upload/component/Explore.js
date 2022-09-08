@@ -23,8 +23,6 @@ const Explore = () => {
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
-  console.log("Explore searchList : ", searchList);
-  console.log("Explore searchList.length : ", searchList.length);
 
   return (
     <>
@@ -35,13 +33,9 @@ const Explore = () => {
       <div className={styles.contentsDiv}>
         <Menu />
         <ContentsLayout>
-          {searchList?.length === 0
-            ? ""
-            : searchList?.map((data, index) => {
-                return (
-                  <ExploreCard key={`explore-card-${index}`} data={data} />
-                );
-              })}
+          {searchList?.map((data, index) => {
+            return <ExploreCard key={`explore-card-${index}`} data={data} />;
+          })}
         </ContentsLayout>
       </div>
     </>

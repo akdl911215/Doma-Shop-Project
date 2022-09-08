@@ -7,34 +7,40 @@ import SearchBar from "./searchBar/SearchBar";
 import styles from "../style/MyList.module.css";
 import Menu from "./Menu";
 import ContentsLayout from "./ContentsLayout";
-// import ExploreCard from "./explore/ExploreCard";
-import MyListCard from "./explore/MyListCard";
+import ExploreCard from "./explore/ExploreCard";
+// import MyListCard from "./explore/MyListCard";
+import { UserAuthDataAPI } from "webapp/api/userApi";
 
 const MyList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    if (sessionStorage.getItem("username") === null) {
-      const signin = window.confirm(
-        "로그인이 필요한 기능입니다. 로그인을 진행하시겠습니까?"
-      );
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          YoutubeMyListDataAPI()
+            .then((res) => dispatch(YoutubeSearchList(res?.data?.myList)))
+            .catch((err) => console.error("my list api error : ", err));
+        } else {
+          const signin = window.confirm(
+            "로그인이 필요한 기능입니다. 로그인을 진행하시겠습니까?"
+          );
 
-      if (signin) navigate("/users_signin");
-      else navigate("/youtube_explore");
-    }
-
-    YoutubeMyListDataAPI()
-      .then((res) => dispatch(YoutubeSearchList(res?.data)))
-      .catch((err) => console.error("my list api error : ", err));
+          if (signin) {
+            sessionStorage.removeItem("jwtToken");
+            sessionStorage.removeItem("username");
+            sessionStorage.removeItem("roles");
+            navigate("/users_signin");
+          } else navigate("/youtube_explore");
+        }
+      })
+      .catch((err) => console.error("youtube myList auth error : ", err));
   }, []);
 
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
-  console.log("MyList searchList?.myList : ", searchList?.myList);
-  console.log("MyList searchList?.code : ", searchList?.code);
-  console.log("MyList searchList?.error : ", searchList?.error);
-  console.log("MyList searchList?.message : ", searchList?.message);
+  if (searchList.length === 0) alert("업로드한 영상이 없습니다");
 
   return (
     <>
@@ -46,13 +52,19 @@ const MyList = () => {
         <div className={styles.contentsDiv}>
           <Menu />
           <ContentsLayout>
-            {searchList?.myList?.length === 0
-              ? null
-              : searchList?.myList?.map((data, index) => {
-                  return (
-                    <MyListCard key={`explore-card-${index}`} data={data} />
-                  );
-                })}
+            {searchList?.length === 0 ? (
+              <div className={styles.videoLengZero}>
+                {/* <div className={styles.loder}>
+                  내 동영상이 존재하지 않습니다.
+                </div> */}
+              </div>
+            ) : (
+              searchList?.map((data, index) => {
+                return (
+                  <ExploreCard key={`explore-card-${index}`} data={data} />
+                );
+              })
+            )}
           </ContentsLayout>
         </div>
       </div>
