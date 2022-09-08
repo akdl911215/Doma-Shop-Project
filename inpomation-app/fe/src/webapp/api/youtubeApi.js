@@ -20,3 +20,9 @@ export const YoutubeMyListDataAPI = () =>
 
 export const YoutubeDeleteDataAPI = (id) =>
   client.post(backUrl + "/youtube/delete", id);
+
+export const YoutubeAdminSearchDataAPI = (search) =>
+  client.post(backUrl + "/youtube/adminSearch", search);
+
+export const YoutubePagenationListDataAPI = (page) =>
+  client.post(backUrl + "/youtube/pagenationList", { page, pageSize: 5 });

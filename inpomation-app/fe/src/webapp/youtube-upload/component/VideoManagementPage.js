@@ -8,31 +8,56 @@ import {
   YoutubeListDataAPI,
 } from "webapp/api/youtubeApi";
 import { SessionRemove } from "webapp/common/component/SessionRemove";
-import { YoutubeSearchList } from "webapp/reducers/youtube.reducer";
+import {
+  YoutubeAdminSearchBar,
+  YoutubeCurrentPageLocation,
+  YoutubeSearchList,
+} from "webapp/reducers/youtube.reducer";
 import styles from "../style/VideoManagementPage.module.css";
+import AdminPageSearchBar from "./searchBar/AdminPageSearchBar";
+import ShowPageNation from "webapp/common/component/PagenationBtn";
 
 const VideoManagementPage = () => {
-  const colors = ["blue"];
+  const colors = ["red"];
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { searchList, searchBarList, totalList } = useSelector(
+    ({ YoutubeReducer }) => ({
+      searchList: YoutubeReducer?.YoutubeSearchListInitial,
+      searchBarList: YoutubeReducer?.YoutubeAdminSearchBarInitial,
+      totalList: YoutubeReducer?.YoutubePagenationListInitial,
+    })
+  );
+  console.log("totalList : ", totalList);
+  console.log("searchBarList : ", searchBarList);
+  console.log("searchList : ", searchList);
+  const boolPage = searchBarList.length > 0;
+
   useEffect(() => {
-    YoutubeListDataAPI()
-      .then((res) => dispatch(YoutubeSearchList(res?.data?.list)))
-      .catch((err) =>
-        console.error("youtube video management page api error : ", err)
-      );
+    UserAuthDataAPI().then((res) => {
+      if (res?.data?.code === 200) {
+        dispatch(YoutubeCurrentPageLocation(1));
+      } else {
+        const result = window.confirm(
+          "재로그인이 필요합니다. 로그인을 진행하시겠습니까?"
+        );
+        if (result) {
+          SessionRemove();
+          sessionStorage.setItem("signinPage", "/youtube_management_list");
+          navigate("/users_signin");
+        }
+      }
+    });
+
+    // YoutubeListDataAPI()
+    //   .then((res) => dispatch(YoutubeSearchList(res?.data?.list)))
+    //   .catch((err) =>
+    //     console.error("youtube video management page api error : ", err)
+    //   );
   }, []);
 
-  const { searchList } = useSelector(({ YoutubeReducer }) => ({
-    searchList: YoutubeReducer?.YoutubeSearchListInitial,
-  }));
-  console.log("VideoManagementPage searchList : ", searchList);
-  const boolPage = searchList.length === 0;
-
   const videoDeleteBtn = (video) => {
-    console.log("delete video : ", video);
-
     const remove = window.confirm(
       `[ ${video?.title} ] 영상을 삭제하시겠습니까?`
     );
@@ -81,10 +106,26 @@ const VideoManagementPage = () => {
               </Table.Row>
             </Table.Header>
             {boolPage
-              ? searchList?.map((element, index) => {
+              ? searchBarList?.map((element, index) => {
                   return (
                     <>
-                      <Table.Body></Table.Body>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>{element.id}</Table.Cell>
+                          <Table.Cell>{element.title}</Table.Cell>
+                          <Table.Cell>{element.video_id}</Table.Cell>
+                          <Table.Cell>{element.username}</Table.Cell>
+                          <Table.Cell>{element.channel_title}</Table.Cell>
+                          <Table.Cell>
+                            <Button
+                              negative
+                              onClick={() => videoDeleteBtn(element)}
+                            >
+                              삭제
+                            </Button>
+                          </Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
                     </>
                   );
                 })
@@ -113,18 +154,33 @@ const VideoManagementPage = () => {
                 })}
           </Table>
         ))}
-        {/* <UserPageSearch /> */}
+        <AdminPageSearchBar />
         <div className={styles.videoPageButtonStyle}>
           <Button primary onClick={() => navigate("/admin_main")}>
             뒤로가기
           </Button>
-          {/* {boolPage ? <UserBtnReset /> : <Button primary>검색 초기화</Button>} */}
+          {boolPage ? (
+            <Button onClick={() => dispatch(YoutubeAdminSearchBar([]))} primary>
+              검색 초기화
+            </Button>
+          ) : (
+            <Button
+              primary
+              onClick={(e) => {
+                window.location.reload();
+                // dispatch(UserCurrentPageLocation(1));
+              }}
+            >
+              1페이지로 초기화
+            </Button>
+          )}
         </div>
-        {/* {boolPage ? (
+        {boolPage ? (
           <div className={styles.paginationStyle}>
-            <ShowPageNation totalPages={pageList} />
+            {/* <ShowPageNation name="videoManagementPage" totalPages={pageList} /> */}
+            <ShowPageNation name="videoManagementPage" />
           </div>
-         ) : null}  */}
+        ) : null}
       </Container>
     </>
   );

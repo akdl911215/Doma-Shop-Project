@@ -2,8 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 import { Pagination } from "semantic-ui-react";
+import { YoutubeCurrentPageLocation } from "webapp/reducers/youtube.reducer";
 
-const UserPagenationButton = ({ totalPages }) => {
+const PagenationBtn = ({ name, totalPages }) => {
+  console.log(`name : ${name}, totalPages : ${totalPages}`);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -12,14 +14,16 @@ const UserPagenationButton = ({ totalPages }) => {
     if (boolNum < "1") {
       num = 1;
     } else if (boolNum === "⟩") {
-      num = Number(sessionStorage.getItem("userList")) + 1;
+      num = Number(sessionStorage.getItem("pageList")) + 1;
     } else if (boolNum === "⟨") {
-      num = Number(sessionStorage.getItem("userList")) - 1;
+      num = Number(sessionStorage.getItem("pageList")) - 1;
     } else {
       num = Number(e.target.text);
     }
 
-    dispatch(UserCurrentPageLocation(num));
+    if (name === "userPageList") dispatch(UserCurrentPageLocation(num));
+    if (name === "videoManagementPage")
+      dispatch(YoutubeCurrentPageLocation(num));
   };
 
   return (
@@ -37,4 +41,4 @@ const UserPagenationButton = ({ totalPages }) => {
     </>
   );
 };
-export default UserPagenationButton;
+export default PagenationBtn;

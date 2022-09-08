@@ -1,16 +1,36 @@
+import { takeLatest } from "redux-saga/effects";
+import { YoutubePagenationListDataAPI } from "webapp/api/youtubeApi";
 import {
   createRequestActionTypes,
   Request,
 } from "webapp/lib/CreateRequestSaga";
-import { takeLatest } from "redux-saga/effects";
-import {
-  YoutubeSearchListDataAPI,
-  YoutubeListDataAPI,
-} from "webapp/api/youtubeApi";
 
 const [YOUTUBESEARCHLIST_REQUEST] =
   createRequestActionTypes("YOUTUBESEARCHLIST");
 // const [YOUTUBEBOARD_REQUEST] = createRequestActionTypes("YOUTUBEBOARD");
+const [YOUTUBEADMINSEARCHBAR_REQUEST] = createRequestActionTypes(
+  "YOUTUBEADMINSEARCHBAR"
+);
+const [
+  YOUTUBEPAGENATIONLIST_REQUEST,
+  YOUTUBEPAGENATIONLIST_SUCCESS,
+  YOUTUBEPAGENATIONLIST_FAILURE,
+] = createRequestActionTypes("YOUTUBEPAGENATIONLIST");
+
+export const YoutubeCurrentPageLocation = (pageState) => {
+  console.log("YoutubeCurrentPageLocation pageState : ", pageState);
+  return {
+    type: YOUTUBEPAGENATIONLIST_REQUEST,
+    payload: pageState,
+  };
+};
+
+export const YoutubeAdminSearchBar = (search) => {
+  return {
+    type: YOUTUBEADMINSEARCHBAR_REQUEST,
+    payload: search,
+  };
+};
 
 export const YoutubeSearchList = (list) => {
   return {
@@ -26,6 +46,15 @@ export const YoutubeSearchList = (list) => {
 //   };
 // };
 
+const YoutubePagenationSaga = Request(
+  YOUTUBEPAGENATIONLIST_REQUEST,
+  YoutubePagenationListDataAPI
+);
+
+export function* YoutubePagenationRequest() {
+  yield takeLatest(YOUTUBEPAGENATIONLIST_REQUEST, YoutubePagenationSaga);
+}
+
 export const initialState = {
   YoutubeSearchListInitial: [],
   YoutubeSearchListInitialRequest: false,
@@ -33,14 +62,56 @@ export const initialState = {
   // YoutubeBoardInitial: {},
   // YoutubeBoardInitialRequest: false,
   // YoutubeBoardInitialError: null,
+  YoutubeAdminSearchBarInitial: [],
+  YoutubeAdminSearchBarInitialRequest: false,
+  YoutubeAdminSearchBarInitialError: null,
+  YoutubePagenationListInitial: {},
+  YoutubePagenationListInitialReqeust: false,
+  YoutubePagenationListInitialError: null,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case YOUTUBEPAGENATIONLIST_REQUEST: {
+      console.log(
+        "YOUTUBEPAGENATIONLIST_REQUEST action?.payload : ",
+        action?.payload
+      );
+
+      return {
+        ...state,
+        YoutubePagenationListInitial: action?.payload,
+      };
+    }
+    case YOUTUBEPAGENATIONLIST_SUCCESS: {
+      console.log(
+        "YOUTUBEPAGENATIONLIST_SUCCESS action?.payload : ",
+        action?.payload
+      );
+      return {
+        ...state,
+        YoutubePagenationListInitial: action?.payload,
+        YoutubePagenationListInitialReqeust: true,
+      };
+    }
+    case YOUTUBEPAGENATIONLIST_FAILURE: {
+      return {
+        ...state,
+        YoutubePagenationListInitialReqeust: false,
+        YoutubePagenationListInitialError: action.error,
+      };
+    }
+
     case YOUTUBESEARCHLIST_REQUEST:
       return {
         ...state,
         YoutubeSearchListInitial: action?.payload,
+      };
+
+    case YOUTUBEADMINSEARCHBAR_REQUEST:
+      return {
+        ...state,
+        YoutubeAdminSearchBarInitial: action?.payload,
       };
 
     // case YOUTUBEBOARD_REQUEST:

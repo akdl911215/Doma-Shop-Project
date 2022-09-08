@@ -18,10 +18,10 @@ export const UserSearchList = (userList) => {
   };
 };
 
-export const UserCurrentPageLocation = (pageSate) => {
+export const UserCurrentPageLocation = (pageState) => {
   return {
     type: USERPAGENATTIONBUTTON_REQUEST,
-    payload: pageSate,
+    payload: pageState,
   };
 };
 

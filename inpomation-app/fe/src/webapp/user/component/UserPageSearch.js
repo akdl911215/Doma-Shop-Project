@@ -23,7 +23,7 @@ const UserPageSearch = () => {
     <>
       <select
         type="text"
-        className={styles.SelectBoxStyle}
+        className={styles.selectBoxStyle}
         onChange={(e) => setOptions(e.target.value)}
       >
         <option value="unaep">통합검색</option>
@@ -37,7 +37,7 @@ const UserPageSearch = () => {
         type="text"
         name="keyword"
         placeholder="검색어를 입력하세요"
-        className={styles.InputBoxStyle}
+        className={styles.inputBoxStyle}
         onChange={(e) => setSearch(e.target.value)}
       />
       <Button onClick={(e) => searchPage(e)}>검색</Button>

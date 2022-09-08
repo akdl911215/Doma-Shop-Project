@@ -6,7 +6,7 @@ import {
   UserCurrentPageLocation,
   UserSearchList,
 } from "webapp/reducers/user.reducer";
-import ShowPageNation from "webapp/user/component/UserPagenationButton";
+import ShowPageNation from "webapp/common/component/PagenationBtn";
 import { useNavigate } from "react-router-dom";
 import styles from "../style/UserPageList.module.css";
 import UserPageSearch from "./UserPageSearch";
@@ -28,7 +28,7 @@ const UserPageList = () => {
       pagingList: UserReducer?.UserSearchListInitial,
     })
   );
-  sessionStorage.setItem("userList", page);
+  sessionStorage.setItem("pageList", page);
   const boolPage = pagingList.length === 0;
 
   useEffect(() => {
@@ -36,10 +36,14 @@ const UserPageList = () => {
       if (res?.data?.code === 200) {
         dispatch(UserCurrentPageLocation(1));
       } else {
-        alert("다시 로그인을 시도하세요.");
-        SessionRemove();
-        sessionStorage.setItem("signinPage", "/users_list");
-        navigate("/users_signin");
+        const result = window.confirm(
+          "재로그인이 필요합니다. 로그인을 진행하시겠습니까?"
+        );
+        if (result) {
+          SessionRemove();
+          sessionStorage.setItem("signinPage", "/users_list");
+          navigate("/users_signin");
+        }
       }
     });
   }, []);
@@ -159,7 +163,7 @@ const UserPageList = () => {
         </div>
         {boolPage ? (
           <div className={styles.PaginationStyle}>
-            <ShowPageNation totalPages={pageList} />
+            <ShowPageNation name="userPageList" totalPages={pageList} />
           </div>
         ) : null}
       </Container>
