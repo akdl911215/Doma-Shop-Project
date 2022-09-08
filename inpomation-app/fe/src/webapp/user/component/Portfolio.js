@@ -19,13 +19,13 @@ const Portfolio = () => {
         <select name="portfolioSelect" onChange={optionChange} value={options}>
           <option value="cashAsset">현금 대 자산비율</option>
           <option value="assetRate">자산 금액 비율</option>
-          <option value="dividentRate">배당 및 월세 1년 비율</option>
+          {/* <option value="dividentRate">배당 및 월세 1년 비율</option> */}
         </select>
 
         <div>
           {options === "cashAsset" ? <PortfolioCashAsset /> : ""}
           {options === "assetRate" ? <PortfolioAssetRate /> : ""}
-          {options === "dividentRate" ? <PortfolioDividentRate /> : ""}
+          {/* {options === "dividentRate" ? <PortfolioDividentRate /> : ""} */}
         </div>
       </div>
     </>
