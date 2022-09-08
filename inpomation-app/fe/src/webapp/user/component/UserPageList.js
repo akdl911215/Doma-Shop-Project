@@ -38,6 +38,7 @@ const UserPageList = () => {
       } else {
         alert("다시 로그인을 시도하세요.");
         SessionRemove();
+        sessionStorage.setItem("signinPage", "/users_list");
         navigate("/users_signin");
       }
     });
@@ -60,9 +61,12 @@ const UserPageList = () => {
             alert("마스터만 회원을 탈퇴시킬 수 있습니다.");
           }
         } else {
-          alert("다시 로그인을 시도하세요.");
-          SessionRemove();
-          navigate("/users_signin");
+          const bool = window.confirm("마스터로 로그인을 시도하시겠습니까?");
+          if (bool) {
+            SessionRemove();
+            sessionStorage.setItem("signinPage", "/users_list");
+            navigate("/users_signin");
+          }
         }
       });
     }
