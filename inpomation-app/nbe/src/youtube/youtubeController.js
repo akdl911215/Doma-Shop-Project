@@ -3,14 +3,13 @@ const router = express.Router();
 const service = require("./youtubeService");
 
 router.post("/pagenationList", async (req, res, next) => {
-  console.log("pagenationList req : ", req);
   if (!req?.body) {
     alert("페이지 정보를 확인하세요.");
     return;
   }
 
   res.json({
-    paging: rqe?.body,
+    paging: req?.body,
     pagenationList: await service.pagenationList(req?.body),
   });
 });

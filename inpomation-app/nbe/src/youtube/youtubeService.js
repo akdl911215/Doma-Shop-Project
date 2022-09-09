@@ -11,7 +11,6 @@ class youtubeService {
     const pagenationCount = Math.ceil(
       (await repository.youtubeListCount()) / page.pageSize
     );
-    console.log("pagenationCount : ", pagenationCount);
     if (page.page > pagenationCount) return null;
 
     const result = await repository.pagenationList({
