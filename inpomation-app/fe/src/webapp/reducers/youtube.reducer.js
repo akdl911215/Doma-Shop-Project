@@ -18,7 +18,6 @@ const [
 ] = createRequestActionTypes("YOUTUBEPAGENATIONLIST");
 
 export const YoutubeCurrentPageLocation = (pageState) => {
-  console.log("YoutubeCurrentPageLocation pageState : ", pageState);
   return {
     type: YOUTUBEPAGENATIONLIST_REQUEST,
     payload: pageState,
@@ -73,21 +72,14 @@ export const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case YOUTUBEPAGENATIONLIST_REQUEST: {
-      console.log(
-        "YOUTUBEPAGENATIONLIST_REQUEST action?.payload : ",
-        action?.payload
-      );
-
       return {
         ...state,
-        YoutubePagenationListInitial: action?.payload,
+        YoutubePagenationListInitial: {},
+        YoutubePagenationListInitialReqeust: false,
+        YoutubePagenationListInitialError: null,
       };
     }
     case YOUTUBEPAGENATIONLIST_SUCCESS: {
-      console.log(
-        "YOUTUBEPAGENATIONLIST_SUCCESS action?.payload : ",
-        action?.payload
-      );
       return {
         ...state,
         YoutubePagenationListInitial: action?.payload,

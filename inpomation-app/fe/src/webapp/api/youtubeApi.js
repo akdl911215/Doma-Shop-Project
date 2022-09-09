@@ -25,4 +25,7 @@ export const YoutubeAdminSearchDataAPI = (search) =>
   client.post(backUrl + "/youtube/adminSearch", search);
 
 export const YoutubePagenationListDataAPI = (page) =>
-  client.post(backUrl + "/youtube/pagenationList", { page, pageSize: 5 });
+  client.post(backUrl + "/youtube/pagenationList", {
+    page,
+    pageSize: 5,
+  });

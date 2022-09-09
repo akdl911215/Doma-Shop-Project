@@ -3,15 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Table, Container, Button } from "semantic-ui-react";
 import { UserAuthDataAPI } from "webapp/api/userApi";
-import {
-  YoutubeDeleteDataAPI,
-  YoutubeListDataAPI,
-} from "webapp/api/youtubeApi";
+import { YoutubeDeleteDataAPI } from "webapp/api/youtubeApi";
 import { SessionRemove } from "webapp/common/component/SessionRemove";
 import {
   YoutubeAdminSearchBar,
   YoutubeCurrentPageLocation,
-  YoutubeSearchList,
 } from "webapp/reducers/youtube.reducer";
 import styles from "../style/VideoManagementPage.module.css";
 import AdminPageSearchBar from "./searchBar/AdminPageSearchBar";
@@ -22,16 +18,17 @@ const VideoManagementPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { searchList, searchBarList, totalList } = useSelector(
+  const { searchBarList, totalList, pageList } = useSelector(
     ({ YoutubeReducer }) => ({
-      searchList: YoutubeReducer?.YoutubeSearchListInitial,
       searchBarList: YoutubeReducer?.YoutubeAdminSearchBarInitial,
-      totalList: YoutubeReducer?.YoutubePagenationListInitial,
+      totalList:
+        YoutubeReducer?.YoutubePagenationListInitial?.pagenationList?.result
+          ?.pagenationList,
+      pageList:
+        YoutubeReducer?.YoutubePagenationListInitial?.pagenationList
+          ?.pagenationCount,
     })
   );
-  console.log("totalList : ", totalList);
-  console.log("searchBarList : ", searchBarList);
-  console.log("searchList : ", searchList);
   const boolPage = searchBarList.length > 0;
 
   useEffect(() => {
@@ -46,15 +43,12 @@ const VideoManagementPage = () => {
           SessionRemove();
           sessionStorage.setItem("signinPage", "/youtube_management_list");
           navigate("/users_signin");
+        } else {
+          SessionRemove();
+          navigate("/");
         }
       }
     });
-
-    // YoutubeListDataAPI()
-    //   .then((res) => dispatch(YoutubeSearchList(res?.data?.list)))
-    //   .catch((err) =>
-    //     console.error("youtube video management page api error : ", err)
-    //   );
   }, []);
 
   const videoDeleteBtn = (video) => {
@@ -129,7 +123,7 @@ const VideoManagementPage = () => {
                     </>
                   );
                 })
-              : searchList?.map((element, index) => {
+              : totalList?.map((element, index) => {
                   return (
                     <>
                       <Table.Body>
@@ -168,19 +162,18 @@ const VideoManagementPage = () => {
               primary
               onClick={(e) => {
                 window.location.reload();
-                // dispatch(UserCurrentPageLocation(1));
+                dispatch(YoutubeCurrentPageLocation(1));
               }}
             >
               1페이지로 초기화
             </Button>
           )}
         </div>
-        {boolPage ? (
+        {boolPage ? null : (
           <div className={styles.paginationStyle}>
-            {/* <ShowPageNation name="videoManagementPage" totalPages={pageList} /> */}
-            <ShowPageNation name="videoManagementPage" />
+            <ShowPageNation name="videoManagementPage" totalPages={pageList} />
           </div>
-        ) : null}
+        )}
       </Container>
     </>
   );
