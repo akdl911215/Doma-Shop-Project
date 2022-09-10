@@ -41,6 +41,7 @@ const CityAndProvince = () => {
       sidoCode: selectSidoCode,
     });
     CityAndProvinceData.then((res) => {
+      if (res) alert("자료 조회가 성공하였습니다.");
       setDataResult([
         res.data.result.cmtrBlncAmt.trim(), // 무역지수
         res.data.result.expCnt.trim(), // 수출건수

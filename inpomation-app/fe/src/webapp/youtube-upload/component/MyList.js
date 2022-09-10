@@ -40,7 +40,6 @@ const MyList = () => {
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
-  if (searchList.length === 0) alert("업로드한 영상이 없습니다");
 
   return (
     <>

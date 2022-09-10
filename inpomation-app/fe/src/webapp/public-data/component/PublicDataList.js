@@ -57,7 +57,7 @@ const PublicDataList = () => {
           </Table.Body>
         </Table>
         <GoBackButton />
-        <Button color="black" onClick={() => navigate("/admin_main")}>
+        <Button color="black" onClick={() => navigate("/")}>
           뒤로가기
         </Button>
       </Container>

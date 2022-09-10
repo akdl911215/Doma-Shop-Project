@@ -70,14 +70,14 @@ const VideoManagementPage = () => {
                 console.error("youtube video delete error : ", err)
               );
           } else {
-            alert("마스터만 비디오를 삭제하시킬 수 있습니다.");
-          }
-        } else {
-          const bool = window.confirm("마스터로 로그인을 시도하시겠습니까?");
-          if (bool) {
-            SessionRemove();
-            sessionStorage.setItem("signinPage", "/youtube_management_list");
-            navigate("/users_signin");
+            const bool = window.confirm(
+              "삭제권한은 마스터만 가능합니다. 마스터로 로그인을 시도하시겠습니까?"
+            );
+            if (bool) {
+              SessionRemove();
+              sessionStorage.setItem("signinPage", "/youtube_management_list");
+              navigate("/users_signin");
+            }
           }
         }
       });

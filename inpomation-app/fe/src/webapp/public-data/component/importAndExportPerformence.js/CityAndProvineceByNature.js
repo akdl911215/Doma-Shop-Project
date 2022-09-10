@@ -52,6 +52,8 @@ const CityAndProvineceByNature = () => {
       importExportCode: importAndExport,
     });
     CityAndProvinceData.then((res) => {
+      if (res) alert("자료 조회가 성공하였습니다.");
+
       setDataResult(res?.data?.result.result[0].item);
       setDataStaticResult(res?.data?.result.result[0].item[0]);
     })
