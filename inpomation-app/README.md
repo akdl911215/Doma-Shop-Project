@@ -8,7 +8,8 @@
 - 유튜브 -
 1. 전체리스트, 유튜브 API를 사용한 등록 및 재등록, 내 영상 목록 확인 및 삭제
 
-![youtube01-1](https://user-images.githubusercontent.com/76759835/189476115-34a196de-d7f8-4967-bfb4-bc8660ecef10.gif)
+![youtube01-s1](https://user-images.githubusercontent.com/76759835/189476730-f0171855-3a2e-4859-9f9a-bb7c50066885.gif)
+
 
 
 
