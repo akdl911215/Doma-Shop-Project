@@ -38,7 +38,10 @@
 
 
 
+
+
 2. 자산 비율 비중 기능
+
 ![assetRate-g](https://user-images.githubusercontent.com/76759835/189477376-02fcd34e-df15-410c-8da7-f1e85a69f57c.gif)
 
 
