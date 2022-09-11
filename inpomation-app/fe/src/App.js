@@ -9,11 +9,11 @@ import NoticeModify from "./webapp/notice/component/NoticeModify";
 import NoticeRead from "./webapp/notice/component/NoticeRead";
 import NoticeRegister from "./webapp/notice/component/NoticeRegister";
 import InvestingInfomationList from "./webapp/investing-infomation/component/InvestingInfomationList";
-import ProductInfomationModify from "./webapp/investing-infomation/component/ProductInfomationModify";
-import ProductInfomationRegister from "./webapp/investing-infomation/component/ProductInfomationRegister";
-import ProductInfomationReview from "./webapp/investing-infomation/component/ProductInfomationReview";
-import ProductInfomationTab from "./webapp/investing-infomation/component/ProductInfomationTab";
-import ProductInfomationRead from "./webapp/investing-infomation/component/ProductInfomationRead";
+import InvestingInfomationModify from "./webapp/investing-infomation/component/InvestingInfomationModify";
+import InvestingInfomationRegister from "./webapp/investing-infomation/component/InvestingInfomationRegister";
+import InvestingInfomationReview from "./webapp/investing-infomation/component/InvestingInfomationReview";
+import InvestingInfomationTab from "./webapp/investing-infomation/component/InvestingInfomationTab";
+import InvestingInfomationRead from "./webapp/investing-infomation/component/InvestingInfomationRead";
 import { Route, Routes } from "react-router-dom";
 import UserPageList from "./webapp/user/component/UserPageList";
 import SmokingAreaInGwangjinGu from "webapp/public-data/component/SmokingAreaInGwangjinGu";
@@ -49,28 +49,28 @@ const App = () => {
         <Route path="/notice_modify" element={<NoticeModify />} />
 
         <Route
-          path="/product_infomation_modify"
-          element={<ProductInfomationModify />}
+          path="/investing_infomation_modify"
+          element={<InvestingInfomationModify />}
         />
         <Route
-          path="/ivesting_infomation_list"
+          path="/investing_infomation_list"
           element={<InvestingInfomationList />}
         />
         <Route
-          path="/product_infomation_register"
-          element={<ProductInfomationRegister />}
+          path="/investing_infomation_register"
+          element={<InvestingInfomationRegister />}
         />
         <Route
-          path="/product_infomation_read"
-          element={<ProductInfomationRead />}
+          path="/investing_infomation_read"
+          element={<InvestingInfomationRead />}
         />
         <Route
-          path="/product_infomation_review"
-          element={<ProductInfomationReview />}
+          path="/investing_infomation_review"
+          element={<InvestingInfomationReview />}
         />
         <Route
-          path="/product_infomation_tab"
-          element={<ProductInfomationTab />}
+          path="/investing_infomation_tab"
+          element={<InvestingInfomationTab />}
         />
 
         <Route path="/data_list" element={<PublicDataList />} />

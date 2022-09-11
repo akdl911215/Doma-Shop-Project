@@ -8,16 +8,12 @@ import {
   Input,
   Image,
   Reveal,
-  Rating,
 } from "semantic-ui-react";
-import GoHomeButton from "webapp/common/component/GoHomeButton";
-import { useNavigate } from "react-router-dom";
-import { client } from "webapp/api/Client";
-import styles from "../style/ProductInfomationRegister.module.css";
-
-const ProductInfomationRegister = () => {
+import GoHomeButton from "../../common/component/GoHomeButton";
+import styles from "../style/InvestingInfomationModify.module.css";
+import { ProductInfomationModifyDataAPI } from "../../api/InvestingInfomationApi";
+const InvestingInfomationModify = () => {
   const [selectedFile, setSelectedFile] = useState([]);
-  const navigate = useNavigate();
 
   const addImage = (event) => {
     const nowSelectImageList = event.target.files;
@@ -29,36 +25,28 @@ const ProductInfomationRegister = () => {
     setSelectedFile(nowImageURLList);
   };
 
-  const [register, setRegister] = useState({
-    title: "",
-    writer: "",
-    content: "",
-    viewCount: "",
-  });
-
-  const { title, writer, content, viewCount } = register;
-
   const handleFileUpload = () => {
-    // const formData = new FormData();
-    // for (let i = 0; i < selectedFile.length; i++) {
-    //   formData.append("myfile", selectedFile[i], selectedFile[i].name);
-    // }
-    // console.log("formData : ", formData);
-    // const config = {
-    //   headers: {
-    //     "content-type": "multipart/form-data",
-    //   },
-    // };
-    // axios
-    //   .post("api/uploadfile", formData, config)
+    const formData = new FormData();
+    for (let i = 0; i < selectedFile.length; i++) {
+      formData.append("myfile", selectedFile[i], selectedFile[i].name);
+    }
+    console.log("formData : ", formData);
+
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+
+    ProductInfomationModifyDataAPI(selectedFile, config);
+
+    // client
     //   .then((res) => {
     //     console.log(res);
-    //   })
+
     //   .catch((err) => {
     //     console.log(err);
     //   });
-    // if(res) navigate('product_infomation_list')
-    // navigate("/product_infomation_list");
   };
 
   const colors = ["teal"];
@@ -66,7 +54,7 @@ const ProductInfomationRegister = () => {
   return (
     <>
       <Container>
-        <div className={styles.BackgroundBoard}>
+        <div className={styles.BackgroundBoardStyle}>
           <div>
             {colors.map((color) => (
               <Table
@@ -75,6 +63,14 @@ const ProductInfomationRegister = () => {
                 className={styles.NoticeRegisterTableStyle}
               >
                 <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>제목</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <Input className={styles.NoticeHeaderStyle} />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
                   <Table.Row>
                     <Table.HeaderCell>메인사진</Table.HeaderCell>
                     <Table.Cell>
@@ -95,34 +91,18 @@ const ProductInfomationRegister = () => {
                     </Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.HeaderCell>제목</Table.HeaderCell>
-                    <Table.Cell>
-                      <Form>
-                        <Input className={styles.NoticeHeader} />
-                      </Form>
-                    </Table.Cell>
-                  </Table.Row>
-
-                  <Table.Row>
-                    <Table.HeaderCell>평점</Table.HeaderCell>
-                    <Table.Cell>
-                      <Form>
-                        <Rating
-                          maxRating={5}
-                          defaultRating={0}
-                          icon="star"
-                          size="large"
-                        />
-                        <br />
-                        <br />
-                      </Form>
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
                     <Table.HeaderCell>작성자</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input className={styles.NoticeHeader} />
+                        <Input className={styles.NoticeHeaderStyle} />
+                      </Form>
+                    </Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>작성일</Table.HeaderCell>
+                    <Table.Cell>
+                      <Form>
+                        <Input className={styles.NoticeHeaderStyle} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -130,7 +110,7 @@ const ProductInfomationRegister = () => {
                     <Table.HeaderCell>조회수</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input className={styles.NoticeHeader} />
+                        <Input className={styles.NoticeHeaderStyle} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -141,7 +121,7 @@ const ProductInfomationRegister = () => {
                     <Table.HeaderCell>본문</Table.HeaderCell>
                     <Table.Cell>
                       <Form>
-                        <Input className={styles.NoticeBody} />
+                        <TextArea className={styles.NoticeBodyStyle} />
                       </Form>
                     </Table.Cell>
                   </Table.Row>
@@ -150,10 +130,10 @@ const ProductInfomationRegister = () => {
             ))}
           </div>
 
-          <div className="ui small basic icon buttons">
-            <button className="ui button active">
-              <div style={{ alignItems: "center", justifyContent: "center" }}>
-                <i className="upload icon"></i>
+          <div class="ui small basic icon buttons">
+            <button class="ui button active">
+              <div className={styles.UploadButtonStyle}>
+                <i class="upload icon"></i>
                 <input
                   type="file"
                   multiple="multiple"
@@ -167,9 +147,7 @@ const ProductInfomationRegister = () => {
 
           <div className={styles.NoticeRegisterButtonStyle}>
             <Button onClick={handleFileUpload} color="teal">
-              업로드
-              <br />
-              (admin전용)
+              수정하기
             </Button>
 
             <Button secondary>뒤로가기</Button>
@@ -181,4 +159,4 @@ const ProductInfomationRegister = () => {
     </>
   );
 };
-export default ProductInfomationRegister;
+export default InvestingInfomationModify;

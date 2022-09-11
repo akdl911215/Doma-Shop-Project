@@ -13,9 +13,9 @@ import {
 } from "semantic-ui-react";
 import GoHomeButton from "../../common/component/GoHomeButton";
 import { useNavigate } from "react-router";
-import styles from "../style/ProductInfomationRead.module.css";
+import styles from "../style/InvestingInfomationRead.module.css";
 
-const ProductInfomationRead = () => {
+const InvestingInfomationRead = () => {
   const [selectedFile, setSelectedFile] = useState([]);
   const navigate = useNavigate();
 
@@ -236,4 +236,4 @@ const ProductInfomationRead = () => {
     </>
   );
 };
-export default ProductInfomationRead;
+export default InvestingInfomationRead;

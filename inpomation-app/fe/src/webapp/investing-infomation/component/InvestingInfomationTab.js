@@ -4,7 +4,7 @@ import { Tab } from "semantic-ui-react";
 import Mypage from "webapp/user/component/Mypage";
 import Portfolio from "webapp/user/component/Portfolio";
 
-const ProductInfomationTab = () => {
+const InvestingInfomationTab = () => {
   const [rolesCheck, setRolesCheck] = useState(null);
   useEffect(() => {
     setRolesCheck(sessionStorage.getItem("roles"));
@@ -45,4 +45,4 @@ const ProductInfomationTab = () => {
     </>
   );
 };
-export default ProductInfomationTab;
+export default InvestingInfomationTab;
