@@ -13,8 +13,11 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 <br>
 - 유저
 1. 유저 회원가입
+<br>
 2. 유저 로그인 및 jwt토큰 사용으로 로그인 및 auth 체크
+<br>
 3. 마이페이지 개인정보 수정
+<br>
 4. admin 페이지에서 회원정보 관리 및 탈퇴기능, 페이지네이션, 검색 기능 구현
 <br>
 
@@ -77,10 +80,19 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 <br><br>
 
 1. 시도별 수출입 실적 : 공공데이타 API를 사용하여 원하는 기간의 데이터를 받아서 볼 수 있도록 구현
-<br>
+
+![시도별수출입실적](https://user-images.githubusercontent.com/76759835/189524359-6a4d2c59-bfa5-4a28-a286-be318f7255e9.gif)
+
+<br><br>
 
 2. 시도별 품목별 수출입 실적 : 공공데이타 API를 사용하여 원하는 기간의 데이터를 받아서 볼 수 있도록 구현
-<br>
+
+![시도별품목별수출입실적](https://user-images.githubusercontent.com/76759835/189524368-8ca17df3-aead-4ec9-a211-5401156c468e.gif)
+
+<br><br>
 
 3. 시도별 성질별 수출입 실적 : 공공데이타 API를 사용하여 원하는 기간의 데이터를 받아서 볼 수 있도록 구현
-<br>
+
+![시도별성질별수출입실적](https://user-images.githubusercontent.com/76759835/189524377-c0adcc76-463e-4eea-9cae-9e34b26124c8.gif)
+
+<br><br>
