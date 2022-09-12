@@ -52,6 +52,15 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 
 <br><br>
+4. 유튜브 업로드 탭 검색 : 유튜브 API사용으로 실시간으로 유튜브 영상 검색
+   유튜브 탐색 탭 검색 : 전체 리스트에서 원하는 영상 검색
+   유튜브 내 동영상 탭 검색 : 내 동영상 리스트에서 원하는 영상 검색
+   
+   
+![youtubeSearch](https://user-images.githubusercontent.com/76759835/189675755-ce790666-e68e-49b5-878c-052b2c39ea57.gif)
+
+
+<br><br>
 -----------------------------------------------------------------------------------------
 
 <br><br>
