@@ -31,6 +31,8 @@
   order: 1;
   align-self: stretch;
   flex-grow: 1;
+
+  margin: auto;
 }
 
 .active {
@@ -52,4 +54,21 @@
   order: 0;
   align-self: stretch;
   flex-grow: 1;
+
+  margin: auto;
+  font-family: "Noto Sans Korean,Malgun Gothic,sans-serif";
+}
+
+.contents {
+  width: 100%;
+}
+.tableBox {
+  padding: 0 12px;
+}
+.table {
+  width: 100%;
+}
+
+.tableBody {
+  text-align: center;
 }
