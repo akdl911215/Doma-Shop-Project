@@ -1,0 +1,125 @@
+.board {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 30px;
+
+  width: 800px;
+  height: 500px;
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+
+  margin: auto;
+}
+.active {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 20px;
+
+  width: 400px;
+  height: 100vh;
+
+  background: #ffffff;
+
+  box-shadow: 0px 10px 25px rgba(29, 52, 54, 0.08);
+  border-radius: 10px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
+
+  margin: auto;
+  font-family: "Noto Sans Korean,Malgun Gothic,sans-serif";
+}
+.titleBox {
+  width: 100%;
+}
+.titleInput {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  gap: 10px;
+
+  width: 100%;
+  height: 39px;
+
+  border: 1px solid rgba(40, 40, 70, 0.1);
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.contentBox {
+  width: 100%;
+  height: 100%;
+}
+.contentInput {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  gap: 10px;
+
+  width: 100%;
+  height: 95%;
+
+  border: 1px solid rgba(40, 40, 70, 0.1);
+  border-radius: 8px;
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.uploadBtn {
+  width: 95px;
+  height: 35px;
+
+  background: #29a19c;
+  border-radius: 8px;
+}
+.uploadText {
+  width: 55px;
+  height: 22px;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 13px;
+}
+
+.btnBox {
+  margin-left: auto;
+  /* flex-grow: 1; */
+}
+.cancelBtn {
+  width: 95px;
+  height: 35px;
+
+  background: #f05454;
+  border-radius: 8px;
+}
+.cancelText {
+  width: 55px;
+  height: 22px;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 13px;
+}

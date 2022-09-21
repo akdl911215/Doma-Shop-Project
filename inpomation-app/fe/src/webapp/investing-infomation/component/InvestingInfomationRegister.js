@@ -63,7 +63,39 @@ const InvestingInfomationRegister = () => {
   // https://kr.investing.com/
   return (
     <>
-      <div>레지스터</div>
+      <div className={styles.board}>
+        <div className={styles.active}>
+          <div className={styles.titleBox}>
+            <span>제목</span>
+            <input
+              placeholder="제목을 입력해주세요."
+              className={styles.titleInput}
+            />
+          </div>
+          <div className={styles.contentBox}>
+            <span>본문</span>
+            <input className={styles.contentInput} />
+          </div>
+          <div className={styles.btnBox}>
+            <button className={styles.uploadBtn}>
+              <span
+                className={styles.uploadText}
+                onClick={() => alert("업로드 클릭")}
+              >
+                업로드
+              </span>
+            </button>
+            <button className={styles.cancelBtn}>
+              <span
+                className={styles.cancelText}
+                onClick={() => alert("취소 클릭")}
+              >
+                취소
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
