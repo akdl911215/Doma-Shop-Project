@@ -61,6 +61,7 @@ const InvestingInfomationRegister = () => {
 
   // https://okky.kr/events/new
   // https://kr.investing.com/
+  // https://falaner.tistory.com/59
   return (
     <>
       <div className={styles.board}>
@@ -88,7 +89,7 @@ const InvestingInfomationRegister = () => {
             <button className={styles.cancelBtn}>
               <span
                 className={styles.cancelText}
-                onClick={() => alert("취소 클릭")}
+                onClick={() => navigate("/investing_infomation_list")}
               >
                 취소
               </span>
