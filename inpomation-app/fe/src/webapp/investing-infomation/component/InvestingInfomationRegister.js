@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Form,
   TextArea,
@@ -17,23 +17,12 @@ import styles from "../style/InvestingInfomationRegister.module.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "../style/InvestingInfomationRegister.css";
-import { useEffect } from "react";
 import { useCallback } from "react";
+import { UserAuthDataAPI } from "webapp/api/userApi";
+import { InvestingRgisterDataAPI } from "webapp/api/InvestingInfomationApi";
 
 const InvestingInfomationRegister = () => {
-  const [selectedFile, setSelectedFile] = useState([]);
   const navigate = useNavigate();
-
-  // const addImage = (event) => {
-  //   const nowSelectImageList = event.target.files;
-  //   const nowImageURLList = [...selectedFile];
-  //   for (let i = 0; i < nowSelectImageList.length; i++) {
-  //     const nowImageUrl = URL.createObjectURL(nowSelectImageList[i]);
-  //     nowImageURLList.push(nowImageUrl);
-  //   }
-  //   setSelectedFile(nowImageURLList);
-  // };
-
   const [register, setRegister] = useState({
     title: "",
     writer:
@@ -41,31 +30,46 @@ const InvestingInfomationRegister = () => {
         ? ""
         : sessionStorage.getItem("username"),
     content: "",
-    viewCount: 0,
   });
   useEffect(() => console.log("register : ", register), [register]);
+  useEffect(() => {
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          console.log("로그인 상태 확인 완료");
+        } else {
+          if (window.confirm("로그인을 진행하시겠습니까?")) {
+            navigate("/users_signin");
+            sessionStorage.setItem(
+              "signinPage",
+              "/investing_infomation_register"
+            );
+          }
+        }
+      })
+      .catch((err) => console.error(`token, roles check error : ${err}`));
+  }, []);
 
-  const handleFileUpload = () => {
-    // const formData = new FormData();
-    // for (let i = 0; i < selectedFile.length; i++) {
-    //   formData.append("myfile", selectedFile[i], selectedFile[i].name);
-    // }
-    // console.log("formData : ", formData);
-    // const config = {
-    //   headers: {
-    //     "content-type": "multipart/form-data",
-    //   },
-    // };
-    // axios
-    //   .post("api/uploadfile", formData, config)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    // if(res) navigate('product_infomation_list')
-    // navigate("/product_infomation_list");
+  const investRgisterUpload = () => {
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          InvestingRgisterDataAPI(register)
+            .then((res) => console.log("res : ", res))
+            .catch((err) =>
+              console.error("register data api catch error : ", err)
+            );
+        } else {
+          if (window.confirm("로그인을 진행하시겠습니까?")) {
+            navigate("/users_signin");
+            sessionStorage.setItem(
+              "signinPage",
+              "/investing_infomation_register"
+            );
+          }
+        }
+      })
+      .catch((err) => console.error(`token, roles check error : ${err}`));
   };
 
   const handleChange = useCallback((e) => {
@@ -122,10 +126,7 @@ const InvestingInfomationRegister = () => {
           </div>
           <div className={styles.btnBox}>
             <button className={styles.uploadBtn}>
-              <span
-                className={styles.uploadText}
-                onClick={() => alert("업로드 클릭")}
-              >
+              <span className={styles.uploadText} onClick={investRgisterUpload}>
                 업로드
               </span>
             </button>
