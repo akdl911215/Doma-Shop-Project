@@ -8,7 +8,7 @@ router.post("/register", async (req, res, next) =>
 );
 
 router.post("/list", async (req, res, next) => {
-  const result = await service.list(req?.body);
+  const result = await service.list();
   console.log("result : ", result);
 
   res.json(result);
