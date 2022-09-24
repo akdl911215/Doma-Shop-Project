@@ -12,6 +12,7 @@ const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerfor
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
 const youtubeRouter = require("./youtube/youtubeController");
+const investingRouter = require("./investing/investingController");
 
 require("dotenv").config();
 const hostname = "localhost";
@@ -31,6 +32,7 @@ app.use("/users", userRouter);
 app.use("/portfolio", portfolioRouter);
 app.use("/productInfomation", productInfomationRouter);
 app.use("/youtube", youtubeRouter);
+app.use("/investing_infomation", investingRouter);
 // app.post("/users/signup", userRouter.userRegister);
 // app.post("/users/signin", userRouter.userSignin);
 
