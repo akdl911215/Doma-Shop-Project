@@ -4,7 +4,8 @@
 <br><br>
 Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token <br>
 현재 구현 기능 : 유저 관련 기능, 유튜브 관련기능, 포트폴리오 관련 기능, 공공데이터 관련 기능 
-<
+
+<br>
 현재 구현 중인 기능 : 유저 커뮤니티 
 <br><br>
 
