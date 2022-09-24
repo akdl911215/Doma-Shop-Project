@@ -12,6 +12,7 @@ import SignOutButton from "webapp/common/component/SignOutButton";
 import styles from "../style/IvestingInfomationList.module.css";
 import { UserAuthDataAPI } from "webapp/api/userApi";
 import { padding } from "@mui/system";
+import { InvestingListDataAPI } from "webapp/api/investingInfomationApi";
 
 const InvestingInfomationList = () => {
   const navigate = useNavigate();
@@ -19,10 +20,18 @@ const InvestingInfomationList = () => {
   const colors = ["teal"];
   const [rolesCheck, SetRolesCheck] = useState(null);
 
+  const [viewArr, setViewArr] = useState([]);
+  useEffect(() => console.log("viewArr : ", viewArr), [viewArr]);
   useEffect(() => {
-    // UserAuthDataAPI()
-    //   .then((res) => SetRolesCheck(res?.data?.roles))
-    //   .catch((err) => console.error(`token, roles check error : ${err}`));
+    InvestingListDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          setViewArr(res?.data?.list);
+        } else {
+          alert("리스트 조회 실패하였습니다");
+        }
+      })
+      .catch((err) => console.error("investing list error : ", err));
   }, []);
 
   const listArr = [
@@ -73,12 +82,12 @@ const InvestingInfomationList = () => {
                   </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
-                  {listArr.map((el) => (
-                    <tr key={el._id}>
+                  {viewArr?.map((el) => (
+                    <tr key={el.id}>
                       <td>{el.id}</td>
                       <td>{el.type}</td>
                       <td>{el.title}</td>
-                      <td>{el.name}</td>
+                      <td>{el.writer}</td>
                       {/* <td>{moment(el.date).format("YYYY-MM-DD")}</td> */}
                       <td>{el.date}</td>
                       <td>{el.viewCount}</td>

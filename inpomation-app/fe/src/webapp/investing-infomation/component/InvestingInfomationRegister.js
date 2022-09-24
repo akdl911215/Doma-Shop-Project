@@ -7,7 +7,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "../style/InvestingInfomationRegister.css";
 import { useCallback } from "react";
 import { UserAuthDataAPI } from "webapp/api/userApi";
-import { InvestingRgisterDataAPI } from "webapp/api/InvestingInfomationApi";
+import { InvestingRgisterDataAPI } from "webapp/api/investingInfomationApi";
 
 const InvestingInfomationRegister = () => {
   const navigate = useNavigate();

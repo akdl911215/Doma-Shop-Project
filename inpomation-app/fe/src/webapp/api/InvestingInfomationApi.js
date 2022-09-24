@@ -6,3 +6,6 @@ export const ProductInfomationModifyDataAPI = (states, formData, config) =>
 
 export const InvestingRgisterDataAPI = (boardState) =>
   client.post(backUrl + "/investing_infomation/register", boardState);
+
+export const InvestingListDataAPI = () =>
+  client.post(backUrl + "/investing_infomation/list");
