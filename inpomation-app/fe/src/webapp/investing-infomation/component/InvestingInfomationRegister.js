@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  Form,
-  TextArea,
-  Button,
-  Table,
-  Container,
-  Input,
-  Image,
-  Reveal,
-  Rating,
-} from "semantic-ui-react";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
 import { useNavigate } from "react-router-dom";
-import { client } from "webapp/api/Client";
 import styles from "../style/InvestingInfomationRegister.module.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -55,7 +43,14 @@ const InvestingInfomationRegister = () => {
       .then((res) => {
         if (res?.data?.code === 200) {
           InvestingRgisterDataAPI(register)
-            .then((res) => console.log("res : ", res))
+            .then((res) => {
+              if (res?.data?.code === 200) {
+                alert(res?.data?.message);
+                navigate("/investing_infomation_list");
+              } else {
+                alert(res?.data?.message);
+              }
+            })
             .catch((err) =>
               console.error("register data api catch error : ", err)
             );
@@ -142,6 +137,7 @@ const InvestingInfomationRegister = () => {
                 취소
               </span>
             </button>
+            <GoHomeButton />
           </div>
         </div>
       </div>
