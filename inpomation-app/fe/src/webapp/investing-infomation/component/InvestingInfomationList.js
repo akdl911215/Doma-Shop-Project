@@ -89,7 +89,7 @@ const InvestingInfomationList = () => {
                       <td>{el.title}</td>
                       <td>{el.writer}</td>
                       {/* <td>{moment(el.date).format("YYYY-MM-DD")}</td> */}
-                      <td>{el.date}</td>
+                      <td>{el.regdate}</td>
                       <td>{el.viewCount}</td>
                     </tr>
                   ))}
