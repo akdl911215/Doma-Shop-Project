@@ -3,7 +3,10 @@
 
 <br><br>
 Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token <br>
-현재 구현기능 : 기능 유저 관련 기능, 유튜브 관련기능, 포트폴리오 관련 기능, 공공데이터 관련 기능 
+현재 구현 기능 : 유저 관련 기능, 유튜브 관련기능, 포트폴리오 관련 기능, 공공데이터 관련 기능 
+
+<br>
+현재 구현 중인 기능 : 유저 커뮤니티 
 <br><br>
 
 
@@ -105,3 +108,7 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 ![시도별성질별수출입실적](https://user-images.githubusercontent.com/76759835/189524377-c0adcc76-463e-4eea-9cae-9e34b26124c8.gif)
 
 <br><br>
+-----------------------------------------------------------------------------------------
+
+<br><br>
+- 유저 커뮤니티 관련 기능
