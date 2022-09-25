@@ -1,4 +1,7 @@
 const db = require("../api/middlewares/pool");
+const date = require("../common/date");
+const currentDate = date.date();
+const currentDate2 = date.today();
 
 exports.list = async (rqe, res, next) => {
   const sql = `SELECT * FROM investing_board`;
@@ -33,9 +36,9 @@ exports.list = async (rqe, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
-  console.log("req : ", req);
   const { userId, writer, title, content } = req;
-  const sql = `INSERT INTO investing_board (user_id, writer, title, content) VALUES (${userId}, '${writer}', '${title}', '${content}')`;
+  const sql = `INSERT INTO investing_board (user_id, writer, title, content, regdate) VALUES (${userId}, '${writer}', '${title}', '${content}', '${currentDate2}')`;
+  console.log("sql : ", sql);
 
   return new Promise((resolve, reject) => {
     try {
