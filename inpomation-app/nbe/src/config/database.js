@@ -6,6 +6,7 @@ const dbConfig = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASES,
   port: process.env.DB_PORT,
+  dateStrings: "date",
 };
 
 module.exports = dbConfig;
