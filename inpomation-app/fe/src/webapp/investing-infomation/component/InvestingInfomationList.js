@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { Button, Container, Card, Image } from "semantic-ui-react";
 import SigninButton from "../../common/component/SigninButton";
 import SignupButton from "../../common/component/SignupButton";
-import {
-  AuaOasisToner,
-  SoptCamingGell,
-  superAdaptogenFaceToBodyEmulgeon,
-} from "webapp/images/index";
-import SignOutButton from "webapp/common/component/SignOutButton";
 import styles from "../style/IvestingInfomationList.module.css";
-import { UserAuthDataAPI } from "webapp/api/userApi";
-import { padding } from "@mui/system";
 import { InvestingListDataAPI } from "webapp/api/investingInfomationApi";
+import { InvestingBoardId } from "webapp/reducers/investingBoard.reducer";
+import { useDispatch } from "react-redux";
+import moment from "moment";
 
 const InvestingInfomationList = () => {
   const navigate = useNavigate();
-
-  const colors = ["teal"];
-  const [rolesCheck, SetRolesCheck] = useState(null);
+  const dispatch = useDispatch();
 
   const [viewArr, setViewArr] = useState([]);
   useEffect(() => console.log("viewArr : ", viewArr), [viewArr]);
@@ -34,16 +26,10 @@ const InvestingInfomationList = () => {
       .catch((err) => console.error("investing list error : ", err));
   }, []);
 
-  const listArr = [
-    {
-      id: "1",
-      type: "구분",
-      title: "타이틀",
-      name: "이정현",
-      date: 20200921,
-      viewCount: 1111,
-    },
-  ];
+  const movePage = (id) => {
+    dispatch(InvestingBoardId(id));
+    navigate("/investing_infomation_read");
+  };
 
   return (
     <>
@@ -65,7 +51,7 @@ const InvestingInfomationList = () => {
               <table className={styles.table}>
                 <colgroup>
                   <col width="10%" />
-                  <col width="*" />
+                  {/* <col width="*" /> */}
                   <col width="50%" />
                   <col width="*" />
                   <col width="*" />
@@ -74,7 +60,7 @@ const InvestingInfomationList = () => {
                 <thead>
                   <tr>
                     <th>번호</th>
-                    <th>구분</th>
+                    {/* <th>구분</th> */}
                     <th>제목</th>
                     <th>작성자</th>
                     <th>작성일시</th>
@@ -84,13 +70,16 @@ const InvestingInfomationList = () => {
                 <tbody className={styles.tableBody}>
                   {viewArr?.map((el) => (
                     <tr key={el.id}>
-                      <td>{el.id}</td>
-                      <td>{el.type}</td>
-                      <td>{el.title}</td>
-                      <td>{el.writer}</td>
+                      <td onClick={() => movePage(el.id)}>{el.id}</td>
+                      {/* <td>{el.type}</td> */}
+                      <td onClick={() => movePage(el.id)}>{el.title}</td>
+                      <td onClick={() => movePage(el.id)}>{el.writer}</td>
                       {/* <td>{moment(el.date).format("YYYY-MM-DD")}</td> */}
-                      <td>{el.regdate}</td>
-                      <td>{el.viewCount}</td>
+                      {/* <td onClick={() => movePage(el.id)}>{el.regdate}</td> */}
+                      <td onClick={() => movePage(el.id)}>
+                        {moment(el.regdate).format("YYYY-MM-DD")}
+                      </td>
+                      <td onClick={() => movePage(el.id)}>{el.viewCount}</td>
                     </tr>
                   ))}
                 </tbody>
