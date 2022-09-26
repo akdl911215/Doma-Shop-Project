@@ -5,4 +5,5 @@ export const SessionRemove = () => {
   sessionStorage.removeItem("userList");
   sessionStorage.removeItem("currentPage");
   sessionStorage.removeItem("signinPage");
+  sessionStorage.removeItem("investingBoardId");
 };

@@ -11,9 +11,11 @@ import moment from "moment";
 const InvestingInfomationList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  sessionStorage.removeItem("investingBoardId");
 
   const [viewArr, setViewArr] = useState([]);
   useEffect(() => console.log("viewArr : ", viewArr), [viewArr]);
+
   useEffect(() => {
     InvestingListDataAPI()
       .then((res) => {
@@ -27,6 +29,7 @@ const InvestingInfomationList = () => {
   }, []);
 
   const movePage = (id) => {
+    sessionStorage.setItem("investingBoardId", id);
     dispatch(InvestingBoardId(id));
     navigate("/investing_infomation_read");
   };
