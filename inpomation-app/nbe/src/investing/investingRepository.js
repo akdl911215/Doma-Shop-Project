@@ -1,7 +1,40 @@
 const db = require("../api/middlewares/pool");
 const date = require("../common/date");
-const currentDate = date.date();
+// const currentDate = date.date();
 const currentDate2 = date.today();
+
+exports.read = async (req, res, next) => {
+  const { boardId } = req;
+  const sql = `SELECT writer, title, content, regdate FROM investing_board WHERE id = ${boardId}`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection error : ", err);
+            resolve({
+              message: "투자 게시판 리드 조회 실패",
+              error: err,
+            });
+          }
+
+          if (doc) {
+            console.log("connection result : ", doc);
+            resolve({
+              code: 200,
+              message: "투자 게시판 리드 조회 성공",
+              success: doc,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("read promise error : ", err);
+    }
+  });
+};
 
 exports.list = async (rqe, res, next) => {
   const sql = `SELECT * FROM investing_board`;

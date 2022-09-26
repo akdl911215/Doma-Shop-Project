@@ -2,6 +2,10 @@ const repository = require("./investingRepository");
 const userRepository = require("../user/userRepository");
 
 class investingService {
+  async read(id) {
+    return await repository.read(id);
+  }
+
   async register(state) {
     const user = await userRepository.userInquiry(state?.writer);
     return await repository.register({
