@@ -2,12 +2,15 @@ const repository = require("./investingRepository");
 const userRepository = require("../user/userRepository");
 
 class investingService {
-  async commentRegister(data) {
-    return await repository.commentRegister(data);
-  }
+  commentRegister = async (data) => await repository.commentRegister(data);
 
   async read(id) {
-    return await repository.read(id);
+    const comments = await repository.commentRead(id);
+    const board = await repository.read(id);
+    return {
+      ...board,
+      ...comments,
+    };
   }
 
   async register(state) {
