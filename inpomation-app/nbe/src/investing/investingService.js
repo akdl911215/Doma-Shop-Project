@@ -2,6 +2,10 @@ const repository = require("./investingRepository");
 const userRepository = require("../user/userRepository");
 
 class investingService {
+  async commentRegister(data) {
+    return await repository.commentRegister(data);
+  }
+
   async read(id) {
     return await repository.read(id);
   }
@@ -14,9 +18,7 @@ class investingService {
     });
   }
 
-  async list(state) {
-    return await repository.list(state);
-  }
+  list = async (state) => await repository.list(state);
 }
 
 module.exports = new investingService();

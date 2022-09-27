@@ -2,6 +2,13 @@ const express = require("express");
 const router = express.Router();
 const service = require("./investingService");
 
+router.post("/commentRegister", async (req, res, next) => {
+  console.log("req?.body : ", req?.body);
+  const result = await service.commentRegister(req?.body);
+  console.log("result : ", result);
+  res.json(result);
+});
+
 router.post("/read", async (req, res, next) =>
   res.json(await service.read(req?.body))
 );

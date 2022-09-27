@@ -3,6 +3,15 @@ const date = require("../common/date");
 // const currentDate = date.date();
 const currentDate2 = date.today();
 
+exports.commentRegister = async (req, res, next) => {
+  const { boardId, username, comment } = req;
+  console.log(
+    `boardId : ${boardId}, username : ${username}, comment: ${comment}`
+  );
+
+  const sql = ``;
+};
+
 exports.read = async (req, res, next) => {
   const { boardId } = req;
   const sql = `SELECT writer, title, content, regdate FROM investing_board WHERE id = ${boardId}`;
