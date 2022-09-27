@@ -15,3 +15,6 @@ export const InvestingReadBoardIdDataAPI = (id) =>
 
 export const InvestingCommentRegisterDataAPI = (data) =>
   client.post(backUrl + "/investing_infomation/commentRegister", data);
+
+// export const InvestingCommentReadDataAPI = (boardId) =>
+//   client.post(backUrl + "/investing_infomation/commentRead", boardId);

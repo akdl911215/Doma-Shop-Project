@@ -9,6 +9,8 @@ import {
 } from "webapp/api/investingInfomationApi";
 import moment from "moment";
 import { Button, Comment, Form, Header } from "semantic-ui-react";
+import { SessionRemove } from "webapp/common/component/SessionRemove";
+import { UserAuthDataAPI } from "webapp/api/userApi";
 
 const InvestingInfomationRead = () => {
   const navigate = useNavigate();
@@ -28,34 +30,49 @@ const InvestingInfomationRead = () => {
     InvestingReadBoardIdDataAPI({
       boardId: Number(ID),
     })
-      .then((res) =>
+      .then((res) => {
         setBoardState({
           ...boardState,
           content: res?.data?.success[0],
-        })
-      )
+          comments: res?.data?.commentsList,
+        });
+      })
       .catch((err) => console.error("investing read board id error : ", err));
   }, []);
+  useEffect(() => console.log("boardState : ", boardState), [boardState]);
 
   const uploadComment = () => {
-    if (sessionStorage.get("username") === null) {
-      if (window.confirm("로그인을 진행하시겠습니까?")) {
-        navigate("/users_signin");
-        sessionStorage.setItem("signinPage", "/investing_infomation_read");
-      }
-    } else {
-      InvestingCommentRegisterDataAPI({
-        boardId: ID,
-        username: sessionStorage.getItem("username"),
-        comment: boardState?.comment,
-      }).then((res) => {
-        console.log("comment res : ", res);
-        setBoardState({
-          ...boardState,
-          // comments:
-        }).catch((err) => console.error("comment upload error : ", err));
-      });
-    }
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          InvestingCommentRegisterDataAPI({
+            boardId: ID,
+            username: sessionStorage.getItem("username"),
+            comment: boardState?.comment,
+          })
+            .then((res) => {
+              if (res?.data?.code === 200) {
+                window.location.reload();
+              }
+
+              if (res?.data?.message === "투자 게시판 댓글 등록 실패") {
+                alert("댓글 등록이 실패하였습니다.");
+              }
+            })
+            .catch((err) => console.error("comment upload error : ", err));
+        } else {
+          const signin = window.confirm(
+            "로그인이 필요한 기능입니다. 로그인을 진행하시겠습니까?"
+          );
+
+          if (signin) {
+            SessionRemove();
+            navigate("/users_signin");
+            // sessionStorage.setItem("signinPage", "/investing_infomation_read");
+          }
+        }
+      })
+      .catch((err) => console.error("board read auth error : ", err));
   };
 
   const commentChange = (e) => {
@@ -99,11 +116,31 @@ const InvestingInfomationRead = () => {
 
           <div>
             <Comment.Group minimal>
-              <Header as="h3" dividing>
+              <Header as="h3" dividing style={{ width: "600px" }}>
                 댓글
               </Header>
 
-              <Comment>
+              {boardState?.comments?.map((el, key) => {
+                return (
+                  <>
+                    <Comment style={{ width: "800px" }}>
+                      <Comment.Avatar as="a" />
+                      <Comment.Content>
+                        <Comment.Author as="a">{el?.writer}</Comment.Author>
+                        <Comment.Metadata>
+                          <span>{el?.regdate}</span>
+                        </Comment.Metadata>
+                        <Comment.Text>{el?.content}</Comment.Text>
+                        <Comment.Actions>
+                          <a>Reply</a>
+                        </Comment.Actions>
+                      </Comment.Content>
+                    </Comment>
+                  </>
+                );
+              })}
+
+              {/* <Comment>
                 <Comment.Avatar as="a" />
                 <Comment.Content>
                   <Comment.Author as="a">Matt</Comment.Author>
@@ -167,7 +204,7 @@ const InvestingInfomationRead = () => {
                     <a>Reply</a>
                   </Comment.Actions>
                 </Comment.Content>
-              </Comment>
+              </Comment> */}
 
               <Form reply>
                 <Form.TextArea name="comment" onChange={commentChange} />
@@ -182,9 +219,6 @@ const InvestingInfomationRead = () => {
             </Comment.Group>
           </div>
           <div className={styles.btnBox}>
-            {/* <button className={styles.uploadBtn}>
-              <span className={styles.uploadText}>업로드</span>
-            </button> */}
             <button className={styles.cancelBtn}>
               <span
                 className={styles.cancelText}
