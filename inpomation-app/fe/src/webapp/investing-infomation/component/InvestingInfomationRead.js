@@ -98,10 +98,15 @@ const InvestingInfomationRead = () => {
               readOnly={true}
             />
             <span>작성자</span>
-            <input value={boardState?.content?.writer} readOnly={true} />
+            <input
+              value={boardState?.content?.writer}
+              className={styles.writerAndDateInput}
+              readOnly={true}
+            />
             <span>작성일자</span>
             <input
               readOnly={true}
+              className={styles.writerAndDateInput}
               value={moment(boardState?.content?.regdate).format("YYYY-MM-DD")}
             />
           </div>
@@ -116,14 +121,14 @@ const InvestingInfomationRead = () => {
 
           <div>
             <Comment.Group minimal>
-              <Header as="h3" dividing style={{ width: "600px" }}>
+              <Header as="h3" dividing className={styles.commentHeader}>
                 댓글
               </Header>
 
               {boardState?.comments?.map((el, key) => {
                 return (
                   <>
-                    <Comment style={{ width: "800px" }}>
+                    <Comment>
                       <Comment.Avatar as="a" />
                       <Comment.Content>
                         <Comment.Author as="a">{el?.writer}</Comment.Author>

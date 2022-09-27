@@ -38,18 +38,10 @@ const InvestingInfomationList = () => {
     <>
       <div className={styles.list}>
         <div className={styles.active}>
-          <div className="lf-menu-nav">
-            <span>투자 커뮤니티</span>
-          </div>
+          {/* <div>
+              <span>투자 커뮤니티</span>
+            </div> */}
           <div className={styles.contents}>
-            <div className="top-controls">
-              <button
-                className="lf-button primary float-right"
-                onClick={() => navigate("/investing_infomation_register")}
-              >
-                글쓰기
-              </button>
-            </div>
             <div className={styles.tableBox}>
               <table className={styles.table}>
                 <colgroup>
@@ -88,6 +80,18 @@ const InvestingInfomationList = () => {
                 </tbody>
               </table>
             </div>
+          </div>
+          <div className="top-controls">
+            {sessionStorage.getItem("username") === null ? null : (
+              <button className={styles.contentRegisterBtn}>
+                <span
+                  className={styles.contentRegisterText}
+                  onClick={() => navigate("/investing_infomation_register")}
+                >
+                  글쓰기
+                </span>
+              </button>
+            )}
           </div>
         </div>
       </div>

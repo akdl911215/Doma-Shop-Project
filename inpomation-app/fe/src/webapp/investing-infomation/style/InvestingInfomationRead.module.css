@@ -41,6 +41,14 @@
 .titleBox {
   width: 100%;
 }
+.writerAndDateInput {
+  box-sizing: border-box;
+  padding: 2px 5px;
+
+  border: 1px solid rgba(40, 40, 70, 0.1);
+  border-radius: 8px;
+  margin-top: 10px;
+}
 .titleInput {
   box-sizing: border-box;
 
@@ -121,4 +129,8 @@
   font-style: normal;
   font-weight: 550;
   font-size: 13px;
+}
+
+.commentHeader {
+  width: 750px;
 }

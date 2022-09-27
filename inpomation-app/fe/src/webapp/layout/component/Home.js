@@ -4,6 +4,7 @@ import InvestingInfomationList from "../../investing-infomation/component/Invest
 import Header from "./Header";
 import Footer from "./Footer";
 import YoutubeHome from "../../youtube-upload/component/Home";
+import InvestingInfomationHome from "../../investing-infomation/component/Home";
 
 const Home = () => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const Home = () => {
     <>
       <Header />
       <YoutubeHome />
-      <InvestingInfomationList />
+      <InvestingInfomationHome />
       <Footer />
     </>
   );
