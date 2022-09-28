@@ -4,6 +4,8 @@ import { useNavigate } from "react-router";
 import styles from "../style/InvestingInfomationRead.module.css";
 import { useSelector } from "react-redux";
 import {
+  InvestingBoardCommentDeleteDataAPI,
+  InvestingBoardDeleteDataAPI,
   InvestingCommentRegisterDataAPI,
   InvestingReadBoardIdDataAPI,
 } from "webapp/api/investingInfomationApi";
@@ -25,7 +27,14 @@ const InvestingInfomationRead = () => {
     comment: "",
     comments: [],
   });
-
+  let deleteBtnBool = false;
+  if (
+    sessionStorage.getItem("roles") === "MASTER" ||
+    sessionStorage.getItem("roles") === "MANAGER" ||
+    sessionStorage.getItem("username") === boardState?.content?.writer
+  ) {
+    deleteBtnBool = true;
+  }
   useEffect(() => {
     InvestingReadBoardIdDataAPI({
       boardId: Number(ID),
@@ -68,6 +77,7 @@ const InvestingInfomationRead = () => {
           if (signin) {
             SessionRemove();
             navigate("/users_signin");
+
             // sessionStorage.setItem("signinPage", "/investing_infomation_read");
           }
         }
@@ -82,6 +92,42 @@ const InvestingInfomationRead = () => {
       ...boardState,
       [name]: value,
     });
+  };
+
+  const boardRemove = () => {
+    const remove = window.confirm("글을 삭제하시겠습니까?");
+
+    if (remove) {
+      InvestingBoardDeleteDataAPI({
+        boardId: ID,
+      })
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            alert("해당 게시글을 삭제하였습니다.");
+            sessionStorage.removeItem("investingBoardId");
+            navigate("/investing_infomation_list");
+          } else {
+            alert("해당 게시글 삭제를 실패하였습니다.");
+          }
+        })
+        .catch((err) => console.error("investing board delete error : ", err));
+    }
+  };
+
+  const commentDelete = (id) => {
+    console.log("comment delete id : ", id);
+    InvestingBoardCommentDeleteDataAPI({
+      commentId: id,
+    })
+      .then((res) => {
+        console.log("comment delete res : ", res);
+        if (res?.data?.code === 200) {
+          window.location.reload();
+        } else {
+          alert("댓글 삭제 실패하였습니다.");
+        }
+      })
+      .catch((err) => console.error("comment delete catch error : ", err));
   };
 
   return (
@@ -137,6 +183,11 @@ const InvestingInfomationRead = () => {
                         </Comment.Metadata>
                         <Comment.Text>{el?.content}</Comment.Text>
                         <Comment.Actions>
+                          {el?.writer === sessionStorage.getItem("username") ||
+                          sessionStorage.getItem("roles") === "MASTER" ||
+                          sessionStorage.getItem("roles") === "MANAGER" ? (
+                            <a onClick={() => commentDelete(el?.id)}>Delete</a>
+                          ) : null}
                           <a>Reply</a>
                         </Comment.Actions>
                       </Comment.Content>
@@ -235,6 +286,9 @@ const InvestingInfomationRead = () => {
               </span>
             </button>
             <GoHomeButton />
+            {deleteBtnBool === true ? (
+              <Button onClick={boardRemove}>글 삭제</Button>
+            ) : null}
           </div>
         </div>
       </div>

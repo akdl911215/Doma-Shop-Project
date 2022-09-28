@@ -16,5 +16,11 @@ export const InvestingReadBoardIdDataAPI = (id) =>
 export const InvestingCommentRegisterDataAPI = (data) =>
   client.post(backUrl + "/investing_infomation/commentRegister", data);
 
+export const InvestingBoardDeleteDataAPI = (id) =>
+  client.post(backUrl + "/investing_infomation/delete", id);
+
+export const InvestingBoardCommentDeleteDataAPI = (id) =>
+  client.post(backUrl + "/investing_infomation/commentDelete", id);
+
 // export const InvestingCommentReadDataAPI = (boardId) =>
 //   client.post(backUrl + "/investing_infomation/commentRead", boardId);

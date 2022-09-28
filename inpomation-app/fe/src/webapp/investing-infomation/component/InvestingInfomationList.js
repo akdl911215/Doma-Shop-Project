@@ -14,7 +14,6 @@ const InvestingInfomationList = () => {
   sessionStorage.removeItem("investingBoardId");
 
   const [viewArr, setViewArr] = useState([]);
-  useEffect(() => console.log("viewArr : ", viewArr), [viewArr]);
 
   useEffect(() => {
     InvestingListDataAPI()
