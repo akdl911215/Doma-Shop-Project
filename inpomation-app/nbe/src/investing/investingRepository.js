@@ -3,6 +3,39 @@ const date = require("../common/date");
 // const currentDate = date.date();
 const currentDate = date.today();
 
+exports.investingPageList = async (req, res, next) => {
+  const { start, pageSize } = req;
+  const sql = `SELECT id, title, video_id, username, channel_title FROM investing_board ORDER BY id DESC LIMIT ${start}, ${pageSize}`;
+  console.log("investing page list sql : ", sql);
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            resolve({
+              message: "투자 페이지 조회가 완료되었습니다.",
+              code: 200,
+              investingPageList: rows,
+            });
+          }
+
+          if (err) {
+            resolve({
+              message: "투자 페이지 조회가 실패하였습니다.",
+              usersList: err,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("userList db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
+
 exports.commentDelete = async (req, res, next) => {
   const { commentId } = req;
   const sql = `DELETE FROM investing_board_reply WHERE id = ${commentId}`;

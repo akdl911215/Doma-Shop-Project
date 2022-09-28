@@ -24,4 +24,8 @@ router.post("/register", async (req, res, next) =>
 
 router.post("/list", async (req, res, next) => res.json(await service.list()));
 
+router.post("/pageList", async (req, res, next) =>
+  res.json(await service.pageList(req?.body))
+);
+
 module.exports = router;

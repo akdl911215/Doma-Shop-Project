@@ -2,6 +2,29 @@ const repository = require("./investingRepository");
 const userRepository = require("../user/userRepository");
 
 class investingService {
+  async pageList(page) {
+    console.log("pageList page : ", page);
+    let start = 0;
+    if (page.pageSize === undefined) page.pageSize = 5;
+
+    page.page > 0 ? (start = (page.page - 1) * page.pageSize) : (page.page = 1);
+
+    const pagenationCount = Math.ceil(
+      (await userRepository.userCount()) / page.pageSize
+    );
+    if (page.page > pagenationCount) return null;
+
+    const result = await repository.investingPageList({
+      start,
+      pageSize: page.pageSize,
+    });
+
+    return {
+      result,
+      pagenationCount,
+    };
+  }
+
   commentDelete = async (id) => await repository.commentDelete(id);
 
   delete = async (id) => await repository.delete(id);
