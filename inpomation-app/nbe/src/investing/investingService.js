@@ -2,6 +2,10 @@ const repository = require("./investingRepository");
 const userRepository = require("../user/userRepository");
 
 class investingService {
+  commentDelete = async (id) => await repository.commentDelete(id);
+
+  delete = async (id) => await repository.delete(id);
+
   commentRegister = async (data) => await repository.commentRegister(data);
 
   async read(id) {

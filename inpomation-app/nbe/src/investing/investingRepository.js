@@ -3,9 +3,74 @@ const date = require("../common/date");
 // const currentDate = date.date();
 const currentDate = date.today();
 
+exports.commentDelete = async (req, res, next) => {
+  const { commentId } = req;
+  const sql = `DELETE FROM investing_board_reply WHERE id = ${commentId}`;
+  console.log("comment delete sql : ", sql);
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection comment delete error : ", err);
+            resolve({
+              message: "투자 게시판 댓글 삭제 실패",
+              error: err,
+            });
+          }
+
+          if (doc) {
+            console.log("connection comment delete result : ", doc);
+            resolve({
+              code: 200,
+              message: "투자 게시판 댓글 삭제 성공",
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("comment delete promise error : ", err);
+    }
+  });
+};
+
+exports.delete = async (req, res, next) => {
+  const { boardId } = req;
+  const sql = `DELETE FROM investing_board WHERE id = ${boardId}`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("connection delete error : ", err);
+            resolve({
+              message: "투자 게시판 삭제 실패",
+              error: err,
+            });
+          }
+
+          if (doc) {
+            console.log("connection delete result : ", doc);
+            resolve({
+              code: 200,
+              message: "투자 게시판 삭제 성공",
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("delete promise error : ", err);
+    }
+  });
+};
+
 exports.commentRead = async (req, res, next) => {
   const { boardId } = req;
-  const sql = `SELECT writer, content, regdate FROM investing_board_reply WHERE board_id = ${boardId}`;
+  const sql = `SELECT id, writer, content, regdate FROM investing_board_reply WHERE board_id = ${boardId}`;
 
   return new Promise((resolve, reject) => {
     try {

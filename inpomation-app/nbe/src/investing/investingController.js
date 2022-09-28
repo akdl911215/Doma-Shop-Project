@@ -2,6 +2,14 @@ const express = require("express");
 const router = express.Router();
 const service = require("./investingService");
 
+router.post("/commentDelete", async (req, res, next) =>
+  res.json(await service.commentDelete(req?.body))
+);
+
+router.post("/delete", async (req, res, next) =>
+  res.json(await service.delete(req?.body))
+);
+
 router.post("/commentRegister", async (req, res, next) =>
   res.json(await service.commentRegister(req?.body))
 );
