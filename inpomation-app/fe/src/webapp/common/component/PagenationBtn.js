@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { UserCurrentPageLocation } from "webapp/reducers/user.reducer";
 import { Pagination } from "semantic-ui-react";
 import { YoutubeCurrentPageLocation } from "webapp/reducers/youtube.reducer";
+import { InvestingBoardCurrentPageLocation } from "webapp/reducers/investingBoard.reducer";
 
 const PagenationBtn = ({ name, totalPages }) => {
   console.log(`name : ${name}, totalPages : ${totalPages}`);
@@ -21,9 +22,15 @@ const PagenationBtn = ({ name, totalPages }) => {
       num = Number(e.target.text);
     }
 
-    if (name === "userPageList") dispatch(UserCurrentPageLocation(num));
-    if (name === "videoManagementPage")
+    if (name === "userPageList") {
+      dispatch(UserCurrentPageLocation(num));
+    }
+    if (name === "videoManagementPage") {
       dispatch(YoutubeCurrentPageLocation(num));
+    }
+    if (name === "investingBoardPageList") {
+      dispatch(InvestingBoardCurrentPageLocation(num));
+    }
   };
 
   return (

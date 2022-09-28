@@ -7,8 +7,13 @@ export const ProductInfomationModifyDataAPI = (states, formData, config) =>
 export const InvestingRgisterDataAPI = (boardState) =>
   client.post(backUrl + "/investing_infomation/register", boardState);
 
-export const InvestingListDataAPI = () =>
-  client.post(backUrl + "/investing_infomation/list");
+// export const InvestingListDataAPI = () =>
+//   client.post(backUrl + "/investing_infomation/list");
+
+export const InvestingBoardPagenationListDataAPI = (pageNum) => {
+  console.log("InvestingBoardPagenationListDataAPI pageNum : ", pageNum);
+  client.post(backUrl + "/imvesting_infomation/pageList", pageNum);
+};
 
 export const InvestingReadBoardIdDataAPI = (id) =>
   client.post(backUrl + "/investing_infomation/read", id);

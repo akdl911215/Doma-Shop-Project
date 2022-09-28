@@ -188,7 +188,7 @@ const InvestingInfomationRead = () => {
                           sessionStorage.getItem("roles") === "MANAGER" ? (
                             <a onClick={() => commentDelete(el?.id)}>Delete</a>
                           ) : null}
-                          <a>Reply</a>
+                          {/* <a>Reply</a> */}
                         </Comment.Actions>
                       </Comment.Content>
                     </Comment>

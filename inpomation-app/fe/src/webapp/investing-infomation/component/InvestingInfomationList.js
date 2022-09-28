@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import SigninButton from "../../common/component/SigninButton";
-import SignupButton from "../../common/component/SignupButton";
 import styles from "../style/IvestingInfomationList.module.css";
-import { InvestingListDataAPI } from "webapp/api/investingInfomationApi";
-import { InvestingBoardId } from "webapp/reducers/investingBoard.reducer";
+import {
+  InvestingBoardCurrentPageLocation,
+  InvestingBoardId,
+} from "webapp/reducers/investingBoard.reducer";
 import { useDispatch } from "react-redux";
 import moment from "moment";
+import ShowPageNation from "webapp/common/component/PagenationBtn";
 
 const InvestingInfomationList = () => {
   const navigate = useNavigate();
@@ -16,15 +17,16 @@ const InvestingInfomationList = () => {
   const [viewArr, setViewArr] = useState([]);
 
   useEffect(() => {
-    InvestingListDataAPI()
-      .then((res) => {
-        if (res?.data?.code === 200) {
-          setViewArr(res?.data?.list);
-        } else {
-          alert("리스트 조회 실패하였습니다");
-        }
-      })
-      .catch((err) => console.error("investing list error : ", err));
+    dispatch(InvestingBoardCurrentPageLocation(1));
+    // InvestingListDataAPI()
+    // .then((res) => {
+    //   if (res?.data?.code === 200) {
+    //     setViewArr(res?.data?.list);
+    //   } else {
+    //     alert("리스트 조회 실패하였습니다");
+    //   }
+    // })
+    // .catch((err) => console.error("investing list error : ", err));
   }, []);
 
   const movePage = (id) => {
@@ -91,6 +93,10 @@ const InvestingInfomationList = () => {
                 </span>
               </button>
             )}
+          </div>
+          <div className={styles.PaginationStyle}>
+            {/* <ShowPageNation name="userPageList" totalPages={pageList} /> */}
+            <ShowPageNation name="investingBoardPageList" />
           </div>
         </div>
       </div>
