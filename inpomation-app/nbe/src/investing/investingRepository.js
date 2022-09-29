@@ -3,9 +3,26 @@ const date = require("../common/date");
 // const currentDate = date.date();
 const currentDate = date.today();
 
+exports.InvestingBoardCount = async (req, res, next) => {
+  const sql = `SELECT COUNT(*) FROM investing_board`;
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          resolve(rows[0]["COUNT(*)"]);
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("investing board count catch error : ", err);
+      throw err;
+    }
+  });
+};
+
 exports.investingPageList = async (req, res, next) => {
   const { start, pageSize } = req;
-  const sql = `SELECT id, title, video_id, username, channel_title FROM investing_board ORDER BY id DESC LIMIT ${start}, ${pageSize}`;
+  const sql = `SELECT id, user_id, writer, title, content, regdate FROM investing_board ORDER BY id DESC LIMIT ${start}, ${pageSize}`;
   console.log("investing page list sql : ", sql);
 
   return new Promise((resolve, reject) => {
@@ -13,6 +30,7 @@ exports.investingPageList = async (req, res, next) => {
       db.getConnectionPool((connection) => {
         connection.query(sql, (err, rows) => {
           if (rows) {
+            console.log("investing current page success : ", rows);
             resolve({
               message: "투자 페이지 조회가 완료되었습니다.",
               code: 200,
@@ -21,6 +39,7 @@ exports.investingPageList = async (req, res, next) => {
           }
 
           if (err) {
+            console.error("investing current page error : ", err);
             resolve({
               message: "투자 페이지 조회가 실패하였습니다.",
               usersList: err,
