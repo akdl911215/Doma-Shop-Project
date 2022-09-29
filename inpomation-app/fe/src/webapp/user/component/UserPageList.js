@@ -28,7 +28,6 @@ const UserPageList = () => {
       pagingList: UserReducer?.UserSearchListInitial,
     })
   );
-  sessionStorage.setItem("pageList", page);
   const boolPage = pagingList.length === 0;
 
   useEffect(() => {

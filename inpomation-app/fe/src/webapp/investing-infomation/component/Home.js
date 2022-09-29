@@ -3,6 +3,7 @@ import InvestingInfomationList from "./InvestingInfomationList";
 import styles from "../style/Home.module.css";
 import { Button } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
+import InvestingInfomationMainList from "./InvestingInfomationMainList";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,7 +14,8 @@ const Home = () => {
           커뮤니티 글 보기
         </Button>
         <div className={styles.container}>
-          <InvestingInfomationList />
+          <InvestingInfomationMainList />
+          {/* <InvestingInfomationList /> */}
         </div>
       </div>
     </>

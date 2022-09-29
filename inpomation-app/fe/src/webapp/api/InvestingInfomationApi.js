@@ -10,10 +10,11 @@ export const InvestingRgisterDataAPI = (boardState) =>
 // export const InvestingListDataAPI = () =>
 //   client.post(backUrl + "/investing_infomation/list");
 
-export const InvestingBoardPagenationListDataAPI = (pageNum) => {
-  console.log("InvestingBoardPagenationListDataAPI pageNum : ", pageNum);
-  client.post(backUrl + "/imvesting_infomation/pageList", pageNum);
-};
+export const InvestingBoardPagenationListDataAPI = (page) =>
+  client.post(backUrl + "/investing_infomation/pageList", {
+    page,
+    pageSize: 10,
+  });
 
 export const InvestingReadBoardIdDataAPI = (id) =>
   client.post(backUrl + "/investing_infomation/read", id);

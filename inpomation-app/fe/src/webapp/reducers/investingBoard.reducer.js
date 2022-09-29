@@ -53,17 +53,20 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         InvestingBoardIdInitial: action?.payload,
-        InvestingPageListInitialRequest: false,
-        InvestingPageListInitialError: null,
       };
     case INVESTINGBOARDCURRENT_REQUEST:
+      console.log("action.type : ", action.type);
+
       return {
         ...state,
         InvestingPageListInitial: action?.payload,
+        InvestingPageListInitialRequest: false,
+        InvestingPageListInitialError: null,
       };
     case INVESTINGBOARDCURRENT_SUCCESS:
       return {
         ...state,
+        InvestingPageListInitial: action?.payload,
         InvestingPageListInitialRequest: true,
       };
     case INVESTINGBOARDCURRENT_FAILURE:

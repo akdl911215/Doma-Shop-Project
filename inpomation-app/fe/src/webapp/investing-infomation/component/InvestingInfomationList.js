@@ -5,7 +5,7 @@ import {
   InvestingBoardCurrentPageLocation,
   InvestingBoardId,
 } from "webapp/reducers/investingBoard.reducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import ShowPageNation from "webapp/common/component/PagenationBtn";
 
@@ -14,19 +14,8 @@ const InvestingInfomationList = () => {
   const dispatch = useDispatch();
   sessionStorage.removeItem("investingBoardId");
 
-  const [viewArr, setViewArr] = useState([]);
-
   useEffect(() => {
     dispatch(InvestingBoardCurrentPageLocation(1));
-    // InvestingListDataAPI()
-    // .then((res) => {
-    //   if (res?.data?.code === 200) {
-    //     setViewArr(res?.data?.list);
-    //   } else {
-    //     alert("리스트 조회 실패하였습니다");
-    //   }
-    // })
-    // .catch((err) => console.error("investing list error : ", err));
   }, []);
 
   const movePage = (id) => {
@@ -34,6 +23,14 @@ const InvestingInfomationList = () => {
     dispatch(InvestingBoardId(id));
     navigate("/investing_infomation_read");
   };
+  const { totalList, pageList } = useSelector(({ InvestingBoardReducer }) => ({
+    pageList: InvestingBoardReducer?.InvestingPageListInitial?.pagenationCount,
+    totalList:
+      InvestingBoardReducer?.InvestingPageListInitial?.result
+        ?.investingPageList,
+  }));
+  console.log("pageList ::: ", pageList);
+  console.log("totalList ::: ", totalList);
 
   return (
     <>
@@ -64,7 +61,7 @@ const InvestingInfomationList = () => {
                   </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
-                  {viewArr?.map((el) => (
+                  {totalList?.map((el) => (
                     <tr key={el.id}>
                       <td onClick={() => movePage(el.id)}>{el.id}</td>
                       {/* <td>{el.type}</td> */}
@@ -95,8 +92,10 @@ const InvestingInfomationList = () => {
             )}
           </div>
           <div className={styles.PaginationStyle}>
-            {/* <ShowPageNation name="userPageList" totalPages={pageList} /> */}
-            <ShowPageNation name="investingBoardPageList" />
+            <ShowPageNation
+              name="investingBoardPageList"
+              totalPages={pageList}
+            />
           </div>
         </div>
       </div>
