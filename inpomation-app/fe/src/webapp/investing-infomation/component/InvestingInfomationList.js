@@ -8,6 +8,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import ShowPageNation from "webapp/common/component/PagenationBtn";
+import GoHomeButton from "webapp/common/component/GoHomeButton";
+import { InvestingViewCountUpdateDataAPI } from "webapp/api/investingInfomationApi";
 
 const InvestingInfomationList = () => {
   const navigate = useNavigate();
@@ -17,9 +19,25 @@ const InvestingInfomationList = () => {
   useEffect(() => {
     dispatch(InvestingBoardCurrentPageLocation(1));
   }, []);
+  // const view
 
   const movePage = (id) => {
     sessionStorage.setItem("investingBoardId", id);
+
+    if (sessionStorage.getItem("username") !== null) {
+      InvestingViewCountUpdateDataAPI({
+        boardId: id,
+      })
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            console.log("view count update success : ", res);
+          } else {
+            console.log("view count failed success : ", res);
+          }
+        })
+        .catch((err) => console.error("view count update error : ", err));
+    }
+
     dispatch(InvestingBoardId(id));
     navigate("/investing_infomation_read");
   };
@@ -29,31 +47,23 @@ const InvestingInfomationList = () => {
       InvestingBoardReducer?.InvestingPageListInitial?.result
         ?.investingPageList,
   }));
-  console.log("pageList ::: ", pageList);
-  console.log("totalList ::: ", totalList);
 
   return (
     <>
       <div className={styles.list}>
         <div className={styles.active}>
-          {/* <div>
-              <span>투자 커뮤니티</span>
-            </div> */}
           <div className={styles.contents}>
             <div className={styles.tableBox}>
               <table className={styles.table}>
                 <colgroup>
-                  <col width="10%" />
-                  {/* <col width="*" /> */}
                   <col width="50%" />
+                  <col width="20%" />
                   <col width="*" />
                   <col width="*" />
                   <col width="*" />
                 </colgroup>
                 <thead>
                   <tr>
-                    <th>번호</th>
-                    {/* <th>구분</th> */}
                     <th>제목</th>
                     <th>작성자</th>
                     <th>작성일시</th>
@@ -63,35 +73,35 @@ const InvestingInfomationList = () => {
                 <tbody className={styles.tableBody}>
                   {totalList?.map((el) => (
                     <tr key={el.id}>
-                      <td onClick={() => movePage(el.id)}>{el.id}</td>
-                      {/* <td>{el.type}</td> */}
                       <td onClick={() => movePage(el.id)}>{el.title}</td>
                       <td onClick={() => movePage(el.id)}>{el.writer}</td>
-                      {/* <td>{moment(el.date).format("YYYY-MM-DD")}</td> */}
-                      {/* <td onClick={() => movePage(el.id)}>{el.regdate}</td> */}
                       <td onClick={() => movePage(el.id)}>
                         {moment(el.regdate).format("YYYY-MM-DD")}
                       </td>
-                      <td onClick={() => movePage(el.id)}>{el.viewCount}</td>
+                      <td onClick={() => movePage(el.id)}>{el.veiw_count}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <div className="top-controls">
-            {sessionStorage.getItem("username") === null ? null : (
-              <button className={styles.contentRegisterBtn}>
-                <span
-                  className={styles.contentRegisterText}
-                  onClick={() => navigate("/investing_infomation_register")}
-                >
-                  글쓰기
-                </span>
-              </button>
-            )}
+
+          <div className={styles.btnStyle}>
+            <GoHomeButton />
+            <div className={styles.writeBtn}>
+              {sessionStorage.getItem("username") === null ? null : (
+                <button className={styles.contentRegisterBtn}>
+                  <span
+                    className={styles.contentRegisterText}
+                    onClick={() => navigate("/investing_infomation_register")}
+                  >
+                    글쓰기
+                  </span>
+                </button>
+              )}
+            </div>
           </div>
-          <div className={styles.PaginationStyle}>
+          <div className={styles.paginationStyle}>
             <ShowPageNation
               name="investingBoardPageList"
               totalPages={pageList}

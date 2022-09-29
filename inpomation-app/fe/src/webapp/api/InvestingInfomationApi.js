@@ -1,6 +1,9 @@
 import { client } from "./Client";
 import { backUrl } from "../config/Config";
 
+export const InvestingViewCountUpdateDataAPI = (id) =>
+  client.post(backUrl + "/investing_infomation/viewCount", id);
+
 export const ProductInfomationModifyDataAPI = (states, formData, config) =>
   client.post(backUrl + "api/uploadfile", formData, config);
 
@@ -13,7 +16,7 @@ export const InvestingRgisterDataAPI = (boardState) =>
 export const InvestingBoardPagenationListDataAPI = (page) =>
   client.post(backUrl + "/investing_infomation/pageList", {
     page,
-    pageSize: 10,
+    pageSize: 15,
   });
 
 export const InvestingReadBoardIdDataAPI = (id) =>
