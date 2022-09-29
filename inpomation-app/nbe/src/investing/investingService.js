@@ -2,14 +2,16 @@ const repository = require("./investingRepository");
 const userRepository = require("../user/userRepository");
 
 class investingService {
+  viewCount = async (boardId) => await repository.viewCount(boardId);
+
   async pageList(page) {
     let start = 0;
-    if (page.pageSize === undefined) page.pageSize = 10;
+    if (page.pageSize === undefined) page.pageSize = 15;
 
     page.page > 0 ? (start = (page.page - 1) * page.pageSize) : (page.page = 1);
 
     const pagenationCount = Math.ceil(
-      (await repository.InvestingBoardCount()) / page.pageSize
+      (await repository.investingBoardCount()) / page.pageSize
     );
 
     if (page.page > pagenationCount) return null;

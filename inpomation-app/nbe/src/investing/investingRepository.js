@@ -3,7 +3,42 @@ const date = require("../common/date");
 // const currentDate = date.date();
 const currentDate = date.today();
 
-exports.InvestingBoardCount = async (req, res, next) => {
+exports.viewCount = async (req, res, next) => {
+  const { boardId } = req;
+  const sql = `UPDATE investing_board SET veiw_count = veiw_count + 1 WHERE id = ${boardId}`;
+  console.log("veiw count sql : ", sql);
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            console.log("investing view count success : ", rows);
+            resolve({
+              message: "투자 페이지 조회수 증가가 완료되었습니다.",
+              code: 200,
+              success: rows,
+            });
+          }
+
+          if (err) {
+            console.error("investing current page error : ", err);
+            resolve({
+              message: "투자 페이지 조회수 증가가 실패하였습니다.",
+              failed: err,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("viewCount db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
+
+exports.investingBoardCount = async (req, res, next) => {
   const sql = `SELECT COUNT(*) FROM investing_board`;
   return new Promise((resolve, reject) => {
     try {
@@ -22,15 +57,14 @@ exports.InvestingBoardCount = async (req, res, next) => {
 
 exports.investingPageList = async (req, res, next) => {
   const { start, pageSize } = req;
-  const sql = `SELECT id, user_id, writer, title, content, regdate FROM investing_board ORDER BY id DESC LIMIT ${start}, ${pageSize}`;
-  console.log("investing page list sql : ", sql);
+  const sql = `SELECT id, user_id, writer, title, content, regdate, veiw_count FROM investing_board ORDER BY id DESC LIMIT ${start}, ${pageSize}`;
 
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
         connection.query(sql, (err, rows) => {
           if (rows) {
-            console.log("investing current page success : ", rows);
+            // console.log("investing current page success : ", rows);
             resolve({
               message: "투자 페이지 조회가 완료되었습니다.",
               code: 200,
@@ -58,7 +92,6 @@ exports.investingPageList = async (req, res, next) => {
 exports.commentDelete = async (req, res, next) => {
   const { commentId } = req;
   const sql = `DELETE FROM investing_board_reply WHERE id = ${commentId}`;
-  console.log("comment delete sql : ", sql);
 
   return new Promise((resolve, reject) => {
     try {
@@ -155,11 +188,7 @@ exports.commentRead = async (req, res, next) => {
 
 exports.commentRegister = async (req, res, next) => {
   const { boardId, username, comment } = req;
-  console.log(
-    `boardId : ${boardId}, username : ${username}, comment: ${comment}`
-  );
   const sql = `INSERT INTO investing_board_reply (board_id, writer, content, regdate) VALUES (${boardId}, '${username}', '${comment}', '${currentDate}')`;
-  console.log("register sql : ", sql);
 
   return new Promise((resolve, reject) => {
     try {
@@ -191,7 +220,7 @@ exports.commentRegister = async (req, res, next) => {
 
 exports.read = async (req, res, next) => {
   const { boardId } = req;
-  const sql = `SELECT writer, title, content, regdate FROM investing_board WHERE id = ${boardId}`;
+  const sql = `SELECT writer, title, content, regdate, veiw_count FROM investing_board WHERE id = ${boardId}`;
 
   return new Promise((resolve, reject) => {
     try {
