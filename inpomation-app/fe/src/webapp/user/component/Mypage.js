@@ -63,7 +63,7 @@ const Mypage = () => {
   return (
     <>
       <Container>
-        <Form className={styles.FormStyle}>
+        <Form className={styles.formStyle}>
           <h2>회원 정보 수정</h2>
           <Form.Group widths="equal">
             <Form.Field
@@ -113,12 +113,12 @@ const Mypage = () => {
             />
           </Form.Group>
           <div>
-            <div className={styles.ButtonStyle}>
+            <div className={styles.buttonStyle}>
               <Form.Field secondary control={Button} onClick={userModify}>
                 정보 수정
               </Form.Field>
             </div>
-            {/* <div className={styles.ButtonStyle}>
+            {/* <div className={styles.buttonStyle}>
               <GoHomeButton />
             </div> */}
           </div>

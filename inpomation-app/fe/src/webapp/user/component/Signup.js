@@ -103,12 +103,12 @@ const Signup = () => {
             />
           </Form.Group>
           <div>
-            <div className={styles.ButtonStyle}>
+            <div className={styles.buttonStyle}>
               <Form.Field secondary control={Button} onClick={handleSubmit}>
                 회원가입
               </Form.Field>
             </div>
-            <div className={styles.ButtonStyle}>
+            <div className={styles.buttonStyle}>
               <GoHomeButton />
             </div>
           </div>

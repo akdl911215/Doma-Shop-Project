@@ -15,7 +15,7 @@ const Portfolio = () => {
 
   return (
     <>
-      <div className={styles.DivStyle}>
+      <div className={styles.divStyle}>
         <select name="portfolioSelect" onChange={optionChange} value={options}>
           <option value="cashAsset">현금 대 자산비율</option>
           <option value="assetRate">자산 금액 비율</option>

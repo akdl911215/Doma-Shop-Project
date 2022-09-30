@@ -1,13 +1,13 @@
-.ButtonStyle {
+.buttonStyle {
   float: right;
   padding-top: 2rem;
 }
 
-.TextareaStyle {
+.textareaStyle {
   width: 100%;
 }
 
-.FormStyle {
+.formStyle {
   width: 50%;
   min-height: 35rem;
   margin: 0 auto;
