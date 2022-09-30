@@ -130,6 +130,23 @@
   font-weight: 550;
   font-size: 13px;
 }
+.modifyBtn {
+  width: 95px;
+  height: 35px;
+
+  background: #fd8383;
+  border-radius: 8px;
+}
+.modifyText {
+  width: 55px;
+  height: 22px;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 13px;
+}
 
 .commentHeader {
   width: 750px;

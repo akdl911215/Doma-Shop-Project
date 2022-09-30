@@ -275,6 +275,16 @@ const InvestingInfomationRead = () => {
             </Comment.Group>
           </div>
           <div className={styles.btnBox}>
+            <button className={styles.modifyBtn}>
+              <span
+                className={styles.modifyText}
+                onClick={() => {
+                  navigate("/investing_infomation_modify");
+                }}
+              >
+                수정하기
+              </span>
+            </button>
             <button className={styles.cancelBtn}>
               <span
                 className={styles.cancelText}
