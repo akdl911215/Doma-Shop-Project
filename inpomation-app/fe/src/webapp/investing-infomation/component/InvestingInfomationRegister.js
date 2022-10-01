@@ -92,10 +92,8 @@ const InvestingInfomationRegister = () => {
           </div>
           <div className={styles.contentBox}>
             <span>본문</span>
-            {/* <textarea className={styles.contentInput} /> */}
             <CKEditor
               editor={ClassicEditor}
-              // data="<p>Hello from CKEditor 5!</p>"
               config={{
                 placeholder: "내용을 입력하세요.",
               }}

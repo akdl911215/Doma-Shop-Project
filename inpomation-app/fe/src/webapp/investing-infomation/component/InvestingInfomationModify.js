@@ -1,24 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import moment from "moment";
 import { Button, Comment, Form, Header } from "semantic-ui-react";
 import GoHomeButton from "../../common/component/GoHomeButton";
 import styles from "../style/InvestingInfomationModify.module.css";
-import { ProductInfomationModifyDataAPI } from "../../api/investingInfomationApi";
+import {
+  InvestingModifyDataAPI,
+  InvestingReadBoardIdDataAPI,
+  ProductInfomationModifyDataAPI,
+} from "../../api/investingInfomationApi";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 const InvestingInfomationModify = () => {
   const navigate = useNavigate();
   const ID = sessionStorage.getItem("investingBoardId");
-
-  const { boardId } = useSelector(({ InvestingBoardReducer }) => ({
-    boardId: InvestingBoardReducer?.InvestingBoardIdInitial,
-  }));
 
   const [boardState, setBoardState] = useState({
     content: {},
     comment: "",
     comments: [],
   });
+  const [modify, setModify] = useState({
+    title: "",
+    writer: "",
+    content: "",
+    regdate: "",
+  });
+
   let deleteBtnBool = false;
   if (
     sessionStorage.getItem("roles") === "MASTER" ||
@@ -28,51 +38,16 @@ const InvestingInfomationModify = () => {
     deleteBtnBool = true;
   }
   useEffect(() => {
-    // InvestingReadBoardIdDataAPI({
-    //   boardId: Number(ID),
-    // })
-    //   .then((res) => {
-    //     setBoardState({
-    //       ...boardState,
-    //       content: res?.data?.success[0],
-    //       comments: res?.data?.commentsList,
-    //     });
-    //   })
-    //   .catch((err) => console.error("investing read board id error : ", err));
+    InvestingModifyDataAPI({
+      boardId: Number(ID),
+    })
+      .then((res) => {
+        console.log("modfiy res?.data?.success[0] : ", res?.data?.success[0]);
+        setModify(res?.data?.success[0]);
+      })
+      .catch((err) => console.error("investing modify board id error : ", err));
   }, []);
-  useEffect(() => console.log("boardState : ", boardState), [boardState]);
-
-  const uploadComment = () => {
-    // UserAuthDataAPI()
-    //   .then((res) => {
-    //     if (res?.data?.code === 200) {
-    //       InvestingCommentRegisterDataAPI({
-    //         boardId: ID,
-    //         username: sessionStorage.getItem("username"),
-    //         comment: boardState?.comment,
-    //       })
-    //         .then((res) => {
-    //           if (res?.data?.code === 200) {
-    //             window.location.reload();
-    //           }
-    //           if (res?.data?.message === "투자 게시판 댓글 등록 실패") {
-    //             alert("댓글 등록이 실패하였습니다.");
-    //           }
-    //         })
-    //         .catch((err) => console.error("comment upload error : ", err));
-    //     } else {
-    //       const signin = window.confirm(
-    //         "로그인이 필요한 기능입니다. 로그인을 진행하시겠습니까?"
-    //       );
-    //       if (signin) {
-    //         SessionRemove();
-    //         navigate("/users_signin");
-    //         // sessionStorage.setItem("signinPage", "/investing_infomation_read");
-    //       }
-    //     }
-    //   })
-    //   .catch((err) => console.error("board read auth error : ", err));
-  };
+  useEffect(() => console.log("modify : ", modify), [modify]);
 
   const commentChange = (e) => {
     const { name, value } = e.target;
@@ -83,40 +58,20 @@ const InvestingInfomationModify = () => {
     });
   };
 
-  const boardRemove = () => {
-    // const remove = window.confirm("글을 삭제하시겠습니까?");
-    // if (remove) {
-    //   InvestingBoardDeleteDataAPI({
-    //     boardId: ID,
-    //   })
-    //     .then((res) => {
-    //       if (res?.data?.code === 200) {
-    //         alert("해당 게시글을 삭제하였습니다.");
-    //         sessionStorage.removeItem("investingBoardId");
-    //         navigate("/investing_infomation_list");
-    //       } else {
-    //         alert("해당 게시글 삭제를 실패하였습니다.");
-    //       }
-    //     })
-    //     .catch((err) => console.error("investing board delete error : ", err));
-    // }
+  const modifyBtn = () => {
+    navigate("/investing_infomation_list");
+    InvestingModifyDataAPI();
   };
 
-  const commentDelete = (id) => {
-    console.log("comment delete id : ", id);
-    // InvestingBoardCommentDeleteDataAPI({
-    //   commentId: id,
-    // })
-    //   .then((res) => {
-    //     console.log("comment delete res : ", res);
-    //     if (res?.data?.code === 200) {
-    //       window.location.reload();
-    //     } else {
-    //       alert("댓글 삭제 실패하였습니다.");
-    //     }
-    //   })
-    //   .catch((err) => console.error("comment delete catch error : ", err));
-  };
+  const handleChange = useCallback((e) => {
+    const { name, value } = e.target;
+    console.log(`name: ${name}, value: ${value}`);
+
+    setModify({
+      ...modify,
+      [name]: value,
+    });
+  });
 
   return (
     <div>
@@ -128,82 +83,54 @@ const InvestingInfomationModify = () => {
               placeholder="제목을 입력해주세요."
               className={styles.titleInput}
               name="title"
-              value={boardState?.content?.title}
-              readOnly={true}
+              value={modify?.title}
+              onChange={handleChange}
             />
             <span>작성자</span>
             <input
-              value={boardState?.content?.writer}
+              value={modify?.writer}
+              name="writer"
               className={styles.writerAndDateInput}
-              readOnly={true}
             />
             <span>작성일자</span>
             <input
-              readOnly={true}
               className={styles.writerAndDateInput}
-              value={moment(boardState?.content?.regdate).format("YYYY-MM-DD")}
+              value={modify?.regdate}
+              name="regdate"
             />
           </div>
           <div className={styles.contentBox}>
             <span>본문</span>
-            <textarea
-              readOnly={true}
-              value={boardState?.content?.content}
-              className={styles.contentInput}
+            <CKEditor
+              editor={ClassicEditor}
+              config={{
+                placeholder: "내용을 입력하세요.",
+              }}
+              value={modify?.content}
+              onReady={(editor) => {
+                // You can store the "editor" and use when it is needed.
+                console.log("Editor is ready to use!", editor);
+              }}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                console.log({ event, editor, data });
+                setModify({
+                  ...modify,
+                  content: data.replace(/(<([^>]+)>)/gi, ""),
+                });
+              }}
+              onBlur={(event, editor) => {
+                console.log("Blur.", editor);
+              }}
+              onFocus={(event, editor) => {
+                console.log("Focus.", editor);
+              }}
             />
           </div>
 
-          <div>
-            <Comment.Group minimal>
-              <Header as="h3" dividing className={styles.commentHeader}>
-                댓글
-              </Header>
-
-              {boardState?.comments?.map((el, key) => {
-                return (
-                  <>
-                    <Comment>
-                      <Comment.Avatar as="a" />
-                      <Comment.Content>
-                        <Comment.Author as="a">{el?.writer}</Comment.Author>
-                        <Comment.Metadata>
-                          <span>{el?.regdate}</span>
-                        </Comment.Metadata>
-                        <Comment.Text>{el?.content}</Comment.Text>
-                        <Comment.Actions>
-                          {el?.writer === sessionStorage.getItem("username") ||
-                          sessionStorage.getItem("roles") === "MASTER" ||
-                          sessionStorage.getItem("roles") === "MANAGER" ? (
-                            <a onClick={() => commentDelete(el?.id)}>Delete</a>
-                          ) : null}
-                          {/* <a>Reply</a> */}
-                        </Comment.Actions>
-                      </Comment.Content>
-                    </Comment>
-                  </>
-                );
-              })}
-
-              <Form reply>
-                <Form.TextArea name="comment" onChange={commentChange} />
-                <Button
-                  content="댓글 추가"
-                  labelPosition="left"
-                  icon="edit"
-                  primary
-                  onClick={uploadComment}
-                />
-              </Form>
-            </Comment.Group>
-          </div>
           <div className={styles.btnBox}>
             <button className={styles.modifyBtn}>
-              <span
-                className={styles.modifyText}
-                onClick={() => {
-                  navigate("/investing_infomation_modify");
-                }}
-              >
+              <span className={styles.modifyText} onClick={modifyBtn}>
                 수정하기
               </span>
             </button>
@@ -218,9 +145,6 @@ const InvestingInfomationModify = () => {
               </span>
             </button>
             <GoHomeButton />
-            {deleteBtnBool === true ? (
-              <Button onClick={boardRemove}>글 삭제</Button>
-            ) : null}
           </div>
         </div>
       </div>

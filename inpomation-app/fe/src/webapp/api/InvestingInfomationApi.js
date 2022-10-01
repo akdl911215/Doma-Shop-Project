@@ -4,8 +4,8 @@ import { backUrl } from "../config/Config";
 export const InvestingViewCountUpdateDataAPI = (id) =>
   client.post(backUrl + "/investing_infomation/viewCount", id);
 
-export const ProductInfomationModifyDataAPI = (states, formData, config) =>
-  client.post(backUrl + "api/uploadfile", formData, config);
+export const InvestingModifyDataAPI = (board) =>
+  client.post(backUrl + "/investing_infomation/modify", board);
 
 export const InvestingRgisterDataAPI = (boardState) =>
   client.post(backUrl + "/investing_infomation/register", boardState);
