@@ -3,10 +3,43 @@ const date = require("../common/date");
 // const currentDate = date.date();
 const currentDate = date.today();
 
+exports.modify = async (req, res, next) => {
+  const { boardId } = req;
+  const sql = `SELECT writer, title, content, regdate FROM investing_board WHERE id = ${boardId}`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            console.log("investing modify success : ", rows);
+            resolve({
+              message: "투자 게시판 정보 조회 완료되었습니다.",
+              code: 200,
+              success: rows,
+            });
+          }
+
+          if (err) {
+            console.error("investing modify error : ", err);
+            resolve({
+              message: "투자 게시판 정보 조회 실패하였습니다.",
+              failed: err,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("modify db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
+
 exports.viewCount = async (req, res, next) => {
   const { boardId } = req;
   const sql = `UPDATE investing_board SET veiw_count = veiw_count + 1 WHERE id = ${boardId}`;
-  console.log("veiw count sql : ", sql);
 
   return new Promise((resolve, reject) => {
     try {

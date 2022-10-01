@@ -2,6 +2,8 @@ const repository = require("./investingRepository");
 const userRepository = require("../user/userRepository");
 
 class investingService {
+  modify = async (id) => await repository.modify(id);
+
   viewCount = async (boardId) => await repository.viewCount(boardId);
 
   async pageList(page) {
