@@ -3,6 +3,40 @@ const date = require("../common/date");
 // const currentDate = date.date();
 const currentDate = date.today();
 
+exports.boardModify = async (req, res, next) => {
+  const { boardId, writer, title, content } = req;
+  const sql = `UPDATE investing_board SET writer = '${writer}', title = '${title}', content = '${content}', updatedate = '${currentDate}' WHERE id = ${boardId}`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            console.log("investing board modify success : ", rows);
+            resolve({
+              message: "투자 게시판 정보 수정 완료되었습니다.",
+              code: 200,
+              success: rows,
+            });
+          }
+
+          if (err) {
+            console.error("investing board modify error : ", err);
+            resolve({
+              message: "투자 게시판 정보 수정 실패하였습니다.",
+              failed: err,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("board modify db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
+
 exports.modify = async (req, res, next) => {
   const { boardId } = req;
   const sql = `SELECT writer, title, content, regdate FROM investing_board WHERE id = ${boardId}`;

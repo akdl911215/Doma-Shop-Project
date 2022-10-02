@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const service = require("./investingService");
 
+router.post("/boardModify", async (req, res, next) =>
+  res.json(await service.boardModify(req?.body))
+);
+
 router.post("/modify", async (req, res, next) =>
   res.json(await service.modify(req?.body))
 );
