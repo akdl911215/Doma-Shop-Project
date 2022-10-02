@@ -92,7 +92,12 @@ const InvestingInfomationRegister = () => {
           </div>
           <div className={styles.contentBox}>
             <span>본문</span>
-            <CKEditor
+            <textarea
+              name="content"
+              onChange={handleChange}
+              className={styles.contentInput}
+            />
+            {/* <CKEditor
               editor={ClassicEditor}
               config={{
                 placeholder: "내용을 입력하세요.",
@@ -115,7 +120,7 @@ const InvestingInfomationRegister = () => {
               onFocus={(event, editor) => {
                 console.log("Focus.", editor);
               }}
-            />
+            /> */}
           </div>
           <div className={styles.btnBox}>
             <button className={styles.uploadBtn}>

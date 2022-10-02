@@ -4,6 +4,7 @@ import { Button, Comment, Form, Header } from "semantic-ui-react";
 import GoHomeButton from "../../common/component/GoHomeButton";
 import styles from "../style/InvestingInfomationModify.module.css";
 import {
+  InvestingBoardModifyDataAPI,
   InvestingModifyDataAPI,
   InvestingReadBoardIdDataAPI,
   ProductInfomationModifyDataAPI,
@@ -49,18 +50,20 @@ const InvestingInfomationModify = () => {
   }, []);
   useEffect(() => console.log("modify : ", modify), [modify]);
 
-  const commentChange = (e) => {
-    const { name, value } = e.target;
-    console.log(`name : ${name}, value: ${value}`);
-    setBoardState({
-      ...boardState,
-      [name]: value,
-    });
-  };
-
   const modifyBtn = () => {
+    InvestingBoardModifyDataAPI({
+      boardId: ID,
+      ...modify,
+    })
+      .then((res) => {
+        console.log("modify res : ", res);
+        if (res?.data?.code === 200) {
+          alert("수정 성공");
+        }
+      })
+      .catch((err) => console.error("investing modify data error : ", err));
+
     navigate("/investing_infomation_list");
-    InvestingModifyDataAPI();
   };
 
   const handleChange = useCallback((e) => {
@@ -91,22 +94,30 @@ const InvestingInfomationModify = () => {
               value={modify?.writer}
               name="writer"
               className={styles.writerAndDateInput}
+              readOnly={true}
             />
             <span>작성일자</span>
             <input
               className={styles.writerAndDateInput}
-              value={modify?.regdate}
+              value={moment(modify?.regdate).format("YYYY-MM-DD")}
               name="regdate"
+              readOnly={true}
             />
           </div>
           <div className={styles.contentBox}>
             <span>본문</span>
-            <CKEditor
+            <textarea
+              value={modify?.content}
+              name="content"
+              className={styles.contentInput}
+              onChange={handleChange}
+            />
+            {/* <CKEditor
               editor={ClassicEditor}
               config={{
                 placeholder: "내용을 입력하세요.",
               }}
-              value={modify?.content}
+              // data={modify?.content}
               onReady={(editor) => {
                 // You can store the "editor" and use when it is needed.
                 console.log("Editor is ready to use!", editor);
@@ -125,7 +136,7 @@ const InvestingInfomationModify = () => {
               onFocus={(event, editor) => {
                 console.log("Focus.", editor);
               }}
-            />
+            /> */}
           </div>
 
           <div className={styles.btnBox}>
@@ -138,7 +149,7 @@ const InvestingInfomationModify = () => {
               <span
                 className={styles.cancelText}
                 onClick={() => {
-                  navigate("/investing_infomation_list");
+                  navigate("/investing_infomation_read");
                 }}
               >
                 뒤로가기

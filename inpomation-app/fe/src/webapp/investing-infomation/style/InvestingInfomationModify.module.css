@@ -68,9 +68,10 @@
   align-self: stretch;
   flex-grow: 0;
 }
+
 .contentBox {
   width: 100%;
-  min-height: 600px;
+  min-height: 100%;
 }
 .contentInput {
   box-sizing: border-box;
