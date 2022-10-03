@@ -24,6 +24,14 @@ const PortfolioAssetRate = () => {
   const [assetArr, setAsetArr] = useState([]);
   const [totalAssetRate, setTotalAssetRate] = useState(0);
 
+  const assetNull = [
+    {
+      angle: 1,
+      label: null,
+      subLabel: null,
+    },
+  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(`name: ${name}, value: ${value}`);
@@ -63,8 +71,12 @@ const PortfolioAssetRate = () => {
             })
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
-          alert("다시 로그인을 시도하세요.");
-          SessionRemove();
+          const signin = window.confirm("다시 로그인을 시도하세요.");
+
+          if (signin) {
+            navigate("/users_signin");
+            SessionRemove();
+          }
         }
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
@@ -86,8 +98,12 @@ const PortfolioAssetRate = () => {
             })
             .catch((err) => console.error("asset error : ", err));
         } else {
-          alert("다시 로그인을 시도하세요.");
-          SessionRemove();
+          const signin = window.confirm("다시 로그인을 시도하세요.");
+
+          if (signin) {
+            navigate("/users_signin");
+            SessionRemove();
+          }
         }
       })
       .catch((err) => console.error("portfolio asset error : ", err));
@@ -109,8 +125,12 @@ const PortfolioAssetRate = () => {
               })
               .catch((err) => console.error("asset remove error : ", err));
           } else {
-            alert("다시 로그인을 시도하세요.");
-            SessionRemove();
+            const signin = window.confirm("다시 로그인을 시도하세요.");
+
+            if (signin) {
+              navigate("/users_signin");
+              SessionRemove();
+            }
           }
         })
         .catch((err) => console.error("portfolio asset remove error : ", err));
@@ -123,7 +143,7 @@ const PortfolioAssetRate = () => {
         <div className={styles.Box}>
           {/* 차트 */}
           <RadialChart
-            data={assetArr}
+            data={assetArr.length === 0 ? assetNull : assetArr}
             showLabels={true}
             width={400}
             height={400}

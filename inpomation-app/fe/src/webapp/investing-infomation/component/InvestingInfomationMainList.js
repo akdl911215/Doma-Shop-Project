@@ -52,7 +52,7 @@ const InvestingInfomationMainList = () => {
                   <td onClick={() => movePage(el.id)}>
                     {moment(el.regdate).format("YYYY-MM-DD")}
                   </td>
-                  <td onClick={() => movePage(el.id)}>{el.viewCount}</td>
+                  <td onClick={() => movePage(el.id)}>{el.veiw_count}</td>
                 </tr>
               ))}
             </tbody>

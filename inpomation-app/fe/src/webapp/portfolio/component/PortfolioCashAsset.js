@@ -19,25 +19,47 @@ const PortfolioCashAsset = () => {
     cashRatio: 0,
     assetRatio: 0,
   });
-  const [options, setOptions] = useState("cash");
+  useEffect(
+    () =>
+      console.log(
+        "cashAsset : ",
+        cashAsset,
+        " cashVsAssetNull : ",
+        cashVsAssetNull,
+        " cashVsAssetRatio : ",
+        cashVsAssetRatio
+      ),
+    [cashAsset]
+  );
+
+  // const [options, setOptions] = useState("cash");
   const cashVsAssetRatio = [
     {
-      angle: Number(cashAsset.cash),
-      label: cashAsset.cash === 0 ? "" : "현금",
-      subLabel: cashAsset.cash === 0 ? "" : String(cashAsset.cash),
+      angle: cashAsset.cash === undefined ? 0 : cashAsset.cash,
+      label: cashAsset.cash === undefined ? null : "현금",
+      subLabel: cashAsset.cash === undefined ? 0 : cashAsset.cash,
     },
     {
-      angle: Number(cashAsset.asset),
-      label: cashAsset.asset === 0 ? "" : "자산",
-      subLabel: cashAsset.asset === 0 ? "" : String(cashAsset.asset),
+      angle: cashAsset.asset === undefined ? 0 : cashAsset.asset,
+      label: cashAsset.asset === undefined ? null : "자산",
+      subLabel: cashAsset.asset === undefined ? 0 : cashAsset.asset,
     },
   ];
+  const cashVsAssetNull = [
+    {
+      angle: 1,
+      label: null,
+      subLabel: null,
+    },
+  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(`name : ${name}, value : ${value}`);
 
     setCashAsset({
       ...cashAsset,
-      [name]: value,
+      [name]: value.replace(/[^0-9]/g, ""),
     });
   };
 
@@ -51,15 +73,18 @@ const PortfolioCashAsset = () => {
             .then((res) => setCashAsset(res?.data))
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
-          alert("다시 로그인을 시도하세요.");
-          SessionRemove();
+          const signin = window.confirm("다시 로그인을 시도하세요.");
+
+          if (signin) {
+            navigate("/users_signin");
+            SessionRemove();
+          }
         }
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
   }, []);
 
   const cashAssetSubmit = () => {
-    // 서브밋하면 글자가 이상함 수정하기
     UserAuthDataAPI()
       .then((res) => {
         if (res?.data?.code === 200) {
@@ -74,8 +99,12 @@ const PortfolioCashAsset = () => {
             })
             .catch((err) => console.error("cashAssetData error : ", err));
         } else {
-          alert("다시 로그인을 시도하세요.");
-          SessionRemove();
+          const signin = window.confirm("다시 로그인을 시도하세요.");
+
+          if (signin) {
+            navigate("/users_signin");
+            SessionRemove();
+          }
         }
       })
       .catch((err) => console.error("portfolio cash vs asset error : ", err));
@@ -87,7 +116,11 @@ const PortfolioCashAsset = () => {
         <div className={styles.Box}>
           {/* 차트 */}
           <RadialChart
-            data={cashVsAssetRatio}
+            data={
+              cashAsset?.asset !== undefined || cashAsset?.cash !== undefined
+                ? cashVsAssetRatio
+                : cashVsAssetNull
+            }
             showLabels={true}
             width={400}
             height={400}
@@ -124,7 +157,9 @@ const PortfolioCashAsset = () => {
                   <Form size="small">
                     <Form.Input
                       fluid
-                      value={`비중 ${cashAsset.cashRatio}%`}
+                      value={`비중 ${
+                        cashAsset.cashRatio === null ? 0 : cashAsset.cashRatio
+                      }%`}
                       className={styles.DisplayInputBoxRatio}
                       readOnly
                     />
@@ -159,7 +194,9 @@ const PortfolioCashAsset = () => {
                 <Form size="small">
                   <Form.Input
                     fluid
-                    value={`비중 ${cashAsset.assetRatio}%`}
+                    value={`비중 ${
+                      cashAsset.assetRatio === null ? 0 : cashAsset.assetRatio
+                    }%`}
                     className={styles.DisplayInputBoxRatio}
                     readOnly
                   />
