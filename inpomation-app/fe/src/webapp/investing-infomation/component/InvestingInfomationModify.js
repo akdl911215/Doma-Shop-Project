@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { UserAuthDataAPI } from "webapp/api/userApi";
+import { SessionRemove } from "webapp/common/component/SessionRemove";
 
 const InvestingInfomationModify = () => {
   const navigate = useNavigate();
@@ -51,19 +53,41 @@ const InvestingInfomationModify = () => {
   useEffect(() => console.log("modify : ", modify), [modify]);
 
   const modifyBtn = () => {
-    InvestingBoardModifyDataAPI({
-      boardId: ID,
-      ...modify,
-    })
+    UserAuthDataAPI()
       .then((res) => {
-        console.log("modify res : ", res);
         if (res?.data?.code === 200) {
-          alert("수정 성공");
+          InvestingBoardModifyDataAPI({
+            boardId: ID,
+            ...modify,
+          })
+            .then((res) => {
+              console.log("modify res : ", res);
+              if (res?.data?.code === 200) {
+                alert("수정 성공");
+              }
+            })
+            .catch((err) =>
+              console.error("investing modify data error : ", err)
+            );
+
+          navigate("/investing_infomation_list");
+        } else {
+          const signin = window.confirm(
+            "로그인이 필요한 기능입니다. 로그인을 진행하시겠습니까?"
+          );
+
+          if (signin) {
+            SessionRemove();
+            navigate("/users_signin");
+
+            // sessionStorage.setItem(
+            //   "signinPage",
+            //   "/investing_infomation_modify"
+            // );
+          }
         }
       })
-      .catch((err) => console.error("investing modify data error : ", err));
-
-    navigate("/investing_infomation_list");
+      .catch((err) => console.error("investing modify ayth error : ", err));
   };
 
   const handleChange = useCallback((e) => {
