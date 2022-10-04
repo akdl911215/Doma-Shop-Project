@@ -110,9 +110,9 @@ exports.userRemove = async (req, res, next) => {
 };
 
 exports.userModify = async (req, res, next) => {
-  const { id, name, email, phone_number, address } = req;
+  const { id, nickname, name, email, phone_number, address } = req;
 
-  const sql = `${process.env.SQL_USERS_MODIFY} name = '${name}', email = '${email}', phone_number = '${phone_number}', address = '${address}' WHERE id = ${id};`;
+  const sql = `${process.env.SQL_USERS_MODIFY} name = '${name}', nickname = '${nickname}', email = '${email}', phone_number = '${phone_number}', address = '${address}' WHERE id = ${id};`;
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {
@@ -216,7 +216,7 @@ exports.userSignin = async (req, res) => {
 exports.userRegister = (req, res) => {
   try {
     db.getConnectionPool((conn) => {
-      const sql = `${process.env.SQL_SIGNUP} ('${req?.username}','${req?.password}','${req?.name}','${req?.email}','${req?.phone_number}','${req?.address}', '${req?.roles}', '${req?.salt}')`;
+      const sql = `${process.env.SQL_SIGNUP} ('${req?.username}', '${req?.username}', '${req?.password}', '${req?.name}', '${req?.email}', '${req?.phone_number}', '${req?.address}', '${req?.roles}', '${req?.salt}')`;
 
       conn.query(sql, (err, doc) => {
         if (err) console.log(`conn.query err : ${err}`);

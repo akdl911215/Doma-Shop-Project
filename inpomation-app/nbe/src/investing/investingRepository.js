@@ -39,7 +39,8 @@ exports.boardModify = async (req, res, next) => {
 
 exports.modify = async (req, res, next) => {
   const { boardId } = req;
-  const sql = `SELECT writer, title, content, regdate FROM investing_board WHERE id = ${boardId}`;
+  // const sql = `SELECT writer, title, content, regdate FROM investing_board WHERE id = ${boardId}`;
+  const sql = `SELECT ib.writer, ib.title, ib.content, ib.regdate, ib.veiw_count, u.nickname FROM investing_board ib LEFT JOIN users u ON ib.user_id = u.id WHERE ib.id = ${boardId}`;
 
   return new Promise((resolve, reject) => {
     try {
@@ -124,7 +125,8 @@ exports.investingBoardCount = async (req, res, next) => {
 
 exports.investingPageList = async (req, res, next) => {
   const { start, pageSize } = req;
-  const sql = `SELECT id, user_id, writer, title, content, regdate, veiw_count FROM investing_board ORDER BY id DESC LIMIT ${start}, ${pageSize}`;
+  // const sql = `SELECT id, user_id, writer, title, content, regdate, veiw_count FROM investing_board ORDER BY id DESC LIMIT ${start}, ${pageSize}`;
+  const sql = `SELECT ib.id, ib.user_id, ib.writer, ib.title, ib.content, ib.regdate, ib.veiw_count, u.nickname FROM investing_board ib LEFT JOIN users u ON ib.user_id = u.id ORDER BY u.id DESC LIMIT ${start}, ${pageSize}`;
 
   return new Promise((resolve, reject) => {
     try {
@@ -287,7 +289,8 @@ exports.commentRegister = async (req, res, next) => {
 
 exports.read = async (req, res, next) => {
   const { boardId } = req;
-  const sql = `SELECT writer, title, content, regdate, veiw_count FROM investing_board WHERE id = ${boardId}`;
+  // const sql = `SELECT writer, title, content, regdate, veiw_count FROM investing_board WHERE id = ${boardId}`;
+  const sql = `SELECT ib.writer, ib.title, ib.content, ib.regdate, ib.veiw_count, u.nickname FROM investing_board ib LEFT JOIN users u ON ib.user_id = u.id WHERE ib.id = ${boardId}`;
 
   return new Promise((resolve, reject) => {
     try {
