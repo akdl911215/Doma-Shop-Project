@@ -115,12 +115,10 @@ const InvestingInfomationRead = () => {
   };
 
   const commentDelete = (id) => {
-    console.log("comment delete id : ", id);
     InvestingBoardCommentDeleteDataAPI({
       commentId: id,
     })
       .then((res) => {
-        console.log("comment delete res : ", res);
         if (res?.data?.code === 200) {
           window.location.reload();
         } else {
@@ -145,7 +143,8 @@ const InvestingInfomationRead = () => {
             />
             <span>작성자</span>
             <input
-              value={boardState?.content?.writer}
+              // value={boardState?.content?.writer}
+              value={boardState?.content?.nickname}
               className={styles.writerAndDateInput}
               readOnly={true}
             />

@@ -72,7 +72,16 @@ const Mypage = () => {
               value={mypage.username}
               name="username"
               onChange={handleChange}
-              readOnly
+              readOnly={true}
+            ></Form.Field>
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Field
+              control={Input}
+              label="별칭"
+              value={mypage.nickname}
+              name="nickname"
+              onChange={handleChange}
             ></Form.Field>
           </Form.Group>
 

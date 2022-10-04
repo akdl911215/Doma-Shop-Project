@@ -115,8 +115,9 @@ const InvestingInfomationModify = () => {
             />
             <span>작성자</span>
             <input
-              value={modify?.writer}
-              name="writer"
+              // value={modify?.writer}
+              value={modify?.nickname}
+              name="nickname"
               className={styles.writerAndDateInput}
               readOnly={true}
             />

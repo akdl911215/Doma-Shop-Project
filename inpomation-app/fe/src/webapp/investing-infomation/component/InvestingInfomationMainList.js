@@ -47,7 +47,8 @@ const InvestingInfomationMainList = () => {
               {totalList?.map((el) => (
                 <tr key={el.id}>
                   <td onClick={() => movePage(el.id)}>{el.title}</td>
-                  <td onClick={() => movePage(el.id)}>{el.writer}</td>
+                  {/* <td onClick={() => movePage(el.id)}>{el.writer}</td> */}
+                  <td onClick={() => movePage(el.id)}>{el.nickname}</td>
 
                   <td onClick={() => movePage(el.id)}>
                     {moment(el.regdate).format("YYYY-MM-DD")}
