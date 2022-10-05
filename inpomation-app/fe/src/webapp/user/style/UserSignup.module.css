@@ -1,7 +1,91 @@
-.buttonStyle {
-  float: right;
+.signupContiner {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+
+  position: absolute;
+  width: 700px;
+  height: 800px;
+  left: calc(50% - 800px / 2);
+  top: calc(50% - 800px / 2 + 0.5px);
+
+  background: #ffffff;
+  box-shadow: 0px 10px 25px rgba(29, 52, 54, 0.08);
+  border-radius: 10px;
 }
-/* 
-.textareaStyle {
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 0px;
+  gap: 10px;
+
+  /* width: 700px;
+  height: 800px; */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.titleText {
+  /* width: 87px; */
+  height: 55px;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 25px;
+
+  letter-spacing: 0.02em;
+
+  color: #29a19c;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.signupBody {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 0px;
+  gap: 20px;
+
   width: 100%;
-} */
+  height: 100vh;
+  /* width: 310px;
+  height: 290px; */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.signupInput {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  gap: 10px;
+
+  width: 100%;
+  height: 39px;
+
+  border: 1px solid rgba(40, 40, 70, 0.1);
+  border-radius: 8px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}

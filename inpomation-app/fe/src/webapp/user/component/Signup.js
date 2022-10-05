@@ -46,74 +46,53 @@ const Signup = () => {
 
   return (
     <>
-      <Container>
-        <Form>
-          <Form.Group widths="equal">
-            <Form.Field
-              control={Input}
-              label="아이디"
-              placeholder="ID"
-              name="username"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field
-              control={Input}
-              label="비밀번호"
-              name="password"
-              placeholder="PASSWORD"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field
-              control={Input}
-              label="이름"
-              name="name"
-              placeholder="성함"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field
-              control={Input}
-              label="주소"
-              name="address"
-              placeholder="ADDRESS"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field
-              control={Input}
-              label="이메일"
-              name="email"
-              placeholder="E-MAIL"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field
-              control={Input}
-              label="핸드폰번호"
-              name="phone_number"
-              placeholder="PHONENUMBER"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <div>
-            <div className={styles.buttonStyle}>
-              <Form.Field secondary control={Button} onClick={handleSubmit}>
-                회원가입
-              </Form.Field>
-            </div>
-            <div className={styles.buttonStyle}>
-              <GoHomeButton />
-            </div>
+      <div className={styles.signupContiner}>
+        <div className={styles.title}>
+          <span className={styles.titleText}>SignUp</span>
+        </div>
+        <div className={styles.signupBody}>
+          <span>아이디</span>
+          <input
+            placeholder="아이디를 입력하세요"
+            className={styles.signupInput}
+          ></input>
+          <span>비밀번호</span>
+          <input
+            placeholder="비밀번호를 입력하세요"
+            className={styles.signupInput}
+          ></input>
+          <span>이름</span>
+          <input
+            placeholder="이름을 입력하세요"
+            className={styles.signupInput}
+          ></input>
+          <span>주소</span>
+          <input
+            placeholder="주소를 입력하세요"
+            className={styles.signupInput}
+          ></input>
+          <span>E-mail</span>
+          <input
+            placeholder="E-mail 입력하세요"
+            className={styles.signupInput}
+          ></input>
+          <span>핸드폰 번호</span>
+          <input
+            placeholder="핸드폰 번호를 입력하세요"
+            className={styles.signupInput}
+          ></input>
+        </div>
+      </div>
+      {/* <div>
+          <div className={styles.buttonStyle}>
+            <Form.Field secondary control={Button} onClick={handleSubmit}>
+              회원가입
+            </Form.Field>
           </div>
-        </Form>
-      </Container>
+          <div className={styles.buttonStyle}>
+            <GoHomeButton />
+          </div>
+        </div> */}
     </>
   );
 };
