@@ -138,7 +138,7 @@ const PortfolioCashAsset = () => {
                       fluid
                       value="현금"
                       className={styles.DisplayInputBoxName}
-                      readOnly
+                      readOnly={true}
                     />
                   </Form>
                 </div>
@@ -161,7 +161,7 @@ const PortfolioCashAsset = () => {
                         cashAsset.cashRatio === null ? 0 : cashAsset.cashRatio
                       }%`}
                       className={styles.DisplayInputBoxRatio}
-                      readOnly
+                      readOnly={true}
                     />
                   </Form>
                 </div>
@@ -175,7 +175,7 @@ const PortfolioCashAsset = () => {
                     fluid
                     value="자산"
                     className={styles.DisplayInputBoxName}
-                    readOnly
+                    readOnly={true}
                   />
                 </Form>
               </div>
@@ -198,7 +198,7 @@ const PortfolioCashAsset = () => {
                       cashAsset.assetRatio === null ? 0 : cashAsset.assetRatio
                     }%`}
                     className={styles.DisplayInputBoxRatio}
-                    readOnly
+                    readOnly={true}
                   />
                 </Form>
               </div>
