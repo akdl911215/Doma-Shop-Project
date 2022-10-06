@@ -16,14 +16,19 @@ const Signup = () => {
   });
   const navigate = useNavigate();
 
-  const { username, password, name, address, email, phoneNumber } = signup;
-
   const handleChange = useCallback(
     (e) => {
       const { name, value } = e.target;
+
+      let input = "";
+      name === "phoneNumber"
+        ? (input = value.replace(/[^0-9]/g, ""))
+        : (input = value);
+
+      console.log(`name : ${name}, value : ${input}`);
       setSignup({
         ...signup,
-        [name]: value,
+        [name]: input,
       });
     },
     [signup]
@@ -53,46 +58,59 @@ const Signup = () => {
         <div className={styles.signupBody}>
           <span>아이디</span>
           <input
+            name="username"
             placeholder="아이디를 입력하세요"
             className={styles.signupInput}
+            onChange={handleChange}
           ></input>
           <span>비밀번호</span>
           <input
+            name="password"
+            type="password"
             placeholder="비밀번호를 입력하세요"
             className={styles.signupInput}
+            onChange={handleChange}
           ></input>
           <span>이름</span>
           <input
+            name="name"
             placeholder="이름을 입력하세요"
             className={styles.signupInput}
+            onChange={handleChange}
           ></input>
           <span>주소</span>
           <input
+            name="address"
             placeholder="주소를 입력하세요"
             className={styles.signupInput}
+            onChange={handleChange}
           ></input>
           <span>E-mail</span>
           <input
+            name="email"
             placeholder="E-mail 입력하세요"
             className={styles.signupInput}
+            onChange={handleChange}
           ></input>
           <span>핸드폰 번호</span>
           <input
+            name="phoneNumber"
             placeholder="핸드폰 번호를 입력하세요"
             className={styles.signupInput}
+            onChange={handleChange}
           ></input>
+          <div>
+            <div className={styles.buttonStyle}>
+              <Form.Field secondary control={Button} onClick={handleSubmit}>
+                회원가입
+              </Form.Field>
+            </div>
+            <div className={styles.buttonStyle}>
+              <GoHomeButton />
+            </div>
+          </div>
         </div>
       </div>
-      {/* <div>
-          <div className={styles.buttonStyle}>
-            <Form.Field secondary control={Button} onClick={handleSubmit}>
-              회원가입
-            </Form.Field>
-          </div>
-          <div className={styles.buttonStyle}>
-            <GoHomeButton />
-          </div>
-        </div> */}
     </>
   );
 };
