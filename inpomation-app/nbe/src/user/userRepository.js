@@ -214,9 +214,10 @@ exports.userSignin = async (req, res) => {
 };
 
 exports.userRegister = (req, res) => {
+  console.log("register req : ", req);
   try {
     db.getConnectionPool((conn) => {
-      const sql = `${process.env.SQL_SIGNUP} ('${req?.username}', '${req?.username}', '${req?.password}', '${req?.name}', '${req?.email}', '${req?.phone_number}', '${req?.address}', '${req?.roles}', '${req?.salt}')`;
+      const sql = `${process.env.SQL_SIGNUP} ('${req?.username}', '${req?.username}', '${req?.password}', '${req?.name}', '${req?.email}', '${req?.phoneNumber}', '${req?.address}', '${req?.roles}', '${req?.salt}')`;
 
       conn.query(sql, (err, doc) => {
         if (err) console.log(`conn.query err : ${err}`);
