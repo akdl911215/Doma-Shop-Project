@@ -13,16 +13,29 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 --------------------------------------------------------------------------------------------
 
 
-<br>
+<br><br>
 - 유저
+<br>
 1. 유저 회원가입
-<br>
+
+![signup](https://user-images.githubusercontent.com/76759835/194575021-5388f478-3a51-437a-a220-b94d5529c129.gif)
+
+<br><br>
 2. 유저 로그인 및 jwt토큰 사용으로 로그인 및 auth 체크
-<br>
+
+![signin](https://user-images.githubusercontent.com/76759835/194575061-e465cf1b-da2a-4a81-af8b-fa7b8a386530.gif)
+
+
+<br><br>
 3. 마이페이지 개인정보 수정
-<br>
+
+
+![usermodify](https://user-images.githubusercontent.com/76759835/194575095-b01494d2-2f72-46d1-a6fb-f70d73e67339.gif)
+
+
+<br><br>
 4. admin 페이지에서 회원정보 관리 및 탈퇴기능, 페이지네이션, 검색 기능 구현
-<br>
+<br><br>
 
 -----------------------------------------------------------------------------
 
