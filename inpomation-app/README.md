@@ -35,6 +35,12 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 <br><br>
 4. admin 페이지에서 회원정보 관리 및 탈퇴기능, 페이지네이션, 검색 기능 구현
+
+
+![list](https://user-images.githubusercontent.com/76759835/194712707-7364fc65-69ab-4467-99d8-4ec044631305.gif)
+
+
+
 <br><br>
 
 -----------------------------------------------------------------------------
