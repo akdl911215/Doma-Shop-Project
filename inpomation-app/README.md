@@ -3,10 +3,10 @@
 
 <br><br>
 Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token <br>
-현재 구현 기능 : 유저 관련 기능, 유튜브 관련기능, 포트폴리오 관련 기능, 공공데이터 관련 기능 
+현재 구현 기능 : 유저 관련 기능, 유튜브 관련기능, 포트폴리오 관련 기능, 공공데이터 관련 기능, 유저 커뮤니티 
 
 <br>
-현재 구현 중인 기능 : 유저 커뮤니티 
+현재 구현 중 : AWS 배포 작업 및 고도화 
 <br><br>
 
 
@@ -35,6 +35,12 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 <br><br>
 4. admin 페이지에서 회원정보 관리 및 탈퇴기능, 페이지네이션, 검색 기능 구현
+
+
+![list](https://user-images.githubusercontent.com/76759835/194712707-7364fc65-69ab-4467-99d8-4ec044631305.gif)
+
+
+
 <br><br>
 
 -----------------------------------------------------------------------------
@@ -125,3 +131,25 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 <br><br>
 - 유저 커뮤니티 관련 기능
+
+<br><br>
+1. 게시판 리스트 읽기 및 댓글 달기
+   - 로그인 안했을 경우 : 게시판 읽기 가능, 글 작성 불가능
+   - 로그인 했을 경우 : 게시판 읽기 가능, 글 작성 가능, 댓글 작성 가능
+    
+ ![read-comment](https://user-images.githubusercontent.com/76759835/194712995-96b3e257-2743-4e82-b293-4cd505f6b88c.gif)
+
+  <br><br>
+2. 댓글 추가 및 삭제 : 기본적으로 자기 댓글만 추가 및 삭제 가능 (예외: 마스터 권한은 삭제가능)
+
+
+  <br><br>
+3. 게시판 작성 : 
+
+
+  <br><br>
+4. 게시판 삭제 :
+
+
+  <br><br>
+ 
