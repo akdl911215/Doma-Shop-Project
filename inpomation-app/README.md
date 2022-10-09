@@ -142,6 +142,8 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
   <br><br>
 2. 댓글 추가 및 삭제 : 기본적으로 자기 댓글만 추가 및 삭제 가능 (예외: 마스터 권한은 삭제가능)
 
+![comment-register-delete](https://user-images.githubusercontent.com/76759835/194763512-ed01ed2f-dde5-4554-a555-7d88d6081e81.gif)
+
 
   <br><br>
 3. 게시판 작성 : 
