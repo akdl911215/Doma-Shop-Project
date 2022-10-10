@@ -1,6 +1,9 @@
 import { client } from "./Client";
 import { backUrl } from "webapp/config/Config";
 
+export const UserEmailAuthDataAPI = (email) =>
+  client.post(backUrl + "/users/emailAuth", email);
+
 export const UserListSearchDataAPI = (search) =>
   client.post(backUrl + "/users/search", search);
 

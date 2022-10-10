@@ -2,10 +2,11 @@ import React, { useCallback, useState } from "react";
 import { Button, Form, Input, Container } from "semantic-ui-react";
 import GoHomeButton from "../../common/component/GoHomeButton";
 import styles from "../style/UserSignup.module.css";
-import { UserSignupDataAPI } from "../../api/userApi";
+import { UserEmailAuthDataAPI, UserSignupDataAPI } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const [emailAuthBool, setEmailAuthBool] = useState(false);
   const [signup, setSignup] = useState({
     username: "",
     password: "",
@@ -47,6 +48,20 @@ const Signup = () => {
       UserSignupDataAPI(signup);
       navigate("/users_signin");
     }
+  };
+
+  const emailAuth = () => {
+    // emailAuthBool true 면 이메일 인증 완료
+    UserEmailAuthDataAPI({
+      email: signup.email,
+    })
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          console.log("res : ", res);
+          setEmailAuthBool(res);
+        }
+      })
+      .catch((err) => console.error("email auth error : ", err));
   };
 
   return (
@@ -92,6 +107,7 @@ const Signup = () => {
             className={styles.signupInput}
             onChange={handleChange}
           ></input>
+          <button onClick={emailAuth}>이메일 인증</button>
           <span>핸드폰 번호</span>
           <input
             name="phoneNumber"
@@ -101,7 +117,11 @@ const Signup = () => {
           ></input>
           <div>
             <div className={styles.buttonStyle}>
-              <Form.Field secondary control={Button} onClick={handleSubmit}>
+              <Form.Field
+                secondary
+                control={Button}
+                onClick={emailAuthBool === false ? null : handleSubmit}
+              >
                 회원가입
               </Form.Field>
             </div>
