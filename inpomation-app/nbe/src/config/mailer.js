@@ -3,14 +3,6 @@ require("dotenv").config();
 
 exports.transport = async (req, res, next) => {
   return new Promise((resolve, reject) => {
-    console.log(
-      "process.env.GMAIL_MASTER_EMAIL :",
-      process.env.GMAIL_MASTER_EMAIL
-    );
-    console.log(
-      "process.env.GMAIL_MASTER_PASSWORD :",
-      process.env.GMAIL_MASTER_PASSWORD
-    );
     resolve(
       nodemailer.createTransport({
         service: "gmail",
@@ -27,7 +19,6 @@ exports.transport = async (req, res, next) => {
 };
 
 exports.sendEmail = async (req, res, next) => {
-  console.log("sendEmail : ", req);
   const { transPort, email } = req;
 
   const generateRandom = (min, max) => {
@@ -50,7 +41,11 @@ exports.sendEmail = async (req, res, next) => {
         }
         if (info) {
           console.log("sendMain seccess : ", info);
-          resolve(info);
+          resolve({
+            code: 200,
+            ...info,
+            number,
+          });
         }
       });
     } catch (err) {
@@ -58,5 +53,3 @@ exports.sendEmail = async (req, res, next) => {
     }
   });
 };
-
-//https://velog.io/@turret1234/%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%9D%B8%EC%A6%9D-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0

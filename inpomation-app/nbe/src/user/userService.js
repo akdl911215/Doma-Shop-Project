@@ -8,8 +8,10 @@ require("dotenv").config();
 
 class userService {
   emailAuth = async (email) => {
+    const transfort = await nodemailer.transport();
+
     return await nodemailer.sendEmail({
-      transPort: await nodemailer.transport(),
+      transPort: transfort,
       email: email?.email,
     });
   };
