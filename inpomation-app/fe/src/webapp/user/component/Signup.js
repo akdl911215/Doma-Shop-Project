@@ -6,7 +6,6 @@ import { UserEmailAuthDataAPI, UserSignupDataAPI } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [emailAuthBool, setEmailAuthBool] = useState(false);
   const [signup, setSignup] = useState({
     username: "",
     password: "",
@@ -50,19 +49,59 @@ const Signup = () => {
     }
   };
 
+  const [emailAuthBool, setEmailAuthBool] = useState({
+    bool: false,
+    number: 0,
+    emailCheck: 0,
+  });
   const emailAuth = () => {
     // emailAuthBool true 면 이메일 인증 완료
     UserEmailAuthDataAPI({
       email: signup.email,
     })
       .then((res) => {
+        console.log("res : ", res);
         if (res?.data?.code === 200) {
-          console.log("res : ", res);
-          setEmailAuthBool(res);
+          if (res?.data?.code === 200) {
+            setEmailAuthBool({
+              ...emailAuthBool,
+              number: res?.data?.number,
+            });
+          }
         }
       })
       .catch((err) => console.error("email auth error : ", err));
   };
+
+  const emailCheck = () => {
+    console.log(
+      `emailAuthBool.number  : ${emailAuthBool.number}, emailAuthBool.emailCheck : ${emailAuthBool.emailCheck}`
+    );
+    console.log(
+      "emailAuthBool.number === emailAuthBool.emailCheck : ",
+      emailAuthBool.number === emailAuthBool.emailCheck
+    );
+
+    if (emailAuthBool.number === emailAuthBool.emailCheck) {
+      setEmailAuthBool({
+        ...emailAuthBool,
+        bool: true,
+      });
+    }
+  };
+
+  const emailHandleChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+
+      console.log(`name : ${name}, value : ${value}`);
+      setEmailAuthBool({
+        ...emailAuthBool,
+        [name]: value,
+      });
+    },
+    [emailAuthBool]
+  );
 
   return (
     <>
@@ -107,7 +146,19 @@ const Signup = () => {
             className={styles.signupInput}
             onChange={handleChange}
           ></input>
-          <button onClick={emailAuth}>이메일 인증</button>
+          {!emailAuthBool.bool ? (
+            <button onClick={emailAuth}>이메일 인증</button>
+          ) : (
+            <button disabled={true}>인증 완료</button>
+          )}
+          <span>E-mail 확인</span>
+          <input
+            name="emailCheck"
+            placeholder="인증번호를 입력하세요"
+            className={styles.signupInput}
+            onChange={emailHandleChange}
+          ></input>
+          <button onClick={emailCheck}>인증번호 확인</button>
           <span>핸드폰 번호</span>
           <input
             name="phoneNumber"
