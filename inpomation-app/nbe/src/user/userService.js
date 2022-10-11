@@ -2,11 +2,16 @@ const userRepository = require("./userRepository");
 const userModel = require("./userModel");
 const jwt = require("../security/jwt");
 const nodemailer = require("../config/mailer");
+const { rejects } = require("assert");
+require("dotenv").config();
+// const nodemailer = require("nodemailer");
 
 class userService {
   emailAuth = async (email) => {
-    const transport = await nodemailer.transport();
-    return await nodemailer.emailAuth(email);
+    return await nodemailer.sendEmail({
+      transPort: await nodemailer.transport(),
+      email: email?.email,
+    });
   };
 
   search = async (search) => await userRepository.usersSearch(search);
