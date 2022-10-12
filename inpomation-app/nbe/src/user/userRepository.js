@@ -2,6 +2,34 @@ const db = require("../api/middlewares/pool");
 const crypto = require("crypto");
 require("dotenv").config();
 
+exports.usernameCheck = async (req, res, next) => {
+  const { username } = req;
+  const sql = `SELECT username FROM users WHERE username = '${username}'`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            resolve({
+              username: rows[0],
+              code: 200,
+            });
+          }
+
+          if (err) {
+            resolve(err);
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("username check catch error : ", err);
+      throw err;
+    }
+  });
+};
+
 exports.usersSearch = async (req, res, next) => {
   let whereSql = "CONCAT(username, email, NAME, phone_number, address)";
   if (req?.type === "u") whereSql = "username";
@@ -10,6 +38,7 @@ exports.usersSearch = async (req, res, next) => {
   if (req?.type === "p") whereSql = "phone_number";
   if (req?.type === "r") whereSql = "roles";
   const sql = `${process.env.SQL_USERS_SEARCH} ${whereSql} REGEXP '${req?.keyword}'`;
+
   return new Promise((resolve, reject) => {
     try {
       db.getConnectionPool((connection) => {

@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const userService = require("./userService");
 
+router.post("/usernameCheck", async (req, res, next) =>
+  res.json(await userService.usernameCheck(req?.body))
+);
+
 router.post("/emailAuth", async (req, res, next) =>
   res.json(await userService.emailAuth(req?.body))
 );

@@ -6,6 +6,10 @@ require("dotenv").config();
 // const nodemailer = require("nodemailer");
 
 class userService {
+  async usernameCheck(username) {
+    return await userRepository.usernameCheck(username);
+  }
+
   emailAuth = async (email) => {
     const transfort = await nodemailer.transport();
 
