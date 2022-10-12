@@ -1,6 +1,9 @@
 import { client } from "./Client";
 import { backUrl } from "webapp/config/Config";
 
+export const UsernameCheckDataAPI = (username) =>
+  client.post(backUrl + "/users/usernameCheck", username);
+
 export const UserEmailAuthDataAPI = (email) =>
   client.post(backUrl + "/users/emailAuth", email);
 

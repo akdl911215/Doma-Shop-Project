@@ -2,7 +2,11 @@ import React, { useCallback, useState } from "react";
 import { Button, Form, Input, Container } from "semantic-ui-react";
 import GoHomeButton from "../../common/component/GoHomeButton";
 import styles from "../style/UserSignup.module.css";
-import { UserEmailAuthDataAPI, UserSignupDataAPI } from "../../api/userApi";
+import {
+  UserEmailAuthDataAPI,
+  UsernameCheckDataAPI,
+  UserSignupDataAPI,
+} from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -21,6 +25,7 @@ const Signup = () => {
     number: 0,
     emailCheck: 0,
   });
+  const [usernameBool, setUsernameBool] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = useCallback(
@@ -114,6 +119,24 @@ const Signup = () => {
     }
   };
 
+  const usernameCheck = () => {
+    if (signup.username !== "") {
+      UsernameCheckDataAPI({ username: signup.username })
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            if (res?.data?.username) {
+              alert("이미 존재하는 아이디입니다. 새로운 아이디를 입력하세요.");
+            } else {
+              // usernameBool === true 면 인증 완료
+              alert("사용가능한 아이디입니다.");
+              setUsernameBool(true);
+            }
+          }
+        })
+        .catch((err) => console.error("username check error : ", err));
+    }
+  };
+
   return (
     <>
       <div className={styles.signupContiner}>
@@ -128,6 +151,9 @@ const Signup = () => {
             className={styles.signupInput}
             onChange={handleChange}
           ></input>
+          <button className={styles.checkBtn} onClick={usernameCheck}>
+            중복 확인
+          </button>
           <span>비밀번호</span>
           <input
             name="password"
@@ -139,7 +165,7 @@ const Signup = () => {
           <span>비밀번호 확인</span>
           <input
             name="confirmPassword"
-            type="confirmPassword"
+            type="password"
             placeholder="비밀번호를 입력하세요"
             className={styles.signupInput}
             onChange={handleChange}
@@ -166,9 +192,13 @@ const Signup = () => {
             onChange={handleChange}
           ></input>
           {!emailAuthBool.bool ? (
-            <button onClick={emailAuth}>이메일 인증</button>
+            <button className={styles.checkBtn} onClick={emailAuth}>
+              이메일 인증
+            </button>
           ) : (
-            <button disabled={emailAuthBool.bool}>인증 완료</button>
+            <button className={styles.checkBtn} disabled={emailAuthBool.bool}>
+              인증 완료
+            </button>
           )}
           <span>E-mail 확인</span>
           <input
@@ -178,7 +208,11 @@ const Signup = () => {
             onChange={emailHandleChange}
             disabled={emailAuthBool.bool}
           ></input>
-          <button onClick={emailCheck} disabled={emailAuthBool.bool}>
+          <button
+            className={styles.checkBtn}
+            onClick={emailCheck}
+            disabled={emailAuthBool.bool}
+          >
             인증번호 확인
           </button>
           <span>핸드폰 번호</span>
@@ -193,7 +227,11 @@ const Signup = () => {
               <Form.Field
                 secondary
                 control={Button}
-                onClick={emailAuthBool.bool === false ? goSignup : handleSubmit}
+                onClick={
+                  emailAuthBool.bool === false && usernameBool === false
+                    ? goSignup
+                    : handleSubmit
+                }
               >
                 회원가입
               </Form.Field>
