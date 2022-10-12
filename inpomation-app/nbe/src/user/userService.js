@@ -2,7 +2,6 @@ const userRepository = require("./userRepository");
 const userModel = require("./userModel");
 const jwt = require("../security/jwt");
 const nodemailer = require("../config/mailer");
-const { rejects } = require("assert");
 require("dotenv").config();
 // const nodemailer = require("nodemailer");
 
