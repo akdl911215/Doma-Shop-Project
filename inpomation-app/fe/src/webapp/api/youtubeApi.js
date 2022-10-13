@@ -1,6 +1,9 @@
 import { client } from "./Client";
 import { backUrl } from "webapp/config/Config";
 
+export const YoutubeLikeClickDataAPI = (data) =>
+  client.post(backUrl + "/youtube/like", data);
+
 export const YoutubeSearchListDataAPI = (search) =>
   client.post(backUrl + "/youtube/searchList", search);
 
