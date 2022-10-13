@@ -2,6 +2,42 @@ const request = require("request");
 require("dotenv").config();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const db = require("../api/middlewares/pool");
+const date = require("../common/date");
+const currentDate = date.today();
+
+exports.like = async (req, res, next) => {
+  const { userId, youtubeVideoId } = req;
+  const sql = `INSERT INTO youtube_like (user_id, youtube_video_id, like_date) VALUES ('${userId}', '${youtubeVideoId}', '${currentDate}')`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            console.log("youtube like add success : ", rows);
+            resolve({
+              message: "좋아요 추가 성공하였습니다.",
+              code: 200,
+              success: rows,
+            });
+          }
+
+          if (err) {
+            console.error("youtube like add error : ", err);
+            resolve({
+              message: "좋아요 추가 실패하였습니다.",
+              failed: err,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("board modify db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
 
 exports.pagenationList = async (req, res, next) => {
   const sql = `SELECT id, title, video_id, username, channel_title FROM youtube ORDER BY id DESC LIMIT ${req?.start}, ${req?.pageSize}`;

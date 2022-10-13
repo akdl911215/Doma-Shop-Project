@@ -2,6 +2,15 @@ const repository = require("./youtubeRepository");
 const userRepository = require("../user/userRepository");
 
 class youtubeService {
+  async like(data) {
+    const inquiryUser = await userRepository.userInquiry(data?.username);
+
+    return await repository.like({
+      ...data,
+      userId: inquiryUser?.id,
+    });
+  }
+
   async pagenationList(page) {
     let start = 0;
     if (page.pageSize === undefined) page.pageSize = 5;

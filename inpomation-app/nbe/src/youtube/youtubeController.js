@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const service = require("./youtubeService");
 
+router.post("/like", async (req, res, next) =>
+  res.json(await service.like(req?.body))
+);
+
 router.post("/pagenationList", async (req, res, next) => {
   if (!req?.body) {
     alert("페이지 정보를 확인하세요.");
