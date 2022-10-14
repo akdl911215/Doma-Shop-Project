@@ -207,13 +207,14 @@ exports.uploadList = (req, res) => {
       db.getConnectionPool((connection) => {
         connection.query(sql, (err, doc) => {
           if (err) {
-            console.error("connection error : ", err);
+            console.error("upload list error : ", err);
             resolve({
               message: "업로드 리스트 출력 에러",
               error: err,
             });
           }
           if (doc) {
+            console.log("upload list success : ", doc);
             resolve({
               code: 200,
               message: "업로드 리스트 출력 성공",
@@ -225,6 +226,40 @@ exports.uploadList = (req, res) => {
       });
     } catch (err) {
       console.error("uploadList db connection catch error : ", err);
+      throw err;
+    }
+  });
+};
+
+exports.likeScore = async (req, res, next) => {
+  console.log("like score req : ", req);
+  const { videoId } = req;
+  const sql = `SELECT * FROM youtube_like WHERE youtube_video_id = '${videoId}'`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, doc) => {
+          if (err) {
+            console.error("like score error : ", err);
+            resolve({
+              message: "좋아요 조회 에러",
+              error: err,
+            });
+          }
+          if (doc) {
+            console.log("like score success : ", doc);
+            resolve({
+              code: 200,
+              message: "좋아요 조회 성공",
+              success: doc,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("like score db connection catch error : ", err);
       throw err;
     }
   });
