@@ -54,39 +54,51 @@ class youtubeService {
     const result = await repository.list(page);
     console.log("result : ", result);
 
-    let likeResult = [];
     for (let i = 0; i < result?.list?.length; ++i) {
       const likeInquiry = await repository.likeScore({
         videoId: result?.list[i]?.video_id,
       });
       console.log("likeInquiry : ", likeInquiry);
 
-      const inquiryDay = new Date(likeInquiry?.success[0].like_date);
-      const currDay = new Date(currentDate);
+      const likeDateBool = likeInquiry?.success?.length > 0 ? true : false;
+      let score = 0; // default +1 score
 
-      let diff = currDay - inquiryDay;
-      const diffDays = Math.floor(
-        (currDay.getTime() - inquiryDay.getTime()) / (1000 * 60 * 60 * 24)
-      );
-      diff -= diffDays * (1000 * 60 * 60 * 24); // 하루
-      const diffHours = Math.floor(diff / (1000 * 60 * 60)); // 한시간
-      diff -= diffHours * (1000 * 60 * 60);
-      const diffMin = Math.floor(diff / (1000 * 60)); // 1분
-      diff -= diffMin * (1000 * 60);
-      const diffSec = Math.floor(diff / 1000); // 1초
+      for (let i = 0; i < likeInquiry?.success?.length; ++i) {
+        if (likeDateBool) {
+          const inquiryDay = new Date(likeInquiry?.success[0]?.like_date);
+          const currDay = new Date(currentDate);
 
-      console.log(`ddd :: ${diffDays}일 `);
+          let diff = currDay - inquiryDay;
+          const diffDays = Math.floor(
+            (currDay.getTime() - inquiryDay.getTime()) / (1000 * 60 * 60 * 24)
+          );
+          diff -= diffDays * (1000 * 60 * 60 * 24); // 하루
+          const diffHours = Math.floor(diff / (1000 * 60 * 60)); // 한시간
+          diff -= diffHours * (1000 * 60 * 60);
+          const diffMin = Math.floor(diff / (1000 * 60)); // 1분
+          diff -= diffMin * (1000 * 60);
+          const diffSec = Math.floor(diff / 1000); // 1초
 
-      console.log("typeof diffDays : ", typeof diffDays);
-      if (diffDays <= 3) {
-        // 3점
-      } else if (diffDays <= 7) {
-        // 2점
-      } else {
-        // 1점
+          console.log(`ddd :: ${diffDays}일 `);
+
+          if (diffDays <= 3) {
+            // 3점
+            score += 3;
+          } else if (diffDays <= 7) {
+            // 2점
+            score += 2;
+          } else {
+            // 1점
+            score += 1;
+          }
+        }
       }
 
-      likeResult.push();
+      // 좋아요 점수 업데이트
+      const likeDbResult = await repository.updateLikeScore({
+        score: score,
+      });
+      console.log("likeDbResult : ", likeDbResult);
     }
 
     return result;

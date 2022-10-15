@@ -5,6 +5,12 @@ const db = require("../api/middlewares/pool");
 const date = require("../common/date");
 const currentDate = date.today();
 
+exports.updateLikeScore = async (req, res, next) => {
+  const { score } = req;
+  console.log("score : ", score);
+  // youtube score update state add
+};
+
 exports.like = async (req, res, next) => {
   const { userId, youtubeVideoId } = req;
   const sql = `INSERT INTO youtube_like (user_id, youtube_video_id, like_date) VALUES ('${userId}', '${youtubeVideoId}', '${currentDate}')`;
