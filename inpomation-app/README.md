@@ -58,6 +58,7 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 하단의 영상 3개는 좋아요 버튼 점수 TOP3 업로드 영상 구현 : 현재날짜 기준 3일 이하 3점, 7일 이하 2점, 그외 1점 가중치
 <img width="691" alt="1" src="https://user-images.githubusercontent.com/76759835/196038535-8c333403-3bbf-4d8e-86ea-dc7cbc7917d0.PNG">
 
+<br><br>
 
 1. 메인페이지 최근업로드 영상 3개 리스트 : 올라온 영상 중 최신 3개의 영상을 볼 수 있게 구현,<br>
                                         올라온 영상 중 유저들이 좋아요 눌른 점수 TOP3 볼 수 있게 구현 <br>
