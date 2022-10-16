@@ -18,12 +18,15 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 <br>
 1. 유저 회원가입
 
-![signup](https://user-images.githubusercontent.com/76759835/194575021-5388f478-3a51-437a-a220-b94d5529c129.gif)
+![signup-ver2-2](https://user-images.githubusercontent.com/76759835/196038316-f0e660e0-478f-46af-9c2d-2acfc70f15c5.gif)
+
 
 <br><br>
 2. 유저 로그인 및 jwt토큰 사용으로 로그인 및 auth 체크
 
 ![signin](https://user-images.githubusercontent.com/76759835/194575061-e465cf1b-da2a-4a81-af8b-fa7b8a386530.gif)
+
+
 
 
 <br><br>
