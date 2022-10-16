@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const service = require("./youtubeService");
 
+router.post("/likeScoreUpdate", async (req, res, next) =>
+  res.json(await service.likeScoreUpdate(req?.body))
+);
+
 router.post("/like", async (req, res, next) =>
   res.json(await service.like(req?.body))
 );

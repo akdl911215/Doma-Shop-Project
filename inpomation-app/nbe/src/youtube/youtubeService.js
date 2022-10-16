@@ -50,59 +50,50 @@ class youtubeService {
     return await repository.uploadList(search);
   }
 
-  list = async (page) => {
+  async likeScoreUpdate(page) {
     const result = await repository.list(page);
-    console.log("result : ", result);
 
     for (let i = 0; i < result?.list?.length; ++i) {
       const likeInquiry = await repository.likeScore({
         videoId: result?.list[i]?.video_id,
       });
-      console.log("likeInquiry : ", likeInquiry);
 
-      const likeDateBool = likeInquiry?.success?.length > 0 ? true : false;
       let score = 0; // default +1 score
+      for (let j = 0; j < likeInquiry?.success?.length; ++j) {
+        const inquiryDay = new Date(likeInquiry?.success[0]?.like_date);
+        const currDay = new Date(currentDate);
 
-      for (let i = 0; i < likeInquiry?.success?.length; ++i) {
-        if (likeDateBool) {
-          const inquiryDay = new Date(likeInquiry?.success[0]?.like_date);
-          const currDay = new Date(currentDate);
+        let diff = currDay - inquiryDay;
+        const diffDays = Math.floor(
+          (currDay.getTime() - inquiryDay.getTime()) / (1000 * 60 * 60 * 24)
+        );
+        diff -= diffDays * (1000 * 60 * 60 * 24); // 하루
+        const diffHours = Math.floor(diff / (1000 * 60 * 60)); // 한시간
+        diff -= diffHours * (1000 * 60 * 60);
+        const diffMin = Math.floor(diff / (1000 * 60)); // 1분
+        diff -= diffMin * (1000 * 60);
+        const diffSec = Math.floor(diff / 1000); // 1초
 
-          let diff = currDay - inquiryDay;
-          const diffDays = Math.floor(
-            (currDay.getTime() - inquiryDay.getTime()) / (1000 * 60 * 60 * 24)
-          );
-          diff -= diffDays * (1000 * 60 * 60 * 24); // 하루
-          const diffHours = Math.floor(diff / (1000 * 60 * 60)); // 한시간
-          diff -= diffHours * (1000 * 60 * 60);
-          const diffMin = Math.floor(diff / (1000 * 60)); // 1분
-          diff -= diffMin * (1000 * 60);
-          const diffSec = Math.floor(diff / 1000); // 1초
-
-          console.log(`ddd :: ${diffDays}일 `);
-
-          if (diffDays <= 3) {
-            // 3점
-            score += 3;
-          } else if (diffDays <= 7) {
-            // 2점
-            score += 2;
-          } else {
-            // 1점
-            score += 1;
-          }
+        if (diffDays <= 3) {
+          // 3점
+          score += 3;
+        } else if (diffDays <= 7) {
+          // 2점
+          score += 2;
+        } else {
+          // 1점
+          score += 1;
         }
       }
 
-      // 좋아요 점수 업데이트
-      const likeDbResult = await repository.updateLikeScore({
+      return await repository.updateLikeScore({
+        videoId: result?.list[i]?.video_id,
         score: score,
       });
-      console.log("likeDbResult : ", likeDbResult);
     }
+  }
 
-    return result;
-  };
+  list = async (page) => await repository.list(page);
 
   async upload(video) {
     const user = await userRepository.userInquiry(video?.username);

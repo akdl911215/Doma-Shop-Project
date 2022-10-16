@@ -6,9 +6,37 @@ const date = require("../common/date");
 const currentDate = date.today();
 
 exports.updateLikeScore = async (req, res, next) => {
-  const { score } = req;
-  console.log("score : ", score);
-  // youtube score update state add
+  const { score, videoId } = req;
+
+  const sql = `UPDATE youtube SET score = ${score} WHERE video_id = '${videoId}'`;
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            console.log("youtube like score  success : ", rows);
+            resolve({
+              message: "youtube like score success.",
+              code: 200,
+              success: rows,
+            });
+          }
+
+          if (err) {
+            console.error("youtube like score error : ", err);
+            resolve({
+              message: "youtube like score fail.",
+              failed: err,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("youtube like score db connection catch error : ", err);
+      throw err;
+    }
+  });
 };
 
 exports.like = async (req, res, next) => {
@@ -238,7 +266,6 @@ exports.uploadList = (req, res) => {
 };
 
 exports.likeScore = async (req, res, next) => {
-  console.log("like score req : ", req);
   const { videoId } = req;
   const sql = `SELECT * FROM youtube_like WHERE youtube_video_id = '${videoId}'`;
 
@@ -254,7 +281,7 @@ exports.likeScore = async (req, res, next) => {
             });
           }
           if (doc) {
-            console.log("like score success : ", doc);
+            // console.log("like score success : ", doc);
             resolve({
               code: 200,
               message: "좋아요 조회 성공",
@@ -273,9 +300,14 @@ exports.likeScore = async (req, res, next) => {
 
 exports.list = (req, res) => {
   let sql = "";
-  req?.viewPage === "main"
-    ? (sql = `SELECT * FROM youtube ORDER BY id DESC LIMIT 0, 3`)
-    : (sql = `SELECT * FROM youtube ORDER BY id desc`);
+
+  if (req?.viewPage === "main") {
+    sql = `SELECT * FROM youtube ORDER BY id DESC LIMIT 0, 3`;
+  } else if (req?.viewPage === "likeTopThreeMain") {
+    sql = `SELECT * FROM youtube ORDER BY score DESC LIMIT 0, 3`;
+  } else {
+    sql = `SELECT * FROM youtube ORDER BY id desc`;
+  }
 
   return new Promise((resolve, reject) => {
     try {
