@@ -3,20 +3,23 @@ import HomeCard from "./home/HomeCard";
 import { Button } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { YoutubeListDataAPI } from "webapp/api/youtubeApi";
-const Home = () => {
+import {
+  YoutubeLikeScoreUpdateDataAPI,
+  YoutubeListDataAPI,
+} from "webapp/api/youtubeApi";
+const LikeTopThreeHome = () => {
   const navigate = useNavigate();
 
   const [video, setVideo] = useState([]);
   useEffect(() => {
-    YoutubeListDataAPI("main")
+    YoutubeListDataAPI("likeTopThreeMain")
       .then((res) => setVideo(res?.data?.list))
       .catch((err) => console.error("main list api error : ", err));
   }, []);
 
   return (
     <div className={styles.rootDiv}>
-      <Button disabled={true}>최신 업로드 TOP 3</Button>
+      <Button disabled={true}>인기 TOP 3</Button>
       <Button
         className={styles.allListBtn}
         onClick={() => navigate("/youtube_explore")}
@@ -29,4 +32,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default LikeTopThreeHome;
