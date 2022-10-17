@@ -6,14 +6,14 @@ import { YoutubeLikeClickDataAPI } from "webapp/api/youtubeApi";
 import { UserAuthDataAPI } from "webapp/api/userApi";
 import { SessionRemove } from "webapp/common/component/SessionRemove";
 import { useNavigate } from "react-router-dom";
+import likeOne from "../../../images/like1-1.png";
+import likeTwo from "../../../images/like1-2.png";
 
 const ExploreCard = ({ data }) => {
   const videoId = data?.video_id;
   const navigate = useNavigate();
 
   const likeClick = () => {
-    alert("좋아용");
-
     UserAuthDataAPI().then((res) => {
       if (res?.data?.code === 200) {
         YoutubeLikeClickDataAPI({
@@ -44,7 +44,24 @@ const ExploreCard = ({ data }) => {
   return (
     <>
       <div>
-        <button onClick={likeClick}>좋아요</button>
+        <button
+          disabled={data?.likeBool}
+          style={{ height: "100px", width: "100px" }}
+          onClick={likeClick}
+        >
+          {/* {data?.likeBool ? <image src={likeTwo} /> : <image src={likeOne} />} */}
+          {data?.likeBool ? (
+            <img
+              src="../../../images/like1-1.png"
+              style={{ height: "100px", width: "100px" }}
+            />
+          ) : (
+            <img
+              src="../../../images/like1-2.png"
+              style={{ height: "100px", width: "100px" }}
+            />
+          )}
+        </button>
         {/* <button>싫어요</button> */}
       </div>
       <a href={`https://www.youtube.com/watch?v=${videoId}`}>
