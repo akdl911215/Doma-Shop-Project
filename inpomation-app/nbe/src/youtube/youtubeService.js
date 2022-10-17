@@ -4,6 +4,12 @@ const date = require("../common/date");
 const currentDate = date.today();
 
 class youtubeService {
+  async userLikeInquirty(username) {
+    const inquiryUser = await userRepository.userInquiry(username?.username);
+
+    return await repository.userLikeInquiry({ userId: inquiryUser?.id });
+  }
+
   async like(data) {
     const inquiryUser = await userRepository.userInquiry(data?.username);
 

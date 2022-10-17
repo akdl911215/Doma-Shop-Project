@@ -5,6 +5,43 @@ const db = require("../api/middlewares/pool");
 const date = require("../common/date");
 const currentDate = date.today();
 
+exports.userLikeInquiry = async (req, res, next) => {
+  const { userId } = req;
+  const sql = `SELECT * FROM youtube_like WHERE user_id = ${userId}`;
+
+  return new Promise((resolve, reject) => {
+    try {
+      db.getConnectionPool((connection) => {
+        connection.query(sql, (err, rows) => {
+          if (rows) {
+            console.log("user youtube like inquiry success : ", rows);
+            resolve({
+              message: "회원기준 좋아요 조회 성공하였습니다.",
+              code: 200,
+              success: rows,
+            });
+          }
+
+          if (err) {
+            console.error("user youtube like inquiry error : ", err);
+            resolve({
+              message: "회원기준 좋아요 조회 실패하였습니다.",
+              failed: err,
+            });
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error(
+        "user youtube like inquiry db connection catch error : ",
+        err
+      );
+      throw err;
+    }
+  });
+};
+
 exports.updateLikeScore = async (req, res, next) => {
   const { score, videoId } = req;
 
