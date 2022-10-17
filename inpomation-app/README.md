@@ -18,12 +18,15 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 <br>
 1. 유저 회원가입
 
-![signup](https://user-images.githubusercontent.com/76759835/194575021-5388f478-3a51-437a-a220-b94d5529c129.gif)
+![signup-ver2-2](https://user-images.githubusercontent.com/76759835/196038316-f0e660e0-478f-46af-9c2d-2acfc70f15c5.gif)
+
 
 <br><br>
 2. 유저 로그인 및 jwt토큰 사용으로 로그인 및 auth 체크
 
 ![signin](https://user-images.githubusercontent.com/76759835/194575061-e465cf1b-da2a-4a81-af8b-fa7b8a386530.gif)
+
+
 
 
 <br><br>
@@ -49,7 +52,16 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 <br><br>
 - 유튜브 관련 기능
-1. 메인페이지 최근업로드 영상 3개 리스트 : 올라온 영상 중 최신 3개의 영상을 볼 수 있게 구현, <br>
+
+메인페이지 <br>
+상단의 영상 3개는 최신 업로드 영상, <br>
+하단의 영상 3개는 좋아요 버튼 점수 TOP3 업로드 영상 구현 : 현재날짜 기준 3일 이하 3점, 7일 이하 2점, 그외 1점 가중치
+<img width="691" alt="1" src="https://user-images.githubusercontent.com/76759835/196038535-8c333403-3bbf-4d8e-86ea-dc7cbc7917d0.PNG">
+
+<br><br>
+
+1. 메인페이지 최근업로드 영상 3개 리스트 : 올라온 영상 중 최신 3개의 영상을 볼 수 있게 구현,<br>
+                                        올라온 영상 중 유저들이 좋아요 눌른 점수 TOP3 볼 수 있게 구현 <br>
    전체리스트 : 전체 영상 보러가기 > 탐색 페이지가 기본적으로 보여지게 노출 구현 (탐색 페이지가 모든 유저들이 올려놓은 전체 리스트), <br>
    유튜브 API를 사용한 등록 및 재등록 : 유튜브에서 지원하는 API를 사용해서 등록,<br>
                                      전체리스트, 메인리스트, 내영상에 노출 구현 및 등록된 영상은 업로드 불가하게 구현 및 내영상 삭제 기능 구현
