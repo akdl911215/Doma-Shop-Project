@@ -126,7 +126,7 @@ exports.investingBoardCount = async (req, res, next) => {
 exports.investingPageList = async (req, res, next) => {
   const { start, pageSize } = req;
   // const sql = `SELECT id, user_id, writer, title, content, regdate, veiw_count FROM investing_board ORDER BY id DESC LIMIT ${start}, ${pageSize}`;
-  const sql = `SELECT ib.id, ib.user_id, ib.writer, ib.title, ib.content, ib.regdate, ib.veiw_count, u.nickname FROM investing_board ib LEFT JOIN users u ON ib.user_id = u.id ORDER BY u.id DESC LIMIT ${start}, ${pageSize}`;
+  const sql = `SELECT ib.id, ib.user_id, ib.writer, ib.title, ib.content, ib.regdate, ib.veiw_count, u.nickname FROM investing_board ib LEFT JOIN users u ON ib.user_id = u.id ORDER BY ib.id DESC LIMIT ${start}, ${pageSize}`;
 
   return new Promise((resolve, reject) => {
     try {
