@@ -162,7 +162,7 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
                 뒷부분 - master는 본인 게시물 삭제 O / 타인 게시물 삭제 O
                 
             
-     ![board-delete-ver2](https://user-images.githubusercontent.com/76759835/196374540-371bde48-748d-4e5e-bf11-43d5b3a3d2ad.gif)
+![board-delete-ver2](https://user-images.githubusercontent.com/76759835/196374540-371bde48-748d-4e5e-bf11-43d5b3a3d2ad.gif)
        
 
 
