@@ -167,7 +167,9 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 
   <br><br>
-4. 게시판 작성 :
+4. 게시판 작성 : 로그인 후 게시글 작성 및 댓글 작성
+
+![board-register-ver2](https://user-images.githubusercontent.com/76759835/196376743-eb0f61b0-4bc3-4fd4-a967-25f525bb717c.gif)
 
 
   <br><br>
