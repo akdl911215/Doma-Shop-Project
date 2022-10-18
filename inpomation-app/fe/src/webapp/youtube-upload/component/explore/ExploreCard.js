@@ -21,8 +21,10 @@ const ExploreCard = ({ data }) => {
           youtubeVideoId: videoId,
         })
           .then((res) => {
+            console.log("res : ", res);
             if (res?.data?.code === 200) {
               alert("좋아요 추가");
+              window.location.reload();
             } else {
               alert("좋아요 실패");
             }
@@ -43,52 +45,45 @@ const ExploreCard = ({ data }) => {
 
   return (
     <>
-      <div>
-        <button
-          disabled={data?.likeBool}
-          style={{ height: "100px", width: "100px" }}
-          onClick={likeClick}
-        >
-          {/* {data?.likeBool ? <image src={likeTwo} /> : <image src={likeOne} />} */}
-          {data?.likeBool ? (
+      <div className={styles.cardContainerBox}>
+        <a href={`https://www.youtube.com/watch?v=${videoId}`}>
+          <div className={styles.card}>
             <img
-              src="../../../images/like1-1.png"
-              style={{ height: "100px", width: "100px" }}
+              className={styles.thumbnail}
+              src={data.thumbnail}
+              alt={`${data.title}의 썸네일`}
             />
-          ) : (
-            <img
-              src="../../../images/like1-2.png"
-              style={{ height: "100px", width: "100px" }}
-            />
-          )}
-        </button>
-        {/* <button>싫어요</button> */}
-      </div>
-      <a href={`https://www.youtube.com/watch?v=${videoId}`}>
-        <div className={styles.card}>
-          <img
-            className={styles.thumbnail}
-            src={data.thumbnail}
-            alt={`${data.title}의 썸네일`}
-          />
-          <div className={styles.info}>
-            <div className={styles.title}>{data.title}</div>
-            <div className={styles.meta}>
-              <a
-                href={`https://www.youtube.com/channel/${data.channelId}`}
-                className={styles.uploader}
-              >
-                {data.channelTitle}
-              </a>
-              {/* <div className={styles.view}>
+            <div className={styles.info}>
+              <div className={styles.title}>{data.title}</div>
+              <div className={styles.meta}>
+                <a
+                  href={`https://www.youtube.com/channel/${data.channelId}`}
+                  className={styles.uploader}
+                >
+                  {data.channelTitle}
+                </a>
+                {/* <div className={styles.view}>
               {ProcessViewCount(data.viewCount)}
             </div> */}
-              {/* <div className={styles.time}>{moment(data.date).fromNow()}</div> */}
+                {/* <div className={styles.time}>{moment(data.date).fromNow()}</div> */}
+              </div>
+              <div className={styles.desc}>{data.description}</div>
             </div>
-            <div className={styles.desc}>{data.description}</div>
           </div>
-        </div>
-      </a>
+        </a>
+
+        <button
+          disabled={data?.likeBool}
+          className={styles.likeBtn}
+          onClick={likeClick}
+        >
+          {data?.likeBool ? (
+            <img src={likeTwo} className={styles.likeImage} />
+          ) : (
+            <img src={likeOne} className={styles.likeImage} />
+          )}
+        </button>
+      </div>
     </>
   );
 };
