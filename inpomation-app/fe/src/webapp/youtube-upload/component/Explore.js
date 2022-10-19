@@ -33,13 +33,7 @@ const Explore = () => {
             let list = [];
             if (res?.data?.code === 200) {
               list = youtubeList?.map((el, key) => {
-                console.log("el : ", el, `, key : ${key}`);
-
-                console.log("length : ", res?.data?.success.length);
                 for (let i = 0; i < res?.data?.success.length; ++i) {
-                  console.log("1 : ", res?.data?.success[i]?.youtube_video_id);
-                  console.log("2 : ", el.video_id);
-
                   if (res?.data?.success[i]?.youtube_video_id === el.video_id) {
                     el.likeBool = true;
                   }
@@ -49,8 +43,6 @@ const Explore = () => {
                     el.likeBool = false;
                   }
                 }
-
-                console.log("3 : ", el.likeBool);
 
                 return el;
               });
@@ -68,9 +60,6 @@ const Explore = () => {
   const { searchList } = useSelector(({ YoutubeReducer }) => ({
     searchList: YoutubeReducer?.YoutubeSearchListInitial,
   }));
-  console.log("expore searchList : ", searchList);
-
-  //searchList - video_id 와 user like inquiry youtube_video_id 같으면 true 아님 false
 
   return (
     <>
