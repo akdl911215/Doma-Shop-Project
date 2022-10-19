@@ -77,8 +77,11 @@ exports.updateLikeScore = async (req, res, next) => {
 };
 
 exports.like = async (req, res, next) => {
-  const { userId, youtubeVideoId } = req;
-  const sql = `INSERT INTO youtube_like (user_id, youtube_video_id, like_date) VALUES ('${userId}', '${youtubeVideoId}', '${currentDate}')`;
+  const { userId, youtubeVideoId, like } = req;
+  let sql = `INSERT INTO youtube_like (user_id, youtube_video_id, like_date) VALUES ('${userId}', '${youtubeVideoId}', '${currentDate}')`;
+  if (like === "unlike") {
+    sql = `DELETE FROM youtube_like WHERE youtube_video_id = '${youtubeVideoId}' AND user_id = '${userId}';`;
+  }
 
   return new Promise((resolve, reject) => {
     try {
