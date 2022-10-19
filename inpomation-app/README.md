@@ -95,6 +95,13 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 
 <br><br>
+5. 유튜브 like, unlike 기능 : 유튜브 영상을 다른 투자자들에게도 추천해줄 만하다면 좋아요를 눌러줄 수 있는 기능.
+                             다시 한번 누르면 좋아요 취소 기능. 
+                             
+
+![like-unlike](https://user-images.githubusercontent.com/76759835/196680946-1fa81302-d413-4c6f-9901-9ff93022ade5.gif)
+                      
+<br><br>
 -----------------------------------------------------------------------------------------
 
 <br><br>
