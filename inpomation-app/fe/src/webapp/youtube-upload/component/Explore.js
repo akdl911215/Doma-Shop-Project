@@ -33,11 +33,24 @@ const Explore = () => {
             let list = [];
             if (res?.data?.code === 200) {
               list = youtubeList?.map((el, key) => {
-                if (res?.data?.success[key]?.youtube_video_id === el.video_id) {
-                  el.likeBool = true;
-                } else {
-                  el.likeBool = false;
+                console.log("el : ", el, `, key : ${key}`);
+
+                console.log("length : ", res?.data?.success.length);
+                for (let i = 0; i < res?.data?.success.length; ++i) {
+                  console.log("1 : ", res?.data?.success[i]?.youtube_video_id);
+                  console.log("2 : ", el.video_id);
+
+                  if (res?.data?.success[i]?.youtube_video_id === el.video_id) {
+                    el.likeBool = true;
+                  }
                 }
+                for (let i = 0; i < res?.data?.success.length; ++i) {
+                  if (el.likeBool === undefined) {
+                    el.likeBool = false;
+                  }
+                }
+
+                console.log("3 : ", el.likeBool);
 
                 return el;
               });

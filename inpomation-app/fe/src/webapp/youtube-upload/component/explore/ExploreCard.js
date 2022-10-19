@@ -12,21 +12,34 @@ import likeTwo from "../../../images/like1-2.png";
 const ExploreCard = ({ data }) => {
   const videoId = data?.video_id;
   const navigate = useNavigate();
+  // likeBool === false(defalt) : 안누른 상태
+  const likeClickBool = data?.likeBool;
 
-  const likeClick = () => {
+  console.log("explore card likeClickBool :: ", likeClickBool);
+
+  const unlikeClick = () => {
+    //
+  };
+
+  const likeClick = (bool) => {
+    console.log("likeClick bool : ", bool);
+    let likeCheck = "like";
+    if (bool) {
+      likeCheck = "unlike";
+    }
     UserAuthDataAPI().then((res) => {
       if (res?.data?.code === 200) {
         YoutubeLikeClickDataAPI({
           username: sessionStorage.getItem("username"),
           youtubeVideoId: videoId,
+          like: likeCheck,
         })
           .then((res) => {
             console.log("res : ", res);
             if (res?.data?.code === 200) {
-              alert("좋아요 추가");
               window.location.reload();
             } else {
-              alert("좋아요 실패");
+              alert("실패하였습니다.");
             }
           })
           .catch((err) => console.error("youtube like click error : ", err));
@@ -73,11 +86,11 @@ const ExploreCard = ({ data }) => {
         </a>
 
         <button
-          disabled={data?.likeBool}
           className={styles.likeBtn}
-          onClick={likeClick}
+          // onClick={likeClickBool ? unlikeClick : likeClick}
+          onClick={() => likeClick(likeClickBool)}
         >
-          {data?.likeBool ? (
+          {likeClickBool ? (
             <img src={likeTwo} className={styles.likeImage} />
           ) : (
             <img src={likeOne} className={styles.likeImage} />
