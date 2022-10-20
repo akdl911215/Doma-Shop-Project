@@ -36,10 +36,7 @@ const Explore = () => {
                 for (let i = 0; i < res?.data?.success.length; ++i) {
                   if (res?.data?.success[i]?.youtube_video_id === el.video_id) {
                     el.likeBool = true;
-                  }
-                }
-                for (let i = 0; i < res?.data?.success.length; ++i) {
-                  if (el.likeBool === undefined) {
+                  } else if (el.likeBool === undefined) {
                     el.likeBool = false;
                   }
                 }

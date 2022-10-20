@@ -7,6 +7,7 @@ import YoutubeHome from "../../youtube-upload/component/Home";
 import InvestingInfomationHome from "../../investing-infomation/component/Home";
 import YoutubeLikeTopThreeHome from "../../youtube-upload/component/LikeTopThreeHome";
 import { YoutubeLikeScoreUpdateDataAPI } from "webapp/api/youtubeApi";
+import EconomicIndexMainList from "webapp/economicIndex/component/Home";
 
 const Home = () => {
   useEffect(() => {
@@ -22,6 +23,7 @@ const Home = () => {
       <YoutubeHome />
       <YoutubeLikeTopThreeHome />
       <InvestingInfomationHome />
+      <EconomicIndexMainList />
       <Footer />
     </>
   );

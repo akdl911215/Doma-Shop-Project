@@ -29,6 +29,7 @@ import YoutubeRegister from "webapp/youtube-upload/component/Register";
 import YoutubeBoard from "webapp/youtube-upload/component/board/Board";
 import YoutubeMyList from "webapp/youtube-upload/component/MyList";
 import YoutubeManagementPage from "webapp/youtube-upload/component/VideoManagementPage";
+import EconomicIndexList from "webapp/economicIndex/component/EconomicIndexList";
 
 const App = () => {
   return (
@@ -47,6 +48,8 @@ const App = () => {
         <Route path="/notice_register" element={<NoticeRegister />} />
         <Route path="/notice_read" element={<NoticeRead />} />
         <Route path="/notice_modify" element={<NoticeModify />} />
+
+        <Route path="/Economic_index_list" element={<EconomicIndexList />} />
 
         <Route
           path="/investing_infomation_modify"
