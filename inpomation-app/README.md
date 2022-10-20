@@ -108,6 +108,12 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 
 <br><br>
+7. 관리자 유튜브 리스트 관리 페이지 기능 : 유튜브 전체 영상 리스트, 페이지네이션, 검색, 삭제 기능 구현.
+
+![admin-list](https://user-images.githubusercontent.com/76759835/196928648-655c2874-c18f-4812-8efe-4df542d146c2.gif)
+
+
+<br><br>
 -----------------------------------------------------------------------------------------
 
 <br><br>
