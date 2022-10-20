@@ -95,6 +95,25 @@ Skill Speccification : Node.js, Express, Mariadb, React, Reudx, Saga, Jwt Token 
 
 
 <br><br>
+5. 유튜브 like, unlike 기능 : 유튜브 영상을 다른 투자자들에게도 추천해줄 만하다면 좋아요를 눌러줄 수 있는 기능.
+                             다시 한번 누르면 좋아요 취소 기능. 
+                             
+
+![like-unlike](https://user-images.githubusercontent.com/76759835/196680946-1fa81302-d413-4c6f-9901-9ff93022ade5.gif)
+                      
+<br><br>
+6. 유튜브 좋아요 랭킹 기능 : 제일 최신에 업로드 영상을 인기 TOP3 영상에서 좋아요 눌러 1위로 올라가는 기능.
+
+![rangking-ver2](https://user-images.githubusercontent.com/76759835/196683443-7e1dd52a-1959-4973-b243-598b24e9fc7b.gif)
+
+
+<br><br>
+7. 관리자 유튜브 리스트 관리 페이지 기능 : 유튜브 전체 영상 리스트, 페이지네이션, 검색, 삭제 기능 구현.
+
+![admin-list](https://user-images.githubusercontent.com/76759835/196928648-655c2874-c18f-4812-8efe-4df542d146c2.gif)
+
+
+<br><br>
 -----------------------------------------------------------------------------------------
 
 <br><br>
