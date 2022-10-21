@@ -13,7 +13,15 @@ import GoHomeButton from "webapp/common/component/GoHomeButton";
 const EconomicIndexList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  sessionStorage.removeItem("investingBoardId");
+  // sessionStorage.removeItem("investingBoardId");
+  const [viewArr, setViewArr] = useState([
+    {
+      title: "KOSPI",
+      nickname: "관리자",
+      regdate: "2022-10-21",
+      veiw_count: 0,
+    },
+  ]);
 
   useEffect(() => {
     // dispatch(InvestingBoardCurrentPageLocation(1));
@@ -52,7 +60,8 @@ const EconomicIndexList = () => {
                   </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
-                  {totalList?.map((el) => (
+                  {/* {totalList?.map((el) => ( */}
+                  {viewArr?.map((el) => (
                     <tr key={el.id}>
                       <td onClick={() => movePage(el.id)}>{el.title}</td>
                       {/* <td onClick={() => movePage(el.id)}>{el.writer}</td> */}
@@ -71,21 +80,21 @@ const EconomicIndexList = () => {
           <div className={styles.btnStyle}>
             <GoHomeButton />
             <div className={styles.writeBtn}>
-              {sessionStorage.getItem("username") === null ? null : (
+              {sessionStorage.getItem("username") === "MASTER" ? (
                 <button className={styles.contentRegisterBtn}>
                   <span
                     className={styles.contentRegisterText}
-                    onClick={() => navigate("/investing_infomation_register")}
+                    onClick={() => navigate("/economic_index_register")}
                   >
                     글쓰기
                   </span>
                 </button>
-              )}
+              ) : null}
             </div>
           </div>
           <div className={styles.paginationStyle}>
             <ShowPageNation
-              name="investingBoardPageList"
+              name="economicIndexBoardPageList"
               totalPages={pageList}
             />
           </div>
