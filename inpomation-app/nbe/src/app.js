@@ -12,6 +12,7 @@ const cityAndProvinceByItemRouter = require("./api/apiData/importAndExportPerfor
 const productInfomationRouter = require("./api/routes/productInfomation/productInfomation");
 const cityAndProvinceByNatureRouter = require("./api/apiData/importAndExportPerformence/cityAndProvinceByNature");
 const youtubeRouter = require("./youtube/youtubeController");
+const economicIndexRouter = require("./economicIndex/economicController");
 const investingRouter = require("./investing/investingController");
 
 require("dotenv").config();
@@ -33,6 +34,7 @@ app.use("/portfolio", portfolioRouter);
 app.use("/productInfomation", productInfomationRouter);
 app.use("/youtube", youtubeRouter);
 app.use("/investing_infomation", investingRouter);
+app.use("/economic_index", economicIndexRouter);
 // app.post("/users/signup", userRouter.userRegister);
 // app.post("/users/signin", userRouter.userSignin);
 
