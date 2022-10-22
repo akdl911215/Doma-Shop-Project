@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import ShowPageNation from "webapp/common/component/PagenationBtn";
 import GoHomeButton from "webapp/common/component/GoHomeButton";
-import * as Kospi from "./KospiIndex";
+import KospiIndex from "./KospiIndex";
 
 const EconomicIndexList = () => {
   const navigate = useNavigate();
@@ -26,7 +26,8 @@ const EconomicIndexList = () => {
 
   useEffect(() => {
     // dispatch(InvestingBoardCurrentPageLocation(1));
-    console.log("kospi : ", Kospi.KospiIndex);
+    const result = KospiIndex();
+    console.log("kospi : ", result);
   }, []);
 
   const movePage = (id) => {
