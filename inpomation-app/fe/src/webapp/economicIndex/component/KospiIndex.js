@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { EconomicIndexKospiDataAPI } from "webapp/api/economicIndex";
 
+// https://github.com/rrag/react-stockcharts
 const KospiIndex = () => {
   // const [kospi, setKospi] = useState({
   //   inex: "kospi",

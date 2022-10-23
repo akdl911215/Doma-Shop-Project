@@ -14,10 +14,16 @@ import KospiIndex from "./KospiIndex";
 const EconomicIndexList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // sessionStorage.removeItem("investingBoardId");
+  sessionStorage.removeItem("economicIndexBoardId");
   const [viewArr, setViewArr] = useState([
     {
       title: "KOSPI",
+      nickname: "관리자",
+      regdate: "2022-10-21",
+      veiw_count: 0,
+    },
+    {
+      title: "KODAC",
       nickname: "관리자",
       regdate: "2022-10-21",
       veiw_count: 0,
@@ -31,7 +37,24 @@ const EconomicIndexList = () => {
   }, []);
 
   const movePage = (id) => {
-    //
+    sessionStorage.setItem("economicIndexBoardId", id);
+
+    // if (sessionStorage.getItem("username") !== null) {
+    //   InvestingViewCountUpdateDataAPI({
+    //     boardId: id,
+    //   })
+    //     .then((res) => {
+    //       if (res?.data?.code === 200) {
+    //         console.log("view count update success : ", res);
+    //       } else {
+    //         console.log("view count failed success : ", res);
+    //       }
+    //     })
+    //     .catch((err) => console.error("view count update error : ", err));
+    // }
+
+    // dispatch(InvestingBoardId(id));
+    navigate("/economic_index_read");
   };
   const { totalList, pageList } = useSelector(({ InvestingBoardReducer }) => ({
     pageList: InvestingBoardReducer?.InvestingPageListInitial?.pagenationCount,
