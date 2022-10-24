@@ -7,16 +7,19 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 import configureStore from "webapp/_store/ConfigureStore";
+import ChartComponent from "./stockChart/ChartComponent";
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      {/* <React.StrictMode> */}
-      <App />
-      {/* </React.StrictMode> */}
-    </BrowserRouter>
+    <ChartComponent>
+      <BrowserRouter>
+        {/* <React.StrictMode> */}
+        <App />
+        {/* </React.StrictMode> */}
+      </BrowserRouter>
+    </ChartComponent>
   </Provider>,
   document.getElementById("root")
 );

@@ -92,7 +92,23 @@
   align-self: stretch;
   flex-grow: 0;
 }
+/* .uploadBtn {
+  width: 95px;
+  height: 35px;
 
+  background: #29a19c;
+  border-radius: 8px;
+}
+.uploadText {
+  width: 55px;
+  height: 22px;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 13px;
+} */
 
 .btnBox {
   margin-left: auto;
