@@ -57,6 +57,10 @@ class CandleStickChartWithDarkTheme extends React.Component {
   render() {
     const height = 750;
     const { type, data: initialData, width, ratio } = this.props;
+    console.log("this.props type : ", type);
+    console.log("this.props initialData : ", initialData);
+    console.log("this.props width : ", width);
+    console.log("this.props ratio : ", ratio);
 
     const margin = { left: 70, right: 70, top: 20, bottom: 30 };
 
@@ -139,6 +143,7 @@ class CandleStickChartWithDarkTheme extends React.Component {
         displayXAccessor={displayXAccessor}
         xExtents={xExtents}
       >
+        {/* Chart = 캔들 */}
         <Chart
           id={1}
           height={325}
@@ -245,6 +250,7 @@ class CandleStickChartWithDarkTheme extends React.Component {
             options={bb.options()}
           />
         </Chart>
+        {/* 주지표 거래량 차트 */}
         <Chart
           id={2}
           yExtents={(d) => d.volume}
@@ -263,6 +269,7 @@ class CandleStickChartWithDarkTheme extends React.Component {
             fill={(d) => (d.close > d.open ? "#6BA583" : "#DB0000")}
           />
         </Chart>
+        {/* 1번째 보조지표 */}
         <Chart
           id={3}
           yExtents={[0, 100]}
@@ -299,6 +306,7 @@ class CandleStickChartWithDarkTheme extends React.Component {
             label="Slow STO"
           />
         </Chart>
+        {/* 2번째 보조지표 */}
         <Chart
           id={4}
           yExtents={[0, 100]}
@@ -336,6 +344,7 @@ class CandleStickChartWithDarkTheme extends React.Component {
             label="Fast STO"
           />
         </Chart>
+        {/* 3번째 보조 지표 */}
         <Chart
           id={5}
           yExtents={[0, 100]}

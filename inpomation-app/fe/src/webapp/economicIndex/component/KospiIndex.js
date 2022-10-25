@@ -13,6 +13,7 @@ import moment from "moment";
 import { Button, Comment, Form, Header } from "semantic-ui-react";
 import { SessionRemove } from "webapp/common/component/SessionRemove";
 import { UserAuthDataAPI } from "webapp/api/userApi";
+import ChartComponent from "webapp/economicIndex/chart/ChartComponent";
 
 // https://github.com/rrag/react-stockcharts
 // https://codesandbox.io/s/github/rrag/react-stockcharts-examples2/tree/master/examples/CandleStickChartWithDarkTheme?file=/src/index.js:474-478
@@ -145,11 +146,12 @@ const KospiIndex = () => {
           </div>
           <div className={styles.contentBox}>
             <span>본문</span>
-            <textarea
+            {/* <textarea
               readOnly={true}
               value={boardState?.content?.content}
               className={styles.contentInput}
-            />
+            ></textarea> */}
+            <ChartComponent />
           </div>
 
           <div className={styles.btnBox}>
