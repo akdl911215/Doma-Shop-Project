@@ -32,8 +32,8 @@ const EconomicIndexList = () => {
 
   useEffect(() => {
     // dispatch(InvestingBoardCurrentPageLocation(1));
-    const result = KospiIndex();
-    console.log("kospi : ", result);
+    // const result = KospiIndex();
+    // console.log("kospi : ", result);
   }, []);
 
   const movePage = (id) => {
