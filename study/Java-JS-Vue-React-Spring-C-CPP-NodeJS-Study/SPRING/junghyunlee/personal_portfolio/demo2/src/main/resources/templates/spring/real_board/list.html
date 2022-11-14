@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Board List</title>
+    <link rel="stylesheet" href="/css/portfolio/real_board_list.css">
+</head>
+<body>
+<h2>고객센터 1:1 문의하기</h2>
+
+<table border="1">
+    <tr>
+        <th align="center" width="80">번호</th>
+        <th align="center" width="320">제목</th>
+        <th align="center" width="100">글쓴이</th>
+        <th align="center" width="180">등록일자</th>
+    </tr>
+    <tr th:if="${#lists.isEmpty(list)}">
+        <td colspan="4">
+            List is Empty.
+        </td>
+    </tr>
+
+    <!-- th:each="board : ${list}" 은 for:each 와 같은것 -->
+    <tr th:each="board : ${list}">
+        <td align="center" th:text="${board.boardNo}">
+            ${board.boardNo}
+        </td>
+        <td align="left">
+            <!-- 하이퍼링크걸때는 | | 필요 -->
+            <a href="read.html"
+               th:href="@{|read?boardNo=${board.boardNo}|}"
+                th:text="${board.title}">${board.title}</a>
+        </td>
+        <td align="right" th:text="${board.writer}">
+            ${board.writer}
+        </td>
+        <td align="center"
+            th:text="${#dates.format(board.regDate, 'yyyy-MM-dd HH:mm:ss')}">
+            ${board.regDate}
+        </td>
+    </tr>
+</table>
+
+<div id="box1">
+    <a href="register.html" th:href="@{register}">
+        <input type = "submit" value="새로운 글 작성"></a>
+    <a href="portfolio/mainPortfol.html" th:href="@{/exercise/home?RequestMapping}">
+        <input type = "submit" value="뒤로"></a>
+</div>
+</body>
+</html>
+

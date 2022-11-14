@@ -1,0 +1,22 @@
+ul {
+    list-style: none;
+}
+li {
+    display: inline-block;
+    margin: 10px;
+}
+li a {
+    padding: 5px 20px;
+    font-size: 14px;
+    color: red;
+    text-decoration: none;
+}
+.flat {
+    background: yellow;
+    color: white;
+}
+/* class에 button이라는 단어가 존재하다면 */
+[class ~= "button"] {
+    border: 2px solid black;
+    box-shadow: rgba(0, 0, 0, 0.4) 5px 5px;
+}

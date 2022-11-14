@@ -1,0 +1,10 @@
+.table1 {
+    border: 1px solid black;
+    /* 테두리 경계를 무너트린다. */
+    border-collapse: collapse;
+}
+.table1 td {
+    border: 1px dotted #7777ff;
+    padding: 10px;
+    text-align: center;
+}

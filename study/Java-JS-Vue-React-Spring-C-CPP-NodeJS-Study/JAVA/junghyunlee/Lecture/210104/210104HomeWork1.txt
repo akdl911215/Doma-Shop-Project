@@ -1,0 +1,12 @@
+public class HomeWork1 {
+    public static void main(String[] args) {
+        // 1 ~ 100까지의 숫자를 모두 더해서 출력해보자!
+
+        int sum = 0;
+        for(int i = 1; i < 101; i++){
+            sum += i;
+        }
+        System.out.println("i의 합" + sum);
+    }
+}
+

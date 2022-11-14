@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/portfolio/mainPortfol.css">
+    <link rel="stylesheet" href="/css/portfolio/search-style.css">
+</head>
+<body>
+
+    <div id="header" role="banner">
+
+        <!--<fieldset id="headerFieldset">
+            <legend>내가 원하는 이상형 검색</legend>-->
+
+                <!-- maxlength : <input> 태그의 maxlength 속성은
+                <input> 요소에 입력할 수 있는 최대 문자수를 명시합니다 --><!--
+
+                    <input type="text" maxlength="225" tabindex="1" size="100"
+                       placeholder="검색어 입력" />
+                <button type="submit" tabindex="2" >
+                    검색
+                </button>-->
+                <!-- 혹시 사용할거면 링크 : https://codepen.io/rickzanutta/pen/NNzGVd/
+                    <fieldset class="field-container">
+                        <input type="text" placeholder="Search..." class="field" />
+                        <div class="icons-container">
+                            <div class="icon-search"></div>
+                            <div class="icon-close">
+                                <div class="x-up"></div>
+                                <div class="x-down"></div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+        </fieldset>-->
+
+        <div class="search-box">
+            <input type="text" class="search-txt" name=""
+                   placeholder="이상형을 검색하시오!">
+            <a class="search-btn" href="#">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+
+        <a style="float: right" href="/">로그아웃</a>
+        <a style="float: right"
+           th:href="@{/loginMemberShip/home?register}">로그인</a>
+        <a style="float: right"
+           th:href="@{/joinmembership/home?register}">회원가입</a>
+
+
+
+        <div class="navbar">
+            <a href="#home">홈</a>
+            <a>나에게 호감을 표현한</a>
+            <a>상대에게 호감을 표현한</a>
+            <a>실시간 매칭 서비스</a>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    마이 페이지
+                </button>
+                <div class="dropdown-contents">
+                    <a href="#">구매 내역</a>
+                    <a href="#">배송 상태</a>
+                    <a href="#">포인트</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    특별한 데이트!
+                </button>
+                <div class="dropdown-contents">
+                    <a href="#">흩날리는 벚꽃을 같이?!</a>
+                    <a href="#">야구는 치맥이지!</a>
+                    <a href="#">처녀귀신 love 호박귀신</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="main" role="main">
+    <main>
+        <div class="main-container">
+            <div class="main_hot">
+            <div class="temp-box">주위에 접속중인 매력적 친구<img src="img/hot2.png" class="main_hot"/>
+                </a></div>
+            </div>
+            <div class="temp-box">상대가 나에게 호감을 표현한 친구</div>
+            <div class="temp-box">내가 상대에가 호감을 표현한 친구</div>
+            <div class="temp-box">AI추천으로 호감을 표현하면 높은 성공확률 보이는 친구</div>
+        </div>
+    </main>
+    </div>
+
+
+
+
+
+
+    <div id="footer" role="contentinfo">
+        <div class="notice_box">
+            <a href="/">공지사항</a>
+            <a href="/">서비스 전체보기></a>
+        </div>
+        <div class="aside_box">
+                <div class="area_user_row">
+                    <span class="text_bold-13">Partners</span>
+                    <ul>
+                        <li><a href="/">비즈니스 광고</a></li>
+                        <li><a href="/">공유업체 등록</a></li>
+                    </ul>
+                </div>
+            <div class="area_col">
+                <div class="ac_content">
+                    <div class="text_bold-13">내꺼 브라우저</div>
+                    <div class="ac_link"><a href="/">내꺼 어플 다운받기</a></div>
+                </div>
+                <a href="/"><img src="images/icon_whale.png" class="ac_img"/></a>
+            </div>
+        </div>
+        <div class="bottom_box">
+            <ul>
+
+                <!--
+                /portfolio/personalPortfolio
+                /real_board/list
+
+                <li><a th:href="@{/Resume/home?register}">회사소개(Resume)</a></li> -->
+                <li><a href="/real_board/personalPortfolio?register">회사소개(Resume)</a></li>
+                <li><a href="/">인재채용</a></li>
+                <li><a href="/">제휴제안</a></li>
+                <li><a href="/">이용약관</a></li>
+                <li><a href="/">개인정보처리방침</a></li>
+                <li><a href="/">청소년보호정책</a></li>
+                <li><a href="/">내꺼 정책</a></li>
+                <!-- <li><a th:href="@{/real_board/list?register}">고객센터</a></li>
+                작동이 되다가 실험을 위해서 real_board > list.html을 list1.html로 바꿨다가
+                다시 이름을 바꿨는데 작동이 안된다 -->
+                <li><a href="/real_board/list?register">고객센터</a></li>
+                <li><a href="/">&copy; 내꺼 Corp.</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

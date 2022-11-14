@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Creation Test</title>
+    <style>
+        table, th, td {
+            border: 1px solid #B0C4DE;
+        }
+        th {
+            padding: 5px;
+        }
+        tr > td:nth-child(odd) {
+            /* 홀수번째 열의너비: 120으로 고정 */
+            width: 2000px;
+        }
+        tr > td:nth-child(even) {
+            /* 짝수번째 열의 너비: 300으로 고정 */
+            width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+<table>
+    <!-- table에 제목이나 주석을 다는 용도로 활용함 -->
+    <caption>
+        <strong>Modern Cutting Edge Browser</strong>
+        <p>Table Caption Test</p>
+    </caption>
+    <!-- 왼쪽 정렬된 상태로 표에 제목을 붙이거나 주석을 달때 활용홤 -->
+    <figcaption>
+        <strong>figcaption</strong>
+        <p>Test</p>
+    </figcaption>
+    <tr>
+        <th>Browser</th>
+        <th>Vendor</th>
+        <th>Download</th>
+    </tr>
+    <tr>
+        <th>Chrome</th>
+        <th>Google</th>
+        <td>https://www.google.com/chorme</td>
+    </tr>
+    <tr>
+        <th>Firefox</th>
+        <th>Mozilla</th>
+        <td>https://www.mozilla.org/firefox</td>
+    </tr>
+    <tr>
+        <th>Edge</th>
+        <th>Microsoft</th>
+        <td>https://www.micosoft.com/edge</td>
+    </tr>
+</table>
+
+</body>
+</html>

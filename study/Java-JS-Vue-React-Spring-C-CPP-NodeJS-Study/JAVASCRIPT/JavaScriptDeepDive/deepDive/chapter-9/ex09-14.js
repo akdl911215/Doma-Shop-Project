@@ -1,0 +1,9 @@
+var elem = null;
+
+// elem이 null 또는 undefined이면 undefined를 반환하고, 그렇지 않으면 우항의 프로퍼티 참조를 이어간다.
+var value = elem?.value;
+console.log(value);
+
+var elem2 = 1;
+var value2 = elem2?.value;
+console.log(value2)

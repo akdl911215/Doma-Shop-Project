@@ -1,0 +1,7 @@
+/* h1 다음에 있는 p */
+/* h1 다음에 있는 pㅘ 관련된 */
+
+h1 ~ p {
+    color: blue;
+    font-weight: bold
+}

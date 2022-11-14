@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Result</h2>
+
+<table border="1">
+    <tr>
+        <td>아 이 디</td>
+        <td th:text="${testMember.userName}">userName</td>
+    </tr>
+    <tr>
+        <td>비밀번호</td>
+        <td th:text="${testMember.password}">password</td>
+    </tr>
+    <tr>
+        <td>자기소개</td>
+        <td th:text="${testMember.introduction}">introduction</td>
+    </tr>
+    <tr>
+        <td>취미</td>
+        <td>
+            <th:block th:each="hobby : ${hobbyList}">
+            <span th:text="${hobby}">hobby</span></br>
+            </th:block>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

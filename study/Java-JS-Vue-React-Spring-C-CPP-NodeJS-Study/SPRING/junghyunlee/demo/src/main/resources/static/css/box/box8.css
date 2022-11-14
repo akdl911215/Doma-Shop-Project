@@ -1,0 +1,16 @@
+div {
+    width: 300px;
+    height: 200px;
+    /* 영역간 마진 */
+    margin: 20px;
+    display: inline-block;
+}
+.round {
+    border: 2px solid gray;
+    /* 라운딩 값 20 */
+    border-radius: 20px;
+}
+#bg {
+    background: url(../../img/github.png) no-repeat;
+    background-size: cover;
+}

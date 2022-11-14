@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <body>
+        <ul style="cursor:porinter">
+        <li>클릭하면 0</li>
+        <li>클릭하면 1</li>
+        <li>클릭하면 2</li>
+        </ul>
+    </body>
+    <script>
+        const items = document.querySelectorAll('li');
+        console.log('items : ' , items)
+        // querySelectorAll() : 지정된 셀렉터 그룹에 일치하는 다큐먼트의 엘리먼트 리스트를
+        // 나타내는 정적(살아 있지 않은) NodeList를 반환
+
+        // NodeList 객체는 element.childNodes와 같은 속성(property) 과
+        // document.querySelectorAll와 같은 메서드에 의해 반환되는 노드의 콜렉션
+
+        // childNodes : 주어진 요소의 자식 노드 모음(collection)을 반환
+        console.log('var i :' , i)
+        console.log('items.length : ', items.length)
+        for(var i = 0; i < items.length; i++) {
+            console.log('items[i].addEventListene : ',items[i].addEventListener('click', () => {
+                
+                console.log('items : ', items)
+                console.log('i : ', i)
+                alert(i)
+            }))
+        }
+    </script>
+</html>

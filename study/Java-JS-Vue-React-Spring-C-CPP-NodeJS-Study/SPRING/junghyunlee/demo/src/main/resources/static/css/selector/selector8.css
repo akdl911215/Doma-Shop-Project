@@ -1,0 +1,28 @@
+#container {
+    text-align: center;
+    color: #c76969;
+}
+table, tb, th {
+    border: 1px solid #cccc1c;
+}
+table {
+    width: 200px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+td {
+    text-align: left;
+    padding: 10px;
+    padding-left: 20px;
+}
+/* 홀수 번째의 경우 */
+table tr:nth-child(2n + 1){
+    background: #ff5e5e;
+    color: black;
+}
+/* 3의 배수로 할경우
+table tr:nth-child(3n + 1){
+    background: #ff5e5e;
+    color: black;
+}
+ */

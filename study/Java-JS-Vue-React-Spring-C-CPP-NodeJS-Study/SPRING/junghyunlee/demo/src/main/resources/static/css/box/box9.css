@@ -1,0 +1,13 @@
+div {
+    width: 350px;
+    height: 300px;
+    margin: 20px;
+    display: inline-block;
+    border: 2px solid;
+    /* 타원 */
+    border-radius: 200px/190px;
+}
+.bgEllipse {
+    background: url(../../img/github.png) no-repeat;
+    background-size: cover;
+}
