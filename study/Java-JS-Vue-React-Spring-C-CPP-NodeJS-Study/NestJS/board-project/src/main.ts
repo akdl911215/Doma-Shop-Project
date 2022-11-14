@@ -8,4 +8,3 @@ async function bootstrap() {
 }
 bootstrap();
 
-// https://www.youtube.com/watch?v=3JminDpCJNE 43:03

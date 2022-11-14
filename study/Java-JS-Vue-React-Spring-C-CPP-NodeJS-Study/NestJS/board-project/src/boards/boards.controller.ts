@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import {Controller, Get, Post, Body, Param, Delete, Patch} from '@nestjs/common';
 import { Board } from './board.model';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -9,7 +9,8 @@ import { CreateBoardDto } from './dto/create-board.dto';
 //
 @Controller('boards')
 export class BoardsController {
-  constructor(private boardsService: BoardsService) {}
+  constructor(private boardsService: BoardsService) {
+  }
 
   @Get() // @Get('/') 와 동일
   getAllBoard(): Board[] {
@@ -28,7 +29,18 @@ export class BoardsController {
   getBoardById(@Param('id') id: string): Board {
     return this.boardsService.getBoardById(id);
   }
+
+  @Delete('/:id')
+  deleteBoard(@Param('id') id: string): void {
+    this.boardsService.deleteBoard(id);
+  }
+
+  // @Patch('/:id/status')
+
 }
+
+
+
 
 // 위처럼 변경가능
 // export class BoardsController {
