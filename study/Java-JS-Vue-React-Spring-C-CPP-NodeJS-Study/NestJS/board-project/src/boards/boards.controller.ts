@@ -5,6 +5,8 @@ import { CreateBoardDto } from './dto/create-board.dto';
 
 // https://www.youtube.com/watch?v=3JminDpCJNE
 // 1:39:22
+
+//
 @Controller('boards')
 export class BoardsController {
   constructor(private boardsService: BoardsService) {}
