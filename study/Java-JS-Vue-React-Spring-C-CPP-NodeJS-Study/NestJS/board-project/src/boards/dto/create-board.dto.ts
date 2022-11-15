@@ -5,7 +5,13 @@ DTO 파일 작성
 그래서 클래스를 시작해서 DTO를 작성한다.
 */
 
+// https://github.com/typestack/class-validator#manual-validation
+import { IsNotEmpty } from 'class-validator';
+
 export class CreateBoardDto {
+  @IsNotEmpty()
   title: string;
+
+  @IsNotEmpty()
   description: string;
 }
