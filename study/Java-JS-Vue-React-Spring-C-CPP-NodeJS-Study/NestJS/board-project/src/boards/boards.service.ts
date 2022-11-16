@@ -1,7 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Board, BoardStatus } from './board.model';
-import { v1 as uuid } from 'uuid';
 import { CreateBoardDto } from './dto/create-board.dto';
+// import { BoardRepository } from './board.repository';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Board } from './board.entity';
+import { BoardStatus } from './board.status.enum';
+import { EntityRepository, Repository } from 'typeorm';
 
 /*
 Pipe은 무엇인가?
@@ -11,47 +14,35 @@ Pipe은 무엇인가?
 Nest는 메소드가 호출되기 직전에 파이프를 삽입하고 파이프는 메소드로 향하는 인수를 수신하고 이에 대해 작동
 */
 
+@EntityRepository(Board)
 @Injectable()
-export class BoardsService {
-  private boards: Board[] = [];
+export class BoardsService extends Repository<Board> {
+  // constructor() {}
 
-  getAllBoards(): Board[] {
-    return this.boards;
-  }
+  async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
+    console.log('service createBoardDto : ', createBoardDto);
 
-  createBoard(createBoardDto: CreateBoardDto) {
+    console.log('check');
     const { title, description } = createBoardDto;
 
-    const board: Board = {
-      id: uuid(),
+    const board = this.create({
       title,
       description,
       status: BoardStatus.PUBLIC,
-    };
+    });
 
-    this.boards.push(board);
+    await this.save(board);
     return board;
   }
 
-  getBoardById(id: string): Board {
-    const found = this.boards.find((board) => board.id === id);
+  async getBoardById(id: number): Promise<Board> {
+    const found = await this.findOne(id);
 
     if (!found) {
       throw new NotFoundException(`Can't find Board with id ${id}`);
     }
 
     return found;
-  }
-
-  deleteBoard(id: string): void {
-    const found = this.getBoardById(id);
-    this.boards = this.boards.filter((board) => board.id !== found.id);
-  }
-
-  updateBoardStatus(id: string, status: BoardStatus): Board {
-    const board = this.getBoardById(id);
-    board.status = status;
-    return board;
   }
 }
 
