@@ -9,13 +9,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const users_module_1 = require("./users/users.module");
+const config_1 = require("@nestjs/config");
+const prisma_service_1 = require("./prisma.service");
+const users_service_1 = require("./users/users.service");
+const CONFIG_MODULE = config_1.ConfigModule.forRoot({
+    isGlobal: true,
+    envFilePath: process.env.NODE_ENV === "production"
+        ? ".env.production"
+        : process.env.NODE_ENV === "development"
+            ? ".env.development"
+            : ".env",
+});
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.UsersModule],
+        imports: [CONFIG_MODULE, users_module_1.UsersModule],
         controllers: [],
-        providers: [],
+        providers: [
+            prisma_service_1.PrismaService,
+            {
+                provide: "USERS_SERVICE",
+                useClass: users_service_1.UsersService,
+            },
+        ],
+        exports: [
+            {
+                provide: "USERS_SERVICE",
+                useClass: users_service_1.UsersService,
+            },
+        ],
     })
 ], AppModule);
 exports.AppModule = AppModule;

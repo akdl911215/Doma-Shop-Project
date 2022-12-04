@@ -20,10 +20,10 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsDate)(),
     __metadata("design:type", Date)
-], BaseCommonDto.prototype, "createAt", void 0);
+], BaseCommonDto.prototype, "createdAt", void 0);
 __decorate([
     (0, class_validator_1.IsDate)(),
     __metadata("design:type", Date)
-], BaseCommonDto.prototype, "updateAt", void 0);
+], BaseCommonDto.prototype, "updatedAt", void 0);
 exports.BaseCommonDto = BaseCommonDto;
 //# sourceMappingURL=base.common.dto.js.map
