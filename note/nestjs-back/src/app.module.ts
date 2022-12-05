@@ -1,8 +1,7 @@
 import { Module } from "@nestjs/common";
 import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
-import { PrismaService } from "./prisma.service";
-import { UsersService } from "./users/users.service";
+import * as Joi from "joi";
 
 const CONFIG_MODULE = ConfigModule.forRoot({
   isGlobal: true,
@@ -12,23 +11,19 @@ const CONFIG_MODULE = ConfigModule.forRoot({
       : process.env.NODE_ENV === "development"
       ? ".env.development"
       : ".env",
+  validationSchema: Joi.object({
+    NODE_ENV: Joi.string()
+      .valid("production", "development")
+      .default("development"),
+    PORT: Joi.number().required(),
+    DATABASE_URL: Joi.string().required(),
+    JWT_SECRET: Joi.string().required(),
+    JWT_ACCESS_EXPIRE_IN: Joi.string().required(),
+    JWT_REFRESH_EXPIRE_IN: Joi.string().required(),
+  }),
 });
 
 @Module({
   imports: [CONFIG_MODULE, UsersModule],
-  controllers: [],
-  providers: [
-    PrismaService,
-    {
-      provide: "USERS_SERVICE",
-      useClass: UsersService,
-    },
-  ],
-  exports: [
-    {
-      provide: "USERS_SERVICE",
-      useClass: UsersService,
-    },
-  ],
 })
 export class AppModule {}

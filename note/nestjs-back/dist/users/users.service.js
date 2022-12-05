@@ -8,14 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma.service");
 const _409_1 = require("../common/constants/http/errors/409");
+const _404_1 = require("../common/constants/http/errors/404");
+const _400_1 = require("../common/constants/http/errors/400");
+const token_service_1 = require("../common/infrastructures/token/token.service");
 let UsersService = class UsersService {
-    constructor(prisma) {
+    constructor(prisma, logger, hash, compare, jwtToken) {
         this.prisma = prisma;
+        this.logger = logger;
+        this.hash = hash;
+        this.compare = compare;
+        this.jwtToken = jwtToken;
+        prisma.$on("query", (event) => {
+            logger.warn("Query: " + event.query);
+            logger.warn("Duration: " + event.duration + "ms");
+        });
     }
     async register({ noteId: userNoteId, phone: userPhone, }) {
         const user = await this.prisma.users.findFirst({
@@ -52,22 +66,98 @@ let UsersService = class UsersService {
             throw new Error("USER REGISTER PRISMA CREATE FAILED " + e);
         }
     }
-    delete({ id }) {
-        return Promise.resolve(undefined);
+    async delete(dto) {
+        const user = await this.prisma.users.findUnique({
+            where: { id: dto.requestUser.id },
+        });
+        if (!user)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
+        const { id } = user;
+        if (dto.requestUser.id === id) {
+            try {
+                await this.prisma.users.delete({ where: { id } });
+                return { response: { delete: true } };
+            }
+            catch (e) {
+                throw new Error("USER_DELETE_FAILED " + e);
+            }
+        }
+        else {
+            throw new common_1.BadRequestException(_400_1.NO_MATCH_USER_ID);
+        }
     }
-    find({ id }) {
-        return Promise.resolve(undefined);
+    async findOn({ id }) {
+        const user = await this.prisma.users.findUnique({ where: { id } });
+        if (!user)
+            throw new common_1.NotFoundException(`${id}번 ${_404_1.NOTFOUND_USER}`);
+        return { response: user };
     }
-    login({ noteId, password }) {
-        return Promise.resolve(undefined);
+    async login({ noteId, password, }) {
+        const user = await this.prisma.users.findUnique({ where: { noteId } });
+        if (!user)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
+        const comparePassword = await this.compare.decoded(password, user === null || user === void 0 ? void 0 : user.password);
+        if (!comparePassword)
+            throw new common_1.BadRequestException(_400_1.NO_MATCH_PASSWORD);
+        const accessPayload = {
+            id: user.id,
+            noteId: user.noteId,
+        };
+        const refreshPayload = {
+            id: user.id,
+            noteId: user.noteId,
+            phone: user.phone,
+        };
+        const { response: { accessToken, refreshToken }, } = await this.jwtToken.generateTokens(accessPayload, refreshPayload);
+        try {
+            await this.prisma.users.update({
+                where: { id: user.id },
+                data: { refreshToken },
+            });
+            return {
+                response: Object.assign(Object.assign({}, user), { accessToken,
+                    refreshToken }),
+            };
+        }
+        catch (e) {
+            throw new common_1.ConflictException(_409_1.REFRESH_TOKEN_MODIFY_FAILED + ` ${e}`);
+        }
     }
-    update(dto) {
-        return Promise.resolve(undefined);
+    async update(dto) {
+        const user = await this.prisma.users.findUnique({
+            where: { id: dto.user.id },
+        });
+        if (!user)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
+        const { id: reqId, password: reqPassword, address: reqAddress, name: reqName, phone: reqPhone, } = dto.requestUser;
+        const password = reqPassword === "" ? user.password : reqPassword;
+        const address = reqAddress === "" ? user.address : reqAddress;
+        const name = reqName === "" ? user.name : reqName;
+        const phone = reqPhone === "" ? user.phone : reqPhone;
+        if (reqId === user.id) {
+            try {
+                return {
+                    response: await this.prisma.users.update({
+                        where: { id: user.id },
+                        data: { password, address, name, phone },
+                    }),
+                };
+            }
+            catch (e) {
+                throw new common_1.ConflictException(_409_1.UPDATE_FAILED + ` ${e}`);
+            }
+        }
+        else {
+            throw new common_1.BadRequestException(_400_1.NO_MATCH_USER_ID);
+        }
     }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
+    __param(2, (0, common_1.Inject)("IN_CODED")),
+    __param(3, (0, common_1.Inject)("DE_CODED")),
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService,
+        common_1.Logger, Object, Object, token_service_1.TokenService])
 ], UsersService);
 exports.UsersService = UsersService;
 //# sourceMappingURL=users.service.js.map

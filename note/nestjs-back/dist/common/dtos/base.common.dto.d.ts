@@ -1,5 +1,5 @@
-export declare abstract class BaseCommonDto {
-    id: number;
-    createdAt: Date;
-    updatedAt: Date;
+export declare abstract class CommonCoreDto {
+    readonly id: number;
+    readonly createdAt: Date;
+    readonly updatedAt: Date;
 }

@@ -6,8 +6,8 @@ import {
   Logger,
   InternalServerErrorException,
   HttpStatus,
-} from "@nestjs/common";
-import { Request, Response } from "express";
+} from '@nestjs/common';
+import { Request, Response } from 'express';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -31,7 +31,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     const developErrorLog = {
       status,
-      timestamp: new Date().toLocaleString("ko-KR", { hour12: true }),
+      timestamp: new Date().toLocaleString('ko-KR', { hour12: true }),
       url: req.url,
       response,
     };
@@ -45,9 +45,9 @@ export class HttpExceptionFilter implements ExceptionFilter {
     res
       .status(status)
       .json(
-        process.env.NODE_ENV === "development"
+        process.env.NODE_ENV === 'development'
           ? developErrorLog
-          : productErrorLog
+          : productErrorLog,
       );
   }
 }

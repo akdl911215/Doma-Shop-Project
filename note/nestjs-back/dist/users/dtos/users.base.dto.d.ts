@@ -1,10 +1,10 @@
-import { BaseCommonDto } from '../../common/dtos/base.common.dto';
+import { CommonCoreDto } from "../../common/dtos/base.common.dto";
 declare enum SosialType {
     KAKAO = 0,
     NAVER = 1,
     BASIC = 2
 }
-export declare class UsersBaseDto extends BaseCommonDto {
+export declare class UsersBaseDto extends CommonCoreDto {
     noteId: string;
     password: string;
     name: string;

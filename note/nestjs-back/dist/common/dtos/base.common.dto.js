@@ -9,21 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BaseCommonDto = void 0;
+exports.CommonCoreDto = void 0;
 const class_validator_1 = require("class-validator");
-class BaseCommonDto {
+class CommonCoreDto {
 }
 __decorate([
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
-], BaseCommonDto.prototype, "id", void 0);
+], CommonCoreDto.prototype, "id", void 0);
 __decorate([
     (0, class_validator_1.IsDate)(),
     __metadata("design:type", Date)
-], BaseCommonDto.prototype, "createdAt", void 0);
+], CommonCoreDto.prototype, "createdAt", void 0);
 __decorate([
     (0, class_validator_1.IsDate)(),
     __metadata("design:type", Date)
-], BaseCommonDto.prototype, "updatedAt", void 0);
-exports.BaseCommonDto = BaseCommonDto;
+], CommonCoreDto.prototype, "updatedAt", void 0);
+exports.CommonCoreDto = CommonCoreDto;
 //# sourceMappingURL=base.common.dto.js.map

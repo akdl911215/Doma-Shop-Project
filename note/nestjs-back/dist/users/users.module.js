@@ -11,14 +11,45 @@ const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
 const users_controller_1 = require("./users.controller");
 const prisma_service_1 = require("../prisma.service");
+const token_service_1 = require("../common/infrastructures/token/token.service");
+const bcript_service_1 = require("../common/infrastructures/bcript/bcript.service");
+const refresh_token_strategy_1 = require("../common/infrastructures/token/strategys/refresh.token.strategy");
+const access_token_strategy_1 = require("../common/infrastructures/token/strategys/access.token.strategy");
+const token_module_1 = require("../common/infrastructures/token/token.module");
+const bcript_module_1 = require("../common/infrastructures/bcript/bcript.module");
+const passport_1 = require("@nestjs/passport");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [passport_1.PassportModule, bcript_module_1.BcriptModule, token_module_1.TokenModule],
         controllers: [users_controller_1.UsersController],
-        providers: [users_service_1.UsersService, prisma_service_1.PrismaService],
-        exports: [],
+        providers: [
+            access_token_strategy_1.AccessTokenStrategy,
+            refresh_token_strategy_1.RefreshTokenStrategy,
+            prisma_service_1.PrismaService,
+            bcript_service_1.BcriptService,
+            common_1.Logger,
+            token_service_1.TokenService,
+            {
+                provide: "USERS_SERVICE",
+                useClass: users_service_1.UsersService,
+            },
+            {
+                provide: "STRATEGY_FIND_BY_ID",
+                useClass: users_service_1.UsersService,
+            },
+        ],
+        exports: [
+            {
+                provide: "USERS_SERVICE",
+                useClass: users_service_1.UsersService,
+            },
+            {
+                provide: "STRATEGY_FIND_BY_ID",
+                useClass: users_service_1.UsersService,
+            },
+        ],
     })
 ], UsersModule);
 exports.UsersModule = UsersModule;

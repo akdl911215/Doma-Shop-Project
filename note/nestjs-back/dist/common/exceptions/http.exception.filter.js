@@ -28,7 +28,7 @@ let HttpExceptionFilter = class HttpExceptionFilter {
         const message = exception.message;
         const developErrorLog = {
             status,
-            timestamp: new Date().toLocaleString("ko-KR", { hour12: true }),
+            timestamp: new Date().toLocaleString('ko-KR', { hour12: true }),
             url: req.url,
             response,
         };
@@ -39,7 +39,7 @@ let HttpExceptionFilter = class HttpExceptionFilter {
         this.logger.error(developErrorLog);
         res
             .status(status)
-            .json(process.env.NODE_ENV === "development"
+            .json(process.env.NODE_ENV === 'development'
             ? developErrorLog
             : productErrorLog);
     }

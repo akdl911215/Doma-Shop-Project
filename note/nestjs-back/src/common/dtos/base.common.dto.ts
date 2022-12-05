@@ -1,12 +1,12 @@
-import { IsDate, IsNumber } from "class-validator";
+import { IsDate, IsNumber } from 'class-validator';
 
-export abstract class BaseCommonDto {
+export abstract class CommonCoreDto {
   @IsNumber()
-  id: number;
+  readonly id: number;
 
   @IsDate()
-  createdAt: Date;
+  readonly createdAt: Date;
 
   @IsDate()
-  updatedAt: Date;
+  readonly updatedAt: Date;
 }
