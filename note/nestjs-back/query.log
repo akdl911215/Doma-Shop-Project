@@ -1,0 +1,679 @@
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 21ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 21ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 28ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 28ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"error","response":{"error":"Conflict","message":"ALREADY_ACCOUNT_ID_EXISTS","statusCode":409},"stack":[null],"status":409,"timestamp":"2022. 12. 7. 오후 12:45:44","url":"/users/register"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"message":"Unauthorized","statusCode":401},"stack":[null],"status":401,"timestamp":"2022. 12. 7. 오후 12:46:26","url":"/users/1"}
+{"context":"ExceptionsHandler","level":"error","message":"this.usersService.strategyFindById is not a function","stack":["TypeError: this.usersService.strategyFindById is not a function\n    at AccessTokenStrategy.validate (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/src/common/infrastructures/token/strategys/access.token.strategy.ts:30:36)\n    at AccessTokenStrategy.<anonymous> (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:20:55)\n    at Generator.next (<anonymous>)\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:4:12)\n    at AccessTokenStrategy.callback [as _verify] (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:17:45)\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/passport-jwt/lib/strategy.js:123:34\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/jsonwebtoken/verify.js:223:12\n    at getSecret (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/jsonwebtoken/verify.js:90:14)"]}
+{"context":"ExceptionsHandler","level":"error","message":"this.usersService.strategyFindById is not a function","stack":["TypeError: this.usersService.strategyFindById is not a function\n    at AccessTokenStrategy.validate (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/src/common/infrastructures/token/strategys/access.token.strategy.ts:30:36)\n    at AccessTokenStrategy.<anonymous> (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:20:55)\n    at Generator.next (<anonymous>)\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:4:12)\n    at AccessTokenStrategy.callback [as _verify] (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:17:45)\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/passport-jwt/lib/strategy.js:123:34\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/jsonwebtoken/verify.js:223:12\n    at getSecret (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/jsonwebtoken/verify.js:90:14)"]}
+{"context":"ExceptionsHandler","level":"error","message":"this.usersService.strategyFindById is not a function","stack":["TypeError: this.usersService.strategyFindById is not a function\n    at AccessTokenStrategy.validate (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/src/common/infrastructures/token/strategys/access.token.strategy.ts:30:36)\n    at AccessTokenStrategy.<anonymous> (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:20:55)\n    at Generator.next (<anonymous>)\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:4:12)\n    at AccessTokenStrategy.callback [as _verify] (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:17:45)\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/passport-jwt/lib/strategy.js:123:34\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/jsonwebtoken/verify.js:223:12\n    at getSecret (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/jsonwebtoken/verify.js:90:14)"]}
+{"context":"ExceptionsHandler","level":"error","message":"this.usersService.strategyFindById is not a function","stack":["TypeError: this.usersService.strategyFindById is not a function\n    at AccessTokenStrategy.validate (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/src/common/infrastructures/token/strategys/access.token.strategy.ts:30:36)\n    at AccessTokenStrategy.<anonymous> (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:20:55)\n    at Generator.next (<anonymous>)\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:4:12)\n    at AccessTokenStrategy.callback [as _verify] (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/@nestjs/passport/dist/passport/passport.strategy.js:17:45)\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/passport-jwt/lib/strategy.js:123:34\n    at /Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/jsonwebtoken/verify.js:223:12\n    at getSecret (/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/note/nestjs-back/node_modules/jsonwebtoken/verify.js:90:14)"]}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"error","response":{"error":"Bad Request","message":["id should not be empty","id must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 7. 오후 12:48:28","url":"/users/%7Bid%7D"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"error","response":{"error":"Bad Request","message":["id should not be empty","id must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 7. 오후 12:48:54","url":"/users/%7Bid%7D"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"error","response":{"error":"Bad Request","message":["id should not be empty","id must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 7. 오후 12:50:00","url":"/users/%7Bid%7D"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 7. 오후 12:50:39","url":"/users/%7Bid%7D"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 10ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 10ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 7. 오후 12:53:57","url":"/users/%7Bid%7D"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 7. 오후 1:30:16","url":"/users/%7Bid%7D"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 7. 오후 1:30:16","url":"/users/%7Bid%7D"}
+{"level":"error","response":{"message":"Unauthorized","statusCode":401},"stack":[null],"status":401,"timestamp":"2022. 12. 7. 오후 1:30:33","url":"/users/1"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 17ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 17ms"}
+{"level":"warn","message":"Query: DELETE FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" IN ($1) AND (\"public\".\"users\".\"id\" = $2 AND 1=1))"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"warn","message":"Query: DELETE FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" IN ($1) AND (\"public\".\"users\".\"id\" = $2 AND 1=1))"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"error","response":{"error":"Not Found","message":"1번 NOTFOUND_USER","statusCode":404},"stack":[null],"status":404,"timestamp":"2022. 12. 7. 오후 1:32:12","url":"/users/1"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"error","response":{"error":"Not Found","message":"1번 NOTFOUND_USER","statusCode":404},"stack":[null],"status":404,"timestamp":"2022. 12. 7. 오후 1:32:52","url":"/users/1"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"error","response":{"error":"Not Found","message":"1번 NOTFOUND_USER","statusCode":404},"stack":[null],"status":404,"timestamp":"2022. 12. 7. 오후 1:33:12","url":"/users/1"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"error","response":{"error":"Not Found","message":"1번 NOTFOUND_USER","statusCode":404},"stack":[null],"status":404,"timestamp":"2022. 12. 7. 오후 1:33:12","url":"/users/1"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Not Found","message":"1번 NOTFOUND_USER","statusCode":404},"stack":[null],"status":404,"timestamp":"2022. 12. 7. 오후 1:33:25","url":"/users/1"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"error","response":{"error":"Not Found","message":"1번 NOTFOUND_USER","statusCode":404},"stack":[null],"status":404,"timestamp":"2022. 12. 7. 오후 1:33:43","url":"/users/1"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"error","response":{"error":"Not Found","message":"1번 NOTFOUND_USER","statusCode":404},"stack":[null],"status":404,"timestamp":"2022. 12. 7. 오후 1:34:02","url":"/users/1"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 16ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 16ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 7ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 7ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"message":"Unauthorized","statusCode":401},"stack":[null],"status":401,"timestamp":"2022. 12. 8. 오후 7:05:11","url":"/users/2"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 7ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 7ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"error","response":{"error":"Conflict","message":"ALREADY_ACCOUNT_ID_EXISTS","statusCode":409},"stack":[null],"status":409,"timestamp":"2022. 12. 8. 오후 7:05:55","url":"/users/register"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"error","response":{"error":"Conflict","message":"ALREADY_ACCOUNT_ID_EXISTS","statusCode":409},"stack":[null],"status":409,"timestamp":"2022. 12. 8. 오후 7:06:03","url":"/users/register"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"error","response":{"error":"Bad Request","message":["id should not be empty","id must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:06:58","url":"/users/%7Bid%7D"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"error","response":{"error":"Not Found","message":"NOTFOUND_USER","statusCode":404},"stack":[null],"status":404,"timestamp":"2022. 12. 8. 오후 7:09:28","url":"/users/login"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"error","response":{"error":"Bad Request","message":["id should not be empty","id must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:10:28","url":"/users/%7Bid%7D?id=3"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"error","response":{"error":"Bad Request","message":["id should not be empty","id must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:10:36","url":"/users/%7Bid%7D?id=4"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:11:57","url":"/users/%7Bid%7D?id=4"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 17ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 17ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 7ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 7ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:15:38","url":"/users/%7Bid%7D?id=4"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 37ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 37ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:17:30","url":"/users/%7Bid%7D?id=4"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 14ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 14ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:17:45","url":"/users/%7Bid%7D?id=4"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:18:05","url":"/users/%7Bid%7D?id=4"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:18:16","url":"/users/%7Bid%7D?id=4"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"error","response":{"error":"Bad Request","message":"Validation failed (numeric string is expected)","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:19:31","url":"/users/%7Bid%7D?id=4"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":"NO_MATCH_USER_ID","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:23:37","url":"/users/3"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":"NO_MATCH_USER_ID","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:23:41","url":"/users/3"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"error","response":{"error":"Bad Request","message":"NO_MATCH_USER_ID","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:24:37","url":"/users/3"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: DELETE FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" IN ($1) AND (\"public\".\"users\".\"id\" = $2 AND 1=1))"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: DELETE FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" IN ($1) AND (\"public\".\"users\".\"id\" = $2 AND 1=1))"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"error","response":{"error":"Bad Request","message":"NO_MATCH_USER_ID","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 8. 오후 7:25:38","url":"/users/4"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: DELETE FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" IN ($1) AND (\"public\".\"users\".\"id\" = $2 AND 1=1))"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: DELETE FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" IN ($1) AND (\"public\".\"users\".\"id\" = $2 AND 1=1))"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}

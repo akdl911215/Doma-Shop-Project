@@ -10,20 +10,26 @@ import { UsersBaseDto } from "./dtos/users.base.dto";
 import { TokenService } from "../common/infrastructures/token/token.service";
 import { BcriptDecodedInterface } from "../common/infrastructures/bcript/interfaces/bcript.decoded.interface";
 import { BcriptIncodedInterface } from "../common/infrastructures/bcript/interfaces/bcript.incoded.interface";
-export declare class UsersService implements UsersInterface {
+import { StrategyFindByIdInterface } from "./interfaces/strategy.find.by.id.interface";
+import { StrategyFindInputDto, StrategyFindOutputDto } from "./dtos/strategy.find.dto";
+export declare class UsersService implements UsersInterface, StrategyFindByIdInterface {
     private readonly prisma;
     private readonly logger;
     private readonly hash;
     private readonly compare;
     private readonly jwtToken;
     constructor(prisma: PrismaService, logger: Logger, hash: BcriptIncodedInterface, compare: BcriptDecodedInterface, jwtToken: TokenService);
-    register({ noteId: userNoteId, phone: userPhone, }: RegisterInputUser): Promise<RegisterOutputUser>;
+    strategyFindById({ id, }: StrategyFindInputDto): Promise<StrategyFindOutputDto>;
+    register({ noteId, phone, name, password, address, }: RegisterInputUser): Promise<RegisterOutputUser>;
+    login({ noteId, password, }: LoginInputUser): Promise<LoginOutputUser>;
+    findOn(dto: {
+        requestUser: FindInputUser;
+        user: UsersBaseDto;
+    }): Promise<FindOutputUser>;
     delete(dto: {
-        requestUser: DeleteInputUser;
+        requestUserId: DeleteInputUser;
         user: UsersBaseDto;
     }): Promise<DeleteOutputUser>;
-    findOn({ id }: FindInputUser): Promise<FindOutputUser>;
-    login({ noteId, password, }: LoginInputUser): Promise<LoginOutputUser>;
     update(dto: {
         requestUser: UpdateInputUser;
         user: UsersBaseDto;

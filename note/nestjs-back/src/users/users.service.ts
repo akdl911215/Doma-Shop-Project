@@ -34,9 +34,14 @@ import { TokenService } from "../common/infrastructures/token/token.service";
 import { BcriptDecodedInterface } from "../common/infrastructures/bcript/interfaces/bcript.decoded.interface";
 import { BcriptIncodedInterface } from "../common/infrastructures/bcript/interfaces/bcript.incoded.interface";
 import { Prisma } from "@prisma/client";
+import { StrategyFindByIdInterface } from "./interfaces/strategy.find.by.id.interface";
+import {
+  StrategyFindInputDto,
+  StrategyFindOutputDto,
+} from "./dtos/strategy.find.dto";
 
 @Injectable()
-export class UsersService implements UsersInterface {
+export class UsersService implements UsersInterface, StrategyFindByIdInterface {
   constructor(
     private readonly prisma: PrismaService,
     private readonly logger: Logger,
@@ -50,18 +55,29 @@ export class UsersService implements UsersInterface {
     });
   }
 
+  public async strategyFindById({
+    id,
+  }: StrategyFindInputDto): Promise<StrategyFindOutputDto> {
+    const user = await this.prisma.users.findUnique({ where: { id } });
+    if (!user) throw new NotFoundException(`${id}번 ${NOTFOUND_USER}`);
+
+    return { response: user };
+  }
   public async register({
-    noteId: userNoteId,
-    phone: userPhone,
+    noteId,
+    phone,
+    name,
+    password,
+    address,
   }: RegisterInputUser): Promise<RegisterOutputUser> {
     const user = await this.prisma.users.findFirst({
       where: {
         OR: [
           {
-            noteId: userNoteId,
+            noteId,
           },
           {
-            phone: userPhone,
+            phone,
           },
         ],
       },
@@ -69,14 +85,12 @@ export class UsersService implements UsersInterface {
     if (user?.noteId) throw new ConflictException(ALREADY_ACCOUNT_ID_EXISTS);
     if (user?.phone) throw new ConflictException(ALREADY_PHONE_EXISTS);
 
-    const { noteId, password, phone, address, name } = user;
-
     try {
       return {
         response: await this.prisma.users.create({
           data: {
             noteId,
-            password,
+            password: await this.hash.incoded(password),
             phone,
             address,
             name,
@@ -86,36 +100,6 @@ export class UsersService implements UsersInterface {
     } catch (e) {
       throw new Error("USER REGISTER PRISMA CREATE FAILED " + e);
     }
-  }
-
-  public async delete(dto: {
-    requestUser: DeleteInputUser;
-    user: UsersBaseDto;
-  }): Promise<DeleteOutputUser> {
-    const user = await this.prisma.users.findUnique({
-      where: { id: dto.requestUser.id },
-    });
-    if (!user) throw new NotFoundException(NOTFOUND_USER);
-    const { id } = user;
-
-    if (dto.requestUser.id === id) {
-      try {
-        await this.prisma.users.delete({ where: { id } });
-
-        return { response: { delete: true } };
-      } catch (e) {
-        throw new Error("USER_DELETE_FAILED " + e);
-      }
-    } else {
-      throw new BadRequestException(NO_MATCH_USER_ID);
-    }
-  }
-
-  public async findOn({ id }: FindInputUser): Promise<FindOutputUser> {
-    const user = await this.prisma.users.findUnique({ where: { id } });
-    if (!user) throw new NotFoundException(`${id}번 ${NOTFOUND_USER}`);
-
-    return { response: user };
   }
 
   public async login({
@@ -129,7 +113,8 @@ export class UsersService implements UsersInterface {
       password,
       user?.password
     );
-    if (!comparePassword) throw new BadRequestException(NO_MATCH_PASSWORD);
+    if (!comparePassword)
+      throw new BadRequestException(`${noteId} ${NO_MATCH_PASSWORD}`);
 
     const accessPayload: AccessTokenPayloadType = {
       id: user.id,
@@ -159,6 +144,45 @@ export class UsersService implements UsersInterface {
       };
     } catch (e) {
       throw new ConflictException(REFRESH_TOKEN_MODIFY_FAILED + ` ${e}`);
+    }
+  }
+
+  public async findOn(dto: {
+    requestUser: FindInputUser;
+    user: UsersBaseDto;
+  }): Promise<FindOutputUser> {
+    const { id } = dto.requestUser;
+    const { id: userId } = dto.user;
+    const user = await this.prisma.users.findUnique({ where: { id } });
+    if (!user) throw new NotFoundException(`${id}번 ${NOTFOUND_USER}`);
+
+    if (id === userId) {
+      return { response: user };
+    } else {
+      throw new BadRequestException(NO_MATCH_USER_ID);
+    }
+  }
+
+  public async delete(dto: {
+    requestUserId: DeleteInputUser;
+    user: UsersBaseDto;
+  }): Promise<DeleteOutputUser> {
+    const user = await this.prisma.users.findUnique({
+      where: { id: dto.requestUserId.id },
+    });
+    const { id } = user;
+    if (!user) throw new NotFoundException(`${id}번 ${NOTFOUND_USER}`);
+
+    if (dto.user.id === id) {
+      try {
+        await this.prisma.users.delete({ where: { id } });
+
+        return { response: { delete: true } };
+      } catch (e) {
+        throw new Error("USER_DELETE_FAILED " + e);
+      }
+    } else {
+      throw new BadRequestException(NO_MATCH_USER_ID);
     }
   }
 

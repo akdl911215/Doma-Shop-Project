@@ -12,11 +12,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteOutputUser = exports.DeleteInputUser = void 0;
 const class_validator_1 = require("class-validator");
 const base_output_dto_1 = require("../../common/dtos/base.output.dto");
+const swagger_1 = require("@nestjs/swagger");
 class DeleteInputUser {
 }
 __decorate([
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: Number,
+        required: true,
+    }),
     __metadata("design:type", Number)
 ], DeleteInputUser.prototype, "id", void 0);
 exports.DeleteInputUser = DeleteInputUser;

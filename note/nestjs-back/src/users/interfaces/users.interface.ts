@@ -11,10 +11,13 @@ import { UsersBaseDto } from "../dtos/users.base.dto";
 export interface UsersInterface {
   readonly register: (dto: RegisterInputUser) => Promise<RegisterOutputUser>;
   readonly delete: (dto: {
-    requestUser: DeleteInputUser;
+    requestUserId: DeleteInputUser;
     user: UsersBaseDto;
   }) => Promise<DeleteOutputUser>;
-  readonly findOn: (dto: FindInputUser) => Promise<FindOutputUser>;
+  readonly findOn: (dto: {
+    requestUser: FindInputUser;
+    user: UsersBaseDto;
+  }) => Promise<FindOutputUser>;
   readonly login: (dto: LoginInputUser) => Promise<LoginOutputUser>;
   readonly update: (dto: {
     requestUser: UpdateInputUser;
