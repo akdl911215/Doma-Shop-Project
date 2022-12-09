@@ -1917,3 +1917,60 @@
 {"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
 {"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
 {"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}

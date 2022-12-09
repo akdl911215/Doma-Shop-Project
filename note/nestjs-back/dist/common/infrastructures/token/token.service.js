@@ -25,12 +25,12 @@ let TokenService = class TokenService {
     async generateTokens(accessPayload, refreshPayload) {
         const [accessToken, refreshToken] = await Promise.all([
             this.jwtService.signAsync(accessPayload, {
-                secret: this.configService.get('JWT_SECRET'),
-                expiresIn: this.configService.get('JWT_ACCESS_EXPIRE_IN'),
+                secret: this.configService.get("JWT_SECRET"),
+                expiresIn: this.configService.get("JWT_ACCESS_EXPIRE_IN"),
             }),
             this.jwtService.signAsync(refreshPayload, {
-                secret: this.configService.get('JWT_SECRET'),
-                expiresIn: this.configService.get('JWT_REFRESH_EXPIRE_IN'),
+                secret: this.configService.get("JWT_SECRET"),
+                expiresIn: this.configService.get("JWT_REFRESH_EXPIRE_IN"),
             }),
         ]);
         return {
@@ -43,7 +43,7 @@ let TokenService = class TokenService {
 };
 TokenService = __decorate([
     (0, common_1.Injectable)(),
-    __param(2, (0, common_1.Inject)('IN_CODED')),
+    __param(2, (0, common_1.Inject)("IN_CODED")),
     __metadata("design:paramtypes", [jwt_1.JwtService,
         config_1.ConfigService, Object])
 ], TokenService);
