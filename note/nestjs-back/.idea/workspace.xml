@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/combined.log" beforeDir="false" afterPath="$PROJECT_DIR$/combined.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.service.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/errors.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/query.log" beforeDir="false" afterPath="$PROJECT_DIR$/query.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/constants/http/errors/404.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/constants/http/errors/404.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/dtos/users.find.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/dtos/users.find.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/dtos/users.register.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/dtos/users.register.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/dtos/users.update.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/dtos/users.update.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainBoard/dtos/main.boards.register.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainBoard/dtos/main.boards.register.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainBoard/main.boards.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainBoard/main.boards.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +69,7 @@
       <workItem from="1670225758234" duration="10393000" />
       <workItem from="1670382382595" duration="5462000" />
       <workItem from="1670493258727" duration="8640000" />
-      <workItem from="1670655817522" duration="2289000" />
+      <workItem from="1670655817522" duration="3091000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>

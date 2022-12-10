@@ -40,37 +40,35 @@ export class MainBoardsService implements MainBoardsInterface {
     requestUser: MainBoardsRegisterInput;
     user: UsersBaseDto;
   }): Promise<MainBoardsRegisterOutput> {
-    // const { id: userId } = dto.user;
-    // const { description, title } = dto.requestUser;
-    // try {
-    //   return {
-    //     response: await this.prisma.board.create({
-    //       data: { userId, title, description },
-    //     }),
-    //   };
-    // } catch (e) {
-    //   throw new Error('BOARD REGISTER PRISMA CREATE FAILED ' + e);
-    // }
-
-    return Promise.resolve(undefined);
+    const { id: userId } = dto.user;
+    const { description, title } = dto.requestUser;
+    try {
+      return {
+        response: await this.prisma.mainBoard.create({
+          data: { userId, title, description },
+        }),
+      };
+    } catch (e) {
+      throw new Error("BOARD REGISTER PRISMA CREATE FAILED " + e);
+    }
   }
 
-  delete(dto: {
+  public async delete(dto: {
     requestBoardId: MainBoardsDeleteInput;
     user: UsersBaseDto;
   }): Promise<MainBoardsDeleteOutput> {
     return Promise.resolve(undefined);
   }
 
-  list(dto: MainBoardsListInput): Promise<MainBoardsListOutput> {
+  public async list(dto: MainBoardsListInput): Promise<MainBoardsListOutput> {
     return Promise.resolve(undefined);
   }
 
-  read(dto: MainBoardsReadInput): Promise<MainBoardsReadOutput> {
+  public async read(dto: MainBoardsReadInput): Promise<MainBoardsReadOutput> {
     return Promise.resolve(undefined);
   }
 
-  update(dto: {
+  public async update(dto: {
     requestBoard: MainBoardsUpdateInput;
     user: UsersBaseDto;
   }): Promise<MainBoardsUpdateOutput> {
