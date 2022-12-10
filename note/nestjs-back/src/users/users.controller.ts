@@ -41,6 +41,7 @@ import {
 } from "../common/constants/http/errors/400";
 import {
   NOTFOUND_BOARD,
+  NOTFOUND_BOARD_COMMENT,
   NOTFOUND_USER,
 } from "../common/constants/http/errors/404";
 import { LoginInputUser, LoginOutputUser } from "./dtos/users.login.dto";
@@ -55,8 +56,6 @@ import { BaseOutputDto } from "../common/dtos/base.output.dto";
 import { UNAUTHORIZED } from "../common/constants/http/errors/401";
 import { RefreshTokenGuard } from "../common/infrastructures/token/guards/refresh.token.guard";
 import { UpdateInputUser, UpdateOutputUser } from "./dtos/users.update.dto";
-
-let NOTFOUND_BOARD_COMMENT;
 
 @ApiTags("users")
 @Controller("users")
@@ -103,6 +102,7 @@ export class UsersController {
     description: "아이디 1개 검색",
   })
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })
+  @ApiResponse({ status: 400, description: `${NO_MATCH_USER_ID}` })
   @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async findOn(

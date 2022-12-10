@@ -1,19 +1,28 @@
-import { ApiProperty, PickType } from '@nestjs/swagger';
-import { UsersBaseDto } from './users.base.dto';
-import { IsString } from 'class-validator';
-import { BaseOutputDto } from '../../common/dtos/base.output.dto';
+import { ApiProperty, PickType } from "@nestjs/swagger";
+import { UsersBaseDto } from "./users.base.dto";
+import { IsNotEmpty, IsString, Matches } from "class-validator";
+import { BaseOutputDto } from "../../common/dtos/base.output.dto";
 
 export class RegisterInputUser extends PickType(UsersBaseDto, [
-  'noteId',
-  'password',
-  'name',
-  'address',
-  'phone',
-  'social',
+  "noteId",
+  "password",
+  "name",
+  "address",
+  "phone",
+  "social",
 ] as const) {
   @IsString()
-  @ApiProperty({ type: String, required: true, format: 'password' })
-  private readonly confirmPassword!: string;
+  @IsNotEmpty()
+  @ApiProperty({
+    type: String,
+    required: true,
+    format: "password",
+  })
+  @Matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, {
+    message:
+      "컨펌 비밀번호는 최소 8자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수문자입니다.",
+  })
+  confirmPassword!: string;
 }
 
 export class RegisterOutputUser extends BaseOutputDto<UsersBaseDto> {}

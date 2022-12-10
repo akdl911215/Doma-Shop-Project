@@ -22,10 +22,18 @@ class UpdateInputUser extends (0, swagger_1.PickType)(users_base_dto_1.UsersBase
 ]) {
 }
 __decorate([
-    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], UpdateInputUser.prototype, "id", void 0);
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        required: true,
+        format: "password",
+    }),
+    (0, class_validator_1.Matches)(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, {
+        message: "컨펌 비밀번호는 최소 8자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수문자입니다.",
+    }),
+    __metadata("design:type", String)
+], UpdateInputUser.prototype, "confirmPassword", void 0);
 exports.UpdateInputUser = UpdateInputUser;
 class UpdateOutputUser extends base_output_dto_1.BaseOutputDto {
 }

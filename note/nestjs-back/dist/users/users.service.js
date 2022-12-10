@@ -136,22 +136,29 @@ let UsersService = class UsersService {
         }
     }
     async update(dto) {
-        const user = await this.prisma.users.findUnique({
+        console.log("dto : ", dto);
+        const dbUser = await this.prisma.users.findUnique({
             where: { id: dto.user.id },
         });
-        if (!user)
+        if (!dbUser)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
-        const { id: reqId, password: reqPassword, address: reqAddress, name: reqName, phone: reqPhone, } = dto.requestUser;
-        const password = reqPassword === "" ? user.password : reqPassword;
-        const address = reqAddress === "" ? user.address : reqAddress;
-        const name = reqName === "" ? user.name : reqName;
-        const phone = reqPhone === "" ? user.phone : reqPhone;
-        if (reqId === user.id) {
+        const { id: dbUserId, password: dbPassword, name: dbName, address: dbAddress, phone: dbPhone, } = dbUser;
+        const { name: reqName, address: reqAddress, phone: reqPhone, password: reqPassword, } = dto.requestUser;
+        const password = reqPassword === "" ? dbUser.password : reqPassword;
+        const address = reqAddress === "" ? dbUser.address : reqAddress;
+        const name = reqName === "" ? dbUser.name : reqName;
+        const phone = reqPhone === "" ? dbUser.phone : reqPhone;
+        if (dto.user.id === dbUser.id) {
             try {
                 return {
                     response: await this.prisma.users.update({
-                        where: { id: user.id },
-                        data: { password, address, name, phone },
+                        where: { id: dbUser.id },
+                        data: {
+                            password: await this.hash.incoded(password),
+                            address,
+                            name,
+                            phone,
+                        },
                     }),
                 };
             }

@@ -1,6 +1,6 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
-import { BaseOutputDto } from '../../common/dtos/base.output.dto';
-import { UsersBaseDto } from './users.base.dto';
+import { IsNotEmpty, IsNumber } from "class-validator";
+import { BaseOutputDto } from "../../common/dtos/base.output.dto";
+import { UsersBaseDto } from "./users.base.dto";
 
 export class FindInputUser {
   @IsNumber()

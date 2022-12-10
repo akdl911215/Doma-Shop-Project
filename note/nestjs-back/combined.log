@@ -1974,3 +1974,1035 @@
 {"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
 {"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
 {"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 19ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 19ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 OR \"public\".\"users\".\"phone\" = $2) LIMIT $3 OFFSET $4"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: INSERT INTO \"public\".\"users\" (\"noteId\",\"password\",\"name\",\"phone\",\"address\",\"isMarketing\",\"createdAt\",\"updatedAt\",\"social\") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING \"public\".\"users\".\"id\""}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"error","response":{"error":"Bad Request","message":"aaa NO_MATCH_PASSWORD","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:10:43","url":"/users/login"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":"NO_MATCH_USER_ID","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:11:27","url":"/users/6"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":"NO_MATCH_USER_ID","statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:11:35","url":"/users/6"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"error","response":{"error":"Bad Request","message":["id should not be empty","id must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:13:19","url":"/users/update"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"error","response":{"message":"Unauthorized","statusCode":401},"stack":[null],"status":401,"timestamp":"2022. 12. 10. 오후 4:21:15","url":"/users/update"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"error","response":{"error":"Bad Request","message":["id should not be empty","id must be a number conforming to the specified constraints","confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:22:13","url":"/users/update"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 5ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:26:57","url":"/users/update"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 6ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:27:17","url":"/users/update"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:27:21","url":"/users/update"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 11ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 22ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 22ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:28:02","url":"/users/update"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:28:25","url":"/users/update"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:28:27","url":"/users/update"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 7ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"noteId\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 7ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"refreshToken\" = $1, \"updatedAt\" = $2 WHERE (\"public\".\"users\".\"id\" IN ($3) AND (\"public\".\"users\".\"id\" = $4 AND 1=1))"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 2ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:30:05","url":"/users/update"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:31:24","url":"/users/update"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 3ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:32:22","url":"/users/update"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT 1"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"error","response":{"error":"Bad Request","message":["confirmPassword must be a number conforming to the specified constraints"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2022. 12. 10. 오후 4:32:37","url":"/users/update"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application..."}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"PassportModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"BcriptModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"TokenModule dependencies initialized"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/register, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/login, POST} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/:id, DELETE} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/update, PATCH} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/access_token, GET} route"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/refresh_token, GET} route"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 4ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1) LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: BEGIN"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND 1=1)"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"password\" = $1, \"address\" = $2, \"name\" = $3, \"phone\" = $4, \"updatedAt\" = $5 WHERE (\"public\".\"users\".\"id\" IN ($6) AND (\"public\".\"users\".\"id\" = $7 AND 1=1))"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: UPDATE \"public\".\"users\" SET \"password\" = $1, \"address\" = $2, \"name\" = $3, \"phone\" = $4, \"updatedAt\" = $5 WHERE (\"public\".\"users\".\"id\" IN ($6) AND (\"public\".\"users\".\"id\" = $7 AND 1=1))"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"noteId\", \"public\".\"users\".\"password\", \"public\".\"users\".\"name\", \"public\".\"users\".\"phone\", \"public\".\"users\".\"address\", \"public\".\"users\".\"isMarketing\", \"public\".\"users\".\"refreshToken\", \"public\".\"users\".\"createdAt\", \"public\".\"users\".\"updatedAt\", \"public\".\"users\".\"social\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3"}
+{"level":"warn","message":"Duration: 0ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}
+{"level":"warn","message":"Query: COMMIT"}
+{"level":"warn","message":"Duration: 1ms"}

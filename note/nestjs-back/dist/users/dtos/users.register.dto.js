@@ -15,17 +15,25 @@ const users_base_dto_1 = require("./users.base.dto");
 const class_validator_1 = require("class-validator");
 const base_output_dto_1 = require("../../common/dtos/base.output.dto");
 class RegisterInputUser extends (0, swagger_1.PickType)(users_base_dto_1.UsersBaseDto, [
-    'noteId',
-    'password',
-    'name',
-    'address',
-    'phone',
-    'social',
+    "noteId",
+    "password",
+    "name",
+    "address",
+    "phone",
+    "social",
 ]) {
 }
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, swagger_1.ApiProperty)({ type: String, required: true, format: 'password' }),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        required: true,
+        format: "password",
+    }),
+    (0, class_validator_1.Matches)(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, {
+        message: "컨펌 비밀번호는 최소 8자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수문자입니다.",
+    }),
     __metadata("design:type", String)
 ], RegisterInputUser.prototype, "confirmPassword", void 0);
 exports.RegisterInputUser = RegisterInputUser;
