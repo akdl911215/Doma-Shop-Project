@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mainBoard/main.boards.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainBoard/main.boards.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mainBoard/main.boards.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainBoard/main.boards.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +67,7 @@
       <workItem from="1670225758234" duration="10393000" />
       <workItem from="1670382382595" duration="5462000" />
       <workItem from="1670493258727" duration="8640000" />
-      <workItem from="1670655817522" duration="6158000" />
+      <workItem from="1670655817522" duration="14179000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
