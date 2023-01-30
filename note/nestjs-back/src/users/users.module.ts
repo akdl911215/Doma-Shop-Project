@@ -1,7 +1,7 @@
 import { Logger, Module } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { UsersController } from "./users.controller";
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
 import { TokenService } from "../common/infrastructures/token/token.service";
 import { BcriptService } from "../common/infrastructures/bcript/bcript.service";
 import { RefreshTokenStrategy } from "../common/infrastructures/token/strategys/refresh.token.strategy";

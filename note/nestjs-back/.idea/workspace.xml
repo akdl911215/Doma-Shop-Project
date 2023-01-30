@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
+      <change afterPath="$PROJECT_DIR$/src/common/dtos/base.common.core.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loan/loan/domain/entity/loans.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/dtos/base.common.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainBoard/dtos/main.boards.base.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainBoard/dtos/main.boards.base.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainBoard/main.boards.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainBoard/main.boards.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainBoard/main.boards.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainBoard/main.boards.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prisma.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/prisma/prisma.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/dtos/users.base.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/dtos/users.base.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +60,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/loan/loan/infrastructure/presentation" />
+      <recent name="$PROJECT_DIR$/src/common/infrastructures/prisma" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
@@ -68,6 +80,8 @@
       <workItem from="1670382382595" duration="5462000" />
       <workItem from="1670493258727" duration="8640000" />
       <workItem from="1670655817522" duration="14179000" />
+      <workItem from="1675051396661" duration="7288000" />
+      <workItem from="1675071284437" duration="608000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
@@ -103,7 +117,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/mainBoard/interceptors/main.boards.interface.ts</url>
           <line>18</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

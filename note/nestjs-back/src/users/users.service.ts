@@ -15,7 +15,7 @@ import {
   RegisterOutputUser,
 } from "./dtos/users.register.dto";
 import { UpdateInputUser, UpdateOutputUser } from "./dtos/users.update.dto";
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
 import {
   ALREADY_ACCOUNT_ID_EXISTS,
   ALREADY_PHONE_EXISTS,

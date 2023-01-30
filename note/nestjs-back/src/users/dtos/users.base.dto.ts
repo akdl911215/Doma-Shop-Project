@@ -6,7 +6,7 @@ import {
   Matches,
 } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
-import { CommonCoreDto } from "../../common/dtos/base.common.dto";
+import { BaseCommonCoreDto } from "../../common/dtos/base.common.core.dto";
 
 enum SosialType {
   KAKAO,
@@ -14,7 +14,7 @@ enum SosialType {
   BASIC,
 }
 
-export class UsersBaseDto extends CommonCoreDto {
+export class UsersBaseDto extends BaseCommonCoreDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({

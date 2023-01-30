@@ -1,8 +1,8 @@
-import { CommonCoreDto } from "../../common/dtos/base.common.dto";
+import { BaseCommonCoreDto } from "../../common/dtos/base.common.core.dto";
 import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
-export class MainBoardsBaseDto extends CommonCoreDto {
+export class MainBoardsBaseDto extends BaseCommonCoreDto {
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty({

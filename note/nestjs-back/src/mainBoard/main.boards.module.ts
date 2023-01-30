@@ -1,7 +1,7 @@
 import { Logger, Module } from "@nestjs/common";
 import { MainBoardsService } from "./main.boards.service";
 import { MainBoardsController } from "./main.boards.controller";
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
 
 @Module({
   controllers: [MainBoardsController],

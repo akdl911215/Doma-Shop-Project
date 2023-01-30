@@ -27,7 +27,7 @@ import {
   MainBoardsUpdateInput,
   MainBoardsUpdateOutput,
 } from "./dtos/main.boards.update.dto";
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
 import { Prisma } from "@prisma/client";
 import {
   NOTFOUND_BOARD,
