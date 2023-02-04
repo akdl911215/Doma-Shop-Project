@@ -3,8 +3,8 @@ import { PassportStrategy } from "@nestjs/passport";
 import { Inject, Injectable } from "@nestjs/common";
 import { UsersBaseDto } from "../../../../users/domain/entity/users.base.dto";
 import { BaseOutputDto } from "../../../dtos/base.output.dto";
-import { StrategyFindByIdInterface } from "../../../../users/interfaces/strategy.find.by.id.interface";
-import { StrategyPayloadIdInputDto } from "../../../../users/dtos/strategy.payload.id.dto";
+import { StrategyFindByIdInterface } from "../../../../users/domain/adaptor/strategy.find.by.id.interface";
+import { StrategyPayloadIdInputDto } from "../../../../users/inbound/dtos/strategy.payload.id.dto";
 import { ConfigService } from "@nestjs/config";
 
 @Injectable()

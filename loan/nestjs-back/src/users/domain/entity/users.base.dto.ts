@@ -27,10 +27,6 @@ export class UsersBaseDto extends BaseCommonCoreDto {
   })
   public userId!: string;
 
- // 갚을 돈들, 갚을 채권들
-
-  // 받을 돈들, 받을 채권들
-
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
@@ -91,8 +87,14 @@ export class UsersBaseDto extends BaseCommonCoreDto {
   public social!: SosialType | string;
 
   @IsString()
-  refreshToken?: string;
+  public refreshToken?: string;
 
   @IsString()
-  accessToken?: string;
+  public accessToken?: string;
+
+  // 갚을 돈들, 갚을 채권들
+  public loanPayBack!: number[];
+
+  // 받을 돈들, 받을 채권들
+  public loanReceived!: number[];
 }

@@ -6,15 +6,15 @@ import {
   Logger,
   NotFoundException,
 } from "@nestjs/common";
-import { UsersInterface } from "./interfaces/users.interface";
-import { DeleteInputUser, DeleteOutputUser } from "./dtos/users.delete.dto";
-import { FindInputUser, FindOutputUser } from "./dtos/users.find.dto";
-import { LoginInputUser, LoginOutputUser } from "./dtos/users.login.dto";
+import { UsersInterface } from "./domain/adaptor/users.interface";
+import { DeleteInputUser, DeleteOutputUser } from "./inbound/dtos/users.withdrawal.adaptor.input.dto";
+import { FindInputUser, FindOutputUser } from "./inbound/dtos/users.profile.adaptor.input.dto";
+import { LoginInputUser, LoginOutputUser } from "./inbound/dtos/users.login.adaptor.input.dto";
 import {
   RegisterInputUser,
   RegisterOutputUser,
-} from "./dtos/users.register.dto";
-import { UpdateInputUser, UpdateOutputUser } from "./dtos/users.update.dto";
+} from "./inbound/dtos/users.register.adaptor.input.dto";
+import { UpdateInputUser, UpdateOutputUser } from "./inbound/dtos/users.update.adaptor.input.dto";
 import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
 import {
   ALREADY_ACCOUNT_ID_EXISTS,
@@ -34,11 +34,11 @@ import { TokenService } from "../common/infrastructures/token/token.service";
 import { BcriptDecodedInterface } from "../common/infrastructures/bcript/interfaces/bcript.decoded.interface";
 import { BcriptIncodedInterface } from "../common/infrastructures/bcript/interfaces/bcript.incoded.interface";
 import { Prisma } from "@prisma/client";
-import { StrategyFindByIdInterface } from "./interfaces/strategy.find.by.id.interface";
+import { StrategyFindByIdInterface } from "./domain/adaptor/strategy.find.by.id.interface";
 import {
   StrategyFindInputDto,
   StrategyFindOutputDto,
-} from "./dtos/strategy.find.dto";
+} from "./inbound/dtos/strategy.find.dto";
 
 @Injectable()
 export class UsersService implements UsersInterface, StrategyFindByIdInterface {

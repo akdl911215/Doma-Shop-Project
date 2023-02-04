@@ -1,7 +1,7 @@
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { PassportStrategy } from "@nestjs/passport";
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
-import { StrategyFindByIdInterface } from "../../../../users/interfaces/strategy.find.by.id.interface";
+import { StrategyFindByIdInterface } from "../../../../users/domain/adaptor/strategy.find.by.id.interface";
 import { Request } from "express";
 import { RefreshPayloadType } from "../type/refresh.token.payload.type";
 import { NOT_MATCH_REFRESH_TOKEN } from "../../../constants/http/errors/400";

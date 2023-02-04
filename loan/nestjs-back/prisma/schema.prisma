@@ -12,8 +12,8 @@ datasource db {
 
 model Users {
     @@map(name: "users")
-    id  Int  @default(autoincrement())  @id
-    noteId  String  @unique
+    id  String @id @default(uuid()) @db.Uuid
+    userId  String  @unique
     password  String
     name String @db.Text
     phone  String  @unique
@@ -36,7 +36,7 @@ enum SocialType {
 
 model MainBoard {
     @@map(name: "main_board")
-    id  Int @default(autoincrement()) @id
+    id  String @id @default(uuid()) @db.Uuid
     userId  Int
     user Users @relation(fields: [userId], references: [id], onDelete: Cascade)
     title   String
@@ -48,7 +48,7 @@ model MainBoard {
 
 model MainBoardComment {
     @@map(name: "main_board_comment")
-    id Int @default(autoincrement()) @id
+    id  String @id @default(uuid()) @db.Uuid
     mainBoardId Int
     mainBoard MainBoard @relation(fields: [mainBoardId], references: [id], onDelete: Cascade)
     userId Int
@@ -60,7 +60,7 @@ model MainBoardComment {
 
 model MainBoardReComment {
     @@map(name: "main_board_re_comment")
-    id Int @default(autoincrement()) @id
+    id  String @id @default(uuid()) @db.Uuid
     mainBoardCommentId Int
     mainBoardComment MainBoardComment @relation(fields: [mainBoardCommentId], references: [id])
     userId Int

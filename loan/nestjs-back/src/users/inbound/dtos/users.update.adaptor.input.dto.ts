@@ -1,15 +1,12 @@
 import { ApiProperty, PickType } from "@nestjs/swagger";
-import { UsersBaseDto } from "../domain/entity/users.base.dto";
+import { UsersBaseDto } from "../../domain/entity/users.base.dto";
 import { IsNotEmpty, IsString, Matches } from "class-validator";
-import { BaseOutputDto } from "../../common/dtos/base.output.dto";
 
-export class RegisterInputUser extends PickType(UsersBaseDto, [
-  "noteId",
+export class UsersUpdateAdaptorInputDto extends PickType(UsersBaseDto, [
   "password",
   "name",
   "address",
   "phone",
-  "social",
 ] as const) {
   @IsString()
   @IsNotEmpty()
@@ -25,4 +22,4 @@ export class RegisterInputUser extends PickType(UsersBaseDto, [
   confirmPassword!: string;
 }
 
-export class RegisterOutputUser extends BaseOutputDto<UsersBaseDto> {}
+

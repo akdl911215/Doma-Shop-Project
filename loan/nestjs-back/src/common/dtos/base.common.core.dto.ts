@@ -1,8 +1,8 @@
-import { IsDate, IsNumber } from "class-validator";
+import { IsDate, IsUUID } from "class-validator";
 
 export abstract class BaseCommonCoreDto {
-  @IsNumber()
-  readonly id!: number;
+  @IsUUID()
+  readonly id!: string;
 
   @IsDate()
   readonly createdAt!: Date;

@@ -1,7 +1,7 @@
 import {
   StrategyFindOutputDto,
   StrategyFindInputDto,
-} from "../dtos/strategy.find.dto";
+} from "../../inbound/dtos/strategy.find.dto";
 
 export interface StrategyFindByIdInterface {
   readonly strategyFindById: ({
