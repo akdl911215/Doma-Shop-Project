@@ -14,7 +14,7 @@ enum SosialType {
   BASIC,
 }
 
-export class UsersBaseDto extends BaseCommonCoreDto {
+export class UsersModel extends BaseCommonCoreDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({

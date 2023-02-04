@@ -10,7 +10,7 @@ import {
   MainBoardsDeleteInput,
   MainBoardsDeleteOutput,
 } from "./dtos/main.boards.delete.dto";
-import { UsersBaseDto } from "../users/domain/entity/users.base.dto";
+import { UsersModel } from "../users/domain/entity/users.model";
 import {
   MainBoardsListInput,
   MainBoardsListOutput,
@@ -55,7 +55,7 @@ export class MainBoardsService implements MainBoardsInterface {
 
   public async register(dto: {
     requestUser: MainBoardsRegisterInput;
-    user: UsersBaseDto;
+    user: UsersModel;
   }): Promise<MainBoardsRegisterOutput> {
     const { id: userId } = dto.user;
     const { description, title } = dto.requestUser;
@@ -72,7 +72,7 @@ export class MainBoardsService implements MainBoardsInterface {
 
   public async delete(dto: {
     requestBoardId: MainBoardsDeleteInput;
-    user: UsersBaseDto;
+    user: UsersModel;
   }): Promise<MainBoardsDeleteOutput> {
     const { id: searchUserId } = dto.user;
     const user = await this.prisma.users.findUnique({
@@ -159,7 +159,7 @@ export class MainBoardsService implements MainBoardsInterface {
 
   public async update(dto: {
     requestBoard: MainBoardsUpdateInput;
-    user: UsersBaseDto;
+    user: UsersModel;
   }): Promise<MainBoardsUpdateOutput> {
     const { id: searchUserId } = dto.user;
 

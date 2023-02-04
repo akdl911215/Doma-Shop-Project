@@ -23,7 +23,7 @@ import {
   UPDATE_FAILED,
 } from "../common/constants/http/errors/409";
 import { NOTFOUND_USER } from "../common/constants/http/errors/404";
-import { UsersBaseDto } from "./domain/entity/users.base.dto";
+import { UsersModel } from "./domain/entity/users.model";
 import {
   NO_MATCH_PASSWORD,
   NO_MATCH_USER_ID,
@@ -150,7 +150,7 @@ export class UsersService implements UsersInterface, StrategyFindByIdInterface {
 
   public async findOn(dto: {
     requestUser: FindInputUser;
-    user: UsersBaseDto;
+    user: UsersModel;
   }): Promise<FindOutputUser> {
     const { id } = dto.requestUser;
     const { id: userId } = dto.user;
@@ -166,7 +166,7 @@ export class UsersService implements UsersInterface, StrategyFindByIdInterface {
 
   public async delete(dto: {
     requestUserId: DeleteInputUser;
-    user: UsersBaseDto;
+    user: UsersModel;
   }): Promise<DeleteOutputUser> {
     const user = await this.prisma.users.findUnique({
       where: { id: dto.requestUserId.id },
@@ -189,7 +189,7 @@ export class UsersService implements UsersInterface, StrategyFindByIdInterface {
 
   public async update(dto: {
     requestUser: UpdateInputUser;
-    user: UsersBaseDto;
+    user: UsersModel;
   }): Promise<UpdateOutputUser> {
     const dbUser = await this.prisma.users.findUnique({
       where: { id: dto.user.id },

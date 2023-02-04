@@ -14,6 +14,7 @@ model Users {
     @@map(name: "users")
     id  String @id @default(uuid()) @db.Uuid
     userId  String  @unique
+    nickname String @unique
     password  String
     name String @db.Text
     phone  String  @unique
@@ -33,11 +34,30 @@ enum SocialType {
     BASIC
 }
 
+model Loans {
+    @@map(name: "loans")
+    id  String @id @default(uuid()) @db.Uuid
+    debtor String
+    creditor String
+    totalAmountLoan Int
+
+}
+
+model Debtors {
+    @@map(name: "debtors")
+    id  String @id @default(uuid()) @db.Uuid
+}
+
+model Creditors {
+    @@map(name: "creditor")
+    id  String @id @default(uuid()) @db.Uuid
+}
+
 
 model MainBoard {
     @@map(name: "main_board")
     id  String @id @default(uuid()) @db.Uuid
-    userId  Int
+    userId  String
     user Users @relation(fields: [userId], references: [id], onDelete: Cascade)
     title   String
     description String @db.Text
@@ -51,7 +71,7 @@ model MainBoardComment {
     id  String @id @default(uuid()) @db.Uuid
     mainBoardId Int
     mainBoard MainBoard @relation(fields: [mainBoardId], references: [id], onDelete: Cascade)
-    userId Int
+    userId String
     comment String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -61,9 +81,9 @@ model MainBoardComment {
 model MainBoardReComment {
     @@map(name: "main_board_re_comment")
     id  String @id @default(uuid()) @db.Uuid
-    mainBoardCommentId Int
+    mainBoardCommentId String
     mainBoardComment MainBoardComment @relation(fields: [mainBoardCommentId], references: [id])
-    userId Int
+    userId String
     reComment String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

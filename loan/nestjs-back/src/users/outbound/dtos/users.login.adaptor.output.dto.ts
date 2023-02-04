@@ -1,6 +1,6 @@
 import { BaseOutputDto } from "../../../common/dtos/base.output.dto";
-import { UsersBaseDto } from "../../domain/entity/users.base.dto";
+import { UsersModel } from "../../domain/entity/users.model";
 
 export class UsersLoginAdaptorOutputDto extends BaseOutputDto<
-  UsersBaseDto & { readonly accessToken: string; readonly refreshToken: string }
+  UsersModel & { readonly accessToken: string; readonly refreshToken: string }
   > {}

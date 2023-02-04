@@ -25,16 +25,5 @@ export class LoansModel extends BaseCommonCoreDto {
     type: Number,
     default: 0,
   })
-  public totalAmountLoans!: number;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @ApiProperty({
-    type: Number,
-    default: 0,
-  })
-  public numberOfLoans!: number;
-
-  @IsNotEmpty()
-  public loanHoldingId?: number[];
+  public totalAmountLoan!: number;
 }

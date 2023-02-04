@@ -1,4 +1,4 @@
 import { BaseOutputDto } from "../../../common/dtos/base.output.dto";
-import { UsersBaseDto } from "../../domain/entity/users.base.dto";
+import { UsersModel } from "../../domain/entity/users.model";
 
-export class UsersUpdateAdaptorOutputDto extends BaseOutputDto<UsersBaseDto> {}
+export class UsersUpdateAdaptorOutputDto extends BaseOutputDto<UsersModel> {}

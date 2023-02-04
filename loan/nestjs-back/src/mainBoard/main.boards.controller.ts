@@ -34,7 +34,7 @@ import {
   MainBoardsRegisterOutput,
 } from "./dtos/main.boards.register.dto";
 import { User } from "../common/decorators/user.decorator";
-import { UsersBaseDto } from "../users/domain/entity/users.base.dto";
+import { UsersModel } from "../users/domain/entity/users.model";
 import { TWO_HUNDRED_OK } from "../common/constants/http/success/200";
 import {
   MainBoardsListInput,
@@ -75,7 +75,7 @@ export class MainBoardsController {
   @ApiBody({ type: MainBoardsRegisterInput })
   private async register(
     @Body() input: MainBoardsRegisterInput,
-    @User() user: UsersBaseDto
+    @User() user: UsersModel
   ): Promise<MainBoardsRegisterOutput> {
     return await this.boardsService.register({ requestUser: input, user });
   }
@@ -119,7 +119,7 @@ export class MainBoardsController {
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async delete(
     @Param("id", ParseIntPipe) id: number,
-    @User() user: UsersBaseDto
+    @User() user: UsersModel
   ): Promise<MainBoardsDeleteOutput> {
     return await this.boardsService.delete({ requestBoardId: { id }, user });
   }
@@ -158,7 +158,7 @@ export class MainBoardsController {
   @ApiResponse({ status: 409, description: `${UPDATE_FAILED}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async update(
-    @User() user: UsersBaseDto,
+    @User() user: UsersModel,
     @Body() requestBoard: MainBoardsUpdateInput
   ): Promise<MainBoardsUpdateOutput> {
     return await this.boardsService.update({ requestBoard, user });

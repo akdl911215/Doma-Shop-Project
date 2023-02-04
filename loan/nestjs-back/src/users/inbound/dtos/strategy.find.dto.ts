@@ -1,5 +1,5 @@
 import { BaseOutputDto } from "../../../common/dtos/base.output.dto";
-import { UsersBaseDto } from "../../domain/entity/users.base.dto";
+import { UsersModel } from "../../domain/entity/users.model";
 import { IsUUID } from "class-validator";
 
 export class StrategyFindInputDto {
@@ -7,4 +7,4 @@ export class StrategyFindInputDto {
   public id!: string;
 }
 
-export class StrategyFindOutputDto extends BaseOutputDto<UsersBaseDto> {}
+export class StrategyFindOutputDto extends BaseOutputDto<UsersModel> {}

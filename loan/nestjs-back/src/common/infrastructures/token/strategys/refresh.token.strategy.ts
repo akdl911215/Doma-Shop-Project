@@ -7,7 +7,7 @@ import { RefreshPayloadType } from "../type/refresh.token.payload.type";
 import { NOT_MATCH_REFRESH_TOKEN } from "../../../constants/http/errors/400";
 import { ConfigService } from "@nestjs/config";
 import { BaseOutputDto } from "../../../dtos/base.output.dto";
-import { UsersBaseDto } from "../../../../users/domain/entity/users.base.dto";
+import { UsersModel } from "../../../../users/domain/entity/users.model";
 import { TokenService } from "../token.service";
 import { AccessTokenPayloadType } from "../type/access.token.payload.type";
 
@@ -33,7 +33,7 @@ export class RefreshTokenStrategy extends PassportStrategy(
   async validate(
     request: Request,
     payload: RefreshPayloadType
-  ): Promise<BaseOutputDto<UsersBaseDto>> {
+  ): Promise<BaseOutputDto<UsersModel>> {
     const token = request?.headers?.authorization?.split("Bearer ")[1];
     const user = await this.usersService.strategyFindById({ id: payload.id });
     const { id, noteId, phone, refreshToken } = user.response;
