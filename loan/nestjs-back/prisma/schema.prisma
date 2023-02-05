@@ -23,6 +23,7 @@ model Users {
     refreshToken String? @db.Text
     createdAt  DateTime  @default(now())
     updatedAt  DateTime  @updatedAt
+    deletedAt  DateTime?
     social SocialType @default(BASIC)
     mainBoard MainBoard[]
 }
@@ -57,34 +58,37 @@ model Creditors {
 model MainBoard {
     @@map(name: "main_board")
     id  String @id @default(uuid()) @db.Uuid
-    userId  String
+    userId  @db.Uuid
     user Users @relation(fields: [userId], references: [id], onDelete: Cascade)
     title   String
     description String @db.Text
     createdAt    DateTime    @default(now())
     updatedAt  DateTime  @updatedAt
+    deletedAt  DateTime?
     mainBoardComments MainBoardComment[]
 }
 
 model MainBoardComment {
     @@map(name: "main_board_comment")
     id  String @id @default(uuid()) @db.Uuid
-    mainBoardId Int
+    mainBoardId @db.Uuid
     mainBoard MainBoard @relation(fields: [mainBoardId], references: [id], onDelete: Cascade)
     userId String
     comment String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    deletedAt  DateTime?
     mainBoardReComment MainBoardReComment[]
 }
 
 model MainBoardReComment {
     @@map(name: "main_board_re_comment")
     id  String @id @default(uuid()) @db.Uuid
-    mainBoardCommentId String
+    mainBoardCommentId @db.Uuid
     mainBoardComment MainBoardComment @relation(fields: [mainBoardCommentId], references: [id])
     userId String
     reComment String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    deletedAt  DateTime?
 }
