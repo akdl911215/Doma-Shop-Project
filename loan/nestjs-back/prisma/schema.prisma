@@ -58,7 +58,7 @@ model Creditors {
 model MainBoard {
     @@map(name: "main_board")
     id  String @id @default(uuid()) @db.Uuid
-    userId  @db.Uuid
+    userId  String @db.Uuid
     user Users @relation(fields: [userId], references: [id], onDelete: Cascade)
     title   String
     description String @db.Text
@@ -71,9 +71,9 @@ model MainBoard {
 model MainBoardComment {
     @@map(name: "main_board_comment")
     id  String @id @default(uuid()) @db.Uuid
-    mainBoardId @db.Uuid
+    mainBoardId String @db.Uuid
     mainBoard MainBoard @relation(fields: [mainBoardId], references: [id], onDelete: Cascade)
-    userId String
+    userId String @db.Uuid
     comment String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -84,9 +84,9 @@ model MainBoardComment {
 model MainBoardReComment {
     @@map(name: "main_board_re_comment")
     id  String @id @default(uuid()) @db.Uuid
-    mainBoardCommentId @db.Uuid
+    mainBoardCommentId String @db.Uuid
     mainBoardComment MainBoardComment @relation(fields: [mainBoardCommentId], references: [id])
-    userId String
+    userId String @db.Uuid
     reComment String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
