@@ -25,9 +25,21 @@ model Users {
     updatedAt  DateTime  @updatedAt
     deletedAt  DateTime?
     social SocialType @default(BASIC)
-    mainBoard MainBoard[]
+    creditRating Int
+    mainBoards MainBoards[]
 }
 
+model MainBoards {
+    @@map(name: "main_boards")
+    id  String @id @default(uuid()) @db.Uuid
+    users Users @relation(fields: [authId], references: [id], onDelete: Cascade)
+    authId String @db.Uuid
+    title String
+    description String @db.Text
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+}
 
 enum SocialType {
     KAKAO
@@ -38,57 +50,28 @@ enum SocialType {
 model Loans {
     @@map(name: "loans")
     id  String @id @default(uuid()) @db.Uuid
-    debtor String
-    creditor String
+    debtors Debtors @relation(fields: [debtorId], references: [id])
+    debtorId String @db.Uuid
+    creditors Creditors @relation(fields: [creditorId], references: [id])
+    creditorId String
     totalAmountLoan Int
-
+    loanRepaymentDate DateTime
+    interest Int
 }
 
 model Debtors {
     @@map(name: "debtors")
     id  String @id @default(uuid()) @db.Uuid
+    users Users @relation(fields: [authId], references: [id], onDelete: Cascade)
+    authId String @db.Uuid
+    creditRating Int
 }
 
 model Creditors {
     @@map(name: "creditor")
     id  String @id @default(uuid()) @db.Uuid
+    users Users @relation(fields: [authId], references: [id], onDelete: Cascade)
+    authId String @db.Uuid
 }
 
 
-model MainBoard {
-    @@map(name: "main_board")
-    id  String @id @default(uuid()) @db.Uuid
-    userId  String @db.Uuid
-    user Users @relation(fields: [userId], references: [id], onDelete: Cascade)
-    title   String
-    description String @db.Text
-    createdAt    DateTime    @default(now())
-    updatedAt  DateTime  @updatedAt
-    deletedAt  DateTime?
-    mainBoardComments MainBoardComment[]
-}
-
-model MainBoardComment {
-    @@map(name: "main_board_comment")
-    id  String @id @default(uuid()) @db.Uuid
-    mainBoardId String @db.Uuid
-    mainBoard MainBoard @relation(fields: [mainBoardId], references: [id], onDelete: Cascade)
-    userId String @db.Uuid
-    comment String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    deletedAt  DateTime?
-    mainBoardReComment MainBoardReComment[]
-}
-
-model MainBoardReComment {
-    @@map(name: "main_board_re_comment")
-    id  String @id @default(uuid()) @db.Uuid
-    mainBoardCommentId String @db.Uuid
-    mainBoardComment MainBoardComment @relation(fields: [mainBoardCommentId], references: [id])
-    userId String @db.Uuid
-    reComment String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    deletedAt  DateTime?
-}
