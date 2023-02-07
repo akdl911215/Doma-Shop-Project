@@ -32,6 +32,18 @@ export class UsersModel extends BaseCommonCoreDto {
   @ApiProperty({
     type: String,
     required: true,
+    default: "",
+  })
+  @Matches(/^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]{2,12}$/, {
+    message: "닉네임은 2자리 이상 12자리 이하입니다.",
+  })
+  public nickname!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    type: String,
+    required: true,
     format: "password",
   })
   @Matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, {

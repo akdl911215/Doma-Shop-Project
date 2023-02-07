@@ -10,7 +10,7 @@ exports.MainBoardsModule = void 0;
 const common_1 = require("@nestjs/common");
 const main_boards_service_1 = require("./main.boards.service");
 const main_boards_controller_1 = require("./main.boards.controller");
-const prisma_service_1 = require("../prisma.service");
+const prisma_service_1 = require("../common/infrastructures/prisma/prisma.service");
 let MainBoardsModule = class MainBoardsModule {
 };
 MainBoardsModule = __decorate([

@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MainBoardsBaseDto = void 0;
-const base_common_dto_1 = require("../../common/dtos/base.common.dto");
+const base_common_core_dto_1 = require("../../common/dtos/base.common.core.dto");
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
-class MainBoardsBaseDto extends base_common_dto_1.CommonCoreDto {
+class MainBoardsBaseDto extends base_common_core_dto_1.BaseCommonCoreDto {
 }
 __decorate([
     (0, class_validator_1.IsNumber)(),

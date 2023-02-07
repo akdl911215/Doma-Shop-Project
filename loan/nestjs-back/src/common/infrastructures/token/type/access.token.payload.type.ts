@@ -1,4 +1,4 @@
 export type AccessTokenPayloadType = {
-  readonly id: number;
-  readonly noteId: string;
+  readonly id: string;
+  readonly userId: string;
 };

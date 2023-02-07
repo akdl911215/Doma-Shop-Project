@@ -11,67 +11,53 @@ datasource db {
 }
 
 model Users {
-    @@map(name: "users")
-    id  String @id @default(uuid()) @db.Uuid
-    userId  String  @unique
-    nickname String @unique
-    password  String
-    name String @db.Text
-    phone  String  @unique
-    address String @db.Text
-    isMarketing  Boolean  @default(false)
-    refreshToken String? @db.Text
-    createdAt  DateTime  @default(now())
-    updatedAt  DateTime  @updatedAt
-    deletedAt  DateTime?
-    social SocialType @default(BASIC)
-    creditRating Int
-    mainBoards MainBoards[]
-}
+  id           String      @id @default(uuid()) @db.Uuid
+  userId       String      @unique
+  nickname     String      @unique
+  password     String
+  name         String      @db.Text
+  phone        String      @unique
+  address      String      @db.Text
+  isMarketing  Boolean     @default(false)
+  refreshToken String?     @db.Text
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  deletedAt    DateTime?
+  creditRating Int
+  Debtors      Debtors[]
+  Creditors    Creditors[]
 
-model MainBoards {
-    @@map(name: "main_boards")
-    id  String @id @default(uuid()) @db.Uuid
-    users Users @relation(fields: [authId], references: [id], onDelete: Cascade)
-    authId String @db.Uuid
-    title String
-    description String @db.Text
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    deletedAt DateTime?
-}
-
-enum SocialType {
-    KAKAO
-    NAVER
-    BASIC
+  @@map(name: "users")
 }
 
 model Loans {
-    @@map(name: "loans")
-    id  String @id @default(uuid()) @db.Uuid
-    debtors Debtors @relation(fields: [debtorId], references: [id])
-    debtorId String @db.Uuid
-    creditors Creditors @relation(fields: [creditorId], references: [id])
-    creditorId String
-    totalAmountLoan Int
-    loanRepaymentDate DateTime
-    interest Int
+  id                String    @id @default(uuid()) @db.Uuid
+  debtors           Debtors   @relation(fields: [debtorId], references: [id])
+  debtorId          String    @db.Uuid
+  creditors         Creditors @relation(fields: [creditorId], references: [id])
+  creditorId        String    @db.Uuid
+  totalAmountLoan   Int
+  loanRepaymentDate DateTime
+  interest          Int
+
+  @@map(name: "loans")
 }
 
 model Debtors {
-    @@map(name: "debtors")
-    id  String @id @default(uuid()) @db.Uuid
-    users Users @relation(fields: [authId], references: [id], onDelete: Cascade)
-    authId String @db.Uuid
-    creditRating Int
+  id           String  @id @default(uuid()) @db.Uuid
+  users        Users   @relation(fields: [authId], references: [id], onDelete: Cascade)
+  authId       String  @db.Uuid
+  creditRating Int
+  Loans        Loans[]
+
+  @@map(name: "debtors")
 }
 
 model Creditors {
-    @@map(name: "creditor")
-    id  String @id @default(uuid()) @db.Uuid
-    users Users @relation(fields: [authId], references: [id], onDelete: Cascade)
-    authId String @db.Uuid
+  id     String  @id @default(uuid()) @db.Uuid
+  users  Users   @relation(fields: [authId], references: [id], onDelete: Cascade)
+  authId String  @db.Uuid
+  Loans  Loans[]
+
+  @@map(name: "creditor")
 }
-
-

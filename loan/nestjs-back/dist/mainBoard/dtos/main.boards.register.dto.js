@@ -25,6 +25,26 @@ __decorate([
     }),
     __metadata("design:type", Number)
 ], MainBoardsRegisterInput.prototype, "userId", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        required: true,
+        default: "",
+    }),
+    __metadata("design:type", String)
+], MainBoardsRegisterInput.prototype, "title", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        required: true,
+        default: "",
+    }),
+    __metadata("design:type", String)
+], MainBoardsRegisterInput.prototype, "description", void 0);
 exports.MainBoardsRegisterInput = MainBoardsRegisterInput;
 class MainBoardsRegisterOutput extends base_output_dto_1.BaseOutputDto {
 }

@@ -19,7 +19,7 @@ export class UsersUpdateAdaptorInputDto extends PickType(UsersModel, [
     message:
       "컨펌 비밀번호는 최소 8자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수문자입니다.",
   })
-  confirmPassword!: string;
+  public confirmPassword!: string;
 }
 
 

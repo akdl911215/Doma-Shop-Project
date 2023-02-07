@@ -1,5 +1,5 @@
-export type RefreshPayloadType = {
-  readonly id: number;
-  readonly noteId: string;
+export type RefreshTokenPayloadType = {
+  readonly id: string;
+  readonly userId: string;
   readonly phone: string;
 };

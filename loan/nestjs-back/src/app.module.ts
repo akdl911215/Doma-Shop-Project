@@ -8,9 +8,8 @@ const CONFIG_MODULE = ConfigModule.forRoot({
   envFilePath:
     process.env.NODE_ENV === "production"
       ? ".env.production"
-      : process.env.NODE_ENV === "development"
-      ? ".env.development"
-      : ".env",
+      : ".env.development",
+
   validationSchema: Joi.object({
     NODE_ENV: Joi.string()
       .valid("production", "development")

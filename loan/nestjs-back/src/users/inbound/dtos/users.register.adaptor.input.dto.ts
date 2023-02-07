@@ -9,6 +9,7 @@ export class UsersRegisterAdaptorInputDto extends PickType(UsersModel, [
   "address",
   "phone",
   "social",
+  "nickname",
 ] as const) {
   @IsString()
   @IsNotEmpty()
@@ -23,4 +24,3 @@ export class UsersRegisterAdaptorInputDto extends PickType(UsersModel, [
   })
   confirmPassword!: string;
 }
-

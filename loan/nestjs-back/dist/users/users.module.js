@@ -8,9 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersModule = void 0;
 const common_1 = require("@nestjs/common");
-const users_service_1 = require("./users.service");
-const users_controller_1 = require("./users.controller");
-const prisma_service_1 = require("../prisma.service");
+const prisma_service_1 = require("../common/infrastructures/prisma/prisma.service");
 const token_service_1 = require("../common/infrastructures/token/token.service");
 const bcript_service_1 = require("../common/infrastructures/bcript/bcript.service");
 const refresh_token_strategy_1 = require("../common/infrastructures/token/strategys/refresh.token.strategy");
@@ -23,7 +21,7 @@ let UsersModule = class UsersModule {
 UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [passport_1.PassportModule, bcript_module_1.BcriptModule, token_module_1.TokenModule],
-        controllers: [users_controller_1.UsersController],
+        controllers: [UsersController],
         providers: [
             access_token_strategy_1.AccessTokenStrategy,
             refresh_token_strategy_1.RefreshTokenStrategy,
@@ -33,21 +31,21 @@ UsersModule = __decorate([
             token_service_1.TokenService,
             {
                 provide: "USERS_SERVICE",
-                useClass: users_service_1.UsersService,
+                useClass: UsersService,
             },
             {
                 provide: "STRATEGY_FIND_BY_ID",
-                useClass: users_service_1.UsersService,
+                useClass: UsersService,
             },
         ],
         exports: [
             {
                 provide: "USERS_SERVICE",
-                useClass: users_service_1.UsersService,
+                useClass: UsersService,
             },
             {
                 provide: "STRATEGY_FIND_BY_ID",
-                useClass: users_service_1.UsersService,
+                useClass: UsersService,
             },
         ],
     })

@@ -1,5 +1,5 @@
 import { MainBoardsRegisterInput, MainBoardsRegisterOutput } from "../dtos/main.boards.register.dto";
-import { UsersBaseDto } from "../../users/dtos/users.base.dto";
+import { UsersModel } from "../../users/domain/entity/users.model";
 import { MainBoardsDeleteInput, MainBoardsDeleteOutput } from "../dtos/main.boards.delete.dto";
 import { MainBoardsReadInput, MainBoardsReadOutput } from "../dtos/main.boards.read.dto";
 import { MainBoardsUpdateInput, MainBoardsUpdateOutput } from "../dtos/main.boards.update.dto";
@@ -7,16 +7,16 @@ import { MainBoardsListInput, MainBoardsListOutput } from "../dtos/main.boards.l
 export interface MainBoardsInterface {
     readonly register: (dto: {
         requestUser: MainBoardsRegisterInput;
-        user: UsersBaseDto;
+        user: UsersModel;
     }) => Promise<MainBoardsRegisterOutput>;
     readonly delete: (dto: {
         requestBoardId: MainBoardsDeleteInput;
-        user: UsersBaseDto;
+        user: UsersModel;
     }) => Promise<MainBoardsDeleteOutput>;
     readonly read: (dto: MainBoardsReadInput) => Promise<MainBoardsReadOutput>;
     readonly update: (dto: {
         requestBoard: MainBoardsUpdateInput;
-        user: UsersBaseDto;
+        user: UsersModel;
     }) => Promise<MainBoardsUpdateOutput>;
     readonly list: (dto: MainBoardsListInput) => Promise<MainBoardsListOutput>;
 }
