@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.exists.password.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.exists.user.id.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +80,7 @@
       <workItem from="1675247965547" duration="1902000" />
       <workItem from="1675305619980" duration="2372000" />
       <workItem from="1675488882257" duration="10429000" />
-      <workItem from="1675662994638" duration="17366000" />
+      <workItem from="1675662994638" duration="19574000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
