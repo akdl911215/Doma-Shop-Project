@@ -14,6 +14,9 @@ import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500
 import { UsersModel } from "../../domain/entity/users.model";
 import { AccessTokenGuard } from "../../../common/infrastructures/token/guards/access.token.guard";
 import { User } from "../../../common/decorators/user.decorator";
+import { UsersUpdateNicknameAdaptorInputDto } from "../../inbound/dtos/users.update.nickname.adaptor.input.dto";
+import { UsersUpdateNicknameAdaptorOutputDto } from "../../outbound/dtos/users.update.nickname.adaptor.output.dto";
+import { UsersUpdateNicknameAdaptor } from "../../domain/adaptor/users.update.nickname.adaptor";
 
 @ApiTags("users")
 @Controller("users")

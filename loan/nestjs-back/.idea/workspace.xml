@@ -5,80 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.nickname.adaptor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.password.adaptor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.phone.adaptor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.nickname.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.password.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.phone.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.password.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/outbound/dtos/users.exits.adaptor.output.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/outbound/dtos/users.update.nickname.adaptor.output.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/outbound/dtos/users.update.password.adaptor.output.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/users/outbound/dtos/users.update.phone.adaptor.output.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/app.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/app.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/400.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/400.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/400.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/400.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/400.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/400.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/404.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/404.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/404.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/404.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/404.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/409.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/409.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/409.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/409.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/constants/http/errors/409.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/constants/http/errors/409.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/strategys/access.token.strategy.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/strategys/access.token.strategy.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/strategys/refresh.token.strategy.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/strategys/refresh.token.strategy.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.base.dto.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.base.dto.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.base.dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.base.dto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.base.dto.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.base.dto.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.list.dto.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.list.dto.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.register.dto.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.register.dto.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.register.dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.register.dto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.register.dto.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/dtos/main.boards.register.dto.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/interceptors/main.boards.interface.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/interceptors/main.boards.interface.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/main.boards.controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/main.boards.controller.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/main.boards.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/main.boards.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/main.boards.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/main.boards.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/main.boards.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/main.boards.module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/main.boards.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/main.boards.module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/main.boards.service.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/main.boards.service.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/main.boards.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/main.boards.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/mainBoard/main.boards.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/mainBoard/main.boards.service.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.service.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.service.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/users.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.service.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230206092850_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230206092912_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230206093950_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230206094250_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/migration_lock.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/decorators/user.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/decorators/user.decorator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/type/access.token.payload.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/type/access.token.payload.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/type/refresh.token.payload.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/type/refresh.token.payload.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/domain/adaptor/users.exists.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/domain/adaptor/users.exists.adaptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/domain/entity/users.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/domain/entity/users.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/domain/service/users.decorator.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/inbound/dtos/users.exists.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.exists.adaptor.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/inbound/dtos/users.register.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.register.adaptor.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.adaptor.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.register.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.register.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.login.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.login.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.profile.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.profile.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.register.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.register.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.exists.password.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.exists.user.id.use.case.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +83,7 @@
       <workItem from="1675247965547" duration="1902000" />
       <workItem from="1675305619980" duration="2372000" />
       <workItem from="1675488882257" duration="10429000" />
-      <workItem from="1675662994638" duration="14194000" />
+      <workItem from="1675662994638" duration="17366000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
