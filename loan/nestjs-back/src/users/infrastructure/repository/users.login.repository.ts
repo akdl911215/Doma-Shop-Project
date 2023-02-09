@@ -16,6 +16,7 @@ import { TokenService } from "../../../common/infrastructures/token/token.servic
 import { UsersLoginAdaptor } from "../../domain/adaptor/users.login.adaptor";
 import { AccessTokenPayloadType } from "../../../common/infrastructures/token/type/access.token.payload.type";
 import { RefreshTokenPayloadType } from "../../../common/infrastructures/token/type/refresh.token.payload.type";
+import { HashDecodedService } from "../bcrypt/hash.decoded.service";
 
 @Injectable()
 @Dependencies([PrismaService, HashDecodedService, TokenService])

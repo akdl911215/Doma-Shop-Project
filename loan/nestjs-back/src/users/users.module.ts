@@ -11,7 +11,10 @@ import { UsersWithdrawalUseCase } from "./application/usecase/users.withdrawal.u
 import { UsersRegisterUseCase } from "./application/usecase/users.register.use.case";
 import { UsersProfileUseCase } from "./application/usecase/users.profile.use.case";
 import { UsersLoginUseCase } from "./application/usecase/users.login.use.case";
-import { UsersExistsAccountIdUseCase } from "./application/usecase/users.exists.user.id.use.case";
+import {
+  UsersExistsAccountIdUseCase,
+  UsersExistsUserIdUseCase,
+} from "./application/usecase/users.exists.user.id.use.case";
 import { UsersExistsNicknameUseCase } from "./application/usecase/users.exists.nickname.use.case";
 import { UsersExistsPhoneUseCase } from "./application/usecase/users.exists.phone.use.case";
 

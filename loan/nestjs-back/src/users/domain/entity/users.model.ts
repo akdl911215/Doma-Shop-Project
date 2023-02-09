@@ -1,18 +1,6 @@
-import {
-  IsBoolean,
-  IsEnum,
-  IsNotEmpty,
-  IsString,
-  Matches,
-} from "class-validator";
+import { IsNotEmpty, IsString, Matches } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 import { BaseCommonCoreDto } from "../../../common/dtos/base.common.core.dto";
-
-enum SosialType {
-  KAKAO,
-  NAVER,
-  BASIC,
-}
 
 export class UsersModel extends BaseCommonCoreDto {
   @IsString()
@@ -82,22 +70,6 @@ export class UsersModel extends BaseCommonCoreDto {
   })
   public phone!: string;
 
-  @IsBoolean()
-  @IsNotEmpty()
-  @ApiProperty({
-    type: "boolean",
-    required: true,
-    nullable: false,
-  })
-  public isMarketing!: boolean;
-
-  @IsEnum(SosialType)
-  @ApiProperty({
-    enum: SosialType,
-    required: false,
-  })
-  public social!: SosialType | string;
-
   @IsString()
   public refreshToken?: string;
 
@@ -105,8 +77,8 @@ export class UsersModel extends BaseCommonCoreDto {
   public accessToken?: string;
 
   // 갚을 돈들, 갚을 채권들
-  public loanPayBack!: number[];
+  public loanPayBack?: number[];
 
   // 받을 돈들, 받을 채권들
-  public loanReceived!: number[];
+  public loanReceived?: number[];
 }

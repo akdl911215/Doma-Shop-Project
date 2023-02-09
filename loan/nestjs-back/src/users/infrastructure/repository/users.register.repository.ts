@@ -8,6 +8,7 @@ import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
 import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
 import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
+import { HashEncodedService } from "../bcrypt/hash.encoded.service";
 
 @Injectable()
 @Dependencies([HashEncodedService, PrismaService])
@@ -32,7 +33,6 @@ export class UsersRegisterRepository implements UsersRegisterAdaptor {
             nickname: dto.nickname,
             password: hashPassword,
             phone: dto.phone,
-            isMarketing: dto.isMarketing,
           },
         }),
       ]);
