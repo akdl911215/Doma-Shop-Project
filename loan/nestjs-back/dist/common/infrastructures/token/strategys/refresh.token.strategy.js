@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RefreshTokenStrategy = void 0;
 const passport_jwt_1 = require("passport-jwt");
 const passport_1 = require("@nestjs/passport");
 const common_1 = require("@nestjs/common");
+const strategy_find_by_id_interface_1 = require("../../../../users/domain/adaptor/strategy.find.by.id.interface");
 const _400_1 = require("../../../constants/http/errors/400");
 const config_1 = require("@nestjs/config");
 const token_service_1 = require("../token.service");
@@ -49,7 +51,7 @@ let RefreshTokenStrategy = class RefreshTokenStrategy extends (0, passport_1.Pas
 RefreshTokenStrategy = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("STRATEGY_FIND_BY_ID")),
-    __metadata("design:paramtypes", [Object, config_1.ConfigService,
+    __metadata("design:paramtypes", [typeof (_a = typeof strategy_find_by_id_interface_1.StrategyFindByIdInterface !== "undefined" && strategy_find_by_id_interface_1.StrategyFindByIdInterface) === "function" ? _a : Object, config_1.ConfigService,
         token_service_1.TokenService])
 ], RefreshTokenStrategy);
 exports.RefreshTokenStrategy = RefreshTokenStrategy;

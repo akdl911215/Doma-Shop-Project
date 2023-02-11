@@ -11,17 +11,31 @@ const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../common/infrastructures/prisma/prisma.service");
 const token_service_1 = require("../common/infrastructures/token/token.service");
 const bcript_service_1 = require("../common/infrastructures/bcript/bcript.service");
-const refresh_token_strategy_1 = require("../common/infrastructures/token/strategys/refresh.token.strategy");
-const access_token_strategy_1 = require("../common/infrastructures/token/strategys/access.token.strategy");
 const token_module_1 = require("../common/infrastructures/token/token.module");
 const bcript_module_1 = require("../common/infrastructures/bcript/bcript.module");
 const passport_1 = require("@nestjs/passport");
+const users_withdrawal_use_case_1 = require("./application/usecase/users.withdrawal.use.case");
+const users_register_use_case_1 = require("./application/usecase/users.register.use.case");
+const users_profile_use_case_1 = require("./application/usecase/users.profile.use.case");
+const users_login_use_case_1 = require("./application/usecase/users.login.use.case");
+const users_exists_user_id_use_case_1 = require("./application/usecase/users.exists.user.id.use.case");
+const users_exists_nickname_use_case_1 = require("./application/usecase/users.exists.nickname.use.case");
+const users_exists_phone_use_case_1 = require("./application/usecase/users.exists.phone.use.case");
+const users_withdrawal_repository_1 = require("./infrastructure/repository/users.withdrawal.repository");
+const users_login_repository_1 = require("./infrastructure/repository/users.login.repository");
+const users_register_repository_1 = require("./infrastructure/repository/users.register.repository");
+const users_update_password_repository_1 = require("./infrastructure/repository/users.update.password.repository");
+const users_update_phone_repository_1 = require("./infrastructure/repository/users.update.phone.repository");
+const users_update_nickname_repository_1 = require("./infrastructure/repository/users.update.nickname.repository");
+const users_profile_repository_1 = require("./infrastructure/repository/users.profile.repository");
+const access_token_strategy_1 = require("../common/infrastructures/token/strategy/access.token.strategy");
+const refresh_token_strategy_1 = require("../common/infrastructures/token/strategy/refresh.token.strategy");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [passport_1.PassportModule, bcript_module_1.BcriptModule, token_module_1.TokenModule],
-        controllers: [UsersController],
+        controllers: [],
         providers: [
             access_token_strategy_1.AccessTokenStrategy,
             refresh_token_strategy_1.RefreshTokenStrategy,
@@ -29,25 +43,31 @@ UsersModule = __decorate([
             bcript_service_1.BcriptService,
             common_1.Logger,
             token_service_1.TokenService,
+            { provide: "USE_CASE_WITHDRAWAL", useClass: users_withdrawal_use_case_1.UsersWithdrawalUseCase },
+            { provide: "USE_CASE_REGISTER", useClass: users_register_use_case_1.UsersRegisterUseCase },
             {
-                provide: "USERS_SERVICE",
-                useClass: UsersService,
+                provide: "USE_CASE_PROFILE",
+                useClass: users_profile_use_case_1.UsersProfileUseCase,
+            },
+            { provide: "USE_CASE_LOGIN", useClass: users_login_use_case_1.UsersLoginUseCase },
+            {
+                provide: "USE_CASE_EXISTS_USER_ID",
+                useClass: users_exists_user_id_use_case_1.UsersExistsUserIdUseCase,
             },
             {
-                provide: "STRATEGY_FIND_BY_ID",
-                useClass: UsersService,
+                provide: "USE_CASE_EXISTS_NICKNAME",
+                useClass: users_exists_nickname_use_case_1.UsersExistsNicknameUseCase,
             },
+            { provide: "USE_CASE_EXISTS_PHONE", useClass: users_exists_phone_use_case_1.UsersExistsPhoneUseCase },
+            { provide: "WITHDRAWAL", useClass: users_withdrawal_repository_1.UsersWithdrawalRepository },
+            { provide: "REGISTER", useClass: users_register_repository_1.UsersRegisterRepository },
+            { provide: "LOGIN", useClass: users_login_repository_1.UsersLoginRepository },
+            { provide: "UPDATE_PASSWORD", useClass: users_update_password_repository_1.UsersUpdatePasswordRepository },
+            { provide: "UPDATE_PHONE", useClass: users_update_phone_repository_1.UsersUpdatePhoneRepository },
+            { provide: "UPDATE_NICKNAME", useClass: users_update_nickname_repository_1.UsersUpdateNicknameRepository },
+            { provide: "PROFILE", useClass: users_profile_repository_1.UsersProfileRepository },
         ],
-        exports: [
-            {
-                provide: "USERS_SERVICE",
-                useClass: UsersService,
-            },
-            {
-                provide: "STRATEGY_FIND_BY_ID",
-                useClass: UsersService,
-            },
-        ],
+        exports: [],
     })
 ], UsersModule);
 exports.UsersModule = UsersModule;

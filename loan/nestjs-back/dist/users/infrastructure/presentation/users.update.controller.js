@@ -15,13 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersUpdateController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const access_token_guard_1 = require("../../../common/infrastructures/token/guards/access.token.guard");
 const _200_1 = require("../../../common/constants/http/success/200");
 const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _409_1 = require("../../../common/constants/http/errors/409");
 const _500_1 = require("../../../common/constants/http/errors/500");
 const users_update_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.adaptor.input.dto");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 let UsersUpdateController = class UsersUpdateController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -31,7 +31,7 @@ let UsersUpdateController = class UsersUpdateController {
     }
 };
 __decorate([
-    (0, common_1.UseGuards)(access_token_guard_1.AccessTokenGuard),
+    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Patch)("/update"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
@@ -56,9 +56,9 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersUpdateController.prototype, "update", null);
 UsersUpdateController = __decorate([
-    (0, common_1.Controller)('users'),
-    (0, swagger_1.ApiTags)('users'),
-    __param(0, (0, common_1.Inject)('USERS_UPDATE')),
+    (0, common_1.Controller)("users"),
+    (0, swagger_1.ApiTags)("users"),
+    __param(0, (0, common_1.Inject)("USERS_UPDATE")),
     __metadata("design:paramtypes", [Object])
 ], UsersUpdateController);
 exports.UsersUpdateController = UsersUpdateController;

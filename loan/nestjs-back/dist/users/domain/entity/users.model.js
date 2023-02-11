@@ -13,12 +13,6 @@ exports.UsersModel = void 0;
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
 const base_common_core_dto_1 = require("../../../common/dtos/base.common.core.dto");
-var SosialType;
-(function (SosialType) {
-    SosialType[SosialType["KAKAO"] = 0] = "KAKAO";
-    SosialType[SosialType["NAVER"] = 1] = "NAVER";
-    SosialType[SosialType["BASIC"] = 2] = "BASIC";
-})(SosialType || (SosialType = {}));
 class UsersModel extends base_common_core_dto_1.BaseCommonCoreDto {
 }
 __decorate([
@@ -34,6 +28,19 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], UsersModel.prototype, "userId", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        required: true,
+        default: "",
+    }),
+    (0, class_validator_1.Matches)(/^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]{2,12}$/, {
+        message: "닉네임은 2자리 이상 12자리 이하입니다.",
+    }),
+    __metadata("design:type", String)
+], UsersModel.prototype, "nickname", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
@@ -80,24 +87,6 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], UsersModel.prototype, "phone", void 0);
-__decorate([
-    (0, class_validator_1.IsBoolean)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, swagger_1.ApiProperty)({
-        type: "boolean",
-        required: true,
-        nullable: false,
-    }),
-    __metadata("design:type", Boolean)
-], UsersModel.prototype, "isMarketing", void 0);
-__decorate([
-    (0, class_validator_1.IsEnum)(SosialType),
-    (0, swagger_1.ApiProperty)({
-        enum: SosialType,
-        required: false,
-    }),
-    __metadata("design:type", Object)
-], UsersModel.prototype, "social", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)

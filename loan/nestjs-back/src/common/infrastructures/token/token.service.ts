@@ -1,10 +1,10 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { AccessTokenPayloadType } from "./type/access.token.payload.type";
-import { RefreshPayloadType } from "./type/refresh.token.payload.type";
 import { ConfigService } from "@nestjs/config";
 import { BcriptIncodedInterface } from "../bcript/interfaces/bcript.incoded.interface";
-import { GenerateTokenOutputDto } from "./dtos/generate.token.dto";
+import { RefreshTokenPayloadType } from "./type/refresh.token.payload.type";
+import { GenerateTokenOutputDto } from "./outbound/dtos/generate.token.output.dto";
 
 @Injectable()
 export class TokenService {
@@ -16,7 +16,7 @@ export class TokenService {
 
   public async generateTokens(
     accessPayload: AccessTokenPayloadType,
-    refreshPayload: RefreshPayloadType
+    refreshPayload: RefreshTokenPayloadType
   ): Promise<GenerateTokenOutputDto> {
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(accessPayload, {

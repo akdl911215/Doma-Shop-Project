@@ -15,12 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersWithdrawalController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const access_token_guard_1 = require("../../../common/infrastructures/token/guards/access.token.guard");
 const _200_1 = require("../../../common/constants/http/success/200");
 const _204_1 = require("../../../common/constants/http/success/204");
 const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _500_1 = require("../../../common/constants/http/errors/500");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 let UsersWithdrawalController = class UsersWithdrawalController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -30,7 +30,7 @@ let UsersWithdrawalController = class UsersWithdrawalController {
     }
 };
 __decorate([
-    (0, common_1.UseGuards)(access_token_guard_1.AccessTokenGuard),
+    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Delete)("/:id"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
@@ -49,15 +49,15 @@ __decorate([
         description: `${_404_1.NOTFOUND_USER}, ${_404_1.NOTFOUND_BOARD}, ${_404_1.NOTFOUND_BOARD_COMMENT}`,
     }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
-    __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
+    __param(0, (0, common_1.Param)("id", common_1.ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UsersWithdrawalController.prototype, "withdrawal", null);
 UsersWithdrawalController = __decorate([
-    (0, common_1.Controller)('users'),
-    (0, swagger_1.ApiTags)('users'),
-    __param(0, (0, common_1.Inject)('USERS_WITHDRAWAL')),
+    (0, common_1.Controller)("users"),
+    (0, swagger_1.ApiTags)("users"),
+    __param(0, (0, common_1.Inject)("USERS_WITHDRAWAL")),
     __metadata("design:paramtypes", [Object])
 ], UsersWithdrawalController);
 exports.UsersWithdrawalController = UsersWithdrawalController;

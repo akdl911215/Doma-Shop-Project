@@ -22,8 +22,9 @@ import { UsersModel } from "../../domain/entity/users.model";
 import { UsersUpdateAdaptorOutputDto } from "../../outbound/dtos/users.update.adaptor.output.dto";
 import { UsersUpdatePhoneAdaptorInputDto } from "../../inbound/dtos/users.update.phone.adaptor.input.dto";
 import { UsersUpdatePhoneAdaptor } from "../../domain/adaptor/users.update.phone.adaptor";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guards/access.token.guard";
 import { User } from "../../../common/decorators/user.decorator";
+import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
+import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
 
 @ApiTags("users")
 @Controller("users")

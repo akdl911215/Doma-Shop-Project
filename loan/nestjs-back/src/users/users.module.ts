@@ -2,8 +2,6 @@ import { Logger, Module } from "@nestjs/common";
 import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
 import { TokenService } from "../common/infrastructures/token/token.service";
 import { BcriptService } from "../common/infrastructures/bcript/bcript.service";
-import { RefreshTokenStrategy } from "../common/infrastructures/token/strategys/refresh.token.strategy";
-import { AccessTokenStrategy } from "../common/infrastructures/token/strategys/access.token.strategy";
 import { TokenModule } from "../common/infrastructures/token/token.module";
 import { BcriptModule } from "../common/infrastructures/bcript/bcript.module";
 import { PassportModule } from "@nestjs/passport";
@@ -11,12 +9,18 @@ import { UsersWithdrawalUseCase } from "./application/usecase/users.withdrawal.u
 import { UsersRegisterUseCase } from "./application/usecase/users.register.use.case";
 import { UsersProfileUseCase } from "./application/usecase/users.profile.use.case";
 import { UsersLoginUseCase } from "./application/usecase/users.login.use.case";
-import {
-  UsersExistsAccountIdUseCase,
-  UsersExistsUserIdUseCase,
-} from "./application/usecase/users.exists.user.id.use.case";
+import { UsersExistsUserIdUseCase } from "./application/usecase/users.exists.user.id.use.case";
 import { UsersExistsNicknameUseCase } from "./application/usecase/users.exists.nickname.use.case";
 import { UsersExistsPhoneUseCase } from "./application/usecase/users.exists.phone.use.case";
+import { UsersWithdrawalRepository } from "./infrastructure/repository/users.withdrawal.repository";
+import { UsersLoginRepository } from "./infrastructure/repository/users.login.repository";
+import { UsersRegisterRepository } from "./infrastructure/repository/users.register.repository";
+import { UsersUpdatePasswordRepository } from "./infrastructure/repository/users.update.password.repository";
+import { UsersUpdatePhoneRepository } from "./infrastructure/repository/users.update.phone.repository";
+import { UsersUpdateNicknameRepository } from "./infrastructure/repository/users.update.nickname.repository";
+import { UsersProfileRepository } from "./infrastructure/repository/users.profile.repository";
+import { AccessTokenStrategy } from "../common/infrastructures/token/strategy/access.token.strategy";
+import { RefreshTokenStrategy } from "../common/infrastructures/token/strategy/refresh.token.strategy";
 
 @Module({
   imports: [PassportModule, BcriptModule, TokenModule],
@@ -71,45 +75,36 @@ import { UsersExistsPhoneUseCase } from "./application/usecase/users.exists.phon
 
     // repository
     { provide: "WITHDRAWAL", useClass: UsersWithdrawalRepository },
-    { provide: "LOGOUT", useClass: UsersLogoutRepository },
-    {
-      provide: "EXISTS_ACCOUNT_ID",
-      useClass: UsersExistsAccountIdRepository,
-    },
-    { provide: "EXISTS_PHONE", useClass: UsersExistsPhoneRepository },
-    { provide: "EXISTS_ID", useClass: UsersExistsIdRepository },
-    { provide: "EXISTS_NICKNAME", useClass: UsersExistsNicknameRepository },
+    // { provide: "LOGOUT", useClass: UsersLogoutRepository },
+    // {
+    //   provide: "EXISTS_ACCOUNT_ID",
+    //   useClass: UsersExistsAccountIdRepository,
+    // },
+    // { provide: "EXISTS_PHONE", useClass: UsersExistsPhoneRepository },
+    // { provide: "EXISTS_ID", useClass: UsersExistsIdRepository },
+    // { provide: "EXISTS_NICKNAME", useClass: UsersExistsNicknameRepository },
     { provide: "REGISTER", useClass: UsersRegisterRepository },
     { provide: "LOGIN", useClass: UsersLoginRepository },
     // { provide: 'UPDATE', useClass: UsersUpdateRepository },
     { provide: "UPDATE_PASSWORD", useClass: UsersUpdatePasswordRepository },
     { provide: "UPDATE_PHONE", useClass: UsersUpdatePhoneRepository },
     { provide: "UPDATE_NICKNAME", useClass: UsersUpdateNicknameRepository },
-    { provide: "UPDATE_ACCOUNT_ID", useClass: UsersUpdateAccountIdRepository },
-    { provide: "DELETE", useClass: UsersDeleteRepository },
+    // { provide: "UPDATE_ACCOUNT_ID", useClass: UsersUpdateAccountIdRepository },
+    // { provide: "DELETE", useClass: UsersDeleteRepository },
     { provide: "PROFILE", useClass: UsersProfileRepository },
-    {
-      provide: "USERS_FIND_BY_ID",
-      useClass: UsersFindByIdRepository,
-    },
-    {
-      provide: "REFRESH_TOKEN_RE_ISSUANCE",
-      useClass: UsersRefreshTokenReIssuanceRepository,
-    },
-    {
-      provide: "COMPARE_CURRENT_PASSWORD_AND_PASSWORD",
-      useClass: UsersCompareCurrentPasswordAndPasswordRepository,
-    },
+    // {
+    //   provide: "USERS_FIND_BY_ID",
+    //   useClass: UsersFindByIdRepository,
+    // },
+    // {
+    //   provide: "REFRESH_TOKEN_RE_ISSUANCE",
+    //   useClass: UsersRefreshTokenReIssuanceRepository,
+    // },
+    // {
+    //   provide: "COMPARE_CURRENT_PASSWORD_AND_PASSWORD",
+    //   useClass: UsersCompareCurrentPasswordAndPasswordRepository,
+    // },
   ],
-  exports: [
-    {
-      provide: "USE_CASE_USERS_FIND_BY_ID",
-      useClass: UsersFindByIdUseCase,
-    },
-    {
-      provide: "COMPARE_CURRENT_PASSWORD_AND_PASSWORD",
-      useClass: UsersCompareCurrentPasswordAndPasswordRepository,
-    },
-  ],
+  exports: [],
 })
 export class UsersModule {}

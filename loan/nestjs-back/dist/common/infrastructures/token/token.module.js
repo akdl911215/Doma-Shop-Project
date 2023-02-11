@@ -7,17 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TokenModule = void 0;
-const common_1 = require("@nestjs/common");
-const token_service_1 = require("./token.service");
 const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("@nestjs/config");
 const bcript_module_1 = require("../bcript/bcript.module");
 const bcript_service_1 = require("../bcript/bcript.service");
+const token_service_1 = require("./token.service");
+const common_1 = require("@nestjs/common");
 const JWT_MODULE = jwt_1.JwtModule.registerAsync({
     imports: [config_1.ConfigModule],
     inject: [config_1.ConfigService],
     useFactory: async (configService) => ({
-        secret: configService.get('JWT_SECRET'),
+        secret: configService.get("JWT_SECRET"),
     }),
 });
 let TokenModule = class TokenModule {

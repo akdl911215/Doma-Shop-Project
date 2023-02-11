@@ -16,13 +16,8 @@ const _404_1 = require("../common/constants/http/errors/404");
 const _400_1 = require("../common/constants/http/errors/400");
 const _409_1 = require("../common/constants/http/errors/409");
 let MainBoardsService = class MainBoardsService {
-    constructor(prisma, logger) {
+    constructor(prisma) {
         this.prisma = prisma;
-        this.logger = logger;
-        prisma.$on("query", (event) => {
-            logger.warn("Query: " + event.query);
-            logger.warn("Duration: " + event.duration + "ms");
-        });
     }
     async register(dto) {
         const { id: userId } = dto.user;
@@ -151,8 +146,7 @@ let MainBoardsService = class MainBoardsService {
 };
 MainBoardsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService,
-        common_1.Logger])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], MainBoardsService);
 exports.MainBoardsService = MainBoardsService;
 //# sourceMappingURL=main.boards.service.js.map

@@ -1,4 +1,5 @@
-import { StrategyFindOutputDto, StrategyFindInputDto } from "../../inbound/dtos/strategy.find.dto";
-export interface StrategyFindByIdInterface {
-    readonly strategyFindById: ({ id, }: StrategyFindInputDto) => Promise<StrategyFindOutputDto>;
+import { UsersFindByIdAdaptorInputDto } from "../../inbound/dtos/users.find.by.id.adaptor.input.dto";
+import { UsersFindByIdAdaptorOutputDto } from "../../outbound/dtos/users.find.by.id.adaptor.output.dto";
+export interface UsersFindByIdInterface {
+    readonly usersFindById: ({ id, }: UsersFindByIdAdaptorInputDto) => Promise<UsersFindByIdAdaptorOutputDto>;
 }

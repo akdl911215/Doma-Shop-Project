@@ -15,11 +15,11 @@ const users_model_1 = require("../../domain/entity/users.model");
 const class_validator_1 = require("class-validator");
 class UsersRegisterAdaptorInputDto extends (0, swagger_1.PickType)(users_model_1.UsersModel, [
     "userId",
+    "nickname",
     "password",
     "name",
-    "address",
     "phone",
-    "social",
+    "address",
 ]) {
 }
 __decorate([

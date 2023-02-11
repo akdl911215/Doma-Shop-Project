@@ -1,10 +1,8 @@
-import {
-  StrategyFindOutputDto,
-  StrategyFindInputDto,
-} from "../../inbound/dtos/strategy.find.dto";
+import { UsersFindByIdAdaptorInputDto } from "../../inbound/dtos/users.find.by.id.adaptor.input.dto";
+import { UsersFindByIdAdaptorOutputDto } from "../../outbound/dtos/users.find.by.id.adaptor.output.dto";
 
-export interface StrategyFindByIdInterface {
-  readonly strategyFindById: ({
+export interface UsersFindByIdInterface {
+  readonly usersFindById: ({
     id,
-  }: StrategyFindInputDto) => Promise<StrategyFindOutputDto>;
+  }: UsersFindByIdAdaptorInputDto) => Promise<UsersFindByIdAdaptorOutputDto>;
 }

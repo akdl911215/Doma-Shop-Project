@@ -21,18 +21,21 @@ export class UsersRegisterRepository implements UsersRegisterAdaptor {
   public async register(
     dto: UsersRegisterAdaptorInputDto
   ): Promise<UsersRegisterAdaptorOutputDto> {
+    const { userId, nickname, password, name, phone, address } = dto;
     try {
       const {
         response: { encoded: hashPassword },
-      } = await this.hash.encoded({ password: dto.password });
+      } = await this.hash.encoded({ password: password });
 
       const [createUser] = await this.prisma.$transaction([
         this.prisma.users.create({
           data: {
-            userId: dto.userId,
-            nickname: dto.nickname,
+            userId,
+            nickname,
             password: hashPassword,
-            phone: dto.phone,
+            name,
+            phone,
+            address,
           },
         }),
       ]);

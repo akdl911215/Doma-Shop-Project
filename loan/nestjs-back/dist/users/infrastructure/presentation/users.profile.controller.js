@@ -15,11 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersProfileController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const access_token_guard_1 = require("../../../common/infrastructures/token/guards/access.token.guard");
 const _200_1 = require("../../../common/constants/http/success/200");
 const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _500_1 = require("../../../common/constants/http/errors/500");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 let UsersProfileController = class UsersProfileController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -29,7 +29,7 @@ let UsersProfileController = class UsersProfileController {
     }
 };
 __decorate([
-    (0, common_1.UseGuards)(access_token_guard_1.AccessTokenGuard),
+    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Get)("/:id"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
@@ -47,9 +47,9 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersProfileController.prototype, "profile", null);
 UsersProfileController = __decorate([
-    (0, common_1.Controller)('users'),
-    (0, swagger_1.ApiTags)('users'),
-    __param(0, (0, common_1.Inject)('USERS_PROFILE')),
+    (0, common_1.Controller)("users"),
+    (0, swagger_1.ApiTags)("users"),
+    __param(0, (0, common_1.Inject)("USERS_PROFILE")),
     __metadata("design:paramtypes", [Object])
 ], UsersProfileController);
 exports.UsersProfileController = UsersProfileController;

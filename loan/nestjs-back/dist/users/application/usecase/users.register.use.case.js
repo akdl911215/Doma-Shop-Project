@@ -16,13 +16,18 @@ exports.UsersRegisterUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _409_1 = require("../../../common/constants/http/errors/409");
 let UsersRegisterUseCase = class UsersRegisterUseCase {
-    constructor(userService, repository) {
-        this.userService = userService;
+    constructor(repository, requestUserId, requestPhone, requestNickname) {
         this.repository = repository;
+        this.requestUserId = requestUserId;
+        this.requestPhone = requestPhone;
+        this.requestNickname = requestNickname;
     }
     async register(dto) {
-        const { response: { accountId, phone, nickname }, } = await this.userService.exists(dto);
-        if (accountId)
+        const { userId, nickname, phone } = dto;
+        await this.requestUserId.existsUserId({ userId });
+        await this.requestPhone.existsPhone({ phone });
+        await this.requestNickname.existsNickname({ nickname });
+        if (userId)
             throw new common_1.ConflictException(_409_1.ALREADY_ACCOUNT_ID_EXISTS);
         if (nickname)
             throw new common_1.ConflictException(_409_1.ALREADY_NICKNAME_EXISTS);
@@ -33,9 +38,11 @@ let UsersRegisterUseCase = class UsersRegisterUseCase {
 };
 UsersRegisterUseCase = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)('EXISTS')),
-    __param(1, (0, common_1.Inject)('REGISTER')),
-    __metadata("design:paramtypes", [Object, Object])
+    __param(0, (0, common_1.Inject)("REGISTER")),
+    __param(1, (0, common_1.Inject)("EXISTS_USER_ID")),
+    __param(2, (0, common_1.Inject)("EXISTS_PHONE")),
+    __param(3, (0, common_1.Inject)("EXISTS_NICKNAME")),
+    __metadata("design:paramtypes", [Object, Object, Object, Object])
 ], UsersRegisterUseCase);
 exports.UsersRegisterUseCase = UsersRegisterUseCase;
 //# sourceMappingURL=users.register.use.case.js.map

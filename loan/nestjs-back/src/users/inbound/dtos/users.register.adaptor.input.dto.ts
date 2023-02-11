@@ -4,12 +4,11 @@ import { IsNotEmpty, IsString, Matches } from "class-validator";
 
 export class UsersRegisterAdaptorInputDto extends PickType(UsersModel, [
   "userId",
+  "nickname",
   "password",
   "name",
-  "address",
   "phone",
-  "social",
-  "nickname",
+  "address",
 ] as const) {
   @IsString()
   @IsNotEmpty()

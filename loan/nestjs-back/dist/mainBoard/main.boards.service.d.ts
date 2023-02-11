@@ -1,4 +1,3 @@
-import { Logger } from "@nestjs/common";
 import { MainBoardsInterface } from "./interceptors/main.boards.interface";
 import { MainBoardsDeleteInput, MainBoardsDeleteOutput } from "./dtos/main.boards.delete.dto";
 import { UsersModel } from "../users/domain/entity/users.model";
@@ -9,8 +8,7 @@ import { MainBoardsUpdateInput, MainBoardsUpdateOutput } from "./dtos/main.board
 import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
 export declare class MainBoardsService implements MainBoardsInterface {
     private readonly prisma;
-    private readonly logger;
-    constructor(prisma: PrismaService, logger: Logger);
+    constructor(prisma: PrismaService);
     register(dto: {
         requestUser: MainBoardsRegisterInput;
         user: UsersModel;

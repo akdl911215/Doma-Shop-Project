@@ -9,13 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoanModule = void 0;
 const common_1 = require("@nestjs/common");
 const loan_service_1 = require("./loan.service");
-const loan2_controller_1 = require("./infrastructure/presentation/loan2.controller");
+const loan_create_controller_1 = require("./infrastructure/presentation/loan.create.controller");
 let LoanModule = class LoanModule {
 };
 LoanModule = __decorate([
     (0, common_1.Module)({
         providers: [loan_service_1.LoanService],
-        controllers: [loan2_controller_1.LoanController],
+        controllers: [loan_create_controller_1.LoanController],
     })
 ], LoanModule);
 exports.LoanModule = LoanModule;

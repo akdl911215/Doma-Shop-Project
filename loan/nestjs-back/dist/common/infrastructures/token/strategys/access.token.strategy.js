@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccessTokenStrategy = void 0;
 const passport_jwt_1 = require("passport-jwt");
@@ -34,7 +35,7 @@ let AccessTokenStrategy = class AccessTokenStrategy extends (0, passport_1.Passp
 AccessTokenStrategy = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("STRATEGY_FIND_BY_ID")),
-    __metadata("design:paramtypes", [Object, config_1.ConfigService])
+    __metadata("design:paramtypes", [typeof (_a = typeof StrategyFindByIdInterface !== "undefined" && StrategyFindByIdInterface) === "function" ? _a : Object, config_1.ConfigService])
 ], AccessTokenStrategy);
 exports.AccessTokenStrategy = AccessTokenStrategy;
 //# sourceMappingURL=access.token.strategy.js.map
