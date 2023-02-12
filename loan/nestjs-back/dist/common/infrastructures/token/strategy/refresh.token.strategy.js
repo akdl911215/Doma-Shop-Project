@@ -50,6 +50,7 @@ let RefreshTokenStrategy = class RefreshTokenStrategy extends (0, passport_1.Pas
 RefreshTokenStrategy = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("USE_CASE_USERS_FIND_BY_ID")),
+    __param(2, (0, common_1.Inject)("TOKEN_SERVICE")),
     __metadata("design:paramtypes", [users_find_by_id_use_case_1.UsersFindByIdUseCase,
         config_1.ConfigService,
         token_service_1.TokenService])

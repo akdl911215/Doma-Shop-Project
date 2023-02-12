@@ -1,9 +1,9 @@
 import { ConflictException, Inject, Injectable } from "@nestjs/common";
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";
 import {
-  ALREADY_ACCOUNT_ID_EXISTS,
   ALREADY_NICKNAME_EXISTS,
   ALREADY_PHONE_EXISTS,
+  ALREADY_USER_ID_EXISTS,
 } from "../../../common/constants/http/errors/409";
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
 import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
@@ -31,10 +31,6 @@ export class UsersRegisterUseCase implements UsersRegisterAdaptor {
     await this.requestUserId.existsUserId({ userId });
     await this.requestPhone.existsPhone({ phone });
     await this.requestNickname.existsNickname({ nickname });
-
-    if (userId) throw new ConflictException(ALREADY_ACCOUNT_ID_EXISTS);
-    if (nickname) throw new ConflictException(ALREADY_NICKNAME_EXISTS);
-    if (phone) throw new ConflictException(ALREADY_PHONE_EXISTS);
 
     return await this.repository.register(dto);
   }

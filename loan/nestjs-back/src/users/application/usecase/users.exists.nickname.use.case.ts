@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { UsersExistsNicknameAdaptor } from "../../domain/adaptor/users.exists.nickname.adaptor";
-import { UsersExistsNicknameInputDto } from "../../inbound/dtos/users.exists.nickname.input.dto";
-import { UsersExistsNicknameOutputDto } from "../../outbound/dtos/users.exists.nickname.dto";
+import { UsersExistsNicknameAdaptorInputDto } from "../../inbound/dtos/users.exists.nickname.adaptor.input.dto";
+import { UsersExistsNicknameOutputDto } from "../../outbound/dtos/users.exists.nickname.adaptor.output.dto";
 
 @Injectable()
 export class UsersExistsNicknameUseCase implements UsersExistsNicknameAdaptor {
@@ -11,7 +11,7 @@ export class UsersExistsNicknameUseCase implements UsersExistsNicknameAdaptor {
   ) {}
 
   public async existsNickname(
-    dto: UsersExistsNicknameInputDto
+    dto: UsersExistsNicknameAdaptorInputDto
   ): Promise<UsersExistsNicknameOutputDto> {
     const {
       response: { validateNickname },

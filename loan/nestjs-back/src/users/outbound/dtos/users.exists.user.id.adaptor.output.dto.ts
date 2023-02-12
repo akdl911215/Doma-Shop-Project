@@ -1,5 +1,5 @@
 import { BaseOutputDto } from "../../../common/dtos/base.output.dto";
 
-export class UsersExistsUserIdOutputDto extends BaseOutputDto<{
+export class UsersExistsUserIdAdaptorOutputDto extends BaseOutputDto<{
   readonly validateUserId: boolean;
 }> {}

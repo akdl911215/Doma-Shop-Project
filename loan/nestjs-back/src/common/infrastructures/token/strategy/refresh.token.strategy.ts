@@ -19,6 +19,7 @@ export class RefreshTokenStrategy extends PassportStrategy(
     @Inject("USE_CASE_USERS_FIND_BY_ID")
     private readonly usersService: UsersFindByIdUseCase,
     private readonly configService: ConfigService,
+    @Inject("TOKEN_SERVICE")
     private readonly jwtToken: TokenService
   ) {
     super({

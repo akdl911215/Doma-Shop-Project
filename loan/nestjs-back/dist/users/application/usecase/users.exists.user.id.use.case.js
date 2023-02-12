@@ -27,7 +27,7 @@ let UsersExistsUserIdUseCase = class UsersExistsUserIdUseCase {
 };
 UsersExistsUserIdUseCase = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)("EXISTS_ACCOUNT_ID")),
+    __param(0, (0, common_1.Inject)("EXISTS_USER_ID")),
     __metadata("design:paramtypes", [Object])
 ], UsersExistsUserIdUseCase);
 exports.UsersExistsUserIdUseCase = UsersExistsUserIdUseCase;

@@ -23,7 +23,7 @@ model Users {
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
   deletedAt    DateTime?
-  creditRating Int
+  creditRating Int?
   Debtors      Debtors[]
   Creditors    Creditors[]
 

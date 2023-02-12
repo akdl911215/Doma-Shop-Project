@@ -8,19 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TokenService = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("@nestjs/config");
 let TokenService = class TokenService {
-    constructor(jwtService, configService, hash) {
+    constructor(jwtService, configService) {
         this.jwtService = jwtService;
         this.configService = configService;
-        this.hash = hash;
     }
     async generateTokens(accessPayload, refreshPayload) {
         const [accessToken, refreshToken] = await Promise.all([
@@ -43,9 +39,8 @@ let TokenService = class TokenService {
 };
 TokenService = __decorate([
     (0, common_1.Injectable)(),
-    __param(2, (0, common_1.Inject)("IN_CODED")),
     __metadata("design:paramtypes", [jwt_1.JwtService,
-        config_1.ConfigService, Object])
+        config_1.ConfigService])
 ], TokenService);
 exports.TokenService = TokenService;
 //# sourceMappingURL=token.service.js.map

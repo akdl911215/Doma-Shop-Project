@@ -1,8 +1,8 @@
-import { UsersExistsNicknameInputDto } from "../../inbound/dtos/users.exists.nickname.input.dto";
-import { UsersExistsNicknameOutputDto } from "../../outbound/dtos/users.exists.nickname.dto";
+import { UsersExistsNicknameAdaptorInputDto } from "../../inbound/dtos/users.exists.nickname.adaptor.input.dto";
+import { UsersExistsNicknameOutputDto } from "../../outbound/dtos/users.exists.nickname.adaptor.output.dto";
 
 export interface UsersExistsNicknameAdaptor {
   readonly existsNickname: (
-    dto: UsersExistsNicknameInputDto
+    dto: UsersExistsNicknameAdaptorInputDto
   ) => Promise<UsersExistsNicknameOutputDto>;
 }

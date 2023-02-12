@@ -14,7 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersRegisterUseCase = void 0;
 const common_1 = require("@nestjs/common");
-const _409_1 = require("../../../common/constants/http/errors/409");
 let UsersRegisterUseCase = class UsersRegisterUseCase {
     constructor(repository, requestUserId, requestPhone, requestNickname) {
         this.repository = repository;
@@ -27,12 +26,6 @@ let UsersRegisterUseCase = class UsersRegisterUseCase {
         await this.requestUserId.existsUserId({ userId });
         await this.requestPhone.existsPhone({ phone });
         await this.requestNickname.existsNickname({ nickname });
-        if (userId)
-            throw new common_1.ConflictException(_409_1.ALREADY_ACCOUNT_ID_EXISTS);
-        if (nickname)
-            throw new common_1.ConflictException(_409_1.ALREADY_NICKNAME_EXISTS);
-        if (phone)
-            throw new common_1.ConflictException(_409_1.ALREADY_PHONE_EXISTS);
         return await this.repository.register(dto);
     }
 };

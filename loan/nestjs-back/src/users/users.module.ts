@@ -1,10 +1,6 @@
-import { Logger, Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
-import { TokenService } from "../common/infrastructures/token/token.service";
-import { BcriptService } from "../common/infrastructures/bcript/bcript.service";
 import { TokenModule } from "../common/infrastructures/token/token.module";
-import { BcriptModule } from "../common/infrastructures/bcript/bcript.module";
-import { PassportModule } from "@nestjs/passport";
 import { UsersWithdrawalUseCase } from "./application/usecase/users.withdrawal.use.case";
 import { UsersRegisterUseCase } from "./application/usecase/users.register.use.case";
 import { UsersProfileUseCase } from "./application/usecase/users.profile.use.case";
@@ -21,20 +17,40 @@ import { UsersUpdateNicknameRepository } from "./infrastructure/repository/users
 import { UsersProfileRepository } from "./infrastructure/repository/users.profile.repository";
 import { AccessTokenStrategy } from "../common/infrastructures/token/strategy/access.token.strategy";
 import { RefreshTokenStrategy } from "../common/infrastructures/token/strategy/refresh.token.strategy";
+import { UsersFindByIdUseCase } from "../common/infrastructures/token/application/usecase/users.find.by.id.use.case";
+import { UsersFindByIdRepository } from "./infrastructure/repository/users.find.by.id.repository";
+import { UsersExistsUserIdRepository } from "./infrastructure/repository/users.exists.user.id.repository";
+import { UsersExistsPhoneRepository } from "./infrastructure/repository/users.exists.phone.repository";
+import { UsersExistsNicknameRepository } from "./infrastructure/repository/users.exists.nickname.repository";
+import { HashDecodedService } from "./infrastructure/bcrypt/hash.decoded.service";
+import { HashEncodedService } from "./infrastructure/bcrypt/hash.encoded.service";
+import { UsersRegisterController } from "./infrastructure/presentation/users.register.controller";
+import { UsersExistsUserIdController } from "./infrastructure/presentation/users.exists.user.id.controller";
+import { UsersExistsPhoneController } from "./infrastructure/presentation/users.exists.phone.controller";
+import { UsersExistsNicknameController } from "./infrastructure/presentation/users.exists.nickname.controller";
 
 @Module({
-  imports: [PassportModule, BcriptModule, TokenModule],
-  controllers: [],
+  imports: [TokenModule],
+  controllers: [
+    UsersRegisterController,
+    UsersExistsUserIdController,
+    UsersExistsPhoneController,
+    UsersExistsNicknameController,
+  ],
   providers: [
     AccessTokenStrategy,
     RefreshTokenStrategy,
+
     // infrastructure
     PrismaService,
-    BcriptService,
-    Logger,
-    TokenService,
+    { provide: "HASH_ENCODED", useClass: HashEncodedService },
+    { provide: "HASH_DECODED", useClass: HashDecodedService },
 
     // useCase
+    {
+      provide: "USE_CASE_USERS_FIND_BY_ID",
+      useClass: UsersFindByIdUseCase,
+    },
     { provide: "USE_CASE_WITHDRAWAL", useClass: UsersWithdrawalUseCase },
     { provide: "USE_CASE_REGISTER", useClass: UsersRegisterUseCase },
     {
@@ -74,37 +90,29 @@ import { RefreshTokenStrategy } from "../common/infrastructures/token/strategy/r
     // { provide: 'SERVICE_LOGOUT', useClass: UsersLogoutService },
 
     // repository
+    { provide: "EXISTS_NICKNAME", useClass: UsersExistsNicknameRepository },
+    { provide: "EXISTS_PHONE", useClass: UsersExistsPhoneRepository },
+    {
+      provide: "EXISTS_USER_ID",
+      useClass: UsersExistsUserIdRepository,
+    },
+    {
+      provide: "USERS_FIND_BY_ID",
+      useClass: UsersFindByIdRepository,
+    },
     { provide: "WITHDRAWAL", useClass: UsersWithdrawalRepository },
-    // { provide: "LOGOUT", useClass: UsersLogoutRepository },
-    // {
-    //   provide: "EXISTS_ACCOUNT_ID",
-    //   useClass: UsersExistsAccountIdRepository,
-    // },
-    // { provide: "EXISTS_PHONE", useClass: UsersExistsPhoneRepository },
-    // { provide: "EXISTS_ID", useClass: UsersExistsIdRepository },
-    // { provide: "EXISTS_NICKNAME", useClass: UsersExistsNicknameRepository },
     { provide: "REGISTER", useClass: UsersRegisterRepository },
     { provide: "LOGIN", useClass: UsersLoginRepository },
-    // { provide: 'UPDATE', useClass: UsersUpdateRepository },
     { provide: "UPDATE_PASSWORD", useClass: UsersUpdatePasswordRepository },
     { provide: "UPDATE_PHONE", useClass: UsersUpdatePhoneRepository },
     { provide: "UPDATE_NICKNAME", useClass: UsersUpdateNicknameRepository },
-    // { provide: "UPDATE_ACCOUNT_ID", useClass: UsersUpdateAccountIdRepository },
-    // { provide: "DELETE", useClass: UsersDeleteRepository },
     { provide: "PROFILE", useClass: UsersProfileRepository },
+  ],
+  exports: [
     // {
-    //   provide: "USERS_FIND_BY_ID",
-    //   useClass: UsersFindByIdRepository,
-    // },
-    // {
-    //   provide: "REFRESH_TOKEN_RE_ISSUANCE",
-    //   useClass: UsersRefreshTokenReIssuanceRepository,
-    // },
-    // {
-    //   provide: "COMPARE_CURRENT_PASSWORD_AND_PASSWORD",
-    //   useClass: UsersCompareCurrentPasswordAndPasswordRepository,
+    //   provide: "USE_CASE_USERS_FIND_BY_ID",
+    //   useClass: UsersFindByIdUseCase,
     // },
   ],
-  exports: [],
 })
 export class UsersModule {}

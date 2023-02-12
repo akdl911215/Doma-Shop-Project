@@ -19,6 +19,7 @@ const _201_1 = require("../../../common/constants/http/success/201");
 const _409_1 = require("../../../common/constants/http/errors/409");
 const _500_1 = require("../../../common/constants/http/errors/500");
 const users_register_adaptor_input_dto_1 = require("../../inbound/dtos/users.register.adaptor.input.dto");
+const password_checking_interceptor_1 = require("../../interceptor/password.checking.interceptor");
 let UsersRegisterController = class UsersRegisterController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -34,7 +35,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 201, description: `${_201_1.CREATE_SUCCESS}` }),
     (0, swagger_1.ApiResponse)({
         status: 409,
-        description: `${_409_1.ALREADY_ACCOUNT_ID_EXISTS}, ${_409_1.ALREADY_PHONE_EXISTS}`,
+        description: `${_409_1.ALREADY_USER_ID_EXISTS}, ${_409_1.ALREADY_PHONE_EXISTS}`,
     }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     (0, swagger_1.ApiBody)({ type: users_register_adaptor_input_dto_1.UsersRegisterAdaptorInputDto }),
@@ -46,7 +47,8 @@ __decorate([
 UsersRegisterController = __decorate([
     (0, swagger_1.ApiTags)("users"),
     (0, common_1.Controller)("users"),
-    __param(0, (0, common_1.Inject)("USERS_REGISTER")),
+    (0, common_1.UseInterceptors)(password_checking_interceptor_1.PasswordCheckingInterceptor),
+    __param(0, (0, common_1.Inject)("USE_CASE_REGISTER")),
     __metadata("design:paramtypes", [Object])
 ], UsersRegisterController);
 exports.UsersRegisterController = UsersRegisterController;

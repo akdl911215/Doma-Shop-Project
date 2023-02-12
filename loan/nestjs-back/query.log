@@ -1025,3 +1025,12 @@
 {"level":"warn","message":"Duration: 1ms"}
 {"level":"warn","message":"Query: COMMIT"}
 {"level":"warn","message":"Duration: 1ms"}
+{"level":"error","response":{"error":"Conflict","message":"ALREADY_ACCOUNT_ID_EXISTS","statusCode":409},"stack":[null],"status":409,"timestamp":"2023. 2. 12. 오후 1:05:41","url":"/users/register"}
+{"level":"error","response":{"error":"Conflict","message":"ALREADY_ACCOUNT_ID_EXISTS","statusCode":409},"stack":[null],"status":409,"timestamp":"2023. 2. 12. 오후 1:07:21","url":"/users/register"}
+{"level":"error","response":{"error":"Conflict","message":"ALREADY_USER_ID_EXISTS","statusCode":409},"stack":[null],"status":409,"timestamp":"2023. 2. 12. 오후 1:08:38","url":"/users/register"}
+{"level":"error","response":{"error":"Conflict","message":"ALREADY_USER_ID_EXISTS","statusCode":409},"stack":[null],"status":409,"timestamp":"2023. 2. 12. 오후 1:09:10","url":"/users/register"}
+{"level":"error","response":{"error":"Bad Request","message":["컨펌 비밀번호는 최소 8자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수문자입니다.","confirmPassword should not be empty","confirmPassword must be a string"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2023. 2. 12. 오후 1:19:41","url":"/users/register"}
+{"level":"error","response":{"error":"Bad Request","message":"password !== confirmPassword","statusCode":400},"stack":[null],"status":400,"timestamp":"2023. 2. 12. 오후 1:20:03","url":"/users/register"}
+{"level":"error","response":{"error":"Bad Request","message":["컨펌 비밀번호는 최소 8자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수문자입니다.","confirmPassword should not be empty","confirmPassword must be a string"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2023. 2. 12. 오후 1:20:10","url":"/users/register"}
+{"level":"error","response":{"error":"Bad Request","message":["컨펌 비밀번호는 최소 8자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수문자입니다.","confirmPassword should not be empty","confirmPassword must be a string"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2023. 2. 12. 오후 1:20:41","url":"/users/register"}
+{"level":"error","response":{"error":"Bad Request","message":["컨펌 비밀번호는 최소 8자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수문자입니다.","confirmPassword should not be empty","confirmPassword must be a string"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2023. 2. 12. 오후 1:20:51","url":"/users/register"}

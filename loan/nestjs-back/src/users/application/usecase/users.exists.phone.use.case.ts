@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { UsersExistsPhoneAdaptor } from "../../domain/adaptor/users.exists.phone.adaptor";
-import { UsersExistsPhoneAdaptorInputDto } from "../../inbound/dtos/users.exists.phone.input.dto";
-import { UsersExistsPhoneAdaptorOutputDto } from "../../outbound/dtos/users.exists.output.phone.dto";
+import { UsersExistsPhoneAdaptorInputDto } from "../../inbound/dtos/users.exists.phone.adaptor.input.dto";
+import { UsersExistsPhoneAdaptorOutputDto } from "../../outbound/dtos/users.exists.phone.adaptor.output.dto";
 
 @Injectable()
 export class UsersExistsPhoneUseCase implements UsersExistsPhoneAdaptor {

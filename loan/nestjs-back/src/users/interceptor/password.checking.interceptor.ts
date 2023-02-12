@@ -18,7 +18,9 @@ export class PasswordCheckingInterceptor implements NestInterceptor {
       if (request.password === request.confirmPassword) {
         delete request["confirmPassword"];
         delete request["currentPassword"];
-      } else throw new BadRequestException("password !== confirmPassword");
+      } else {
+        throw new BadRequestException("password !== confirmPassword");
+      }
     }
 
     return next.handle().pipe(tap((data) => delete data.response.password));

@@ -17,8 +17,9 @@ let PasswordCheckingInterceptor = class PasswordCheckingInterceptor {
                 delete request["confirmPassword"];
                 delete request["currentPassword"];
             }
-            else
+            else {
                 throw new common_1.BadRequestException("password !== confirmPassword");
+            }
         }
         return next.handle().pipe((0, operators_1.tap)((data) => delete data.response.password));
     }

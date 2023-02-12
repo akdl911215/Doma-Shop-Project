@@ -9,11 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersModule = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../common/infrastructures/prisma/prisma.service");
-const token_service_1 = require("../common/infrastructures/token/token.service");
-const bcript_service_1 = require("../common/infrastructures/bcript/bcript.service");
 const token_module_1 = require("../common/infrastructures/token/token.module");
-const bcript_module_1 = require("../common/infrastructures/bcript/bcript.module");
-const passport_1 = require("@nestjs/passport");
 const users_withdrawal_use_case_1 = require("./application/usecase/users.withdrawal.use.case");
 const users_register_use_case_1 = require("./application/usecase/users.register.use.case");
 const users_profile_use_case_1 = require("./application/usecase/users.profile.use.case");
@@ -30,19 +26,38 @@ const users_update_nickname_repository_1 = require("./infrastructure/repository/
 const users_profile_repository_1 = require("./infrastructure/repository/users.profile.repository");
 const access_token_strategy_1 = require("../common/infrastructures/token/strategy/access.token.strategy");
 const refresh_token_strategy_1 = require("../common/infrastructures/token/strategy/refresh.token.strategy");
+const users_find_by_id_use_case_1 = require("../common/infrastructures/token/application/usecase/users.find.by.id.use.case");
+const users_find_by_id_repository_1 = require("./infrastructure/repository/users.find.by.id.repository");
+const users_exists_user_id_repository_1 = require("./infrastructure/repository/users.exists.user.id.repository");
+const users_exists_phone_repository_1 = require("./infrastructure/repository/users.exists.phone.repository");
+const users_exists_nickname_repository_1 = require("./infrastructure/repository/users.exists.nickname.repository");
+const hash_decoded_service_1 = require("./infrastructure/bcrypt/hash.decoded.service");
+const hash_encoded_service_1 = require("./infrastructure/bcrypt/hash.encoded.service");
+const users_register_controller_1 = require("./infrastructure/presentation/users.register.controller");
+const users_exists_user_id_controller_1 = require("./infrastructure/presentation/users.exists.user.id.controller");
+const users_exists_phone_controller_1 = require("./infrastructure/presentation/users.exists.phone.controller");
+const users_exists_nickname_controller_1 = require("./infrastructure/presentation/users.exists.nickname.controller");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
     (0, common_1.Module)({
-        imports: [passport_1.PassportModule, bcript_module_1.BcriptModule, token_module_1.TokenModule],
-        controllers: [],
+        imports: [token_module_1.TokenModule],
+        controllers: [
+            users_register_controller_1.UsersRegisterController,
+            users_exists_user_id_controller_1.UsersExistsUserIdController,
+            users_exists_phone_controller_1.UsersExistsPhoneController,
+            users_exists_nickname_controller_1.UsersExistsNicknameController,
+        ],
         providers: [
             access_token_strategy_1.AccessTokenStrategy,
             refresh_token_strategy_1.RefreshTokenStrategy,
             prisma_service_1.PrismaService,
-            bcript_service_1.BcriptService,
-            common_1.Logger,
-            token_service_1.TokenService,
+            { provide: "HASH_ENCODED", useClass: hash_encoded_service_1.HashEncodedService },
+            { provide: "HASH_DECODED", useClass: hash_decoded_service_1.HashDecodedService },
+            {
+                provide: "USE_CASE_USERS_FIND_BY_ID",
+                useClass: users_find_by_id_use_case_1.UsersFindByIdUseCase,
+            },
             { provide: "USE_CASE_WITHDRAWAL", useClass: users_withdrawal_use_case_1.UsersWithdrawalUseCase },
             { provide: "USE_CASE_REGISTER", useClass: users_register_use_case_1.UsersRegisterUseCase },
             {
@@ -59,6 +74,16 @@ UsersModule = __decorate([
                 useClass: users_exists_nickname_use_case_1.UsersExistsNicknameUseCase,
             },
             { provide: "USE_CASE_EXISTS_PHONE", useClass: users_exists_phone_use_case_1.UsersExistsPhoneUseCase },
+            { provide: "EXISTS_NICKNAME", useClass: users_exists_nickname_repository_1.UsersExistsNicknameRepository },
+            { provide: "EXISTS_PHONE", useClass: users_exists_phone_repository_1.UsersExistsPhoneRepository },
+            {
+                provide: "EXISTS_USER_ID",
+                useClass: users_exists_user_id_repository_1.UsersExistsUserIdRepository,
+            },
+            {
+                provide: "USERS_FIND_BY_ID",
+                useClass: users_find_by_id_repository_1.UsersFindByIdRepository,
+            },
             { provide: "WITHDRAWAL", useClass: users_withdrawal_repository_1.UsersWithdrawalRepository },
             { provide: "REGISTER", useClass: users_register_repository_1.UsersRegisterRepository },
             { provide: "LOGIN", useClass: users_login_repository_1.UsersLoginRepository },

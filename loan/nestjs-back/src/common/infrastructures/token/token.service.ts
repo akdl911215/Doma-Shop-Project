@@ -1,8 +1,7 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { AccessTokenPayloadType } from "./type/access.token.payload.type";
 import { ConfigService } from "@nestjs/config";
-import { BcriptIncodedInterface } from "../bcript/interfaces/bcript.incoded.interface";
 import { RefreshTokenPayloadType } from "./type/refresh.token.payload.type";
 import { GenerateTokenOutputDto } from "./outbound/dtos/generate.token.output.dto";
 
@@ -10,8 +9,7 @@ import { GenerateTokenOutputDto } from "./outbound/dtos/generate.token.output.dt
 export class TokenService {
   constructor(
     private readonly jwtService: JwtService,
-    private readonly configService: ConfigService,
-    @Inject("IN_CODED") private readonly hash: BcriptIncodedInterface
+    private readonly configService: ConfigService
   ) {}
 
   public async generateTokens(
