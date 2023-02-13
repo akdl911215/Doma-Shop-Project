@@ -21,10 +21,7 @@ export class UsersExistsNicknameController {
     description: "유저 닉네임 존재 유무 조회 절차",
   })
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })
-  @ApiResponse({
-    status: 409,
-    description: `${ALREADY_NICKNAME_EXISTS}`,
-  })
+  @ApiResponse({ status: 409, description: `${ALREADY_NICKNAME_EXISTS}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async existsNickname(
     @Param() dto: UsersExistsNicknameAdaptorInputDto

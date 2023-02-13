@@ -45,14 +45,8 @@ export class UsersUpdatePhoneController {
   })
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })
   @ApiResponse({ status: 400, description: `${NO_MATCH_USER_ID}` })
-  @ApiResponse({
-    status: 404,
-    description: `${NOTFOUND_USER}`,
-  })
-  @ApiResponse({
-    status: 409,
-    description: `${UPDATE_FAILED}`,
-  })
+  @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
+  @ApiResponse({ status: 409, description: `${UPDATE_FAILED}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async updatePhone(
     @Body() requestPhone: UsersUpdatePhoneAdaptorInputDto,

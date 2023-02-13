@@ -17,11 +17,5 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "generateOptions": {
-      "spec": {
-        "service": false,
-        "controller": false
-      }
-    }
   }
 }

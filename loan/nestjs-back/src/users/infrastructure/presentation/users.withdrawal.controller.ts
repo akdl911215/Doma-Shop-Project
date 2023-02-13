@@ -47,10 +47,7 @@ export class UsersWithdrawalController {
     description: `${TWO_HUNDRED_FOUR_DELETE_SUCCESS}`,
   })
   @ApiResponse({ status: 400, description: `${NO_MATCH_USER_ID}` })
-  @ApiResponse({
-    status: 404,
-    description: `${NOTFOUND_USER}, ${NOTFOUND_BOARD}, ${NOTFOUND_BOARD_COMMENT}`,
-  })
+  @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async withdrawal(
     @Param("id", ParseUUIDPipe) id: string

@@ -40,10 +40,7 @@ export class UsersUpdateController {
     status: 404,
     description: `${NOTFOUND_USER}, ${NOTFOUND_BOARD}`,
   })
-  @ApiResponse({
-    status: 409,
-    description: `${UPDATE_FAILED}`,
-  })
+  @ApiResponse({ status: 409, description: `${UPDATE_FAILED}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async update(
     @Body() dto: UsersUpdateAdaptorInputDto
