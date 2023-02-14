@@ -10,9 +10,4 @@ export class UsersUpdatePasswordAdaptorInputDto extends PickType(UsersModel, [
 
   @ApiProperty({ type: String, required: true, format: "password" })
   public currentPassword!: string;
-
-  @IsUUID()
-  @IsNotEmpty()
-  @ApiProperty({ type: String, required: true })
-  public id!: string;
 }

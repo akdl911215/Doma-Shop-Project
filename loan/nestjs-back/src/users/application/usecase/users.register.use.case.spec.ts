@@ -8,8 +8,7 @@ import { UsersExistsPhoneRepository } from "../../infrastructure/repository/user
 import { UsersExistsNicknameRepository } from "../../infrastructure/repository/users.exists.nickname.repository";
 import { HashEncodedService } from "../../infrastructure/bcrypt/hash.encoded.service";
 import { ConfigService } from "@nestjs/config";
-import { InternalServerErrorException } from "@nestjs/common";
-import exp from "constants";
+import { BadRequestException, ConflictException } from "@nestjs/common";
 
 describe("UsersRegisterUseCase", () => {
   let service: UsersRegisterUseCase;
@@ -47,6 +46,118 @@ describe("UsersRegisterUseCase", () => {
 
   let dto: UsersRegisterAdaptorInputDto;
   describe("register process", () => {
+    it("failed should user register information empty", async () => {
+      dto = {
+        userId: "",
+        nickname: "",
+        name: "",
+        password: "",
+        phone: "",
+        address: "",
+        confirmPassword: "",
+      };
+
+      try {
+        await service.register(dto);
+      } catch (e) {
+        if (e instanceof BadRequestException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(400);
+
+          const errorMessage = e.getResponse();
+          expect(errorMessage).toStrictEqual({
+            statusCode: 400,
+            message: "CONFIRM_REQUIRED_USER_INFORMATION",
+            error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("user-id is duplicated and fails", async () => {
+      dto = {
+        userId: "aaa",
+        nickname: "aaaaaaaaaaaa",
+        name: "bbbbbbbbbbbb",
+        password: "bbbbbbbbbb",
+        phone: "010123123213123",
+        address: "01qwdqwdqwdqwd",
+        confirmPassword: "wqedwqewqdewqeqweqw",
+      };
+
+      try {
+        await service.register(dto);
+      } catch (e) {
+        if (e instanceof ConflictException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(409);
+
+          const errorMessage = e.getResponse();
+          expect(errorMessage).toStrictEqual({
+            statusCode: 409,
+            message: "ALREADY_USER_ID_EXISTS",
+            error: "Conflict",
+          });
+        }
+      }
+    });
+
+    it("phone number is duplicated and fails", async () => {
+      dto = {
+        userId: "eee",
+        nickname: "admin",
+        name: "bbbbbbbbbbbb",
+        password: "bbbbbbbbbb",
+        phone: "01050939902",
+        address: "01qwdqwdqwdqwd",
+        confirmPassword: "wqedwqewqdewqeqweqw",
+      };
+
+      try {
+        await service.register(dto);
+      } catch (e) {
+        if (e instanceof ConflictException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(409);
+
+          const errorMessage = e.getResponse();
+          expect(errorMessage).toStrictEqual({
+            statusCode: 409,
+            message: "ALREADY_PHONE_EXISTS",
+            error: "Conflict",
+          });
+        }
+      }
+    });
+
+    it("phone number is duplicated and fails", async () => {
+      dto = {
+        userId: "eee",
+        nickname: "admin",
+        name: "bbbbbbbbbbbb",
+        password: "bbbbbbbbbb",
+        phone: "01055554444",
+        address: "01qwdqwdqwdqwd",
+        confirmPassword: "wqedwqewqdewqeqweqw",
+      };
+
+      try {
+        await service.register(dto);
+      } catch (e) {
+        if (e instanceof ConflictException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(409);
+
+          const errorMessage = e.getResponse();
+          expect(errorMessage).toStrictEqual({
+            statusCode: 409,
+            message: "ALREADY_NICKNAME_EXISTS",
+            error: "Conflict",
+          });
+        }
+      }
+    });
+
     it("success should user register", async () => {
       dto = {
         userId: "ddd",
@@ -65,32 +176,6 @@ describe("UsersRegisterUseCase", () => {
       expect(response.name).toStrictEqual("leejunghyun");
       expect(response.phone).toStrictEqual("01009098712");
       expect(response.address).toStrictEqual("jest-address");
-    });
-
-    it("failed should profile does not exist", async () => {
-      dto = {
-        userId: "",
-        nickname: "",
-        name: "",
-        password: "",
-        phone: "",
-        address: "",
-        confirmPassword: "",
-      };
-
-      try {
-        const { response } = await service.register(dto);
-      } catch (e) {
-        console.log(e);
-        // console.log(e.get);
-        // console.log(e.errors);
-        // console.log(e.errorCode);
-
-        expect(e).toThrowError("Sign-up form check");
-        // expect(e).toStrictEqual("Sign-up form check");
-        if (e instanceof InternalServerErrorException) {
-        }
-      }
     });
   });
 

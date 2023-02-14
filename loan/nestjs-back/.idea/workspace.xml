@@ -6,10 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/constants/http/errors/400.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/constants/http/errors/400.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.use.case.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.nickname.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.nickname.adaptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.password.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.password.adaptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.phone.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/domain/adaptor/users.update.phone.adaptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.nickname.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.nickname.adaptor.input.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.password.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.password.adaptor.input.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.phone.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.update.phone.adaptor.input.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.register.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.register.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.register.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.register.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.password.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.password.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.phone.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.phone.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.update.nickname.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.update.nickname.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.update.password.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.update.password.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.update.phone.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.update.phone.repository.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,35 +77,7 @@
       <recent name="C:\Users\leejunghyun\Desktop\develop2\LEEJungHyun-Project\note\nestjs-back\src\users\domain\entity" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.UsersRegisterUseCase.register process.failed should profile does not exist">
-    <configuration name="UsersProfileUseCase" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.spec.ts" />
-      <test-names>
-        <test-name value="UsersProfileUseCase" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="UsersProfileUseCase.profile process.failed should password does not exist" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.spec.ts" />
-      <test-names>
-        <test-name value="UsersProfileUseCase" />
-        <test-name value="profile process" />
-        <test-name value="failed should password does not exist" />
-      </test-names>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Jest.UsersRegisterUseCase.register process.phone number is duplicated and fails">
     <configuration name="UsersRegisterUseCase" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -121,6 +106,21 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="UsersRegisterUseCase.register process.phone number is duplicated and fails" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" />
+      <test-names>
+        <test-name value="UsersRegisterUseCase" />
+        <test-name value="register process" />
+        <test-name value="phone number is duplicated and fails" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="UsersRegisterUseCase.register process.success should user register" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -136,13 +136,28 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="UsersRegisterUseCase.register process.user-id is duplicated and fails" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" />
+      <test-names>
+        <test-name value="UsersRegisterUseCase" />
+        <test-name value="register process" />
+        <test-name value="user-id is duplicated and fails" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.UsersRegisterUseCase.register process.phone number is duplicated and fails" />
+        <item itemvalue="Jest.UsersRegisterUseCase.register process.user-id is duplicated and fails" />
         <item itemvalue="Jest.UsersRegisterUseCase.register process.failed should profile does not exist" />
         <item itemvalue="Jest.UsersRegisterUseCase.register process.success should user register" />
         <item itemvalue="Jest.UsersRegisterUseCase" />
-        <item itemvalue="Jest.UsersProfileUseCase" />
-        <item itemvalue="Jest.UsersProfileUseCase.profile process.failed should password does not exist" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +184,7 @@
       <workItem from="1675488882257" duration="10429000" />
       <workItem from="1675662994638" duration="23618000" />
       <workItem from="1676113995963" duration="3271000" />
-      <workItem from="1676166945686" duration="20275000" />
+      <workItem from="1676166945686" duration="22838000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>

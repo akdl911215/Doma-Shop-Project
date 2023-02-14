@@ -18,41 +18,34 @@ import { UsersUpdatePhoneAdaptor } from "../../domain/adaptor/users.update.phone
 export class UsersUpdatePhoneRepository implements UsersUpdatePhoneAdaptor {
   constructor(private readonly prisma: PrismaService) {}
 
-  public async updatePhone(dto: {
-    requestPhone: UsersUpdatePhoneAdaptorInputDto;
-    user: UsersModel;
-  }): Promise<UsersUpdatePhoneAdaptorOutputDto> {
-    const { id } = dto.user;
+  public async updatePhone(
+    dto: UsersUpdatePhoneAdaptorInputDto
+  ): Promise<UsersUpdatePhoneAdaptorOutputDto> {
+    const { id, phone } = dto;
 
     const [dbUser] = await this.prisma.$transaction([
       this.prisma.users.findUnique({ where: { id } }),
     ]);
     if (!dbUser) throw new NotFoundException(NOTFOUND_USER);
 
-    const { phone } = dto.requestPhone;
-
-    if (dbUser.id === id) {
-      try {
-        const [updateUser] = await this.prisma.$transaction([
-          this.prisma.users.update({
-            where: { id },
-            data: {
-              phone,
-            },
-          }),
-        ]);
-        return {
-          response: updateUser,
-        };
-      } catch (e) {
-        if (e instanceof InternalServerErrorException) {
-          throw new InternalServerErrorException(e);
-        } else {
-          throw new Error(`${e}`);
-        }
+    try {
+      const [updateUser] = await this.prisma.$transaction([
+        this.prisma.users.update({
+          where: { id },
+          data: {
+            phone,
+          },
+        }),
+      ]);
+      return {
+        response: updateUser,
+      };
+    } catch (e) {
+      if (e instanceof InternalServerErrorException) {
+        throw new InternalServerErrorException(e);
+      } else {
+        throw new Error(`${e}`);
       }
-    } else {
-      throw new BadRequestException(NO_MATCH_USER_ID);
     }
   }
 }

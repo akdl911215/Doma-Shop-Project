@@ -3,4 +3,6 @@ import { UsersModel } from "../../domain/entity/users.model";
 
 export class UsersUpdatePhoneAdaptorInputDto extends PickType(UsersModel, [
   "phone",
-] as const) {}
+] as const) {
+  public id!: string;
+}

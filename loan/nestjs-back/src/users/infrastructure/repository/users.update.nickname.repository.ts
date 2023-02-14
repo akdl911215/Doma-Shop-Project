@@ -20,41 +20,33 @@ export class UsersUpdateNicknameRepository
 {
   constructor(private readonly prisma: PrismaService) {}
 
-  public async updateNickname(dto: {
-    requestNickname: UsersUpdateNicknameAdaptorInputDto;
-    user: UsersModel;
-  }): Promise<UsersUpdateNicknameAdaptorOutputDto> {
-    const { id } = dto.user;
-
+  public async updateNickname(
+    dto: UsersUpdateNicknameAdaptorInputDto
+  ): Promise<UsersUpdateNicknameAdaptorOutputDto> {
+    const { nickname, id } = dto;
     const [dbUser] = await this.prisma.$transaction([
       this.prisma.users.findUnique({ where: { id } }),
     ]);
     if (!dbUser) throw new NotFoundException(NOTFOUND_USER);
 
-    const { nickname } = dto.requestNickname;
-
-    if (dbUser.id === id) {
-      try {
-        const [updateUser] = await this.prisma.$transaction([
-          this.prisma.users.update({
-            where: { id },
-            data: {
-              nickname,
-            },
-          }),
-        ]);
-        return {
-          response: updateUser,
-        };
-      } catch (e) {
-        if (e instanceof InternalServerErrorException) {
-          throw new InternalServerErrorException(e);
-        } else {
-          throw new Error(`${e}`);
-        }
+    try {
+      const [updateUser] = await this.prisma.$transaction([
+        this.prisma.users.update({
+          where: { id },
+          data: {
+            nickname,
+          },
+        }),
+      ]);
+      return {
+        response: updateUser,
+      };
+    } catch (e) {
+      if (e instanceof InternalServerErrorException) {
+        throw new InternalServerErrorException(e);
+      } else {
+        throw new Error(`${e}`);
       }
-    } else {
-      throw new BadRequestException(NO_MATCH_USER_ID);
     }
   }
 }

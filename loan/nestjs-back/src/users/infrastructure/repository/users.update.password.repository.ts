@@ -25,44 +25,38 @@ export class UsersUpdatePasswordRepository
     @Inject("HASH_ENCODED") private readonly hash: HashEncodedService
   ) {}
 
-  public async updatePassword(dto: {
-    requestPassword: UsersUpdatePasswordAdaptorInputDto;
-    user: UsersModel;
-  }): Promise<UsersUpdatePasswordAdaptorOutputDto> {
-    const { id } = dto.user;
+  public async updatePassword(
+    dto: UsersUpdatePasswordAdaptorInputDto
+  ): Promise<UsersUpdatePasswordAdaptorOutputDto> {
+    const { password: reqPassword, id } = dto;
 
     const [dbUser] = await this.prisma.$transaction([
       this.prisma.users.findUnique({ where: { id } }),
     ]);
     if (!dbUser) throw new NotFoundException(NOTFOUND_USER);
 
-    const { password: reqPassword } = dto.requestPassword;
     const {
       response: { encoded: password },
     } = await this.hash.encoded({ password: reqPassword });
 
-    if (dbUser.id === id) {
-      try {
-        const [updateUser] = await this.prisma.$transaction([
-          this.prisma.users.update({
-            where: { id },
-            data: {
-              password,
-            },
-          }),
-        ]);
-        return {
-          response: updateUser,
-        };
-      } catch (e) {
-        if (e instanceof InternalServerErrorException) {
-          throw new InternalServerErrorException(e);
-        } else {
-          throw new Error(`${e}`);
-        }
+    try {
+      const [updateUser] = await this.prisma.$transaction([
+        this.prisma.users.update({
+          where: { id },
+          data: {
+            password,
+          },
+        }),
+      ]);
+      return {
+        response: updateUser,
+      };
+    } catch (e) {
+      if (e instanceof InternalServerErrorException) {
+        throw new InternalServerErrorException(e);
+      } else {
+        throw new Error(`${e}`);
       }
-    } else {
-      throw new BadRequestException(NO_MATCH_USER_ID);
     }
   }
 }

@@ -14,7 +14,6 @@ import {
   ApiTags,
 } from "@nestjs/swagger";
 import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
-import { NO_MATCH_USER_ID } from "../../../common/constants/http/errors/400";
 import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
 import { UPDATE_FAILED } from "../../../common/constants/http/errors/409";
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
@@ -44,7 +43,6 @@ export class UsersUpdatePhoneController {
     description: "유저 휴대폰 정보 1개 수정",
   })
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })
-  @ApiResponse({ status: 400, description: `${NO_MATCH_USER_ID}` })
   @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
   @ApiResponse({ status: 409, description: `${UPDATE_FAILED}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
@@ -52,6 +50,8 @@ export class UsersUpdatePhoneController {
     @Body() requestPhone: UsersUpdatePhoneAdaptorInputDto,
     @User() user: UsersModel
   ): Promise<UsersUpdateAdaptorOutputDto> {
-    return await this.useCase.updatePhone({ requestPhone, user });
+    const { phone } = requestPhone;
+    const { id } = user;
+    return await this.useCase.updatePhone({ phone, id });
   }
 }
