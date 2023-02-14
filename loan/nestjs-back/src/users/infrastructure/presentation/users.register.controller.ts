@@ -40,7 +40,10 @@ export class UsersRegisterController {
     status: 409,
     description: `${ALREADY_USER_ID_EXISTS}, ${ALREADY_PHONE_EXISTS}`,
   })
-  @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
+  @ApiResponse({
+    status: 500,
+    description: `${INTERNAL_SERVER_ERROR}. 'Sign-up form check'`,
+  })
   @ApiBody({ type: UsersRegisterAdaptorInputDto })
   private async register(
     @Body() dto: UsersRegisterAdaptorInputDto

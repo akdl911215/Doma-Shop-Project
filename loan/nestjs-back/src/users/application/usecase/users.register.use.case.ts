@@ -1,10 +1,5 @@
-import { ConflictException, Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";
-import {
-  ALREADY_NICKNAME_EXISTS,
-  ALREADY_PHONE_EXISTS,
-  ALREADY_USER_ID_EXISTS,
-} from "../../../common/constants/http/errors/409";
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
 import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
 import { UsersExistsUserIdAdaptor } from "../../domain/adaptor/users.exists.user.id.adaptor";
@@ -27,7 +22,18 @@ export class UsersRegisterUseCase implements UsersRegisterAdaptor {
   public async register(
     dto: UsersRegisterAdaptorInputDto
   ): Promise<UsersRegisterAdaptorOutputDto> {
-    const { userId, nickname, phone } = dto;
+    const { userId, nickname, phone, address, name, password } = dto;
+
+    if (
+      userId === "" ||
+      nickname === "" ||
+      phone === "" ||
+      address === "" ||
+      name === "" ||
+      password === ""
+    ) {
+      throw new Error("Sign-up form check");
+    }
     await this.requestUserId.existsUserId({ userId });
     await this.requestPhone.existsPhone({ phone });
     await this.requestNickname.existsNickname({ nickname });

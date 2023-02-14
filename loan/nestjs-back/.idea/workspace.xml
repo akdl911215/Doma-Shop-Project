@@ -6,23 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/combined.log" beforeDir="false" afterPath="$PROJECT_DIR$/combined.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/app.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/app.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.exists.nickname.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.exists.nickname.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.exists.phone.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.exists.phone.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.exists.user.id.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.exists.user.id.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.login.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.login.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.phone.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.phone.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.withdrawal.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.withdrawal.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.register.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.register.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.register.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.register.repository.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +64,7 @@
       <recent name="C:\Users\leejunghyun\Desktop\develop2\LEEJungHyun-Project\note\nestjs-back\src\users\domain\entity" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.UsersProfileUseCase">
+  <component name="RunManager" selected="Jest.UsersRegisterUseCase.register process.failed should profile does not exist">
     <configuration name="UsersProfileUseCase" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -106,58 +93,56 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="UsersProfileUseCase.profile process.failed should user id does not exist" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="UsersRegisterUseCase" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.spec.ts" />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" />
       <test-names>
-        <test-name value="UsersProfileUseCase" />
-        <test-name value="profile process" />
-        <test-name value="failed should user id does not exist" />
+        <test-name value="UsersRegisterUseCase" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="UsersProfileUseCase.profile process.success should user id does not exists" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="UsersRegisterUseCase.register process.failed should profile does not exist" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" />
       <test-names>
-        <test-name value="UsersProfileUseCase" />
-        <test-name value="profile process" />
-        <test-name value="success should user id does not exists" />
+        <test-name value="UsersRegisterUseCase" />
+        <test-name value="register process" />
+        <test-name value="failed should profile does not exist" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="UsersProfileUseCase.profile process.success should user profile" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="UsersRegisterUseCase.register process.success should user register" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.register.use.case.spec.ts" />
       <test-names>
-        <test-name value="UsersProfileUseCase" />
-        <test-name value="profile process" />
-        <test-name value="success should user profile" />
+        <test-name value="UsersRegisterUseCase" />
+        <test-name value="register process" />
+        <test-name value="success should user register" />
       </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.UsersRegisterUseCase.register process.failed should profile does not exist" />
+        <item itemvalue="Jest.UsersRegisterUseCase.register process.success should user register" />
+        <item itemvalue="Jest.UsersRegisterUseCase" />
         <item itemvalue="Jest.UsersProfileUseCase" />
         <item itemvalue="Jest.UsersProfileUseCase.profile process.failed should password does not exist" />
-        <item itemvalue="Jest.UsersProfileUseCase.profile process.failed should user id does not exist" />
-        <item itemvalue="Jest.UsersProfileUseCase.profile process.success should user profile" />
-        <item itemvalue="Jest.UsersProfileUseCase.profile process.success should user id does not exists" />
       </list>
     </recent_temporary>
   </component>
@@ -184,7 +169,7 @@
       <workItem from="1675488882257" duration="10429000" />
       <workItem from="1675662994638" duration="23618000" />
       <workItem from="1676113995963" duration="3271000" />
-      <workItem from="1676166945686" duration="17997000" />
+      <workItem from="1676166945686" duration="20275000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>

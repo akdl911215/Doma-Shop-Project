@@ -1,10 +1,15 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
-import { NotFoundException } from "@nestjs/common";
-import { UsersProfileAdaptorInputDto } from "../../inbound/dtos/users.profile.adaptor.input.dto";
 import { UsersRegisterUseCase } from "./users.register.use.case";
 import { UsersRegisterRepository } from "../../infrastructure/repository/users.register.repository";
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";
+import { UsersExistsUserIdRepository } from "../../infrastructure/repository/users.exists.user.id.repository";
+import { UsersExistsPhoneRepository } from "../../infrastructure/repository/users.exists.phone.repository";
+import { UsersExistsNicknameRepository } from "../../infrastructure/repository/users.exists.nickname.repository";
+import { HashEncodedService } from "../../infrastructure/bcrypt/hash.encoded.service";
+import { ConfigService } from "@nestjs/config";
+import { InternalServerErrorException } from "@nestjs/common";
+import exp from "constants";
 
 describe("UsersRegisterUseCase", () => {
   let service: UsersRegisterUseCase;
@@ -17,6 +22,23 @@ describe("UsersRegisterUseCase", () => {
           provide: "REGISTER",
           useClass: UsersRegisterRepository,
         },
+        {
+          provide: "HASH_ENCODED",
+          useClass: HashEncodedService,
+        },
+        ConfigService,
+        {
+          provide: "EXISTS_USER_ID",
+          useClass: UsersExistsUserIdRepository,
+        },
+        {
+          provide: "EXISTS_PHONE",
+          useClass: UsersExistsPhoneRepository,
+        },
+        {
+          provide: "EXISTS_NICKNAME",
+          useClass: UsersExistsNicknameRepository,
+        },
       ],
     }).compile();
 
@@ -27,42 +49,46 @@ describe("UsersRegisterUseCase", () => {
   describe("register process", () => {
     it("success should user register", async () => {
       dto = {
-        userId: "bbbb",
+        userId: "ddd",
+        nickname: "jest-test3",
         name: "leejunghyun",
         password: "qwer!234",
+        phone: "01009098712",
+        address: "jest-address",
+        confirmPassword: "qwer!234",
       };
 
-      const { response } = await service.profile(dto);
+      const { response } = await service.register(dto);
 
-      expect(response.id).toStrictEqual("c2e2d0df-3139-424f-bee4-15a0b11e000f");
-      expect(response.userId).toStrictEqual("aaa");
-      expect(response.nickname).toStrictEqual("admin");
-      expect(response.password).toStrictEqual(
-        "$2b$10$xBqjQweWRGsVFT.UOujny.W6cnEh3OrH/u37qgHSJJ69qwfpYeOdO"
-      );
-      expect(response.name).toStrictEqual("admain222");
-      expect(response.phone).toStrictEqual("01050939902");
-      expect(response.address).toStrictEqual("asdads");
+      expect(response.userId).toStrictEqual("ddd");
+      expect(response.nickname).toStrictEqual("jest-test3");
+      expect(response.name).toStrictEqual("leejunghyun");
+      expect(response.phone).toStrictEqual("01009098712");
+      expect(response.address).toStrictEqual("jest-address");
     });
 
     it("failed should profile does not exist", async () => {
       dto = {
-        id: "c2e2d0df-3139-424f-bee4-15a0b11e0022",
+        userId: "",
+        nickname: "",
+        name: "",
+        password: "",
+        phone: "",
+        address: "",
+        confirmPassword: "",
       };
 
       try {
-        const { response } = await service.profile(dto);
+        const { response } = await service.register(dto);
       } catch (e) {
-        if (e instanceof NotFoundException) {
-          const status = e.getStatus();
-          expect(status).toStrictEqual(404);
+        console.log(e);
+        // console.log(e.get);
+        // console.log(e.errors);
+        // console.log(e.errorCode);
 
-          const errorMessage = e.getResponse();
-          expect(errorMessage).toStrictEqual({
-            statusCode: 404,
-            message: "NOTFOUND_USER",
-            error: "Not Found",
-          });
+        expect(e).toThrowError("Sign-up form check");
+        // expect(e).toStrictEqual("Sign-up form check");
+        if (e instanceof InternalServerErrorException) {
         }
       }
     });

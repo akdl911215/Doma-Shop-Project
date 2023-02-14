@@ -21,7 +21,6 @@ export class UsersRegisterRepository implements UsersRegisterAdaptor {
   public async register(
     dto: UsersRegisterAdaptorInputDto
   ): Promise<UsersRegisterAdaptorOutputDto> {
-    console.log("dto :", dto);
     const { userId, nickname, password, name, phone, address } = dto;
     try {
       const {
