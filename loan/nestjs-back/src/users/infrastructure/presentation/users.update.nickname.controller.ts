@@ -38,10 +38,10 @@ export class UsersUpdateNicknameController {
   @ApiResponse({ status: 409, description: `${UPDATE_FAILED}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async updateNickname(
-    @Body() requestNickname: UsersUpdateNicknameAdaptorInputDto,
+    @Body() request: UsersUpdateNicknameAdaptorInputDto,
     @User() user: UsersModel
   ): Promise<UsersUpdateNicknameAdaptorOutputDto> {
-    const { nickname } = requestNickname;
+    const { nickname } = request;
     const { id } = user;
     return await this.useCase.updateNickname({ nickname, id });
   }

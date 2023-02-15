@@ -38,10 +38,10 @@ export class UsersUpdatePasswordController {
   @ApiResponse({ status: 409, description: `${UPDATE_FAILED}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async updatePassword(
-    @Body() requestPassword: UsersUpdatePasswordAdaptorInputDto,
+    @Body() request: UsersUpdatePasswordAdaptorInputDto,
     @User() user: UsersModel
   ): Promise<UsersUpdatePasswordAdaptorOutputDto> {
-    const { password } = requestPassword;
+    const { password } = request;
     const { id } = user;
     return await this.useCase.updatePassword({ password, id });
   }

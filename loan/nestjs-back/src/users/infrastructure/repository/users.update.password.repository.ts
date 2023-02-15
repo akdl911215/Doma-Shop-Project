@@ -1,14 +1,11 @@
 import {
-  BadRequestException,
   Dependencies,
   Inject,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
 } from "@nestjs/common";
-import { UsersModel } from "../../domain/entity/users.model";
 import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
-import { NO_MATCH_USER_ID } from "../../../common/constants/http/errors/400";
 import { HashEncodedService } from "../bcrypt/hash.encoded.service";
 import { UsersUpdatePasswordAdaptorInputDto } from "../../inbound/dtos/users.update.password.adaptor.input.dto";
 import { UsersUpdatePasswordAdaptorOutputDto } from "../../outbound/dtos/users.update.password.adaptor.output.dto";

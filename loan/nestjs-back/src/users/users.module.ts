@@ -28,6 +28,15 @@ import { UsersRegisterController } from "./infrastructure/presentation/users.reg
 import { UsersExistsUserIdController } from "./infrastructure/presentation/users.exists.user.id.controller";
 import { UsersExistsPhoneController } from "./infrastructure/presentation/users.exists.phone.controller";
 import { UsersExistsNicknameController } from "./infrastructure/presentation/users.exists.nickname.controller";
+import { UsersUpdatePhoneUseCase } from "./application/usecase/users.update.phone.use.case";
+import { UsersUpdateUserIdUseCase } from "./application/usecase/users.update.user.id.use.case";
+import { UsersUpdatePasswordUseCase } from "./application/usecase/users.update.password.use.case";
+import { UsersUpdateNicknameUseCase } from "./application/usecase/users.update.nickname.use.case";
+import { UsersUpdateNameUseCase } from "./application/usecase/users.update.name.use.case";
+import { UsersUpdateAddressUseCase } from "./application/usecase/users.update.address.use.case";
+import { UsersUpdateUserIdRepository } from "./infrastructure/repository/users.update.user.id.repository";
+import { UsersUpdateNameRepository } from "./infrastructure/repository/users.update.name.repository";
+import { UsersUpdateAddressRepository } from "./infrastructure/repository/users.update.address.repository";
 
 @Module({
   imports: [TokenModule],

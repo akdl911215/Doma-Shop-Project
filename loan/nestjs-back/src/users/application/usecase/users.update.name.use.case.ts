@@ -13,6 +13,7 @@ export class UsersUpdateNameUseCase implements UsersUpdateNameAdaptor {
   public async updateName(
     dto: UsersUpdateNameAdaptorInputDto
   ): Promise<UsersUpdateNameAdaptorOutputDto> {
+    const { name } = dto;
     return await this.repository.updateName(dto);
   }
 }
