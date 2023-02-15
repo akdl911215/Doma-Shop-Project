@@ -6,8 +6,10 @@ export class UsersUpdatePasswordAdaptorInputDto extends PickType(UsersModel, [
   "password",
 ] as const) {
   @ApiProperty({ type: String, required: true, format: "password" })
-  public confirmPassword!: string;
+  public confirmPassword?: string;
 
   @ApiProperty({ type: String, required: true, format: "password" })
-  public currentPassword!: string;
+  public currentPassword?: string;
+
+  public id!: string;
 }

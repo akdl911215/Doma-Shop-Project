@@ -58,19 +58,31 @@ import { UsersExistsNicknameController } from "./infrastructure/presentation/use
       useClass: UsersProfileUseCase,
     },
     { provide: "USE_CASE_LOGIN", useClass: UsersLoginUseCase },
-    // { provide: 'USE_CASE_UPDATE_PHONE', useClass: UsersUpdatePhoneUseCase },
-    // {
-    //   provide: 'USE_CASE_UPDATE_USER_ID',
-    //   useClass: UsersUpdateUserIdUseCase,
-    // },
-    // {
-    //   provide: 'USE_CASE_UPDATE_PASSWORD',
-    //   useClass: UsersUpdatePasswordUseCase,
-    // },
-    // {
-    //   provide: 'USE_CASE_UPDATE_NICKNAME',
-    //   useClass: UsersUpdateNicknameUseCase,
-    // },
+    { provide: "USE_CASE_UPDATE_PHONE", useClass: UsersUpdatePhoneUseCase },
+    {
+      provide: "USE_CASE_UPDATE_USER_ID",
+      useClass: UsersUpdateUserIdUseCase,
+    },
+    {
+      provide: "USE_CASE_UPDATE_PASSWORD",
+      useClass: UsersUpdatePasswordUseCase,
+    },
+    {
+      provide: "USE_CASE_UPDATE_NICKNAME",
+      useClass: UsersUpdateNicknameUseCase,
+    },
+    {
+      provide: "USE_CASE_UPDATE_NAME",
+      useClass: UsersUpdateNameUseCase,
+    },
+    {
+      provide: "USE_CASE_UPDATE_ADDRESS",
+      useClass: UsersUpdateAddressUseCase,
+    },
+    {
+      provide: "USE_CASE_UPDATE_PHONE",
+      useClass: UsersUpdatePhoneUseCase,
+    },
     {
       provide: "USE_CASE_EXISTS_USER_ID",
       useClass: UsersExistsUserIdUseCase,
@@ -106,6 +118,9 @@ import { UsersExistsNicknameController } from "./infrastructure/presentation/use
     { provide: "UPDATE_PASSWORD", useClass: UsersUpdatePasswordRepository },
     { provide: "UPDATE_PHONE", useClass: UsersUpdatePhoneRepository },
     { provide: "UPDATE_NICKNAME", useClass: UsersUpdateNicknameRepository },
+    { provide: "UPDATE_USER_ID", useClass: UsersUpdateUserIdRepository },
+    { provide: "UPDATE_NAME", useClass: UsersUpdateNameRepository },
+    { provide: "UPDATE_ADDRESS", useClass: UsersUpdateAddressRepository },
     { provide: "PROFILE", useClass: UsersProfileRepository },
   ],
   exports: [
