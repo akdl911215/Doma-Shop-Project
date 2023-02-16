@@ -1,46 +1,50 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
 import { BadRequestException, NotFoundException } from "@nestjs/common";
-import { UsersUpdateAddressUseCase } from "./users.update.address.use.case";
-import { UsersUpdateAddressRepository } from "../../infrastructure/repository/users.update.address.repository";
-import { UsersUpdateAddressAdaptorInputDto } from "../../inbound/dtos/users.update.address.adaptor.input.dto";
+import { UsersUpdateNameAdaptorInputDto } from "../../inbound/dtos/users.update.name.adaptor.input.dto";
+import { UsersUpdateNicknameUseCase } from "./users.update.nickname.use.case";
+import { UsersUpdateNicknameRepository } from "../../infrastructure/repository/users.update.nickname.repository";
+import { UsersUpdateNicknameAdaptorInputDto } from "../../inbound/dtos/users.update.nickname.adaptor.input.dto";
 
-describe("UsersUpdateAddressUseCase", () => {
-  let service: UsersUpdateAddressUseCase;
+describe("UsersUpdateNicknameUseCase", () => {
+  let service: UsersUpdateNicknameUseCase;
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         PrismaService,
-        UsersUpdateAddressUseCase,
+        UsersUpdateNicknameUseCase,
         {
-          provide: "UPDATE_ADDRESS",
-          useClass: UsersUpdateAddressRepository,
+          provide: "UPDATE_NICKNAME",
+          useClass: UsersUpdateNicknameRepository,
         },
       ],
     }).compile();
 
-    service = module.get<UsersUpdateAddressUseCase>(UsersUpdateAddressUseCase);
+    service = module.get<UsersUpdateNicknameUseCase>(
+      UsersUpdateNicknameUseCase
+    );
   });
 
-  let dto: UsersUpdateAddressAdaptorInputDto;
-  describe("update address process", () => {
-    it("address is empty and will fail", async () => {
+  let dto: UsersUpdateNicknameAdaptorInputDto;
+  describe("update nick-name process", () => {
+    it("nick-name is empty and will fail", async () => {
       dto = {
-        address: "",
         id: "c2e2d0df-3139-424f-bee4-15a0b11e0022",
+        nickname: "",
       };
 
       try {
-        await service.updateAddress(dto);
+        await service.updateNickname(dto);
       } catch (e) {
         if (e instanceof BadRequestException) {
           const status = e.getStatus();
           expect(status).toStrictEqual(400);
 
           const errorMessage = e.getResponse();
+          console.log(errorMessage);
           expect(errorMessage).toStrictEqual({
             error: "Bad Request",
-            message: "CONFIRM_REQUIRED_ADDRESS_INFORMATION",
+            message: "CONFIRM_REQUIRED_NICKNAME_INFORMATION",
             statusCode: 400,
           });
         }
@@ -49,12 +53,12 @@ describe("UsersUpdateAddressUseCase", () => {
 
     it("failed should wrong id", async () => {
       dto = {
-        address: "서울역",
         id: "c2e2d0df-3139-424f-bee4-15a0b11e0022",
+        nickname: "failed-nickname",
       };
 
       try {
-        await service.updateAddress(dto);
+        await service.updateNickname(dto);
       } catch (e) {
         // console.log(e);
 
@@ -73,22 +77,22 @@ describe("UsersUpdateAddressUseCase", () => {
       }
     });
 
-    it("success should user address", async () => {
+    it("success should user name", async () => {
       dto = {
-        address: "변경한 주소지롱 111 222",
         id: "c2e2d0df-3139-424f-bee4-15a0b11e000f",
+        nickname: "변경한 별명이지롱 3333",
       };
 
-      const { response } = await service.updateAddress(dto);
-      // console.log(response);
+      const { response } = await service.updateNickname(dto);
+      console.log(response);
 
       expect(response.id).toStrictEqual("c2e2d0df-3139-424f-bee4-15a0b11e000f");
       expect(response.userId).toStrictEqual("aaa");
-      expect(response.nickname).toStrictEqual("admin");
+      expect(response.nickname).toStrictEqual("변경한 별명이지롱 3333");
       expect(response.password).toStrictEqual(
         "$2b$10$xBqjQweWRGsVFT.UOujny.W6cnEh3OrH/u37qgHSJJ69qwfpYeOdO"
       );
-      expect(response.name).toStrictEqual("admain222");
+      expect(response.name).toStrictEqual("변경한 이름이지롱 111");
       expect(response.phone).toStrictEqual("01050939902");
       expect(response.address).toStrictEqual("변경한 주소지롱 111 222");
     });
