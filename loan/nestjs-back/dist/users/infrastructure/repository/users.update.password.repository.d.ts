@@ -1,4 +1,3 @@
-import { UsersModel } from "../../domain/entity/users.model";
 import { HashEncodedService } from "../bcrypt/hash.encoded.service";
 import { UsersUpdatePasswordAdaptorInputDto } from "../../inbound/dtos/users.update.password.adaptor.input.dto";
 import { UsersUpdatePasswordAdaptorOutputDto } from "../../outbound/dtos/users.update.password.adaptor.output.dto";
@@ -8,8 +7,5 @@ export declare class UsersUpdatePasswordRepository implements UsersUpdatePasswor
     private readonly prisma;
     private readonly hash;
     constructor(prisma: PrismaService, hash: HashEncodedService);
-    updatePassword(dto: {
-        requestPassword: UsersUpdatePasswordAdaptorInputDto;
-        user: UsersModel;
-    }): Promise<UsersUpdatePasswordAdaptorOutputDto>;
+    updatePassword(dto: UsersUpdatePasswordAdaptorInputDto): Promise<UsersUpdatePasswordAdaptorOutputDto>;
 }

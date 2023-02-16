@@ -24,7 +24,7 @@ let UsersProfileUseCase = class UsersProfileUseCase {
 };
 UsersProfileUseCase = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)('PROFILE')),
+    __param(0, (0, common_1.Inject)("PROFILE")),
     __metadata("design:paramtypes", [Object])
 ], UsersProfileUseCase);
 exports.UsersProfileUseCase = UsersProfileUseCase;

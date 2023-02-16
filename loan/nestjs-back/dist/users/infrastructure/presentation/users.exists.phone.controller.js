@@ -34,10 +34,7 @@ __decorate([
         description: "유저 핸드폰 존재 유무 조회 절차",
     }),
     (0, swagger_1.ApiResponse)({ status: 200, description: `${_200_1.TWO_HUNDRED_OK}` }),
-    (0, swagger_1.ApiResponse)({
-        status: 409,
-        description: `${_409_1.ALREADY_PHONE_EXISTS}`,
-    }),
+    (0, swagger_1.ApiResponse)({ status: 409, description: `${_409_1.ALREADY_PHONE_EXISTS}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),

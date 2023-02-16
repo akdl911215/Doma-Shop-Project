@@ -16,7 +16,6 @@ exports.UsersUpdatePhoneController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const _200_1 = require("../../../common/constants/http/success/200");
-const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _409_1 = require("../../../common/constants/http/errors/409");
 const _500_1 = require("../../../common/constants/http/errors/500");
@@ -29,8 +28,10 @@ let UsersUpdatePhoneController = class UsersUpdatePhoneController {
     constructor(useCase) {
         this.useCase = useCase;
     }
-    async updatePhone(requestPhone, user) {
-        return await this.useCase.updatePhone({ requestPhone, user });
+    async updatePhone(request, user) {
+        const { phone } = request;
+        const { id } = user;
+        return await this.useCase.updatePhone({ phone, id });
     }
 };
 __decorate([
@@ -43,15 +44,8 @@ __decorate([
         description: "유저 휴대폰 정보 1개 수정",
     }),
     (0, swagger_1.ApiResponse)({ status: 200, description: `${_200_1.TWO_HUNDRED_OK}` }),
-    (0, swagger_1.ApiResponse)({ status: 400, description: `${_400_1.NO_MATCH_USER_ID}` }),
-    (0, swagger_1.ApiResponse)({
-        status: 404,
-        description: `${_404_1.NOTFOUND_USER}`,
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 409,
-        description: `${_409_1.UPDATE_FAILED}`,
-    }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
+    (0, swagger_1.ApiResponse)({ status: 409, description: `${_409_1.UPDATE_FAILED}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, user_decorator_1.User)()),

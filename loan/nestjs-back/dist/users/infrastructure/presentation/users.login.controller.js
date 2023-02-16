@@ -34,7 +34,10 @@ __decorate([
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({ summary: "USER LOGIN API", description: "로그인 진행 절차" }),
     (0, swagger_1.ApiResponse)({ status: 201, description: `${_201_1.LOGIN_SUCCESS}` }),
-    (0, swagger_1.ApiResponse)({ status: 400, description: `${_400_1.NO_MATCH_PASSWORD}` }),
+    (0, swagger_1.ApiResponse)({
+        status: 400,
+        description: `${_400_1.NO_MATCH_USER_ID}, ${_400_1.NO_MATCH_PASSWORD}`,
+    }),
     (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
     (0, swagger_1.ApiResponse)({ status: 409, description: `${_409_1.REFRESH_TOKEN_MODIFY_FAILED}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
@@ -45,9 +48,9 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersLoginController.prototype, "login", null);
 UsersLoginController = __decorate([
-    (0, common_1.Controller)('users'),
-    (0, swagger_1.ApiTags)('users'),
-    __param(0, (0, common_1.Inject)('USERS_LOGIN')),
+    (0, common_1.Controller)("users"),
+    (0, swagger_1.ApiTags)("users"),
+    __param(0, (0, common_1.Inject)("USERS_LOGIN")),
     __metadata("design:paramtypes", [Object])
 ], UsersLoginController);
 exports.UsersLoginController = UsersLoginController;

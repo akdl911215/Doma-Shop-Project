@@ -37,6 +37,17 @@ import { UsersUpdateAddressUseCase } from "./application/usecase/users.update.ad
 import { UsersUpdateUserIdRepository } from "./infrastructure/repository/users.update.user.id.repository";
 import { UsersUpdateNameRepository } from "./infrastructure/repository/users.update.name.repository";
 import { UsersUpdateAddressRepository } from "./infrastructure/repository/users.update.address.repository";
+import { UsersLogoutRepository } from "./infrastructure/repository/users.logout.repository";
+import { UsersLogoutService } from "./domain/service/users.logout.service";
+import { UsersLoginController } from "./infrastructure/presentation/users.login.controller";
+import { UsersLogoutController } from "./infrastructure/presentation/users.logout.controller";
+import { UsersUpdateAddressController } from "./infrastructure/presentation/users.update.address.controller";
+import { UsersUpdateNameController } from "./infrastructure/presentation/users.update.name.controller";
+import { UsersUpdateNicknameController } from "./infrastructure/presentation/users.update.nickname.controller";
+import { UsersUpdatePasswordController } from "./infrastructure/presentation/users.update.password.controller";
+import { UsersUpdatePhoneController } from "./infrastructure/presentation/users.update.phone.controller";
+import { UsersUpdateUserIdController } from "./infrastructure/presentation/users.update.user.id.controller";
+import { UsersWithdrawalController } from "./infrastructure/presentation/users.withdrawal.controller";
 
 @Module({
   imports: [TokenModule],
@@ -45,6 +56,15 @@ import { UsersUpdateAddressRepository } from "./infrastructure/repository/users.
     UsersExistsUserIdController,
     UsersExistsPhoneController,
     UsersExistsNicknameController,
+    UsersLoginController,
+    UsersLogoutController,
+    UsersUpdateAddressController,
+    UsersUpdateNameController,
+    UsersUpdateNicknameController,
+    UsersUpdatePasswordController,
+    UsersUpdatePhoneController,
+    UsersUpdateUserIdController,
+    UsersWithdrawalController,
   ],
   providers: [
     AccessTokenStrategy,
@@ -108,7 +128,7 @@ import { UsersUpdateAddressRepository } from "./infrastructure/repository/users.
 
     // service
     // { provide: 'EXISTS', useClass: UsersExitsDomainService },
-    // { provide: 'SERVICE_LOGOUT', useClass: UsersLogoutService },
+    { provide: "SERVICE_LOGOUT", useClass: UsersLogoutService },
 
     // repository
     { provide: "EXISTS_NICKNAME", useClass: UsersExistsNicknameRepository },
@@ -131,6 +151,7 @@ import { UsersUpdateAddressRepository } from "./infrastructure/repository/users.
     { provide: "UPDATE_NAME", useClass: UsersUpdateNameRepository },
     { provide: "UPDATE_ADDRESS", useClass: UsersUpdateAddressRepository },
     { provide: "PROFILE", useClass: UsersProfileRepository },
+    { provide: "LOGOUT", useClass: UsersLogoutRepository },
   ],
   exports: [
     // {

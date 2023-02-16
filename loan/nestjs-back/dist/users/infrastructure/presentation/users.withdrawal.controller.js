@@ -44,10 +44,7 @@ __decorate([
         description: `${_204_1.TWO_HUNDRED_FOUR_DELETE_SUCCESS}`,
     }),
     (0, swagger_1.ApiResponse)({ status: 400, description: `${_400_1.NO_MATCH_USER_ID}` }),
-    (0, swagger_1.ApiResponse)({
-        status: 404,
-        description: `${_404_1.NOTFOUND_USER}, ${_404_1.NOTFOUND_BOARD}, ${_404_1.NOTFOUND_BOARD_COMMENT}`,
-    }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     __param(0, (0, common_1.Param)("id", common_1.ParseUUIDPipe)),
     __metadata("design:type", Function),

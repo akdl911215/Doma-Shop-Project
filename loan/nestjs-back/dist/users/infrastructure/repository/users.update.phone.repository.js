@@ -12,45 +12,38 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersUpdatePhoneRepository = void 0;
 const common_1 = require("@nestjs/common");
 const _404_1 = require("../../../common/constants/http/errors/404");
-const _400_1 = require("../../../common/constants/http/errors/400");
 const prisma_service_1 = require("../../../common/infrastructures/prisma/prisma.service");
 let UsersUpdatePhoneRepository = class UsersUpdatePhoneRepository {
     constructor(prisma) {
         this.prisma = prisma;
     }
     async updatePhone(dto) {
-        const { id } = dto.user;
+        const { id, phone } = dto;
         const [dbUser] = await this.prisma.$transaction([
             this.prisma.users.findUnique({ where: { id } }),
         ]);
         if (!dbUser)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
-        const { phone } = dto.requestPhone;
-        if (dbUser.id === id) {
-            try {
-                const [updateUser] = await this.prisma.$transaction([
-                    this.prisma.users.update({
-                        where: { id },
-                        data: {
-                            phone,
-                        },
-                    }),
-                ]);
-                return {
-                    response: updateUser,
-                };
-            }
-            catch (e) {
-                if (e instanceof common_1.InternalServerErrorException) {
-                    throw new common_1.InternalServerErrorException(e);
-                }
-                else {
-                    throw new Error(`${e}`);
-                }
-            }
+        try {
+            const [updateUser] = await this.prisma.$transaction([
+                this.prisma.users.update({
+                    where: { id },
+                    data: {
+                        phone,
+                    },
+                }),
+            ]);
+            return {
+                response: updateUser,
+            };
         }
-        else {
-            throw new common_1.BadRequestException(_400_1.NO_MATCH_USER_ID);
+        catch (e) {
+            if (e instanceof common_1.InternalServerErrorException) {
+                throw new common_1.InternalServerErrorException(e);
+            }
+            else {
+                throw new Error(`${e}`);
+            }
         }
     }
 };

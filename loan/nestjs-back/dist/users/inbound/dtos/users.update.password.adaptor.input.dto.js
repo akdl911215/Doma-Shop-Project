@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersUpdatePasswordAdaptorInputDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const users_model_1 = require("../../domain/entity/users.model");
-const class_validator_1 = require("class-validator");
 class UsersUpdatePasswordAdaptorInputDto extends (0, swagger_1.PickType)(users_model_1.UsersModel, [
     "password",
 ]) {
@@ -25,11 +24,5 @@ __decorate([
     (0, swagger_1.ApiProperty)({ type: String, required: true, format: "password" }),
     __metadata("design:type", String)
 ], UsersUpdatePasswordAdaptorInputDto.prototype, "currentPassword", void 0);
-__decorate([
-    (0, class_validator_1.IsUUID)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, swagger_1.ApiProperty)({ type: String, required: true }),
-    __metadata("design:type", String)
-], UsersUpdatePasswordAdaptorInputDto.prototype, "id", void 0);
 exports.UsersUpdatePasswordAdaptorInputDto = UsersUpdatePasswordAdaptorInputDto;
 //# sourceMappingURL=users.update.password.adaptor.input.dto.js.map

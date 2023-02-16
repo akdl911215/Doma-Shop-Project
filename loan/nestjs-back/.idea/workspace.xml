@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
+      <change afterPath="$PROJECT_DIR$/src/users/inbound/dtos/users.logout.adaptor.logout.input.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/users/outbound/dtos/users.logout.adaptor.output.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.address.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.address.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.name.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.name.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.nickname.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.nickname.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.password.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.password.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.phone.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.phone.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.user.id.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.user.id.use.case.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.logout.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/domain/adaptor/users.logout.adaptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.logout.use.case.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.password.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.password.use.case.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.update.phone.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.update.phone.use.case.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.logout.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.logout.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.withdrawal.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.withdrawal.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.logout.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.logout.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/interceptor/password.checking.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/interceptor/password.checking.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/users.service.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,96 +66,96 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/users/domain/service" />
       <recent name="$PROJECT_DIR$/src/common/infrastructures" />
       <recent name="$PROJECT_DIR$/src/users/infrastructure/token/inbound" />
       <recent name="$PROJECT_DIR$/src/users/domain/adaptor" />
       <recent name="$PROJECT_DIR$/src/users/inbound" />
-      <recent name="C:\Users\leejunghyun\Desktop\develop2\LEEJungHyun-Project\note\nestjs-back\src\users\domain\entity" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.UsersUpdateNicknameUseCase.update nick-name process.success should user name">
-    <configuration name="UsersUpdateNameUseCase.update name process.failed should wrong id" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.UsersLogoutService.logout process.success should user logout">
+    <configuration name="UsersLogoutService.logout process.failed should wrong id" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.update.name.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/users/domain/service/user.logout.service.spec.ts" />
       <test-names>
-        <test-name value="UsersUpdateNameUseCase" />
-        <test-name value="update name process" />
+        <test-name value="UsersLogoutService" />
+        <test-name value="logout process" />
         <test-name value="failed should wrong id" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="UsersUpdateNameUseCase.update name process.success should user name" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="UsersLogoutService.logout process.success should user logout" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.update.name.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/users/domain/service/user.logout.service.spec.ts" />
       <test-names>
-        <test-name value="UsersUpdateNameUseCase" />
-        <test-name value="update name process" />
-        <test-name value="success should user name" />
+        <test-name value="UsersLogoutService" />
+        <test-name value="logout process" />
+        <test-name value="success should user logout" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="UsersUpdateNicknameUseCase.update nick-name process.failed should wrong id" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="UsersLogoutService.logout process.user id is empty and will fail" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.update.nickname.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/users/domain/service/user.logout.service.spec.ts" />
       <test-names>
-        <test-name value="UsersUpdateNicknameUseCase" />
-        <test-name value="update nick-name process" />
+        <test-name value="UsersLogoutService" />
+        <test-name value="logout process" />
+        <test-name value="user id is empty and will fail" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="UsersUpdateUserIdUseCase.update user-id number process.failed should wrong id" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.update.user.id.use.case.spec.ts" />
+      <test-names>
+        <test-name value="UsersUpdateUserIdUseCase" />
+        <test-name value="update user-id number process" />
         <test-name value="failed should wrong id" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="UsersUpdateNicknameUseCase.update nick-name process.nick-name is empty and will fail" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="UsersUpdateUserIdUseCase.update user-id number process.success should user userId" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.update.nickname.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.update.user.id.use.case.spec.ts" />
       <test-names>
-        <test-name value="UsersUpdateNicknameUseCase" />
-        <test-name value="update nick-name process" />
-        <test-name value="nick-name is empty and will fail" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="UsersUpdateNicknameUseCase.update nick-name process.success should user name" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/users/application/usecase/users.update.nickname.use.case.spec.ts" />
-      <test-names>
-        <test-name value="UsersUpdateNicknameUseCase" />
-        <test-name value="update nick-name process" />
-        <test-name value="success should user name" />
+        <test-name value="UsersUpdateUserIdUseCase" />
+        <test-name value="update user-id number process" />
+        <test-name value="success should user userId" />
       </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.UsersUpdateNicknameUseCase.update nick-name process.success should user name" />
-        <item itemvalue="Jest.UsersUpdateNicknameUseCase.update nick-name process.failed should wrong id" />
-        <item itemvalue="Jest.UsersUpdateNicknameUseCase.update nick-name process.nick-name is empty and will fail" />
-        <item itemvalue="Jest.UsersUpdateNameUseCase.update name process.success should user name" />
-        <item itemvalue="Jest.UsersUpdateNameUseCase.update name process.failed should wrong id" />
+        <item itemvalue="Jest.UsersLogoutService.logout process.success should user logout" />
+        <item itemvalue="Jest.UsersLogoutService.logout process.failed should wrong id" />
+        <item itemvalue="Jest.UsersLogoutService.logout process.user id is empty and will fail" />
+        <item itemvalue="Jest.UsersUpdateUserIdUseCase.update user-id number process.success should user userId" />
+        <item itemvalue="Jest.UsersUpdateUserIdUseCase.update user-id number process.failed should wrong id" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +183,7 @@
       <workItem from="1675662994638" duration="23618000" />
       <workItem from="1676113995963" duration="3271000" />
       <workItem from="1676166945686" duration="23504000" />
-      <workItem from="1676426070270" duration="10200000" />
+      <workItem from="1676426070270" duration="15542000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
@@ -216,7 +223,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/users/users.module.ts</url>
-          <line>62</line>
+          <line>82</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

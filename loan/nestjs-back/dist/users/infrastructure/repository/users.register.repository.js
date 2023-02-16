@@ -22,7 +22,6 @@ let UsersRegisterRepository = class UsersRegisterRepository {
         this.prisma = prisma;
     }
     async register(dto) {
-        console.log("dto :", dto);
         const { userId, nickname, password, name, phone, address } = dto;
         try {
             const { response: { encoded: hashPassword }, } = await this.hash.encoded({ password: password });
