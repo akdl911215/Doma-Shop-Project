@@ -3,7 +3,6 @@ import {
   Get,
   Inject,
   Param,
-  ParseIntPipe,
   ParseUUIDPipe,
   UseGuards,
 } from "@nestjs/common";

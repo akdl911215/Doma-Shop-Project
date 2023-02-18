@@ -56,6 +56,7 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const PORT = configService.get<number>("PORT");
+  const SERVER_HOST = configService.get<string>("HOST");
 
   const config = new DocumentBuilder()
     .addBearerAuth(
@@ -74,6 +75,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("docs", app, document);
 
-  await app.listen(PORT, () => console.log(`http://127.0.0.1:${PORT}/docs`));
+  await app.listen(PORT, () => console.log(`${SERVER_HOST}:${PORT}/docs`));
 }
 bootstrap().then((res) => console.log("bootstrap start"));

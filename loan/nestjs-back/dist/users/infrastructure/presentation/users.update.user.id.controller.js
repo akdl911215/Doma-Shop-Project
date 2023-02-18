@@ -21,7 +21,6 @@ const _409_1 = require("../../../common/constants/http/errors/409");
 const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
-const password_checking_interceptor_1 = require("../../interceptor/password.checking.interceptor");
 const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 const users_update_user_id_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.user.id.adaptor.input.dto");
 let UsersUpdateUserIdController = class UsersUpdateUserIdController {
@@ -57,7 +56,6 @@ __decorate([
 UsersUpdateUserIdController = __decorate([
     (0, swagger_1.ApiTags)("users"),
     (0, common_1.Controller)("users"),
-    (0, common_1.UseInterceptors)(password_checking_interceptor_1.PasswordCheckingInterceptor),
     __param(0, (0, common_1.Inject)("USE_CASE_USER_ID")),
     __metadata("design:paramtypes", [Object])
 ], UsersUpdateUserIdController);

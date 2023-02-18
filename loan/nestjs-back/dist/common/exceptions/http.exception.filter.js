@@ -19,6 +19,7 @@ let HttpExceptionFilter = class HttpExceptionFilter {
         const ctx = host.switchToHttp();
         const res = ctx.getResponse();
         const req = ctx.getRequest();
+        console.log("1", ctx, res, req);
         if (!(exception instanceof common_1.HttpException))
             exception = new common_1.InternalServerErrorException();
         const status = exception instanceof common_1.HttpException
@@ -26,9 +27,10 @@ let HttpExceptionFilter = class HttpExceptionFilter {
             : common_1.HttpStatus.INTERNAL_SERVER_ERROR;
         const response = exception.getResponse();
         const message = exception.message;
+        console.log("2", status, response, message);
         const developErrorLog = {
             status,
-            timestamp: new Date().toLocaleString('ko-KR', { hour12: true }),
+            timestamp: new Date().toLocaleString("ko-KR", { hour12: true }),
             url: req.url,
             response,
         };
@@ -39,7 +41,7 @@ let HttpExceptionFilter = class HttpExceptionFilter {
         this.logger.error(developErrorLog);
         res
             .status(status)
-            .json(process.env.NODE_ENV === 'development'
+            .json(process.env.NODE_ENV === "development"
             ? developErrorLog
             : productErrorLog);
     }

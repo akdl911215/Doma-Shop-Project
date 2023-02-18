@@ -9,33 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const users_module_1 = require("./users/users.module");
-const config_1 = require("@nestjs/config");
-const Joi = require("joi");
-const CONFIG_MODULE = config_1.ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: process.env.NODE_ENV === "production"
-        ? ".env.production"
-        : ".env.development",
-    validationSchema: Joi.object({
-        NODE_ENV: Joi.string()
-            .valid("production", "development")
-            .default("development"),
-        DATABASE_URL: Joi.string().required(),
-        PORT: Joi.number().required(),
-        HOST: Joi.string().required(),
-        JWT_SECRET: Joi.string().required(),
-        JWT_ACCESS_SECRET: Joi.string().required(),
-        JWT_REFRESH_SECRET: Joi.string().required(),
-        JWT_ACCESS_EXPIRE_IN: Joi.string().required(),
-        JWT_REFRESH_EXPIRE_IN: Joi.string().required(),
-        BCRIPT_SOLT_NUMBER: Joi.number().required(),
-    }),
-});
+const config_module_1 = require("./common/infrastructures/env/config.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [CONFIG_MODULE, users_module_1.UsersModule],
+        imports: [config_module_1.CONFIG_MODULE, users_module_1.UsersModule],
     })
 ], AppModule);
 exports.AppModule = AppModule;

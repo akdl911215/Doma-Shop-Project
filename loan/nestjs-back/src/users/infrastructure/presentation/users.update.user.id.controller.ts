@@ -27,7 +27,7 @@ import { UsersUpdateUserIdAdaptorOutputDto } from "../../outbound/dtos/users.upd
 
 @ApiTags("users")
 @Controller("users")
-@UseInterceptors(PasswordCheckingInterceptor)
+// @UseInterceptors(PasswordCheckingInterceptor)
 export class UsersUpdateUserIdController {
   constructor(
     @Inject("USE_CASE_USER_ID")

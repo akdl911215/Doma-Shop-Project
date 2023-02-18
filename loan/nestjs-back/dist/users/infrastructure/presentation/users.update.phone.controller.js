@@ -22,7 +22,6 @@ const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const users_update_phone_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.phone.adaptor.input.dto");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
-const password_checking_interceptor_1 = require("../../interceptor/password.checking.interceptor");
 const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 let UsersUpdatePhoneController = class UsersUpdatePhoneController {
     constructor(useCase) {
@@ -57,7 +56,6 @@ __decorate([
 UsersUpdatePhoneController = __decorate([
     (0, swagger_1.ApiTags)("users"),
     (0, common_1.Controller)("users"),
-    (0, common_1.UseInterceptors)(password_checking_interceptor_1.PasswordCheckingInterceptor),
     __param(0, (0, common_1.Inject)("USE_CASE_UPDATE_PHONE")),
     __metadata("design:paramtypes", [Object])
 ], UsersUpdatePhoneController);

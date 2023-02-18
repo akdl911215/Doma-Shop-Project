@@ -1,8 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
-import { BadRequestException, NotFoundException } from "@nestjs/common";
-import { UsersUpdateUserIdRepository } from "../../infrastructure/repository/users.update.user.id.repository";
-import { UsersUpdateUserIdAdaptorInputDto } from "../../inbound/dtos/users.update.user.id.adaptor.input.dto";
+import { NotFoundException } from "@nestjs/common";
 import { UsersLogoutService } from "./users.logout.service";
 import { UsersLogoutRepository } from "../../infrastructure/repository/users.logout.repository";
 import { UsersLogoutAdaptorInputDto } from "../../inbound/dtos/users.logout.adaptor.logout.input.dto";

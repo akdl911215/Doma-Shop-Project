@@ -27,7 +27,7 @@ import { UsersUpdatePhoneAdaptorOutputDto } from "../../outbound/dtos/users.upda
 
 @ApiTags("users")
 @Controller("users")
-@UseInterceptors(PasswordCheckingInterceptor)
+// @UseInterceptors(PasswordCheckingInterceptor)
 export class UsersUpdatePhoneController {
   constructor(
     @Inject("USE_CASE_UPDATE_PHONE")
