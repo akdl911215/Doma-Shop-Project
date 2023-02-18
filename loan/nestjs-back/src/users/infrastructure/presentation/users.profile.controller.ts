@@ -25,12 +25,12 @@ import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jw
 @ApiTags("users")
 export class UsersProfileController {
   constructor(
-    @Inject("USERS_PROFILE") private readonly useCase: UsersProfileAdaptor
+    @Inject("USE_CASE_PROFILE") private readonly useCase: UsersProfileAdaptor
   ) {}
 
+  @Get("/:id")
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
-  @Get("/:id")
   @ApiConsumes("application/x-www-form-urlencoded")
   @ApiOperation({
     summary: "USER PROFILE API",

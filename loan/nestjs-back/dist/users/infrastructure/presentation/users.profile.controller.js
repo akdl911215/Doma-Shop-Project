@@ -29,9 +29,9 @@ let UsersProfileController = class UsersProfileController {
     }
 };
 __decorate([
+    (0, common_1.Get)("/:id"),
     (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
-    (0, common_1.Get)("/:id"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({
         summary: "USER PROFILE API",
@@ -49,7 +49,7 @@ __decorate([
 UsersProfileController = __decorate([
     (0, common_1.Controller)("users"),
     (0, swagger_1.ApiTags)("users"),
-    __param(0, (0, common_1.Inject)("USERS_PROFILE")),
+    __param(0, (0, common_1.Inject)("USE_CASE_PROFILE")),
     __metadata("design:paramtypes", [Object])
 ], UsersProfileController);
 exports.UsersProfileController = UsersProfileController;

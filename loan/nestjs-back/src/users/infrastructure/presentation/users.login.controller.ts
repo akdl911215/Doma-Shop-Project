@@ -22,7 +22,7 @@ import { UsersLoginAdaptorOutputDto } from "../../outbound/dtos/users.login.adap
 @ApiTags("users")
 export class UsersLoginController {
   constructor(
-    @Inject("USERS_LOGIN") private readonly useCase: UsersLoginAdaptor
+    @Inject("USE_CASE_LOGIN") private readonly useCase: UsersLoginAdaptor
   ) {}
 
   @Post("/login")

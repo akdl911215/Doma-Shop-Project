@@ -34,7 +34,7 @@ export class UsersUpdatePhoneController {
     private readonly useCase: UsersUpdatePhoneAdaptor
   ) {}
 
-  @UseGuards(AccessTokenGuard)
+  // @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Patch("/update/phone")
   @ApiConsumes("application/x-www-form-urlencoded")

@@ -94,6 +94,7 @@ UsersModule = __decorate([
                 useClass: users_profile_use_case_1.UsersProfileUseCase,
             },
             { provide: "USE_CASE_LOGIN", useClass: users_login_use_case_1.UsersLoginUseCase },
+            { provide: "USE_CASE_USER_ID", useClass: users_update_user_id_use_case_1.UsersUpdateUserIdUseCase },
             { provide: "USE_CASE_UPDATE_PHONE", useClass: users_update_phone_use_case_1.UsersUpdatePhoneUseCase },
             {
                 provide: "USE_CASE_UPDATE_USER_ID",
@@ -151,7 +152,12 @@ UsersModule = __decorate([
             { provide: "PROFILE", useClass: users_profile_repository_1.UsersProfileRepository },
             { provide: "LOGOUT", useClass: users_logout_repository_1.UsersLogoutRepository },
         ],
-        exports: [],
+        exports: [
+            {
+                provide: "USE_CASE_USERS_FIND_BY_ID",
+                useClass: users_find_by_id_use_case_1.UsersFindByIdUseCase,
+            },
+        ],
     })
 ], UsersModule);
 exports.UsersModule = UsersModule;

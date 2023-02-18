@@ -6,37 +6,10 @@ const common_1 = require("@nestjs/common");
 const http_exception_filter_1 = require("./common/exceptions/http.exception.filter");
 const config_1 = require("@nestjs/config");
 const swagger_1 = require("@nestjs/swagger");
-const winston = require("winston");
-const nest_winston_1 = require("nest-winston");
-const WINSTON_MODULE = {
-    logger: nest_winston_1.WinstonModule.createLogger({
-        transports: [
-            new winston.transports.Console({
-                level: process.env.NODE_ENV === "production" ? "error" : "silly",
-                format: winston.format.combine(winston.format.timestamp({
-                    format: new Date().toLocaleString("ko-KR", { hour12: true }),
-                }), nest_winston_1.utilities.format.nestLike("PALPALS-LIVEPICKSTAR", {
-                    prettyPrint: true,
-                })),
-            }),
-            new winston.transports.File({
-                filename: "combined.log",
-                level: "info",
-            }),
-            new winston.transports.File({
-                filename: "query.log",
-                level: "warn",
-            }),
-            new winston.transports.File({
-                filename: "errors.log",
-                level: "error",
-            }),
-        ],
-    }),
-};
+const winston_module_1 = require("./common/infrastructures/winston/winston.module");
 async function bootstrap() {
     const logger = new common_1.Logger();
-    const app = await core_1.NestFactory.create(app_module_1.AppModule, WINSTON_MODULE);
+    const app = await core_1.NestFactory.create(app_module_1.AppModule, winston_module_1.WINSTON_MODULE);
     app.useGlobalPipes(new common_1.ValidationPipe({
         whitelist: true,
         transform: true,

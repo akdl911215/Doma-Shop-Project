@@ -11,18 +11,18 @@ import { UsersLogoutAdaptorOutputDto } from "../../outbound/dtos/users.logout.ad
 import { UsersModel } from "../../domain/entity/users.model";
 import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
 import { UsersLogoutAdaptor } from "../../domain/adaptor/users.logout.adaptor";
-import { RefreshTokenGuard } from "../../../common/infrastructures/token/guard/jwt.refresh.guard";
 import { User } from "../../../common/decorators/user.decorator";
+import { RefreshTokenGuard } from "../../../common/infrastructures/token/guard/jwt.refresh.guard";
 
 @ApiTags("users")
 @Controller("users")
+// @UseGuards(RefreshTokenGuard)
 export class UsersLogoutController {
   constructor(
     @Inject("SERVICE_LOGOUT") private readonly service: UsersLogoutAdaptor
   ) {}
 
   @Patch("/logout")
-  @UseGuards(RefreshTokenGuard)
   @ApiBearerAuth("refresh_token")
   @ApiOperation({ summary: "USER LOGOUT API", description: "로그아웃 절차" })
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })

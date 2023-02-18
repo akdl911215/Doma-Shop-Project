@@ -22,7 +22,6 @@ const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
 const users_update_nickname_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.nickname.adaptor.input.dto");
-const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 let UsersUpdateNicknameController = class UsersUpdateNicknameController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -34,7 +33,6 @@ let UsersUpdateNicknameController = class UsersUpdateNicknameController {
     }
 };
 __decorate([
-    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Patch)("/update/nickname"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),

@@ -5,34 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/src/common/infrastructures/env/config.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/infrastructures/winston/winston.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combined.log" beforeDir="false" afterPath="$PROJECT_DIR$/combined.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/exceptions/http.exception.filter.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/exceptions/http.exception.filter.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/exceptions/http.exception.filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/exceptions/http.exception.filter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/common/exceptions/http.exception.filter.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/exceptions/http.exception.filter.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.profile.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.profile.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.register.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.register.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.register.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.register.controller.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.name.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.name.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.name.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.name.controller.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.phone.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.phone.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.phone.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.phone.controller.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.user.id.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.user.id.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.user.id.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.update.user.id.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/users/users.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/exceptions/http.exception.filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/exceptions/http.exception.filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/guard/jwt.access.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/guard/jwt.access.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/strategy/access.token.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/strategy/access.token.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/strategy/refresh.token.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/strategy/refresh.token.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/interceptors/users.checking.interceptor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/interceptors/users.register.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/outbound/interceptor/users.register.interceptor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/domain/service/user.logout.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/domain/service/user.logout.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.login.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.login.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.logout.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.logout.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.profile.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.profile.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.register.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.register.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.address.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.address.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.name.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.name.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.nickname.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.password.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.password.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.phone.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.phone.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.user.id.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.user.id.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.withdrawal.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.withdrawal.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.find.by.id.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.find.by.id.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +87,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/users/outbound/interceptor" />
       <recent name="$PROJECT_DIR$/src/common/infrastructures/env" />
       <recent name="$PROJECT_DIR$/src/users/domain/service" />
       <recent name="$PROJECT_DIR$/src/common/infrastructures" />
       <recent name="$PROJECT_DIR$/src/users/infrastructure/token/inbound" />
-      <recent name="$PROJECT_DIR$/src/users/domain/adaptor" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.UsersLogoutService.logout process.failed should wrong id">
@@ -200,6 +207,7 @@
       <workItem from="1676426070270" duration="17989000" />
       <workItem from="1676606089202" duration="5320000" />
       <workItem from="1676637589822" duration="2553000" />
+      <workItem from="1676688136649" duration="5973000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>

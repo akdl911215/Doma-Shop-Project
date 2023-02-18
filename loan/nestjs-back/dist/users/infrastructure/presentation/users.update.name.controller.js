@@ -21,7 +21,6 @@ const _409_1 = require("../../../common/constants/http/errors/409");
 const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
-const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 const users_update_name_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.name.adaptor.input.dto");
 let UsersUpdateNameController = class UsersUpdateNameController {
     constructor(useCase) {
@@ -34,9 +33,8 @@ let UsersUpdateNameController = class UsersUpdateNameController {
     }
 };
 __decorate([
-    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
-    (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Patch)("/update/name"),
+    (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({
         summary: "USER NAME MODIFY API",
@@ -56,7 +54,7 @@ __decorate([
 UsersUpdateNameController = __decorate([
     (0, swagger_1.ApiTags)("users"),
     (0, common_1.Controller)("users"),
-    __param(0, (0, common_1.Inject)("USE_CASE_NAME")),
+    __param(0, (0, common_1.Inject)("USE_CASE_UPDATE_NAME")),
     __metadata("design:paramtypes", [Object])
 ], UsersUpdateNameController);
 exports.UsersUpdateNameController = UsersUpdateNameController;

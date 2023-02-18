@@ -6,24 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AccessTokenGuard = void 0;
+exports.UsersRegisterInterceptor = void 0;
 const common_1 = require("@nestjs/common");
-const passport_1 = require("@nestjs/passport");
-let AccessTokenGuard = class AccessTokenGuard extends (0, passport_1.AuthGuard)("JWT-ACCESS-TOKEN") {
-    canActivate(context) {
-        console.log("context : ", context);
-        return super.canActivate(context);
-    }
-    handleRequest(err, user, info) {
-        console.log(err, user);
-        if (err || !user) {
-            throw err || new common_1.UnauthorizedException();
-        }
-        return user;
+const operators_1 = require("rxjs/operators");
+let UsersRegisterInterceptor = class UsersRegisterInterceptor {
+    intercept(context, next) {
+        return next.handle().pipe((0, operators_1.tap)((data) => delete data.response.refreshToken));
     }
 };
-AccessTokenGuard = __decorate([
+UsersRegisterInterceptor = __decorate([
     (0, common_1.Injectable)()
-], AccessTokenGuard);
-exports.AccessTokenGuard = AccessTokenGuard;
-//# sourceMappingURL=jwt.access.guard.js.map
+], UsersRegisterInterceptor);
+exports.UsersRegisterInterceptor = UsersRegisterInterceptor;
+//# sourceMappingURL=users.register.interceptor.js.map

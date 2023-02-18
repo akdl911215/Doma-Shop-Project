@@ -50,7 +50,7 @@ __decorate([
 UsersLoginController = __decorate([
     (0, common_1.Controller)("users"),
     (0, swagger_1.ApiTags)("users"),
-    __param(0, (0, common_1.Inject)("USERS_LOGIN")),
+    __param(0, (0, common_1.Inject)("USE_CASE_LOGIN")),
     __metadata("design:paramtypes", [Object])
 ], UsersLoginController);
 exports.UsersLoginController = UsersLoginController;

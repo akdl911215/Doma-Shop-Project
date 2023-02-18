@@ -4,41 +4,7 @@ import { Logger, ValidationPipe } from "@nestjs/common";
 import { HttpExceptionFilter } from "./common/exceptions/http.exception.filter";
 import { ConfigService } from "@nestjs/config";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import * as winston from "winston";
-import {
-  utilities as nestWinstonModuleUtilities,
-  WinstonModule,
-} from "nest-winston";
-
-const WINSTON_MODULE = {
-  logger: WinstonModule.createLogger({
-    transports: [
-      new winston.transports.Console({
-        level: process.env.NODE_ENV === "production" ? "error" : "silly",
-        format: winston.format.combine(
-          winston.format.timestamp({
-            format: new Date().toLocaleString("ko-KR", { hour12: true }),
-          }),
-          nestWinstonModuleUtilities.format.nestLike("PALPALS-LIVEPICKSTAR", {
-            prettyPrint: true,
-          })
-        ),
-      }),
-      new winston.transports.File({
-        filename: "combined.log",
-        level: "info",
-      }),
-      new winston.transports.File({
-        filename: "query.log",
-        level: "warn",
-      }),
-      new winston.transports.File({
-        filename: "errors.log",
-        level: "error",
-      }),
-    ],
-  }),
-};
+import { WINSTON_MODULE } from "./common/infrastructures/winston/winston.module";
 
 async function bootstrap() {
   const logger = new Logger();

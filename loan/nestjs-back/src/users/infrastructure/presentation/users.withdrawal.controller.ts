@@ -26,10 +26,11 @@ import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jw
 @ApiTags("users")
 export class UsersWithdrawalController {
   constructor(
-    @Inject("USERS_WITHDRAWAL") private readonly useCase: UsersWithdrawalAdaptor
+    @Inject("USE_CASE_WITHDRAWAL")
+    private readonly useCase: UsersWithdrawalAdaptor
   ) {}
 
-  @UseGuards(AccessTokenGuard)
+  // @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Delete("/:id")
   @ApiConsumes("application/x-www-form-urlencoded")

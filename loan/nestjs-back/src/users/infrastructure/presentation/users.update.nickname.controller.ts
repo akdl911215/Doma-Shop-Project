@@ -25,7 +25,7 @@ export class UsersUpdateNicknameController {
     private readonly useCase: UsersUpdateNicknameAdaptor
   ) {}
 
-  @UseGuards(AccessTokenGuard)
+  // @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Patch("/update/nickname")
   @ApiConsumes("application/x-www-form-urlencoded")

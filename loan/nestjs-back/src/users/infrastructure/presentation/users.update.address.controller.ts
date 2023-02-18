@@ -5,7 +5,14 @@ import {
   ApiResponse,
   ApiTags,
 } from "@nestjs/swagger";
-import { Body, Controller, Inject, Patch, UseGuards } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Inject,
+  Patch,
+  UseGuards,
+  UseInterceptors,
+} from "@nestjs/common";
 import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
 import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
 import { UPDATE_FAILED } from "../../../common/constants/http/errors/409";
@@ -16,16 +23,18 @@ import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jw
 import { UsersUpdateAddressAdaptor } from "../../domain/adaptor/users.update.address.adaptor";
 import { UsersUpdateAddressAdaptorInputDto } from "../../inbound/dtos/users.update.address.adaptor.input.dto";
 import { UsersUpdateAddressAdaptorOutputDto } from "../../outbound/dtos/users.update.address.adaptor.output.dto";
+import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
 
 @ApiTags("users")
 @Controller("users")
+// @UseInterceptors(PasswordCheckingInterceptor)
+// @UseGuards(AccessTokenGuard)
 export class UsersUpdateAddressController {
   constructor(
-    @Inject("USE_CASE_UPDATE_Address")
+    @Inject("USE_CASE_UPDATE_ADDRESS")
     private readonly useCase: UsersUpdateAddressAdaptor
   ) {}
 
-  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Patch("/update/address")
   @ApiConsumes("application/x-www-form-urlencoded")

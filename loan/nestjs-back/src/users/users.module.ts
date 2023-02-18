@@ -87,6 +87,7 @@ import { UsersWithdrawalController } from "./infrastructure/presentation/users.w
       useClass: UsersProfileUseCase,
     },
     { provide: "USE_CASE_LOGIN", useClass: UsersLoginUseCase },
+    { provide: "USE_CASE_USER_ID", useClass: UsersUpdateUserIdUseCase },
     { provide: "USE_CASE_UPDATE_PHONE", useClass: UsersUpdatePhoneUseCase },
     {
       provide: "USE_CASE_UPDATE_USER_ID",
@@ -127,7 +128,6 @@ import { UsersWithdrawalController } from "./infrastructure/presentation/users.w
     // },
 
     // service
-    // { provide: 'EXISTS', useClass: UsersExitsDomainService },
     { provide: "SERVICE_LOGOUT", useClass: UsersLogoutService },
 
     // repository
@@ -154,10 +154,10 @@ import { UsersWithdrawalController } from "./infrastructure/presentation/users.w
     { provide: "LOGOUT", useClass: UsersLogoutRepository },
   ],
   exports: [
-    // {
-    //   provide: "USE_CASE_USERS_FIND_BY_ID",
-    //   useClass: UsersFindByIdUseCase,
-    // },
+    {
+      provide: "USE_CASE_USERS_FIND_BY_ID",
+      useClass: UsersFindByIdUseCase,
+    },
   ],
 })
 export class UsersModule {}
