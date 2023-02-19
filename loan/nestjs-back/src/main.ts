@@ -9,6 +9,7 @@ import { WINSTON_MODULE } from "./common/infrastructures/winston/winston.module"
 async function bootstrap() {
   const logger = new Logger();
   const app = await NestFactory.create(AppModule, WINSTON_MODULE);
+  app.enableCors();
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -33,8 +34,8 @@ async function bootstrap() {
       { type: "http", scheme: "bearer", bearerFormat: "JWT" },
       "refresh_token"
     )
-    .setTitle("note project")
-    .setDescription("The users API description")
+    .setTitle("loan project")
+    .setDescription("API description")
     .setVersion("1.0")
     .build();
 

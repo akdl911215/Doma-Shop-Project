@@ -27,14 +27,14 @@ import { PasswordCheckingInterceptor } from "../../interceptor/password.checking
 
 @ApiTags("users")
 @Controller("users")
-// @UseInterceptors(PasswordCheckingInterceptor)
-// @UseGuards(AccessTokenGuard)
+@UseInterceptors(PasswordCheckingInterceptor)
 export class UsersUpdateAddressController {
   constructor(
     @Inject("USE_CASE_UPDATE_ADDRESS")
     private readonly useCase: UsersUpdateAddressAdaptor
   ) {}
 
+  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Patch("/update/address")
   @ApiConsumes("application/x-www-form-urlencoded")

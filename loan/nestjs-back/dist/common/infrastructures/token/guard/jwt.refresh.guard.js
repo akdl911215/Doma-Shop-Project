@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const passport_1 = require("@nestjs/passport");
 let RefreshTokenGuard = class RefreshTokenGuard extends (0, passport_1.AuthGuard)("JWT-REFRESH-TOKEN") {
     canActivate(context) {
+        console.log("refresh context : ", context);
         return super.canActivate(context);
     }
     handleRequest(err, user, info) {

@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersModule = void 0;
-const common_1 = require("@nestjs/common");
+const users_update_nickname_controller_1 = require("./infrastructure/presentation/users.update.nickname.controller");
 const prisma_service_1 = require("../common/infrastructures/prisma/prisma.service");
 const token_module_1 = require("../common/infrastructures/token/token.module");
 const users_withdrawal_use_case_1 = require("./application/usecase/users.withdrawal.use.case");
@@ -52,11 +52,11 @@ const users_login_controller_1 = require("./infrastructure/presentation/users.lo
 const users_logout_controller_1 = require("./infrastructure/presentation/users.logout.controller");
 const users_update_address_controller_1 = require("./infrastructure/presentation/users.update.address.controller");
 const users_update_name_controller_1 = require("./infrastructure/presentation/users.update.name.controller");
-const users_update_nickname_controller_1 = require("./infrastructure/presentation/users.update.nickname.controller");
 const users_update_password_controller_1 = require("./infrastructure/presentation/users.update.password.controller");
 const users_update_phone_controller_1 = require("./infrastructure/presentation/users.update.phone.controller");
 const users_update_user_id_controller_1 = require("./infrastructure/presentation/users.update.user.id.controller");
 const users_withdrawal_controller_1 = require("./infrastructure/presentation/users.withdrawal.controller");
+const common_1 = require("@nestjs/common");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
@@ -71,11 +71,11 @@ UsersModule = __decorate([
             users_logout_controller_1.UsersLogoutController,
             users_update_address_controller_1.UsersUpdateAddressController,
             users_update_name_controller_1.UsersUpdateNameController,
-            users_update_nickname_controller_1.UsersUpdateNicknameController,
             users_update_password_controller_1.UsersUpdatePasswordController,
             users_update_phone_controller_1.UsersUpdatePhoneController,
             users_update_user_id_controller_1.UsersUpdateUserIdController,
             users_withdrawal_controller_1.UsersWithdrawalController,
+            users_update_nickname_controller_1.UsersUpdateNicknameController,
         ],
         providers: [
             access_token_strategy_1.AccessTokenStrategy,
@@ -89,10 +89,7 @@ UsersModule = __decorate([
             },
             { provide: "USE_CASE_WITHDRAWAL", useClass: users_withdrawal_use_case_1.UsersWithdrawalUseCase },
             { provide: "USE_CASE_REGISTER", useClass: users_register_use_case_1.UsersRegisterUseCase },
-            {
-                provide: "USE_CASE_PROFILE",
-                useClass: users_profile_use_case_1.UsersProfileUseCase,
-            },
+            { provide: "USE_CASE_PROFILE", useClass: users_profile_use_case_1.UsersProfileUseCase },
             { provide: "USE_CASE_LOGIN", useClass: users_login_use_case_1.UsersLoginUseCase },
             { provide: "USE_CASE_USER_ID", useClass: users_update_user_id_use_case_1.UsersUpdateUserIdUseCase },
             { provide: "USE_CASE_UPDATE_PHONE", useClass: users_update_phone_use_case_1.UsersUpdatePhoneUseCase },

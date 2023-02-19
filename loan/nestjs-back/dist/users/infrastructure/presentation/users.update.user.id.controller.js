@@ -21,6 +21,7 @@ const _409_1 = require("../../../common/constants/http/errors/409");
 const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 const users_update_user_id_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.user.id.adaptor.input.dto");
 let UsersUpdateUserIdController = class UsersUpdateUserIdController {
     constructor(useCase) {
@@ -33,6 +34,7 @@ let UsersUpdateUserIdController = class UsersUpdateUserIdController {
     }
 };
 __decorate([
+    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Patch)("/update/userId"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),

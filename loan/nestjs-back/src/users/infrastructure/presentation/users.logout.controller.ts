@@ -16,13 +16,13 @@ import { RefreshTokenGuard } from "../../../common/infrastructures/token/guard/j
 
 @ApiTags("users")
 @Controller("users")
-// @UseGuards(RefreshTokenGuard)
 export class UsersLogoutController {
   constructor(
     @Inject("SERVICE_LOGOUT") private readonly service: UsersLogoutAdaptor
   ) {}
 
   @Patch("/logout")
+  // @UseGuards(RefreshTokenGuard)
   @ApiBearerAuth("refresh_token")
   @ApiOperation({ summary: "USER LOGOUT API", description: "로그아웃 절차" })
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })

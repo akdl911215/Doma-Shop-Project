@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { UsersUpdateNicknameController } from "./infrastructure/presentation/users.update.nickname.controller";
 import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
 import { TokenModule } from "../common/infrastructures/token/token.module";
 import { UsersWithdrawalUseCase } from "./application/usecase/users.withdrawal.use.case";
@@ -43,11 +43,11 @@ import { UsersLoginController } from "./infrastructure/presentation/users.login.
 import { UsersLogoutController } from "./infrastructure/presentation/users.logout.controller";
 import { UsersUpdateAddressController } from "./infrastructure/presentation/users.update.address.controller";
 import { UsersUpdateNameController } from "./infrastructure/presentation/users.update.name.controller";
-import { UsersUpdateNicknameController } from "./infrastructure/presentation/users.update.nickname.controller";
 import { UsersUpdatePasswordController } from "./infrastructure/presentation/users.update.password.controller";
 import { UsersUpdatePhoneController } from "./infrastructure/presentation/users.update.phone.controller";
 import { UsersUpdateUserIdController } from "./infrastructure/presentation/users.update.user.id.controller";
 import { UsersWithdrawalController } from "./infrastructure/presentation/users.withdrawal.controller";
+import { Module } from "@nestjs/common";
 
 @Module({
   imports: [TokenModule],
@@ -60,11 +60,11 @@ import { UsersWithdrawalController } from "./infrastructure/presentation/users.w
     UsersLogoutController,
     UsersUpdateAddressController,
     UsersUpdateNameController,
-    UsersUpdateNicknameController,
     UsersUpdatePasswordController,
     UsersUpdatePhoneController,
     UsersUpdateUserIdController,
     UsersWithdrawalController,
+    UsersUpdateNicknameController,
   ],
   providers: [
     AccessTokenStrategy,
@@ -82,10 +82,7 @@ import { UsersWithdrawalController } from "./infrastructure/presentation/users.w
     },
     { provide: "USE_CASE_WITHDRAWAL", useClass: UsersWithdrawalUseCase },
     { provide: "USE_CASE_REGISTER", useClass: UsersRegisterUseCase },
-    {
-      provide: "USE_CASE_PROFILE",
-      useClass: UsersProfileUseCase,
-    },
+    { provide: "USE_CASE_PROFILE", useClass: UsersProfileUseCase },
     { provide: "USE_CASE_LOGIN", useClass: UsersLoginUseCase },
     { provide: "USE_CASE_USER_ID", useClass: UsersUpdateUserIdUseCase },
     { provide: "USE_CASE_UPDATE_PHONE", useClass: UsersUpdatePhoneUseCase },
@@ -122,10 +119,6 @@ import { UsersWithdrawalController } from "./infrastructure/presentation/users.w
       useClass: UsersExistsNicknameUseCase,
     },
     { provide: "USE_CASE_EXISTS_PHONE", useClass: UsersExistsPhoneUseCase },
-    // {
-    //   provide: 'USE_CASE_REFRESH_TOKEN_RE_ISSUANCE',
-    //   useClass: UsersRefreshTokenReIssuanceUseCase,
-    // },
 
     // service
     { provide: "SERVICE_LOGOUT", useClass: UsersLogoutService },

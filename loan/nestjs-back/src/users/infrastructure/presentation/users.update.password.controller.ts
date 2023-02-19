@@ -25,7 +25,7 @@ export class UsersUpdatePasswordController {
     private readonly useCase: UsersUpdatePasswordAdaptor
   ) {}
 
-  // @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Patch("/update/password")
   @ApiConsumes("application/x-www-form-urlencoded")

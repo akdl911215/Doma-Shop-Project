@@ -11,9 +11,7 @@ export class UsersExistsPhoneUseCase implements UsersExistsPhoneAdaptor {
   constructor(
     @Inject("EXISTS_PHONE")
     repository: UsersExistsPhoneAdaptor
-  ) {
-    this.repository = repository;
-  }
+  ) {}
 
   public async existsPhone(
     dto: UsersExistsPhoneAdaptorInputDto

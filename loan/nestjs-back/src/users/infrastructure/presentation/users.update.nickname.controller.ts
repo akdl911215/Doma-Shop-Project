@@ -10,12 +10,12 @@ import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
 import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
 import { UPDATE_FAILED } from "../../../common/constants/http/errors/409";
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
-import { UsersModel } from "../../domain/entity/users.model";
-import { User } from "../../../common/decorators/user.decorator";
 import { UsersUpdateNicknameAdaptorInputDto } from "../../inbound/dtos/users.update.nickname.adaptor.input.dto";
+import { UsersModel } from "../../domain/entity/users.model";
 import { UsersUpdateNicknameAdaptorOutputDto } from "../../outbound/dtos/users.update.nickname.adaptor.output.dto";
 import { UsersUpdateNicknameAdaptor } from "../../domain/adaptor/users.update.nickname.adaptor";
 import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { User } from "../../../common/decorators/user.decorator";
 
 @ApiTags("users")
 @Controller("users")
@@ -25,7 +25,7 @@ export class UsersUpdateNicknameController {
     private readonly useCase: UsersUpdateNicknameAdaptor
   ) {}
 
-  // @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Patch("/update/nickname")
   @ApiConsumes("application/x-www-form-urlencoded")

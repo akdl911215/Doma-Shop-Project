@@ -27,7 +27,7 @@ import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jw
 
 @ApiTags("users")
 @Controller("users")
-// @UseInterceptors(PasswordCheckingInterceptor)
+@UseInterceptors(PasswordCheckingInterceptor)
 export class UsersUpdateNameController {
   constructor(
     @Inject("USE_CASE_UPDATE_NAME")
@@ -35,7 +35,7 @@ export class UsersUpdateNameController {
   ) {}
 
   @Patch("/update/name")
-  // @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @ApiConsumes("application/x-www-form-urlencoded")
   @ApiOperation({

@@ -8,6 +8,7 @@ import { AuthGuard } from "@nestjs/passport";
 @Injectable()
 export class RefreshTokenGuard extends AuthGuard("JWT-REFRESH-TOKEN") {
   canActivate(context: ExecutionContext) {
+    console.log("refresh context : ", context);
     return super.canActivate(context);
   }
 

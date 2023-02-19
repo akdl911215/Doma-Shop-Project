@@ -34,7 +34,7 @@ export class UsersUpdateUserIdController {
     private readonly useCase: UsersUpdateUserIdAdaptor
   ) {}
 
-  // @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Patch("/update/userId")
   @ApiConsumes("application/x-www-form-urlencoded")

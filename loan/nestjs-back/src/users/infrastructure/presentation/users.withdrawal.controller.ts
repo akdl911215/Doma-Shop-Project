@@ -30,7 +30,7 @@ export class UsersWithdrawalController {
     private readonly useCase: UsersWithdrawalAdaptor
   ) {}
 
-  // @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Delete("/:id")
   @ApiConsumes("application/x-www-form-urlencoded")

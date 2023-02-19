@@ -15,9 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersExistsPhoneUseCase = void 0;
 const common_1 = require("@nestjs/common");
 let UsersExistsPhoneUseCase = class UsersExistsPhoneUseCase {
-    constructor(repository) {
-        this.repository = repository;
-    }
+    constructor(repository) { }
     async existsPhone(dto) {
         const { response: { validatePhone }, } = await this.repository.existsPhone(dto);
         return { response: { validatePhone } };

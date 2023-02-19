@@ -20,6 +20,7 @@ const _204_1 = require("../../../common/constants/http/success/204");
 const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _500_1 = require("../../../common/constants/http/errors/500");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 let UsersWithdrawalController = class UsersWithdrawalController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -29,6 +30,7 @@ let UsersWithdrawalController = class UsersWithdrawalController {
     }
 };
 __decorate([
+    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Delete)("/:id"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),

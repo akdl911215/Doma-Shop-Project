@@ -10,6 +10,7 @@ const winston_module_1 = require("./common/infrastructures/winston/winston.modul
 async function bootstrap() {
     const logger = new common_1.Logger();
     const app = await core_1.NestFactory.create(app_module_1.AppModule, winston_module_1.WINSTON_MODULE);
+    app.enableCors();
     app.useGlobalPipes(new common_1.ValidationPipe({
         whitelist: true,
         transform: true,
@@ -24,8 +25,8 @@ async function bootstrap() {
     const config = new swagger_1.DocumentBuilder()
         .addBearerAuth({ type: "http", scheme: "bearer", bearerFormat: "JWT" }, "access_token")
         .addBearerAuth({ type: "http", scheme: "bearer", bearerFormat: "JWT" }, "refresh_token")
-        .setTitle("note project")
-        .setDescription("The users API description")
+        .setTitle("loan project")
+        .setDescription("API description")
         .setVersion("1.0")
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
