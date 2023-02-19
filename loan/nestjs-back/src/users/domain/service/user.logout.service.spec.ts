@@ -3,7 +3,7 @@ import { PrismaService } from "../../../common/infrastructures/prisma/prisma.ser
 import { NotFoundException } from "@nestjs/common";
 import { UsersLogoutService } from "./users.logout.service";
 import { UsersLogoutRepository } from "../../infrastructure/repository/users.logout.repository";
-import { UsersLogoutAdaptorInputDto } from "../../inbound/dtos/users.logout.adaptor.logout.input.dto";
+import { UsersLogoutAdaptorInputDto } from "../../inbound/dtos/users.logout.adaptor.input.dto";
 
 describe("UsersLogoutService", () => {
   let service: UsersLogoutService;

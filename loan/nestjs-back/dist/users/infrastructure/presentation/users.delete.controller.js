@@ -12,31 +12,33 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersWithdrawalController = void 0;
+exports.UsersDeleteController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const _200_1 = require("../../../common/constants/http/success/200");
 const _204_1 = require("../../../common/constants/http/success/204");
-const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _500_1 = require("../../../common/constants/http/errors/500");
+const users_model_1 = require("../../domain/entity/users.model");
+const users_delete_adaptor_input_dto_1 = require("../../inbound/dtos/users.delete.adaptor.input.dto");
 const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
-let UsersWithdrawalController = class UsersWithdrawalController {
+const user_decorator_1 = require("../../../common/decorators/user.decorator");
+let UsersDeleteController = class UsersDeleteController {
     constructor(useCase) {
         this.useCase = useCase;
     }
-    async withdrawal(id) {
-        return await this.useCase.withdrawal({ id });
+    async delete(dto, user) {
+        return await this.useCase.delete(dto);
     }
 };
 __decorate([
     (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
-    (0, common_1.Delete)("/:id"),
+    (0, common_1.Delete)("/"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({
-        summary: "USER WITHDRAWAL API",
-        description: "아이디 1개 회원탈퇴",
+        summary: "USER DELETE API",
+        description: "아이디 1개 삭제",
     }),
     (0, swagger_1.ApiResponse)({ status: 200, description: `${_200_1.TWO_HUNDRED_OK}` }),
     (0, swagger_1.ApiResponse)({
@@ -44,21 +46,23 @@ __decorate([
         description: `${_204_1.TWO_HUNDRED_FOUR_DELETE_SUCCESS}`,
     }),
     (0, swagger_1.ApiResponse)({
-        status: 400,
-        description: `${_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION}`,
+        status: 404,
+        description: `${_404_1.NOTFOUND_USER}`,
     }),
-    (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
-    __param(0, (0, common_1.Param)("id", common_1.ParseUUIDPipe)),
+    (0, swagger_1.ApiBody)({ type: users_delete_adaptor_input_dto_1.UsersDeleteAdaptorInputDto }),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [users_delete_adaptor_input_dto_1.UsersDeleteAdaptorInputDto,
+        users_model_1.UsersModel]),
     __metadata("design:returntype", Promise)
-], UsersWithdrawalController.prototype, "withdrawal", null);
-UsersWithdrawalController = __decorate([
-    (0, common_1.Controller)("users"),
+], UsersDeleteController.prototype, "delete", null);
+UsersDeleteController = __decorate([
     (0, swagger_1.ApiTags)("users"),
-    __param(0, (0, common_1.Inject)("USE_CASE_WITHDRAWAL")),
+    (0, common_1.Controller)("users"),
+    __param(0, (0, common_1.Inject)("USE_CASE_DELETE")),
     __metadata("design:paramtypes", [Object])
-], UsersWithdrawalController);
-exports.UsersWithdrawalController = UsersWithdrawalController;
-//# sourceMappingURL=users.withdrawal.controller.js.map
+], UsersDeleteController);
+exports.UsersDeleteController = UsersDeleteController;
+//# sourceMappingURL=users.delete.controller.js.map

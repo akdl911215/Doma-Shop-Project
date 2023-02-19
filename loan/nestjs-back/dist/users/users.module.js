@@ -57,6 +57,9 @@ const users_update_phone_controller_1 = require("./infrastructure/presentation/u
 const users_update_user_id_controller_1 = require("./infrastructure/presentation/users.update.user.id.controller");
 const users_withdrawal_controller_1 = require("./infrastructure/presentation/users.withdrawal.controller");
 const common_1 = require("@nestjs/common");
+const users_delete_use_case_1 = require("./application/usecase/users.delete.use.case");
+const users_delete_repository_1 = require("./infrastructure/repository/users.delete.repository");
+const users_delete_controller_1 = require("./infrastructure/presentation/users.delete.controller");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
@@ -69,6 +72,7 @@ UsersModule = __decorate([
             users_exists_nickname_controller_1.UsersExistsNicknameController,
             users_login_controller_1.UsersLoginController,
             users_logout_controller_1.UsersLogoutController,
+            users_delete_controller_1.UsersDeleteController,
             users_update_address_controller_1.UsersUpdateAddressController,
             users_update_name_controller_1.UsersUpdateNameController,
             users_update_password_controller_1.UsersUpdatePasswordController,
@@ -92,6 +96,7 @@ UsersModule = __decorate([
             { provide: "USE_CASE_PROFILE", useClass: users_profile_use_case_1.UsersProfileUseCase },
             { provide: "USE_CASE_LOGIN", useClass: users_login_use_case_1.UsersLoginUseCase },
             { provide: "USE_CASE_USER_ID", useClass: users_update_user_id_use_case_1.UsersUpdateUserIdUseCase },
+            { provide: "USE_CASE_DELETE", useClass: users_delete_use_case_1.UsersDeleteUseCase },
             { provide: "USE_CASE_UPDATE_PHONE", useClass: users_update_phone_use_case_1.UsersUpdatePhoneUseCase },
             {
                 provide: "USE_CASE_UPDATE_USER_ID",
@@ -148,6 +153,7 @@ UsersModule = __decorate([
             { provide: "UPDATE_ADDRESS", useClass: users_update_address_repository_1.UsersUpdateAddressRepository },
             { provide: "PROFILE", useClass: users_profile_repository_1.UsersProfileRepository },
             { provide: "LOGOUT", useClass: users_logout_repository_1.UsersLogoutRepository },
+            { provide: "DELETE", useClass: users_delete_repository_1.UsersDeleteRepository },
         ],
         exports: [
             {

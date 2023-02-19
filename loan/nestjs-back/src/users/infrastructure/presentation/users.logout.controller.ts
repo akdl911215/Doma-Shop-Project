@@ -22,7 +22,7 @@ export class UsersLogoutController {
   ) {}
 
   @Patch("/logout")
-  // @UseGuards(RefreshTokenGuard)
+  @UseGuards(RefreshTokenGuard)
   @ApiBearerAuth("refresh_token")
   @ApiOperation({ summary: "USER LOGOUT API", description: "로그아웃 절차" })
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })

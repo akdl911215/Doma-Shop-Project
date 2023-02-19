@@ -12,24 +12,24 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersWithdrawalUseCase = void 0;
+exports.UsersDeleteUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _400_1 = require("../../../common/constants/http/errors/400");
-let UsersWithdrawalUseCase = class UsersWithdrawalUseCase {
+let UsersDeleteUseCase = class UsersDeleteUseCase {
     constructor(repository) {
         this.repository = repository;
     }
-    async withdrawal(dto) {
+    async delete(dto) {
         const { id } = dto;
         if (id === "")
             throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION);
-        return await this.repository.withdrawal(dto);
+        return await this.repository.delete(dto);
     }
 };
-UsersWithdrawalUseCase = __decorate([
+UsersDeleteUseCase = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)("WITHDRAWAL")),
+    __param(0, (0, common_1.Inject)("DELETE")),
     __metadata("design:paramtypes", [Object])
-], UsersWithdrawalUseCase);
-exports.UsersWithdrawalUseCase = UsersWithdrawalUseCase;
-//# sourceMappingURL=users.withdrawal.use.case.js.map
+], UsersDeleteUseCase);
+exports.UsersDeleteUseCase = UsersDeleteUseCase;
+//# sourceMappingURL=users.delete.use.case.js.map

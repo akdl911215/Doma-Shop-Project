@@ -48,6 +48,9 @@ import { UsersUpdatePhoneController } from "./infrastructure/presentation/users.
 import { UsersUpdateUserIdController } from "./infrastructure/presentation/users.update.user.id.controller";
 import { UsersWithdrawalController } from "./infrastructure/presentation/users.withdrawal.controller";
 import { Module } from "@nestjs/common";
+import { UsersDeleteUseCase } from "./application/usecase/users.delete.use.case";
+import { UsersDeleteRepository } from "./infrastructure/repository/users.delete.repository";
+import { UsersDeleteController } from "./infrastructure/presentation/users.delete.controller";
 
 @Module({
   imports: [TokenModule],
@@ -58,6 +61,7 @@ import { Module } from "@nestjs/common";
     UsersExistsNicknameController,
     UsersLoginController,
     UsersLogoutController,
+    UsersDeleteController,
     UsersUpdateAddressController,
     UsersUpdateNameController,
     UsersUpdatePasswordController,
@@ -85,6 +89,7 @@ import { Module } from "@nestjs/common";
     { provide: "USE_CASE_PROFILE", useClass: UsersProfileUseCase },
     { provide: "USE_CASE_LOGIN", useClass: UsersLoginUseCase },
     { provide: "USE_CASE_USER_ID", useClass: UsersUpdateUserIdUseCase },
+    { provide: "USE_CASE_DELETE", useClass: UsersDeleteUseCase },
     { provide: "USE_CASE_UPDATE_PHONE", useClass: UsersUpdatePhoneUseCase },
     {
       provide: "USE_CASE_UPDATE_USER_ID",
@@ -145,6 +150,7 @@ import { Module } from "@nestjs/common";
     { provide: "UPDATE_ADDRESS", useClass: UsersUpdateAddressRepository },
     { provide: "PROFILE", useClass: UsersProfileRepository },
     { provide: "LOGOUT", useClass: UsersLogoutRepository },
+    { provide: "DELETE", useClass: UsersDeleteRepository },
   ],
   exports: [
     {

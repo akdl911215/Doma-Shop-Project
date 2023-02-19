@@ -14,17 +14,23 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersLoginUseCase = void 0;
 const common_1 = require("@nestjs/common");
+const _400_1 = require("../../../common/constants/http/errors/400");
 let UsersLoginUseCase = class UsersLoginUseCase {
     constructor(repository) {
         this.repository = repository;
     }
     async login(dto) {
+        const { userId, password } = dto;
+        if (userId === "")
+            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_USER_ID_INFORMATION);
+        if (password === "")
+            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_PASSWORD_INFORMATION);
         return await this.repository.login(dto);
     }
 };
 UsersLoginUseCase = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)('LOGIN')),
+    __param(0, (0, common_1.Inject)("LOGIN")),
     __metadata("design:paramtypes", [Object])
 ], UsersLoginUseCase);
 exports.UsersLoginUseCase = UsersLoginUseCase;
