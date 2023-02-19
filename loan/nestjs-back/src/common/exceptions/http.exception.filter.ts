@@ -17,7 +17,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const res = ctx.getResponse<Response>();
     const req = ctx.getRequest<Request>();
-    console.log("1", ctx, res, req);
 
     if (!(exception instanceof HttpException))
       exception = new InternalServerErrorException();
@@ -29,7 +28,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     const response = (exception as HttpException).getResponse();
     const message = exception.message;
-    console.log("2", status, response, message);
 
     const developErrorLog = {
       status,

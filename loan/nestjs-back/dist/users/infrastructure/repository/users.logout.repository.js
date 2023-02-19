@@ -19,7 +19,9 @@ let UsersLogoutRepository = class UsersLogoutRepository {
     }
     async logout(dto) {
         const { id } = dto;
+        console.log("id", id);
         const user = await this.prisma.users.findUnique({ where: { id } });
+        console.log("user", user);
         if (!user)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
         try {

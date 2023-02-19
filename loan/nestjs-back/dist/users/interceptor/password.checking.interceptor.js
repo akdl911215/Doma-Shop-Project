@@ -12,9 +12,9 @@ const operators_1 = require("rxjs/operators");
 let PasswordCheckingInterceptor = class PasswordCheckingInterceptor {
     intercept(context, next) {
         const request = context.switchToHttp().getRequest().body;
-        console.log("request : ", request);
         if ("confirmPassword" in request) {
             if (request.password === request.confirmPassword) {
+                console.log("check");
                 delete request["confirmPassword"];
                 delete request["currentPassword"];
             }

@@ -19,7 +19,9 @@ export class UsersLogoutRepository implements UsersLogoutAdaptor {
     dto: UsersLogoutAdaptorInputDto
   ): Promise<UsersLogoutAdaptorOutputDto> {
     const { id } = dto;
+    console.log("id", id);
     const user = await this.prisma.users.findUnique({ where: { id } });
+    console.log("user", user);
     if (!user) throw new NotFoundException(NOTFOUND_USER);
 
     try {

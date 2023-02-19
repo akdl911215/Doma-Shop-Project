@@ -18,7 +18,6 @@ let UsersFindByIdRepository = class UsersFindByIdRepository {
         this.prisma = prisma;
     }
     async usersFindById({ id, }) {
-        console.log("user find by id ", id);
         const user = await this.prisma.users.findUnique({ where: { id } });
         if (!user)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);

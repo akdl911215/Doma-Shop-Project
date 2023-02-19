@@ -29,7 +29,6 @@ let AccessTokenStrategy = class AccessTokenStrategy extends (0, passport_1.Passp
         this.configService = configService;
     }
     async validate({ id, }) {
-        console.log("access token strategy id", id);
         return await this.useCase.usersFindById({ id });
     }
 };

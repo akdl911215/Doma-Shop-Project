@@ -27,8 +27,9 @@ let UsersDeleteController = class UsersDeleteController {
     constructor(useCase) {
         this.useCase = useCase;
     }
-    async delete(dto, user) {
-        return await this.useCase.delete(dto);
+    async delete(user) {
+        const { id } = user;
+        return await this.useCase.delete({ id });
     }
 };
 __decorate([
@@ -51,11 +52,9 @@ __decorate([
     }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     (0, swagger_1.ApiBody)({ type: users_delete_adaptor_input_dto_1.UsersDeleteAdaptorInputDto }),
-    __param(0, (0, common_1.Body)()),
-    __param(1, (0, user_decorator_1.User)()),
+    __param(0, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [users_delete_adaptor_input_dto_1.UsersDeleteAdaptorInputDto,
-        users_model_1.UsersModel]),
+    __metadata("design:paramtypes", [users_model_1.UsersModel]),
     __metadata("design:returntype", Promise)
 ], UsersDeleteController.prototype, "delete", null);
 UsersDeleteController = __decorate([

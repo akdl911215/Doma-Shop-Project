@@ -1,4 +1,10 @@
-import { Body, Controller, Inject, Post } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Inject,
+  Post,
+  UseInterceptors,
+} from "@nestjs/common";
 import {
   ApiBody,
   ApiConsumes,
@@ -17,9 +23,11 @@ import { REFRESH_TOKEN_MODIFY_FAILED } from "../../../common/constants/http/erro
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
 import { UsersLoginAdaptorInputDto } from "../../inbound/dtos/users.login.adaptor.input.dto";
 import { UsersLoginAdaptorOutputDto } from "../../outbound/dtos/users.login.adaptor.output.dto";
+import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
 
 @Controller("users")
 @ApiTags("users")
+@UseInterceptors(PasswordCheckingInterceptor)
 export class UsersLoginController {
   constructor(
     @Inject("USE_CASE_LOGIN") private readonly useCase: UsersLoginAdaptor
@@ -34,7 +42,6 @@ export class UsersLoginController {
     description: `${NO_MATCH_USER_ID}, ${NO_MATCH_PASSWORD}`,
   })
   @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
-  @ApiResponse({ status: 409, description: `${REFRESH_TOKEN_MODIFY_FAILED}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   @ApiBody({ type: UsersLoginAdaptorInputDto })
   private async login(

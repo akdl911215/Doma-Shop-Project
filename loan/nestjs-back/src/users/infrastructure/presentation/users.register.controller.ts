@@ -26,7 +26,7 @@ import { CONFIRM_REQUIRED_USER_INFORMATION } from "../../../common/constants/htt
 
 @ApiTags("users")
 @Controller("users")
-// @UseInterceptors(PasswordCheckingInterceptor)
+@UseInterceptors(PasswordCheckingInterceptor)
 export class UsersRegisterController {
   constructor(
     @Inject("USE_CASE_REGISTER")

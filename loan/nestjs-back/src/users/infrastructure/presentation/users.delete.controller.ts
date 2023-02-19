@@ -46,9 +46,9 @@ export class UsersDeleteController {
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   @ApiBody({ type: UsersDeleteAdaptorInputDto })
   private async delete(
-    @Body() dto: UsersDeleteAdaptorInputDto,
     @User() user: UsersModel
   ): Promise<UsersDeleteAdaptorOutputDto> {
-    return await this.useCase.delete(dto);
+    const { id } = user;
+    return await this.useCase.delete({ id });
   }
 }

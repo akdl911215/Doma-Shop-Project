@@ -18,9 +18,9 @@ const swagger_1 = require("@nestjs/swagger");
 const _201_1 = require("../../../common/constants/http/success/201");
 const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
-const _409_1 = require("../../../common/constants/http/errors/409");
 const _500_1 = require("../../../common/constants/http/errors/500");
 const users_login_adaptor_input_dto_1 = require("../../inbound/dtos/users.login.adaptor.input.dto");
+const password_checking_interceptor_1 = require("../../interceptor/password.checking.interceptor");
 let UsersLoginController = class UsersLoginController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -39,7 +39,6 @@ __decorate([
         description: `${_400_1.NO_MATCH_USER_ID}, ${_400_1.NO_MATCH_PASSWORD}`,
     }),
     (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
-    (0, swagger_1.ApiResponse)({ status: 409, description: `${_409_1.REFRESH_TOKEN_MODIFY_FAILED}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     (0, swagger_1.ApiBody)({ type: users_login_adaptor_input_dto_1.UsersLoginAdaptorInputDto }),
     __param(0, (0, common_1.Body)()),
@@ -50,6 +49,7 @@ __decorate([
 UsersLoginController = __decorate([
     (0, common_1.Controller)("users"),
     (0, swagger_1.ApiTags)("users"),
+    (0, common_1.UseInterceptors)(password_checking_interceptor_1.PasswordCheckingInterceptor),
     __param(0, (0, common_1.Inject)("USE_CASE_LOGIN")),
     __metadata("design:paramtypes", [Object])
 ], UsersLoginController);

@@ -11,7 +11,6 @@ const common_1 = require("@nestjs/common");
 const passport_1 = require("@nestjs/passport");
 let AccessTokenGuard = class AccessTokenGuard extends (0, passport_1.AuthGuard)("JWT-ACCESS-TOKEN") {
     canActivate(context) {
-        console.log("context : ", context);
         return super.canActivate(context);
     }
     handleRequest(err, user, info) {

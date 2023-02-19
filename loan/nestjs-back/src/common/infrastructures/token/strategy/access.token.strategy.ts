@@ -26,7 +26,6 @@ export class AccessTokenStrategy extends PassportStrategy(
   async validate({
     id,
   }: StrategyPayloadIdAdaptorInputDto): Promise<StrategyPayloadIdAdaptorOutputDto> {
-    console.log("access token strategy id", id);
     return await this.useCase.usersFindById({ id });
   }
 }

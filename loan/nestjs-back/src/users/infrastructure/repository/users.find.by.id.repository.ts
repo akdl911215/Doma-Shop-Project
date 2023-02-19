@@ -13,7 +13,6 @@ export class UsersFindByIdRepository implements UsersFindByIdInterface {
   public async usersFindById({
     id,
   }: UsersFindByIdAdaptorInputDto): Promise<UsersFindByIdAdaptorOutputDto> {
-    console.log("user find by id ", id);
     const user = await this.prisma.users.findUnique({ where: { id } });
     if (!user) throw new NotFoundException(NOTFOUND_USER);
 

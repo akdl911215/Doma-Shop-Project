@@ -4,6 +4,7 @@ import {
   Inject,
   Param,
   ParseUUIDPipe,
+  Patch,
   UseGuards,
 } from "@nestjs/common";
 import {
@@ -21,6 +22,8 @@ import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
 import { UsersWithdrawalAdaptorOutputDto } from "../../outbound/dtos/users.withdrawal.adaptor.output.dto";
 import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { UsersModel } from "../../domain/entity/users.model";
+import { User } from "../../../common/decorators/user.decorator";
 
 @Controller("users")
 @ApiTags("users")
@@ -32,7 +35,7 @@ export class UsersWithdrawalController {
 
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
-  @Delete("/:id")
+  @Patch("/withdrawal")
   @ApiConsumes("application/x-www-form-urlencoded")
   @ApiOperation({
     summary: "USER WITHDRAWAL API",
@@ -50,8 +53,9 @@ export class UsersWithdrawalController {
   @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async withdrawal(
-    @Param("id", ParseUUIDPipe) id: string
+    @User() user: UsersModel
   ): Promise<UsersWithdrawalAdaptorOutputDto> {
+    const { id } = user;
     return await this.useCase.withdrawal({ id });
   }
 }

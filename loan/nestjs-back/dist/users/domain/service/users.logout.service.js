@@ -14,11 +14,15 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersLogoutService = void 0;
 const common_1 = require("@nestjs/common");
+const _400_1 = require("../../../common/constants/http/errors/400");
 let UsersLogoutService = class UsersLogoutService {
     constructor(repository) {
         this.repository = repository;
     }
     async logout(dto) {
+        const { id } = dto;
+        if (!id)
+            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION);
         const { response: { logout }, } = await this.repository.logout(dto);
         return { response: { logout } };
     }

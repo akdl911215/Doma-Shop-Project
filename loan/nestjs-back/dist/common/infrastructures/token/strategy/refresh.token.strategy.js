@@ -34,7 +34,6 @@ let RefreshTokenStrategy = class RefreshTokenStrategy extends (0, passport_1.Pas
     }
     async validate(request, payload) {
         var _a, _b;
-        console.log("refresh ", request, payload);
         const token = (_b = (_a = request === null || request === void 0 ? void 0 : request.headers) === null || _a === void 0 ? void 0 : _a.authorization) === null || _b === void 0 ? void 0 : _b.split("Bearer ")[1];
         const user = await this.usersService.usersFindById({ id: payload.id });
         const { id, userId, phone, refreshToken } = user.response;

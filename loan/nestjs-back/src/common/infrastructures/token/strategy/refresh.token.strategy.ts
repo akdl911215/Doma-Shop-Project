@@ -34,7 +34,6 @@ export class RefreshTokenStrategy extends PassportStrategy(
     request: Request,
     payload: RefreshTokenPayloadType
   ): Promise<RefreshTokenStrategyOutputDto> {
-    console.log("refresh ", request, payload);
     const token = request?.headers?.authorization?.split("Bearer ")[1];
     const user = await this.usersService.usersFindById({ id: payload.id });
     const { id, userId, phone, refreshToken } = user.response;

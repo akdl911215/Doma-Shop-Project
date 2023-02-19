@@ -20,19 +20,22 @@ const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const _200_1 = require("../../../common/constants/http/success/200");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
-const jwt_refresh_guard_1 = require("../../../common/infrastructures/token/guard/jwt.refresh.guard");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 let UsersLogoutController = class UsersLogoutController {
     constructor(service) {
         this.service = service;
     }
     async logout(user) {
-        return await this.service.logout({ id: user.id });
+        console.log("logout user11:", user);
+        const { id } = user;
+        console.log("----id", id);
+        return await this.service.logout({ id });
     }
 };
 __decorate([
     (0, common_1.Patch)("/logout"),
-    (0, common_1.UseGuards)(jwt_refresh_guard_1.RefreshTokenGuard),
-    (0, swagger_1.ApiBearerAuth)("refresh_token"),
+    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
+    (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, swagger_1.ApiOperation)({ summary: "USER LOGOUT API", description: "로그아웃 절차" }),
     (0, swagger_1.ApiResponse)({ status: 200, description: `${_200_1.TWO_HUNDRED_OK}` }),
     (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),

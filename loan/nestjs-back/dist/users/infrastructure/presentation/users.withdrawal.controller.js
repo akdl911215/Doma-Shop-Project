@@ -21,18 +21,21 @@ const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _500_1 = require("../../../common/constants/http/errors/500");
 const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
+const users_model_1 = require("../../domain/entity/users.model");
+const user_decorator_1 = require("../../../common/decorators/user.decorator");
 let UsersWithdrawalController = class UsersWithdrawalController {
     constructor(useCase) {
         this.useCase = useCase;
     }
-    async withdrawal(id) {
+    async withdrawal(user) {
+        const { id } = user;
         return await this.useCase.withdrawal({ id });
     }
 };
 __decorate([
     (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
-    (0, common_1.Delete)("/:id"),
+    (0, common_1.Patch)("/withdrawal"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({
         summary: "USER WITHDRAWAL API",
@@ -49,9 +52,9 @@ __decorate([
     }),
     (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
-    __param(0, (0, common_1.Param)("id", common_1.ParseUUIDPipe)),
+    __param(0, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [users_model_1.UsersModel]),
     __metadata("design:returntype", Promise)
 ], UsersWithdrawalController.prototype, "withdrawal", null);
 UsersWithdrawalController = __decorate([
