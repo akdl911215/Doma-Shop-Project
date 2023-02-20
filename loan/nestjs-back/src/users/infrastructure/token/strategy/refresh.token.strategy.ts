@@ -4,10 +4,10 @@ import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { Request } from "express";
 import { ConfigService } from "@nestjs/config";
 import { UsersFindByIdUseCase } from "../application/usecase/users.find.by.id.use.case";
-import { TokenService } from "../../../../common/infrastructures/token/token.service";
+import { TokenService } from "../token.service";
 import { RefreshTokenPayloadType } from "../type/refresh.token.payload.type";
 import { RefreshTokenStrategyOutputDto } from "../outbound/dtos/refresh.token.strategy.output.dto";
-import { NOT_MATCH_REFRESH_TOKEN } from "../../../constants/http/errors/400";
+import { NOT_MATCH_REFRESH_TOKEN } from "../../../../common/constants/http/errors/400";
 import { AccessTokenPayloadType } from "../type/access.token.payload.type";
 
 @Injectable()

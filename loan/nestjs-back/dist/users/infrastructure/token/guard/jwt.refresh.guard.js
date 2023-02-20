@@ -17,7 +17,8 @@ let RefreshTokenGuard = class RefreshTokenGuard extends (0, passport_1.AuthGuard
         if (err || !user) {
             throw err || new common_1.UnauthorizedException();
         }
-        return user;
+        console.log("user", user);
+        return user === null || user === void 0 ? void 0 : user.response;
     }
 };
 RefreshTokenGuard = __decorate([

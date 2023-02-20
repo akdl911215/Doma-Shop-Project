@@ -1,6 +1,7 @@
+import { Module } from "@nestjs/common";
 import { UsersUpdateNicknameController } from "./infrastructure/presentation/users.update.nickname.controller";
 import { PrismaService } from "../common/infrastructures/prisma/prisma.service";
-import { TokenModule } from "../common/infrastructures/token/token.module";
+import { TokenModule } from "./infrastructure/token/token.module";
 import { UsersWithdrawalUseCase } from "./application/usecase/users.withdrawal.use.case";
 import { UsersRegisterUseCase } from "./application/usecase/users.register.use.case";
 import { UsersProfileUseCase } from "./application/usecase/users.profile.use.case";
@@ -15,9 +16,9 @@ import { UsersUpdatePasswordRepository } from "./infrastructure/repository/users
 import { UsersUpdatePhoneRepository } from "./infrastructure/repository/users.update.phone.repository";
 import { UsersUpdateNicknameRepository } from "./infrastructure/repository/users.update.nickname.repository";
 import { UsersProfileRepository } from "./infrastructure/repository/users.profile.repository";
-import { AccessTokenStrategy } from "../common/infrastructures/token/strategy/access.token.strategy";
-import { RefreshTokenStrategy } from "../common/infrastructures/token/strategy/refresh.token.strategy";
-import { UsersFindByIdUseCase } from "../common/infrastructures/token/application/usecase/users.find.by.id.use.case";
+import { AccessTokenStrategy } from "./infrastructure/token/strategy/access.token.strategy";
+import { RefreshTokenStrategy } from "./infrastructure/token/strategy/refresh.token.strategy";
+import { UsersFindByIdUseCase } from "./infrastructure/token/application/usecase/users.find.by.id.use.case";
 import { UsersFindByIdRepository } from "./infrastructure/repository/users.find.by.id.repository";
 import { UsersExistsUserIdRepository } from "./infrastructure/repository/users.exists.user.id.repository";
 import { UsersExistsPhoneRepository } from "./infrastructure/repository/users.exists.phone.repository";
@@ -47,20 +48,21 @@ import { UsersUpdatePasswordController } from "./infrastructure/presentation/use
 import { UsersUpdatePhoneController } from "./infrastructure/presentation/users.update.phone.controller";
 import { UsersUpdateUserIdController } from "./infrastructure/presentation/users.update.user.id.controller";
 import { UsersWithdrawalController } from "./infrastructure/presentation/users.withdrawal.controller";
-import { Module } from "@nestjs/common";
 import { UsersDeleteUseCase } from "./application/usecase/users.delete.use.case";
 import { UsersDeleteRepository } from "./infrastructure/repository/users.delete.repository";
 import { UsersDeleteController } from "./infrastructure/presentation/users.delete.controller";
+import { UsersProfileController } from "./infrastructure/presentation/users.profile.controller";
 
 @Module({
   imports: [TokenModule],
   controllers: [
     UsersRegisterController,
+    UsersLoginController,
+    UsersProfileController,
+    UsersLogoutController,
     UsersExistsUserIdController,
     UsersExistsPhoneController,
     UsersExistsNicknameController,
-    UsersLoginController,
-    UsersLogoutController,
     UsersDeleteController,
     UsersUpdateAddressController,
     UsersUpdateNameController,

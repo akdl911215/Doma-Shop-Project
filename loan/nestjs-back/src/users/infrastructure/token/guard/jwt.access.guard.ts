@@ -12,10 +12,12 @@ export class AccessTokenGuard extends AuthGuard("JWT-ACCESS-TOKEN") {
   }
 
   handleRequest(err, user, info) {
-    console.log(err, user);
+    console.log("access token guard user", user);
+    console.log("access token guard err", err);
     if (err || !user) {
       throw err || new UnauthorizedException();
     }
+
     return user;
   }
 }

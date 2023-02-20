@@ -12,7 +12,7 @@ import { UPDATE_FAILED } from "../../../common/constants/http/errors/409";
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
 import { UsersModel } from "../../domain/entity/users.model";
 import { User } from "../../../common/decorators/user.decorator";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
 import { UsersUpdatePasswordAdaptorInputDto } from "../../inbound/dtos/users.update.password.adaptor.input.dto";
 import { UsersUpdatePasswordAdaptorOutputDto } from "../../outbound/dtos/users.update.password.adaptor.output.dto";
 import { UsersUpdatePasswordAdaptor } from "../../domain/adaptor/users.update.password.adaptor";

@@ -9,7 +9,7 @@ export class GenerateTokenInputDto {
     required: false,
     default: null,
   })
-  accessToken: string;
+  public accessToken!: string;
   @IsString()
   @ApiProperty({
     description: "refresh-token",
@@ -17,5 +17,5 @@ export class GenerateTokenInputDto {
     required: false,
     default: null,
   })
-  refreshToken: string;
+  public refreshToken!: string;
 }

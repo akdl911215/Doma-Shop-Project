@@ -20,7 +20,7 @@ import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500
 import { UsersModel } from "../../domain/entity/users.model";
 import { User } from "../../../common/decorators/user.decorator";
 import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
 import { UsersUpdateUserIdAdaptor } from "../../domain/adaptor/users.update.user.id.adaptor";
 import { UsersUpdateUserIdAdaptorInputDto } from "../../inbound/dtos/users.update.user.id.adaptor.input.dto";
 import { UsersUpdateUserIdAdaptorOutputDto } from "../../outbound/dtos/users.update.user.id.adaptor.output.dto";

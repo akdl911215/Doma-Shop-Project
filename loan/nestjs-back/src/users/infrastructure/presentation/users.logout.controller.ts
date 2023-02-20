@@ -12,8 +12,7 @@ import { UsersModel } from "../../domain/entity/users.model";
 import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
 import { UsersLogoutAdaptor } from "../../domain/adaptor/users.logout.adaptor";
 import { User } from "../../../common/decorators/user.decorator";
-import { RefreshTokenGuard } from "../../../common/infrastructures/token/guard/jwt.refresh.guard";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { RefreshTokenGuard } from "../token/guard/jwt.refresh.guard";
 
 @ApiTags("users")
 @Controller("users")
@@ -23,8 +22,8 @@ export class UsersLogoutController {
   ) {}
 
   @Patch("/logout")
-  @UseGuards(AccessTokenGuard)
-  @ApiBearerAuth("access_token")
+  @UseGuards(RefreshTokenGuard)
+  @ApiBearerAuth("refresh_token")
   @ApiOperation({ summary: "USER LOGOUT API", description: "로그아웃 절차" })
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })
   @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
@@ -32,9 +31,7 @@ export class UsersLogoutController {
   private async logout(
     @User() user: UsersModel
   ): Promise<UsersLogoutAdaptorOutputDto> {
-    console.log("logout user11:", user);
     const { id } = user;
-    console.log("----id", id);
     return await this.service.logout({ id });
   }
 }

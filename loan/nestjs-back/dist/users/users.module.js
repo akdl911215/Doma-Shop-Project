@@ -7,9 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersModule = void 0;
+const common_1 = require("@nestjs/common");
 const users_update_nickname_controller_1 = require("./infrastructure/presentation/users.update.nickname.controller");
 const prisma_service_1 = require("../common/infrastructures/prisma/prisma.service");
-const token_module_1 = require("../common/infrastructures/token/token.module");
+const token_module_1 = require("./infrastructure/token/token.module");
 const users_withdrawal_use_case_1 = require("./application/usecase/users.withdrawal.use.case");
 const users_register_use_case_1 = require("./application/usecase/users.register.use.case");
 const users_profile_use_case_1 = require("./application/usecase/users.profile.use.case");
@@ -24,9 +25,9 @@ const users_update_password_repository_1 = require("./infrastructure/repository/
 const users_update_phone_repository_1 = require("./infrastructure/repository/users.update.phone.repository");
 const users_update_nickname_repository_1 = require("./infrastructure/repository/users.update.nickname.repository");
 const users_profile_repository_1 = require("./infrastructure/repository/users.profile.repository");
-const access_token_strategy_1 = require("../common/infrastructures/token/strategy/access.token.strategy");
-const refresh_token_strategy_1 = require("../common/infrastructures/token/strategy/refresh.token.strategy");
-const users_find_by_id_use_case_1 = require("../common/infrastructures/token/application/usecase/users.find.by.id.use.case");
+const access_token_strategy_1 = require("./infrastructure/token/strategy/access.token.strategy");
+const refresh_token_strategy_1 = require("./infrastructure/token/strategy/refresh.token.strategy");
+const users_find_by_id_use_case_1 = require("./infrastructure/token/application/usecase/users.find.by.id.use.case");
 const users_find_by_id_repository_1 = require("./infrastructure/repository/users.find.by.id.repository");
 const users_exists_user_id_repository_1 = require("./infrastructure/repository/users.exists.user.id.repository");
 const users_exists_phone_repository_1 = require("./infrastructure/repository/users.exists.phone.repository");
@@ -56,10 +57,10 @@ const users_update_password_controller_1 = require("./infrastructure/presentatio
 const users_update_phone_controller_1 = require("./infrastructure/presentation/users.update.phone.controller");
 const users_update_user_id_controller_1 = require("./infrastructure/presentation/users.update.user.id.controller");
 const users_withdrawal_controller_1 = require("./infrastructure/presentation/users.withdrawal.controller");
-const common_1 = require("@nestjs/common");
 const users_delete_use_case_1 = require("./application/usecase/users.delete.use.case");
 const users_delete_repository_1 = require("./infrastructure/repository/users.delete.repository");
 const users_delete_controller_1 = require("./infrastructure/presentation/users.delete.controller");
+const users_profile_controller_1 = require("./infrastructure/presentation/users.profile.controller");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
@@ -67,11 +68,12 @@ UsersModule = __decorate([
         imports: [token_module_1.TokenModule],
         controllers: [
             users_register_controller_1.UsersRegisterController,
+            users_login_controller_1.UsersLoginController,
+            users_profile_controller_1.UsersProfileController,
+            users_logout_controller_1.UsersLogoutController,
             users_exists_user_id_controller_1.UsersExistsUserIdController,
             users_exists_phone_controller_1.UsersExistsPhoneController,
             users_exists_nickname_controller_1.UsersExistsNicknameController,
-            users_login_controller_1.UsersLoginController,
-            users_logout_controller_1.UsersLogoutController,
             users_delete_controller_1.UsersDeleteController,
             users_update_address_controller_1.UsersUpdateAddressController,
             users_update_name_controller_1.UsersUpdateNameController,

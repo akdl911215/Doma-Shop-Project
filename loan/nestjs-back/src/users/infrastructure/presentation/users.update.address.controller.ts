@@ -19,7 +19,7 @@ import { UPDATE_FAILED } from "../../../common/constants/http/errors/409";
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
 import { UsersModel } from "../../domain/entity/users.model";
 import { User } from "../../../common/decorators/user.decorator";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
 import { UsersUpdateAddressAdaptor } from "../../domain/adaptor/users.update.address.adaptor";
 import { UsersUpdateAddressAdaptorInputDto } from "../../inbound/dtos/users.update.address.adaptor.input.dto";
 import { UsersUpdateAddressAdaptorOutputDto } from "../../outbound/dtos/users.update.address.adaptor.output.dto";
@@ -27,6 +27,7 @@ import { PasswordCheckingInterceptor } from "../../interceptor/password.checking
 
 @ApiTags("users")
 @Controller("users")
+@UseGuards(AccessTokenGuard)
 @UseInterceptors(PasswordCheckingInterceptor)
 export class UsersUpdateAddressController {
   constructor(
@@ -34,7 +35,6 @@ export class UsersUpdateAddressController {
     private readonly useCase: UsersUpdateAddressAdaptor
   ) {}
 
-  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
   @Patch("/update/address")
   @ApiConsumes("application/x-www-form-urlencoded")
@@ -52,6 +52,7 @@ export class UsersUpdateAddressController {
   ): Promise<UsersUpdateAddressAdaptorOutputDto> {
     const { address } = request;
     const { id } = user;
+    console.log("1", address, id);
     return await this.useCase.updateAddress({ address, id });
   }
 }

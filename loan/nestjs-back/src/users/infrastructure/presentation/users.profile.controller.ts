@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Get,
-  Inject,
-  Param,
-  ParseUUIDPipe,
-  UseGuards,
-} from "@nestjs/common";
+import { Controller, Get, Inject, UseGuards } from "@nestjs/common";
 import {
   ApiBearerAuth,
   ApiConsumes,
@@ -19,7 +12,9 @@ import { NO_MATCH_USER_ID } from "../../../common/constants/http/errors/400";
 import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
 import { UsersProfileAdaptorOutputDto } from "../../outbound/dtos/users.profile.adaptor.output.dto";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
+import { User } from "../../../common/decorators/user.decorator";
+import { UsersModel } from "../../domain/entity/users.model";
 
 @Controller("users")
 @ApiTags("users")
@@ -28,9 +23,9 @@ export class UsersProfileController {
     @Inject("USE_CASE_PROFILE") private readonly useCase: UsersProfileAdaptor
   ) {}
 
-  @Get("/:id")
   @UseGuards(AccessTokenGuard)
   @ApiBearerAuth("access_token")
+  @Get("/")
   @ApiConsumes("application/x-www-form-urlencoded")
   @ApiOperation({
     summary: "USER PROFILE API",
@@ -41,8 +36,11 @@ export class UsersProfileController {
   @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async profile(
-    @Param("id", ParseUUIDPipe) id: string
+    @User() user: UsersModel
   ): Promise<UsersProfileAdaptorOutputDto> {
+    const { id } = user;
+    console.log("profile id ", id);
+
     return await this.useCase.profile({ id });
   }
 }

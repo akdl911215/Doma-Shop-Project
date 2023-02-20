@@ -21,7 +21,7 @@ import { CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION } from "../../../common/constant
 import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
 import { UsersWithdrawalAdaptorOutputDto } from "../../outbound/dtos/users.withdrawal.adaptor.output.dto";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
 import { UsersModel } from "../../domain/entity/users.model";
 import { User } from "../../../common/decorators/user.decorator";
 

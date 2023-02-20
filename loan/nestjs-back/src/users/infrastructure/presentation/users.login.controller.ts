@@ -19,7 +19,6 @@ import {
   NO_MATCH_USER_ID,
 } from "../../../common/constants/http/errors/400";
 import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
-import { REFRESH_TOKEN_MODIFY_FAILED } from "../../../common/constants/http/errors/409";
 import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
 import { UsersLoginAdaptorInputDto } from "../../inbound/dtos/users.login.adaptor.input.dto";
 import { UsersLoginAdaptorOutputDto } from "../../outbound/dtos/users.login.adaptor.output.dto";

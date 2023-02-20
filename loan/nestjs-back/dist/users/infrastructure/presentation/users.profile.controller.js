@@ -19,19 +19,23 @@ const _200_1 = require("../../../common/constants/http/success/200");
 const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _500_1 = require("../../../common/constants/http/errors/500");
-const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
+const jwt_access_guard_1 = require("../token/guard/jwt.access.guard");
+const user_decorator_1 = require("../../../common/decorators/user.decorator");
+const users_model_1 = require("../../domain/entity/users.model");
 let UsersProfileController = class UsersProfileController {
     constructor(useCase) {
         this.useCase = useCase;
     }
-    async profile(id) {
+    async profile(user) {
+        const { id } = user;
+        console.log("profile id ", id);
         return await this.useCase.profile({ id });
     }
 };
 __decorate([
-    (0, common_1.Get)("/:id"),
     (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
+    (0, common_1.Get)("/"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({
         summary: "USER PROFILE API",
@@ -41,9 +45,9 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 400, description: `${_400_1.NO_MATCH_USER_ID}` }),
     (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
-    __param(0, (0, common_1.Param)("id", common_1.ParseUUIDPipe)),
+    __param(0, (0, user_decorator_1.User)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [users_model_1.UsersModel]),
     __metadata("design:returntype", Promise)
 ], UsersProfileController.prototype, "profile", null);
 UsersProfileController = __decorate([

@@ -23,7 +23,7 @@ const users_model_1 = require("../../domain/entity/users.model");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
 const password_checking_interceptor_1 = require("../../interceptor/password.checking.interceptor");
 const users_update_name_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.name.adaptor.input.dto");
-const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
+const jwt_access_guard_1 = require("../token/guard/jwt.access.guard");
 let UsersUpdateNameController = class UsersUpdateNameController {
     constructor(useCase) {
         this.useCase = useCase;

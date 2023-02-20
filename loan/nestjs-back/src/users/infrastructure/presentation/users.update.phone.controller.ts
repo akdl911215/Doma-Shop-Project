@@ -22,7 +22,7 @@ import { UsersUpdatePhoneAdaptorInputDto } from "../../inbound/dtos/users.update
 import { UsersUpdatePhoneAdaptor } from "../../domain/adaptor/users.update.phone.adaptor";
 import { User } from "../../../common/decorators/user.decorator";
 import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
 import { UsersUpdatePhoneAdaptorOutputDto } from "../../outbound/dtos/users.update.phone.adaptor.output.dto";
 
 @ApiTags("users")

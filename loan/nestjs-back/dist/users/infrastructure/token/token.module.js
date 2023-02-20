@@ -9,9 +9,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TokenModule = void 0;
 const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("@nestjs/config");
-const bcript_service_1 = require("../../../common/infrastructures/bcript/bcript.service");
-const bcript_module_1 = require("../../../common/infrastructures/bcript/bcript.module");
-const token_service_1 = require("../../../common/infrastructures/token/token.service");
+const token_service_1 = require("./token.service");
+const common_1 = require("@nestjs/common");
+const prisma_service_1 = require("../../../common/infrastructures/prisma/prisma.service");
+const passport_1 = require("@nestjs/passport");
+const PASSPORT_MODULE = passport_1.PassportModule.register({ session: false });
 const JWT_MODULE = jwt_1.JwtModule.registerAsync({
     imports: [config_1.ConfigModule],
     inject: [config_1.ConfigService],
@@ -22,10 +24,13 @@ const JWT_MODULE = jwt_1.JwtModule.registerAsync({
 let TokenModule = class TokenModule {
 };
 TokenModule = __decorate([
-    Module({
-        imports: [JWT_MODULE, bcript_module_1.BcriptModule],
-        providers: [token_service_1.TokenService, bcript_service_1.BcriptService],
-        exports: [token_service_1.TokenService, JWT_MODULE],
+    (0, common_1.Module)({
+        imports: [JWT_MODULE, PASSPORT_MODULE],
+        providers: [
+            prisma_service_1.PrismaService,
+            { provide: "TOKEN_SERVICE", useClass: token_service_1.TokenService },
+        ],
+        exports: [{ provide: "TOKEN_SERVICE", useClass: token_service_1.TokenService }],
     })
 ], TokenModule);
 exports.TokenModule = TokenModule;

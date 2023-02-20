@@ -14,6 +14,8 @@ let AccessTokenGuard = class AccessTokenGuard extends (0, passport_1.AuthGuard)(
         return super.canActivate(context);
     }
     handleRequest(err, user, info) {
+        console.log("access token guard user", user);
+        console.log("access token guard err", err);
         if (err || !user) {
             throw err || new common_1.UnauthorizedException();
         }

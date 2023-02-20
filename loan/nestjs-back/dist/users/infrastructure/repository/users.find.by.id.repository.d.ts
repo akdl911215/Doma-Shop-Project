@@ -1,7 +1,7 @@
 import { UsersFindByIdAdaptorOutputDto } from "../../outbound/dtos/users.find.by.id.adaptor.output.dto";
 import { UsersFindByIdAdaptorInputDto } from "../../inbound/dtos/users.find.by.id.adaptor.input.dto";
 import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
-import { UsersFindByIdInterface } from "../../../common/infrastructures/token/interface/users.find.by.id.interface";
+import { UsersFindByIdInterface } from "../token/interface/users.find.by.id.interface";
 export declare class UsersFindByIdRepository implements UsersFindByIdInterface {
     private readonly prisma;
     constructor(prisma: PrismaService);

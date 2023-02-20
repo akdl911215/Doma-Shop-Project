@@ -14,7 +14,7 @@ import { UsersUpdateNicknameAdaptorInputDto } from "../../inbound/dtos/users.upd
 import { UsersModel } from "../../domain/entity/users.model";
 import { UsersUpdateNicknameAdaptorOutputDto } from "../../outbound/dtos/users.update.nickname.adaptor.output.dto";
 import { UsersUpdateNicknameAdaptor } from "../../domain/adaptor/users.update.nickname.adaptor";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
 import { User } from "../../../common/decorators/user.decorator";
 
 @ApiTags("users")

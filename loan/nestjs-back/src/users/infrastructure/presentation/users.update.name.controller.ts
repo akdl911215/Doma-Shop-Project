@@ -23,7 +23,7 @@ import { PasswordCheckingInterceptor } from "../../interceptor/password.checking
 import { UsersUpdateNameAdaptor } from "../../domain/adaptor/users.update.name.adaptor";
 import { UsersUpdateNameAdaptorInputDto } from "../../inbound/dtos/users.update.name.adaptor.input.dto";
 import { UsersUpdateNameAdaptorOutputDto } from "../../outbound/dtos/users.update.name.adaptor.output.dto";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
 
 @ApiTags("users")
 @Controller("users")
