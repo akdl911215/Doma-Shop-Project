@@ -19,7 +19,7 @@ const _200_1 = require("../../../common/constants/http/success/200");
 const _400_1 = require("../../../common/constants/http/errors/400");
 const _404_1 = require("../../../common/constants/http/errors/404");
 const _500_1 = require("../../../common/constants/http/errors/500");
-const jwt_access_guard_1 = require("../token/guard/jwt.access.guard");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
 const users_model_1 = require("../../domain/entity/users.model");
 let UsersProfileController = class UsersProfileController {
@@ -28,12 +28,10 @@ let UsersProfileController = class UsersProfileController {
     }
     async profile(user) {
         const { id } = user;
-        console.log("profile id ", id);
         return await this.useCase.profile({ id });
     }
 };
 __decorate([
-    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Get)("/"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
@@ -42,7 +40,10 @@ __decorate([
         description: "유저 정보 1개 검색",
     }),
     (0, swagger_1.ApiResponse)({ status: 200, description: `${_200_1.TWO_HUNDRED_OK}` }),
-    (0, swagger_1.ApiResponse)({ status: 400, description: `${_400_1.NO_MATCH_USER_ID}` }),
+    (0, swagger_1.ApiResponse)({
+        status: 400,
+        description: `${_400_1.NO_MATCH_USER_ID}, ${_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION}`,
+    }),
     (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     __param(0, (0, user_decorator_1.User)()),
@@ -53,6 +54,7 @@ __decorate([
 UsersProfileController = __decorate([
     (0, common_1.Controller)("users"),
     (0, swagger_1.ApiTags)("users"),
+    (0, common_1.UseGuards)(jwt_access_guard_1.AccessTokenGuard),
     __param(0, (0, common_1.Inject)("USE_CASE_PROFILE")),
     __metadata("design:paramtypes", [Object])
 ], UsersProfileController);

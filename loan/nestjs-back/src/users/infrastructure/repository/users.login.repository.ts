@@ -12,10 +12,10 @@ import {
 } from "../../../common/constants/http/errors/400";
 import { UsersLoginAdaptorOutputDto } from "../../outbound/dtos/users.login.adaptor.output.dto";
 import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
-import { TokenService } from "../token/token.service";
+import { TokenService } from "../../../common/infrastructures/token/token.service";
 import { UsersLoginAdaptor } from "../../domain/adaptor/users.login.adaptor";
-import { AccessTokenPayloadType } from "../token/type/access.token.payload.type";
-import { RefreshTokenPayloadType } from "../token/type/refresh.token.payload.type";
+import { AccessTokenPayloadType } from "../../../common/infrastructures/token/type/access.token.payload.type";
+import { RefreshTokenPayloadType } from "../../../common/infrastructures/token/type/refresh.token.payload.type";
 import { HashDecodedService } from "../bcrypt/hash.decoded.service";
 
 @Injectable()

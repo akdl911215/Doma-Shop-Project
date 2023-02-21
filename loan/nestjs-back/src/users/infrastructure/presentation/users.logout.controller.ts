@@ -12,7 +12,7 @@ import { UsersModel } from "../../domain/entity/users.model";
 import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
 import { UsersLogoutAdaptor } from "../../domain/adaptor/users.logout.adaptor";
 import { User } from "../../../common/decorators/user.decorator";
-import { RefreshTokenGuard } from "../token/guard/jwt.refresh.guard";
+import { RefreshTokenGuard } from "../../../common/infrastructures/token/guard/jwt.refresh.guard";
 
 @ApiTags("users")
 @Controller("users")

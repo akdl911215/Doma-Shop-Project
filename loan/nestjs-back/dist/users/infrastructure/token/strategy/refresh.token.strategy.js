@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RefreshTokenStrategy = void 0;
 const passport_jwt_1 = require("passport-jwt");
@@ -52,8 +53,7 @@ RefreshTokenStrategy = __decorate([
     __param(0, (0, common_1.Inject)("USE_CASE_USERS_FIND_BY_ID")),
     __param(2, (0, common_1.Inject)("TOKEN_SERVICE")),
     __metadata("design:paramtypes", [users_find_by_id_use_case_1.UsersFindByIdUseCase,
-        config_1.ConfigService,
-        token_service_1.TokenService])
+        config_1.ConfigService, typeof (_a = typeof token_service_1.TokenService !== "undefined" && token_service_1.TokenService) === "function" ? _a : Object])
 ], RefreshTokenStrategy);
 exports.RefreshTokenStrategy = RefreshTokenStrategy;
 //# sourceMappingURL=refresh.token.strategy.js.map

@@ -7,16 +7,28 @@
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/combined.log" beforeDir="false" afterPath="$PROJECT_DIR$/combined.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/decorators/user.decorator.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/decorators/user.decorator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/decorators/user.decorator.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/decorators/user.decorator.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/guard/jwt.access.guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/guard/jwt.access.guard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/guard/jwt.access.guard.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/guard/jwt.access.guard.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/guard/jwt.refresh.guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/guard/jwt.refresh.guard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/guard/jwt.refresh.guard.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/guard/jwt.refresh.guard.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/inbound/dtos/generate.token.input.dto.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/inbound/dtos/generate.token.input.dto.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/access.token.strategy.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/access.token.strategy.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/access.token.strategy.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/access.token.strategy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/access.token.strategy.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/access.token.strategy.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/refresh.token.strategy.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/refresh.token.strategy.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/refresh.token.strategy.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/refresh.token.strategy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/refresh.token.strategy.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/strategy/refresh.token.strategy.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/token.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/token.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/token.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/token.module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/token.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/token.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/common/infrastructures/token/token.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/common/infrastructures/token/token.service.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/users/application/usecase/users.profile.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/application/usecase/users.profile.use.case.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/users/application/usecase/users.profile.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/application/usecase/users.profile.use.case.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.delete.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.delete.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.delete.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.delete.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.login.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.login.controller.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.logout.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.logout.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.logout.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.logout.controller.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.profile.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/presentation/users.profile.controller.js" afterDir="false" />
@@ -43,38 +55,23 @@
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/repository/users.login.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/repository/users.login.repository.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/guard/jwt.access.guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/guard/jwt.access.guard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/guard/jwt.access.guard.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/guard/jwt.access.guard.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/guard/jwt.refresh.guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/guard/jwt.refresh.guard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/guard/jwt.refresh.guard.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/guard/jwt.refresh.guard.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/access.token.strategy.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/access.token.strategy.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/access.token.strategy.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/access.token.strategy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/access.token.strategy.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/access.token.strategy.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/refresh.token.strategy.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/refresh.token.strategy.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/refresh.token.strategy.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/refresh.token.strategy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/refresh.token.strategy.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/strategy/refresh.token.strategy.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/token.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/token.module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/token.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/token.module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/token.service.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/token.service.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/token.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/token.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/infrastructure/token/token.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/infrastructure/token/token.service.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/users.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/users/users.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/users/users.module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/errors.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/query.log" beforeDir="false" afterPath="$PROJECT_DIR$/query.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/application/usecase/users.find.by.id.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/application/usecase/users.find.by.id.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/guard/jwt.access.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/guard/jwt.access.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/guard/jwt.refresh.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/guard/jwt.refresh.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/inbound/dtos/generate.token.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/inbound/dtos/generate.token.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/interface/users.find.by.id.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/interface/users.find.by.id.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/outbound/dtos/generate.token.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/outbound/dtos/generate.token.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/outbound/dtos/refresh.token.strategy.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/outbound/dtos/refresh.token.strategy.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/strategy/access.token.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/strategy/access.token.strategy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/strategy/refresh.token.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/strategy/refresh.token.strategy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/token.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/token.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/type/access.token.payload.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/type/access.token.payload.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/infrastructures/token/type/refresh.token.payload.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/token/type/refresh.token.payload.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/decorators/user.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/decorators/user.decorator.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.login.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.login.use.case.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/application/usecase/users.profile.use.case.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.delete.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.delete.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.login.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.login.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.logout.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.logout.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.profile.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.profile.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.address.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.update.address.controller.ts" afterDir="false" />
@@ -86,6 +83,19 @@
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.withdrawal.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/presentation/users.withdrawal.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.find.by.id.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.find.by.id.repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/infrastructure/repository/users.login.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/infrastructure/repository/users.login.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/application/usecase/users.find.by.id.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/application/usecase/users.find.by.id.use.case.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/guard/jwt.access.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/guard/jwt.access.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/guard/jwt.refresh.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/guard/jwt.refresh.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/inbound/dtos/generate.token.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/inbound/dtos/generate.token.input.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/interface/users.find.by.id.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/interface/users.find.by.id.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/outbound/dtos/generate.token.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/outbound/dtos/generate.token.output.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/outbound/dtos/refresh.token.strategy.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/outbound/dtos/refresh.token.strategy.output.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/strategy/access.token.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/strategy/access.token.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/strategy/refresh.token.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/strategy/refresh.token.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/token.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/token.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/token.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/type/access.token.payload.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/type/access.token.payload.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/infrastructure/token/type/refresh.token.payload.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/infrastructures/token/type/refresh.token.payload.type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/users.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,11 +144,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/common/infrastructures" />
       <recent name="$PROJECT_DIR$/src/users/infrastructure" />
       <recent name="$PROJECT_DIR$/src/users/outbound/interceptor" />
       <recent name="$PROJECT_DIR$/src/common/infrastructures/env" />
       <recent name="$PROJECT_DIR$/src/users/domain/service" />
-      <recent name="$PROJECT_DIR$/src/common/infrastructures" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.UsersDeleteUseCase.user delete process.failed should wrong id">
@@ -257,7 +267,7 @@
       <workItem from="1676688136649" duration="8984000" />
       <workItem from="1676778836166" duration="9241000" />
       <workItem from="1676858322333" duration="5516000" />
-      <workItem from="1676864052223" duration="9716000" />
+      <workItem from="1676864052223" duration="16552000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
@@ -294,12 +304,6 @@
           <url>file://$PROJECT_DIR$/src/mainBoard/interceptors/main.boards.interface.ts</url>
           <line>18</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/common/decorators/user.decorator.ts</url>
-          <line>4</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

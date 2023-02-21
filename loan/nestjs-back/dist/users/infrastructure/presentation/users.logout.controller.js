@@ -20,7 +20,7 @@ const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const _200_1 = require("../../../common/constants/http/success/200");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
-const jwt_refresh_guard_1 = require("../token/guard/jwt.refresh.guard");
+const jwt_refresh_guard_1 = require("../../../common/infrastructures/token/guard/jwt.refresh.guard");
 let UsersLogoutController = class UsersLogoutController {
     constructor(service) {
         this.service = service;

@@ -7,12 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TokenModule = void 0;
-const jwt_1 = require("@nestjs/jwt");
-const config_1 = require("@nestjs/config");
-const token_service_1 = require("./token.service");
 const common_1 = require("@nestjs/common");
-const prisma_service_1 = require("../prisma/prisma.service");
+const config_1 = require("@nestjs/config");
+const jwt_1 = require("@nestjs/jwt");
+const token_service_1 = require("./token.service");
 const passport_1 = require("@nestjs/passport");
+const prisma_service_1 = require("../prisma/prisma.service");
 const PASSPORT_MODULE = passport_1.PassportModule.register({ session: false });
 const JWT_MODULE = jwt_1.JwtModule.registerAsync({
     imports: [config_1.ConfigModule],

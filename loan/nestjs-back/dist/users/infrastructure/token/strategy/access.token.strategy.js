@@ -27,13 +27,11 @@ let AccessTokenStrategy = class AccessTokenStrategy extends (0, passport_1.Passp
         });
         this.useCase = useCase;
         this.configService = configService;
-        console.log("secretOrKey", configService.get("JWT_ACCESS_SECRET"));
+        console.log("11111");
     }
     async validate({ id, }) {
-        console.log("strategy id : ", id);
-        const user = await this.useCase.usersFindById({ id });
-        console.log("strategy user : ", user);
-        return user;
+        console.log("3");
+        return await this.useCase.usersFindById({ id });
     }
 };
 AccessTokenStrategy = __decorate([

@@ -16,7 +16,6 @@ export class RefreshTokenGuard extends AuthGuard("JWT-REFRESH-TOKEN") {
       throw err || new UnauthorizedException();
     }
 
-    console.log("user", user);
     return user?.response;
   }
 }

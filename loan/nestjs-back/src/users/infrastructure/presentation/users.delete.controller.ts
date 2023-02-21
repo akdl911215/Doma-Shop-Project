@@ -15,7 +15,7 @@ import { UsersModel } from "../../domain/entity/users.model";
 import { UsersDeleteAdaptorOutputDto } from "../../outbound/dtos/users.delete.adaptor.output.dto";
 import { UsersDeleteAdaptorInputDto } from "../../inbound/dtos/users.delete.adaptor.input.dto";
 import { UsersDeleteAdaptor } from "../../domain/adaptor/users.delete.adaptor";
-import { AccessTokenGuard } from "../token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
 import { User } from "../../../common/decorators/user.decorator";
 
 @ApiTags("users")

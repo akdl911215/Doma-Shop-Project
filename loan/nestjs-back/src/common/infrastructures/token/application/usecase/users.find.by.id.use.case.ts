@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { UsersFindByIdInterface } from "../../interface/users.find.by.id.interface";
-import { UsersFindByIdAdaptorOutputDto } from "../../../../outbound/dtos/users.find.by.id.adaptor.output.dto";
-import { UsersFindByIdAdaptorInputDto } from "../../../../inbound/dtos/users.find.by.id.adaptor.input.dto";
+import { UsersFindByIdAdaptorOutputDto } from "../../../../../users/outbound/dtos/users.find.by.id.adaptor.output.dto";
+import { UsersFindByIdAdaptorInputDto } from "../../../../../users/inbound/dtos/users.find.by.id.adaptor.input.dto";
 
 @Injectable()
 export class UsersFindByIdUseCase implements UsersFindByIdInterface {

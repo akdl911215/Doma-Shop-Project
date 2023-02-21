@@ -1,9 +1,9 @@
-import { JwtModule } from "@nestjs/jwt";
-import { ConfigModule, ConfigService } from "@nestjs/config";
-import { TokenService } from "./token.service";
 import { Module } from "@nestjs/common";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { JwtModule } from "@nestjs/jwt";
+import { TokenService } from "./token.service";
 import { PassportModule } from "@nestjs/passport";
+import { PrismaService } from "../prisma/prisma.service";
 
 const PASSPORT_MODULE = PassportModule.register({ session: false });
 const JWT_MODULE = JwtModule.registerAsync({

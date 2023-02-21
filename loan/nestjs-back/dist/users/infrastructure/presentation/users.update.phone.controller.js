@@ -22,7 +22,7 @@ const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const users_update_phone_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.phone.adaptor.input.dto");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
-const jwt_access_guard_1 = require("../token/guard/jwt.access.guard");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 let UsersUpdatePhoneController = class UsersUpdatePhoneController {
     constructor(useCase) {
         this.useCase = useCase;

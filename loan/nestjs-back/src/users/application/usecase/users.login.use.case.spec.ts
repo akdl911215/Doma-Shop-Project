@@ -5,7 +5,7 @@ import { UsersLoginUseCase } from "./users.login.use.case";
 import { UsersLoginRepository } from "../../infrastructure/repository/users.login.repository";
 import { UsersLoginAdaptorInputDto } from "../../inbound/dtos/users.login.adaptor.input.dto";
 import { HashDecodedService } from "../../infrastructure/bcrypt/hash.decoded.service";
-import { TokenService } from "../../infrastructure/token/token.service";
+import { TokenService } from "../../../common/infrastructures/token/token.service";
 import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
 

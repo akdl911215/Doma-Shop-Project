@@ -14,11 +14,23 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersProfileUseCase = void 0;
 const common_1 = require("@nestjs/common");
+const _400_1 = require("../../../common/constants/http/errors/400");
 let UsersProfileUseCase = class UsersProfileUseCase {
     constructor(repository) {
         this.repository = repository;
     }
     async profile(dto) {
+        const { id } = dto;
+        function meaninglessUniqueId(id) {
+            if (id === "" || !id) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        if (meaninglessUniqueId(id))
+            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION);
         return await this.repository.profile(dto);
     }
 };

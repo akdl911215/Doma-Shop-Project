@@ -27,13 +27,9 @@ let AccessTokenStrategy = class AccessTokenStrategy extends (0, passport_1.Passp
         });
         this.useCase = useCase;
         this.configService = configService;
-        console.log("secretOrKey", configService.get("JWT_ACCESS_SECRET"));
     }
     async validate({ id, }) {
-        console.log("strategy id : ", id);
-        const user = await this.useCase.usersFindById({ id });
-        console.log("strategy user : ", user);
-        return user;
+        return await this.useCase.usersFindById({ id });
     }
 };
 AccessTokenStrategy = __decorate([

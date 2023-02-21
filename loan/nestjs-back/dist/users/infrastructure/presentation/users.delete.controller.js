@@ -21,7 +21,7 @@ const _404_1 = require("../../../common/constants/http/errors/404");
 const _500_1 = require("../../../common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const users_delete_adaptor_input_dto_1 = require("../../inbound/dtos/users.delete.adaptor.input.dto");
-const jwt_access_guard_1 = require("../token/guard/jwt.access.guard");
+const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
 const user_decorator_1 = require("../../../common/decorators/user.decorator");
 let UsersDeleteController = class UsersDeleteController {
     constructor(useCase) {

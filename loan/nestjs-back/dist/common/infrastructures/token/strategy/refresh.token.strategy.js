@@ -18,7 +18,7 @@ const passport_1 = require("@nestjs/passport");
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const users_find_by_id_use_case_1 = require("../application/usecase/users.find.by.id.use.case");
-const token_service_1 = require("../../../../common/infrastructures/token/token.service");
+const token_service_1 = require("../token.service");
 const _400_1 = require("../../../constants/http/errors/400");
 let RefreshTokenStrategy = class RefreshTokenStrategy extends (0, passport_1.PassportStrategy)(passport_jwt_1.Strategy, "JWT-REFRESH-TOKEN") {
     constructor(usersService, configService, jwtToken) {
