@@ -56,10 +56,10 @@ import { RefreshTokenStrategy } from "../common/infrastructures/token/strategy/r
 @Module({
   imports: [TokenModule],
   controllers: [
-    UsersProfileController,
     UsersRegisterController,
     UsersLoginController,
     UsersLogoutController,
+    UsersProfileController,
     UsersExistsUserIdController,
     UsersExistsPhoneController,
     UsersExistsNicknameController,

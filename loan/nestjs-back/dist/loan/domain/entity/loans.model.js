@@ -16,23 +16,23 @@ const swagger_1 = require("@nestjs/swagger");
 class LoansModel extends base_common_core_dto_1.BaseCommonCoreDto {
 }
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
         type: String,
         default: "",
     }),
     __metadata("design:type", String)
-], LoansModel.prototype, "debtor", void 0);
+], LoansModel.prototype, "debtorId", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
         type: String,
         default: "",
     }),
     __metadata("design:type", String)
-], LoansModel.prototype, "creditor", void 0);
+], LoansModel.prototype, "creditorId", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),

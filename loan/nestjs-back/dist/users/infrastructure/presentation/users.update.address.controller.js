@@ -31,7 +31,6 @@ let UsersUpdateAddressController = class UsersUpdateAddressController {
     async updateAddress(request, user) {
         const { address } = request;
         const { id } = user;
-        console.log("1", address, id);
         return await this.useCase.updateAddress({ address, id });
     }
 };

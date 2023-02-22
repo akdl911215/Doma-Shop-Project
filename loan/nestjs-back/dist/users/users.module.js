@@ -67,10 +67,10 @@ UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [token_module_1.TokenModule],
         controllers: [
-            users_profile_controller_1.UsersProfileController,
             users_register_controller_1.UsersRegisterController,
             users_login_controller_1.UsersLoginController,
             users_logout_controller_1.UsersLogoutController,
+            users_profile_controller_1.UsersProfileController,
             users_exists_user_id_controller_1.UsersExistsUserIdController,
             users_exists_phone_controller_1.UsersExistsPhoneController,
             users_exists_nickname_controller_1.UsersExistsNicknameController,

@@ -52,7 +52,6 @@ export class UsersUpdateAddressController {
   ): Promise<UsersUpdateAddressAdaptorOutputDto> {
     const { address } = request;
     const { id } = user;
-    console.log("1", address, id);
     return await this.useCase.updateAddress({ address, id });
   }
 }
