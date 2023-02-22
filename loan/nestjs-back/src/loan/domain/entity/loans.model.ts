@@ -42,4 +42,20 @@ export class LoansModel extends BaseCommonCoreDto {
     default: 0,
   })
   public totalAmountLoan!: number;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    type: String,
+    default: "",
+  })
+  public loanRepaymentDate!: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @ApiProperty({
+    type: Number,
+    default: 0,
+  })
+  public interest!: number;
 }

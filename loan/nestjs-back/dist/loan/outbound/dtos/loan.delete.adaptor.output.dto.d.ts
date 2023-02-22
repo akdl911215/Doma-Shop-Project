@@ -1,5 +1,5 @@
 import { BaseOutputDto } from "../../../common/dtos/base.output.dto";
 export declare class LoanDeleteAdaptorOutputDto extends BaseOutputDto<{
-    readonly loanRemove: boolean;
+    readonly loanErase: boolean;
 }> {
 }

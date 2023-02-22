@@ -37,7 +37,7 @@ model Loans {
   creditor          String
   creditorId        String    @db.Uuid
   totalAmountLoan   Int
-  loanRepaymentDate DateTime
+  loanRepaymentDate String
   interest          Int
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt

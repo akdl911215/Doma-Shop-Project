@@ -1,6 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { BadRequestException } from "@nestjs/common";
-import { UsersModel } from "../../../users/domain/entity/users.model";
+import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { LoanCreateUseCase } from "./loan.create.use.case";
 import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
 import { LoanCreateRepository } from "../../infrastructure/repository/loan.create.repository";
@@ -8,7 +7,6 @@ import { LoanCreateAdaptorInputDto } from "../../inbound/dtos/loan.create.adapto
 
 describe("LoanCreateUseCase", () => {
   let service: LoanCreateUseCase;
-  let usersModel: UsersModel;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -25,13 +23,15 @@ describe("LoanCreateUseCase", () => {
   let dto: LoanCreateAdaptorInputDto;
 
   describe("loan create unit test", () => {
-    it("debtor is empty and should", async () => {
+    it("creditor is empty and should", async () => {
       dto = {
         debtor: "",
         debtorId: "",
-        creditor: "",
+        creditor: "testCreditor",
         creditorId: "",
         totalAmountLoan: 0,
+        loanRepaymentDate: "",
+        interest: 0,
       };
 
       try {
@@ -47,153 +47,195 @@ describe("LoanCreateUseCase", () => {
           console.log(errorMessage);
           expect(errorMessage).toStrictEqual({
             statusCode: 400,
-            message: "image required",
+            message: "CONFIRM_REQUIRED_CREDITOR_INFORMATION",
             error: "Bad Request",
           });
         }
       }
     });
 
-    // it('exists not image in dto.contents.type', async () => {
-    //   usersModel = await login();
-    //
-    //   const user: UsersModel = {
-    //     ownerId: usersModel.ownerId,
-    //     ownerAccountId: usersModel.ownerAccountId,
-    //     ownerNickname: usersModel.ownerNickname,
-    //   };
-    //   dto = {
-    //     title: '111',
-    //     contents: [
-    //       {
-    //         type: 'text',
-    //         content: 'hahaha',
-    //       },
-    //     ],
-    //     ownerId: user.ownerId,
-    //     ownerAccountId: user.ownerAccountId,
-    //     ownerNickname: user.ownerNickname,
-    //     thumbnail: '',
-    //     category: 'GALLERY',
-    //   };
-    //
-    //   try {
-    //     await service.register(dto);
-    //   } catch (e) {
-    //     if (e instanceof BadRequestException) {
-    //       const status = e.getStatus();
-    //       expect(status).toStrictEqual(400);
-    //
-    //       const errorMessage = e.getResponse();
-    //       console.log(errorMessage);
-    //       expect(errorMessage).toStrictEqual({
-    //         statusCode: 400,
-    //         message: 'image required',
-    //         error: 'Bad Request',
-    //       });
-    //     }
-    //   }
-    // });
-    //
-    // it('success should boards register', async () => {
-    //   usersModel = await login();
-    //   const user: UsersModel = {
-    //     ownerId: usersModel.ownerId,
-    //     ownerAccountId: usersModel.ownerAccountId,
-    //     ownerNickname: usersModel.ownerNickname,
-    //   };
-    //   dto = {
-    //     title: '111',
-    //     contents: [
-    //       {
-    //         type: 'text',
-    //         content:
-    //           'https://livepickstar-avatar.s3.ap-northeast-2.amazonaws.com/back/8653360f-4778-420b-bc6b-82b287e9a2ad/1675320339485',
-    //       },
-    //       {
-    //         type: 'text',
-    //         content: 'hahaha',
-    //       },
-    //     ],
-    //     ownerId: user.ownerId,
-    //     ownerAccountId: user.ownerAccountId,
-    //     ownerNickname: user.ownerNickname,
-    //     thumbnail: '',
-    //     category: 'SOCCER',
-    //   };
-    //
-    //   try {
-    //     const { response } = await service.register(dto);
-    //     expect(response).not.toBe({});
-    //     expect(response.ownerAccountId).toEqual(user.ownerAccountId);
-    //     expect(response.ownerId).toEqual(user.ownerId);
-    //     expect(response.title).toEqual('111');
-    //     expect(response.contents).toEqual([
-    //       {
-    //         type: 'text',
-    //         content:
-    //           'https://livepickstar-avatar.s3.ap-northeast-2.amazonaws.com/back/8653360f-4778-420b-bc6b-82b287e9a2ad/1675320339485',
-    //       },
-    //       {
-    //         type: 'text',
-    //         content: 'hahaha',
-    //       },
-    //     ]);
-    //   } catch (e) {
-    //     console.error(e);
-    //     throw new Error(e);
-    //   }
-    // });
-    //
-    // it('success should boards register', async () => {
-    //   usersModel = await login();
-    //   const user: UsersModel = {
-    //     ownerId: usersModel.ownerId,
-    //     ownerAccountId: usersModel.ownerAccountId,
-    //     ownerNickname: usersModel.ownerNickname,
-    //   };
-    //   dto = {
-    //     title: '111',
-    //     contents: [
-    //       {
-    //         type: 'image',
-    //         content:
-    //           'https://livepickstar-avatar.s3.ap-northeast-2.amazonaws.com/back/8653360f-4778-420b-bc6b-82b287e9a2ad/1675320339485',
-    //       },
-    //       {
-    //         type: 'text',
-    //         content: 'hahaha',
-    //       },
-    //     ],
-    //     ownerId: user.ownerId,
-    //     ownerAccountId: user.ownerAccountId,
-    //     ownerNickname: user.ownerNickname,
-    //     thumbnail: '',
-    //     category: 'GALLERY',
-    //   };
-    //
-    //   try {
-    //     const { response } = await service.register(dto);
-    //     expect(response).not.toBe({});
-    //     expect(response.ownerAccountId).toEqual(user.ownerAccountId);
-    //     expect(response.ownerId).toEqual(user.ownerId);
-    //     expect(response.title).toEqual('111');
-    //     expect(response.contents).toEqual([
-    //       {
-    //         type: 'image',
-    //         content:
-    //           'https://livepickstar-avatar.s3.ap-northeast-2.amazonaws.com/back/8653360f-4778-420b-bc6b-82b287e9a2ad/1675320339485',
-    //       },
-    //       {
-    //         type: 'text',
-    //         content: 'hahaha',
-    //       },
-    //     ]);
-    //   } catch (e) {
-    //     console.error(e);
-    //     throw new Error(e);
-    //   }
-    // });
+    it("debtor is empty and should", async () => {
+      dto = {
+        debtor: "",
+        debtorId: "",
+        creditor: "testCreditor",
+        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        totalAmountLoan: 0,
+        loanRepaymentDate: "",
+        interest: 0,
+      };
+
+      try {
+        await service.create(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof BadRequestException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(400);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 400,
+            message: "CONFIRM_REQUIRED_DEBTOR_INFORMATION",
+            error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("total amount loan required", async () => {
+      dto = {
+        debtor: "testDebtor",
+        debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        creditor: "testCreditor",
+        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        totalAmountLoan: 0,
+        loanRepaymentDate: "",
+        interest: 0,
+      };
+
+      try {
+        await service.create(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof BadRequestException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(400);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 400,
+            message: "CONFIRM_REQUIRED_LOAN_INFORMATION",
+            error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("loan repayment date required", async () => {
+      dto = {
+        debtor: "testDebtor",
+        debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        creditor: "testCreditor",
+        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        totalAmountLoan: 1000000000,
+        loanRepaymentDate: "2030-12-31",
+        interest: 0,
+      };
+
+      try {
+        await service.create(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof BadRequestException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(400);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 400,
+            message: "CONFIRM_REQUIRED_LOAN_REPAYMENT_DATE_INFORMATION",
+            error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("loan interest required", async () => {
+      dto = {
+        debtor: "testDebtor",
+        debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        creditor: "testCreditor",
+        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        totalAmountLoan: 1000000000,
+        loanRepaymentDate: "2030-12-31",
+        interest: 0,
+      };
+
+      try {
+        await service.create(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof BadRequestException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(400);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 400,
+            message: "CONFIRM_REQUIRED_LOAN_INTEREST_INFORMATION",
+            error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("the creditor and debtor is information is wrong", async () => {
+      dto = {
+        debtor: "testDebtor",
+        debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        creditor: "testCreditor",
+        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        totalAmountLoan: 1000000000,
+        loanRepaymentDate: "2030-12-31",
+        interest: 10,
+      };
+
+      try {
+        await service.create(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof NotFoundException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(404);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 404,
+            message: "NOTFOUND_USER",
+            error: "Not Found",
+          });
+        }
+      }
+    });
+
+    it("success should boards register", async () => {
+      dto = {
+        debtor: "aaa",
+        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditor: "bbbb",
+        creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+        totalAmountLoan: 2000000000,
+        loanRepaymentDate: "2030-12-31",
+        interest: 10,
+      };
+
+      try {
+        const { response } = await service.create(dto);
+        console.log(response);
+
+        expect(response.debtor).toStrictEqual(dto.debtor);
+        expect(response.debtorId).toStrictEqual(dto.debtorId);
+        expect(response.creditor).toStrictEqual(dto.creditor);
+        expect(response.creditorId).toStrictEqual(dto.creditorId);
+        expect(response.totalAmountLoan).toStrictEqual(dto.totalAmountLoan);
+        expect(response.loanRepaymentDate).toStrictEqual(dto.loanRepaymentDate);
+        expect(response.interest).toStrictEqual(dto.interest);
+      } catch (e) {
+        console.error(e);
+        throw new Error(`${e}`);
+      }
+    });
   });
 
   it("should be defined", () => {

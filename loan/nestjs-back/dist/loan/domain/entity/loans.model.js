@@ -16,6 +16,15 @@ const swagger_1 = require("@nestjs/swagger");
 class LoansModel extends base_common_core_dto_1.BaseCommonCoreDto {
 }
 __decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        default: "",
+    }),
+    __metadata("design:type", String)
+], LoansModel.prototype, "debtor", void 0);
+__decorate([
     (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
@@ -24,6 +33,15 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], LoansModel.prototype, "debtorId", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        default: "",
+    }),
+    __metadata("design:type", String)
+], LoansModel.prototype, "creditor", void 0);
 __decorate([
     (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
@@ -42,5 +60,23 @@ __decorate([
     }),
     __metadata("design:type", Number)
 ], LoansModel.prototype, "totalAmountLoan", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        default: "",
+    }),
+    __metadata("design:type", String)
+], LoansModel.prototype, "loanRepaymentDate", void 0);
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        type: Number,
+        default: 0,
+    }),
+    __metadata("design:type", Number)
+], LoansModel.prototype, "interest", void 0);
 exports.LoansModel = LoansModel;
 //# sourceMappingURL=loans.model.js.map

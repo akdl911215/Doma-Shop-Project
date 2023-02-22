@@ -12,46 +12,54 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoanListUseCase = void 0;
+exports.LoanCreateUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _400_1 = require("../../../common/constants/http/errors/400");
-let LoanListUseCase = class LoanListUseCase {
+let LoanCreateUseCase = class LoanCreateUseCase {
     constructor(repository) {
         this.repository = repository;
     }
     async create(dto) {
-        const { creditorId, debtorId, totalAmountLoan } = dto;
-        function confirmCreditorInput(creditorId) {
-            if (creditorId === "" || !creditorId)
+        const { creditorId, creditor, debtorId, debtor, totalAmountLoan, loanRepaymentDate, } = dto;
+        function confirmCreditorInput(creditorId, creditor) {
+            if (!creditorId || !creditor)
                 return true;
             else
                 return false;
         }
-        if (confirmCreditorInput(creditorId))
+        if (confirmCreditorInput(creditorId, creditor))
             throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_CREDITOR_INFORMATION);
-        function confirmDebtorInput(debtorId) {
-            if (debtorId === "" || !debtorId)
+        function confirmDebtorInput(debtorId, debtor) {
+            if (!debtorId || !debtor)
                 return true;
             else
                 return false;
         }
-        if (confirmDebtorInput(debtorId))
+        if (confirmDebtorInput(debtorId, debtor))
             throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_DEBTOR_INFORMATION);
         function confirmTotalAmountLoanInput(totalAmountLoan) {
-            if (totalAmountLoan === 0 || !totalAmountLoan)
+            if (totalAmountLoan === 0)
                 return true;
             else
                 return false;
         }
         if (confirmTotalAmountLoanInput(totalAmountLoan))
             throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_LOAN_INFORMATION);
+        function confirmLoanRepaymentDate(loanRepaymentDate) {
+            if (!loanRepaymentDate)
+                return true;
+            else
+                return false;
+        }
+        if (confirmLoanRepaymentDate(loanRepaymentDate))
+            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_LOAN_REPAYMENT_DATE_INFORMATION);
         return await this.repository.create(dto);
     }
 };
-LoanListUseCase = __decorate([
+LoanCreateUseCase = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)("REGISTER")),
+    __param(0, (0, common_1.Inject)("CREATE")),
     __metadata("design:paramtypes", [Object])
-], LoanListUseCase);
-exports.LoanListUseCase = LoanListUseCase;
+], LoanCreateUseCase);
+exports.LoanCreateUseCase = LoanCreateUseCase;
 //# sourceMappingURL=loan.create.use.case.js.map

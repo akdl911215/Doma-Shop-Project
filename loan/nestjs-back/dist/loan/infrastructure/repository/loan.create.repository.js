@@ -17,17 +17,22 @@ let LoanCreateRepository = class LoanCreateRepository {
         this.prisma = prisma;
     }
     async create(dto) {
-        const { debtorId, creditorId, totalAmountLoan } = dto;
+        const { debtor, debtorId, creditor, creditorId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
         try {
             const [createLoan] = await this.prisma.$transaction([
                 this.prisma.loans.create({
                     data: {
+                        debtor,
                         debtorId,
+                        creditor,
                         creditorId,
                         totalAmountLoan,
+                        loanRepaymentDate,
+                        interest,
                     },
                 }),
             ]);
+            return { response: createLoan };
         }
         catch (e) {
             if (e instanceof common_1.InternalServerErrorException) {
@@ -37,7 +42,6 @@ let LoanCreateRepository = class LoanCreateRepository {
                 throw new Error(`${e}`);
             }
         }
-        return Promise.resolve(undefined);
     }
 };
 LoanCreateRepository = __decorate([

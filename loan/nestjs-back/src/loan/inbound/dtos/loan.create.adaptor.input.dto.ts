@@ -7,4 +7,6 @@ export class LoanCreateAdaptorInputDto extends PickType(LoansModel, [
   "creditorId",
   "creditor",
   "totalAmountLoan",
+  "loanRepaymentDate",
+  "interest",
 ] as const) {}
