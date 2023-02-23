@@ -14,9 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersUpdatePasswordRepository = void 0;
 const common_1 = require("@nestjs/common");
-const _404_1 = require("../../../common/constants/http/errors/404");
+const _404_1 = require("../../../_common/constants/http/errors/404");
 const hash_encoded_service_1 = require("../bcrypt/hash.encoded.service");
-const prisma_service_1 = require("../../../common/infrastructures/prisma/prisma.service");
+const prisma_service_1 = require("../../../_common/infrastructures/prisma/prisma.service");
 let UsersUpdatePasswordRepository = class UsersUpdatePasswordRepository {
     constructor(prisma, hash) {
         this.prisma = prisma;

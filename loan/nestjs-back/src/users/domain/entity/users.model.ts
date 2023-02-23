@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, Matches } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
-import { BaseCommonCoreDto } from "../../../common/dtos/base.common.core.dto";
+import { BaseCommonCoreDto } from "../../../_common/dtos/base.common.core.dto";
 
 export class UsersModel extends BaseCommonCoreDto {
   @IsString()

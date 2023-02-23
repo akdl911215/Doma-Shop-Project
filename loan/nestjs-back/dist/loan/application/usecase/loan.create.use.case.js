@@ -14,13 +14,13 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoanCreateUseCase = void 0;
 const common_1 = require("@nestjs/common");
-const _400_1 = require("../../../common/constants/http/errors/400");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoanCreateUseCase = class LoanCreateUseCase {
     constructor(repository) {
         this.repository = repository;
     }
     async create(dto) {
-        const { creditorId, creditor, debtorId, debtor, totalAmountLoan, loanRepaymentDate, } = dto;
+        const { creditorId, creditor, debtorId, debtor, totalAmountLoan, loanRepaymentDate, interest, } = dto;
         function confirmCreditorInput(creditorId, creditor) {
             if (!creditorId || !creditor)
                 return true;
@@ -53,6 +53,14 @@ let LoanCreateUseCase = class LoanCreateUseCase {
         }
         if (confirmLoanRepaymentDate(loanRepaymentDate))
             throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_LOAN_REPAYMENT_DATE_INFORMATION);
+        function confirmInterest(interest) {
+            if (interest <= 0)
+                return true;
+            else
+                return false;
+        }
+        if (confirmInterest(interest))
+            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_LOAN_INTEREST_INFORMATION);
         return await this.repository.create(dto);
     }
 };

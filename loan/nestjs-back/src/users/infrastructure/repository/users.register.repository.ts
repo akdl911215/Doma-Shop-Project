@@ -6,7 +6,7 @@ import {
 } from "@nestjs/common";
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
 import { HashEncodedService } from "../bcrypt/hash.encoded.service";
 

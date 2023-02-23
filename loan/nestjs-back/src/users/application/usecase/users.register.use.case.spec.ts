@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { UsersRegisterUseCase } from "./users.register.use.case";
 import { UsersRegisterRepository } from "../../infrastructure/repository/users.register.repository";
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";

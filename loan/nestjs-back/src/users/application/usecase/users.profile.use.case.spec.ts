@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { NotFoundException } from "@nestjs/common";
 import { UsersProfileUseCase } from "./users.profile.use.case";
 import { UsersProfileAdaptorInputDto } from "../../inbound/dtos/users.profile.adaptor.input.dto";

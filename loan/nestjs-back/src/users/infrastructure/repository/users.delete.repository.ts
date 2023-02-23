@@ -5,9 +5,9 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { UsersDeleteAdaptorInputDto } from "../../inbound/dtos/users.delete.adaptor.input.dto";
-import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
+import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { UsersDeleteAdaptorOutputDto } from "../../outbound/dtos/users.delete.adaptor.output.dto";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { UsersDeleteAdaptor } from "../../domain/adaptor/users.delete.adaptor";
 
 @Injectable()

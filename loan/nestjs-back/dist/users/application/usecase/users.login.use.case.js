@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersLoginUseCase = void 0;
 const common_1 = require("@nestjs/common");
-const _400_1 = require("../../../common/constants/http/errors/400");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let UsersLoginUseCase = class UsersLoginUseCase {
     constructor(repository) {
         this.repository = repository;

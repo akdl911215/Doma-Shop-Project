@@ -1,9 +1,9 @@
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Controller, Get, Inject, Param } from "@nestjs/common";
-import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
-import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
+import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
+import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import { UsersExistsUserIdAdaptor } from "../../domain/adaptor/users.exists.user.id.adaptor";
-import { ALREADY_USER_ID_EXISTS } from "../../../common/constants/http/errors/409";
+import { ALREADY_USER_ID_EXISTS } from "../../../_common/constants/http/errors/409";
 import { UsersExistsUserIdAdaptorInputDto } from "../../inbound/dtos/users.exists.user.id.adaptor.input.dto";
 import { UsersExistsUserIdAdaptorOutputDto } from "../../outbound/dtos/users.exists.user.id.adaptor.output.dto";
 

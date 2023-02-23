@@ -1,4 +1,4 @@
-import { BaseOutputDto } from "../../../common/dtos/base.output.dto";
-import { LoansModel } from "../../domain/entity/loans.model";
-export declare class LoanCreateAdaptorOutputDto extends BaseOutputDto<LoansModel> {
+import { Loans } from "@prisma/client";
+import { BaseOutputDto } from "../../../_common/dtos/base.output.dto";
+export declare class LoanCreateAdaptorOutputDto extends BaseOutputDto<Loans> {
 }

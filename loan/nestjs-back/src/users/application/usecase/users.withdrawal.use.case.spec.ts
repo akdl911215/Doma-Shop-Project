@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { UsersWithdrawalUseCase } from "./users.withdrawal.use.case";
 import { UsersWithdrawalRepository } from "../../infrastructure/repository/users.withdrawal.repository";

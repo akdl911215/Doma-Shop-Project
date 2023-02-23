@@ -15,12 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersProfileController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const _200_1 = require("../../../common/constants/http/success/200");
-const _400_1 = require("../../../common/constants/http/errors/400");
-const _404_1 = require("../../../common/constants/http/errors/404");
-const _500_1 = require("../../../common/constants/http/errors/500");
-const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
-const user_decorator_1 = require("../../../common/decorators/user.decorator");
+const _200_1 = require("../../../_common/constants/http/success/200");
+const _400_1 = require("../../../_common/constants/http/errors/400");
+const _404_1 = require("../../../_common/constants/http/errors/404");
+const _500_1 = require("../../../_common/constants/http/errors/500");
+const jwt_access_guard_1 = require("../../../_common/infrastructures/token/guard/jwt.access.guard");
+const user_decorator_1 = require("../../../_common/decorators/user.decorator");
 const users_model_1 = require("../../domain/entity/users.model");
 let UsersProfileController = class UsersProfileController {
     constructor(useCase) {

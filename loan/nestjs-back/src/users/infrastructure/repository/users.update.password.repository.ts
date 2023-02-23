@@ -5,11 +5,11 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from "@nestjs/common";
-import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
+import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { HashEncodedService } from "../bcrypt/hash.encoded.service";
 import { UsersUpdatePasswordAdaptorInputDto } from "../../inbound/dtos/users.update.password.adaptor.input.dto";
 import { UsersUpdatePasswordAdaptorOutputDto } from "../../outbound/dtos/users.update.password.adaptor.output.dto";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { UsersUpdatePasswordAdaptor } from "../../domain/adaptor/users.update.password.adaptor";
 
 @Injectable()

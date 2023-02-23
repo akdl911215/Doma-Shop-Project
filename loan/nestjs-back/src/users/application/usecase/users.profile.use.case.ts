@@ -2,7 +2,7 @@ import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { UsersProfileAdaptorOutputDto } from "../../outbound/dtos/users.profile.adaptor.output.dto";
 import { UsersProfileAdaptor } from "../../domain/adaptor/users.profile.adaptor";
 import { UsersProfileAdaptorInputDto } from "../../inbound/dtos/users.profile.adaptor.input.dto";
-import { CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION } from "../../../common/constants/http/errors/400";
+import { CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
 export class UsersProfileUseCase implements UsersProfileAdaptor {

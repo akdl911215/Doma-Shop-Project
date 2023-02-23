@@ -1,6 +1,6 @@
 import { ConflictException, Dependencies, Injectable } from "@nestjs/common";
-import { ALREADY_PHONE_EXISTS } from "../../../common/constants/http/errors/409";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { ALREADY_PHONE_EXISTS } from "../../../_common/constants/http/errors/409";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { UsersExistsPhoneAdaptor } from "../../domain/adaptor/users.exists.phone.adaptor";
 import { UsersExistsPhoneAdaptorInputDto } from "../../inbound/dtos/users.exists.phone.adaptor.input.dto";
 import { UsersExistsPhoneAdaptorOutputDto } from "../../outbound/dtos/users.exists.phone.adaptor.output.dto";

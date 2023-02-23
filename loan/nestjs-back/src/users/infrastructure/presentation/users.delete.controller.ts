@@ -7,16 +7,16 @@ import {
   ApiResponse,
   ApiTags,
 } from "@nestjs/swagger";
-import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
-import { TWO_HUNDRED_FOUR_DELETE_SUCCESS } from "../../../common/constants/http/success/204";
-import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
-import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
+import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
+import { TWO_HUNDRED_FOUR_DELETE_SUCCESS } from "../../../_common/constants/http/success/204";
+import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
+import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersModel } from "../../domain/entity/users.model";
 import { UsersDeleteAdaptorOutputDto } from "../../outbound/dtos/users.delete.adaptor.output.dto";
 import { UsersDeleteAdaptorInputDto } from "../../inbound/dtos/users.delete.adaptor.input.dto";
 import { UsersDeleteAdaptor } from "../../domain/adaptor/users.delete.adaptor";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
-import { User } from "../../../common/decorators/user.decorator";
+import { AccessTokenGuard } from "../../../_common/infrastructures/token/guard/jwt.access.guard";
+import { User } from "../../../_common/decorators/user.decorator";
 
 @ApiTags("users")
 @Controller("users")

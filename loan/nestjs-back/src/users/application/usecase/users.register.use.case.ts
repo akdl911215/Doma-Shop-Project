@@ -5,7 +5,7 @@ import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adapto
 import { UsersExistsUserIdAdaptor } from "../../domain/adaptor/users.exists.user.id.adaptor";
 import { UsersExistsPhoneAdaptor } from "../../domain/adaptor/users.exists.phone.adaptor";
 import { UsersExistsNicknameAdaptor } from "../../domain/adaptor/users.exists.nickname.adaptor";
-import { CONFIRM_REQUIRED_USER_INFORMATION } from "../../../common/constants/http/errors/400";
+import { CONFIRM_REQUIRED_USER_INFORMATION } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
 export class UsersRegisterUseCase implements UsersRegisterAdaptor {

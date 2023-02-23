@@ -1,6 +1,6 @@
 import { ConflictException, Dependencies, Injectable } from "@nestjs/common";
-import { ALREADY_NICKNAME_EXISTS } from "../../../common/constants/http/errors/409";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { ALREADY_NICKNAME_EXISTS } from "../../../_common/constants/http/errors/409";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { UsersExistsNicknameAdaptor } from "../../domain/adaptor/users.exists.nickname.adaptor";
 import { UsersExistsNicknameAdaptorInputDto } from "../../inbound/dtos/users.exists.nickname.adaptor.input.dto";
 import { UsersExistsNicknameOutputDto } from "../../outbound/dtos/users.exists.nickname.adaptor.output.dto";

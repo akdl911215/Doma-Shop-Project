@@ -15,12 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersRegisterController = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
-const _201_1 = require("../../../common/constants/http/success/201");
-const _409_1 = require("../../../common/constants/http/errors/409");
-const _500_1 = require("../../../common/constants/http/errors/500");
+const _201_1 = require("../../../_common/constants/http/success/201");
+const _409_1 = require("../../../_common/constants/http/errors/409");
+const _500_1 = require("../../../_common/constants/http/errors/500");
 const users_register_adaptor_input_dto_1 = require("../../inbound/dtos/users.register.adaptor.input.dto");
 const password_checking_interceptor_1 = require("../../interceptor/password.checking.interceptor");
-const _400_1 = require("../../../common/constants/http/errors/400");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let UsersRegisterController = class UsersRegisterController {
     constructor(useCase) {
         this.useCase = useCase;

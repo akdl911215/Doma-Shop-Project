@@ -1,9 +1,9 @@
 import { Dependencies, Injectable, NotFoundException } from "@nestjs/common";
-import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
+import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { UsersFindByIdAdaptorOutputDto } from "../../outbound/dtos/users.find.by.id.adaptor.output.dto";
 import { UsersFindByIdAdaptorInputDto } from "../../inbound/dtos/users.find.by.id.adaptor.input.dto";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
-import { UsersFindByIdInterface } from "../../../common/infrastructures/token/interface/users.find.by.id.interface";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
+import { UsersFindByIdInterface } from "../../../_common/infrastructures/token/interface/users.find.by.id.interface";
 
 @Injectable()
 @Dependencies([PrismaService])

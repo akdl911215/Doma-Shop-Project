@@ -13,13 +13,13 @@ import {
   UseGuards,
   UseInterceptors,
 } from "@nestjs/common";
-import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
-import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
-import { UPDATE_FAILED } from "../../../common/constants/http/errors/409";
-import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
+import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
+import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
+import { UPDATE_FAILED } from "../../../_common/constants/http/errors/409";
+import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersModel } from "../../domain/entity/users.model";
-import { User } from "../../../common/decorators/user.decorator";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { User } from "../../../_common/decorators/user.decorator";
+import { AccessTokenGuard } from "../../../_common/infrastructures/token/guard/jwt.access.guard";
 import { UsersUpdateAddressAdaptor } from "../../domain/adaptor/users.update.address.adaptor";
 import { UsersUpdateAddressAdaptorInputDto } from "../../inbound/dtos/users.update.address.adaptor.input.dto";
 import { UsersUpdateAddressAdaptorOutputDto } from "../../outbound/dtos/users.update.address.adaptor.output.dto";

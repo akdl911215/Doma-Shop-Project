@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersExistsPhoneController = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
-const _409_1 = require("../../../common/constants/http/errors/409");
-const _500_1 = require("../../../common/constants/http/errors/500");
-const _200_1 = require("../../../common/constants/http/success/200");
+const _409_1 = require("../../../_common/constants/http/errors/409");
+const _500_1 = require("../../../_common/constants/http/errors/500");
+const _200_1 = require("../../../_common/constants/http/success/200");
 const users_exists_phone_adaptor_input_dto_1 = require("../../inbound/dtos/users.exists.phone.adaptor.input.dto");
 let UsersExistsPhoneController = class UsersExistsPhoneController {
     constructor(useCase) {

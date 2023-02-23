@@ -1,7 +1,7 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { UsersExistsNicknameUseCase } from "./users.exists.nickname.use.case";
 import { UsersExistsNicknameRepository } from "../../infrastructure/repository/users.exists.nickname.repository";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { UsersExistsNicknameAdaptorInputDto } from "../../inbound/dtos/users.exists.nickname.adaptor.input.dto";
 import { ConflictException } from "@nestjs/common";
 

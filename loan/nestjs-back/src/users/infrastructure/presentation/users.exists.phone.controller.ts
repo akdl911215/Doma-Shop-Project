@@ -1,8 +1,8 @@
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Controller, Get, Inject, Param } from "@nestjs/common";
-import { ALREADY_PHONE_EXISTS } from "../../../common/constants/http/errors/409";
-import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
-import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
+import { ALREADY_PHONE_EXISTS } from "../../../_common/constants/http/errors/409";
+import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
+import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import { UsersExistsPhoneAdaptor } from "../../domain/adaptor/users.exists.phone.adaptor";
 import { UsersExistsPhoneAdaptorOutputDto } from "../../outbound/dtos/users.exists.phone.adaptor.output.dto";
 import { UsersExistsPhoneAdaptorInputDto } from "../../inbound/dtos/users.exists.phone.adaptor.input.dto";

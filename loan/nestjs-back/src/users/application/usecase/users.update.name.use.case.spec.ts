@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { UsersUpdateNameUseCase } from "./users.update.name.use.case";
 import { UsersUpdateNameRepository } from "../../infrastructure/repository/users.update.name.repository";

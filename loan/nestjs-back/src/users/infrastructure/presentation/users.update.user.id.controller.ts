@@ -13,14 +13,14 @@ import {
   ApiResponse,
   ApiTags,
 } from "@nestjs/swagger";
-import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
-import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
-import { UPDATE_FAILED } from "../../../common/constants/http/errors/409";
-import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
+import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
+import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
+import { UPDATE_FAILED } from "../../../_common/constants/http/errors/409";
+import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersModel } from "../../domain/entity/users.model";
-import { User } from "../../../common/decorators/user.decorator";
+import { User } from "../../../_common/decorators/user.decorator";
 import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
-import { AccessTokenGuard } from "../../../common/infrastructures/token/guard/jwt.access.guard";
+import { AccessTokenGuard } from "../../../_common/infrastructures/token/guard/jwt.access.guard";
 import { UsersUpdateUserIdAdaptor } from "../../domain/adaptor/users.update.user.id.adaptor";
 import { UsersUpdateUserIdAdaptorInputDto } from "../../inbound/dtos/users.update.user.id.adaptor.input.dto";
 import { UsersUpdateUserIdAdaptorOutputDto } from "../../outbound/dtos/users.update.user.id.adaptor.output.dto";

@@ -5,7 +5,7 @@ import { UsersLoginAdaptor } from "../../domain/adaptor/users.login.adaptor";
 import {
   CONFIRM_REQUIRED_PASSWORD_INFORMATION,
   CONFIRM_REQUIRED_USER_ID_INFORMATION,
-} from "../../../common/constants/http/errors/400";
+} from "../../../_common/constants/http/errors/400";
 
 @Injectable()
 export class UsersLoginUseCase implements UsersLoginAdaptor {

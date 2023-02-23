@@ -1,4 +1,4 @@
-import { BaseCommonCoreDto } from "../../../common/dtos/base.common.core.dto";
+import { BaseCommonCoreDto } from "../../../_common/dtos/base.common.core.dto";
 export declare class UsersModel extends BaseCommonCoreDto {
     userId: string;
     nickname: string;

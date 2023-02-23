@@ -15,14 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersDeleteController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const _200_1 = require("../../../common/constants/http/success/200");
-const _204_1 = require("../../../common/constants/http/success/204");
-const _404_1 = require("../../../common/constants/http/errors/404");
-const _500_1 = require("../../../common/constants/http/errors/500");
+const _200_1 = require("../../../_common/constants/http/success/200");
+const _204_1 = require("../../../_common/constants/http/success/204");
+const _404_1 = require("../../../_common/constants/http/errors/404");
+const _500_1 = require("../../../_common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
 const users_delete_adaptor_input_dto_1 = require("../../inbound/dtos/users.delete.adaptor.input.dto");
-const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
-const user_decorator_1 = require("../../../common/decorators/user.decorator");
+const jwt_access_guard_1 = require("../../../_common/infrastructures/token/guard/jwt.access.guard");
+const user_decorator_1 = require("../../../_common/decorators/user.decorator");
 let UsersDeleteController = class UsersDeleteController {
     constructor(useCase) {
         this.useCase = useCase;

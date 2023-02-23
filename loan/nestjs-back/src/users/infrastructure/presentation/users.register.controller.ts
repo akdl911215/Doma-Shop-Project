@@ -12,17 +12,17 @@ import {
   Post,
   UseInterceptors,
 } from "@nestjs/common";
-import { CREATE_SUCCESS } from "../../../common/constants/http/success/201";
+import { CREATE_SUCCESS } from "../../../_common/constants/http/success/201";
 import {
   ALREADY_PHONE_EXISTS,
   ALREADY_USER_ID_EXISTS,
-} from "../../../common/constants/http/errors/409";
-import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
+} from "../../../_common/constants/http/errors/409";
+import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
 import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
 import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
-import { CONFIRM_REQUIRED_USER_INFORMATION } from "../../../common/constants/http/errors/400";
+import { CONFIRM_REQUIRED_USER_INFORMATION } from "../../../_common/constants/http/errors/400";
 
 @ApiTags("users")
 @Controller("users")

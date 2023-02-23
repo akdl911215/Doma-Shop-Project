@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersModel = void 0;
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
-const base_common_core_dto_1 = require("../../../common/dtos/base.common.core.dto");
+const base_common_core_dto_1 = require("../../../_common/dtos/base.common.core.dto");
 class UsersModel extends base_common_core_dto_1.BaseCommonCoreDto {
 }
 __decorate([

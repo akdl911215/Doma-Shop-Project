@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const common_1 = require("@nestjs/common");
-const http_exception_filter_1 = require("./common/exceptions/http.exception.filter");
+const http_exception_filter_1 = require("./_common/exceptions/http.exception.filter");
 const config_1 = require("@nestjs/config");
 const swagger_1 = require("@nestjs/swagger");
-const winston_module_1 = require("./common/infrastructures/winston/winston.module");
+const winston_module_1 = require("./_common/infrastructures/winston/winston.module");
 async function bootstrap() {
     const logger = new common_1.Logger();
     const app = await core_1.NestFactory.create(app_module_1.AppModule, winston_module_1.WINSTON_MODULE);

@@ -1,11 +1,11 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { BadRequestException } from "@nestjs/common";
 import { UsersLoginUseCase } from "./users.login.use.case";
 import { UsersLoginRepository } from "../../infrastructure/repository/users.login.repository";
 import { UsersLoginAdaptorInputDto } from "../../inbound/dtos/users.login.adaptor.input.dto";
 import { HashDecodedService } from "../../infrastructure/bcrypt/hash.decoded.service";
-import { TokenService } from "../../../common/infrastructures/token/token.service";
+import { TokenService } from "../../../_common/infrastructures/token/token.service";
 import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
 

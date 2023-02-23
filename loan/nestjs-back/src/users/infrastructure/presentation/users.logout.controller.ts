@@ -5,14 +5,14 @@ import {
   ApiTags,
 } from "@nestjs/swagger";
 import { Controller, Inject, Patch, UseGuards } from "@nestjs/common";
-import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
-import { INTERNAL_SERVER_ERROR } from "../../../common/constants/http/errors/500";
+import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
+import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersLogoutAdaptorOutputDto } from "../../outbound/dtos/users.logout.adaptor.output.dto";
 import { UsersModel } from "../../domain/entity/users.model";
-import { TWO_HUNDRED_OK } from "../../../common/constants/http/success/200";
+import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import { UsersLogoutAdaptor } from "../../domain/adaptor/users.logout.adaptor";
-import { User } from "../../../common/decorators/user.decorator";
-import { RefreshTokenGuard } from "../../../common/infrastructures/token/guard/jwt.refresh.guard";
+import { User } from "../../../_common/decorators/user.decorator";
+import { RefreshTokenGuard } from "../../../_common/infrastructures/token/guard/jwt.refresh.guard";
 
 @ApiTags("users")
 @Controller("users")

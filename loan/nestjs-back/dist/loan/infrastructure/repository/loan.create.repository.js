@@ -11,13 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoanCreateRepository = void 0;
 const common_1 = require("@nestjs/common");
-const prisma_service_1 = require("../../../common/infrastructures/prisma/prisma.service");
+const prisma_service_1 = require("../../../_common/infrastructures/prisma/prisma.service");
+const _404_1 = require("../../../_common/constants/http/errors/404");
 let LoanCreateRepository = class LoanCreateRepository {
     constructor(prisma) {
         this.prisma = prisma;
     }
     async create(dto) {
         const { debtor, debtorId, creditor, creditorId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
+        const dbDebtor = await this.prisma.users.findUnique({
+            where: { id: debtorId },
+        });
+        const dbCreditor = await this.prisma.users.findUnique({
+            where: { id: creditorId },
+        });
+        if (!dbDebtor || !dbCreditor)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
         try {
             const [createLoan] = await this.prisma.$transaction([
                 this.prisma.loans.create({

@@ -2,7 +2,7 @@ import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { UsersLogoutAdaptor } from "../adaptor/users.logout.adaptor";
 import { UsersLogoutAdaptorInputDto } from "../../inbound/dtos/users.logout.adaptor.input.dto";
 import { UsersLogoutAdaptorOutputDto } from "../../outbound/dtos/users.logout.adaptor.output.dto";
-import { CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION } from "../../../common/constants/http/errors/400";
+import { CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
 export class UsersLogoutService implements UsersLogoutAdaptor {

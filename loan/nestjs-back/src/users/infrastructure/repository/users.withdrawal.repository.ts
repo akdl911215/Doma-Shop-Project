@@ -6,9 +6,9 @@ import {
 } from "@nestjs/common";
 import { UsersWithdrawalAdaptorInputDto } from "../../inbound/dtos/users.withdrawal.adaptor.input.dto";
 import { UsersWithdrawalAdaptorOutputDto } from "../../outbound/dtos/users.withdrawal.adaptor.output.dto";
-import { NOTFOUND_USER } from "../../../common/constants/http/errors/404";
+import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { UsersWithdrawalAdaptor } from "../../domain/adaptor/users.withdrawal.adaptor";
-import { PrismaService } from "../../../common/infrastructures/prisma/prisma.service";
+import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 
 @Injectable()
 @Dependencies([PrismaService])

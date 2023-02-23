@@ -1,10 +1,10 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { Logger, ValidationPipe } from "@nestjs/common";
-import { HttpExceptionFilter } from "./common/exceptions/http.exception.filter";
+import { HttpExceptionFilter } from "./_common/exceptions/http.exception.filter";
 import { ConfigService } from "@nestjs/config";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import { WINSTON_MODULE } from "./common/infrastructures/winston/winston.module";
+import { WINSTON_MODULE } from "./_common/infrastructures/winston/winston.module";
 
 async function bootstrap() {
   const logger = new Logger();

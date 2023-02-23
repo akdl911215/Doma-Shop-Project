@@ -15,15 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersUpdateNameController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const _200_1 = require("../../../common/constants/http/success/200");
-const _404_1 = require("../../../common/constants/http/errors/404");
-const _409_1 = require("../../../common/constants/http/errors/409");
-const _500_1 = require("../../../common/constants/http/errors/500");
+const _200_1 = require("../../../_common/constants/http/success/200");
+const _404_1 = require("../../../_common/constants/http/errors/404");
+const _409_1 = require("../../../_common/constants/http/errors/409");
+const _500_1 = require("../../../_common/constants/http/errors/500");
 const users_model_1 = require("../../domain/entity/users.model");
-const user_decorator_1 = require("../../../common/decorators/user.decorator");
+const user_decorator_1 = require("../../../_common/decorators/user.decorator");
 const password_checking_interceptor_1 = require("../../interceptor/password.checking.interceptor");
 const users_update_name_adaptor_input_dto_1 = require("../../inbound/dtos/users.update.name.adaptor.input.dto");
-const jwt_access_guard_1 = require("../../../common/infrastructures/token/guard/jwt.access.guard");
+const jwt_access_guard_1 = require("../../../_common/infrastructures/token/guard/jwt.access.guard");
 let UsersUpdateNameController = class UsersUpdateNameController {
     constructor(useCase) {
         this.useCase = useCase;
