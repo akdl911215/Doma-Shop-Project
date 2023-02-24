@@ -20,10 +20,10 @@ let LoansInquiryUseCase = class LoansInquiryUseCase {
         this.repository = repository;
     }
     async inquiry(dto) {
-        const { id, userUniqueId } = dto;
+        const { id, creditorId, debtorId } = dto;
         if (!id)
             throw new common_1.BadRequestException(_400_1.NO_MATCH_LOAN_ID);
-        if (!userUniqueId)
+        if (!creditorId)
             throw new common_1.BadRequestException(_400_1.NO_MATCH_USER_ID);
         return await this.repository.inquiry(dto);
     }

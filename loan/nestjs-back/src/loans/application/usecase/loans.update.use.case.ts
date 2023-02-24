@@ -6,7 +6,7 @@ import { LoansUpdateAdaptorInputDto } from "../../inbound/dtos/loans.update.adap
 @Injectable()
 export class LoansUpdateUseCase implements LoansUpdateAdaptor {
   constructor(
-    @Inject("LIST") private readonly repository: LoansUpdateAdaptor
+    @Inject("UPDATE") private readonly repository: LoansUpdateAdaptor
   ) {}
 
   public async update(

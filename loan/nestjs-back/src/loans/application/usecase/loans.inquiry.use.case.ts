@@ -3,8 +3,9 @@ import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/loans.inquiry.
 import { LoansInquiryAdaptor } from "../../domain/adaptor/loans.inquiry.adaptor";
 import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/loans.inquiry.adaptor.input.dto";
 import {
+  NO_MATCH_CREDITOR_ID,
+  NO_MATCH_DEBTOR_ID,
   NO_MATCH_LOAN_ID,
-  NO_MATCH_USER_ID,
 } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
@@ -16,10 +17,11 @@ export class LoansInquiryUseCase implements LoansInquiryAdaptor {
   public async inquiry(
     dto: LoansInquiryAdaptorInputDto
   ): Promise<LoansInquiryAdaptorOutputDto> {
-    const { id, userUniqueId } = dto;
+    const { id, creditorId, debtorId } = dto;
 
     if (!id) throw new BadRequestException(NO_MATCH_LOAN_ID);
-    if (!userUniqueId) throw new BadRequestException(NO_MATCH_USER_ID);
+    if (!creditorId) throw new BadRequestException(NO_MATCH_CREDITOR_ID);
+    if (!debtorId) throw new BadRequestException(NO_MATCH_DEBTOR_ID);
 
     return await this.repository.inquiry(dto);
   }

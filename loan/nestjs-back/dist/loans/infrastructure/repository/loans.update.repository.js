@@ -12,11 +12,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansUpdateRepository = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../../../_common/infrastructures/prisma/prisma.service");
+const _404_1 = require("../../../_common/constants/http/errors/404");
 let LoansUpdateRepository = class LoansUpdateRepository {
     constructor(prisma) {
         this.prisma = prisma;
     }
     async update(dto) {
+        const { id, creditor, creditorId, debtor, debtorId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
+        const loan = await this.prisma.loans.findFirst({
+            where: {
+                OR: [
+                    {
+                        id,
+                    },
+                    {
+                        creditorId,
+                    },
+                    {
+                        debtorId,
+                    },
+                ],
+            },
+        });
+        if (!loan)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
         return Promise.resolve(undefined);
     }
 };

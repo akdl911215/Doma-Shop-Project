@@ -4,8 +4,9 @@ import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/loans.inquiry.
 import { LoansInquiryAdaptor } from "../../domain/adaptor/loans.inquiry.adaptor";
 import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/loans.inquiry.adaptor.input.dto";
 import {
+  NOTFOUND_CREDITOR,
+  NOTFOUND_DEBTOR,
   NOTFOUND_LOAN,
-  NOTFOUND_USER,
 } from "../../../_common/constants/http/errors/404";
 
 @Injectable()
@@ -16,13 +17,34 @@ export class LoansInquiryRepository implements LoansInquiryAdaptor {
   public async inquiry(
     dto: LoansInquiryAdaptorInputDto
   ): Promise<LoansInquiryAdaptorOutputDto> {
-    const { id, userUniqueId } = dto;
+    const { id, debtorId, creditorId } = dto;
 
-    const loan = this.prisma.loans.findUnique({ where: { id } });
+    const debtor = await this.prisma.users.findUnique({
+      where: { id: debtorId },
+    });
+    if (!debtor) throw new NotFoundException(NOTFOUND_DEBTOR);
+
+    const creditor = await this.prisma.users.findUnique({
+      where: { id: creditorId },
+    });
+    if (!creditor) throw new NotFoundException(NOTFOUND_CREDITOR);
+
+    const loan = await this.prisma.loans.findFirst({
+      where: {
+        OR: [
+          {
+            id,
+          },
+          {
+            creditorId,
+          },
+          {
+            debtorId,
+          },
+        ],
+      },
+    });
     if (!loan) throw new NotFoundException(NOTFOUND_LOAN);
-
-    const user = this.prisma.users.findUnique({ where: { id: userUniqueId } });
-    if (!user) throw new NotFoundException(NOTFOUND_USER);
 
     return { response: loan };
   }

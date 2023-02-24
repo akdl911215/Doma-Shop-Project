@@ -29,6 +29,14 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansInquiryAdaptorInputDto.prototype, "userUniqueId", void 0);
+], LoansInquiryAdaptorInputDto.prototype, "creditorId", void 0);
+__decorate([
+    (0, class_validator_1.IsUUID)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        default: "",
+    }),
+    __metadata("design:type", String)
+], LoansInquiryAdaptorInputDto.prototype, "debtorId", void 0);
 exports.LoansInquiryAdaptorInputDto = LoansInquiryAdaptorInputDto;
 //# sourceMappingURL=loans.inquiry.adaptor.input.dto.js.map

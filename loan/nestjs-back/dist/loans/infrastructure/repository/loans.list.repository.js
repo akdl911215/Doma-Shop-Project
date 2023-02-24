@@ -17,7 +17,35 @@ let LoansListRepository = class LoansListRepository {
         this.prisma = prisma;
     }
     async list(dto) {
-        return Promise.resolve(undefined);
+        const { page, take } = dto;
+        const list = await this.prisma.loans.count();
+        const currentPage = page < 1 ? 1 : page;
+        const skip = (currentPage - 1) * take;
+        const variableTake = take < 1 ? 1 : take;
+        const resultPage = Math.round(list / variableTake);
+        const totalPage = Math.round(resultPage - (skip + 1));
+        const resultTotalPage = totalPage < 1 ? 1 : totalPage;
+        const currentList = await this.prisma.loans.findMany({
+            skip,
+            take: variableTake,
+        });
+        try {
+            return {
+                response: {
+                    resultPage,
+                    resultTotalPage,
+                    currentList,
+                },
+            };
+        }
+        catch (e) {
+            if (e instanceof common_1.InternalServerErrorException) {
+                throw new common_1.InternalServerErrorException(e);
+            }
+            else {
+                throw new Error(`${e}`);
+            }
+        }
     }
 };
 LoansListRepository = __decorate([
