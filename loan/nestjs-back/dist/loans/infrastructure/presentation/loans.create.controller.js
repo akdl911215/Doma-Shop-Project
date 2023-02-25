@@ -27,6 +27,7 @@ let LoansCreateController = class LoansCreateController {
     }
 };
 __decorate([
+    (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Post)("/create"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({ summary: "USER REGISTER API", description: "회원 가입 절차" }),

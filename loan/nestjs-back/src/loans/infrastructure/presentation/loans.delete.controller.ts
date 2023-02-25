@@ -1,4 +1,10 @@
-import { ApiBody, ApiConsumes, ApiResponse, ApiTags } from "@nestjs/swagger";
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiResponse,
+  ApiTags,
+} from "@nestjs/swagger";
 import { Body, Controller, Delete, Inject } from "@nestjs/common";
 import { LoansDeleteAdaptor } from "../../domain/adaptor/loans.delete.adaptor";
 import { CREATE_SUCCESS } from "../../../_common/constants/http/success/201";
@@ -24,6 +30,7 @@ export class LoansDeleteController {
     @Inject("USE_CASE_DELETE") private readonly useCase: LoansDeleteAdaptor
   ) {}
 
+  @ApiBearerAuth("access_token")
   @Delete("/")
   @ApiConsumes("application/x-www-form-urlencoded")
   @ApiResponse({ status: 201, description: `${CREATE_SUCCESS}` })
@@ -42,8 +49,6 @@ export class LoansDeleteController {
     @Body() dto: LoansDeleteAdaptorInputDto,
     @User() user: UsersModel
   ): Promise<LoansDeleteAdaptorOutputDto> {
-    const { id } = dto;
-    const { id: userUniqueId } = user;
-    return await this.useCase.delete({ id, userUniqueId });
+    return await this.useCase.delete(dto);
   }
 }

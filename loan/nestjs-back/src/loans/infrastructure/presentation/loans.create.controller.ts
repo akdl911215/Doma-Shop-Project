@@ -1,5 +1,6 @@
 import { Body, Controller, Inject, Post } from "@nestjs/common";
 import {
+  ApiBearerAuth,
   ApiConsumes,
   ApiOperation,
   ApiResponse,
@@ -18,6 +19,7 @@ export class LoansCreateController {
     @Inject("USE_CASE_CREATE") private readonly useCase: LoansCreateAdaptor
   ) {}
 
+  @ApiBearerAuth("access_token")
   @Post("/create")
   @ApiConsumes("application/x-www-form-urlencoded")
   @ApiOperation({ summary: "USER REGISTER API", description: "회원 가입 절차" })

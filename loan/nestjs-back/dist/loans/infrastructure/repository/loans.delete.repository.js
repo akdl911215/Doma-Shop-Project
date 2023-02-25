@@ -18,13 +18,20 @@ let LoansDeleteRepository = class LoansDeleteRepository {
         this.prisma = prisma;
     }
     async delete(dto) {
-        const { id, userUniqueId } = dto;
+        const { id, debtorId, creditorId } = dto;
         const loan = this.prisma.loans.findUnique({ where: { id } });
         if (!loan)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
-        const user = this.prisma.users.findUnique({ where: { id: userUniqueId } });
-        if (!user)
-            throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
+        const searchDebtor = this.prisma.users.findUnique({
+            where: { id: debtorId },
+        });
+        if (!searchDebtor)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_DEBTOR);
+        const searchCreditor = this.prisma.users.findUnique({
+            where: { id: creditorId },
+        });
+        if (!searchCreditor)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_CREDITOR);
         try {
             await this.prisma.$transaction([
                 this.prisma.loans.delete({ where: { id } }),

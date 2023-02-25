@@ -36,7 +36,38 @@ let LoansUpdateRepository = class LoansUpdateRepository {
         });
         if (!loan)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
-        return Promise.resolve(undefined);
+        const updateCreditor = creditor === "" ? loan.creditor : creditor;
+        const updateCreditorId = creditorId === "" ? loan.creditorId : creditorId;
+        const updateDebtor = debtor === "" ? loan.debtor : debtor;
+        const updateDebtorId = debtorId === "" ? loan.debtorId : debtorId;
+        const updateTotalAmountLoan = totalAmountLoan < 0 ? loan.totalAmountLoan : totalAmountLoan;
+        const updateInterest = interest < 1 ? loan.interest : interest;
+        const updateLoanRepaymentDate = loanRepaymentDate === "" ? loan.loanRepaymentDate : loanRepaymentDate;
+        try {
+            const [updateLoan] = await this.prisma.$transaction([
+                this.prisma.loans.update({
+                    where: { id },
+                    data: {
+                        creditor: updateCreditor,
+                        creditorId: updateCreditorId,
+                        debtor: updateDebtor,
+                        debtorId: updateDebtorId,
+                        totalAmountLoan: updateTotalAmountLoan,
+                        interest: updateInterest,
+                        loanRepaymentDate: updateLoanRepaymentDate,
+                    },
+                }),
+            ]);
+            return { response: updateLoan };
+        }
+        catch (e) {
+            if (e instanceof common_1.InternalServerErrorException) {
+                throw new common_1.InternalServerErrorException(e);
+            }
+            else {
+                throw new Error(`${e}`);
+            }
+        }
     }
 };
 LoansUpdateRepository = __decorate([

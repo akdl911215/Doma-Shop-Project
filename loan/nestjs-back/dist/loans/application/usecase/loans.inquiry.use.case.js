@@ -24,7 +24,9 @@ let LoansInquiryUseCase = class LoansInquiryUseCase {
         if (!id)
             throw new common_1.BadRequestException(_400_1.NO_MATCH_LOAN_ID);
         if (!creditorId)
-            throw new common_1.BadRequestException(_400_1.NO_MATCH_USER_ID);
+            throw new common_1.BadRequestException(_400_1.NO_MATCH_CREDITOR_ID);
+        if (!debtorId)
+            throw new common_1.BadRequestException(_400_1.NO_MATCH_DEBTOR_ID);
         return await this.repository.inquiry(dto);
     }
 };

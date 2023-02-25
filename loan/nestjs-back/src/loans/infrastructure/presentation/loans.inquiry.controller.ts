@@ -1,4 +1,5 @@
 import {
+  ApiBearerAuth,
   ApiConsumes,
   ApiOperation,
   ApiResponse,
@@ -29,6 +30,7 @@ export class LoansInquiryController {
     private readonly useCase: LoansInquiryAdaptor
   ) {}
 
+  @ApiBearerAuth("access_token")
   @Get("/:id")
   @ApiConsumes("application/x-www-form-urlencoded")
   @ApiOperation({

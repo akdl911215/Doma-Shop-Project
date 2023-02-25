@@ -24,7 +24,7 @@ let LoansUpdateUseCase = class LoansUpdateUseCase {
 };
 LoansUpdateUseCase = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)("LIST")),
+    __param(0, (0, common_1.Inject)("UPDATE")),
     __metadata("design:paramtypes", [Object])
 ], LoansUpdateUseCase);
 exports.LoansUpdateUseCase = LoansUpdateUseCase;

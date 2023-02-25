@@ -7,7 +7,6 @@ import {
 import { Controller, Get, Inject, Query } from "@nestjs/common";
 import { LoansListAdaptor } from "../../domain/adaptor/loans.list.adaptor";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
-import { NOT_EXIST_LIST } from "../../../_common/constants/http/errors/400";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { LoansListAdaptorInputDto } from "../../inbound/dtos/loans.list.adaptor.input.dto";
 import { LoansListAdaptorOutputDto } from "../../outbound/dtos/loans.list.adaptor.output.dto";

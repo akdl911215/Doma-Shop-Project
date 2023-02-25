@@ -28,12 +28,11 @@ let LoansDeleteController = class LoansDeleteController {
         this.useCase = useCase;
     }
     async delete(dto, user) {
-        const { id } = dto;
-        const { id: userUniqueId } = user;
-        return await this.useCase.delete({ id, userUniqueId });
+        return await this.useCase.delete(dto);
     }
 };
 __decorate([
+    (0, swagger_1.ApiBearerAuth)("access_token"),
     (0, common_1.Delete)("/"),
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiResponse)({ status: 201, description: `${_201_1.CREATE_SUCCESS}` }),

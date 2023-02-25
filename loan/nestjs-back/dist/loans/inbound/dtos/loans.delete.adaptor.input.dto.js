@@ -29,6 +29,14 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansDeleteAdaptorInputDto.prototype, "userUniqueId", void 0);
+], LoansDeleteAdaptorInputDto.prototype, "creditorId", void 0);
+__decorate([
+    (0, class_validator_1.IsUUID)(),
+    (0, swagger_1.ApiProperty)({
+        type: String,
+        default: "",
+    }),
+    __metadata("design:type", String)
+], LoansDeleteAdaptorInputDto.prototype, "debtorId", void 0);
 exports.LoansDeleteAdaptorInputDto = LoansDeleteAdaptorInputDto;
 //# sourceMappingURL=loans.delete.adaptor.input.dto.js.map

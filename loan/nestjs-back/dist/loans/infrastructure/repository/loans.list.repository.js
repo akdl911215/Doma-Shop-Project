@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansListRepository = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../../../_common/infrastructures/prisma/prisma.service");
+const _404_1 = require("../../../_common/constants/http/errors/404");
 let LoansListRepository = class LoansListRepository {
     constructor(prisma) {
         this.prisma = prisma;
@@ -19,6 +20,8 @@ let LoansListRepository = class LoansListRepository {
     async list(dto) {
         const { page, take } = dto;
         const list = await this.prisma.loans.count();
+        if (!list)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_LIST);
         const currentPage = page < 1 ? 1 : page;
         const skip = (currentPage - 1) * take;
         const variableTake = take < 1 ? 1 : take;

@@ -3,6 +3,8 @@ import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/loans.delete.ad
 import { LoansDeleteAdaptor } from "../../domain/adaptor/loans.delete.adaptor";
 import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/loans.delete.adaptor.input.dto";
 import {
+  NO_MATCH_CREDITOR_ID,
+  NO_MATCH_DEBTOR_ID,
   NO_MATCH_LOAN_ID,
   NO_MATCH_USER_ID,
 } from "../../../_common/constants/http/errors/400";
@@ -16,10 +18,11 @@ export class LoansDeleteUseCase implements LoansDeleteAdaptor {
   public async delete(
     dto: LoansDeleteAdaptorInputDto
   ): Promise<LoansDeleteAdaptorOutputDto> {
-    const { id, userUniqueId } = dto;
+    const { id, debtorId, creditorId } = dto;
 
     if (!id) throw new BadRequestException(NO_MATCH_LOAN_ID);
-    if (!userUniqueId) throw new BadRequestException(NO_MATCH_USER_ID);
+    if (!debtorId) throw new BadRequestException(NO_MATCH_DEBTOR_ID);
+    if (!creditorId) throw new BadRequestException(NO_MATCH_CREDITOR_ID);
 
     return await this.repository.delete(dto);
   }
