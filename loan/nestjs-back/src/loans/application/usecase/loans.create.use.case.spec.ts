@@ -211,10 +211,10 @@ describe("LoansCreateUseCase", () => {
 
     it("success should boards register", async () => {
       dto = {
-        debtor: "aaa",
-        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-        creditor: "bbbb",
-        creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+        debtor: "fff",
+        debtorId: "2bdf0de8-908c-495c-b5a0-8398080907e2",
+        creditor: "qqq",
+        creditorId: "bf536402-bf96-43a6-8583-694871d4f140",
         totalAmountLoan: 2000000000,
         loanRepaymentDate: "2030-12-31",
         interest: 10,

@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { BadRequestException } from "@nestjs/common";
+import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { LoansDeleteRepository } from "../../infrastructure/repository/loans.delete.repository";
 import { LoansDeleteUseCase } from "./loans.delete.use.case";
@@ -23,7 +23,7 @@ describe("LoansDeleteUseCase", () => {
   let dto: LoansDeleteAdaptorInputDto;
 
   describe("loan delete unit test", () => {
-    it("creditor is empty and should", async () => {
+    it("loan-id is empty and should fail", async () => {
       dto = {
         id: "",
         debtorId: "",
@@ -43,8 +43,170 @@ describe("LoansDeleteUseCase", () => {
           console.log(errorMessage);
           expect(errorMessage).toStrictEqual({
             statusCode: 400,
-            message: "CONFIRM_REQUIRED_CREDITOR_INFORMATION",
+            message: "NO_MATCH_LOAN_ID",
             error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("debtor-id is empty and should fail", async () => {
+      dto = {
+        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
+        debtorId: "",
+        creditorId: "",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof BadRequestException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(400);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 400,
+            message: "NO_MATCH_DEBTOR_ID",
+            error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("creditor-id is empty and should fail", async () => {
+      dto = {
+        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
+        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditorId: "",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof BadRequestException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(400);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 400,
+            message: "NO_MATCH_CREDITOR_ID",
+            error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("loan-id is wrong and should fail", async () => {
+      dto = {
+        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb611",
+        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof NotFoundException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(404);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 404,
+            message: "NOTFOUND_LOAN",
+            error: "Not Found",
+          });
+        }
+      }
+    });
+
+    it("debtor-id is wrong and should fail", async () => {
+      dto = {
+        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
+        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f11",
+        creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof NotFoundException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(404);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 404,
+            message: "NOTFOUND_DEBTOR",
+            error: "Not Found",
+          });
+        }
+      }
+    });
+
+    it("creditor-id is wrong and should fail", async () => {
+      dto = {
+        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
+        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c61",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof NotFoundException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(404);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 404,
+            message: "NOTFOUND_CREDITOR",
+            error: "Not Found",
+          });
+        }
+      }
+    });
+
+    it("the essential information is different and should fail", async () => {
+      dto = {
+        id: "b12cbd05-f6fe-4d16-9483-672a9fffe6df",
+        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditorId: "bf536402-bf96-43a6-8583-694871d4f140",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof NotFoundException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(404);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 404,
+            message: "NOTFOUND_LOAN",
+            error: "Not Found",
           });
         }
       }

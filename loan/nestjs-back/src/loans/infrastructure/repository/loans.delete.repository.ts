@@ -24,31 +24,53 @@ export class LoansDeleteRepository implements LoansDeleteAdaptor {
   ): Promise<LoansDeleteAdaptorOutputDto> {
     const { id, debtorId, creditorId } = dto;
 
-    const loan = this.prisma.loans.findUnique({ where: { id } });
+    const loan = await this.prisma.loans.findUnique({ where: { id } });
     if (!loan) throw new NotFoundException(NOTFOUND_LOAN);
 
-    const searchDebtor = this.prisma.users.findUnique({
+    const searchDebtor = await this.prisma.users.findUnique({
       where: { id: debtorId },
     });
     if (!searchDebtor) throw new NotFoundException(NOTFOUND_DEBTOR);
 
-    const searchCreditor = this.prisma.users.findUnique({
+    const searchCreditor = await this.prisma.users.findUnique({
       where: { id: creditorId },
     });
     if (!searchCreditor) throw new NotFoundException(NOTFOUND_CREDITOR);
 
-    try {
-      await this.prisma.$transaction([
-        this.prisma.loans.delete({ where: { id } }),
-      ]);
+    const searchLoan = await this.prisma.loans.findFirst({
+      where: {
+        AND: [
+          {
+            id,
+          },
+          {
+            debtorId,
+          },
+          {
+            creditorId,
+          },
+        ],
+      },
+    });
 
-      return { response: { loanErase: true } };
-    } catch (e) {
-      if (e instanceof InternalServerErrorException) {
-        throw new InternalServerErrorException(e);
-      } else {
-        throw new Error(`${e}`);
+    if (!!searchLoan) {
+      try {
+        await this.prisma.$transaction([
+          this.prisma.loans.delete({
+            where: { id },
+          }),
+        ]);
+
+        return { response: { loanErase: true } };
+      } catch (e) {
+        if (e instanceof InternalServerErrorException) {
+          throw new InternalServerErrorException(e);
+        } else {
+          throw new Error(`${e}`);
+        }
       }
+    } else {
+      throw new NotFoundException(NOTFOUND_LOAN);
     }
   }
 }
