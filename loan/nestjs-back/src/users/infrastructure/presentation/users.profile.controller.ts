@@ -9,8 +9,8 @@ import {
 import { UsersProfileAdaptor } from "../../domain/adaptor/users.profile.adaptor";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import {
-  CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION,
   NO_MATCH_USER_ID,
+  UNIQUE_ID_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
@@ -37,7 +37,7 @@ export class UsersProfileController {
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })
   @ApiResponse({
     status: 400,
-    description: `${NO_MATCH_USER_ID}, ${CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION}`,
+    description: `${NO_MATCH_USER_ID}, ${UNIQUE_ID_REQUIRED}`,
   })
   @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })

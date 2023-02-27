@@ -17,13 +17,13 @@ import {
 import { UsersWithdrawalAdaptor } from "../../domain/adaptor/users.withdrawal.adaptor";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import { TWO_HUNDRED_FOUR_DELETE_SUCCESS } from "../../../_common/constants/http/success/204";
-import { CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION } from "../../../_common/constants/http/errors/400";
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersWithdrawalAdaptorOutputDto } from "../../outbound/dtos/users.withdrawal.adaptor.output.dto";
 import { AccessTokenGuard } from "../../../_common/infrastructures/token/guard/jwt.access.guard";
 import { UsersModel } from "../../domain/entity/users.model";
 import { User } from "../../../_common/decorators/user.decorator";
+import { UNIQUE_ID_REQUIRED } from "../../../_common/constants/http/errors/400";
 
 @Controller("users")
 @ApiTags("users")
@@ -46,10 +46,7 @@ export class UsersWithdrawalController {
     status: 204,
     description: `${TWO_HUNDRED_FOUR_DELETE_SUCCESS}`,
   })
-  @ApiResponse({
-    status: 400,
-    description: `${CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION}`,
-  })
+  @ApiResponse({ status: 400, description: `${UNIQUE_ID_REQUIRED}` })
   @ApiResponse({ status: 404, description: `${NOTFOUND_USER}` })
   @ApiResponse({ status: 500, description: `${INTERNAL_SERVER_ERROR}` })
   private async withdrawal(

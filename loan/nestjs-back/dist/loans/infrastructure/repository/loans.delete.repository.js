@@ -19,32 +19,54 @@ let LoansDeleteRepository = class LoansDeleteRepository {
     }
     async delete(dto) {
         const { id, debtorId, creditorId } = dto;
-        const loan = this.prisma.loans.findUnique({ where: { id } });
+        const loan = await this.prisma.loans.findUnique({ where: { id } });
         if (!loan)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
-        const searchDebtor = this.prisma.users.findUnique({
+        const searchDebtor = await this.prisma.users.findUnique({
             where: { id: debtorId },
         });
         if (!searchDebtor)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_DEBTOR);
-        const searchCreditor = this.prisma.users.findUnique({
+        const searchCreditor = await this.prisma.users.findUnique({
             where: { id: creditorId },
         });
         if (!searchCreditor)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_CREDITOR);
-        try {
-            await this.prisma.$transaction([
-                this.prisma.loans.delete({ where: { id } }),
-            ]);
-            return { response: { loanErase: true } };
+        const searchLoan = await this.prisma.loans.findFirst({
+            where: {
+                AND: [
+                    {
+                        id,
+                    },
+                    {
+                        debtorId,
+                    },
+                    {
+                        creditorId,
+                    },
+                ],
+            },
+        });
+        if (!!searchLoan) {
+            try {
+                await this.prisma.$transaction([
+                    this.prisma.loans.delete({
+                        where: { id },
+                    }),
+                ]);
+                return { response: { loanErase: true } };
+            }
+            catch (e) {
+                if (e instanceof common_1.InternalServerErrorException) {
+                    throw new common_1.InternalServerErrorException(e);
+                }
+                else {
+                    throw new Error(`${e}`);
+                }
+            }
         }
-        catch (e) {
-            if (e instanceof common_1.InternalServerErrorException) {
-                throw new common_1.InternalServerErrorException(e);
-            }
-            else {
-                throw new Error(`${e}`);
-            }
+        else {
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
         }
     }
 };

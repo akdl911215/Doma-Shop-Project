@@ -34,10 +34,7 @@ __decorate([
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({ summary: "USER REGISTER API", description: "회원 가입 절차" }),
     (0, swagger_1.ApiResponse)({ status: 201, description: `${_201_1.CREATE_SUCCESS}` }),
-    (0, swagger_1.ApiResponse)({
-        status: 400,
-        description: `${_400_1.CONFIRM_REQUIRED_USER_INFORMATION}`,
-    }),
+    (0, swagger_1.ApiResponse)({ status: 400, description: `${_400_1.USER_ID_REQUIRED}` }),
     (0, swagger_1.ApiResponse)({
         status: 409,
         description: `${_409_1.ALREADY_USER_ID_EXISTS}, ${_409_1.ALREADY_PHONE_EXISTS}`,

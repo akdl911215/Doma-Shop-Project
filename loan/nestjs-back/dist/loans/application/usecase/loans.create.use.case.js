@@ -28,7 +28,7 @@ let LoansCreateUseCase = class LoansCreateUseCase {
                 return false;
         }
         if (confirmCreditorInput(creditorId, creditor))
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_CREDITOR_INFORMATION);
+            throw new common_1.BadRequestException(_400_1.CREDITOR_REQUIRED);
         function confirmDebtorInput(debtorId, debtor) {
             if (!debtorId || !debtor)
                 return true;
@@ -36,7 +36,7 @@ let LoansCreateUseCase = class LoansCreateUseCase {
                 return false;
         }
         if (confirmDebtorInput(debtorId, debtor))
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_DEBTOR_INFORMATION);
+            throw new common_1.BadRequestException(_400_1.DEBTOR_REQUIRED);
         function confirmTotalAmountLoanInput(totalAmountLoan) {
             if (totalAmountLoan === 0)
                 return true;
@@ -44,7 +44,7 @@ let LoansCreateUseCase = class LoansCreateUseCase {
                 return false;
         }
         if (confirmTotalAmountLoanInput(totalAmountLoan))
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_LOAN_INFORMATION);
+            throw new common_1.BadRequestException(_400_1.LOAN_REQUIRED);
         function confirmLoanRepaymentDate(loanRepaymentDate) {
             if (!loanRepaymentDate)
                 return true;
@@ -52,7 +52,7 @@ let LoansCreateUseCase = class LoansCreateUseCase {
                 return false;
         }
         if (confirmLoanRepaymentDate(loanRepaymentDate))
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_LOAN_REPAYMENT_DATE_INFORMATION);
+            throw new common_1.BadRequestException(_400_1.LOAN_REPAYMENT_DATE_REQUIRED);
         function confirmInterest(interest) {
             if (interest <= 0)
                 return true;
@@ -60,7 +60,7 @@ let LoansCreateUseCase = class LoansCreateUseCase {
                 return false;
         }
         if (confirmInterest(interest))
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_LOAN_INTEREST_INFORMATION);
+            throw new common_1.BadRequestException(_400_1.LOAN_INTEREST_REQUIRED);
         return await this.repository.create(dto);
     }
 };

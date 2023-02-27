@@ -21,8 +21,8 @@ let UsersUpdatePhoneUseCase = class UsersUpdatePhoneUseCase {
     }
     async updatePhone(dto) {
         const { phone } = dto;
-        if (phone === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_PHONE_INFORMATION);
+        if (!phone)
+            throw new common_1.BadRequestException(_400_1.PHONE_REQUIRED);
         return await this.repository.updatePhone(dto);
     }
 };

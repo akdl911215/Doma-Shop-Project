@@ -21,10 +21,10 @@ let UsersLoginUseCase = class UsersLoginUseCase {
     }
     async login(dto) {
         const { userId, password } = dto;
-        if (userId === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_USER_ID_INFORMATION);
-        if (password === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_PASSWORD_INFORMATION);
+        if (!userId)
+            throw new common_1.BadRequestException(_400_1.USER_ID_REQUIRED);
+        if (!password)
+            throw new common_1.BadRequestException(_400_1.PASSWORD_REQUIRED);
         return await this.repository.login(dto);
     }
 };

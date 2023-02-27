@@ -29,9 +29,9 @@ let LoansModule = class LoansModule {
 LoansModule = __decorate([
     (0, common_1.Module)({
         controllers: [
+            loans_list_controller_1.LoansListController,
             loans_create_controller_1.LoansCreateController,
             loans_inquiry_controller_1.LoansInquiryController,
-            loans_list_controller_1.LoansListController,
             loans_delete_controller_1.LoansDeleteController,
             loans_update_controller_1.LoansUpdateController,
         ],

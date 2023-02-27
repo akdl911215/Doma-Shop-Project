@@ -1,11 +1,11 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { LoansCreateAdaptorOutputDto } from "../../outbound/dtos/loans.create.adaptor.output.dto";
 import {
-  CONFIRM_REQUIRED_CREDITOR_INFORMATION,
-  CONFIRM_REQUIRED_DEBTOR_INFORMATION,
-  CONFIRM_REQUIRED_LOAN_INFORMATION,
-  CONFIRM_REQUIRED_LOAN_INTEREST_INFORMATION,
-  CONFIRM_REQUIRED_LOAN_REPAYMENT_DATE_INFORMATION,
+  CREDITOR_REQUIRED,
+  DEBTOR_REQUIRED,
+  LOAN_INTEREST_REQUIRED,
+  LOAN_REPAYMENT_DATE_REQUIRED,
+  LOAN_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
 import { LoansCreateAdaptor } from "../../domain/adaptor/loans.create.adaptor";
 import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/loans.create.adaptor.input.dto";
@@ -21,50 +21,48 @@ export class LoansCreateUseCase implements LoansCreateAdaptor {
   ): Promise<LoansCreateAdaptorOutputDto> {
     const {
       creditorId,
-      creditor,
+      creditorUniqueId,
       debtorId,
-      debtor,
+      debtorUniqueId,
       totalAmountLoan,
       loanRepaymentDate,
       interest,
     } = dto;
 
-    function confirmCreditorInput(creditorId, creditor): boolean {
-      if (!creditorId || !creditor) return true;
+    function confirmCreditorInput(creditorId, creditorUniqueId): boolean {
+      if (!creditorId || !creditorUniqueId) return true;
       else return false;
     }
-    if (confirmCreditorInput(creditorId, creditor))
-      throw new BadRequestException(CONFIRM_REQUIRED_CREDITOR_INFORMATION);
+    if (confirmCreditorInput(creditorId, creditorUniqueId))
+      throw new BadRequestException(CREDITOR_REQUIRED);
 
-    function confirmDebtorInput(debtorId, debtor): boolean {
-      if (!debtorId || !debtor) return true;
+    function confirmDebtorInput(debtorId, debtorUniqueId): boolean {
+      if (!debtorId || !debtorUniqueId) return true;
       else return false;
     }
-    if (confirmDebtorInput(debtorId, debtor))
-      throw new BadRequestException(CONFIRM_REQUIRED_DEBTOR_INFORMATION);
+    if (confirmDebtorInput(debtorId, debtorUniqueId))
+      throw new BadRequestException(DEBTOR_REQUIRED);
 
     function confirmTotalAmountLoanInput(totalAmountLoan): boolean {
       if (totalAmountLoan === 0) return true;
       else return false;
     }
     if (confirmTotalAmountLoanInput(totalAmountLoan))
-      throw new BadRequestException(CONFIRM_REQUIRED_LOAN_INFORMATION);
+      throw new BadRequestException(LOAN_REQUIRED);
 
     function confirmLoanRepaymentDate(loanRepaymentDate): boolean {
       if (!loanRepaymentDate) return true;
       else return false;
     }
     if (confirmLoanRepaymentDate(loanRepaymentDate))
-      throw new BadRequestException(
-        CONFIRM_REQUIRED_LOAN_REPAYMENT_DATE_INFORMATION
-      );
+      throw new BadRequestException(LOAN_REPAYMENT_DATE_REQUIRED);
 
     function confirmInterest(interest): boolean {
       if (interest <= 0) return true;
       else return false;
     }
     if (confirmInterest(interest))
-      throw new BadRequestException(CONFIRM_REQUIRED_LOAN_INTEREST_INFORMATION);
+      throw new BadRequestException(LOAN_INTEREST_REQUIRED);
 
     return await this.repository.create(dto);
   }

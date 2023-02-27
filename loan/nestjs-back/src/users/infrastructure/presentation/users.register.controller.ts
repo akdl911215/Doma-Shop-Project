@@ -22,7 +22,7 @@ import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
 import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
 import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
-import { CONFIRM_REQUIRED_USER_INFORMATION } from "../../../_common/constants/http/errors/400";
+import { USER_ID_REQUIRED } from "../../../_common/constants/http/errors/400";
 
 @ApiTags("users")
 @Controller("users")
@@ -37,10 +37,7 @@ export class UsersRegisterController {
   @ApiConsumes("application/x-www-form-urlencoded")
   @ApiOperation({ summary: "USER REGISTER API", description: "회원 가입 절차" })
   @ApiResponse({ status: 201, description: `${CREATE_SUCCESS}` })
-  @ApiResponse({
-    status: 400,
-    description: `${CONFIRM_REQUIRED_USER_INFORMATION}`,
-  })
+  @ApiResponse({ status: 400, description: `${USER_ID_REQUIRED}` })
   @ApiResponse({
     status: 409,
     description: `${ALREADY_USER_ID_EXISTS}, ${ALREADY_PHONE_EXISTS}`,

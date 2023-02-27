@@ -21,8 +21,8 @@ let UsersUpdateNameUseCase = class UsersUpdateNameUseCase {
     }
     async updateName(dto) {
         const { name } = dto;
-        if (name === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_NAME_INFORMATION);
+        if (!name)
+            throw new common_1.BadRequestException(_400_1.NAME_REQUIRED);
         return await this.repository.updateName(dto);
     }
 };

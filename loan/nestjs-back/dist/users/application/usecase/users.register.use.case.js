@@ -24,13 +24,8 @@ let UsersRegisterUseCase = class UsersRegisterUseCase {
     }
     async register(dto) {
         const { userId, nickname, phone, address, name, password } = dto;
-        if (userId === "" ||
-            nickname === "" ||
-            phone === "" ||
-            address === "" ||
-            name === "" ||
-            password === "") {
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_USER_INFORMATION);
+        if (!userId || !nickname || !phone || !address || !name || !password) {
+            throw new common_1.BadRequestException(_400_1.USER_REQUIRED);
         }
         await this.requestUserId.existsUserId({ userId });
         await this.requestPhone.existsPhone({ phone });

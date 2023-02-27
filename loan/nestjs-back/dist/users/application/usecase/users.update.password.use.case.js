@@ -21,8 +21,8 @@ let UsersUpdatePasswordUseCase = class UsersUpdatePasswordUseCase {
     }
     async updatePassword(dto) {
         const { password } = dto;
-        if (password === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_PASSWORD_INFORMATION);
+        if (!password)
+            throw new common_1.BadRequestException(_400_1.PASSWORD_REQUIRED);
         return await this.repository.updatePassword(dto);
     }
 };

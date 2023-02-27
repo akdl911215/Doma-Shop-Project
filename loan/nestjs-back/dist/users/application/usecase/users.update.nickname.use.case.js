@@ -21,8 +21,8 @@ let UsersUpdateNicknameUseCase = class UsersUpdateNicknameUseCase {
     }
     async updateNickname(dto) {
         const { nickname } = dto;
-        if (nickname === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_NICKNAME_INFORMATION);
+        if (!nickname)
+            throw new common_1.BadRequestException(_400_1.NICKNAME_REQUIRED);
         return await this.repository.updateNickname(dto);
     }
 };

@@ -21,8 +21,8 @@ let UsersDeleteUseCase = class UsersDeleteUseCase {
     }
     async delete(dto) {
         const { id } = dto;
-        if (id === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION);
+        if (!id)
+            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
         return await this.repository.delete(dto);
     }
 };

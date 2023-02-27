@@ -2,7 +2,7 @@ import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { UsersUpdatePasswordAdaptor } from "../../domain/adaptor/users.update.password.adaptor";
 import { UsersUpdatePasswordAdaptorInputDto } from "../../inbound/dtos/users.update.password.adaptor.input.dto";
 import { UsersUpdatePasswordAdaptorOutputDto } from "../../outbound/dtos/users.update.password.adaptor.output.dto";
-import { CONFIRM_REQUIRED_PASSWORD_INFORMATION } from "../../../_common/constants/http/errors/400";
+import { PASSWORD_REQUIRED } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
 export class UsersUpdatePasswordUseCase implements UsersUpdatePasswordAdaptor {
@@ -15,8 +15,7 @@ export class UsersUpdatePasswordUseCase implements UsersUpdatePasswordAdaptor {
     dto: UsersUpdatePasswordAdaptorInputDto
   ): Promise<UsersUpdatePasswordAdaptorOutputDto> {
     const { password } = dto;
-    if (password === "")
-      throw new BadRequestException(CONFIRM_REQUIRED_PASSWORD_INFORMATION);
+    if (!password) throw new BadRequestException(PASSWORD_REQUIRED);
 
     return await this.repository.updatePassword(dto);
   }

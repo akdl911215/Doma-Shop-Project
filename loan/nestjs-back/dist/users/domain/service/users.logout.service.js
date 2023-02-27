@@ -22,7 +22,7 @@ let UsersLogoutService = class UsersLogoutService {
     async logout(dto) {
         const { id } = dto;
         if (!id)
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION);
+            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
         const { response: { logout }, } = await this.repository.logout(dto);
         return { response: { logout } };
     }

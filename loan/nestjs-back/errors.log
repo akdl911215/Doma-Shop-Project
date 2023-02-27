@@ -193,3 +193,5 @@
 {"level":"error","response":{"message":"Unauthorized","statusCode":401},"stack":[null],"status":401,"timestamp":"2023. 2. 21. 오후 9:44:18","url":"/users/logout"}
 {"level":"error","response":{"message":"Unauthorized","statusCode":401},"stack":[null],"status":401,"timestamp":"2023. 2. 21. 오후 9:44:32","url":"/users/logout"}
 {"level":"error","response":{"message":"Unauthorized","statusCode":401},"stack":[null],"status":401,"timestamp":"2023. 2. 21. 오후 9:44:47","url":"/users/logout"}
+{"level":"error","response":{"error":"Bad Request","message":["id must be a UUID","creditorId must be a UUID","debtorId must be a UUID"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2023. 2. 27. 오후 6:31:55","url":"/loans/list?page=1&take=10"}
+{"level":"error","response":{"error":"Bad Request","message":["creditorId must be a UUID","debtorId must be a UUID"],"statusCode":400},"stack":[null],"status":400,"timestamp":"2023. 2. 27. 오후 6:36:58","url":"/loans/b12cbd05-f6fe-4d16-9483-672a9fffe6df"}

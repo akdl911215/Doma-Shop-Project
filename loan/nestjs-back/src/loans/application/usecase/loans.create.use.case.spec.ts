@@ -25,10 +25,10 @@ describe("LoansCreateUseCase", () => {
   describe("loan create unit test", () => {
     it("creditor is empty and should", async () => {
       dto = {
-        debtor: "",
         debtorId: "",
-        creditor: "testCreditor",
-        creditorId: "",
+        debtorUniqueId: "",
+        creditorId: "testCreditor",
+        creditorUniqueId: "",
         totalAmountLoan: 0,
         loanRepaymentDate: "",
         interest: 0,
@@ -56,10 +56,10 @@ describe("LoansCreateUseCase", () => {
 
     it("debtor is empty and should", async () => {
       dto = {
-        debtor: "",
         debtorId: "",
-        creditor: "testCreditor",
-        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        debtorUniqueId: "",
+        creditorId: "testCreditor",
+        creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
         totalAmountLoan: 0,
         loanRepaymentDate: "",
         interest: 0,
@@ -87,10 +87,10 @@ describe("LoansCreateUseCase", () => {
 
     it("total amount loan required", async () => {
       dto = {
-        debtor: "testDebtor",
-        debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-        creditor: "testCreditor",
-        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        debtorId: "testDebtor",
+        debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        creditorId: "testCreditor",
+        creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
         totalAmountLoan: 0,
         loanRepaymentDate: "",
         interest: 0,
@@ -118,10 +118,10 @@ describe("LoansCreateUseCase", () => {
 
     it("loan repayment date required", async () => {
       dto = {
-        debtor: "testDebtor",
-        debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-        creditor: "testCreditor",
-        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        debtorId: "testDebtor",
+        debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        creditorId: "testCreditor",
+        creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
         totalAmountLoan: 1000000000,
         loanRepaymentDate: "2030-12-31",
         interest: 0,
@@ -149,10 +149,10 @@ describe("LoansCreateUseCase", () => {
 
     it("loan interest required", async () => {
       dto = {
-        debtor: "testDebtor",
-        debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-        creditor: "testCreditor",
-        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        debtorId: "testDebtor",
+        debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        creditorId: "testCreditor",
+        creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
         totalAmountLoan: 1000000000,
         loanRepaymentDate: "2030-12-31",
         interest: 0,
@@ -180,10 +180,10 @@ describe("LoansCreateUseCase", () => {
 
     it("the creditor and debtor is information is wrong", async () => {
       dto = {
-        debtor: "testDebtor",
-        debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-        creditor: "testCreditor",
-        creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        debtorId: "testDebtor",
+        debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+        creditorId: "testCreditor",
+        creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
         totalAmountLoan: 1000000000,
         loanRepaymentDate: "2030-12-31",
         interest: 10,
@@ -209,12 +209,12 @@ describe("LoansCreateUseCase", () => {
       }
     });
 
-    it("success should boards register", async () => {
+    it("success should loan create", async () => {
       dto = {
-        debtor: "fff",
-        debtorId: "2bdf0de8-908c-495c-b5a0-8398080907e2",
-        creditor: "qqq",
-        creditorId: "bf536402-bf96-43a6-8583-694871d4f140",
+        debtorId: "aaa",
+        debtorUniqueId: "c9f572eb-5d13-4af3-ba7a-d8ff44024d3c",
+        creditorId: "bbb",
+        creditorUniqueId: "5ac63dad-1e52-4a29-8684-72535ae7af6e",
         totalAmountLoan: 2000000000,
         loanRepaymentDate: "2030-12-31",
         interest: 10,
@@ -224,10 +224,10 @@ describe("LoansCreateUseCase", () => {
         const { response } = await service.create(dto);
         console.log(response);
 
-        expect(response.debtor).toStrictEqual(dto.debtor);
         expect(response.debtorId).toStrictEqual(dto.debtorId);
-        expect(response.creditor).toStrictEqual(dto.creditor);
+        expect(response.debtorUniqueId).toStrictEqual(dto.debtorUniqueId);
         expect(response.creditorId).toStrictEqual(dto.creditorId);
+        expect(response.creditorUniqueId).toStrictEqual(dto.creditorUniqueId);
         expect(response.totalAmountLoan).toStrictEqual(dto.totalAmountLoan);
         expect(response.loanRepaymentDate).toStrictEqual(dto.loanRepaymentDate);
         expect(response.interest).toStrictEqual(dto.interest);

@@ -19,9 +19,9 @@ import { LoansUpdateRepository } from "./infrastructure/repository/loans.update.
 
 @Module({
   controllers: [
+    LoansListController,
     LoansCreateController,
     LoansInquiryController,
-    LoansListController,
     LoansDeleteController,
     LoansUpdateController,
   ],

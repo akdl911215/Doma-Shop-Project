@@ -32,10 +32,10 @@ model Users {
 
 model Loans {
   id                String    @id @default(uuid()) @db.Uuid
-  debtor            String
-  debtorId          String    @db.Uuid
-  creditor          String
-  creditorId        String    @db.Uuid
+  debtorId          String
+  debtorUniqueId    String    @db.Uuid
+  creditorId        String
+  creditorUniqueId  String    @db.Uuid
   totalAmountLoan   Int
   loanRepaymentDate String
   interest          Int
@@ -47,18 +47,17 @@ model Loans {
 }
 
 model Debtors {
-  id           String  @id @default(uuid()) @db.Uuid
-  users        Users   @relation(fields: [authId], references: [id], onDelete: Cascade)
-  authId       String  @db.Uuid
-  creditRating Int
+  id     String  @id @default(uuid()) @db.Uuid
+  debtor  Users   @relation(fields: [debtorUniqueId], references: [id], onDelete: Cascade)
+  debtorUniqueId String  @db.Uuid
 
   @@map(name: "debtors")
 }
 
 model Creditors {
   id     String  @id @default(uuid()) @db.Uuid
-  users  Users   @relation(fields: [authId], references: [id], onDelete: Cascade)
-  authId String  @db.Uuid
+  creditor  Users   @relation(fields: [creditorUniqueId], references: [id], onDelete: Cascade)
+  creditorUniqueId String  @db.Uuid
 
-  @@map(name: "creditor")
+  @@map(name: "creditors")
 }

@@ -3,8 +3,8 @@ import { UsersLoginAdaptorInputDto } from "../../inbound/dtos/users.login.adapto
 import { UsersLoginAdaptorOutputDto } from "../../outbound/dtos/users.login.adaptor.output.dto";
 import { UsersLoginAdaptor } from "../../domain/adaptor/users.login.adaptor";
 import {
-  CONFIRM_REQUIRED_PASSWORD_INFORMATION,
-  CONFIRM_REQUIRED_USER_ID_INFORMATION,
+  PASSWORD_REQUIRED,
+  USER_ID_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
@@ -17,11 +17,9 @@ export class UsersLoginUseCase implements UsersLoginAdaptor {
   ): Promise<UsersLoginAdaptorOutputDto> {
     const { userId, password } = dto;
 
-    if (userId === "")
-      throw new BadRequestException(CONFIRM_REQUIRED_USER_ID_INFORMATION);
+    if (!userId) throw new BadRequestException(USER_ID_REQUIRED);
 
-    if (password === "")
-      throw new BadRequestException(CONFIRM_REQUIRED_PASSWORD_INFORMATION);
+    if (!password) throw new BadRequestException(PASSWORD_REQUIRED);
 
     return await this.repository.login(dto);
   }

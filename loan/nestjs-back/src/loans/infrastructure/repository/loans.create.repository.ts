@@ -19,34 +19,45 @@ export class LoansCreateRepository implements LoansCreateAdaptor {
     dto: LoansCreateAdaptorInputDto
   ): Promise<LoansCreateAdaptorOutputDto> {
     const {
-      debtor,
+      debtorUniqueId,
       debtorId,
-      creditor,
+      creditorUniqueId,
       creditorId,
       totalAmountLoan,
       loanRepaymentDate,
       interest,
     } = dto;
 
-    const dbDebtor = await this.prisma.users.findUnique({
-      where: { id: debtorId },
+    const searchDebtor = await this.prisma.users.findUnique({
+      where: { id: debtorUniqueId },
     });
-    const dbCreditor = await this.prisma.users.findUnique({
-      where: { id: creditorId },
+    const searchCreditor = await this.prisma.users.findUnique({
+      where: { id: creditorUniqueId },
     });
-    if (!dbDebtor || !dbCreditor) throw new NotFoundException(NOTFOUND_USER);
+    if (!searchDebtor || !searchCreditor)
+      throw new NotFoundException(NOTFOUND_USER);
 
     try {
       const [createLoan] = await this.prisma.$transaction([
         this.prisma.loans.create({
           data: {
-            debtor,
+            debtorUniqueId,
             debtorId,
-            creditor,
+            creditorUniqueId,
             creditorId,
             totalAmountLoan,
             loanRepaymentDate,
             interest,
+          },
+        }),
+        this.prisma.debtors.create({
+          data: {
+            debtorUniqueId,
+          },
+        }),
+        this.prisma.creditors.create({
+          data: {
+            creditorUniqueId,
           },
         }),
       ]);

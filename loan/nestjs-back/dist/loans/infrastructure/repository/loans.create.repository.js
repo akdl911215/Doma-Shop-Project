@@ -29,6 +29,11 @@ let LoansCreateRepository = class LoansCreateRepository {
             throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
         try {
             const [createLoan] = await this.prisma.$transaction([
+                this.prisma.debtors.create({
+                    data: {
+                        authId,
+                    },
+                }),
                 this.prisma.loans.create({
                     data: {
                         debtor,

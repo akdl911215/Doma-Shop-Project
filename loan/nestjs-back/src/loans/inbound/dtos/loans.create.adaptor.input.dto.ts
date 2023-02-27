@@ -3,9 +3,9 @@ import { LoansModel } from "../../domain/entity/loans.model";
 
 export class LoansCreateAdaptorInputDto extends PickType(LoansModel, [
   "debtorId",
-  "debtor",
+  "debtorUniqueId",
   "creditorId",
-  "creditor",
+  "creditorUniqueId",
   "totalAmountLoan",
   "loanRepaymentDate",
   "interest",

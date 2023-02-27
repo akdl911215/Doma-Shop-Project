@@ -21,16 +21,8 @@ let UsersProfileUseCase = class UsersProfileUseCase {
     }
     async profile(dto) {
         const { id } = dto;
-        function meaninglessUniqueId(id) {
-            if (id === "" || !id) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        if (meaninglessUniqueId(id))
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION);
+        if (!id)
+            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
         return await this.repository.profile(dto);
     }
 };

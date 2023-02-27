@@ -42,7 +42,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 200, description: `${_200_1.TWO_HUNDRED_OK}` }),
     (0, swagger_1.ApiResponse)({
         status: 400,
-        description: `${_400_1.NO_MATCH_USER_ID}, ${_400_1.CONFIRM_REQUIRED_UNIQUE_ID_INFORMATION}`,
+        description: `${_400_1.NO_MATCH_USER_ID}, ${_400_1.UNIQUE_ID_REQUIRED}`,
     }),
     (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_USER}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),

@@ -21,8 +21,8 @@ let UsersUpdateAddressUseCase = class UsersUpdateAddressUseCase {
     }
     async updateAddress(dto) {
         const { address } = dto;
-        if (address === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_ADDRESS_INFORMATION);
+        if (!address)
+            throw new common_1.BadRequestException(_400_1.ADDRESS_REQUIRED);
         return await this.repository.updateAddress(dto);
     }
 };

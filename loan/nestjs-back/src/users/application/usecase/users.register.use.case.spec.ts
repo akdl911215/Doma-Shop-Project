@@ -160,22 +160,22 @@ describe("UsersRegisterUseCase", () => {
 
     it("success should user register", async () => {
       dto = {
-        userId: "ddd",
-        nickname: "jest-test3",
+        userId: "bbb",
+        nickname: "bbbNick",
         name: "leejunghyun",
         password: "qwer!234",
         phone: "01009098712",
-        address: "jest-address",
+        address: "aaaADaress",
         confirmPassword: "qwer!234",
       };
 
       const { response } = await service.register(dto);
 
-      expect(response.userId).toStrictEqual("ddd");
-      expect(response.nickname).toStrictEqual("jest-test3");
-      expect(response.name).toStrictEqual("leejunghyun");
-      expect(response.phone).toStrictEqual("01009098712");
-      expect(response.address).toStrictEqual("jest-address");
+      expect(response.userId).toStrictEqual(dto.userId);
+      expect(response.nickname).toStrictEqual(dto.nickname);
+      expect(response.name).toStrictEqual(dto.name);
+      expect(response.phone).toStrictEqual(dto.phone);
+      expect(response.address).toStrictEqual(dto.address);
     });
   });
 

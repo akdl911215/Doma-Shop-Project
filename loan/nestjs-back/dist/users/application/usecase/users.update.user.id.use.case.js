@@ -21,8 +21,8 @@ let UsersUpdateUserIdUseCase = class UsersUpdateUserIdUseCase {
     }
     async updateUserId(dto) {
         const { userId } = dto;
-        if (userId === "")
-            throw new common_1.BadRequestException(_400_1.CONFIRM_REQUIRED_USER_ID_INFORMATION);
+        if (!userId)
+            throw new common_1.BadRequestException(_400_1.USER_ID_REQUIRED);
         return await this.repository.updateUserId(dto);
     }
 };

@@ -5,7 +5,7 @@ import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adapto
 import { UsersExistsUserIdAdaptor } from "../../domain/adaptor/users.exists.user.id.adaptor";
 import { UsersExistsPhoneAdaptor } from "../../domain/adaptor/users.exists.phone.adaptor";
 import { UsersExistsNicknameAdaptor } from "../../domain/adaptor/users.exists.nickname.adaptor";
-import { CONFIRM_REQUIRED_USER_INFORMATION } from "../../../_common/constants/http/errors/400";
+import { USER_REQUIRED } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
 export class UsersRegisterUseCase implements UsersRegisterAdaptor {
@@ -25,15 +25,8 @@ export class UsersRegisterUseCase implements UsersRegisterAdaptor {
   ): Promise<UsersRegisterAdaptorOutputDto> {
     const { userId, nickname, phone, address, name, password } = dto;
 
-    if (
-      userId === "" ||
-      nickname === "" ||
-      phone === "" ||
-      address === "" ||
-      name === "" ||
-      password === ""
-    ) {
-      throw new BadRequestException(CONFIRM_REQUIRED_USER_INFORMATION);
+    if (!userId || !nickname || !phone || !address || !name || !password) {
+      throw new BadRequestException(USER_REQUIRED);
     }
     await this.requestUserId.existsUserId({ userId });
     await this.requestPhone.existsPhone({ phone });
