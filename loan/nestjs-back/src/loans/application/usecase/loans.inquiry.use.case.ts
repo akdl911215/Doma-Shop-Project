@@ -17,11 +17,11 @@ export class LoansInquiryUseCase implements LoansInquiryAdaptor {
   public async inquiry(
     dto: LoansInquiryAdaptorInputDto
   ): Promise<LoansInquiryAdaptorOutputDto> {
-    const { id, creditorId, debtorId } = dto;
+    const { id, creditorUniqueId, debtorUniqueId } = dto;
 
     if (!id) throw new BadRequestException(NO_MATCH_LOAN_ID);
-    if (!creditorId) throw new BadRequestException(NO_MATCH_CREDITOR_ID);
-    if (!debtorId) throw new BadRequestException(NO_MATCH_DEBTOR_ID);
+    if (!creditorUniqueId) throw new BadRequestException(NO_MATCH_CREDITOR_ID);
+    if (!debtorUniqueId) throw new BadRequestException(NO_MATCH_DEBTOR_ID);
 
     return await this.repository.inquiry(dto);
   }

@@ -18,11 +18,11 @@ export class LoansDeleteUseCase implements LoansDeleteAdaptor {
   public async delete(
     dto: LoansDeleteAdaptorInputDto
   ): Promise<LoansDeleteAdaptorOutputDto> {
-    const { id, debtorId, creditorId } = dto;
+    const { id, debtorUniqueId, creditorUniqueId } = dto;
 
     if (!id) throw new BadRequestException(NO_MATCH_LOAN_ID);
-    if (!debtorId) throw new BadRequestException(NO_MATCH_DEBTOR_ID);
-    if (!creditorId) throw new BadRequestException(NO_MATCH_CREDITOR_ID);
+    if (!debtorUniqueId) throw new BadRequestException(NO_MATCH_DEBTOR_ID);
+    if (!creditorUniqueId) throw new BadRequestException(NO_MATCH_CREDITOR_ID);
 
     return await this.repository.delete(dto);
   }
