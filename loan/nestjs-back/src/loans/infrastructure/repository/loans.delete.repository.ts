@@ -22,18 +22,18 @@ export class LoansDeleteRepository implements LoansDeleteAdaptor {
   public async delete(
     dto: LoansDeleteAdaptorInputDto
   ): Promise<LoansDeleteAdaptorOutputDto> {
-    const { id, debtorId, creditorId } = dto;
+    const { id, debtorUniqueId, creditorUniqueId } = dto;
 
     const loan = await this.prisma.loans.findUnique({ where: { id } });
     if (!loan) throw new NotFoundException(NOTFOUND_LOAN);
 
     const searchDebtor = await this.prisma.users.findUnique({
-      where: { id: debtorId },
+      where: { id: debtorUniqueId },
     });
     if (!searchDebtor) throw new NotFoundException(NOTFOUND_DEBTOR);
 
     const searchCreditor = await this.prisma.users.findUnique({
-      where: { id: creditorId },
+      where: { id: creditorUniqueId },
     });
     if (!searchCreditor) throw new NotFoundException(NOTFOUND_CREDITOR);
 
@@ -44,10 +44,10 @@ export class LoansDeleteRepository implements LoansDeleteAdaptor {
             id,
           },
           {
-            debtorId,
+            debtorUniqueId,
           },
           {
-            creditorId,
+            creditorUniqueId,
           },
         ],
       },

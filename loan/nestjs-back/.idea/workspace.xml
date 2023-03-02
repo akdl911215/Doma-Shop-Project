@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.validate.required.loan.creditor.unique.id.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.validate.required.loan.debtor.unique.id.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.validate.required.loan.unique.id.adaptor.input.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.usec.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.usecase.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.inquiry.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/domain/adaptor/loans.creditor.inquiry.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/domain/adaptor/loans.creditor.inquiry.adaptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/domain/adaptor/loans.debtor.inquiry.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/domain/adaptor/loans.debtor.inquiry.adaptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.creditor.inquiry.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.creditor.inquiry.adaptor.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.debtor.inquiry.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.debtor.inquiry.adaptor.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.delete.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.delete.adaptor.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.inquiry.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.inquiry.adaptor.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/outbound/dtos/loans.creditor.inquiry.adaptor.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/loans.creditor.inquiry.adaptor.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/outbound/dtos/loans.debtor.inquiry.adaptor.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/loans.debtor.inquiry.adaptor.output.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.validate.required.loan.creditor.unique.id.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.validate.required.loan.creditor.unique.id.adaptor.input.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.validate.required.loan.debtor.unique.id.adaptor.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/loans.validate.required.loan.debtor.unique.id.adaptor.input.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.delete.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.delete.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.inquiry.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.inquiry.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.update.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.update.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/loans.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/loans.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +190,7 @@
       <workItem from="1677307036262" duration="23000" />
       <workItem from="1677327963014" duration="1638000" />
       <workItem from="1677462719479" duration="9638000" />
-      <workItem from="1677494332054" duration="4629000" />
+      <workItem from="1677494332054" duration="6435000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>

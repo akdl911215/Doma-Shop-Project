@@ -17,15 +17,15 @@ export class LoansInquiryRepository implements LoansInquiryAdaptor {
   public async inquiry(
     dto: LoansInquiryAdaptorInputDto
   ): Promise<LoansInquiryAdaptorOutputDto> {
-    const { id, debtorId, creditorId } = dto;
+    const { id, debtorUniqueId, creditorUniqueId } = dto;
 
     const debtor = await this.prisma.users.findUnique({
-      where: { id: debtorId },
+      where: { id: debtorUniqueId },
     });
     if (!debtor) throw new NotFoundException(NOTFOUND_DEBTOR);
 
     const creditor = await this.prisma.users.findUnique({
-      where: { id: creditorId },
+      where: { id: creditorUniqueId },
     });
     if (!creditor) throw new NotFoundException(NOTFOUND_CREDITOR);
 
@@ -36,10 +36,10 @@ export class LoansInquiryRepository implements LoansInquiryAdaptor {
             id,
           },
           {
-            creditorId,
+            creditorUniqueId,
           },
           {
-            debtorId,
+            debtorUniqueId,
           },
         ],
       },

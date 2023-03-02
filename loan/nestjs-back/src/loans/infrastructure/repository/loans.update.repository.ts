@@ -20,9 +20,9 @@ export class LoansUpdateRepository implements LoansUpdateAdaptor {
   ): Promise<LoansUpdateAdaptorOutputDto> {
     const {
       id,
-      creditor,
+      creditorUniqueId,
       creditorId,
-      debtor,
+      debtorUniqueId,
       debtorId,
       totalAmountLoan,
       interest,
@@ -36,20 +36,22 @@ export class LoansUpdateRepository implements LoansUpdateAdaptor {
             id,
           },
           {
-            creditorId,
+            creditorUniqueId,
           },
           {
-            debtorId,
+            debtorUniqueId,
           },
         ],
       },
     });
     if (!loan) throw new NotFoundException(NOTFOUND_LOAN);
 
-    const updateCreditor: string = creditor === "" ? loan.creditor : creditor;
+    const updateCreditorUniqueId: string =
+      creditorUniqueId === "" ? loan.creditorUniqueId : creditorUniqueId;
     const updateCreditorId: string =
       creditorId === "" ? loan.creditorId : creditorId;
-    const updateDebtor: string = debtor === "" ? loan.debtor : debtor;
+    const updateDebtorUniqueId: string =
+      debtorUniqueId === "" ? loan.debtorUniqueId : debtorUniqueId;
     const updateDebtorId: string = debtorId === "" ? loan.debtorId : debtorId;
     const updateTotalAmountLoan: number =
       totalAmountLoan < 0 ? loan.totalAmountLoan : totalAmountLoan;
@@ -62,9 +64,9 @@ export class LoansUpdateRepository implements LoansUpdateAdaptor {
         this.prisma.loans.update({
           where: { id },
           data: {
-            creditor: updateCreditor,
+            creditorUniqueId: updateCreditorUniqueId,
             creditorId: updateCreditorId,
-            debtor: updateDebtor,
+            debtorUniqueId: updateDebtorUniqueId,
             debtorId: updateDebtorId,
             totalAmountLoan: updateTotalAmountLoan,
             interest: updateInterest,

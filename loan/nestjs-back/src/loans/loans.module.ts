@@ -16,6 +16,9 @@ import { LoansDeleteRepository } from "./infrastructure/repository/loans.delete.
 import { LoansInquiryRepository } from "./infrastructure/repository/loans.inquiry.repository";
 import { LoansListRepository } from "./infrastructure/repository/loans.list.repository";
 import { LoansUpdateRepository } from "./infrastructure/repository/loans.update.repository";
+import { LoansValidateRequiredLoanCreditorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository";
+import { LoansValidateRequiredLoanDebtorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository";
+import { LoansValidateRequiredLoanUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.unique.id.repository";
 
 @Module({
   controllers: [
@@ -73,6 +76,18 @@ import { LoansUpdateRepository } from "./infrastructure/repository/loans.update.
     {
       provide: "UPDATE",
       useClass: LoansUpdateRepository,
+    },
+    {
+      provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
+      useClass: LoansValidateRequiredLoanCreditorUniqueIdRepository,
+    },
+    {
+      provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
+      useClass: LoansValidateRequiredLoanDebtorUniqueIdRepository,
+    },
+    {
+      provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
+      useClass: LoansValidateRequiredLoanUniqueIdRepository,
     },
   ],
 })
