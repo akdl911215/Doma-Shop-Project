@@ -1,7 +1,7 @@
-import { PickType } from "@nestjs/swagger";
-import { LoansModel } from "../../../domain/entity/loans.model";
+import { IsNotEmpty, IsUUID } from "class-validator";
 
-export class LoansValidateRequiredLoanUniqueIdInterfaceInputDto extends PickType(
-  LoansModel,
-  ["creditorUniqueId"] as const
-) {}
+export class LoansValidateRequiredLoanUniqueIdInterfaceInputDto {
+  @IsUUID()
+  @IsNotEmpty()
+  public id!: string;
+}

@@ -27,6 +27,9 @@ const loans_update_repository_1 = require("./infrastructure/repository/loans.upd
 const loans_exists_loan_creditor_unique_id_repository_1 = require("./infrastructure/repository/loans.exists.loan.creditor.unique.id.repository");
 const loans_exists_loan_debtor_unique_id_repository_1 = require("./infrastructure/repository/loans.exists.loan.debtor.unique.id.repository");
 const loans_exists_loan_unique_id_repository_1 = require("./infrastructure/repository/loans.exists.loan.unique.id.repository");
+const loans_validate_required_loan_creditor_unique_id_repository_1 = require("./infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository");
+const loans_validate_required_loan_debtor_unique_id_repository_1 = require("./infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository");
+const loans_validate_required_loan_unique_id_repository_1 = require("./infrastructure/repository/loans.validate.required.loan.unique.id.repository");
 let LoansModule = class LoansModule {
 };
 LoansModule = __decorate([
@@ -81,16 +84,28 @@ LoansModule = __decorate([
                 useClass: loans_update_repository_1.LoansUpdateRepository,
             },
             {
-                provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
+                provide: "EXISTS_LOAN_CREDITOR_UNIQUE_ID",
                 useClass: loans_exists_loan_creditor_unique_id_repository_1.LoansExistsLoanCreditorUniqueIdRepository,
             },
             {
-                provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
+                provide: "EXISTS_LOAN_DEBTOR_UNIQUE_ID",
                 useClass: loans_exists_loan_debtor_unique_id_repository_1.LoansExistsLoanDebtorUniqueIdRepository,
             },
             {
-                provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
+                provide: "EXISTS_LOAN_UNIQUE_ID",
                 useClass: loans_exists_loan_unique_id_repository_1.LoansExistsLoanUniqueIdRepository,
+            },
+            {
+                provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
+                useClass: loans_validate_required_loan_creditor_unique_id_repository_1.LoansValidateRequiredLoanCreditorUniqueIdRepository,
+            },
+            {
+                provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
+                useClass: loans_validate_required_loan_debtor_unique_id_repository_1.LoansValidateRequiredLoanDebtorUniqueIdRepository,
+            },
+            {
+                provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
+                useClass: loans_validate_required_loan_unique_id_repository_1.LoansValidateRequiredLoanUniqueIdRepository,
             },
         ],
     })

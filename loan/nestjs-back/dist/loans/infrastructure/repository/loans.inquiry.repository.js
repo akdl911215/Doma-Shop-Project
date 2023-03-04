@@ -19,16 +19,6 @@ let LoansInquiryRepository = class LoansInquiryRepository {
     }
     async inquiry(dto) {
         const { id, debtorUniqueId, creditorUniqueId } = dto;
-        const debtor = await this.prisma.users.findUnique({
-            where: { id: debtorUniqueId },
-        });
-        if (!debtor)
-            throw new common_1.NotFoundException(_404_1.NOTFOUND_DEBTOR);
-        const creditor = await this.prisma.users.findUnique({
-            where: { id: creditorUniqueId },
-        });
-        if (!creditor)
-            throw new common_1.NotFoundException(_404_1.NOTFOUND_CREDITOR);
         const loan = await this.prisma.loans.findFirst({
             where: {
                 OR: [

@@ -18,6 +18,9 @@ import { LoansUpdateRepository } from "./infrastructure/repository/loans.update.
 import { LoansExistsLoanCreditorUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.creditor.unique.id.repository";
 import { LoansExistsLoanDebtorUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.debtor.unique.id.repository";
 import { LoansExistsLoanUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.unique.id.repository";
+import { LoansValidateRequiredLoanCreditorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository";
+import { LoansValidateRequiredLoanDebtorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository";
+import { LoansValidateRequiredLoanUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.unique.id.repository";
 
 @Module({
   controllers: [
@@ -77,16 +80,28 @@ import { LoansExistsLoanUniqueIdRepository } from "./infrastructure/repository/l
       useClass: LoansUpdateRepository,
     },
     {
-      provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
+      provide: "EXISTS_LOAN_CREDITOR_UNIQUE_ID",
       useClass: LoansExistsLoanCreditorUniqueIdRepository,
     },
     {
-      provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
+      provide: "EXISTS_LOAN_DEBTOR_UNIQUE_ID",
       useClass: LoansExistsLoanDebtorUniqueIdRepository,
     },
     {
-      provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
+      provide: "EXISTS_LOAN_UNIQUE_ID",
       useClass: LoansExistsLoanUniqueIdRepository,
+    },
+    {
+      provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
+      useClass: LoansValidateRequiredLoanCreditorUniqueIdRepository,
+    },
+    {
+      provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
+      useClass: LoansValidateRequiredLoanDebtorUniqueIdRepository,
+    },
+    {
+      provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
+      useClass: LoansValidateRequiredLoanUniqueIdRepository,
     },
   ],
 })

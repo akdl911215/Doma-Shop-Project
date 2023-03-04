@@ -17,6 +17,6 @@ __decorate([
     (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], LoansValidateRequiredLoanCreditorUniqueIdInterfaceInputDto.prototype, "id", void 0);
+], LoansValidateRequiredLoanCreditorUniqueIdInterfaceInputDto.prototype, "creditorUniqueId", void 0);
 exports.LoansValidateRequiredLoanCreditorUniqueIdInterfaceInputDto = LoansValidateRequiredLoanCreditorUniqueIdInterfaceInputDto;
 //# sourceMappingURL=loans.validate.required.loan.creditor.unique.id.interface.input.dto.js.map

@@ -14,26 +14,43 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansInquiryUseCase = void 0;
 const common_1 = require("@nestjs/common");
-const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansInquiryUseCase = class LoansInquiryUseCase {
-    constructor(repository) {
+    constructor(repository, compareDbUniqueIdWith, compareExistsDbUniqueIdWith, compareDbCreditorUniqueIdWith, compareExistsDbCreditorUniqueIdWith, compareDbDebtorUniqueIdWith, compareExistsDbDebtorUniqueIdWith) {
         this.repository = repository;
+        this.compareDbUniqueIdWith = compareDbUniqueIdWith;
+        this.compareExistsDbUniqueIdWith = compareExistsDbUniqueIdWith;
+        this.compareDbCreditorUniqueIdWith = compareDbCreditorUniqueIdWith;
+        this.compareExistsDbCreditorUniqueIdWith = compareExistsDbCreditorUniqueIdWith;
+        this.compareDbDebtorUniqueIdWith = compareDbDebtorUniqueIdWith;
+        this.compareExistsDbDebtorUniqueIdWith = compareExistsDbDebtorUniqueIdWith;
     }
     async inquiry(dto) {
         const { id, creditorUniqueId, debtorUniqueId } = dto;
-        if (!id)
-            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
-        if (!debtorUniqueId)
-            throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
-        if (!creditorUniqueId)
-            throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
+        await this.compareDbUniqueIdWith.validateRequiredLoanUniqueId({ id });
+        await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
+        await this.compareDbDebtorUniqueIdWith.validateRequiredLoanDebtorUniqueId({
+            debtorUniqueId,
+        });
+        await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
+            debtorUniqueId,
+        });
+        await this.compareDbCreditorUniqueIdWith.validateRequiredLoanCreditorUniqueId({ creditorUniqueId });
+        await this.compareExistsDbCreditorUniqueIdWith.existsLoanCreditorUniqueId({
+            creditorUniqueId,
+        });
         return await this.repository.inquiry(dto);
     }
 };
 LoansInquiryUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("INQUIRY")),
-    __metadata("design:paramtypes", [Object])
+    __param(1, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_UNIQUE_ID")),
+    __param(2, (0, common_1.Inject)("EXISTS_LOAN_UNIQUE_ID")),
+    __param(3, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID")),
+    __param(4, (0, common_1.Inject)("EXISTS_LOAN_CREDITOR_UNIQUE_ID")),
+    __param(5, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID")),
+    __param(6, (0, common_1.Inject)("EXISTS_LOAN_DEBTOR_UNIQUE_ID")),
+    __metadata("design:paramtypes", [Object, Object, Object, Object, Object, Object, Object])
 ], LoansInquiryUseCase);
 exports.LoansInquiryUseCase = LoansInquiryUseCase;
 //# sourceMappingURL=loans.inquiry.use.case.js.map
