@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { LoansUpdateAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.update.adaptor.output.dto";
 import { LoansUpdateAdaptor } from "../../domain/adaptor/loans.update.adaptor";
 import { LoansUpdateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.update.adaptor.input.dto";
@@ -12,6 +12,18 @@ export class LoansUpdateUseCase implements LoansUpdateAdaptor {
   public async update(
     dto: LoansUpdateAdaptorInputDto
   ): Promise<LoansUpdateAdaptorOutputDto> {
+    const {
+      id,
+      creditorId,
+      creditorUniqueId,
+      debtorId,
+      debtorUniqueId,
+      totalAmountLoan,
+      interest,
+      loanRepaymentDate,
+    } = dto;
+
+    if (!id) throw new BadRequestException();
     return await this.repository.update(dto);
   }
 }

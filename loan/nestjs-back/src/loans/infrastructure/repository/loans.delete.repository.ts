@@ -8,11 +8,7 @@ import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.se
 import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.delete.adaptor.output.dto";
 import { LoansDeleteAdaptor } from "../../domain/adaptor/loans.delete.adaptor";
 import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.delete.adaptor.input.dto";
-import {
-  NOTFOUND_CREDITOR,
-  NOTFOUND_DEBTOR,
-  NOTFOUND_LOAN,
-} from "../../../_common/constants/http/errors/404";
+import { NOTFOUND_LOAN } from "../../../_common/constants/http/errors/404";
 
 @Injectable()
 @Dependencies([PrismaService])
@@ -23,19 +19,6 @@ export class LoansDeleteRepository implements LoansDeleteAdaptor {
     dto: LoansDeleteAdaptorInputDto
   ): Promise<LoansDeleteAdaptorOutputDto> {
     const { id, debtorUniqueId, creditorUniqueId } = dto;
-
-    const loan = await this.prisma.loans.findUnique({ where: { id } });
-    if (!loan) throw new NotFoundException(NOTFOUND_LOAN);
-
-    const searchDebtor = await this.prisma.users.findUnique({
-      where: { id: debtorUniqueId },
-    });
-    if (!searchDebtor) throw new NotFoundException(NOTFOUND_DEBTOR);
-
-    const searchCreditor = await this.prisma.users.findUnique({
-      where: { id: creditorUniqueId },
-    });
-    if (!searchCreditor) throw new NotFoundException(NOTFOUND_CREDITOR);
 
     const searchLoan = await this.prisma.loans.findFirst({
       where: {

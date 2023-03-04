@@ -9,11 +9,19 @@ import {
 } from "../../../_common/constants/http/errors/400";
 import { LoansCreateAdaptor } from "../../domain/adaptor/loans.create.adaptor";
 import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.create.adaptor.input.dto";
+import { LoansValidateRequiredLoanCreditorUniqueIdInterface } from "../../domain/interface/loans.validate.required.loan.creditor.unique.id.interface";
+import { LoansExistsLoanCreditorUniqueIdInterface } from "../../domain/interface/loans.exists.loan.creditor.unique.id.interface";
+import { LoansValidateRequiredLoanDebtorUniqueIdInterface } from "../../domain/interface/loans.validate.required.loan.debtor.unique.id.interface";
+import { LoansExistsLoanDebtorUniqueIdInterface } from "../../domain/interface/loans.exists.loan.debtor.unique.id.interface";
 
 @Injectable()
 export class LoansCreateUseCase implements LoansCreateAdaptor {
   constructor(
-    @Inject("CREATE") private readonly repository: LoansCreateAdaptor
+    @Inject("CREATE") private readonly repository: LoansCreateAdaptor,
+    @Inject("VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID")
+    private readonly compareDbCreditorUniqueIdWith: LoansValidateRequiredLoanCreditorUniqueIdInterface,
+    @Inject("VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID")
+    private readonly compareDbDebtorUniqueIdWith: LoansValidateRequiredLoanDebtorUniqueIdInterface
   ) {}
 
   public async create(
@@ -29,40 +37,22 @@ export class LoansCreateUseCase implements LoansCreateAdaptor {
       interest,
     } = dto;
 
-    function confirmCreditorInput(creditorId, creditorUniqueId): boolean {
-      if (!creditorId || !creditorUniqueId) return true;
-      else return false;
-    }
-    if (confirmCreditorInput(creditorId, creditorUniqueId))
-      throw new BadRequestException(CREDITOR_ID_REQUIRED);
+    if (!creditorId) throw new BadRequestException(CREDITOR_ID_REQUIRED);
+    await this.compareDbCreditorUniqueIdWith.validateRequiredLoanCreditorUniqueId(
+      { creditorUniqueId }
+    );
 
-    function confirmDebtorInput(debtorId, debtorUniqueId): boolean {
-      if (!debtorId || !debtorUniqueId) return true;
-      else return false;
-    }
-    if (confirmDebtorInput(debtorId, debtorUniqueId))
-      throw new BadRequestException(DEBTOR_ID_REQUIRED);
+    if (!debtorId) throw new BadRequestException(DEBTOR_ID_REQUIRED);
+    await this.compareDbDebtorUniqueIdWith.validateRequiredLoanDebtorUniqueId({
+      debtorUniqueId,
+    });
 
-    function confirmTotalAmountLoanInput(totalAmountLoan): boolean {
-      if (totalAmountLoan === 0) return true;
-      else return false;
-    }
-    if (confirmTotalAmountLoanInput(totalAmountLoan))
-      throw new BadRequestException(LOAN_REQUIRED);
+    if (totalAmountLoan === 0) throw new BadRequestException(LOAN_REQUIRED);
 
-    function confirmLoanRepaymentDate(loanRepaymentDate): boolean {
-      if (!loanRepaymentDate) return true;
-      else return false;
-    }
-    if (confirmLoanRepaymentDate(loanRepaymentDate))
+    if (!loanRepaymentDate)
       throw new BadRequestException(LOAN_REPAYMENT_DATE_REQUIRED);
 
-    function confirmInterest(interest): boolean {
-      if (interest <= 0) return true;
-      else return false;
-    }
-    if (confirmInterest(interest))
-      throw new BadRequestException(LOAN_INTEREST_REQUIRED);
+    if (interest <= 0) throw new BadRequestException(LOAN_INTEREST_REQUIRED);
 
     return await this.repository.create(dto);
   }

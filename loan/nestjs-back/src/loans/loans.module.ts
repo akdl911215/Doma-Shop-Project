@@ -21,6 +21,10 @@ import { LoansExistsLoanUniqueIdRepository } from "./infrastructure/repository/l
 import { LoansValidateRequiredLoanCreditorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository";
 import { LoansValidateRequiredLoanDebtorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository";
 import { LoansValidateRequiredLoanUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.unique.id.repository";
+import { LoansDebtorInquiryUseCase } from "./application/usecase/loans.debtor.inquiry.use.case";
+import { LoansCreditorInquiryUseCase } from "./application/usecase/loans.creditor.inquiry.use.case";
+import { LoansCreditorInquiryRepository } from "./infrastructure/repository/loans.creditor.inquiry.repository";
+import { LoansDebtorInquiryRepository } from "./infrastructure/repository/loans.debtor.inquiry.repository";
 
 @Module({
   controllers: [
@@ -50,12 +54,20 @@ import { LoansValidateRequiredLoanUniqueIdRepository } from "./infrastructure/re
       useClass: LoansUpdateUseCase,
     },
     {
+      provide: "USE_CASE_DELETE",
+      useClass: LoansDeleteUseCase,
+    },
+    {
       provide: "USE_CASE_INQUIRY",
       useClass: LoansInquiryUseCase,
     },
     {
-      provide: "USE_CASE_DELETE",
-      useClass: LoansDeleteUseCase,
+      provide: "USE_CASE_DEBTOR_INQUIRY",
+      useClass: LoansDebtorInquiryUseCase,
+    },
+    {
+      provide: "USE_CASE_CREDITOR_INQUIRY",
+      useClass: LoansCreditorInquiryUseCase,
     },
 
     // repository
@@ -70,6 +82,14 @@ import { LoansValidateRequiredLoanUniqueIdRepository } from "./infrastructure/re
     {
       provide: "INQUIRY",
       useClass: LoansInquiryRepository,
+    },
+    {
+      provide: "CREDITOR_INQUIRY",
+      useClass: LoansCreditorInquiryRepository,
+    },
+    {
+      provide: "DEBTOR_INQUIRY",
+      useClass: LoansDebtorInquiryRepository,
     },
     {
       provide: "LIST",
