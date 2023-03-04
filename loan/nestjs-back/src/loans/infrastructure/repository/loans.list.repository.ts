@@ -5,9 +5,9 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { LoansListAdaptorOutputDto } from "../../outbound/dtos/loans.list.adaptor.output.dto";
+import { LoansListAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.list.adaptor.output.dto";
 import { LoansListAdaptor } from "../../domain/adaptor/loans.list.adaptor";
-import { LoansListAdaptorInputDto } from "../../inbound/dtos/loans.list.adaptor.input.dto";
+import { LoansListAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.list.adaptor.input.dto";
 import { Loans } from "@prisma/client";
 import { NOTFOUND_LIST } from "../../../_common/constants/http/errors/404";
 

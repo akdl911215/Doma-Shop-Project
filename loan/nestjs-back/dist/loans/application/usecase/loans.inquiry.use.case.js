@@ -20,13 +20,13 @@ let LoansInquiryUseCase = class LoansInquiryUseCase {
         this.repository = repository;
     }
     async inquiry(dto) {
-        const { id, creditorId, debtorId } = dto;
+        const { id, creditorUniqueId, debtorUniqueId } = dto;
         if (!id)
-            throw new common_1.BadRequestException(_400_1.NO_MATCH_LOAN_ID);
-        if (!creditorId)
-            throw new common_1.BadRequestException(_400_1.NO_MATCH_CREDITOR_ID);
-        if (!debtorId)
-            throw new common_1.BadRequestException(_400_1.NO_MATCH_DEBTOR_ID);
+            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
+        if (!debtorUniqueId)
+            throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
+        if (!creditorUniqueId)
+            throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
         return await this.repository.inquiry(dto);
     }
 };

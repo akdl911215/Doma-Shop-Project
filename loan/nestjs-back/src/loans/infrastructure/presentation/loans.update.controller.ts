@@ -10,8 +10,8 @@ import { Body, Controller, Inject, Patch } from "@nestjs/common";
 import { LoansUpdateAdaptor } from "../../domain/adaptor/loans.update.adaptor";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
-import { LoansUpdateAdaptorInputDto } from "../../inbound/dtos/loans.update.adaptor.input.dto";
-import { LoansUpdateAdaptorOutputDto } from "../../outbound/dtos/loans.update.adaptor.output.dto";
+import { LoansUpdateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.update.adaptor.input.dto";
+import { LoansUpdateAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.update.adaptor.output.dto";
 import { NOTFOUND_LOAN } from "../../../_common/constants/http/errors/404";
 
 @ApiTags("loans")

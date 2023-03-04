@@ -1,13 +1,16 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { LoansCreditorInquiryAdaptor } from "../../domain/adaptor/loans.creditor.inquiry.adaptor";
-import { LoansCreditorInquiryAdaptorOutputDto } from "../../outbound/dtos/loans.creditor.inquiry.adaptor.output.dto";
-import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/loans.creditor.inquiry.adaptor.input.dto";
+import { LoansCreditorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.creditor.inquiry.adaptor.output.dto";
+import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.creditor.inquiry.adaptor.input.dto";
 
 @Injectable()
 export class LoansCreditorInquiryUseCase
   implements LoansCreditorInquiryAdaptor
 {
-  constructor() {}
+  constructor(
+    @Inject("CREDITOR_INQUIRY")
+    private readonly repository: LoansCreditorInquiryAdaptor
+  ) {}
 
   public async creditorInquiry(
     dto: LoansCreditorInquiryAdaptorInputDto

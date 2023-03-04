@@ -1,5 +1,5 @@
-import { LoansDebtorInquiryAdaptorInputDto } from "../../inbound/dtos/loans.debtor.inquiry.adaptor.input.dto";
-import { LoansDebtorInquiryAdaptorOutputDto } from "../../outbound/dtos/loans.debtor.inquiry.adaptor.output.dto";
+import { LoansDebtorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.debtor.inquiry.adaptor.input.dto";
+import { LoansDebtorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.debtor.inquiry.adaptor.output.dto";
 
 export interface LoansDebtorInquiryAdaptor {
   readonly debtorInquiry: (

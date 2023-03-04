@@ -24,6 +24,9 @@ const loans_delete_repository_1 = require("./infrastructure/repository/loans.del
 const loans_inquiry_repository_1 = require("./infrastructure/repository/loans.inquiry.repository");
 const loans_list_repository_1 = require("./infrastructure/repository/loans.list.repository");
 const loans_update_repository_1 = require("./infrastructure/repository/loans.update.repository");
+const loans_exists_loan_creditor_unique_id_repository_1 = require("./infrastructure/repository/loans.exists.loan.creditor.unique.id.repository");
+const loans_exists_loan_debtor_unique_id_repository_1 = require("./infrastructure/repository/loans.exists.loan.debtor.unique.id.repository");
+const loans_exists_loan_unique_id_repository_1 = require("./infrastructure/repository/loans.exists.loan.unique.id.repository");
 let LoansModule = class LoansModule {
 };
 LoansModule = __decorate([
@@ -76,6 +79,18 @@ LoansModule = __decorate([
             {
                 provide: "UPDATE",
                 useClass: loans_update_repository_1.LoansUpdateRepository,
+            },
+            {
+                provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
+                useClass: loans_exists_loan_creditor_unique_id_repository_1.LoansExistsLoanCreditorUniqueIdRepository,
+            },
+            {
+                provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
+                useClass: loans_exists_loan_debtor_unique_id_repository_1.LoansExistsLoanDebtorUniqueIdRepository,
+            },
+            {
+                provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
+                useClass: loans_exists_loan_unique_id_repository_1.LoansExistsLoanUniqueIdRepository,
             },
         ],
     })

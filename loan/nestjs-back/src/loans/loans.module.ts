@@ -1,5 +1,4 @@
 import { Module } from "@nestjs/common";
-import { LoansService } from "./loans.service";
 import { LoansCreateController } from "./infrastructure/presentation/loans.create.controller";
 import { LoansCreateUseCase } from "./application/usecase/loans.create.use.case";
 import { LoansCreateRepository } from "./infrastructure/repository/loans.create.repository";
@@ -16,9 +15,9 @@ import { LoansDeleteRepository } from "./infrastructure/repository/loans.delete.
 import { LoansInquiryRepository } from "./infrastructure/repository/loans.inquiry.repository";
 import { LoansListRepository } from "./infrastructure/repository/loans.list.repository";
 import { LoansUpdateRepository } from "./infrastructure/repository/loans.update.repository";
-import { LoansValidateRequiredLoanCreditorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository";
-import { LoansValidateRequiredLoanDebtorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository";
-import { LoansValidateRequiredLoanUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.unique.id.repository";
+import { LoansExistsLoanCreditorUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.creditor.unique.id.repository";
+import { LoansExistsLoanDebtorUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.debtor.unique.id.repository";
+import { LoansExistsLoanUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.unique.id.repository";
 
 @Module({
   controllers: [
@@ -79,15 +78,15 @@ import { LoansValidateRequiredLoanUniqueIdRepository } from "./infrastructure/re
     },
     {
       provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
-      useClass: LoansValidateRequiredLoanCreditorUniqueIdRepository,
+      useClass: LoansExistsLoanCreditorUniqueIdRepository,
     },
     {
       provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
-      useClass: LoansValidateRequiredLoanDebtorUniqueIdRepository,
+      useClass: LoansExistsLoanDebtorUniqueIdRepository,
     },
     {
       provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
-      useClass: LoansValidateRequiredLoanUniqueIdRepository,
+      useClass: LoansExistsLoanUniqueIdRepository,
     },
   ],
 })

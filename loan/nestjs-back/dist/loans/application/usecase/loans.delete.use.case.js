@@ -20,13 +20,13 @@ let LoansDeleteUseCase = class LoansDeleteUseCase {
         this.repository = repository;
     }
     async delete(dto) {
-        const { id, debtorId, creditorId } = dto;
+        const { id, debtorUniqueId, creditorUniqueId } = dto;
         if (!id)
-            throw new common_1.BadRequestException(_400_1.NO_MATCH_LOAN_ID);
-        if (!debtorId)
-            throw new common_1.BadRequestException(_400_1.NO_MATCH_DEBTOR_ID);
-        if (!creditorId)
-            throw new common_1.BadRequestException(_400_1.NO_MATCH_CREDITOR_ID);
+            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
+        if (!debtorUniqueId)
+            throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
+        if (!creditorUniqueId)
+            throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
         return await this.repository.delete(dto);
     }
 };

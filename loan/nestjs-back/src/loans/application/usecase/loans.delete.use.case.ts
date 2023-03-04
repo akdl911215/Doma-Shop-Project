@@ -1,12 +1,11 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
-import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/loans.delete.adaptor.output.dto";
+import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.delete.adaptor.output.dto";
 import { LoansDeleteAdaptor } from "../../domain/adaptor/loans.delete.adaptor";
-import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/loans.delete.adaptor.input.dto";
+import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.delete.adaptor.input.dto";
 import {
-  NO_MATCH_CREDITOR_ID,
-  NO_MATCH_DEBTOR_ID,
-  NO_MATCH_LOAN_ID,
-  NO_MATCH_USER_ID,
+  CREDITOR_UNIQUE_ID_REQUIRED,
+  DEBTOR_UNIQUE_ID_REQUIRED,
+  UNIQUE_ID_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
@@ -20,9 +19,11 @@ export class LoansDeleteUseCase implements LoansDeleteAdaptor {
   ): Promise<LoansDeleteAdaptorOutputDto> {
     const { id, debtorUniqueId, creditorUniqueId } = dto;
 
-    if (!id) throw new BadRequestException(NO_MATCH_LOAN_ID);
-    if (!debtorUniqueId) throw new BadRequestException(NO_MATCH_DEBTOR_ID);
-    if (!creditorUniqueId) throw new BadRequestException(NO_MATCH_CREDITOR_ID);
+    if (!id) throw new BadRequestException(UNIQUE_ID_REQUIRED);
+    if (!debtorUniqueId)
+      throw new BadRequestException(DEBTOR_UNIQUE_ID_REQUIRED);
+    if (!creditorUniqueId)
+      throw new BadRequestException(CREDITOR_UNIQUE_ID_REQUIRED);
 
     return await this.repository.delete(dto);
   }

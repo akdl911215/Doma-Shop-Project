@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { LoansListAdaptorOutputDto } from "../../outbound/dtos/loans.list.adaptor.output.dto";
+import { LoansListAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.list.adaptor.output.dto";
 import { LoansListAdaptor } from "../../domain/adaptor/loans.list.adaptor";
-import { LoansListAdaptorInputDto } from "../../inbound/dtos/loans.list.adaptor.input.dto";
+import { LoansListAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.list.adaptor.input.dto";
 
 @Injectable()
 export class LoansListUseCase implements LoansListAdaptor {

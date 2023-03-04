@@ -18,7 +18,7 @@ let LoansUpdateRepository = class LoansUpdateRepository {
         this.prisma = prisma;
     }
     async update(dto) {
-        const { id, creditor, creditorId, debtor, debtorId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
+        const { id, creditorUniqueId, creditorId, debtorUniqueId, debtorId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
         const loan = await this.prisma.loans.findFirst({
             where: {
                 OR: [
@@ -26,19 +26,19 @@ let LoansUpdateRepository = class LoansUpdateRepository {
                         id,
                     },
                     {
-                        creditorId,
+                        creditorUniqueId,
                     },
                     {
-                        debtorId,
+                        debtorUniqueId,
                     },
                 ],
             },
         });
         if (!loan)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
-        const updateCreditor = creditor === "" ? loan.creditor : creditor;
+        const updateCreditorUniqueId = creditorUniqueId === "" ? loan.creditorUniqueId : creditorUniqueId;
         const updateCreditorId = creditorId === "" ? loan.creditorId : creditorId;
-        const updateDebtor = debtor === "" ? loan.debtor : debtor;
+        const updateDebtorUniqueId = debtorUniqueId === "" ? loan.debtorUniqueId : debtorUniqueId;
         const updateDebtorId = debtorId === "" ? loan.debtorId : debtorId;
         const updateTotalAmountLoan = totalAmountLoan < 0 ? loan.totalAmountLoan : totalAmountLoan;
         const updateInterest = interest < 1 ? loan.interest : interest;
@@ -48,9 +48,9 @@ let LoansUpdateRepository = class LoansUpdateRepository {
                 this.prisma.loans.update({
                     where: { id },
                     data: {
-                        creditor: updateCreditor,
+                        creditorUniqueId: updateCreditorUniqueId,
                         creditorId: updateCreditorId,
-                        debtor: updateDebtor,
+                        debtorUniqueId: updateDebtorUniqueId,
                         debtorId: updateDebtorId,
                         totalAmountLoan: updateTotalAmountLoan,
                         interest: updateInterest,

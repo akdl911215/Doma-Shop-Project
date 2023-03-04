@@ -1,11 +1,11 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
-import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/loans.inquiry.adaptor.output.dto";
+import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.inquiry.adaptor.output.dto";
 import { LoansInquiryAdaptor } from "../../domain/adaptor/loans.inquiry.adaptor";
-import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/loans.inquiry.adaptor.input.dto";
+import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.inquiry.adaptor.input.dto";
 import {
-  NO_MATCH_CREDITOR_ID,
-  NO_MATCH_DEBTOR_ID,
-  NO_MATCH_LOAN_ID,
+  CREDITOR_UNIQUE_ID_REQUIRED,
+  DEBTOR_UNIQUE_ID_REQUIRED,
+  UNIQUE_ID_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
 
 @Injectable()
@@ -19,9 +19,11 @@ export class LoansInquiryUseCase implements LoansInquiryAdaptor {
   ): Promise<LoansInquiryAdaptorOutputDto> {
     const { id, creditorUniqueId, debtorUniqueId } = dto;
 
-    if (!id) throw new BadRequestException(NO_MATCH_LOAN_ID);
-    if (!creditorUniqueId) throw new BadRequestException(NO_MATCH_CREDITOR_ID);
-    if (!debtorUniqueId) throw new BadRequestException(NO_MATCH_DEBTOR_ID);
+    if (!id) throw new BadRequestException(UNIQUE_ID_REQUIRED);
+    if (!debtorUniqueId)
+      throw new BadRequestException(DEBTOR_UNIQUE_ID_REQUIRED);
+    if (!creditorUniqueId)
+      throw new BadRequestException(CREDITOR_UNIQUE_ID_REQUIRED);
 
     return await this.repository.inquiry(dto);
   }

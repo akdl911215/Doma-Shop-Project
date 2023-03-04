@@ -3,7 +3,7 @@ import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { LoansCreateRepository } from "../../infrastructure/repository/loans.create.repository";
 import { LoansCreateUseCase } from "./loans.create.use.case";
-import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/loans.create.adaptor.input.dto";
+import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.create.adaptor.input.dto";
 
 describe("LoansCreateUseCase", () => {
   let service: LoansCreateUseCase;

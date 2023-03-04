@@ -23,7 +23,7 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansModel.prototype, "debtor", void 0);
+], LoansModel.prototype, "debtorId", void 0);
 __decorate([
     (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
@@ -32,7 +32,7 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansModel.prototype, "debtorId", void 0);
+], LoansModel.prototype, "debtorUniqueId", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
@@ -41,7 +41,7 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansModel.prototype, "creditor", void 0);
+], LoansModel.prototype, "creditorId", void 0);
 __decorate([
     (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
@@ -50,7 +50,7 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansModel.prototype, "creditorId", void 0);
+], LoansModel.prototype, "creditorUniqueId", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),

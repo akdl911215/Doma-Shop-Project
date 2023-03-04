@@ -18,31 +18,36 @@ let LoansCreateRepository = class LoansCreateRepository {
         this.prisma = prisma;
     }
     async create(dto) {
-        const { debtor, debtorId, creditor, creditorId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
-        const dbDebtor = await this.prisma.users.findUnique({
-            where: { id: debtorId },
+        const { debtorUniqueId, debtorId, creditorUniqueId, creditorId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
+        const searchDebtor = await this.prisma.users.findUnique({
+            where: { id: debtorUniqueId },
         });
-        const dbCreditor = await this.prisma.users.findUnique({
-            where: { id: creditorId },
+        const searchCreditor = await this.prisma.users.findUnique({
+            where: { id: creditorUniqueId },
         });
-        if (!dbDebtor || !dbCreditor)
+        if (!searchDebtor || !searchCreditor)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
         try {
             const [createLoan] = await this.prisma.$transaction([
-                this.prisma.debtors.create({
-                    data: {
-                        authId,
-                    },
-                }),
                 this.prisma.loans.create({
                     data: {
-                        debtor,
+                        debtorUniqueId,
                         debtorId,
-                        creditor,
+                        creditorUniqueId,
                         creditorId,
                         totalAmountLoan,
                         loanRepaymentDate,
                         interest,
+                    },
+                }),
+                this.prisma.debtors.create({
+                    data: {
+                        debtorUniqueId,
+                    },
+                }),
+                this.prisma.creditors.create({
+                    data: {
+                        creditorUniqueId,
                     },
                 }),
             ]);

@@ -17,7 +17,7 @@ const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const _201_1 = require("../../../_common/constants/http/success/201");
 const _500_1 = require("../../../_common/constants/http/errors/500");
-const loans_create_adaptor_input_dto_1 = require("../../inbound/dtos/loans.create.adaptor.input.dto");
+const loans_create_adaptor_input_dto_1 = require("../../inbound/dtos/adaptor/loans.create.adaptor.input.dto");
 let LoansCreateController = class LoansCreateController {
     constructor(useCase) {
         this.useCase = useCase;

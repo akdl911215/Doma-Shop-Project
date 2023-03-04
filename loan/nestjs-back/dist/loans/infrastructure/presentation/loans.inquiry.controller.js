@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansInquiryController = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
-const loans_inquiry_adaptor_input_dto_1 = require("../../inbound/dtos/loans.inquiry.adaptor.input.dto");
+const loans_inquiry_adaptor_input_dto_1 = require("../../inbound/dtos/adaptor/loans.inquiry.adaptor.input.dto");
 const _200_1 = require("../../../_common/constants/http/success/200");
 const _400_1 = require("../../../_common/constants/http/errors/400");
 const _500_1 = require("../../../_common/constants/http/errors/500");
@@ -39,7 +39,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 200, description: `${_200_1.TWO_HUNDRED_OK}` }),
     (0, swagger_1.ApiResponse)({
         status: 400,
-        description: `${_400_1.NO_MATCH_LOAN_ID}, ${_400_1.NO_MATCH_CREDITOR_ID}, ${_400_1.NO_MATCH_DEBTOR_ID}`,
+        description: `${_400_1.NO_MATCH_LOAN_ID}, ${_400_1.NO_MATCH_CREDITOR_UNIQUE_ID}, ${_400_1.NO_MATCH_DEBTOR_UNIQUE_ID}`,
     }),
     (0, swagger_1.ApiResponse)({
         status: 404,

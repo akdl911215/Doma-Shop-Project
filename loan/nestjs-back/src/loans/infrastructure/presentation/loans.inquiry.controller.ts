@@ -7,12 +7,12 @@ import {
 } from "@nestjs/swagger";
 import { Controller, Get, Inject, Param } from "@nestjs/common";
 import { LoansInquiryAdaptor } from "../../domain/adaptor/loans.inquiry.adaptor";
-import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/loans.inquiry.adaptor.input.dto";
-import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/loans.inquiry.adaptor.output.dto";
+import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.inquiry.adaptor.input.dto";
+import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.inquiry.adaptor.output.dto";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import {
-  NO_MATCH_CREDITOR_ID,
-  NO_MATCH_DEBTOR_ID,
+  NO_MATCH_CREDITOR_UNIQUE_ID,
+  NO_MATCH_DEBTOR_UNIQUE_ID,
   NO_MATCH_LOAN_ID,
 } from "../../../_common/constants/http/errors/400";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
@@ -40,7 +40,7 @@ export class LoansInquiryController {
   @ApiResponse({ status: 200, description: `${TWO_HUNDRED_OK}` })
   @ApiResponse({
     status: 400,
-    description: `${NO_MATCH_LOAN_ID}, ${NO_MATCH_CREDITOR_ID}, ${NO_MATCH_DEBTOR_ID}`,
+    description: `${NO_MATCH_LOAN_ID}, ${NO_MATCH_CREDITOR_UNIQUE_ID}, ${NO_MATCH_DEBTOR_UNIQUE_ID}`,
   })
   @ApiResponse({
     status: 404,

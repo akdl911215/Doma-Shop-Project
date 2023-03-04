@@ -20,23 +20,23 @@ let LoansCreateUseCase = class LoansCreateUseCase {
         this.repository = repository;
     }
     async create(dto) {
-        const { creditorId, creditor, debtorId, debtor, totalAmountLoan, loanRepaymentDate, interest, } = dto;
-        function confirmCreditorInput(creditorId, creditor) {
-            if (!creditorId || !creditor)
+        const { creditorId, creditorUniqueId, debtorId, debtorUniqueId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
+        function confirmCreditorInput(creditorId, creditorUniqueId) {
+            if (!creditorId || !creditorUniqueId)
                 return true;
             else
                 return false;
         }
-        if (confirmCreditorInput(creditorId, creditor))
-            throw new common_1.BadRequestException(_400_1.CREDITOR_REQUIRED);
-        function confirmDebtorInput(debtorId, debtor) {
-            if (!debtorId || !debtor)
+        if (confirmCreditorInput(creditorId, creditorUniqueId))
+            throw new common_1.BadRequestException(_400_1.CREDITOR_ID_REQUIRED);
+        function confirmDebtorInput(debtorId, debtorUniqueId) {
+            if (!debtorId || !debtorUniqueId)
                 return true;
             else
                 return false;
         }
-        if (confirmDebtorInput(debtorId, debtor))
-            throw new common_1.BadRequestException(_400_1.DEBTOR_REQUIRED);
+        if (confirmDebtorInput(debtorId, debtorUniqueId))
+            throw new common_1.BadRequestException(_400_1.DEBTOR_ID_REQUIRED);
         function confirmTotalAmountLoanInput(totalAmountLoan) {
             if (totalAmountLoan === 0)
                 return true;

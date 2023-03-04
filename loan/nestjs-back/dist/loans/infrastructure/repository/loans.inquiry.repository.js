@@ -18,14 +18,14 @@ let LoansInquiryRepository = class LoansInquiryRepository {
         this.prisma = prisma;
     }
     async inquiry(dto) {
-        const { id, debtorId, creditorId } = dto;
+        const { id, debtorUniqueId, creditorUniqueId } = dto;
         const debtor = await this.prisma.users.findUnique({
-            where: { id: debtorId },
+            where: { id: debtorUniqueId },
         });
         if (!debtor)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_DEBTOR);
         const creditor = await this.prisma.users.findUnique({
-            where: { id: creditorId },
+            where: { id: creditorUniqueId },
         });
         if (!creditor)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_CREDITOR);
@@ -36,10 +36,10 @@ let LoansInquiryRepository = class LoansInquiryRepository {
                         id,
                     },
                     {
-                        creditorId,
+                        creditorUniqueId,
                     },
                     {
-                        debtorId,
+                        debtorUniqueId,
                     },
                 ],
             },
