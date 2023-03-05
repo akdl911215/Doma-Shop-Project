@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.creditor.inquiry.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.debtor.inquiry.repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loans/domain/interface/loans.exists.loan.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.exists.loan.interface.input.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.interface.output.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.create.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.create.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.creditor.inquiry.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.creditor.inquiry.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.debtor.inquiry.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.debtor.inquiry.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.delete.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.delete.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/loans.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/loans.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +192,7 @@
       <workItem from="1677462719479" duration="9638000" />
       <workItem from="1677494332054" duration="6435000" />
       <workItem from="1677725202435" duration="3278000" />
-      <workItem from="1677905623175" duration="9488000" />
+      <workItem from="1677905623175" duration="11057000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
