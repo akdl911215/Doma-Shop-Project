@@ -19,6 +19,7 @@ const _200_1 = require("../../../_common/constants/http/success/200");
 const _500_1 = require("../../../_common/constants/http/errors/500");
 const loans_update_adaptor_input_dto_1 = require("../../inbound/dtos/adaptor/loans.update.adaptor.input.dto");
 const _404_1 = require("../../../_common/constants/http/errors/404");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansUpdateController = class LoansUpdateController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -36,6 +37,7 @@ __decorate([
         description: "대출 수정 절차",
     }),
     (0, swagger_1.ApiResponse)({ status: 200, description: `${_200_1.TWO_HUNDRED_OK}` }),
+    (0, swagger_1.ApiResponse)({ status: 400, description: `${_400_1.UNIQUE_ID_REQUIRED}` }),
     (0, swagger_1.ApiResponse)({ status: 404, description: `${_404_1.NOTFOUND_LOAN}` }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     (0, swagger_1.ApiBody)({ type: loans_update_adaptor_input_dto_1.LoansUpdateAdaptorInputDto }),

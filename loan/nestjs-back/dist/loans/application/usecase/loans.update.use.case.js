@@ -14,18 +14,36 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansUpdateUseCase = void 0;
 const common_1 = require("@nestjs/common");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansUpdateUseCase = class LoansUpdateUseCase {
-    constructor(repository) {
+    constructor(repository, existsDbLoanWith) {
         this.repository = repository;
+        this.existsDbLoanWith = existsDbLoanWith;
     }
     async update(dto) {
-        return await this.repository.update(dto);
+        const { id, creditorId, creditorUniqueId, debtorId, debtorUniqueId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
+        if (!id)
+            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
+        const loan = await this.existsDbLoanWith.existsLoan({ id });
+        const updateCreditorUniqueId = creditorUniqueId === ""
+            ? loan.response.creditorUniqueId
+            : creditorUniqueId;
+        const updateCreditorId = creditorId === "" ? loan.response.creditorId : creditorId;
+        const updateDebtorUniqueId = debtorUniqueId === "" ? loan.response.debtorUniqueId : debtorUniqueId;
+        const updateDebtorId = debtorId === "" ? loan.response.debtorId : debtorId;
+        const updateTotalAmountLoan = totalAmountLoan < 0 ? loan.response.totalAmountLoan : totalAmountLoan;
+        const updateInterest = interest < 1 ? loan.response.interest : interest;
+        const updateLoanRepaymentDate = loanRepaymentDate === ""
+            ? loan.response.loanRepaymentDate
+            : loanRepaymentDate;
+        return await this.repository.update(Object.assign(Object.assign({}, dto), { creditorUniqueId: updateCreditorUniqueId, creditorId: updateCreditorId, debtorUniqueId: updateDebtorUniqueId, debtorId: updateDebtorId, totalAmountLoan: updateTotalAmountLoan, interest: updateInterest, loanRepaymentDate: updateLoanRepaymentDate }));
     }
 };
 LoansUpdateUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("UPDATE")),
-    __metadata("design:paramtypes", [Object])
+    __param(1, (0, common_1.Inject)("EXISTS_LOAN")),
+    __metadata("design:paramtypes", [Object, Object])
 ], LoansUpdateUseCase);
 exports.LoansUpdateUseCase = LoansUpdateUseCase;
 //# sourceMappingURL=loans.update.use.case.js.map

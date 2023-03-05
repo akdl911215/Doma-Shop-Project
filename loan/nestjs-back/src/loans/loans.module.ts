@@ -25,12 +25,17 @@ import { LoansDebtorInquiryUseCase } from "./application/usecase/loans.debtor.in
 import { LoansCreditorInquiryUseCase } from "./application/usecase/loans.creditor.inquiry.use.case";
 import { LoansCreditorInquiryRepository } from "./infrastructure/repository/loans.creditor.inquiry.repository";
 import { LoansDebtorInquiryRepository } from "./infrastructure/repository/loans.debtor.inquiry.repository";
+import { LoansExistsLoanRepository } from "./infrastructure/repository/loans.exists.loan.repository";
+import { LoansCreditorInquiryController } from "./infrastructure/presentation/loans.creditor.inquiry.controller";
+import { LoansDebtorInquiryController } from "./infrastructure/presentation/loans.debtor.inquiry.controller";
 
 @Module({
   controllers: [
     LoansListController,
     LoansCreateController,
-    LoansInquiryController,
+    // LoansInquiryController,
+    LoansCreditorInquiryController,
+    LoansDebtorInquiryController,
     LoansDeleteController,
     LoansUpdateController,
   ],
@@ -110,6 +115,10 @@ import { LoansDebtorInquiryRepository } from "./infrastructure/repository/loans.
     {
       provide: "EXISTS_LOAN_UNIQUE_ID",
       useClass: LoansExistsLoanUniqueIdRepository,
+    },
+    {
+      provide: "EXISTS_LOAN",
+      useClass: LoansExistsLoanRepository,
     },
     {
       provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",

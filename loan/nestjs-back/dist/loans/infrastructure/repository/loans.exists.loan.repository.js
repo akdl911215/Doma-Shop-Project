@@ -9,58 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoansDeleteRepository = void 0;
+exports.LoansExistsLoanRepository = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../../../_common/infrastructures/prisma/prisma.service");
 const _404_1 = require("../../../_common/constants/http/errors/404");
-let LoansDeleteRepository = class LoansDeleteRepository {
+let LoansExistsLoanRepository = class LoansExistsLoanRepository {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async delete(dto) {
-        const { id, debtorUniqueId, creditorUniqueId } = dto;
-        const searchLoan = await this.prisma.loans.findFirst({
+    async existsLoan(dto) {
+        const { id } = dto;
+        const loan = await this.prisma.loans.findFirst({
             where: {
-                AND: [
-                    {
-                        id,
-                    },
-                    {
-                        debtorUniqueId,
-                    },
-                    {
-                        creditorUniqueId,
-                    },
-                ],
+                id,
             },
         });
-        if (!!searchLoan) {
-            try {
-                await this.prisma.$transaction([
-                    this.prisma.loans.delete({
-                        where: { id },
-                    }),
-                ]);
-                return { response: { loanErase: true } };
-            }
-            catch (e) {
-                if (e instanceof common_1.InternalServerErrorException) {
-                    throw new common_1.InternalServerErrorException(e);
-                }
-                else {
-                    throw new Error(`${e}`);
-                }
-            }
-        }
-        else {
+        if (!loan)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
-        }
+        return { response: loan };
     }
 };
-LoansDeleteRepository = __decorate([
+LoansExistsLoanRepository = __decorate([
     (0, common_1.Injectable)(),
     (0, common_1.Dependencies)([prisma_service_1.PrismaService]),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], LoansDeleteRepository);
-exports.LoansDeleteRepository = LoansDeleteRepository;
-//# sourceMappingURL=loans.delete.repository.js.map
+], LoansExistsLoanRepository);
+exports.LoansExistsLoanRepository = LoansExistsLoanRepository;
+//# sourceMappingURL=loans.exists.loan.repository.js.map

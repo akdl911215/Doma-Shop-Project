@@ -18,6 +18,7 @@ const swagger_1 = require("@nestjs/swagger");
 const _201_1 = require("../../../_common/constants/http/success/201");
 const _500_1 = require("../../../_common/constants/http/errors/500");
 const loans_create_adaptor_input_dto_1 = require("../../inbound/dtos/adaptor/loans.create.adaptor.input.dto");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansCreateController = class LoansCreateController {
     constructor(useCase) {
         this.useCase = useCase;
@@ -32,6 +33,10 @@ __decorate([
     (0, swagger_1.ApiConsumes)("application/x-www-form-urlencoded"),
     (0, swagger_1.ApiOperation)({ summary: "USER REGISTER API", description: "회원 가입 절차" }),
     (0, swagger_1.ApiResponse)({ status: 201, description: `${_201_1.CREATE_SUCCESS}` }),
+    (0, swagger_1.ApiResponse)({
+        status: 400,
+        description: `${_400_1.CREDITOR_ID_REQUIRED}, ${_400_1.CREDITOR_UNIQUE_ID_REQUIRED}, ${_400_1.DEBTOR_ID_REQUIRED}, ${_400_1.DEBTOR_UNIQUE_ID_REQUIRED}, ${_400_1.LOAN_REQUIRED}, ${_400_1.LOAN_REPAYMENT_DATE_REQUIRED}, ${_400_1.LOAN_INTEREST_REQUIRED}`,
+    }),
     (0, swagger_1.ApiResponse)({ status: 500, description: `${_500_1.INTERNAL_SERVER_ERROR}` }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),

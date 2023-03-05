@@ -12,7 +12,6 @@ const loans_create_controller_1 = require("./infrastructure/presentation/loans.c
 const loans_create_use_case_1 = require("./application/usecase/loans.create.use.case");
 const loans_create_repository_1 = require("./infrastructure/repository/loans.create.repository");
 const prisma_service_1 = require("../_common/infrastructures/prisma/prisma.service");
-const loans_inquiry_controller_1 = require("./infrastructure/presentation/loans.inquiry.controller");
 const loans_list_controller_1 = require("./infrastructure/presentation/loans.list.controller");
 const loans_delete_controller_1 = require("./infrastructure/presentation/loans.delete.controller");
 const loans_update_controller_1 = require("./infrastructure/presentation/loans.update.controller");
@@ -30,6 +29,13 @@ const loans_exists_loan_unique_id_repository_1 = require("./infrastructure/repos
 const loans_validate_required_loan_creditor_unique_id_repository_1 = require("./infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository");
 const loans_validate_required_loan_debtor_unique_id_repository_1 = require("./infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository");
 const loans_validate_required_loan_unique_id_repository_1 = require("./infrastructure/repository/loans.validate.required.loan.unique.id.repository");
+const loans_debtor_inquiry_use_case_1 = require("./application/usecase/loans.debtor.inquiry.use.case");
+const loans_creditor_inquiry_use_case_1 = require("./application/usecase/loans.creditor.inquiry.use.case");
+const loans_creditor_inquiry_repository_1 = require("./infrastructure/repository/loans.creditor.inquiry.repository");
+const loans_debtor_inquiry_repository_1 = require("./infrastructure/repository/loans.debtor.inquiry.repository");
+const loans_exists_loan_repository_1 = require("./infrastructure/repository/loans.exists.loan.repository");
+const loans_creditor_inquiry_controller_1 = require("./infrastructure/presentation/loans.creditor.inquiry.controller");
+const loans_debtor_inquiry_controller_1 = require("./infrastructure/presentation/loans.debtor.inquiry.controller");
 let LoansModule = class LoansModule {
 };
 LoansModule = __decorate([
@@ -37,7 +43,8 @@ LoansModule = __decorate([
         controllers: [
             loans_list_controller_1.LoansListController,
             loans_create_controller_1.LoansCreateController,
-            loans_inquiry_controller_1.LoansInquiryController,
+            loans_creditor_inquiry_controller_1.LoansCreditorInquiryController,
+            loans_debtor_inquiry_controller_1.LoansDebtorInquiryController,
             loans_delete_controller_1.LoansDeleteController,
             loans_update_controller_1.LoansUpdateController,
         ],
@@ -56,12 +63,20 @@ LoansModule = __decorate([
                 useClass: loans_update_use_case_1.LoansUpdateUseCase,
             },
             {
+                provide: "USE_CASE_DELETE",
+                useClass: loans_delete_use_case_1.LoansDeleteUseCase,
+            },
+            {
                 provide: "USE_CASE_INQUIRY",
                 useClass: loans_inquiry_use_case_1.LoansInquiryUseCase,
             },
             {
-                provide: "USE_CASE_DELETE",
-                useClass: loans_delete_use_case_1.LoansDeleteUseCase,
+                provide: "USE_CASE_DEBTOR_INQUIRY",
+                useClass: loans_debtor_inquiry_use_case_1.LoansDebtorInquiryUseCase,
+            },
+            {
+                provide: "USE_CASE_CREDITOR_INQUIRY",
+                useClass: loans_creditor_inquiry_use_case_1.LoansCreditorInquiryUseCase,
             },
             {
                 provide: "CREATE",
@@ -74,6 +89,14 @@ LoansModule = __decorate([
             {
                 provide: "INQUIRY",
                 useClass: loans_inquiry_repository_1.LoansInquiryRepository,
+            },
+            {
+                provide: "CREDITOR_INQUIRY",
+                useClass: loans_creditor_inquiry_repository_1.LoansCreditorInquiryRepository,
+            },
+            {
+                provide: "DEBTOR_INQUIRY",
+                useClass: loans_debtor_inquiry_repository_1.LoansDebtorInquiryRepository,
             },
             {
                 provide: "LIST",
@@ -94,6 +117,10 @@ LoansModule = __decorate([
             {
                 provide: "EXISTS_LOAN_UNIQUE_ID",
                 useClass: loans_exists_loan_unique_id_repository_1.LoansExistsLoanUniqueIdRepository,
+            },
+            {
+                provide: "EXISTS_LOAN",
+                useClass: loans_exists_loan_repository_1.LoansExistsLoanRepository,
             },
             {
                 provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",

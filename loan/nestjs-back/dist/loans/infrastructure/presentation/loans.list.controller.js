@@ -28,7 +28,7 @@ let LoansListController = class LoansListController {
     }
 };
 __decorate([
-    (0, common_1.Get)("/list"),
+    (0, common_1.Get)("/"),
     (0, swagger_1.ApiOperation)({
         summary: "LOAN LIST API",
         description: "대출 리스트 조회",

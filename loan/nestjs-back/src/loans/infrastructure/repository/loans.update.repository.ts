@@ -46,31 +46,18 @@ export class LoansUpdateRepository implements LoansUpdateAdaptor {
     });
     if (!loan) throw new NotFoundException(NOTFOUND_LOAN);
 
-    const updateCreditorUniqueId: string =
-      creditorUniqueId === "" ? loan.creditorUniqueId : creditorUniqueId;
-    const updateCreditorId: string =
-      creditorId === "" ? loan.creditorId : creditorId;
-    const updateDebtorUniqueId: string =
-      debtorUniqueId === "" ? loan.debtorUniqueId : debtorUniqueId;
-    const updateDebtorId: string = debtorId === "" ? loan.debtorId : debtorId;
-    const updateTotalAmountLoan: number =
-      totalAmountLoan < 0 ? loan.totalAmountLoan : totalAmountLoan;
-    const updateInterest: number = interest < 1 ? loan.interest : interest;
-    const updateLoanRepaymentDate: string =
-      loanRepaymentDate === "" ? loan.loanRepaymentDate : loanRepaymentDate;
-
     try {
       const [updateLoan] = await this.prisma.$transaction([
         this.prisma.loans.update({
           where: { id },
           data: {
-            creditorUniqueId: updateCreditorUniqueId,
-            creditorId: updateCreditorId,
-            debtorUniqueId: updateDebtorUniqueId,
-            debtorId: updateDebtorId,
-            totalAmountLoan: updateTotalAmountLoan,
-            interest: updateInterest,
-            loanRepaymentDate: updateLoanRepaymentDate,
+            creditorUniqueId,
+            creditorId,
+            debtorUniqueId,
+            debtorId,
+            totalAmountLoan,
+            interest,
+            loanRepaymentDate,
           },
         }),
       ]);

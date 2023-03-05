@@ -13,21 +13,11 @@ export class LoansExistsLoanRepository implements LoansExistsLoanInterface {
   public async existsLoan(
     dto: LoansExistsLoanInterfaceInputDto
   ): Promise<LoansExistsLoanInterfaceOutputDto> {
-    const { id, debtorUniqueId, creditorUniqueId } = dto;
+    const { id } = dto;
 
     const loan = await this.prisma.loans.findFirst({
       where: {
-        OR: [
-          {
-            id,
-          },
-          {
-            creditorUniqueId,
-          },
-          {
-            debtorUniqueId,
-          },
-        ],
+        id,
       },
     });
     if (!loan) throw new NotFoundException(NOTFOUND_LOAN);

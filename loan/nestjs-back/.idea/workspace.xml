@@ -5,12 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/src/loans/domain/interface/loans.exists.loan.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.exists.loan.interface.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.interface.output.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combined.log" beforeDir="false" afterPath="$PROJECT_DIR$/combined.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.update.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.update.use.case.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.create.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.create.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.create.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.create.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.creditor.inquiry.controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.creditor.inquiry.controller.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.creditor.inquiry.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.creditor.inquiry.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.creditor.inquiry.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.creditor.inquiry.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.debtor.inquiry.controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.debtor.inquiry.controller.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.debtor.inquiry.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.debtor.inquiry.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.debtor.inquiry.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.debtor.inquiry.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.update.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.update.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.update.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/presentation/loans.update.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.delete.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.delete.repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.delete.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.delete.repository.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.update.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.update.repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.update.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.update.repository.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/loans.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/loans.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/loans/loans.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/loans.module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.exists.loan.interface.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.exists.loan.interface.input.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.list.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.list.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.update.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/presentation/loans.update.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.update.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.update.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/loans.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/loans.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +226,7 @@
       <workItem from="1677462719479" duration="9638000" />
       <workItem from="1677494332054" duration="6435000" />
       <workItem from="1677725202435" duration="3278000" />
-      <workItem from="1677905623175" duration="11057000" />
+      <workItem from="1677905623175" duration="13595000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
@@ -229,11 +263,6 @@
           <url>file://$PROJECT_DIR$/src/mainBoard/interceptors/main.boards.interface.ts</url>
           <line>18</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/loans/infrastructure/repository/loans.list.repository.ts</url>
-          <line>29</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

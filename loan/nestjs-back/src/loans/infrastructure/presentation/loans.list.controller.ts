@@ -19,7 +19,7 @@ export class LoansListController {
     @Inject("USE_CASE_LIST") private readonly useCase: LoansListAdaptor
   ) {}
 
-  @Get("/list")
+  @Get("/")
   @ApiOperation({
     summary: "LOAN LIST API",
     description: "대출 리스트 조회",

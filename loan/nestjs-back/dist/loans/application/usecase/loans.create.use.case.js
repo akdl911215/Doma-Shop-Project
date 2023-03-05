@@ -16,50 +16,26 @@ exports.LoansCreateUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansCreateUseCase = class LoansCreateUseCase {
-    constructor(repository) {
+    constructor(repository, compareDbCreditorUniqueIdWith, compareDbDebtorUniqueIdWith) {
         this.repository = repository;
+        this.compareDbCreditorUniqueIdWith = compareDbCreditorUniqueIdWith;
+        this.compareDbDebtorUniqueIdWith = compareDbDebtorUniqueIdWith;
     }
     async create(dto) {
         const { creditorId, creditorUniqueId, debtorId, debtorUniqueId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
-        function confirmCreditorInput(creditorId, creditorUniqueId) {
-            if (!creditorId || !creditorUniqueId)
-                return true;
-            else
-                return false;
-        }
-        if (confirmCreditorInput(creditorId, creditorUniqueId))
+        if (!creditorId)
             throw new common_1.BadRequestException(_400_1.CREDITOR_ID_REQUIRED);
-        function confirmDebtorInput(debtorId, debtorUniqueId) {
-            if (!debtorId || !debtorUniqueId)
-                return true;
-            else
-                return false;
-        }
-        if (confirmDebtorInput(debtorId, debtorUniqueId))
+        await this.compareDbCreditorUniqueIdWith.validateRequiredLoanCreditorUniqueId({ creditorUniqueId });
+        if (!debtorId)
             throw new common_1.BadRequestException(_400_1.DEBTOR_ID_REQUIRED);
-        function confirmTotalAmountLoanInput(totalAmountLoan) {
-            if (totalAmountLoan === 0)
-                return true;
-            else
-                return false;
-        }
-        if (confirmTotalAmountLoanInput(totalAmountLoan))
+        await this.compareDbDebtorUniqueIdWith.validateRequiredLoanDebtorUniqueId({
+            debtorUniqueId,
+        });
+        if (totalAmountLoan === 0)
             throw new common_1.BadRequestException(_400_1.LOAN_REQUIRED);
-        function confirmLoanRepaymentDate(loanRepaymentDate) {
-            if (!loanRepaymentDate)
-                return true;
-            else
-                return false;
-        }
-        if (confirmLoanRepaymentDate(loanRepaymentDate))
+        if (!loanRepaymentDate)
             throw new common_1.BadRequestException(_400_1.LOAN_REPAYMENT_DATE_REQUIRED);
-        function confirmInterest(interest) {
-            if (interest <= 0)
-                return true;
-            else
-                return false;
-        }
-        if (confirmInterest(interest))
+        if (interest <= 0)
             throw new common_1.BadRequestException(_400_1.LOAN_INTEREST_REQUIRED);
         return await this.repository.create(dto);
     }
@@ -67,7 +43,9 @@ let LoansCreateUseCase = class LoansCreateUseCase {
 LoansCreateUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("CREATE")),
-    __metadata("design:paramtypes", [Object])
+    __param(1, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID")),
+    __param(2, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID")),
+    __metadata("design:paramtypes", [Object, Object, Object])
 ], LoansCreateUseCase);
 exports.LoansCreateUseCase = LoansCreateUseCase;
 //# sourceMappingURL=loans.create.use.case.js.map

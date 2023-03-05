@@ -15,18 +15,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansCreditorInquiryUseCase = void 0;
 const common_1 = require("@nestjs/common");
 let LoansCreditorInquiryUseCase = class LoansCreditorInquiryUseCase {
-    constructor(repository) {
+    constructor(repository, compareDbUniqueIdWith, compareExistsDbUniqueIdWith, compareDbCreditorUniqueIdWith, compareExistsDbCreditorUniqueIdWith) {
         this.repository = repository;
+        this.compareDbUniqueIdWith = compareDbUniqueIdWith;
+        this.compareExistsDbUniqueIdWith = compareExistsDbUniqueIdWith;
+        this.compareDbCreditorUniqueIdWith = compareDbCreditorUniqueIdWith;
+        this.compareExistsDbCreditorUniqueIdWith = compareExistsDbCreditorUniqueIdWith;
     }
     async creditorInquiry(dto) {
         const { id, creditorUniqueId } = dto;
-        return Promise.resolve(undefined);
+        await this.compareDbUniqueIdWith.validateRequiredLoanUniqueId({ id });
+        await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
+        await this.compareDbCreditorUniqueIdWith.validateRequiredLoanCreditorUniqueId({ creditorUniqueId });
+        await this.compareExistsDbCreditorUniqueIdWith.existsLoanCreditorUniqueId({
+            creditorUniqueId,
+        });
+        return this.repository.creditorInquiry(dto);
     }
 };
 LoansCreditorInquiryUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("CREDITOR_INQUIRY")),
-    __metadata("design:paramtypes", [Object])
+    __param(1, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_UNIQUE_ID")),
+    __param(2, (0, common_1.Inject)("EXISTS_LOAN_UNIQUE_ID")),
+    __param(3, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID")),
+    __param(4, (0, common_1.Inject)("EXISTS_LOAN_CREDITOR_UNIQUE_ID")),
+    __metadata("design:paramtypes", [Object, Object, Object, Object, Object])
 ], LoansCreditorInquiryUseCase);
 exports.LoansCreditorInquiryUseCase = LoansCreditorInquiryUseCase;
 //# sourceMappingURL=loans.creditor.inquiry.use.case.js.map
