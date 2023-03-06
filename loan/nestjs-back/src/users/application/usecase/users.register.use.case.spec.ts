@@ -160,11 +160,11 @@ describe("UsersRegisterUseCase", () => {
 
     it("success should user register", async () => {
       dto = {
-        userId: "bbb",
-        nickname: "bbbNick",
+        userId: "ccc",
+        nickname: "cccNick",
         name: "leejunghyun",
         password: "qwer!234",
-        phone: "01009098712",
+        phone: "01009098212",
         address: "aaaADaress",
         confirmPassword: "qwer!234",
       };

@@ -31,7 +31,7 @@ export class LoansUpdateRepository implements LoansUpdateAdaptor {
 
     const loan = await this.prisma.loans.findFirst({
       where: {
-        OR: [
+        AND: [
           {
             id,
           },

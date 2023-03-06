@@ -19,7 +19,7 @@ export class LoansCreditorInquiryRepository
 
     const loan = await this.prisma.loans.findFirst({
       where: {
-        OR: [
+        AND: [
           {
             id,
           },

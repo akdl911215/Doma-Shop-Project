@@ -17,7 +17,7 @@ export class LoansInquiryRepository implements LoansInquiryAdaptor {
 
     const loan = await this.prisma.loans.findFirst({
       where: {
-        OR: [
+        AND: [
           {
             id,
           },

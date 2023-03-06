@@ -4,6 +4,8 @@ import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.se
 import { LoansCreateRepository } from "../../infrastructure/repository/loans.create.repository";
 import { LoansCreateUseCase } from "./loans.create.use.case";
 import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.create.adaptor.input.dto";
+import { LoansValidateRequiredLoanCreditorUniqueIdRepository } from "../../infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository";
+import { LoansValidateRequiredLoanDebtorUniqueIdRepository } from "../../infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository";
 
 describe("LoansCreateUseCase", () => {
   let service: LoansCreateUseCase;
@@ -14,6 +16,14 @@ describe("LoansCreateUseCase", () => {
         LoansCreateUseCase,
         PrismaService,
         { provide: "CREATE", useClass: LoansCreateRepository },
+        {
+          provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
+          useClass: LoansValidateRequiredLoanCreditorUniqueIdRepository,
+        },
+        {
+          provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
+          useClass: LoansValidateRequiredLoanDebtorUniqueIdRepository,
+        },
       ],
     }).compile();
 
@@ -211,8 +221,8 @@ describe("LoansCreateUseCase", () => {
 
     it("success should loan create", async () => {
       dto = {
-        debtorId: "aaa",
-        debtorUniqueId: "c9f572eb-5d13-4af3-ba7a-d8ff44024d3c",
+        debtorId: "ccc",
+        debtorUniqueId: "3a94252c-3b7a-4449-9b67-7e5acb6c228d",
         creditorId: "bbb",
         creditorUniqueId: "5ac63dad-1e52-4a29-8684-72535ae7af6e",
         totalAmountLoan: 2000000000,
