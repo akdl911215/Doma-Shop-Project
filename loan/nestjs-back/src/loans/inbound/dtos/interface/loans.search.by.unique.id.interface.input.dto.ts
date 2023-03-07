@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsUUID } from "class-validator";
 
-export class LoansValidateRequiredLoanUniqueIdInterfaceInputDto {
+export class LoansSearchByUniqueIdInterfaceInputDto {
   @IsUUID()
   @IsNotEmpty()
   public id!: string;

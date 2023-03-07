@@ -16,21 +16,23 @@ exports.LoansCreateUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansCreateUseCase = class LoansCreateUseCase {
-    constructor(repository, compareDbCreditorUniqueIdWith, compareDbDebtorUniqueIdWith) {
+    constructor(repository, compareExistsDBLoanDebtorUniqueIdWith, compareExistsDBLoanCreditorUniqueIdWith) {
         this.repository = repository;
-        this.compareDbCreditorUniqueIdWith = compareDbCreditorUniqueIdWith;
-        this.compareDbDebtorUniqueIdWith = compareDbDebtorUniqueIdWith;
+        this.compareExistsDBLoanDebtorUniqueIdWith = compareExistsDBLoanDebtorUniqueIdWith;
+        this.compareExistsDBLoanCreditorUniqueIdWith = compareExistsDBLoanCreditorUniqueIdWith;
     }
     async create(dto) {
         const { creditorId, creditorUniqueId, debtorId, debtorUniqueId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
         if (!creditorId)
             throw new common_1.BadRequestException(_400_1.CREDITOR_ID_REQUIRED);
-        await this.compareDbCreditorUniqueIdWith.validateRequiredLoanCreditorUniqueId({ creditorUniqueId });
+        const { response: { existsLoanCreditorUniqueId }, } = await this.compareExistsDBLoanCreditorUniqueIdWith.existsLoanCreditorUniqueId({ creditorUniqueId });
+        if (existsLoanCreditorUniqueId)
+            throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
         if (!debtorId)
             throw new common_1.BadRequestException(_400_1.DEBTOR_ID_REQUIRED);
-        await this.compareDbDebtorUniqueIdWith.validateRequiredLoanDebtorUniqueId({
-            debtorUniqueId,
-        });
+        const { response: { existsLoanDebtorUniqueId }, } = await this.compareExistsDBLoanDebtorUniqueIdWith.existsLoanDebtorUniqueId({ debtorUniqueId });
+        if (existsLoanDebtorUniqueId)
+            throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
         if (totalAmountLoan === 0)
             throw new common_1.BadRequestException(_400_1.LOAN_REQUIRED);
         if (!loanRepaymentDate)
@@ -43,8 +45,8 @@ let LoansCreateUseCase = class LoansCreateUseCase {
 LoansCreateUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("CREATE")),
-    __param(1, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID")),
-    __param(2, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID")),
+    __param(1, (0, common_1.Inject)("EXISTS_LOAN_DEBTOR_UNIQUE_ID")),
+    __param(2, (0, common_1.Inject)("EXISTS_LOAN_CREDITOR_UNIQUE_ID")),
     __metadata("design:paramtypes", [Object, Object, Object])
 ], LoansCreateUseCase);
 exports.LoansCreateUseCase = LoansCreateUseCase;

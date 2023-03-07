@@ -3,7 +3,6 @@ import { LoansCreateController } from "./infrastructure/presentation/loans.creat
 import { LoansCreateUseCase } from "./application/usecase/loans.create.use.case";
 import { LoansCreateRepository } from "./infrastructure/repository/loans.create.repository";
 import { PrismaService } from "../_common/infrastructures/prisma/prisma.service";
-import { LoansInquiryController } from "./infrastructure/presentation/loans.inquiry.controller";
 import { LoansListController } from "./infrastructure/presentation/loans.list.controller";
 import { LoansDeleteController } from "./infrastructure/presentation/loans.delete.controller";
 import { LoansUpdateController } from "./infrastructure/presentation/loans.update.controller";
@@ -18,14 +17,11 @@ import { LoansUpdateRepository } from "./infrastructure/repository/loans.update.
 import { LoansExistsLoanCreditorUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.creditor.unique.id.repository";
 import { LoansExistsLoanDebtorUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.debtor.unique.id.repository";
 import { LoansExistsLoanUniqueIdRepository } from "./infrastructure/repository/loans.exists.loan.unique.id.repository";
-import { LoansValidateRequiredLoanCreditorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository";
-import { LoansValidateRequiredLoanDebtorUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository";
-import { LoansValidateRequiredLoanUniqueIdRepository } from "./infrastructure/repository/loans.validate.required.loan.unique.id.repository";
 import { LoansDebtorInquiryUseCase } from "./application/usecase/loans.debtor.inquiry.use.case";
 import { LoansCreditorInquiryUseCase } from "./application/usecase/loans.creditor.inquiry.use.case";
 import { LoansCreditorInquiryRepository } from "./infrastructure/repository/loans.creditor.inquiry.repository";
 import { LoansDebtorInquiryRepository } from "./infrastructure/repository/loans.debtor.inquiry.repository";
-import { LoansExistsLoanRepository } from "./infrastructure/repository/loans.exists.loan.repository";
+import { LoansSearchByUniqueIdRepository } from "./infrastructure/repository/loans.search.by.unique.id.repository";
 import { LoansCreditorInquiryController } from "./infrastructure/presentation/loans.creditor.inquiry.controller";
 import { LoansDebtorInquiryController } from "./infrastructure/presentation/loans.debtor.inquiry.controller";
 
@@ -118,19 +114,11 @@ import { LoansDebtorInquiryController } from "./infrastructure/presentation/loan
     },
     {
       provide: "EXISTS_LOAN",
-      useClass: LoansExistsLoanRepository,
+      useClass: LoansSearchByUniqueIdRepository,
     },
     {
-      provide: "VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID",
-      useClass: LoansValidateRequiredLoanCreditorUniqueIdRepository,
-    },
-    {
-      provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
-      useClass: LoansValidateRequiredLoanDebtorUniqueIdRepository,
-    },
-    {
-      provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
-      useClass: LoansValidateRequiredLoanUniqueIdRepository,
+      provide: "SEARCH_UNIQUE_ID",
+      useClass: LoansSearchByUniqueIdRepository,
     },
   ],
 })

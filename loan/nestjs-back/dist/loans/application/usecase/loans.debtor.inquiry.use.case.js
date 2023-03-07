@@ -14,35 +14,32 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansDebtorInquiryUseCase = void 0;
 const common_1 = require("@nestjs/common");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansDebtorInquiryUseCase = class LoansDebtorInquiryUseCase {
-    constructor(repository, compareDbUniqueIdWith, compareExistsDbUniqueIdWith, compareDbDebtorUniqueIdWith, compareExistsDbDebtorUniqueIdWith) {
+    constructor(repository, compareExistsDbUniqueIdWith, compareExistsDbDebtorUniqueIdWith) {
         this.repository = repository;
-        this.compareDbUniqueIdWith = compareDbUniqueIdWith;
         this.compareExistsDbUniqueIdWith = compareExistsDbUniqueIdWith;
-        this.compareDbDebtorUniqueIdWith = compareDbDebtorUniqueIdWith;
         this.compareExistsDbDebtorUniqueIdWith = compareExistsDbDebtorUniqueIdWith;
     }
     async debtorInquiry(dto) {
         const { id, debtorUniqueId } = dto;
-        await this.compareDbUniqueIdWith.validateRequiredLoanUniqueId({ id });
-        await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
-        await this.compareDbDebtorUniqueIdWith.validateRequiredLoanDebtorUniqueId({
+        const { response: { existsLoanUniqueId }, } = await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
+        if (existsLoanUniqueId)
+            throw new common_1.BadRequestException(_400_1.LOAN_UNIQUE_ID_REQUIRED);
+        const { response: { existsLoanDebtorUniqueId }, } = await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
             debtorUniqueId,
         });
-        await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
-            debtorUniqueId,
-        });
+        if (existsLoanDebtorUniqueId)
+            throw new common_1.BadRequestException(_400_1.LOAN_DEBTOR_UNIQUE_ID_REQUIRED);
         return this.repository.debtorInquiry(dto);
     }
 };
 LoansDebtorInquiryUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("DEBTOR_INQUIRY")),
-    __param(1, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_UNIQUE_ID")),
-    __param(2, (0, common_1.Inject)("EXISTS_LOAN_UNIQUE_ID")),
-    __param(3, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID")),
-    __param(4, (0, common_1.Inject)("EXISTS_LOAN_DEBTOR_UNIQUE_ID")),
-    __metadata("design:paramtypes", [Object, Object, Object, Object, Object])
+    __param(1, (0, common_1.Inject)("EXISTS_LOAN_UNIQUE_ID")),
+    __param(2, (0, common_1.Inject)("EXISTS_LOAN_DEBTOR_UNIQUE_ID")),
+    __metadata("design:paramtypes", [Object, Object, Object])
 ], LoansDebtorInquiryUseCase);
 exports.LoansDebtorInquiryUseCase = LoansDebtorInquiryUseCase;
 //# sourceMappingURL=loans.debtor.inquiry.use.case.js.map

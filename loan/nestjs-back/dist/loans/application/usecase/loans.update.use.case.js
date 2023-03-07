@@ -16,15 +16,19 @@ exports.LoansUpdateUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansUpdateUseCase = class LoansUpdateUseCase {
-    constructor(repository, existsDbLoanWith) {
+    constructor(repository, existsDBLoanWith, searchDBUniqueIdWith) {
         this.repository = repository;
-        this.existsDbLoanWith = existsDbLoanWith;
+        this.existsDBLoanWith = existsDBLoanWith;
+        this.searchDBUniqueIdWith = searchDBUniqueIdWith;
     }
     async update(dto) {
         const { id, creditorId, creditorUniqueId, debtorId, debtorUniqueId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
         if (!id)
             throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
-        const loan = await this.existsDbLoanWith.existsLoan({ id });
+        const { response: { existsLoanUniqueId }, } = await this.existsDBLoanWith.existsLoanUniqueId({ id });
+        if (existsLoanUniqueId)
+            throw new common_1.BadRequestException(_400_1.LOAN_UNIQUE_ID_REQUIRED);
+        const loan = await this.searchDBUniqueIdWith.searchByUniqueId({ id });
         const updateCreditorUniqueId = creditorUniqueId === ""
             ? loan.response.creditorUniqueId
             : creditorUniqueId;
@@ -43,7 +47,8 @@ LoansUpdateUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("UPDATE")),
     __param(1, (0, common_1.Inject)("EXISTS_LOAN")),
-    __metadata("design:paramtypes", [Object, Object])
+    __param(2, (0, common_1.Inject)("SEARCH_UNIQUE_ID")),
+    __metadata("design:paramtypes", [Object, Object, Object])
 ], LoansUpdateUseCase);
 exports.LoansUpdateUseCase = LoansUpdateUseCase;
 //# sourceMappingURL=loans.update.use.case.js.map

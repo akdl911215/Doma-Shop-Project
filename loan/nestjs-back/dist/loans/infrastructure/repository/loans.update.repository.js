@@ -21,7 +21,7 @@ let LoansUpdateRepository = class LoansUpdateRepository {
         const { id, creditorUniqueId, creditorId, debtorUniqueId, debtorId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
         const loan = await this.prisma.loans.findFirst({
             where: {
-                OR: [
+                AND: [
                     {
                         id,
                     },

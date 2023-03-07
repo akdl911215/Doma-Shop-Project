@@ -12,19 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansExistsLoanDebtorUniqueIdRepository = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../../../_common/infrastructures/prisma/prisma.service");
-const _404_1 = require("../../../_common/constants/http/errors/404");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansExistsLoanDebtorUniqueIdRepository = class LoansExistsLoanDebtorUniqueIdRepository {
     constructor(prisma) {
         this.prisma = prisma;
     }
     async existsLoanDebtorUniqueId(dto) {
         const { debtorUniqueId } = dto;
+        if (!debtorUniqueId)
+            throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
         const searchLoan = await this.prisma.loans.findFirst({
             where: { debtorUniqueId },
         });
-        if (!searchLoan)
-            throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
-        return { response: searchLoan };
+        return { response: { existsLoanDebtorUniqueId: !!searchLoan } };
     }
 };
 LoansExistsLoanDebtorUniqueIdRepository = __decorate([

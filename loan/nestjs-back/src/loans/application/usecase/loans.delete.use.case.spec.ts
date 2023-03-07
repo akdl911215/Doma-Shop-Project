@@ -26,8 +26,8 @@ describe("LoansDeleteUseCase", () => {
     it("loan-id is empty and should fail", async () => {
       dto = {
         id: "",
-        debtorId: "",
-        creditorId: "",
+        debtorUniqueId: "",
+        creditorUniqueId: "",
       };
 
       try {
@@ -53,8 +53,8 @@ describe("LoansDeleteUseCase", () => {
     it("debtor-id is empty and should fail", async () => {
       dto = {
         id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
-        debtorId: "",
-        creditorId: "",
+        debtorUniqueId: "",
+        creditorUniqueId: "",
       };
 
       try {
@@ -80,8 +80,8 @@ describe("LoansDeleteUseCase", () => {
     it("creditor-id is empty and should fail", async () => {
       dto = {
         id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
-        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-        creditorId: "",
+        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditorUniqueId: "",
       };
 
       try {
@@ -107,8 +107,8 @@ describe("LoansDeleteUseCase", () => {
     it("loan-id is wrong and should fail", async () => {
       dto = {
         id: "f18b013c-4dc3-4c19-afb7-cab65b7cb611",
-        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-        creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditorUniqueId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
       };
 
       try {
@@ -134,8 +134,8 @@ describe("LoansDeleteUseCase", () => {
     it("debtor-id is wrong and should fail", async () => {
       dto = {
         id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
-        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f11",
-        creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f11",
+        creditorUniqueId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
       };
 
       try {
@@ -161,8 +161,8 @@ describe("LoansDeleteUseCase", () => {
     it("creditor-id is wrong and should fail", async () => {
       dto = {
         id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
-        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-        creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c61",
+        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditorUniqueId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c61",
       };
 
       try {
@@ -188,8 +188,8 @@ describe("LoansDeleteUseCase", () => {
     it("the essential information is different and should fail", async () => {
       dto = {
         id: "b12cbd05-f6fe-4d16-9483-672a9fffe6df",
-        debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-        creditorId: "bf536402-bf96-43a6-8583-694871d4f140",
+        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        creditorUniqueId: "bf536402-bf96-43a6-8583-694871d4f140",
       };
 
       try {
@@ -215,9 +215,9 @@ describe("LoansDeleteUseCase", () => {
     // it("debtor is empty and should", async () => {
     //   dto = {
     //     debtor: "",
-    //     debtorId: "",
+    //     debtorUniqueId: "",
     //     creditor: "testCreditor",
-    //     creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     totalAmountLoan: 0,
     //     loanRepaymentDate: "",
     //     interest: 0,
@@ -246,9 +246,9 @@ describe("LoansDeleteUseCase", () => {
     // it("total amount loan required", async () => {
     //   dto = {
     //     debtor: "testDebtor",
-    //     debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     creditor: "testCreditor",
-    //     creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     totalAmountLoan: 0,
     //     loanRepaymentDate: "",
     //     interest: 0,
@@ -277,9 +277,9 @@ describe("LoansDeleteUseCase", () => {
     // it("loan repayment date required", async () => {
     //   dto = {
     //     debtor: "testDebtor",
-    //     debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     creditor: "testCreditor",
-    //     creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     totalAmountLoan: 1000000000,
     //     loanRepaymentDate: "2030-12-31",
     //     interest: 0,
@@ -308,9 +308,9 @@ describe("LoansDeleteUseCase", () => {
     // it("loan interest required", async () => {
     //   dto = {
     //     debtor: "testDebtor",
-    //     debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     creditor: "testCreditor",
-    //     creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     totalAmountLoan: 1000000000,
     //     loanRepaymentDate: "2030-12-31",
     //     interest: 0,
@@ -339,9 +339,9 @@ describe("LoansDeleteUseCase", () => {
     // it("the creditor and debtor is information is wrong", async () => {
     //   dto = {
     //     debtor: "testDebtor",
-    //     debtorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     creditor: "testCreditor",
-    //     creditorId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
+    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
     //     totalAmountLoan: 1000000000,
     //     loanRepaymentDate: "2030-12-31",
     //     interest: 10,
@@ -370,9 +370,9 @@ describe("LoansDeleteUseCase", () => {
     // it("success should boards register", async () => {
     //   dto = {
     //     debtor: "aaa",
-    //     debtorId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+    //     debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
     //     creditor: "bbbb",
-    //     creditorId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+    //     creditorUniqueId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
     //     totalAmountLoan: 2000000000,
     //     loanRepaymentDate: "2030-12-31",
     //     interest: 10,
@@ -383,9 +383,9 @@ describe("LoansDeleteUseCase", () => {
     //     console.log(response);
     //
     //     expect(response.debtor).toStrictEqual(dto.debtor);
-    //     expect(response.debtorId).toStrictEqual(dto.debtorId);
+    //     expect(response.debtorUniqueId).toStrictEqual(dto.debtorUniqueId);
     //     expect(response.creditor).toStrictEqual(dto.creditor);
-    //     expect(response.creditorId).toStrictEqual(dto.creditorId);
+    //     expect(response.creditorUniqueId).toStrictEqual(dto.creditorUniqueId);
     //     expect(response.totalAmountLoan).toStrictEqual(dto.totalAmountLoan);
     //     expect(response.loanRepaymentDate).toStrictEqual(dto.loanRepaymentDate);
     //     expect(response.interest).toStrictEqual(dto.interest);

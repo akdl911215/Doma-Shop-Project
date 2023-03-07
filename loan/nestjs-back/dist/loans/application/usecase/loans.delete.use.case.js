@@ -14,43 +14,37 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansDeleteUseCase = void 0;
 const common_1 = require("@nestjs/common");
+const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansDeleteUseCase = class LoansDeleteUseCase {
-    constructor(repository, compareDbUniqueIdWith, compareExistsDbUniqueIdWith, compareDbCreditorUniqueIdWith, compareExistsDbCreditorUniqueIdWith, compareDbDebtorUniqueIdWith, compareExistsDbDebtorUniqueIdWith) {
+    constructor(repository, compareExistsDbUniqueIdWith, compareExistsDbCreditorUniqueIdWith, compareExistsDbDebtorUniqueIdWith) {
         this.repository = repository;
-        this.compareDbUniqueIdWith = compareDbUniqueIdWith;
         this.compareExistsDbUniqueIdWith = compareExistsDbUniqueIdWith;
-        this.compareDbCreditorUniqueIdWith = compareDbCreditorUniqueIdWith;
         this.compareExistsDbCreditorUniqueIdWith = compareExistsDbCreditorUniqueIdWith;
-        this.compareDbDebtorUniqueIdWith = compareDbDebtorUniqueIdWith;
         this.compareExistsDbDebtorUniqueIdWith = compareExistsDbDebtorUniqueIdWith;
     }
     async delete(dto) {
         const { id, debtorUniqueId, creditorUniqueId } = dto;
-        await this.compareDbUniqueIdWith.validateRequiredLoanUniqueId({ id });
-        await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
-        await this.compareDbDebtorUniqueIdWith.validateRequiredLoanDebtorUniqueId({
+        const { response: { existsLoanUniqueId }, } = await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
+        if (existsLoanUniqueId)
+            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
+        const { response: { existsLoanDebtorUniqueId }, } = await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
             debtorUniqueId,
         });
-        await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
-            debtorUniqueId,
-        });
-        await this.compareDbCreditorUniqueIdWith.validateRequiredLoanCreditorUniqueId({ creditorUniqueId });
-        await this.compareExistsDbCreditorUniqueIdWith.existsLoanCreditorUniqueId({
-            creditorUniqueId,
-        });
+        if (existsLoanDebtorUniqueId)
+            throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
+        const { response: { existsLoanCreditorUniqueId }, } = await this.compareExistsDbCreditorUniqueIdWith.existsLoanCreditorUniqueId({ creditorUniqueId });
+        if (existsLoanCreditorUniqueId)
+            throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
         return await this.repository.delete(dto);
     }
 };
 LoansDeleteUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("DELETE")),
-    __param(1, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_UNIQUE_ID")),
-    __param(2, (0, common_1.Inject)("EXISTS_LOAN_UNIQUE_ID")),
-    __param(3, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_CREDITOR_UNIQUE_ID")),
-    __param(4, (0, common_1.Inject)("EXISTS_LOAN_CREDITOR_UNIQUE_ID")),
-    __param(5, (0, common_1.Inject)("VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID")),
-    __param(6, (0, common_1.Inject)("EXISTS_LOAN_DEBTOR_UNIQUE_ID")),
-    __metadata("design:paramtypes", [Object, Object, Object, Object, Object, Object, Object])
+    __param(1, (0, common_1.Inject)("EXISTS_LOAN_UNIQUE_ID")),
+    __param(2, (0, common_1.Inject)("EXISTS_LOAN_CREDITOR_UNIQUE_ID")),
+    __param(3, (0, common_1.Inject)("EXISTS_LOAN_DEBTOR_UNIQUE_ID")),
+    __metadata("design:paramtypes", [Object, Object, Object, Object])
 ], LoansDeleteUseCase);
 exports.LoansDeleteUseCase = LoansDeleteUseCase;
 //# sourceMappingURL=loans.delete.use.case.js.map

@@ -2,15 +2,21 @@ import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { LoansUpdateAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.update.adaptor.output.dto";
 import { LoansUpdateAdaptor } from "../../domain/adaptor/loans.update.adaptor";
 import { LoansUpdateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.update.adaptor.input.dto";
-import { UNIQUE_ID_REQUIRED } from "../../../_common/constants/http/errors/400";
-import { LoansExistsLoanInterface } from "../../domain/interface/loans.exists.loan.interface";
+import {
+  LOAN_UNIQUE_ID_REQUIRED,
+  UNIQUE_ID_REQUIRED,
+} from "../../../_common/constants/http/errors/400";
+import { LoansExistsLoanUniqueIdInterface } from "../../domain/interface/loans.exists.loan.unique.id.interface";
+import { LoansSearchByUniqueIdInterface } from "../../domain/interface/loans.search.by.unique.id.interface";
 
 @Injectable()
 export class LoansUpdateUseCase implements LoansUpdateAdaptor {
   constructor(
     @Inject("UPDATE") private readonly repository: LoansUpdateAdaptor,
     @Inject("EXISTS_LOAN")
-    private readonly existsDbLoanWith: LoansExistsLoanInterface
+    private readonly existsDBLoanWith: LoansExistsLoanUniqueIdInterface,
+    @Inject("SEARCH_UNIQUE_ID")
+    private readonly searchDBUniqueIdWith: LoansSearchByUniqueIdInterface
   ) {}
 
   public async update(
@@ -28,7 +34,13 @@ export class LoansUpdateUseCase implements LoansUpdateAdaptor {
     } = dto;
 
     if (!id) throw new BadRequestException(UNIQUE_ID_REQUIRED);
-    const loan = await this.existsDbLoanWith.existsLoan({ id });
+    const {
+      response: { existsLoanUniqueId },
+    } = await this.existsDBLoanWith.existsLoanUniqueId({ id });
+    if (existsLoanUniqueId)
+      throw new BadRequestException(LOAN_UNIQUE_ID_REQUIRED);
+
+    const loan = await this.searchDBUniqueIdWith.searchByUniqueId({ id });
 
     const updateCreditorUniqueId: string =
       creditorUniqueId === ""

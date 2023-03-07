@@ -1,4 +1,5 @@
 import { BaseOutputDto } from "../../../../_common/dtos/base.output.dto";
-import { Loans } from "@prisma/client";
-export declare class LoansExistsLoanUniqueIdInterfaceOutputDto extends BaseOutputDto<Loans> {
+export declare class LoansExistsLoanUniqueIdInterfaceOutputDto extends BaseOutputDto<{
+    readonly existsLoanUniqueId: boolean;
+}> {
 }

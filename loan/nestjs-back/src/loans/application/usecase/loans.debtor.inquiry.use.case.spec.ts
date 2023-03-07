@@ -1,10 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { LoansValidateRequiredLoanUniqueIdRepository } from "../../infrastructure/repository/loans.validate.required.loan.unique.id.repository";
 import { LoansExistsLoanUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.unique.id.repository";
 import { LoansDebtorInquiryUseCase } from "./loans.debtor.inquiry.use.case";
-import { LoansValidateRequiredLoanDebtorUniqueIdRepository } from "../../infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository";
 import { LoansExistsLoanDebtorUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.debtor.unique.id.repository";
 import { LoansDebtorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.debtor.inquiry.adaptor.input.dto";
 import { LoansDebtorInquiryRepository } from "../../infrastructure/repository/loans.debtor.inquiry.repository";
@@ -22,16 +20,8 @@ describe("LoansDebtorInquiryUseCase", () => {
           useClass: LoansDebtorInquiryRepository,
         },
         {
-          provide: "VALIDATE_REQUIRED_LOAN_UNIQUE_ID",
-          useClass: LoansValidateRequiredLoanUniqueIdRepository,
-        },
-        {
           provide: "EXISTS_LOAN_UNIQUE_ID",
           useClass: LoansExistsLoanUniqueIdRepository,
-        },
-        {
-          provide: "VALIDATE_REQUIRED_LOAN_DEBTOR_UNIQUE_ID",
-          useClass: LoansValidateRequiredLoanDebtorUniqueIdRepository,
         },
         {
           provide: "EXISTS_LOAN_DEBTOR_UNIQUE_ID",
