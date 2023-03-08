@@ -27,9 +27,9 @@ export class LoansListRepository implements LoansListAdaptor {
     const currentPage: number = page < 1 ? 1 : page;
     const skip = (currentPage - 1) * take;
     const variableTake: number = take < 1 ? 1 : take;
-    const resultPage: number = Math.round(list / variableTake);
-    const totalPage: number = Math.round(resultPage - (skip + 1));
-    const resultTotalPage: number = totalPage < 1 ? 1 : totalPage;
+    const resultTotalPage: number = Math.ceil(list / variableTake);
+    const lastPageLeft: number = Math.ceil(resultTotalPage - (skip + 1));
+    const resultLastPageLeft: number = lastPageLeft < 1 ? 1 : lastPageLeft;
     const currentList: Loans[] = await this.prisma.loans.findMany({
       skip,
       take: variableTake,
@@ -38,7 +38,8 @@ export class LoansListRepository implements LoansListAdaptor {
     try {
       return {
         response: {
-          resultPage,
+          currentPage,
+          resultLastPageLeft,
           resultTotalPage,
           currentList,
         },

@@ -5,87 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/src/loans/domain/interface/loans.search.by.unique.id.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/_common/constants/http/errors/400.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/_common/constants/http/errors/400.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/_common/constants/http/errors/400.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/_common/constants/http/errors/400.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/_common/constants/http/errors/400.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/_common/constants/http/errors/400.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/_common/constants/http/errors/409.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/_common/constants/http/errors/409.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/_common/constants/http/errors/409.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/_common/constants/http/errors/409.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/_common/constants/http/errors/409.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/_common/constants/http/errors/409.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.create.use.case.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.creditor.inquiry.use.case.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.debtor.inquiry.use.case.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.delete.use.case.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.inquiry.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.inquiry.use.case.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.inquiry.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.inquiry.use.case.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.inquiry.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.inquiry.use.case.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.update.use.case.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.update.use.case.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.update.use.case.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.update.use.case.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/application/usecase/loans.update.use.case.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/application/usecase/loans.update.use.case.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.creditor.inquiry.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.creditor.inquiry.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.creditor.inquiry.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.creditor.inquiry.repository.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.debtor.inquiry.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.debtor.inquiry.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.debtor.inquiry.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.debtor.inquiry.repository.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.creditor.unique.id.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.creditor.unique.id.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.creditor.unique.id.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.creditor.unique.id.repository.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.debtor.unique.id.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.debtor.unique.id.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.debtor.unique.id.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.debtor.unique.id.repository.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.unique.id.repository.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.unique.id.repository.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.unique.id.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.unique.id.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.unique.id.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.exists.loan.unique.id.repository.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.inquiry.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.inquiry.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.inquiry.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.inquiry.repository.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.update.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.update.repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.update.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/infrastructure/repository/loans.update.repository.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/loans.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/loans.module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/loans.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/loans.module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.creditor.unique.id.interface.output.dto.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.creditor.unique.id.interface.output.dto.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.creditor.unique.id.interface.output.dto.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.creditor.unique.id.interface.output.dto.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.debtor.unique.id.interface.output.dto.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.debtor.unique.id.interface.output.dto.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.debtor.unique.id.interface.output.dto.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.debtor.unique.id.interface.output.dto.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.unique.id.interface.output.dto.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.unique.id.interface.output.dto.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.unique.id.interface.output.dto.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/loans/outbound/dtos/interface/loans.exists.loan.unique.id.interface.output.dto.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_common/constants/http/errors/400.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/_common/constants/http/errors/400.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_common/constants/http/errors/409.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/_common/constants/http/errors/409.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.inquiry.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/domain/interface/loans.exists.loan.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/domain/interface/loans.validate.required.loan.creditor.unique.id.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/domain/interface/loans.validate.required.loan.debtor.unique.id.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/domain/interface/loans.validate.required.loan.unique.id.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.exists.loan.interface.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.search.by.unique.id.interface.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.validate.required.loan.creditor.unique.id.interface.input.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.validate.required.loan.debtor.unique.id.interface.input.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/loans.validate.required.loan.unique.id.interface.input.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.creditor.unique.id.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.creditor.unique.id.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.debtor.unique.id.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.debtor.unique.id.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.search.by.unique.id.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.unique.id.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.exists.loan.unique.id.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.validate.required.loan.creditor.unique.id.repository.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.validate.required.loan.debtor.unique.id.repository.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.validate.required.loan.unique.id.repository.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/loans.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/loans.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.creditor.unique.id.interface.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.creditor.unique.id.interface.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.debtor.unique.id.interface.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.debtor.unique.id.interface.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.interface.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.search.by.unique.id.interface.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.unique.id.interface.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/loans.exists.loan.unique.id.interface.output.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.list.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.list.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/outbound/dtos/adaptor/loans.list.adaptor.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/adaptor/loans.list.adaptor.output.dto.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +191,8 @@
       <workItem from="1677725202435" duration="3278000" />
       <workItem from="1677905623175" duration="14200000" />
       <workItem from="1678068328802" duration="3124000" />
-      <workItem from="1678077865828" duration="9942000" />
+      <workItem from="1678077865828" duration="11424000" />
+      <workItem from="1678254439235" duration="1285000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
