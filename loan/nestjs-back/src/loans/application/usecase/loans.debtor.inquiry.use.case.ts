@@ -2,12 +2,12 @@ import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { LoansDebtorInquiryAdaptor } from "../../domain/adaptor/loans.debtor.inquiry.adaptor";
 import { LoansDebtorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.debtor.inquiry.adaptor.input.dto";
 import { LoansDebtorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.debtor.inquiry.adaptor.output.dto";
-import { LoansExistsLoanDebtorUniqueIdInterface } from "../../domain/interface/loans.exists.loan.debtor.unique.id.interface";
 import { LoansExistsLoanUniqueIdInterface } from "../../domain/interface/loans.exists.loan.unique.id.interface";
 import {
   LOAN_DEBTOR_UNIQUE_ID_REQUIRED,
   LOAN_UNIQUE_ID_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
+import { UsersExistsUniqueIdInterface } from "../../domain/interface/users.exists.unique.id.interface";
 
 @Injectable()
 export class LoansDebtorInquiryUseCase implements LoansDebtorInquiryAdaptor {
@@ -16,8 +16,8 @@ export class LoansDebtorInquiryUseCase implements LoansDebtorInquiryAdaptor {
     private readonly repository: LoansDebtorInquiryAdaptor,
     @Inject("EXISTS_LOAN_UNIQUE_ID")
     private readonly compareExistsDbUniqueIdWith: LoansExistsLoanUniqueIdInterface,
-    @Inject("EXISTS_LOAN_DEBTOR_UNIQUE_ID")
-    private readonly compareExistsDbDebtorUniqueIdWith: LoansExistsLoanDebtorUniqueIdInterface
+    @Inject("USERS_EXISTS_FOUND_BY_ID")
+    private readonly compareExistsDBUsersUniqueIdWith: UsersExistsUniqueIdInterface
   ) {}
 
   public async debtorInquiry(
@@ -32,9 +32,9 @@ export class LoansDebtorInquiryUseCase implements LoansDebtorInquiryAdaptor {
       throw new BadRequestException(LOAN_UNIQUE_ID_REQUIRED);
 
     const {
-      response: { existsLoanDebtorUniqueId },
-    } = await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
-      debtorUniqueId,
+      response: { userExistsFoundByUniqueId: existsLoanDebtorUniqueId },
+    } = await this.compareExistsDBUsersUniqueIdWith.usersExistsFoundByUniqueId({
+      id: debtorUniqueId,
     });
     if (existsLoanDebtorUniqueId)
       throw new BadRequestException(LOAN_DEBTOR_UNIQUE_ID_REQUIRED);

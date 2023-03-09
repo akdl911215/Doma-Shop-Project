@@ -2,12 +2,12 @@ import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { LoansCreditorInquiryAdaptor } from "../../domain/adaptor/loans.creditor.inquiry.adaptor";
 import { LoansCreditorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.creditor.inquiry.adaptor.output.dto";
 import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.creditor.inquiry.adaptor.input.dto";
-import { LoansExistsLoanCreditorUniqueIdInterface } from "../../domain/interface/loans.exists.loan.creditor.unique.id.interface";
 import {
   CREDITOR_UNIQUE_ID_REQUIRED,
   UNIQUE_ID_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
 import { LoansExistsLoanUniqueIdInterface } from "../../domain/interface/loans.exists.loan.unique.id.interface";
+import { UsersExistsUniqueIdInterface } from "../../domain/interface/users.exists.unique.id.interface";
 
 @Injectable()
 export class LoansCreditorInquiryUseCase
@@ -18,8 +18,8 @@ export class LoansCreditorInquiryUseCase
     private readonly repository: LoansCreditorInquiryAdaptor,
     @Inject("EXISTS_LOAN_UNIQUE_ID")
     private readonly compareExistsDbUniqueIdWith: LoansExistsLoanUniqueIdInterface,
-    @Inject("EXISTS_LOAN_CREDITOR_UNIQUE_ID")
-    private readonly compareExistsDbCreditorUniqueIdWith: LoansExistsLoanCreditorUniqueIdInterface
+    @Inject("USERS_EXISTS_FOUND_BY_ID")
+    private readonly compareExistsDBUsersUniqueIdWith: UsersExistsUniqueIdInterface
   ) {}
 
   public async creditorInquiry(
@@ -33,13 +33,10 @@ export class LoansCreditorInquiryUseCase
     if (existsLoanUniqueId) throw new BadRequestException(UNIQUE_ID_REQUIRED);
 
     const {
-      response: { existsLoanCreditorUniqueId },
-    } =
-      await this.compareExistsDbCreditorUniqueIdWith.existsLoanCreditorUniqueId(
-        {
-          creditorUniqueId,
-        }
-      );
+      response: { userExistsFoundByUniqueId: existsLoanCreditorUniqueId },
+    } = await this.compareExistsDBUsersUniqueIdWith.usersExistsFoundByUniqueId({
+      id: creditorUniqueId,
+    });
     if (existsLoanCreditorUniqueId)
       throw new BadRequestException(CREDITOR_UNIQUE_ID_REQUIRED);
 

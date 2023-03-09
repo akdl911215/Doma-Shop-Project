@@ -24,6 +24,9 @@ import { LoansDebtorInquiryRepository } from "./infrastructure/repository/loans.
 import { LoansSearchByUniqueIdRepository } from "./infrastructure/repository/loans.search.by.unique.id.repository";
 import { LoansCreditorInquiryController } from "./infrastructure/presentation/loans.creditor.inquiry.controller";
 import { LoansDebtorInquiryController } from "./infrastructure/presentation/loans.debtor.inquiry.controller";
+import { UsersExistsUniqueIdRepository } from "./infrastructure/repository/users.exists.unique.id.repository";
+import { UsersExistsUserIdRepository } from "./infrastructure/repository/users.exists.user.id.repository";
+import { UsersExistsUserRepository } from "./infrastructure/repository/users.exists.user.repository";
 
 @Module({
   controllers: [
@@ -119,6 +122,18 @@ import { LoansDebtorInquiryController } from "./infrastructure/presentation/loan
     {
       provide: "SEARCH_UNIQUE_ID",
       useClass: LoansSearchByUniqueIdRepository,
+    },
+    {
+      provide: "USERS_EXISTS_FOUND_BY_ID",
+      useClass: UsersExistsUniqueIdRepository,
+    },
+    {
+      provide: "USERS_EXISTS_FOUND_BY_USER_ID",
+      useClass: UsersExistsUserIdRepository,
+    },
+    {
+      provide: "USERS_EXISTS_FOUND_BY_USER",
+      useClass: UsersExistsUserRepository,
     },
   ],
 })

@@ -4,6 +4,9 @@ import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.se
 import { LoansDeleteRepository } from "../../infrastructure/repository/loans.delete.repository";
 import { LoansDeleteUseCase } from "./loans.delete.use.case";
 import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.delete.adaptor.input.dto";
+import { LoansExistsLoanUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.unique.id.repository";
+import { LoansExistsLoanCreditorUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.creditor.unique.id.repository";
+import { LoansExistsLoanDebtorUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.debtor.unique.id.repository";
 
 describe("LoansDeleteUseCase", () => {
   let service: LoansDeleteUseCase;
@@ -14,6 +17,18 @@ describe("LoansDeleteUseCase", () => {
         LoansDeleteUseCase,
         PrismaService,
         { provide: "DELETE", useClass: LoansDeleteRepository },
+        {
+          provide: "EXISTS_LOAN_UNIQUE_ID",
+          useClass: LoansExistsLoanUniqueIdRepository,
+        },
+        {
+          provide: "EXISTS_LOAN_CREDITOR_UNIQUE_ID",
+          useClass: LoansExistsLoanCreditorUniqueIdRepository,
+        },
+        {
+          provide: "EXISTS_LOAN_DEBTOR_UNIQUE_ID",
+          useClass: LoansExistsLoanDebtorUniqueIdRepository,
+        },
       ],
     }).compile();
 
@@ -43,16 +58,43 @@ describe("LoansDeleteUseCase", () => {
           console.log(errorMessage);
           expect(errorMessage).toStrictEqual({
             statusCode: 400,
-            message: "NO_MATCH_LOAN_ID",
+            message: "UNIQUE_ID_REQUIRED",
             error: "Bad Request",
           });
         }
       }
     });
 
-    it("debtor-id is empty and should fail", async () => {
+    it("loan unique id is invalid and should fail", async () => {
       dto = {
-        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
+        id: "78a332e2-b287-48e6-9727-ee2e422653df",
+        debtorUniqueId: "",
+        creditorUniqueId: "",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof NotFoundException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(404);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 404,
+            message: "NOTFOUND_LOAN_UNIQUE_ID",
+            error: "Not Found",
+          });
+        }
+      }
+    });
+
+    it("debtor id is empty and should fail", async () => {
+      dto = {
+        id: "78a4a2e2-b287-48e6-9727-ee2e422653df",
         debtorUniqueId: "",
         creditorUniqueId: "",
       };
@@ -70,8 +112,35 @@ describe("LoansDeleteUseCase", () => {
           console.log(errorMessage);
           expect(errorMessage).toStrictEqual({
             statusCode: 400,
-            message: "NO_MATCH_DEBTOR_ID",
+            message: "DEBTOR_UNIQUE_ID_REQUIRED",
             error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("debtor id is invalid and should fail", async () => {
+      dto = {
+        id: "78a4a2e2-b287-48e6-9727-ee2e422653df",
+        debtorUniqueId: "5ac63dad-1e52-4a29-8684-72535ae7a121",
+        creditorUniqueId: "",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof NotFoundException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(404);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 404,
+            message: "NOTFOUND_LOAN_DEBTOR",
+            error: "Not Found",
           });
         }
       }
@@ -79,8 +148,8 @@ describe("LoansDeleteUseCase", () => {
 
     it("creditor-id is empty and should fail", async () => {
       dto = {
-        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
-        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
+        id: "78a4a2e2-b287-48e6-9727-ee2e422653df",
+        debtorUniqueId: "c9f572eb-5d13-4af3-ba7a-d8ff44024d3c",
         creditorUniqueId: "",
       };
 
@@ -97,8 +166,35 @@ describe("LoansDeleteUseCase", () => {
           console.log(errorMessage);
           expect(errorMessage).toStrictEqual({
             statusCode: 400,
-            message: "NO_MATCH_CREDITOR_ID",
+            message: "CREDITOR_UNIQUE_ID_REQUIRED",
             error: "Bad Request",
+          });
+        }
+      }
+    });
+
+    it("creditor-id is invalid and should fail", async () => {
+      dto = {
+        id: "78a4a2e2-b287-48e6-9727-ee2e422653df",
+        debtorUniqueId: "c9f572eb-5d13-4af3-ba7a-d8ff44024d3c",
+        creditorUniqueId: "5ac63dad-1e52-4a29-8684-72535ae7a22e",
+      };
+
+      try {
+        await service.delete(dto);
+      } catch (e) {
+        console.log(e);
+
+        if (e instanceof NotFoundException) {
+          const status = e.getStatus();
+          expect(status).toStrictEqual(404);
+
+          const errorMessage = e.getResponse();
+          console.log(errorMessage);
+          expect(errorMessage).toStrictEqual({
+            statusCode: 404,
+            message: "NOTFOUND_LOAN_CREDITOR",
+            error: "Not Found",
           });
         }
       }
@@ -106,9 +202,9 @@ describe("LoansDeleteUseCase", () => {
 
     it("loan-id is wrong and should fail", async () => {
       dto = {
-        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb611",
-        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-        creditorUniqueId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+        id: "d44bacce-877c-434a-bc7a-c0c4a7589ce7",
+        debtorUniqueId: "c9f572eb-5d13-4af3-ba7a-d8ff44024d3c",
+        creditorUniqueId: "5ac63dad-1e52-4a29-8684-72535ae7af6e",
       };
 
       try {
@@ -133,9 +229,9 @@ describe("LoansDeleteUseCase", () => {
 
     it("debtor-id is wrong and should fail", async () => {
       dto = {
-        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
-        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f11",
-        creditorUniqueId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
+        id: "78a4a2e2-b287-48e6-9727-ee2e422653df",
+        debtorUniqueId: "5ac63dad-1e52-4a29-8684-72535ae7af12",
+        creditorUniqueId: "5ac63dad-1e52-4a29-8684-72535ae7af6e",
       };
 
       try {
@@ -151,7 +247,7 @@ describe("LoansDeleteUseCase", () => {
           console.log(errorMessage);
           expect(errorMessage).toStrictEqual({
             statusCode: 404,
-            message: "NOTFOUND_DEBTOR",
+            message: "NOTFOUND_LOAN_DEBTOR",
             error: "Not Found",
           });
         }
@@ -160,9 +256,9 @@ describe("LoansDeleteUseCase", () => {
 
     it("creditor-id is wrong and should fail", async () => {
       dto = {
-        id: "f18b013c-4dc3-4c19-afb7-cab65b7cb694",
-        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-        creditorUniqueId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c61",
+        id: "78a4a2e2-b287-48e6-9727-ee2e422653df",
+        debtorUniqueId: "c9f572eb-5d13-4af3-ba7a-d8ff44024d3c",
+        creditorUniqueId: "5ac63dad-1e52-4a29-8684-71135ae7af6e",
       };
 
       try {
@@ -178,222 +274,32 @@ describe("LoansDeleteUseCase", () => {
           console.log(errorMessage);
           expect(errorMessage).toStrictEqual({
             statusCode: 404,
-            message: "NOTFOUND_CREDITOR",
+            message: "NOTFOUND_LOAN_CREDITOR",
             error: "Not Found",
           });
         }
       }
     });
 
-    it("the essential information is different and should fail", async () => {
+    it("success should loan delete", async () => {
       dto = {
-        id: "b12cbd05-f6fe-4d16-9483-672a9fffe6df",
-        debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-        creditorUniqueId: "bf536402-bf96-43a6-8583-694871d4f140",
+        id: "78a4a2e2-b287-48e6-9727-ee2e422653df",
+        debtorUniqueId: "c9f572eb-5d13-4af3-ba7a-d8ff44024d3c",
+        creditorUniqueId: "5ac63dad-1e52-4a29-8684-72535ae7af6e",
       };
 
       try {
-        await service.delete(dto);
+        const {
+          response: { loanErase },
+        } = await service.delete(dto);
+        console.log(loanErase);
+
+        expect(loanErase).toStrictEqual(true);
       } catch (e) {
-        console.log(e);
-
-        if (e instanceof NotFoundException) {
-          const status = e.getStatus();
-          expect(status).toStrictEqual(404);
-
-          const errorMessage = e.getResponse();
-          console.log(errorMessage);
-          expect(errorMessage).toStrictEqual({
-            statusCode: 404,
-            message: "NOTFOUND_LOAN",
-            error: "Not Found",
-          });
-        }
+        console.error(e);
+        throw new Error(`${e}`);
       }
     });
-
-    // it("debtor is empty and should", async () => {
-    //   dto = {
-    //     debtor: "",
-    //     debtorUniqueId: "",
-    //     creditor: "testCreditor",
-    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     totalAmountLoan: 0,
-    //     loanRepaymentDate: "",
-    //     interest: 0,
-    //   };
-    //
-    //   try {
-    //     await service.create(dto);
-    //   } catch (e) {
-    //     console.log(e);
-    //
-    //     if (e instanceof BadRequestException) {
-    //       const status = e.getStatus();
-    //       expect(status).toStrictEqual(400);
-    //
-    //       const errorMessage = e.getResponse();
-    //       console.log(errorMessage);
-    //       expect(errorMessage).toStrictEqual({
-    //         statusCode: 400,
-    //         message: "CONFIRM_REQUIRED_DEBTOR_INFORMATION",
-    //         error: "Bad Request",
-    //       });
-    //     }
-    //   }
-    // });
-    //
-    // it("total amount loan required", async () => {
-    //   dto = {
-    //     debtor: "testDebtor",
-    //     debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     creditor: "testCreditor",
-    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     totalAmountLoan: 0,
-    //     loanRepaymentDate: "",
-    //     interest: 0,
-    //   };
-    //
-    //   try {
-    //     await service.create(dto);
-    //   } catch (e) {
-    //     console.log(e);
-    //
-    //     if (e instanceof BadRequestException) {
-    //       const status = e.getStatus();
-    //       expect(status).toStrictEqual(400);
-    //
-    //       const errorMessage = e.getResponse();
-    //       console.log(errorMessage);
-    //       expect(errorMessage).toStrictEqual({
-    //         statusCode: 400,
-    //         message: "CONFIRM_REQUIRED_LOAN_INFORMATION",
-    //         error: "Bad Request",
-    //       });
-    //     }
-    //   }
-    // });
-    //
-    // it("loan repayment date required", async () => {
-    //   dto = {
-    //     debtor: "testDebtor",
-    //     debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     creditor: "testCreditor",
-    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     totalAmountLoan: 1000000000,
-    //     loanRepaymentDate: "2030-12-31",
-    //     interest: 0,
-    //   };
-    //
-    //   try {
-    //     await service.create(dto);
-    //   } catch (e) {
-    //     console.log(e);
-    //
-    //     if (e instanceof BadRequestException) {
-    //       const status = e.getStatus();
-    //       expect(status).toStrictEqual(400);
-    //
-    //       const errorMessage = e.getResponse();
-    //       console.log(errorMessage);
-    //       expect(errorMessage).toStrictEqual({
-    //         statusCode: 400,
-    //         message: "CONFIRM_REQUIRED_LOAN_REPAYMENT_DATE_INFORMATION",
-    //         error: "Bad Request",
-    //       });
-    //     }
-    //   }
-    // });
-    //
-    // it("loan interest required", async () => {
-    //   dto = {
-    //     debtor: "testDebtor",
-    //     debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     creditor: "testCreditor",
-    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     totalAmountLoan: 1000000000,
-    //     loanRepaymentDate: "2030-12-31",
-    //     interest: 0,
-    //   };
-    //
-    //   try {
-    //     await service.create(dto);
-    //   } catch (e) {
-    //     console.log(e);
-    //
-    //     if (e instanceof BadRequestException) {
-    //       const status = e.getStatus();
-    //       expect(status).toStrictEqual(400);
-    //
-    //       const errorMessage = e.getResponse();
-    //       console.log(errorMessage);
-    //       expect(errorMessage).toStrictEqual({
-    //         statusCode: 400,
-    //         message: "CONFIRM_REQUIRED_LOAN_INTEREST_INFORMATION",
-    //         error: "Bad Request",
-    //       });
-    //     }
-    //   }
-    // });
-    //
-    // it("the creditor and debtor is information is wrong", async () => {
-    //   dto = {
-    //     debtor: "testDebtor",
-    //     debtorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     creditor: "testCreditor",
-    //     creditorUniqueId: "7b8fd669-674c-4f50-b9dd-f0100f160a6a",
-    //     totalAmountLoan: 1000000000,
-    //     loanRepaymentDate: "2030-12-31",
-    //     interest: 10,
-    //   };
-    //
-    //   try {
-    //     await service.create(dto);
-    //   } catch (e) {
-    //     console.log(e);
-    //
-    //     if (e instanceof NotFoundException) {
-    //       const status = e.getStatus();
-    //       expect(status).toStrictEqual(404);
-    //
-    //       const errorMessage = e.getResponse();
-    //       console.log(errorMessage);
-    //       expect(errorMessage).toStrictEqual({
-    //         statusCode: 404,
-    //         message: "NOTFOUND_USER",
-    //         error: "Not Found",
-    //       });
-    //     }
-    //   }
-    // });
-    //
-    // it("success should boards register", async () => {
-    //   dto = {
-    //     debtor: "aaa",
-    //     debtorUniqueId: "56459675-ec2e-4d49-9790-bcbe436f1f91",
-    //     creditor: "bbbb",
-    //     creditorUniqueId: "65b2f2b3-93ed-4919-a3cf-41bc921d9c6e",
-    //     totalAmountLoan: 2000000000,
-    //     loanRepaymentDate: "2030-12-31",
-    //     interest: 10,
-    //   };
-    //
-    //   try {
-    //     const { response } = await service.create(dto);
-    //     console.log(response);
-    //
-    //     expect(response.debtor).toStrictEqual(dto.debtor);
-    //     expect(response.debtorUniqueId).toStrictEqual(dto.debtorUniqueId);
-    //     expect(response.creditor).toStrictEqual(dto.creditor);
-    //     expect(response.creditorUniqueId).toStrictEqual(dto.creditorUniqueId);
-    //     expect(response.totalAmountLoan).toStrictEqual(dto.totalAmountLoan);
-    //     expect(response.loanRepaymentDate).toStrictEqual(dto.loanRepaymentDate);
-    //     expect(response.interest).toStrictEqual(dto.interest);
-    //   } catch (e) {
-    //     console.error(e);
-    //     throw new Error(`${e}`);
-    //   }
-    // });
   });
 
   it("should be defined", () => {

@@ -35,25 +35,22 @@ export class LoansDeleteRepository implements LoansDeleteAdaptor {
         ],
       },
     });
+    if (!searchLoan) throw new NotFoundException(NOTFOUND_LOAN);
 
-    if (!!searchLoan) {
-      try {
-        await this.prisma.$transaction([
-          this.prisma.loans.delete({
-            where: { id },
-          }),
-        ]);
+    try {
+      await this.prisma.$transaction([
+        this.prisma.loans.delete({
+          where: { id },
+        }),
+      ]);
 
-        return { response: { loanErase: true } };
-      } catch (e) {
-        if (e instanceof InternalServerErrorException) {
-          throw new InternalServerErrorException(e);
-        } else {
-          throw new Error(`${e}`);
-        }
+      return { response: { loanErase: true } };
+    } catch (e) {
+      if (e instanceof InternalServerErrorException) {
+        throw new InternalServerErrorException(e);
+      } else {
+        throw new Error(`${e}`);
       }
-    } else {
-      throw new NotFoundException(NOTFOUND_LOAN);
     }
   }
 }
