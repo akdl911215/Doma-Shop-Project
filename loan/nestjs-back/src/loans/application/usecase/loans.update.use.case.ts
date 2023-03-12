@@ -37,7 +37,7 @@ export class LoansUpdateUseCase implements LoansUpdateAdaptor {
     const {
       response: { existsLoanUniqueId },
     } = await this.existsDBLoanWith.existsLoanUniqueId({ id });
-    if (existsLoanUniqueId)
+    if (!existsLoanUniqueId)
       throw new BadRequestException(LOAN_UNIQUE_ID_REQUIRED);
 
     const loan = await this.searchDBUniqueIdWith.searchByUniqueId({ id });

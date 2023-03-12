@@ -4,8 +4,6 @@ import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.se
 import { LoansCreateRepository } from "../../infrastructure/repository/loans.create.repository";
 import { LoansCreateUseCase } from "./loans.create.use.case";
 import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.create.adaptor.input.dto";
-import { UsersExistsUniqueIdRepository } from "../../infrastructure/repository/users.exists.unique.id.repository";
-import { UsersExistsUserIdRepository } from "../../infrastructure/repository/users.exists.user.id.repository";
 import { UsersExistsUserRepository } from "../../infrastructure/repository/users.exists.user.repository";
 
 describe("LoansCreateUseCase", () => {

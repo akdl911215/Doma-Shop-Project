@@ -5,30 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/src/loans/domain/interface/users.exists.unique.id.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/domain/interface/users.exists.user.id.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/domain/interface/users.exists.user.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/users.exists.unique.id.interface.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/users.exists.user.id.interface.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interface/users.exists.user.interface.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/users.exists.unique.id.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/users.exists.user.id.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/users.exists.user.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/users.exists.unique.id.interface.output.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/users.exists.user.id.interface.output.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loans/outbound/dtos/interface/users.exists.user.interface.output.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_common/constants/http/errors/400.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/_common/constants/http/errors/400.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_common/constants/http/errors/404.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/_common/constants/http/errors/404.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.creditor.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.debtor.inquiry.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.delete.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.delete.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/loans.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/loans.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/loans.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.list.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.list.use.case.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,89 +65,89 @@
       <recent name="$PROJECT_DIR$/src/loans/domain/interface" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.LoansDeleteUseCase.loan delete unit test.success should loan delete">
-    <configuration name="LoansDeleteUseCase.loan delete unit test.creditor-id is invalid and should fail" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.LoansUpdateUseCase.loan update unit test.success should loan update">
+    <configuration name="LoansListUseCase.loan list unit test.success should loan create" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.list.use.case.spec.ts" />
       <test-names>
-        <test-name value="LoansDeleteUseCase" />
-        <test-name value="loan delete unit test" />
-        <test-name value="creditor-id is invalid and should fail" />
+        <test-name value="LoansListUseCase" />
+        <test-name value="loan list unit test" />
+        <test-name value="success should loan create" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="LoansDeleteUseCase.loan delete unit test.creditor-id is wrong and should fail" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="LoansUpdateUseCase.loan update unit test.creditor id is empty and failed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.spec.ts" />
       <test-names>
-        <test-name value="LoansDeleteUseCase" />
-        <test-name value="loan delete unit test" />
-        <test-name value="creditor-id is wrong and should fail" />
+        <test-name value="LoansUpdateUseCase" />
+        <test-name value="loan update unit test" />
+        <test-name value="creditor id is empty and failed" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="LoansDeleteUseCase.loan delete unit test.debtor-id is wrong and should fail" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="LoansUpdateUseCase.loan update unit test.loan unique id is empty and failed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.spec.ts" />
       <test-names>
-        <test-name value="LoansDeleteUseCase" />
-        <test-name value="loan delete unit test" />
-        <test-name value="debtor-id is wrong and should fail" />
+        <test-name value="LoansUpdateUseCase" />
+        <test-name value="loan update unit test" />
+        <test-name value="loan unique id is empty and failed" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="LoansDeleteUseCase.loan delete unit test.loan-id is wrong and should fail" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="LoansUpdateUseCase.loan update unit test.loan unique id is invalid and failed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.spec.ts" />
       <test-names>
-        <test-name value="LoansDeleteUseCase" />
-        <test-name value="loan delete unit test" />
-        <test-name value="loan-id is wrong and should fail" />
+        <test-name value="LoansUpdateUseCase" />
+        <test-name value="loan update unit test" />
+        <test-name value="loan unique id is invalid and failed" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="LoansDeleteUseCase.loan delete unit test.success should loan delete" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="LoansUpdateUseCase.loan update unit test.success should loan update" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.delete.use.case.spec.ts" />
+      <test-file value="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.spec.ts" />
       <test-names>
-        <test-name value="LoansDeleteUseCase" />
-        <test-name value="loan delete unit test" />
-        <test-name value="success should loan delete" />
+        <test-name value="LoansUpdateUseCase" />
+        <test-name value="loan update unit test" />
+        <test-name value="success should loan update" />
       </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.LoansDeleteUseCase.loan delete unit test.success should loan delete" />
-        <item itemvalue="Jest.LoansDeleteUseCase.loan delete unit test.creditor-id is wrong and should fail" />
-        <item itemvalue="Jest.LoansDeleteUseCase.loan delete unit test.debtor-id is wrong and should fail" />
-        <item itemvalue="Jest.LoansDeleteUseCase.loan delete unit test.loan-id is wrong and should fail" />
-        <item itemvalue="Jest.LoansDeleteUseCase.loan delete unit test.creditor-id is invalid and should fail" />
+        <item itemvalue="Jest.LoansUpdateUseCase.loan update unit test.success should loan update" />
+        <item itemvalue="Jest.LoansUpdateUseCase.loan update unit test.creditor id is empty and failed" />
+        <item itemvalue="Jest.LoansUpdateUseCase.loan update unit test.loan unique id is invalid and failed" />
+        <item itemvalue="Jest.LoansUpdateUseCase.loan update unit test.loan unique id is empty and failed" />
+        <item itemvalue="Jest.LoansListUseCase.loan list unit test.success should loan create" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +195,8 @@
       <workItem from="1678068328802" duration="3124000" />
       <workItem from="1678077865828" duration="11424000" />
       <workItem from="1678254439235" duration="3452000" />
-      <workItem from="1678346574342" duration="10679000" />
+      <workItem from="1678346574342" duration="11287000" />
+      <workItem from="1678590997354" duration="1774000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
