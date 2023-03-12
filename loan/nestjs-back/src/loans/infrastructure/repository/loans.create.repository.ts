@@ -28,15 +28,6 @@ export class LoansCreateRepository implements LoansCreateAdaptor {
       interest,
     } = dto;
 
-    const searchDebtor = await this.prisma.users.findUnique({
-      where: { id: debtorUniqueId },
-    });
-    const searchCreditor = await this.prisma.users.findUnique({
-      where: { id: creditorUniqueId },
-    });
-    if (!searchDebtor || !searchCreditor)
-      throw new NotFoundException(NOTFOUND_USER);
-
     try {
       const [createLoan] = await this.prisma.$transaction([
         this.prisma.loans.create({

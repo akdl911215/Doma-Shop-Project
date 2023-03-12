@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.list.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.list.use.case.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.update.use.case.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/domain/entity/loans.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/domain/entity/loans.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.create.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/infrastructure/repository/loans.create.repository.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +198,7 @@
       <workItem from="1678077865828" duration="11424000" />
       <workItem from="1678254439235" duration="3452000" />
       <workItem from="1678346574342" duration="11287000" />
-      <workItem from="1678590997354" duration="1774000" />
+      <workItem from="1678590997354" duration="3083000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>

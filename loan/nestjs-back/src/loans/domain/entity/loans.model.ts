@@ -25,7 +25,7 @@ export class LoansModel extends BaseCommonCoreDto {
     type: String,
     default: "",
   })
-  public creditorId!: string;
+  public creditorId!: string[];
 
   @IsUUID()
   @IsNotEmpty()
@@ -33,7 +33,7 @@ export class LoansModel extends BaseCommonCoreDto {
     type: String,
     default: "",
   })
-  public creditorUniqueId!: string;
+  public creditorUniqueId!: string[];
 
   @IsNumber()
   @IsNotEmpty()

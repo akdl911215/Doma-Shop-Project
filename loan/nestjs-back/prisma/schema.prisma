@@ -34,8 +34,8 @@ model Loans {
   id                String    @id @default(uuid()) @db.Uuid
   debtorId          String
   debtorUniqueId    String    @db.Uuid
-  creditorId        String
-  creditorUniqueId  String    @db.Uuid
+  creditorId        String[]
+  creditorUniqueId  String[]    @db.Uuid
   totalAmountLoan   Int
   loanRepaymentDate String
   interest          Int
@@ -56,8 +56,8 @@ model Debtors {
 
 model Creditors {
   id     String  @id @default(uuid()) @db.Uuid
-  creditor  Users   @relation(fields: [creditorUniqueId], references: [id], onDelete: Cascade)
-  creditorUniqueId String  @db.Uuid
+  creditor  Users[]   @relation(fields: [creditorUniqueId], references: [id], onDelete: Cascade)
+  creditorUniqueId String[]  @db.Uuid
 
   @@map(name: "creditors")
 }
