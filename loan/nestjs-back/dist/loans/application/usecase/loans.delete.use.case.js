@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansDeleteUseCase = void 0;
 const common_1 = require("@nestjs/common");
-const _400_1 = require("../../../_common/constants/http/errors/400");
+const _404_1 = require("../../../_common/constants/http/errors/404");
 let LoansDeleteUseCase = class LoansDeleteUseCase {
     constructor(repository, compareExistsDbUniqueIdWith, compareExistsDbCreditorUniqueIdWith, compareExistsDbDebtorUniqueIdWith) {
         this.repository = repository;
@@ -25,16 +25,16 @@ let LoansDeleteUseCase = class LoansDeleteUseCase {
     async delete(dto) {
         const { id, debtorUniqueId, creditorUniqueId } = dto;
         const { response: { existsLoanUniqueId }, } = await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
-        if (existsLoanUniqueId)
-            throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
+        if (!existsLoanUniqueId)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN_UNIQUE_ID);
         const { response: { existsLoanDebtorUniqueId }, } = await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
             debtorUniqueId,
         });
-        if (existsLoanDebtorUniqueId)
-            throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
+        if (!existsLoanDebtorUniqueId)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN_DEBTOR);
         const { response: { existsLoanCreditorUniqueId }, } = await this.compareExistsDbCreditorUniqueIdWith.existsLoanCreditorUniqueId({ creditorUniqueId });
-        if (existsLoanCreditorUniqueId)
-            throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
+        if (!existsLoanCreditorUniqueId)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN_CREDITOR);
         return await this.repository.delete(dto);
     }
 };

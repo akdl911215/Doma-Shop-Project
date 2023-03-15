@@ -15,12 +15,12 @@ export class LoansExistsLoanCreditorUniqueIdRepository
   public async existsLoanCreditorUniqueId(
     dto: LoansExistsLoanCreditorUniqueIdInterfaceInputDto
   ): Promise<LoansExistsLoanCreditorUniqueIdInterfaceOutputDto> {
-    const { creditorUniqueId } = dto;
-    if (!creditorUniqueId)
+    const { creditorsId } = dto;
+    if (!creditorsId)
       throw new BadRequestException(CREDITOR_UNIQUE_ID_REQUIRED);
 
     const searchLoan = await this.prisma.loans.findFirst({
-      where: { creditorUniqueId },
+      where: { creditorsId },
     });
 
     return { response: { existsLoanCreditorUniqueId: !!searchLoan } };

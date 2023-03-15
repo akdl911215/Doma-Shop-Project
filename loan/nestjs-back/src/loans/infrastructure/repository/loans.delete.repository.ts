@@ -18,7 +18,7 @@ export class LoansDeleteRepository implements LoansDeleteAdaptor {
   public async delete(
     dto: LoansDeleteAdaptorInputDto
   ): Promise<LoansDeleteAdaptorOutputDto> {
-    const { id, debtorUniqueId, creditorUniqueId } = dto;
+    const { id, debtorsId, creditorsId } = dto;
 
     const searchLoan = await this.prisma.loans.findFirst({
       where: {
@@ -27,10 +27,10 @@ export class LoansDeleteRepository implements LoansDeleteAdaptor {
             id,
           },
           {
-            debtorUniqueId,
+            debtorsId,
           },
           {
-            creditorUniqueId,
+            creditorsId,
           },
         ],
       },

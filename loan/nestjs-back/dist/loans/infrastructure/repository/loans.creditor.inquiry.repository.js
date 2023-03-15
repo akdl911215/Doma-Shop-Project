@@ -18,7 +18,7 @@ let LoansCreditorInquiryRepository = class LoansCreditorInquiryRepository {
         this.prisma = prisma;
     }
     async creditorInquiry(dto) {
-        const { id, creditorUniqueId } = dto;
+        const { id, creditorsId } = dto;
         const loan = await this.prisma.loans.findFirst({
             where: {
                 AND: [
@@ -26,7 +26,7 @@ let LoansCreditorInquiryRepository = class LoansCreditorInquiryRepository {
                         id,
                     },
                     {
-                        creditorUniqueId,
+                        creditorsId,
                     },
                 ],
             },

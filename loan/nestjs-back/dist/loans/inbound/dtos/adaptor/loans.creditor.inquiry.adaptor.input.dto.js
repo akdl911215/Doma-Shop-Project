@@ -29,6 +29,6 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansCreditorInquiryAdaptorInputDto.prototype, "creditorUniqueId", void 0);
+], LoansCreditorInquiryAdaptorInputDto.prototype, "creditorsId", void 0);
 exports.LoansCreditorInquiryAdaptorInputDto = LoansCreditorInquiryAdaptorInputDto;
 //# sourceMappingURL=loans.creditor.inquiry.adaptor.input.dto.js.map

@@ -29,7 +29,7 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansDeleteAdaptorInputDto.prototype, "creditorUniqueId", void 0);
+], LoansDeleteAdaptorInputDto.prototype, "creditorsId", void 0);
 __decorate([
     (0, class_validator_1.IsUUID)(),
     (0, swagger_1.ApiProperty)({
@@ -37,6 +37,6 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansDeleteAdaptorInputDto.prototype, "debtorUniqueId", void 0);
+], LoansDeleteAdaptorInputDto.prototype, "debtorsId", void 0);
 exports.LoansDeleteAdaptorInputDto = LoansDeleteAdaptorInputDto;
 //# sourceMappingURL=loans.delete.adaptor.input.dto.js.map

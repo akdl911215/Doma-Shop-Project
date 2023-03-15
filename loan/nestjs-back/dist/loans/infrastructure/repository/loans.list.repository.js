@@ -25,9 +25,9 @@ let LoansListRepository = class LoansListRepository {
         const currentPage = page < 1 ? 1 : page;
         const skip = (currentPage - 1) * take;
         const variableTake = take < 1 ? 1 : take;
-        const resultPage = Math.round(list / variableTake);
-        const totalPage = Math.round(resultPage - (skip + 1));
-        const resultTotalPage = totalPage < 1 ? 1 : totalPage;
+        const resultTotalPage = Math.ceil(list / variableTake);
+        const lastPageLeft = Math.ceil(resultTotalPage - (skip + 1));
+        const resultLastPageLeft = lastPageLeft < 1 ? 1 : lastPageLeft;
         const currentList = await this.prisma.loans.findMany({
             skip,
             take: variableTake,
@@ -35,7 +35,8 @@ let LoansListRepository = class LoansListRepository {
         try {
             return {
                 response: {
-                    resultPage,
+                    currentPage,
+                    resultLastPageLeft,
                     resultTotalPage,
                     currentList,
                 },

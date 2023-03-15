@@ -14,5 +14,5 @@ export class LoansCreditorInquiryAdaptorInputDto {
     type: String,
     default: "",
   })
-  public creditorUniqueId!: string;
+  public creditorsId!: string;
 }

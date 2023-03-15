@@ -3,5 +3,5 @@ import { LoansModel } from "../../../domain/entity/loans.model";
 
 export class LoansExistsLoanDebtorUniqueIdInterfaceInputDto extends PickType(
   LoansModel,
-  ["debtorUniqueId"] as const
+  ["debtorsId"] as const
 ) {}

@@ -15,26 +15,38 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansCreateUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _400_1 = require("../../../_common/constants/http/errors/400");
+const _404_1 = require("../../../_common/constants/http/errors/404");
 let LoansCreateUseCase = class LoansCreateUseCase {
-    constructor(repository, compareExistsDBLoanDebtorUniqueIdWith, compareExistsDBLoanCreditorUniqueIdWith) {
+    constructor(repository, compareExistsDBUserWith) {
         this.repository = repository;
-        this.compareExistsDBLoanDebtorUniqueIdWith = compareExistsDBLoanDebtorUniqueIdWith;
-        this.compareExistsDBLoanCreditorUniqueIdWith = compareExistsDBLoanCreditorUniqueIdWith;
+        this.compareExistsDBUserWith = compareExistsDBUserWith;
     }
     async create(dto) {
         const { creditorId, creditorUniqueId, debtorId, debtorUniqueId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
-        if (!creditorId)
-            throw new common_1.BadRequestException(_400_1.CREDITOR_ID_REQUIRED);
-        const { response: { existsLoanCreditorUniqueId }, } = await this.compareExistsDBLoanCreditorUniqueIdWith.existsLoanCreditorUniqueId({ creditorUniqueId });
-        if (existsLoanCreditorUniqueId)
-            throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
+        for (let i = 0; i < creditorUniqueId.length; ++i) {
+            if (!creditorId[i])
+                throw new common_1.BadRequestException(_400_1.CREDITOR_ID_REQUIRED);
+            if (!creditorUniqueId[i])
+                throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
+            const { response: { existsUser: existsCreditor }, } = await this.compareExistsDBUserWith.existsUser({
+                id: creditorUniqueId[i],
+                userId: creditorId[i],
+            });
+            if (!existsCreditor)
+                throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN_CREDITOR);
+        }
         if (!debtorId)
             throw new common_1.BadRequestException(_400_1.DEBTOR_ID_REQUIRED);
-        const { response: { existsLoanDebtorUniqueId }, } = await this.compareExistsDBLoanDebtorUniqueIdWith.existsLoanDebtorUniqueId({ debtorUniqueId });
-        if (existsLoanDebtorUniqueId)
+        if (!debtorUniqueId)
             throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
+        const { response: { existsUser: existsDebtor }, } = await this.compareExistsDBUserWith.existsUser({
+            id: debtorUniqueId,
+            userId: debtorId,
+        });
+        if (!existsDebtor)
+            throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN_DEBTOR);
         if (totalAmountLoan === 0)
-            throw new common_1.BadRequestException(_400_1.LOAN_REQUIRED);
+            throw new common_1.BadRequestException(_400_1.LOAN_TOTAL_AMOUNT_REQUIRED);
         if (!loanRepaymentDate)
             throw new common_1.BadRequestException(_400_1.LOAN_REPAYMENT_DATE_REQUIRED);
         if (interest <= 0)
@@ -45,9 +57,8 @@ let LoansCreateUseCase = class LoansCreateUseCase {
 LoansCreateUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("CREATE")),
-    __param(1, (0, common_1.Inject)("EXISTS_LOAN_DEBTOR_UNIQUE_ID")),
-    __param(2, (0, common_1.Inject)("EXISTS_LOAN_CREDITOR_UNIQUE_ID")),
-    __metadata("design:paramtypes", [Object, Object, Object])
+    __param(1, (0, common_1.Inject)("USERS_EXISTS_FOUND_BY_USER")),
+    __metadata("design:paramtypes", [Object, Object])
 ], LoansCreateUseCase);
 exports.LoansCreateUseCase = LoansCreateUseCase;
 //# sourceMappingURL=loans.create.use.case.js.map

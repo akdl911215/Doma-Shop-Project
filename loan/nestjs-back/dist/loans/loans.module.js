@@ -33,6 +33,9 @@ const loans_debtor_inquiry_repository_1 = require("./infrastructure/repository/l
 const loans_search_by_unique_id_repository_1 = require("./infrastructure/repository/loans.search.by.unique.id.repository");
 const loans_creditor_inquiry_controller_1 = require("./infrastructure/presentation/loans.creditor.inquiry.controller");
 const loans_debtor_inquiry_controller_1 = require("./infrastructure/presentation/loans.debtor.inquiry.controller");
+const users_exists_unique_id_repository_1 = require("./infrastructure/repository/users.exists.unique.id.repository");
+const users_exists_user_id_repository_1 = require("./infrastructure/repository/users.exists.user.id.repository");
+const users_exists_user_repository_1 = require("./infrastructure/repository/users.exists.user.repository");
 let LoansModule = class LoansModule {
 };
 LoansModule = __decorate([
@@ -122,6 +125,18 @@ LoansModule = __decorate([
             {
                 provide: "SEARCH_UNIQUE_ID",
                 useClass: loans_search_by_unique_id_repository_1.LoansSearchByUniqueIdRepository,
+            },
+            {
+                provide: "USERS_EXISTS_FOUND_BY_ID",
+                useClass: users_exists_unique_id_repository_1.UsersExistsUniqueIdRepository,
+            },
+            {
+                provide: "USERS_EXISTS_FOUND_BY_USER_ID",
+                useClass: users_exists_user_id_repository_1.UsersExistsUserIdRepository,
+            },
+            {
+                provide: "USERS_EXISTS_FOUND_BY_USER",
+                useClass: users_exists_user_repository_1.UsersExistsUserRepository,
             },
         ],
     })

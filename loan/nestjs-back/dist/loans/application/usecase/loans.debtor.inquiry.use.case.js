@@ -16,18 +16,18 @@ exports.LoansDebtorInquiryUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansDebtorInquiryUseCase = class LoansDebtorInquiryUseCase {
-    constructor(repository, compareExistsDbUniqueIdWith, compareExistsDbDebtorUniqueIdWith) {
+    constructor(repository, compareExistsDbUniqueIdWith, compareExistsDBUsersUniqueIdWith) {
         this.repository = repository;
         this.compareExistsDbUniqueIdWith = compareExistsDbUniqueIdWith;
-        this.compareExistsDbDebtorUniqueIdWith = compareExistsDbDebtorUniqueIdWith;
+        this.compareExistsDBUsersUniqueIdWith = compareExistsDBUsersUniqueIdWith;
     }
     async debtorInquiry(dto) {
         const { id, debtorUniqueId } = dto;
         const { response: { existsLoanUniqueId }, } = await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
         if (existsLoanUniqueId)
             throw new common_1.BadRequestException(_400_1.LOAN_UNIQUE_ID_REQUIRED);
-        const { response: { existsLoanDebtorUniqueId }, } = await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
-            debtorUniqueId,
+        const { response: { userExistsFoundByUniqueId: existsLoanDebtorUniqueId }, } = await this.compareExistsDBUsersUniqueIdWith.usersExistsFoundByUniqueId({
+            id: debtorUniqueId,
         });
         if (existsLoanDebtorUniqueId)
             throw new common_1.BadRequestException(_400_1.LOAN_DEBTOR_UNIQUE_ID_REQUIRED);
@@ -38,7 +38,7 @@ LoansDebtorInquiryUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("DEBTOR_INQUIRY")),
     __param(1, (0, common_1.Inject)("EXISTS_LOAN_UNIQUE_ID")),
-    __param(2, (0, common_1.Inject)("EXISTS_LOAN_DEBTOR_UNIQUE_ID")),
+    __param(2, (0, common_1.Inject)("USERS_EXISTS_FOUND_BY_ID")),
     __metadata("design:paramtypes", [Object, Object, Object])
 ], LoansDebtorInquiryUseCase);
 exports.LoansDebtorInquiryUseCase = LoansDebtorInquiryUseCase;

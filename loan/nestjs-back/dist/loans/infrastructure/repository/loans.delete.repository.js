@@ -18,7 +18,7 @@ let LoansDeleteRepository = class LoansDeleteRepository {
         this.prisma = prisma;
     }
     async delete(dto) {
-        const { id, debtorUniqueId, creditorUniqueId } = dto;
+        const { id, debtorsId, creditorsId } = dto;
         const searchLoan = await this.prisma.loans.findFirst({
             where: {
                 AND: [
@@ -26,34 +26,31 @@ let LoansDeleteRepository = class LoansDeleteRepository {
                         id,
                     },
                     {
-                        debtorUniqueId,
+                        debtorsId,
                     },
                     {
-                        creditorUniqueId,
+                        creditorsId,
                     },
                 ],
             },
         });
-        if (!!searchLoan) {
-            try {
-                await this.prisma.$transaction([
-                    this.prisma.loans.delete({
-                        where: { id },
-                    }),
-                ]);
-                return { response: { loanErase: true } };
-            }
-            catch (e) {
-                if (e instanceof common_1.InternalServerErrorException) {
-                    throw new common_1.InternalServerErrorException(e);
-                }
-                else {
-                    throw new Error(`${e}`);
-                }
-            }
-        }
-        else {
+        if (!searchLoan)
             throw new common_1.NotFoundException(_404_1.NOTFOUND_LOAN);
+        try {
+            await this.prisma.$transaction([
+                this.prisma.loans.delete({
+                    where: { id },
+                }),
+            ]);
+            return { response: { loanErase: true } };
+        }
+        catch (e) {
+            if (e instanceof common_1.InternalServerErrorException) {
+                throw new common_1.InternalServerErrorException(e);
+            }
+            else {
+                throw new Error(`${e}`);
+            }
         }
     }
 };

@@ -18,11 +18,11 @@ let LoansExistsLoanDebtorUniqueIdRepository = class LoansExistsLoanDebtorUniqueI
         this.prisma = prisma;
     }
     async existsLoanDebtorUniqueId(dto) {
-        const { debtorUniqueId } = dto;
-        if (!debtorUniqueId)
+        const { debtorsId } = dto;
+        if (!debtorsId)
             throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
         const searchLoan = await this.prisma.loans.findFirst({
-            where: { debtorUniqueId },
+            where: { debtorsId },
         });
         return { response: { existsLoanDebtorUniqueId: !!searchLoan } };
     }

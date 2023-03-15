@@ -23,17 +23,17 @@ let LoansInquiryUseCase = class LoansInquiryUseCase {
         this.compareExistsDbDebtorUniqueIdWith = compareExistsDbDebtorUniqueIdWith;
     }
     async inquiry(dto) {
-        const { id, creditorUniqueId, debtorUniqueId } = dto;
+        const { id, creditorsId, debtorsId } = dto;
         const { response: { existsLoanUniqueId }, } = await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
         if (existsLoanUniqueId)
             throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
         const { response: { existsLoanDebtorUniqueId }, } = await this.compareExistsDbDebtorUniqueIdWith.existsLoanDebtorUniqueId({
-            debtorUniqueId,
+            debtorsId,
         });
         if (existsLoanDebtorUniqueId)
             throw new common_1.BadRequestException(_400_1.DEBTOR_UNIQUE_ID_REQUIRED);
         const { response: { existsLoanCreditorUniqueId }, } = await this.compareExistsDbCreditorUniqueIdWith.existsLoanCreditorUniqueId({
-            creditorUniqueId,
+            creditorsId,
         });
         if (existsLoanCreditorUniqueId)
             throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);

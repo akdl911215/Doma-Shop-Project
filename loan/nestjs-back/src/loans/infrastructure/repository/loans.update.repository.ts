@@ -20,10 +20,8 @@ export class LoansUpdateRepository implements LoansUpdateAdaptor {
   ): Promise<LoansUpdateAdaptorOutputDto> {
     const {
       id,
-      creditorUniqueId,
-      creditorId,
-      debtorUniqueId,
-      debtorId,
+      creditorsId,
+      debtorsId,
       totalAmountLoan,
       interest,
       loanRepaymentDate,
@@ -36,10 +34,10 @@ export class LoansUpdateRepository implements LoansUpdateAdaptor {
             id,
           },
           {
-            creditorUniqueId,
+            creditorsId,
           },
           {
-            debtorUniqueId,
+            debtorsId,
           },
         ],
       },
@@ -51,10 +49,8 @@ export class LoansUpdateRepository implements LoansUpdateAdaptor {
         this.prisma.loans.update({
           where: { id },
           data: {
-            creditorUniqueId,
-            creditorId,
-            debtorUniqueId,
-            debtorId,
+            creditorsId,
+            debtorsId,
             totalAmountLoan,
             interest,
             loanRepaymentDate,

@@ -15,7 +15,7 @@ export class LoansCreditorInquiryRepository
   public async creditorInquiry(
     dto: LoansCreditorInquiryAdaptorInputDto
   ): Promise<LoansCreditorInquiryAdaptorOutputDto> {
-    const { id, creditorUniqueId } = dto;
+    const { id, creditorsId } = dto;
 
     const loan = await this.prisma.loans.findFirst({
       where: {
@@ -24,7 +24,7 @@ export class LoansCreditorInquiryRepository
             id,
           },
           {
-            creditorUniqueId,
+            creditorsId,
           },
         ],
       },

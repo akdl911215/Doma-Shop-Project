@@ -22,25 +22,21 @@ let LoansUpdateUseCase = class LoansUpdateUseCase {
         this.searchDBUniqueIdWith = searchDBUniqueIdWith;
     }
     async update(dto) {
-        const { id, creditorId, creditorUniqueId, debtorId, debtorUniqueId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
+        const { id, creditorsId, debtorsId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
         if (!id)
             throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
         const { response: { existsLoanUniqueId }, } = await this.existsDBLoanWith.existsLoanUniqueId({ id });
-        if (existsLoanUniqueId)
+        if (!existsLoanUniqueId)
             throw new common_1.BadRequestException(_400_1.LOAN_UNIQUE_ID_REQUIRED);
         const loan = await this.searchDBUniqueIdWith.searchByUniqueId({ id });
-        const updateCreditorUniqueId = creditorUniqueId === ""
-            ? loan.response.creditorUniqueId
-            : creditorUniqueId;
-        const updateCreditorId = creditorId === "" ? loan.response.creditorId : creditorId;
-        const updateDebtorUniqueId = debtorUniqueId === "" ? loan.response.debtorUniqueId : debtorUniqueId;
-        const updateDebtorId = debtorId === "" ? loan.response.debtorId : debtorId;
+        const updateCreditorsId = creditorsId === "" ? loan.response.creditorsId : creditorsId;
+        const updateDebtorsId = debtorsId === "" ? loan.response.debtorsId : debtorsId;
         const updateTotalAmountLoan = totalAmountLoan < 0 ? loan.response.totalAmountLoan : totalAmountLoan;
         const updateInterest = interest < 1 ? loan.response.interest : interest;
         const updateLoanRepaymentDate = loanRepaymentDate === ""
             ? loan.response.loanRepaymentDate
             : loanRepaymentDate;
-        return await this.repository.update(Object.assign(Object.assign({}, dto), { creditorUniqueId: updateCreditorUniqueId, creditorId: updateCreditorId, debtorUniqueId: updateDebtorUniqueId, debtorId: updateDebtorId, totalAmountLoan: updateTotalAmountLoan, interest: updateInterest, loanRepaymentDate: updateLoanRepaymentDate }));
+        return await this.repository.update(Object.assign(Object.assign({}, dto), { creditorsId: updateCreditorsId, debtorsId: updateDebtorsId, totalAmountLoan: updateTotalAmountLoan, interest: updateInterest, loanRepaymentDate: updateLoanRepaymentDate }));
     }
 };
 LoansUpdateUseCase = __decorate([

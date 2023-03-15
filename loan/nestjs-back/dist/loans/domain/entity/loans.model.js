@@ -16,14 +16,14 @@ const swagger_1 = require("@nestjs/swagger");
 class LoansModel extends base_common_core_dto_1.BaseCommonCoreDto {
 }
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
         type: String,
         default: "",
     }),
     __metadata("design:type", String)
-], LoansModel.prototype, "debtorId", void 0);
+], LoansModel.prototype, "debtorsId", void 0);
 __decorate([
     (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
@@ -32,25 +32,7 @@ __decorate([
         default: "",
     }),
     __metadata("design:type", String)
-], LoansModel.prototype, "debtorUniqueId", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, swagger_1.ApiProperty)({
-        type: String,
-        default: "",
-    }),
-    __metadata("design:type", String)
-], LoansModel.prototype, "creditorId", void 0);
-__decorate([
-    (0, class_validator_1.IsUUID)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, swagger_1.ApiProperty)({
-        type: String,
-        default: "",
-    }),
-    __metadata("design:type", String)
-], LoansModel.prototype, "creditorUniqueId", void 0);
+], LoansModel.prototype, "creditorsId", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),

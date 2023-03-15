@@ -24,10 +24,8 @@ export class LoansUpdateUseCase implements LoansUpdateAdaptor {
   ): Promise<LoansUpdateAdaptorOutputDto> {
     const {
       id,
-      creditorId,
-      creditorUniqueId,
-      debtorId,
-      debtorUniqueId,
+      creditorsId,
+      debtorsId,
       totalAmountLoan,
       interest,
       loanRepaymentDate,
@@ -42,16 +40,10 @@ export class LoansUpdateUseCase implements LoansUpdateAdaptor {
 
     const loan = await this.searchDBUniqueIdWith.searchByUniqueId({ id });
 
-    const updateCreditorUniqueId: string =
-      creditorUniqueId === ""
-        ? loan.response.creditorUniqueId
-        : creditorUniqueId;
-    const updateCreditorId: string =
-      creditorId === "" ? loan.response.creditorId : creditorId;
-    const updateDebtorUniqueId: string =
-      debtorUniqueId === "" ? loan.response.debtorUniqueId : debtorUniqueId;
-    const updateDebtorId: string =
-      debtorId === "" ? loan.response.debtorId : debtorId;
+    const updateCreditorsId: string =
+      creditorsId === "" ? loan.response.creditorsId : creditorsId;
+    const updateDebtorsId: string =
+      debtorsId === "" ? loan.response.debtorsId : debtorsId;
     const updateTotalAmountLoan: number =
       totalAmountLoan < 0 ? loan.response.totalAmountLoan : totalAmountLoan;
     const updateInterest: number =
@@ -63,10 +55,8 @@ export class LoansUpdateUseCase implements LoansUpdateAdaptor {
 
     return await this.repository.update({
       ...dto,
-      creditorUniqueId: updateCreditorUniqueId,
-      creditorId: updateCreditorId,
-      debtorUniqueId: updateDebtorUniqueId,
-      debtorId: updateDebtorId,
+      creditorsId: updateCreditorsId,
+      debtorsId: updateDebtorsId,
       totalAmountLoan: updateTotalAmountLoan,
       interest: updateInterest,
       loanRepaymentDate: updateLoanRepaymentDate,

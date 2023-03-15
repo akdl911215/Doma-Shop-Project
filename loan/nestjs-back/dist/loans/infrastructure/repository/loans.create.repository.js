@@ -12,42 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoansCreateRepository = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../../../_common/infrastructures/prisma/prisma.service");
-const _404_1 = require("../../../_common/constants/http/errors/404");
 let LoansCreateRepository = class LoansCreateRepository {
     constructor(prisma) {
         this.prisma = prisma;
     }
     async create(dto) {
-        const { debtorUniqueId, debtorId, creditorUniqueId, creditorId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
-        const searchDebtor = await this.prisma.users.findUnique({
-            where: { id: debtorUniqueId },
-        });
-        const searchCreditor = await this.prisma.users.findUnique({
-            where: { id: creditorUniqueId },
-        });
-        if (!searchDebtor || !searchCreditor)
-            throw new common_1.NotFoundException(_404_1.NOTFOUND_USER);
+        const { debtorsId, creditorsId, totalAmountLoan, loanRepaymentDate, interest, } = dto;
         try {
             const [createLoan] = await this.prisma.$transaction([
                 this.prisma.loans.create({
                     data: {
-                        debtorUniqueId,
-                        debtorId,
-                        creditorUniqueId,
-                        creditorId,
+                        debtorsId,
+                        creditorsId,
                         totalAmountLoan,
                         loanRepaymentDate,
                         interest,
-                    },
-                }),
-                this.prisma.debtors.create({
-                    data: {
-                        debtorUniqueId,
-                    },
-                }),
-                this.prisma.creditors.create({
-                    data: {
-                        creditorUniqueId,
                     },
                 }),
             ]);

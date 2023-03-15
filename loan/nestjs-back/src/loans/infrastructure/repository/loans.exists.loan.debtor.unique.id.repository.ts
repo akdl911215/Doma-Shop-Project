@@ -15,12 +15,11 @@ export class LoansExistsLoanDebtorUniqueIdRepository
   public async existsLoanDebtorUniqueId(
     dto: LoansExistsLoanDebtorUniqueIdInterfaceInputDto
   ): Promise<LoansExistsLoanDebtorUniqueIdInterfaceOutputDto> {
-    const { debtorUniqueId } = dto;
-    if (!debtorUniqueId)
-      throw new BadRequestException(DEBTOR_UNIQUE_ID_REQUIRED);
+    const { debtorsId } = dto;
+    if (!debtorsId) throw new BadRequestException(DEBTOR_UNIQUE_ID_REQUIRED);
 
     const searchLoan = await this.prisma.loans.findFirst({
-      where: { debtorUniqueId },
+      where: { debtorsId },
     });
 
     return { response: { existsLoanDebtorUniqueId: !!searchLoan } };

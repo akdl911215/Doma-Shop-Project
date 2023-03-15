@@ -30,10 +30,8 @@ model Users {
 
 model Loans {
   id                String    @id @default(uuid()) @db.Uuid
-  debtorId          String
-  debtorUniqueId    String    @db.Uuid
-  creditorId        String[]
-  creditorUniqueId  String[]    @db.Uuid
+  debtorsId         String    @db.Uuid
+  creditorsId       String    @db.Uuid
   totalAmountLoan   Int
   loanRepaymentDate String
   interest          Int
@@ -44,3 +42,10 @@ model Loans {
   @@map(name: "loans")
 }
 
+model Creditors {
+  id String @id @default(uuid()) @db.Uuid
+  creditorsUniqueId String @db.Uuid
+  creditor String
+
+  @@map(name: "creditors")
+}

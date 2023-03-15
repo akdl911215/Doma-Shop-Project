@@ -18,7 +18,7 @@ let LoansUpdateRepository = class LoansUpdateRepository {
         this.prisma = prisma;
     }
     async update(dto) {
-        const { id, creditorUniqueId, creditorId, debtorUniqueId, debtorId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
+        const { id, creditorsId, debtorsId, totalAmountLoan, interest, loanRepaymentDate, } = dto;
         const loan = await this.prisma.loans.findFirst({
             where: {
                 AND: [
@@ -26,10 +26,10 @@ let LoansUpdateRepository = class LoansUpdateRepository {
                         id,
                     },
                     {
-                        creditorUniqueId,
+                        creditorsId,
                     },
                     {
-                        debtorUniqueId,
+                        debtorsId,
                     },
                 ],
             },
@@ -41,10 +41,8 @@ let LoansUpdateRepository = class LoansUpdateRepository {
                 this.prisma.loans.update({
                     where: { id },
                     data: {
-                        creditorUniqueId,
-                        creditorId,
-                        debtorUniqueId,
-                        debtorId,
+                        creditorsId,
+                        debtorsId,
                         totalAmountLoan,
                         interest,
                         loanRepaymentDate,

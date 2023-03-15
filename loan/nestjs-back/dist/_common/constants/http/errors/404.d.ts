@@ -7,4 +7,7 @@ export declare const NOTFOUND_CREDITOR = "NOTFOUND_CREDITOR";
 export declare const NOTFOUND_BOARD = "NOTFOUND_BOARD";
 export declare const NOTFOUND_BOARD_COMMENT = "NOTFOUND_BOARD_COMMENT";
 export declare const NOTFOUND_LOAN = "NOTFOUND_LOAN";
+export declare const NOTFOUND_LOAN_UNIQUE_ID = "NOTFOUND_LOAN_UNIQUE_ID";
 export declare const NOTFOUND_LIST = "NOTFOUND_LIST";
+export declare const NOTFOUND_LOAN_CREDITOR = "NOTFOUND_LOAN_CREDITOR";
+export declare const NOTFOUND_LOAN_DEBTOR = "NOTFOUND_LOAN_DEBTOR";

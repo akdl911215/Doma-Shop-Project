@@ -36,10 +36,8 @@ describe("LoansUpdateUseCase", () => {
     it("loan unique id is empty and failed", async () => {
       dto = {
         id: "",
-        debtorId: "",
-        debtorUniqueId: "",
-        creditorId: [""],
-        creditorUniqueId: [""],
+        debtorsId: "",
+        creditorsId: "",
         totalAmountLoan: 0,
         loanRepaymentDate: "",
         interest: 0,
@@ -68,10 +66,8 @@ describe("LoansUpdateUseCase", () => {
     it("loan unique id is invalid and failed", async () => {
       dto = {
         id: "d44bacce-877c-434a-bc7a-c0c4a7589c22",
-        debtorId: "",
-        debtorUniqueId: "",
-        creditorId: [""],
-        creditorUniqueId: [""],
+        debtorsId: "",
+        creditorsId: "",
         totalAmountLoan: 0,
         loanRepaymentDate: "",
         interest: 0,
@@ -100,10 +96,8 @@ describe("LoansUpdateUseCase", () => {
     it("success should loan update", async () => {
       dto = {
         id: "d44bacce-877c-434a-bc7a-c0c4a7589ce7",
-        debtorId: "",
-        debtorUniqueId: "",
-        creditorId: [""],
-        creditorUniqueId: [""],
+        debtorsId: "",
+        creditorsId: "",
         totalAmountLoan: 0,
         loanRepaymentDate: "",
         interest: 0,

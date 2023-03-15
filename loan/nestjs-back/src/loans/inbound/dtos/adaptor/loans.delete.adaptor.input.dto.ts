@@ -14,12 +14,12 @@ export class LoansDeleteAdaptorInputDto {
     type: String,
     default: "",
   })
-  public creditorUniqueId!: string;
+  public creditorsId!: string;
 
   @IsUUID()
   @ApiProperty({
     type: String,
     default: "",
   })
-  public debtorUniqueId!: string;
+  public debtorsId!: string;
 }

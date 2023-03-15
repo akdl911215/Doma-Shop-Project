@@ -13,7 +13,7 @@ export class LoansInquiryRepository implements LoansInquiryAdaptor {
   public async inquiry(
     dto: LoansInquiryAdaptorInputDto
   ): Promise<LoansInquiryAdaptorOutputDto> {
-    const { id, debtorUniqueId, creditorUniqueId } = dto;
+    const { id, debtorsId, creditorsId } = dto;
 
     const loan = await this.prisma.loans.findFirst({
       where: {
@@ -22,10 +22,10 @@ export class LoansInquiryRepository implements LoansInquiryAdaptor {
             id,
           },
           {
-            creditorUniqueId,
+            creditorsId,
           },
           {
-            debtorUniqueId,
+            debtorsId,
           },
         ],
       },

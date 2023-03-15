@@ -3,13 +3,13 @@ import { IsNotEmpty, IsNumber, IsString, IsUUID } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class LoansModel extends BaseCommonCoreDto {
-  @IsString()
+  @IsUUID()
   @IsNotEmpty()
   @ApiProperty({
     type: String,
     default: "",
   })
-  public debtorId!: string;
+  public debtorsId!: string;
 
   @IsUUID()
   @IsNotEmpty()
@@ -17,23 +17,7 @@ export class LoansModel extends BaseCommonCoreDto {
     type: String,
     default: "",
   })
-  public debtorUniqueId!: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty({
-    type: String,
-    default: "",
-  })
-  public creditorId!: string[];
-
-  @IsUUID()
-  @IsNotEmpty()
-  @ApiProperty({
-    type: String,
-    default: "",
-  })
-  public creditorUniqueId!: string[];
+  public creditorsId!: string;
 
   @IsNumber()
   @IsNotEmpty()

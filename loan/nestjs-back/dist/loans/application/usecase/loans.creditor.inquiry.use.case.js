@@ -16,18 +16,18 @@ exports.LoansCreditorInquiryUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const _400_1 = require("../../../_common/constants/http/errors/400");
 let LoansCreditorInquiryUseCase = class LoansCreditorInquiryUseCase {
-    constructor(repository, compareExistsDbUniqueIdWith, compareExistsDbCreditorUniqueIdWith) {
+    constructor(repository, compareExistsDbUniqueIdWith, compareExistsDBUsersUniqueIdWith) {
         this.repository = repository;
         this.compareExistsDbUniqueIdWith = compareExistsDbUniqueIdWith;
-        this.compareExistsDbCreditorUniqueIdWith = compareExistsDbCreditorUniqueIdWith;
+        this.compareExistsDBUsersUniqueIdWith = compareExistsDBUsersUniqueIdWith;
     }
     async creditorInquiry(dto) {
         const { id, creditorUniqueId } = dto;
         const { response: { existsLoanUniqueId }, } = await this.compareExistsDbUniqueIdWith.existsLoanUniqueId({ id });
         if (existsLoanUniqueId)
             throw new common_1.BadRequestException(_400_1.UNIQUE_ID_REQUIRED);
-        const { response: { existsLoanCreditorUniqueId }, } = await this.compareExistsDbCreditorUniqueIdWith.existsLoanCreditorUniqueId({
-            creditorUniqueId,
+        const { response: { userExistsFoundByUniqueId: existsLoanCreditorUniqueId }, } = await this.compareExistsDBUsersUniqueIdWith.usersExistsFoundByUniqueId({
+            id: creditorUniqueId,
         });
         if (existsLoanCreditorUniqueId)
             throw new common_1.BadRequestException(_400_1.CREDITOR_UNIQUE_ID_REQUIRED);
@@ -38,7 +38,7 @@ LoansCreditorInquiryUseCase = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)("CREDITOR_INQUIRY")),
     __param(1, (0, common_1.Inject)("EXISTS_LOAN_UNIQUE_ID")),
-    __param(2, (0, common_1.Inject)("EXISTS_LOAN_CREDITOR_UNIQUE_ID")),
+    __param(2, (0, common_1.Inject)("USERS_EXISTS_FOUND_BY_ID")),
     __metadata("design:paramtypes", [Object, Object, Object])
 ], LoansCreditorInquiryUseCase);
 exports.LoansCreditorInquiryUseCase = LoansCreditorInquiryUseCase;

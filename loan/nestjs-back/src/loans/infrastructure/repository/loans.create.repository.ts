@@ -17,10 +17,8 @@ export class LoansCreateRepository implements LoansCreateAdaptor {
     dto: LoansCreateAdaptorInputDto
   ): Promise<LoansCreateAdaptorOutputDto> {
     const {
-      debtorUniqueId,
-      debtorId,
-      creditorUniqueId,
-      creditorId,
+      debtorsId,
+      creditorsId,
       totalAmountLoan,
       loanRepaymentDate,
       interest,
@@ -30,10 +28,8 @@ export class LoansCreateRepository implements LoansCreateAdaptor {
       const [createLoan] = await this.prisma.$transaction([
         this.prisma.loans.create({
           data: {
-            debtorUniqueId,
-            debtorId,
-            creditorUniqueId,
-            creditorId,
+            debtorsId,
+            creditorsId,
             totalAmountLoan,
             loanRepaymentDate,
             interest,

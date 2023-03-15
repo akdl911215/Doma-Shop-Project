@@ -1,7 +1,8 @@
 import { BaseOutputDto } from "../../../../_common/dtos/base.output.dto";
 import { Loans } from "@prisma/client";
 export declare class LoansListAdaptorOutputDto extends BaseOutputDto<{
-    readonly resultPage: number;
+    readonly currentPage: number;
+    readonly resultLastPageLeft: number;
     readonly resultTotalPage: number;
     readonly currentList: Loans[];
 }> {
