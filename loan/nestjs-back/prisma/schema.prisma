@@ -46,6 +46,6 @@ model Creditors {
   id String @id @default(uuid()) @db.Uuid
   creditorsUniqueId String @db.Uuid
   creditor String
-
+``
   @@map(name: "creditors")
 }
