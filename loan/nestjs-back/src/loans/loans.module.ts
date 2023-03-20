@@ -42,7 +42,7 @@ import { UsersExistsUserRepository } from "./infrastructure/repository/users.exi
     // infrastructure
     PrismaService,
 
-    // service
+    // services
 
     // useCase
     {

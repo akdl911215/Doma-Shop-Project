@@ -14,7 +14,7 @@ import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/50
 import { UsersModel } from "../../domain/entity/users.model";
 import { UsersDeleteAdaptorOutputDto } from "../../outbound/dtos/users.delete.adaptor.output.dto";
 import { UsersDeleteAdaptorInputDto } from "../../inbound/dtos/users.delete.adaptor.input.dto";
-import { UsersDeleteAdaptor } from "../../domain/adaptor/users.delete.adaptor";
+import { UsersDeleteAdaptor } from "../../domain/adaptors/users.delete.adaptor";
 import { AccessTokenGuard } from "../../../_common/infrastructures/token/guard/jwt.access.guard";
 import { User } from "../../../_common/decorators/user.decorator";
 

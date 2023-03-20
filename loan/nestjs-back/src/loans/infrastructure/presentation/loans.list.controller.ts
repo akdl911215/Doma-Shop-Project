@@ -5,11 +5,11 @@ import {
   ApiTags,
 } from "@nestjs/swagger";
 import { Controller, Get, Inject, Query } from "@nestjs/common";
-import { LoansListAdaptor } from "../../domain/adaptor/loans.list.adaptor";
+import { LoansListAdaptor } from "../../domain/adaptors/loans.list.adaptor";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
-import { LoansListAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.list.adaptor.input.dto";
-import { LoansListAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.list.adaptor.output.dto";
+import { LoansListAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.list.adaptor.input.dto";
+import { LoansListAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.list.adaptor.output.dto";
 import { NOTFOUND_LIST } from "../../../_common/constants/http/errors/404";
 
 @ApiTags("loans")

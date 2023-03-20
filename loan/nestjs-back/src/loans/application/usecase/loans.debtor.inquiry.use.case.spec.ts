@@ -4,7 +4,7 @@ import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.se
 import { LoansExistsLoanUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.unique.id.repository";
 import { LoansDebtorInquiryUseCase } from "./loans.debtor.inquiry.use.case";
 import { LoansExistsLoanDebtorUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.debtor.unique.id.repository";
-import { LoansDebtorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.debtor.inquiry.adaptor.input.dto";
+import { LoansDebtorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.debtor.inquiry.adaptor.input.dto";
 import { LoansDebtorInquiryRepository } from "../../infrastructure/repository/loans.debtor.inquiry.repository";
 
 describe("LoansDebtorInquiryUseCase", () => {

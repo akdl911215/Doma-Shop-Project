@@ -1,5 +1,5 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
-import { UsersUpdateAddressAdaptor } from "../../domain/adaptor/users.update.address.adaptor";
+import { UsersUpdateAddressAdaptor } from "../../domain/adaptors/users.update.address.adaptor";
 import { UsersUpdateAddressAdaptorInputDto } from "../../inbound/dtos/users.update.address.adaptor.input.dto";
 import { UsersUpdateAddressAdaptorOutputDto } from "../../outbound/dtos/users.update.address.adaptor.output.dto";
 import { ADDRESS_REQUIRED } from "../../../_common/constants/http/errors/400";

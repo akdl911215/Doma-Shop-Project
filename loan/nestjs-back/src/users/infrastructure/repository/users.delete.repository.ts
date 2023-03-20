@@ -8,7 +8,7 @@ import { UsersDeleteAdaptorInputDto } from "../../inbound/dtos/users.delete.adap
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { UsersDeleteAdaptorOutputDto } from "../../outbound/dtos/users.delete.adaptor.output.dto";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { UsersDeleteAdaptor } from "../../domain/adaptor/users.delete.adaptor";
+import { UsersDeleteAdaptor } from "../../domain/adaptors/users.delete.adaptor";
 
 @Injectable()
 @Dependencies([PrismaService])

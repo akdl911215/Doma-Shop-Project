@@ -1,10 +1,10 @@
 import { Inject, Injectable, NotFoundException } from "@nestjs/common";
-import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.delete.adaptor.output.dto";
-import { LoansDeleteAdaptor } from "../../domain/adaptor/loans.delete.adaptor";
-import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.delete.adaptor.input.dto";
-import { LoansExistsLoanCreditorUniqueIdInterface } from "../../domain/interface/loans.exists.loan.creditor.unique.id.interface";
-import { LoansExistsLoanDebtorUniqueIdInterface } from "../../domain/interface/loans.exists.loan.debtor.unique.id.interface";
-import { LoansExistsLoanUniqueIdInterface } from "../../domain/interface/loans.exists.loan.unique.id.interface";
+import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.delete.adaptor.output.dto";
+import { LoansDeleteAdaptor } from "../../domain/adaptors/loans.delete.adaptor";
+import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.delete.adaptor.input.dto";
+import { LoansExistsLoanCreditorUniqueIdInterface } from "../../domain/interfaces/loans.exists.loan.creditor.unique.id.interface";
+import { LoansExistsLoanDebtorUniqueIdInterface } from "../../domain/interfaces/loans.exists.loan.debtor.unique.id.interface";
+import { LoansExistsLoanUniqueIdInterface } from "../../domain/interfaces/loans.exists.loan.unique.id.interface";
 import {
   NOTFOUND_LOAN_CREDITOR,
   NOTFOUND_LOAN_DEBTOR,

@@ -8,7 +8,7 @@ import { UsersUpdateNicknameAdaptorInputDto } from "../../inbound/dtos/users.upd
 import { UsersUpdateNicknameAdaptorOutputDto } from "../../outbound/dtos/users.update.nickname.adaptor.output.dto";
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { UsersUpdateNicknameAdaptor } from "../../domain/adaptor/users.update.nickname.adaptor";
+import { UsersUpdateNicknameAdaptor } from "../../domain/adaptors/users.update.nickname.adaptor";
 
 @Injectable()
 @Dependencies([PrismaService])

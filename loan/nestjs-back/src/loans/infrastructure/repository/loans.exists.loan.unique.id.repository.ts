@@ -1,10 +1,10 @@
 import { BadRequestException, Dependencies, Injectable } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { LoansSearchByUniqueIdInterface } from "../../domain/interface/loans.search.by.unique.id.interface";
-import { LoansExistsLoanUniqueIdInterfaceInputDto } from "../../inbound/dtos/interface/loans.exists.loan.unique.id.interface.input.dto";
-import { LoansExistsLoanUniqueIdInterfaceOutputDto } from "../../outbound/dtos/interface/loans.exists.loan.unique.id.interface.output.dto";
+import { LoansSearchByUniqueIdInterface } from "../../domain/interfaces/loans.search.by.unique.id.interface";
+import { LoansExistsLoanUniqueIdInterfaceInputDto } from "../../inbound/dtos/interfaces/loans.exists.loan.unique.id.interface.input.dto";
+import { LoansExistsLoanUniqueIdInterfaceOutputDto } from "../../outbound/dtos/interfaces/loans.exists.loan.unique.id.interface.output.dto";
 import { UNIQUE_ID_REQUIRED } from "../../../_common/constants/http/errors/400";
-import { LoansExistsLoanUniqueIdInterface } from "../../domain/interface/loans.exists.loan.unique.id.interface";
+import { LoansExistsLoanUniqueIdInterface } from "../../domain/interfaces/loans.exists.loan.unique.id.interface";
 
 @Injectable()
 @Dependencies([PrismaService])

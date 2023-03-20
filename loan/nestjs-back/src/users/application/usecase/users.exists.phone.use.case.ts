@@ -1,5 +1,5 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { UsersExistsPhoneAdaptor } from "../../domain/adaptor/users.exists.phone.adaptor";
+import { UsersExistsPhoneAdaptor } from "../../domain/adaptors/users.exists.phone.adaptor";
 import { UsersExistsPhoneAdaptorInputDto } from "../../inbound/dtos/users.exists.phone.adaptor.input.dto";
 import { UsersExistsPhoneAdaptorOutputDto } from "../../outbound/dtos/users.exists.phone.adaptor.output.dto";
 

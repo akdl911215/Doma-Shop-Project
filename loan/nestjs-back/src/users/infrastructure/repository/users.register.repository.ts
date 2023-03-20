@@ -7,7 +7,7 @@ import {
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
+import { UsersRegisterAdaptor } from "../../domain/adaptors/users.register.adaptor";
 import { HashEncodedService } from "../bcrypt/hash.encoded.service";
 
 @Injectable()

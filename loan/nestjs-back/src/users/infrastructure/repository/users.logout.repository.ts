@@ -8,7 +8,7 @@ import { UsersLogoutAdaptorOutputDto } from "../../outbound/dtos/users.logout.ad
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { UsersLogoutAdaptorInputDto } from "../../inbound/dtos/users.logout.adaptor.input.dto";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { UsersLogoutAdaptor } from "../../domain/adaptor/users.logout.adaptor";
+import { UsersLogoutAdaptor } from "../../domain/adaptors/users.logout.adaptor";
 
 @Injectable()
 @Dependencies([PrismaService])

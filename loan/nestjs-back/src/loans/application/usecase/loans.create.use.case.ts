@@ -4,7 +4,7 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
-import { LoansCreateAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.create.adaptor.output.dto";
+import { LoansCreateAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.create.adaptor.output.dto";
 import {
   CREDITOR_ID_REQUIRED,
   CREDITOR_UNIQUE_ID_REQUIRED,
@@ -14,13 +14,13 @@ import {
   LOAN_REPAYMENT_DATE_REQUIRED,
   LOAN_TOTAL_AMOUNT_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
-import { LoansCreateAdaptor } from "../../domain/adaptor/loans.create.adaptor";
-import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.create.adaptor.input.dto";
+import { LoansCreateAdaptor } from "../../domain/adaptors/loans.create.adaptor";
+import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.create.adaptor.input.dto";
 import {
   NOTFOUND_LOAN_CREDITOR,
   NOTFOUND_LOAN_DEBTOR,
 } from "../../../_common/constants/http/errors/404";
-import { UsersExistsUserInterface } from "../../domain/interface/users.exists.user.interface";
+import { UsersExistsUserInterface } from "../../domain/interfaces/users.exists.user.interface";
 
 @Injectable()
 export class LoansCreateUseCase implements LoansCreateAdaptor {

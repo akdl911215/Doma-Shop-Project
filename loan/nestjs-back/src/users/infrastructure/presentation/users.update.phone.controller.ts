@@ -19,9 +19,9 @@ import { UPDATE_FAILED } from "../../../_common/constants/http/errors/409";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersModel } from "../../domain/entity/users.model";
 import { UsersUpdatePhoneAdaptorInputDto } from "../../inbound/dtos/users.update.phone.adaptor.input.dto";
-import { UsersUpdatePhoneAdaptor } from "../../domain/adaptor/users.update.phone.adaptor";
+import { UsersUpdatePhoneAdaptor } from "../../domain/adaptors/users.update.phone.adaptor";
 import { User } from "../../../_common/decorators/user.decorator";
-import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
+import { PasswordCheckingInterceptor } from "../../interceptors/password.checking.interceptor";
 import { AccessTokenGuard } from "../../../_common/infrastructures/token/guard/jwt.access.guard";
 import { UsersUpdatePhoneAdaptorOutputDto } from "../../outbound/dtos/users.update.phone.adaptor.output.dto";
 

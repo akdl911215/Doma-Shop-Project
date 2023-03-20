@@ -1,5 +1,5 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
-import { UsersUpdatePasswordAdaptor } from "../../domain/adaptor/users.update.password.adaptor";
+import { UsersUpdatePasswordAdaptor } from "../../domain/adaptors/users.update.password.adaptor";
 import { UsersUpdatePasswordAdaptorInputDto } from "../../inbound/dtos/users.update.password.adaptor.input.dto";
 import { UsersUpdatePasswordAdaptorOutputDto } from "../../outbound/dtos/users.update.password.adaptor.output.dto";
 import { PASSWORD_REQUIRED } from "../../../_common/constants/http/errors/400";

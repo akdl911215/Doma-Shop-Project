@@ -5,7 +5,7 @@ import { LoansCreditorInquiryUseCase } from "./loans.creditor.inquiry.use.case";
 import { LoansCreditorInquiryRepository } from "../../infrastructure/repository/loans.creditor.inquiry.repository";
 import { LoansExistsLoanUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.unique.id.repository";
 import { LoansExistsLoanCreditorUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.creditor.unique.id.repository";
-import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.creditor.inquiry.adaptor.input.dto";
+import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.creditor.inquiry.adaptor.input.dto";
 
 describe("LoansCreditorInquiryUseCase", () => {
   let service: LoansCreditorInquiryUseCase;

@@ -6,10 +6,10 @@ import {
 } from "@nestjs/common";
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { UsersUpdateNameAdaptor } from "../../domain/adaptor/users.update.name.adaptor";
+import { UsersUpdateNameAdaptor } from "../../domain/adaptors/users.update.name.adaptor";
 import { UsersUpdateNameAdaptorInputDto } from "../../inbound/dtos/users.update.name.adaptor.input.dto";
 import { UsersUpdateNameAdaptorOutputDto } from "../../outbound/dtos/users.update.name.adaptor.output.dto";
-import { UsersUpdateUserIdAdaptor } from "../../domain/adaptor/users.update.user.id.adaptor";
+import { UsersUpdateUserIdAdaptor } from "../../domain/adaptors/users.update.user.id.adaptor";
 import { UsersUpdateUserIdAdaptorInputDto } from "../../inbound/dtos/users.update.user.id.adaptor.input.dto";
 import { UsersUpdateUserIdAdaptorOutputDto } from "../../outbound/dtos/users.update.user.id.adaptor.output.dto";
 

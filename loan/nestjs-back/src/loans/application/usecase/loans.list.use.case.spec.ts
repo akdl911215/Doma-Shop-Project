@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { LoansListUseCase } from "./loans.list.use.case";
 import { LoansListRepository } from "../../infrastructure/repository/loans.list.repository";
-import { LoansListAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.list.adaptor.input.dto";
+import { LoansListAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.list.adaptor.input.dto";
 
 describe("LoansListUseCase", () => {
   let service: LoansListUseCase;

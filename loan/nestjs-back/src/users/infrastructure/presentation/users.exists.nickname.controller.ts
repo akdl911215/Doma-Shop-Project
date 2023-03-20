@@ -4,7 +4,7 @@ import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import { ALREADY_NICKNAME_EXISTS } from "../../../_common/constants/http/errors/409";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersExistsNicknameAdaptorInputDto } from "../../inbound/dtos/users.exists.nickname.adaptor.input.dto";
-import { UsersExistsNicknameAdaptor } from "../../domain/adaptor/users.exists.nickname.adaptor";
+import { UsersExistsNicknameAdaptor } from "../../domain/adaptors/users.exists.nickname.adaptor";
 import { UsersExistsNicknameOutputDto } from "../../outbound/dtos/users.exists.nickname.adaptor.output.dto";
 
 @ApiTags("users")

@@ -12,7 +12,7 @@ import {
   ApiResponse,
   ApiTags,
 } from "@nestjs/swagger";
-import { UsersLoginAdaptor } from "../../domain/adaptor/users.login.adaptor";
+import { UsersLoginAdaptor } from "../../domain/adaptors/users.login.adaptor";
 import { LOGIN_SUCCESS } from "../../../_common/constants/http/success/201";
 import {
   NO_MATCH_PASSWORD,
@@ -22,7 +22,7 @@ import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersLoginAdaptorInputDto } from "../../inbound/dtos/users.login.adaptor.input.dto";
 import { UsersLoginAdaptorOutputDto } from "../../outbound/dtos/users.login.adaptor.output.dto";
-import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
+import { PasswordCheckingInterceptor } from "../../interceptors/password.checking.interceptor";
 
 @Controller("users")
 @ApiTags("users")

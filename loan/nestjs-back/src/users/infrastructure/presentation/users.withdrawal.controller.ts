@@ -14,7 +14,7 @@ import {
   ApiResponse,
   ApiTags,
 } from "@nestjs/swagger";
-import { UsersWithdrawalAdaptor } from "../../domain/adaptor/users.withdrawal.adaptor";
+import { UsersWithdrawalAdaptor } from "../../domain/adaptors/users.withdrawal.adaptor";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import { TWO_HUNDRED_FOUR_DELETE_SUCCESS } from "../../../_common/constants/http/success/204";
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";

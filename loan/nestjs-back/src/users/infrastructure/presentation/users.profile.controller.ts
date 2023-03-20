@@ -6,7 +6,7 @@ import {
   ApiResponse,
   ApiTags,
 } from "@nestjs/swagger";
-import { UsersProfileAdaptor } from "../../domain/adaptor/users.profile.adaptor";
+import { UsersProfileAdaptor } from "../../domain/adaptors/users.profile.adaptor";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import {
   NO_MATCH_USER_ID,

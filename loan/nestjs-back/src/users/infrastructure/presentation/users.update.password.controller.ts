@@ -15,7 +15,7 @@ import { User } from "../../../_common/decorators/user.decorator";
 import { AccessTokenGuard } from "../../../_common/infrastructures/token/guard/jwt.access.guard";
 import { UsersUpdatePasswordAdaptorInputDto } from "../../inbound/dtos/users.update.password.adaptor.input.dto";
 import { UsersUpdatePasswordAdaptorOutputDto } from "../../outbound/dtos/users.update.password.adaptor.output.dto";
-import { UsersUpdatePasswordAdaptor } from "../../domain/adaptor/users.update.password.adaptor";
+import { UsersUpdatePasswordAdaptor } from "../../domain/adaptors/users.update.password.adaptor";
 
 @ApiTags("users")
 @Controller("users")

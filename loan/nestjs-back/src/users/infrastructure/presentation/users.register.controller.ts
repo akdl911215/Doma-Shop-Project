@@ -20,8 +20,8 @@ import {
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
-import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
-import { PasswordCheckingInterceptor } from "../../interceptor/password.checking.interceptor";
+import { UsersRegisterAdaptor } from "../../domain/adaptors/users.register.adaptor";
+import { PasswordCheckingInterceptor } from "../../interceptors/password.checking.interceptor";
 import { USER_ID_REQUIRED } from "../../../_common/constants/http/errors/400";
 
 @ApiTags("users")

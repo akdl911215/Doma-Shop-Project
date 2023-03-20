@@ -8,9 +8,9 @@ import {
 } from "@nestjs/swagger";
 import { CREATE_SUCCESS } from "../../../_common/constants/http/success/201";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
-import { LoansCreateAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.create.adaptor.output.dto";
-import { LoansCreateAdaptor } from "../../domain/adaptor/loans.create.adaptor";
-import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.create.adaptor.input.dto";
+import { LoansCreateAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.create.adaptor.output.dto";
+import { LoansCreateAdaptor } from "../../domain/adaptors/loans.create.adaptor";
+import { LoansCreateAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.create.adaptor.input.dto";
 import {
   CREDITOR_ID_REQUIRED,
   CREDITOR_UNIQUE_ID_REQUIRED,

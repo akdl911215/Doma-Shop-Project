@@ -1,5 +1,5 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { UsersExistsNicknameAdaptor } from "../../domain/adaptor/users.exists.nickname.adaptor";
+import { UsersExistsNicknameAdaptor } from "../../domain/adaptors/users.exists.nickname.adaptor";
 import { UsersExistsNicknameAdaptorInputDto } from "../../inbound/dtos/users.exists.nickname.adaptor.input.dto";
 import { UsersExistsNicknameOutputDto } from "../../outbound/dtos/users.exists.nickname.adaptor.output.dto";
 

@@ -1,10 +1,10 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { UsersRegisterAdaptorInputDto } from "../../inbound/dtos/users.register.adaptor.input.dto";
 import { UsersRegisterAdaptorOutputDto } from "../../outbound/dtos/users.register.adaptor.output.dto";
-import { UsersRegisterAdaptor } from "../../domain/adaptor/users.register.adaptor";
-import { UsersExistsUserIdAdaptor } from "../../domain/adaptor/users.exists.user.id.adaptor";
-import { UsersExistsPhoneAdaptor } from "../../domain/adaptor/users.exists.phone.adaptor";
-import { UsersExistsNicknameAdaptor } from "../../domain/adaptor/users.exists.nickname.adaptor";
+import { UsersRegisterAdaptor } from "../../domain/adaptors/users.register.adaptor";
+import { UsersExistsUserIdAdaptor } from "../../domain/adaptors/users.exists.user.id.adaptor";
+import { UsersExistsPhoneAdaptor } from "../../domain/adaptors/users.exists.phone.adaptor";
+import { UsersExistsNicknameAdaptor } from "../../domain/adaptors/users.exists.nickname.adaptor";
 import { USER_REQUIRED } from "../../../_common/constants/http/errors/400";
 
 @Injectable()

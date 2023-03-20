@@ -7,7 +7,7 @@ import {
 import { UsersWithdrawalAdaptorInputDto } from "../../inbound/dtos/users.withdrawal.adaptor.input.dto";
 import { UsersWithdrawalAdaptorOutputDto } from "../../outbound/dtos/users.withdrawal.adaptor.output.dto";
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
-import { UsersWithdrawalAdaptor } from "../../domain/adaptor/users.withdrawal.adaptor";
+import { UsersWithdrawalAdaptor } from "../../domain/adaptors/users.withdrawal.adaptor";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 
 @Injectable()

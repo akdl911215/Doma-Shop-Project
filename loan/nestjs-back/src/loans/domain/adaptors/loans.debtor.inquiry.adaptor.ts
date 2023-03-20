@@ -1,0 +1,8 @@
+import { LoansDebtorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.debtor.inquiry.adaptor.input.dto";
+import { LoansDebtorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.debtor.inquiry.adaptor.output.dto";
+
+export interface LoansDebtorInquiryAdaptor {
+  readonly debtorInquiry: (
+    dto: LoansDebtorInquiryAdaptorInputDto
+  ) => Promise<LoansDebtorInquiryAdaptorOutputDto>;
+}

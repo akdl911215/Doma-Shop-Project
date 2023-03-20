@@ -6,13 +6,13 @@ import {
   ApiTags,
 } from "@nestjs/swagger";
 import { Body, Controller, Delete, Inject } from "@nestjs/common";
-import { LoansDeleteAdaptor } from "../../domain/adaptor/loans.delete.adaptor";
+import { LoansDeleteAdaptor } from "../../domain/adaptors/loans.delete.adaptor";
 import { CREATE_SUCCESS } from "../../../_common/constants/http/success/201";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
-import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.delete.adaptor.input.dto";
+import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.delete.adaptor.input.dto";
 import { User } from "../../../_common/decorators/user.decorator";
 import { UsersModel } from "../../../users/domain/entity/users.model";
-import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.delete.adaptor.output.dto";
+import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.delete.adaptor.output.dto";
 import { UNAUTHORIZED } from "../../../_common/constants/http/errors/401";
 import {
   NOTFOUND_LOAN,

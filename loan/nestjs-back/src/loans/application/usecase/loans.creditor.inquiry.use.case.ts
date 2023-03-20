@@ -1,13 +1,13 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
-import { LoansCreditorInquiryAdaptor } from "../../domain/adaptor/loans.creditor.inquiry.adaptor";
-import { LoansCreditorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.creditor.inquiry.adaptor.output.dto";
-import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.creditor.inquiry.adaptor.input.dto";
+import { LoansCreditorInquiryAdaptor } from "../../domain/adaptors/loans.creditor.inquiry.adaptor";
+import { LoansCreditorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.creditor.inquiry.adaptor.output.dto";
+import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.creditor.inquiry.adaptor.input.dto";
 import {
   CREDITOR_UNIQUE_ID_REQUIRED,
   UNIQUE_ID_REQUIRED,
 } from "../../../_common/constants/http/errors/400";
-import { LoansExistsLoanUniqueIdInterface } from "../../domain/interface/loans.exists.loan.unique.id.interface";
-import { UsersExistsUniqueIdInterface } from "../../domain/interface/users.exists.unique.id.interface";
+import { LoansExistsLoanUniqueIdInterface } from "../../domain/interfaces/loans.exists.loan.unique.id.interface";
+import { UsersExistsUniqueIdInterface } from "../../domain/interfaces/users.exists.unique.id.interface";
 
 @Injectable()
 export class LoansCreditorInquiryUseCase

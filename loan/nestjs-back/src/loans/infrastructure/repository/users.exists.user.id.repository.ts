@@ -1,8 +1,8 @@
 import { BadRequestException, Dependencies, Injectable } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { UsersExistsUserIdInterface } from "../../domain/interface/users.exists.user.id.interface";
-import { UsersExistsUserIdInterfaceInputDto } from "../../inbound/dtos/interface/users.exists.user.id.interface.input.dto";
-import { UsersExistsUserIdInterfaceOutputDto } from "../../outbound/dtos/interface/users.exists.user.id.interface.output.dto";
+import { UsersExistsUserIdInterface } from "../../domain/interfaces/users.exists.user.id.interface";
+import { UsersExistsUserIdInterfaceInputDto } from "../../inbound/dtos/interfaces/users.exists.user.id.interface.input.dto";
+import { UsersExistsUserIdInterfaceOutputDto } from "../../outbound/dtos/interfaces/users.exists.user.id.interface.output.dto";
 import { USER_ID_REQUIRED } from "../../../_common/constants/http/errors/400";
 
 @Injectable()

@@ -3,7 +3,7 @@ import { UsersModel } from "../../domain/entity/users.model";
 import { NOTFOUND_USER } from "../../../_common/constants/http/errors/404";
 import { UsersProfileAdaptorOutputDto } from "../../outbound/dtos/users.profile.adaptor.output.dto";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { UsersProfileAdaptor } from "../../domain/adaptor/users.profile.adaptor";
+import { UsersProfileAdaptor } from "../../domain/adaptors/users.profile.adaptor";
 
 @Injectable()
 @Dependencies([PrismaService])

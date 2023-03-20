@@ -6,9 +6,9 @@ import {
   ApiTags,
 } from "@nestjs/swagger";
 import { Controller, Get, Inject, Param } from "@nestjs/common";
-import { LoansInquiryAdaptor } from "../../domain/adaptor/loans.inquiry.adaptor";
-import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.inquiry.adaptor.input.dto";
-import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.inquiry.adaptor.output.dto";
+import { LoansInquiryAdaptor } from "../../domain/adaptors/loans.inquiry.adaptor";
+import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.inquiry.adaptor.input.dto";
+import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.inquiry.adaptor.output.dto";
 import { TWO_HUNDRED_OK } from "../../../_common/constants/http/success/200";
 import {
   NO_MATCH_CREDITOR_UNIQUE_ID,

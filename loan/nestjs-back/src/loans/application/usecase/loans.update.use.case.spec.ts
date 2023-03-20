@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { LoansUpdateUseCase } from "./loans.update.use.case";
-import { LoansUpdateAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.update.adaptor.input.dto";
+import { LoansUpdateAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.update.adaptor.input.dto";
 import { LoansExistsLoanUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.unique.id.repository";
 import { LoansSearchByUniqueIdRepository } from "../../infrastructure/repository/loans.search.by.unique.id.repository";
 import { LoansUpdateRepository } from "../../infrastructure/repository/loans.update.repository";

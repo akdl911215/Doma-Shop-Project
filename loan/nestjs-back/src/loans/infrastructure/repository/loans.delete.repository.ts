@@ -5,9 +5,9 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.delete.adaptor.output.dto";
-import { LoansDeleteAdaptor } from "../../domain/adaptor/loans.delete.adaptor";
-import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.delete.adaptor.input.dto";
+import { LoansDeleteAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.delete.adaptor.output.dto";
+import { LoansDeleteAdaptor } from "../../domain/adaptors/loans.delete.adaptor";
+import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.delete.adaptor.input.dto";
 import { NOTFOUND_LOAN } from "../../../_common/constants/http/errors/404";
 
 @Injectable()

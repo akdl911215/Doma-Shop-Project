@@ -1,8 +1,8 @@
 import { Dependencies, Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.inquiry.adaptor.output.dto";
-import { LoansInquiryAdaptor } from "../../domain/adaptor/loans.inquiry.adaptor";
-import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.inquiry.adaptor.input.dto";
+import { LoansInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.inquiry.adaptor.output.dto";
+import { LoansInquiryAdaptor } from "../../domain/adaptors/loans.inquiry.adaptor";
+import { LoansInquiryAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.inquiry.adaptor.input.dto";
 import { NOTFOUND_LOAN } from "../../../_common/constants/http/errors/404";
 
 @Injectable()

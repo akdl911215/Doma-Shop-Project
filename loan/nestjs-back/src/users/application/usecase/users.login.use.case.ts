@@ -1,7 +1,7 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import { UsersLoginAdaptorInputDto } from "../../inbound/dtos/users.login.adaptor.input.dto";
 import { UsersLoginAdaptorOutputDto } from "../../outbound/dtos/users.login.adaptor.output.dto";
-import { UsersLoginAdaptor } from "../../domain/adaptor/users.login.adaptor";
+import { UsersLoginAdaptor } from "../../domain/adaptors/users.login.adaptor";
 import {
   PASSWORD_REQUIRED,
   USER_ID_REQUIRED,

@@ -1,5 +1,5 @@
 import { BadRequestException, Inject, Injectable } from "@nestjs/common";
-import { UsersUpdateNameAdaptor } from "../../domain/adaptor/users.update.name.adaptor";
+import { UsersUpdateNameAdaptor } from "../../domain/adaptors/users.update.name.adaptor";
 import { UsersUpdateNameAdaptorInputDto } from "../../inbound/dtos/users.update.name.adaptor.input.dto";
 import { UsersUpdateNameAdaptorOutputDto } from "../../outbound/dtos/users.update.name.adaptor.output.dto";
 import { NAME_REQUIRED } from "../../../_common/constants/http/errors/400";

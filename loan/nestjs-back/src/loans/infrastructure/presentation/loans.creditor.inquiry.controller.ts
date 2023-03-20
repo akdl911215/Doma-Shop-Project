@@ -13,9 +13,9 @@ import {
 } from "../../../_common/constants/http/errors/400";
 import { INTERNAL_SERVER_ERROR } from "../../../_common/constants/http/errors/500";
 import { NOTFOUND_LOAN } from "../../../_common/constants/http/errors/404";
-import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.creditor.inquiry.adaptor.input.dto";
-import { LoansCreditorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptor/loans.creditor.inquiry.adaptor.output.dto";
-import { LoansCreditorInquiryAdaptor } from "../../domain/adaptor/loans.creditor.inquiry.adaptor";
+import { LoansCreditorInquiryAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.creditor.inquiry.adaptor.input.dto";
+import { LoansCreditorInquiryAdaptorOutputDto } from "../../outbound/dtos/adaptors/loans.creditor.inquiry.adaptor.output.dto";
+import { LoansCreditorInquiryAdaptor } from "../../domain/adaptors/loans.creditor.inquiry.adaptor";
 
 @ApiTags("loans")
 @Controller("loans")

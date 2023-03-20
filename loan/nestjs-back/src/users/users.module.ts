@@ -37,7 +37,7 @@ import { UsersUpdateUserIdRepository } from "./infrastructure/repository/users.u
 import { UsersUpdateNameRepository } from "./infrastructure/repository/users.update.name.repository";
 import { UsersUpdateAddressRepository } from "./infrastructure/repository/users.update.address.repository";
 import { UsersLogoutRepository } from "./infrastructure/repository/users.logout.repository";
-import { UsersLogoutService } from "./domain/service/users.logout.service";
+import { UsersLogoutService } from "./domain/services/users.logout.service";
 import { UsersLoginController } from "./infrastructure/presentation/users.login.controller";
 import { UsersLogoutController } from "./infrastructure/presentation/users.logout.controller";
 import { UsersUpdateAddressController } from "./infrastructure/presentation/users.update.address.controller";
@@ -127,7 +127,7 @@ import { RefreshTokenStrategy } from "../_common/infrastructures/token/strategy/
     },
     { provide: "USE_CASE_EXISTS_PHONE", useClass: UsersExistsPhoneUseCase },
 
-    // service
+    // services
     { provide: "SERVICE_LOGOUT", useClass: UsersLogoutService },
 
     // repository

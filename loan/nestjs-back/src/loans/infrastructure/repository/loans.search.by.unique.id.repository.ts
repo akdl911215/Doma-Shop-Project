@@ -1,9 +1,9 @@
 import { BadRequestException, Dependencies, Injectable } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
-import { LoansSearchByUniqueIdInterfaceInputDto } from "../../inbound/dtos/interface/loans.search.by.unique.id.interface.input.dto";
-import { LoansSearchByUniqueIdInterfaceOutputDto } from "../../outbound/dtos/interface/loans.search.by.unique.id.interface.output.dto";
+import { LoansSearchByUniqueIdInterfaceInputDto } from "../../inbound/dtos/interfaces/loans.search.by.unique.id.interface.input.dto";
+import { LoansSearchByUniqueIdInterfaceOutputDto } from "../../outbound/dtos/interfaces/loans.search.by.unique.id.interface.output.dto";
 import { UNIQUE_ID_REQUIRED } from "../../../_common/constants/http/errors/400";
-import { LoansSearchByUniqueIdInterface } from "../../domain/interface/loans.search.by.unique.id.interface";
+import { LoansSearchByUniqueIdInterface } from "../../domain/interfaces/loans.search.by.unique.id.interface";
 
 @Injectable()
 @Dependencies([PrismaService])

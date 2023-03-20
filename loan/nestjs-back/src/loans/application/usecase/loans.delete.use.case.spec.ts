@@ -3,7 +3,7 @@ import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../../../_common/infrastructures/prisma/prisma.service";
 import { LoansDeleteRepository } from "../../infrastructure/repository/loans.delete.repository";
 import { LoansDeleteUseCase } from "./loans.delete.use.case";
-import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptor/loans.delete.adaptor.input.dto";
+import { LoansDeleteAdaptorInputDto } from "../../inbound/dtos/adaptors/loans.delete.adaptor.input.dto";
 import { LoansExistsLoanUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.unique.id.repository";
 import { LoansExistsLoanCreditorUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.creditor.unique.id.repository";
 import { LoansExistsLoanDebtorUniqueIdRepository } from "../../infrastructure/repository/loans.exists.loan.debtor.unique.id.repository";
