@@ -10,7 +10,7 @@ export class CreditorsModels extends BaseCommonCoreDto {
     required: true,
     default: "",
   })
-  public creditorUniqueId: string;
+  public creditorsUniqueIds: string[];
 
   @IsUUID()
   @IsNotEmpty()

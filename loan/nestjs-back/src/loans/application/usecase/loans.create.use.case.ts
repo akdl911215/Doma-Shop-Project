@@ -34,38 +34,30 @@ export class LoansCreateUseCase implements LoansCreateAdaptor {
     dto: LoansCreateAdaptorInputDto
   ): Promise<LoansCreateAdaptorOutputDto> {
     const {
-      creditorId,
-      creditorUniqueId,
-      debtorId,
-      debtorUniqueId,
+      debtorsId,
+      creditorsId,
       totalAmountLoan,
       loanRepaymentDate,
       interest,
     } = dto;
+    if (!creditorsId)
+      throw new BadRequestException(CREDITOR_UNIQUE_ID_REQUIRED);
+    // const {
+    //   response: { existsUser: existsCreditor },
+    // } = await this.compareExistsDBUserWith.existsUser({
+    //   id: creditorUniqueId,
+    //   userId: creditorId,
+    // });
+    // if (!existsCreditor) throw new NotFoundException(NOTFOUND_LOAN_CREDITOR);
 
-    for (let i = 0; i < creditorUniqueId.length; ++i) {
-      if (!creditorId[i]) throw new BadRequestException(CREDITOR_ID_REQUIRED);
-      if (!creditorUniqueId[i])
-        throw new BadRequestException(CREDITOR_UNIQUE_ID_REQUIRED);
-      const {
-        response: { existsUser: existsCreditor },
-      } = await this.compareExistsDBUserWith.existsUser({
-        id: creditorUniqueId[i],
-        userId: creditorId[i],
-      });
-      if (!existsCreditor) throw new NotFoundException(NOTFOUND_LOAN_CREDITOR);
-    }
-
-    if (!debtorId) throw new BadRequestException(DEBTOR_ID_REQUIRED);
-    if (!debtorUniqueId)
-      throw new BadRequestException(DEBTOR_UNIQUE_ID_REQUIRED);
-    const {
-      response: { existsUser: existsDebtor },
-    } = await this.compareExistsDBUserWith.existsUser({
-      id: debtorUniqueId,
-      userId: debtorId,
-    });
-    if (!existsDebtor) throw new NotFoundException(NOTFOUND_LOAN_DEBTOR);
+    if (!debtorsId) throw new BadRequestException(DEBTOR_UNIQUE_ID_REQUIRED);
+    // const {
+    //   response: { existsUser: existsDebtor },
+    // } = await this.compareExistsDBUserWith.existsUser({
+    //   id: debtorUniqueId,
+    //   userId: debtorId,
+    // });
+    // if (!existsDebtor) throw new NotFoundException(NOTFOUND_LOAN_DEBTOR);
 
     if (totalAmountLoan === 0)
       throw new BadRequestException(LOAN_TOTAL_AMOUNT_REQUIRED);
