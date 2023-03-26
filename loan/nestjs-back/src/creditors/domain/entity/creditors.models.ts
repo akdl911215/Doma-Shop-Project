@@ -10,7 +10,7 @@ export class CreditorsModels extends BaseCommonCoreDto {
     required: true,
     default: "",
   })
-  public creditorsUniqueIds: string[];
+  public creditorsUniqueIds!: string[];
 
   @IsUUID()
   @IsNotEmpty()
@@ -19,5 +19,5 @@ export class CreditorsModels extends BaseCommonCoreDto {
     required: true,
     default: "",
   })
-  public creditorsConfirmationId!: string;
+  public creditorsConfirmationId!: number;
 }

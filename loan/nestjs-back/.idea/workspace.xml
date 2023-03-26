@@ -5,51 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/prisma/migrations/20230320071344_/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prisma/migrations/20230320071650_/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditors.create.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditors.delete.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditors.inquiry.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditors.list.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditors.update.adaptor.input.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creditors/infrastructure/repository/creditors.create.repository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creditors/outbound/dtos/interfaces/users.exists.unique.id.interface.output.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prisma/migrations/20230326081911_/migration.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230207105219_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230212015845_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230222035238_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230222035621_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230222101542_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230227095006_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230227102550_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230227102914_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230312124454_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230312131611_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230315032314_/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230315032934_/migration.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_common/constants/http/errors/400.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/_common/constants/http/errors/400.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creditors/creditors.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/creditors.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.create.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.create.adaptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.delete.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.delete.adaptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.inquiry.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.inquiry.adaptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.list.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.list.adaptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.update.adaptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/domain/adaptors/creditors.update.adaptor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creditors/domain/entity/creditors.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/domain/entity/creditors.models.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditors.create.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/domain/interfaces/users.exists.unique.id.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditors.inquiry.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/inbound/dtos/interfaces/users.exists.unique.id.interface.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditos.delete.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/infrastructure/repository/creditors.delete.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditos.list.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/infrastructure/repository/users.exists.unique.id.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/inbound/dtos/adaptors/creditos.update.adaptor.input.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/infrastructure/repository/creditors.create.repositort.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/infrastructure/repository/creditors.delete.repositort.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.create.adaptor.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.create.adaptor.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.delete.adaptor.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.delete.adaptor.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.inquiry.adaptor.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.inquiry.adaptor.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.list.adaptor.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.list.adaptor.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.update.adaptor.output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/outbound/dtos/adaptors/creditors.update.adaptor.output.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/application/usecase/loans.create.use.case.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creditors/inbound/dtos/interfaces/users.exists.unique.id.interface.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/inbound/dtos/interfaces/users.exists.unique.id.interface.input.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creditors/infrastructure/repository/creditors.create.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/infrastructure/repository/creditors.create.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/interfaces/users.exists.user.interface.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interfaces/users.exists.user.interface.input.dto.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,25 +43,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/loan/nestjs-back",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/loan/nestjs-back/node_modules/jest",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/loan/nestjs-back/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/loan/nestjs-back/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/loan/nestjs-back&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/loan/nestjs-back/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/loan/nestjs-back/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/ijeonghyeon/Desktop/junghyun/LEEJungHyun-Project/loan/nestjs-back/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/loans/inbound/dtos/interface" />
@@ -243,7 +208,8 @@
       <workItem from="1678850732031" duration="620000" />
       <workItem from="1678851369899" duration="7580000" />
       <workItem from="1679292486035" duration="3405000" />
-      <workItem from="1679296524558" duration="2524000" />
+      <workItem from="1679296524558" duration="2803000" />
+      <workItem from="1679816755705" duration="2993000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
