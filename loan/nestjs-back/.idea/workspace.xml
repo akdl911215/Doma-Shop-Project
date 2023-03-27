@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/prisma/migrations/20230326081911_/migration.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prisma/migrations/20230327100307_/migration.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/creditors.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/creditors.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/domain/entity/creditors.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/domain/entity/creditors.models.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/inbound/dtos/interfaces/users.exists.unique.id.interface.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/inbound/dtos/interfaces/users.exists.unique.id.interface.input.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/infrastructure/repository/creditors.create.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/infrastructure/repository/creditors.create.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loans/inbound/dtos/interfaces/users.exists.user.interface.input.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/loans/inbound/dtos/interfaces/users.exists.user.interface.input.dto.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +205,7 @@
       <workItem from="1678851369899" duration="7580000" />
       <workItem from="1679292486035" duration="3405000" />
       <workItem from="1679296524558" duration="2803000" />
-      <workItem from="1679816755705" duration="2993000" />
+      <workItem from="1679816755705" duration="7116000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
