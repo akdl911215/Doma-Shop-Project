@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ff9ef4f-cfee-4ecc-8fae-953a1216d37c" name="Changes" comment="nest note back &gt; users work">
-      <change afterPath="$PROJECT_DIR$/prisma/migrations/20230327100307_/migration.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/creditors/application/usecase/creditors.create.use.case.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +200,10 @@
       <workItem from="1678851369899" duration="7580000" />
       <workItem from="1679292486035" duration="3405000" />
       <workItem from="1679296524558" duration="2803000" />
-      <workItem from="1679816755705" duration="7116000" />
+      <workItem from="1679816755705" duration="7117000" />
+      <workItem from="1679975466716" duration="2411000" />
+      <workItem from="1680350407062" duration="556000" />
+      <workItem from="1680443085743" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="nest note back &gt; users work">
       <created>1670060260296</created>
