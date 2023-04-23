@@ -52,7 +52,14 @@ export const CalendarMain = () => {
     // return weekArr;
 
     return week.map((element: string, index: number) => {
-      return <div key={index}>{element}</div>;
+      return (
+        <div
+          style={{ float: 'left', fontSize: '20px', margin: '8px 15px' }}
+          key={index}
+        >
+          {element}
+        </div>
+      );
     });
   }, []);
 
@@ -82,39 +89,32 @@ export const CalendarMain = () => {
         <header>
           <h2>Header</h2>
         </header>
-        <header>
-          <h2>
-            <span>Month Header</span>
-          </h2>
-        </header>
-        <main>
+        <div>
           <div
             style={{
-              width: '300px',
-              height: '400px',
+              width: '370px',
+              height: '730px',
               margin: 'auto',
               padding: '10px 10px',
               border: '1px solid rgba(128, 128, 128, 0.267)',
               position: 'absolute',
               left: '50%',
               top: '50%',
-              transform: 'translate(-50%, -60%)',
+              transform: 'translate(-50%, -50%)',
             }}
           >
-            <div className="title">
+            <div>
               <h3>
-                {}년 {}월
-              </h3>
-              <div className="pagination">
                 <button>◀︎</button>
-                <button>▶︎</button>
-              </div>
+                {selectedMonth}월 {selectedYear}년<button>▶︎</button>
+              </h3>
+              <div className="pagination"></div>
             </div>
+
             <div>{returnWeek()}</div>
             <div>{returnDay()}</div>
           </div>
-        </main>
-        {/*<footer>footer</footer>*/}
+        </div>
       </div>
     </>
   );
